@@ -1,0 +1,29 @@
+{
+	"root": true,
+	"extends": "airbnb-base",
+	"parser": "babel-eslint",
+	"parserOptions": {
+	  "sourceType": "module"
+	},
+	"env": {
+	  "browser": true
+	},
+	"plugins": [
+	  "html"
+	],
+	"settings": {
+	  "import/resolver": {
+		"webpack": {
+		  "config": "webpack.config.js"
+		}
+	  }
+	},
+	"rules": {
+	  "no-param-reassign": 0,
+	  "generator-star-spacing": 0,
+	  "import/extensions": ["error", "always", {
+		"js": "never",
+		"vue": "never"
+	  }]
+	}
+  }
