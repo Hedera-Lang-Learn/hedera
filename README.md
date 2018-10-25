@@ -1,4 +1,4 @@
-# Scaife Basic
+# Hedera
 
 This is a minimalistic project that just has basic account features and a simple, static reader [or will—this is a work in progress].
 
