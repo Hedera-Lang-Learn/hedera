@@ -1,0 +1,4 @@
+div.text {
+  @include make-container();
+  font-family: 'Noto Serif';
+}
