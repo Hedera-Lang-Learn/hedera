@@ -120,6 +120,7 @@ ROOT_URLCONF = "basic.urls"
 WSGI_APPLICATION = "basic.wsgi.application"
 
 INSTALLED_APPS = [
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.messages",
@@ -136,6 +137,9 @@ INSTALLED_APPS = [
     # external
     "account",
     "pinax.eventlog",
+
+    # local apps
+    "databasetext",
 
     # project
     "basic",
@@ -215,3 +219,7 @@ EMAIL_PORT = os.environ.get("EMAIL_PORT", "")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = True
+
+TEXT_PROVIDER_BACKENDS = [
+    "databasetext.backends.TextProviderBackend",
+]
