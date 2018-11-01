@@ -12,7 +12,7 @@ pipenv run pip install pip==18.0
 pipenv install
 pipenv shell
 ./manage.py migrate
-./manage.py loaddata sites
+./manage.py loaddata sites cana
 ```
 
 Then, in two different terminals:
@@ -22,4 +22,4 @@ npm start
 ./manage.py runserver
 ```
 
-Browse to http://localhost:8000/
+Browse to http://localhost:8000/ or http://localhost:8000/read/1/
