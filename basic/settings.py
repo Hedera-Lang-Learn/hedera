@@ -138,6 +138,9 @@ INSTALLED_APPS = [
     "account",
     "pinax.eventlog",
 
+    # local apps
+    "databasetext",
+
     # project
     "basic",
 ]
