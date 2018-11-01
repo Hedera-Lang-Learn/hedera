@@ -12,7 +12,7 @@ pipenv run pip install pip==18.0
 pipenv install
 pipenv shell
 ./manage.py migrate
-./manage.py loaddata sites cana
+./manage.py loaddata sites cana livy tolstoy
 ```
 
 Then, in two different terminals:
