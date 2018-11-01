@@ -120,6 +120,7 @@ ROOT_URLCONF = "basic.urls"
 WSGI_APPLICATION = "basic.wsgi.application"
 
 INSTALLED_APPS = [
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.messages",
