@@ -12,6 +12,7 @@ pinax-eventlog = "*"
 django = "*"
 django-webpack-loader = "*"
 pinax-templates = "*"
+gunicorn = "*"
 
 [dev-packages]
 "flake8" = "<3.6"
