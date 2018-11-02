@@ -5,7 +5,7 @@ from django.apps import AppConfig as BaseAppConfig
 
 class AppConfig(BaseAppConfig):
 
-    name = "basic"
+    name = "hedera"
 
     def ready(self):
-        import_module("basic.receivers")
+        import_module("hedera.receivers")

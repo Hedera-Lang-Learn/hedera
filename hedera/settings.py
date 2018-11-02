@@ -98,7 +98,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.template.context_processors.request",
                 "django.contrib.messages.context_processors.messages",
-                "basic.context_processors.settings",
+                "hedera.context_processors.settings",
                 "account.context_processors.account",
             ],
         },
@@ -114,10 +114,10 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "basic.urls"
+ROOT_URLCONF = "hedera.urls"
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = "basic.wsgi.application"
+WSGI_APPLICATION = "hedera.wsgi.application"
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -142,7 +142,7 @@ INSTALLED_APPS = [
     "databasetext",
 
     # project
-    "basic",
+    "hedera",
 ]
 
 WEBPACK_LOADER = {
@@ -193,7 +193,7 @@ FIXTURE_DIRS = [
 ]
 
 if DEBUG:
-    TEMPLATES[0]["OPTIONS"]["context_processors"].append("basic.context_processors.vue_debug")
+    TEMPLATES[0]["OPTIONS"]["context_processors"].append("hedera.context_processors.vue_debug")
 
 
 SESSION_COOKIE_NAME = "sv-sessionid"
@@ -207,7 +207,7 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
 AUTHENTICATION_BACKENDS = [
-    "basic.backends.UsernameAuthenticationBackend",
+    "hedera.backends.UsernameAuthenticationBackend",
     # "account.auth_backends.UsernameAuthenticationBackend",
 ]
 
