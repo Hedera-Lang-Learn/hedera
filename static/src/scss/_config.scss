@@ -1,7 +1,9 @@
 // Put any variable overrides in this file
 
-$perseus-red: #B45141;
-$perseus-red-lighter: lighten($perseus-red, 30%);
+$hedera-green: #578E57;
+$hedera-green-darker: #327632;
+$hedera-green-lighter: #699B69;
+
 $highlight-color: #FEA;
 $highlight-color-lighter: lighten($highlight-color, 12%);
 
@@ -24,18 +26,18 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black:  #000;
 
-$blue:    #007bff;
+$blue:    #256b8b;
 $indigo:  #6610f2;
 $purple:  #6f42c1;
 $pink:    #e83e8c;
-$red:     #dc3545;
+$red:     #933F3F;
 $orange:  #fd7e14;
 $yellow:  #ffc107;
 $green:   #28a745;
 $teal:    #20c997;
 $cyan:    #17a2b8;
 
-$primary:   $perseus-red;
+$primary:   $hedera-green;
 $secondary: $gray-600;
 $success:   $blue;
 $info:      $cyan;

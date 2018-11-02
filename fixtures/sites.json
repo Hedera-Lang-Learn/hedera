@@ -4,7 +4,7 @@
         "model": "sites.site",
         "fields": {
             "domain": "localhost:8000",
-            "name": "Scaife Basic"
+            "name": "Hedera"
         }
     }
 ]

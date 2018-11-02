@@ -1,6 +1,8 @@
 body.home {
   section.home-hero {
-    background-color: $gray-800;
+    background-image: url("/site_media/static/images/hedera-ivy.png");
+    background-repeat: no;
+    background-color: $hedera-green;
     color: $white;
 
     p.buttons {
@@ -108,7 +110,7 @@ body.home {
     font-family: 'Noto Serif';
     padding-top: 50px;
     h2 {
-      color: $perseus-red;
+      color: $hedera-green;
     }
     h3 {
       font-family: 'Noto Sans';
