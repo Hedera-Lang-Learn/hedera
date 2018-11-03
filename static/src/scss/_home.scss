@@ -1,8 +1,11 @@
 body.home {
   section.home-hero {
-    background-image: url("/site_media/static/images/hedera-ivy.jpg");
-    background-repeat: no;
     background-color: $hedera-green;
+    background-image: url("../images/hedera-ivy.jpg");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-origin: content-box;
+
     color: $white;
 
     p.buttons {
@@ -32,6 +35,9 @@ body.home {
       margin-bottom: 0;
       font-size: 14px;
     }
+    h1, h2 {
+      margin-left: 220px;
+    }
     a.btn {
       font-size: 12px;
       line-height: 1.5;
@@ -42,18 +48,26 @@ body.home {
     }
 
     @include media-breakpoint-down(sm) {
+      background-size: 40px;
       p.jump {
         margin: 0 0 1em 1em;
+      }
+      h1, h2 {
+        margin-left: 60px;
       }
     }
 
     @include media-breakpoint-up(sm) {
+      background-size: 100px;
       padding: 10px 0 30px 10px;
       h1 {
         font-size: 52px;
       }
       h2 {
         font-size: 26px;
+      }
+      h1, h2 {
+        margin-left: 120px;
       }
       a.btn {
         font-size: 16px;
@@ -64,11 +78,15 @@ body.home {
     }
     @include media-breakpoint-up(md) {
       padding: 30px 0 60px 30px;
+      background-size: 140px;
       h1 {
         font-size: 64px;
       }
       h2 {
         font-size: 32px;
+      }
+      h1, h2 {
+        margin-left: 160px;
       }
       a.btn {
         font-size: 20px;
@@ -79,11 +97,15 @@ body.home {
     }
     @include media-breakpoint-up(lg) {
       padding: 50px 0 100px 50px;
+      background-size: 180px;
       h1 {
         font-size: 80px;
       }
       h2 {
         font-size: 40px;
+      }
+      h1, h2 {
+        margin-left: 200px;
       }
       a.btn {
         font-size: 24px;
@@ -94,11 +116,15 @@ body.home {
     }
     @include media-breakpoint-up(xl) {
       padding: 80px 0 120px 80px;
+      background-size: 200px;
       h1 {
         font-size: 96px;
       }
       h2 {
         font-size: 48px;
+      }
+      h1, h2 {
+        margin-left: 220px;
       }
       p.jump {
         font-size: 24px;
