@@ -1,7 +1,9 @@
 # Principal Authors
 
-- Brian Rosner
 - James Tauber
 - Patrick Altman
+- James Harrington
 
 # Other Contributors
+
+- Brian Rosner

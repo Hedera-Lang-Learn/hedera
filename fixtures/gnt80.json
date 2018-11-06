@@ -1,0 +1,26 @@
+[
+{
+  "model": "vocab_list.vocabularylist",
+  "pk": 1,
+  "fields": {
+    "owner": null,
+    "title": "Greek New Testament 80% Core List",
+    "description": "The most frequency lemmas in the Greek New Testament up to 80% coverage.\r\n\r\nSee https://github.com/jtauber/core-gnt-vocab for details.",
+    "created": "2018-11-06T19:42:45.703Z",
+    "updated": "2018-11-06T19:42:45.703Z",
+    "cloned_from": null
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 1,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "x",
+    "gloss": "y",
+    "created": "2018-11-06T19:42:45.705Z",
+    "updated": "2018-11-06T19:42:45.705Z",
+    "_order": 0
+  }
+}
+]
