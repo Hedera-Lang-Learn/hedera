@@ -140,6 +140,7 @@ INSTALLED_APPS = [
 
     # local apps
     "databasetext",
+    "vocab_list",
 
     # project
     "hedera",

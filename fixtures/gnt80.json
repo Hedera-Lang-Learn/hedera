@@ -1,0 +1,3830 @@
+[
+{
+  "model": "vocab_list.vocabularylist",
+  "pk": 1,
+  "fields": {
+    "owner": null,
+    "title": "Greek New Testament Core 80% List",
+    "description": "The most frequency lemmas in the Greek New Testament up to 80% coverage.\r\n\r\nSee https://github.com/jtauber/core-gnt-vocab for details.",
+    "created": "2018-11-06T19:51:53.441Z",
+    "updated": "2018-11-06T19:51:53.441Z",
+    "cloned_from": null
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 1,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f41",
+    "gloss": "the",
+    "created": "2018-11-06T19:55:21.349Z",
+    "updated": "2018-11-06T19:55:21.349Z",
+    "_order": 0
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 2,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03af",
+    "gloss": "and, even, also, namely",
+    "created": "2018-11-06T19:55:21.370Z",
+    "updated": "2018-11-06T19:55:21.370Z",
+    "_order": 1
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 3,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f50\u03c4\u03cc\u03c2",
+    "gloss": "he, she, it, they, them, same",
+    "created": "2018-11-06T19:55:21.372Z",
+    "updated": "2018-11-06T19:55:21.372Z",
+    "_order": 2
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 4,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03cd",
+    "gloss": "you",
+    "created": "2018-11-06T19:55:21.375Z",
+    "updated": "2018-11-06T19:55:21.375Z",
+    "_order": 3
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 5,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03ad",
+    "gloss": "but, on the other hand, and",
+    "created": "2018-11-06T19:55:21.376Z",
+    "updated": "2018-11-06T19:55:21.376Z",
+    "_order": 4
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 6,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03bd",
+    "gloss": "in, on, among",
+    "created": "2018-11-06T19:55:21.378Z",
+    "updated": "2018-11-06T19:55:21.378Z",
+    "_order": 5
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 7,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03b3\u03ce",
+    "gloss": "I",
+    "created": "2018-11-06T19:55:21.379Z",
+    "updated": "2018-11-06T19:55:21.379Z",
+    "_order": 6
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 8,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f30\u03bc\u03af",
+    "gloss": "I am, exist",
+    "created": "2018-11-06T19:55:21.381Z",
+    "updated": "2018-11-06T19:55:21.381Z",
+    "_order": 7
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 9,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03ad\u03b3\u03c9",
+    "gloss": "I say, speak",
+    "created": "2018-11-06T19:55:21.383Z",
+    "updated": "2018-11-06T19:55:21.383Z",
+    "_order": 8
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 10,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f30\u03c2",
+    "gloss": "into, in, among, till, for",
+    "created": "2018-11-06T19:55:21.385Z",
+    "updated": "2018-11-06T19:55:21.385Z",
+    "_order": 9
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 11,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f50",
+    "gloss": "no, not",
+    "created": "2018-11-06T19:55:21.387Z",
+    "updated": "2018-11-06T19:55:21.387Z",
+    "_order": 10
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 12,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c2",
+    "gloss": "who, which, what, that",
+    "created": "2018-11-06T19:55:21.389Z",
+    "updated": "2018-11-06T19:55:21.389Z",
+    "_order": 11
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 13,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f57\u03c4\u03bf\u03c2",
+    "gloss": "this, he, she, it",
+    "created": "2018-11-06T19:55:21.391Z",
+    "updated": "2018-11-06T19:55:21.391Z",
+    "_order": 12
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 14,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03b5\u03cc\u03c2",
+    "gloss": "God, a god",
+    "created": "2018-11-06T19:55:21.394Z",
+    "updated": "2018-11-06T19:55:21.394Z",
+    "_order": 13
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 15,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c4\u03b9",
+    "gloss": "that, since, because",
+    "created": "2018-11-06T19:55:21.396Z",
+    "updated": "2018-11-06T19:55:21.396Z",
+    "_order": 14
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 16,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u1fb6\u03c2",
+    "gloss": "all, the whole, every kind of",
+    "created": "2018-11-06T19:55:21.398Z",
+    "updated": "2018-11-06T19:55:21.398Z",
+    "_order": 15
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 17,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03ac\u03c1",
+    "gloss": "for",
+    "created": "2018-11-06T19:55:21.400Z",
+    "updated": "2018-11-06T19:55:21.400Z",
+    "_order": 16
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 18,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ae",
+    "gloss": "not, lest",
+    "created": "2018-11-06T19:55:21.402Z",
+    "updated": "2018-11-06T19:55:21.402Z",
+    "_order": 17
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 19,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ba",
+    "gloss": "from out, out from among, from",
+    "created": "2018-11-06T19:55:21.405Z",
+    "updated": "2018-11-06T19:55:21.405Z",
+    "_order": 18
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 20,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+    "gloss": "Jesus",
+    "created": "2018-11-06T19:55:21.409Z",
+    "updated": "2018-11-06T19:55:21.409Z",
+    "_order": 19
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 21,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03c0\u03af",
+    "gloss": "on, to, against, on the basis of, at",
+    "created": "2018-11-06T19:55:21.411Z",
+    "updated": "2018-11-06T19:55:21.411Z",
+    "_order": 20
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 22,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03cd\u03c1\u03b9\u03bf\u03c2",
+    "gloss": "lord, Lord, master, sir",
+    "created": "2018-11-06T19:55:21.413Z",
+    "updated": "2018-11-06T19:55:21.413Z",
+    "_order": 21
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 23,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c7\u03c9",
+    "gloss": "I have, hold, possess",
+    "created": "2018-11-06T19:55:21.415Z",
+    "updated": "2018-11-06T19:55:21.415Z",
+    "_order": 22
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 24,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03cc\u03c2",
+    "gloss": "to, towards, with",
+    "created": "2018-11-06T19:55:21.416Z",
+    "updated": "2018-11-06T19:55:21.416Z",
+    "_order": 23
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 25,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I come into being, am born",
+    "created": "2018-11-06T19:55:21.418Z",
+    "updated": "2018-11-06T19:55:21.418Z",
+    "_order": 24
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 26,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b9\u03ac",
+    "gloss": "through, on account of",
+    "created": "2018-11-06T19:55:21.419Z",
+    "updated": "2018-11-06T19:55:21.419Z",
+    "_order": 25
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 27,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f35\u03bd\u03b1",
+    "gloss": "in order that, so that",
+    "created": "2018-11-06T19:55:21.421Z",
+    "updated": "2018-11-06T19:55:21.421Z",
+    "_order": 26
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 28,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03cc",
+    "gloss": "from, away from",
+    "created": "2018-11-06T19:55:21.423Z",
+    "updated": "2018-11-06T19:55:21.423Z",
+    "_order": 27
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 29,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bb\u03bb\u03ac",
+    "gloss": "but, except",
+    "created": "2018-11-06T19:55:21.424Z",
+    "updated": "2018-11-06T19:55:21.424Z",
+    "_order": 28
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 30,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I come, go",
+    "created": "2018-11-06T19:55:21.426Z",
+    "updated": "2018-11-06T19:55:21.427Z",
+    "_order": 29
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 31,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u03b9\u03ad\u03c9",
+    "gloss": "I do, make",
+    "created": "2018-11-06T19:55:21.428Z",
+    "updated": "2018-11-06T19:55:21.428Z",
+    "_order": 30
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 32,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03af\u03c2",
+    "gloss": "who, which, what",
+    "created": "2018-11-06T19:55:21.430Z",
+    "updated": "2018-11-06T19:55:21.430Z",
+    "_order": 31
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 33,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03bd\u03b8\u03c1\u03c9\u03c0\u03bf\u03c2",
+    "gloss": "a man, one of the human race",
+    "created": "2018-11-06T19:55:21.432Z",
+    "updated": "2018-11-06T19:55:21.432Z",
+    "_order": 32
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 34,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "gloss": "anointed, the Messiah, the Christ",
+    "created": "2018-11-06T19:55:21.433Z",
+    "updated": "2018-11-06T19:55:21.433Z",
+    "_order": 33
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 35,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03b9\u03c2",
+    "gloss": "any one, some one",
+    "created": "2018-11-06T19:55:21.435Z",
+    "updated": "2018-11-06T19:55:21.435Z",
+    "_order": 34
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 36,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f61\u03c2",
+    "gloss": "as, like as, how, while, so that",
+    "created": "2018-11-06T19:55:21.437Z",
+    "updated": "2018-11-06T19:55:21.437Z",
+    "_order": 35
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 37,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f30",
+    "gloss": "if",
+    "created": "2018-11-06T19:55:21.438Z",
+    "updated": "2018-11-06T19:55:21.438Z",
+    "_order": 36
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 38,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f56\u03bd",
+    "gloss": "therefore, then",
+    "created": "2018-11-06T19:55:21.440Z",
+    "updated": "2018-11-06T19:55:21.440Z",
+    "_order": 37
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 39,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f41\u03c1\u03ac\u03c9",
+    "gloss": "I see, look upon, experience",
+    "created": "2018-11-06T19:55:21.442Z",
+    "updated": "2018-11-06T19:55:21.442Z",
+    "_order": 38
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 40,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b5\u03c4\u03ac",
+    "gloss": "with, after",
+    "created": "2018-11-06T19:55:21.444Z",
+    "updated": "2018-11-06T19:55:21.444Z",
+    "_order": 39
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 41,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03c4\u03ac",
+    "gloss": "down from, against, according to, throughout, during",
+    "created": "2018-11-06T19:55:21.445Z",
+    "updated": "2018-11-06T19:55:21.445Z",
+    "_order": 40
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 42,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03ba\u03bf\u03cd\u03c9",
+    "gloss": "I hear, listen",
+    "created": "2018-11-06T19:55:21.446Z",
+    "updated": "2018-11-06T19:55:21.446Z",
+    "_order": 41
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 43,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "gloss": "I offer, give",
+    "created": "2018-11-06T19:55:21.448Z",
+    "updated": "2018-11-06T19:55:21.448Z",
+    "_order": 42
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 44,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u03bb\u03cd\u03c2",
+    "gloss": "much, many, often",
+    "created": "2018-11-06T19:55:21.449Z",
+    "updated": "2018-11-06T19:55:21.449Z",
+    "_order": 43
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 45,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c4\u03ae\u03c1",
+    "gloss": "father, Father, ancestor",
+    "created": "2018-11-06T19:55:21.450Z",
+    "updated": "2018-11-06T19:55:21.450Z",
+    "_order": 44
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 46,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f21\u03bc\u03ad\u03c1\u03b1",
+    "gloss": "a day",
+    "created": "2018-11-06T19:55:21.452Z",
+    "updated": "2018-11-06T19:55:21.452Z",
+    "_order": 45
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 47,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bd\u03b5\u1fe6\u03bc\u03b1",
+    "gloss": "wind, breath, spirit",
+    "created": "2018-11-06T19:55:21.453Z",
+    "updated": "2018-11-06T19:55:21.453Z",
+    "_order": 46
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 48,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c5\u1f31\u03cc\u03c2",
+    "gloss": "a son, descendent",
+    "created": "2018-11-06T19:55:21.455Z",
+    "updated": "2018-11-06T19:55:21.455Z",
+    "_order": 47
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 49,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f24",
+    "gloss": "or, than",
+    "created": "2018-11-06T19:55:21.456Z",
+    "updated": "2018-11-06T19:55:21.456Z",
+    "_order": 48
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 50,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03b4\u03b5\u03bb\u03c6\u03cc\u03c2",
+    "gloss": "a brother",
+    "created": "2018-11-06T19:55:21.457Z",
+    "updated": "2018-11-06T19:55:21.457Z",
+    "_order": 49
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 51,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f37\u03c2",
+    "gloss": "one",
+    "created": "2018-11-06T19:55:21.459Z",
+    "updated": "2018-11-06T19:55:21.459Z",
+    "_order": 50
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 52,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f11\u03b1\u03c5\u03c4\u03bf\u1fe6",
+    "gloss": "himself, herself, itself",
+    "created": "2018-11-06T19:55:21.460Z",
+    "updated": "2018-11-06T19:55:21.460Z",
+    "_order": 51
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 53,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b5\u03c1\u03af",
+    "gloss": "about, concerning, around",
+    "created": "2018-11-06T19:55:21.462Z",
+    "updated": "2018-11-06T19:55:21.462Z",
+    "_order": 52
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 54,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ac\u03bd",
+    "gloss": "if",
+    "created": "2018-11-06T19:55:21.465Z",
+    "updated": "2018-11-06T19:55:21.465Z",
+    "_order": 53
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 55,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03cc\u03b3\u03bf\u03c2",
+    "gloss": "a word, speech, divine utterance, analogy",
+    "created": "2018-11-06T19:55:21.467Z",
+    "updated": "2018-11-06T19:55:21.467Z",
+    "_order": 54
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 56,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03b1\u03bb\u03ad\u03c9",
+    "gloss": "I speak, say",
+    "created": "2018-11-06T19:55:21.469Z",
+    "updated": "2018-11-06T19:55:21.469Z",
+    "_order": 55
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 57,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f36\u03b4\u03b1",
+    "gloss": "I know, remember",
+    "created": "2018-11-06T19:55:21.470Z",
+    "updated": "2018-11-06T19:55:21.471Z",
+    "_order": 56
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 58,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+    "gloss": "the sky, the heaven",
+    "created": "2018-11-06T19:55:21.473Z",
+    "updated": "2018-11-06T19:55:21.473Z",
+    "_order": 57
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 59,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b1\u03b8\u03b7\u03c4\u03ae\u03c2",
+    "gloss": "a learner, disciple, pupil",
+    "created": "2018-11-06T19:55:21.474Z",
+    "updated": "2018-11-06T19:55:21.474Z",
+    "_order": 58
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 60,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "gloss": "I receive, take",
+    "created": "2018-11-06T19:55:21.476Z",
+    "updated": "2018-11-06T19:55:21.476Z",
+    "_order": 59
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 61,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u1fc6",
+    "gloss": "the earth, soil, land",
+    "created": "2018-11-06T19:55:21.479Z",
+    "updated": "2018-11-06T19:55:21.479Z",
+    "_order": 60
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 62,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ba\u03b5\u1fd6\u03bd\u03bf\u03c2",
+    "gloss": "that, that one there, yonder",
+    "created": "2018-11-06T19:55:21.481Z",
+    "updated": "2018-11-06T19:55:21.481Z",
+    "_order": 61
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 63,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03af\u03c3\u03c4\u03b9\u03c2",
+    "gloss": "faith, belief, trust",
+    "created": "2018-11-06T19:55:21.483Z",
+    "updated": "2018-11-06T19:55:21.483Z",
+    "_order": 62
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 64,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03b5\u03cd\u03c9",
+    "gloss": "I believe, have faith in",
+    "created": "2018-11-06T19:55:21.484Z",
+    "updated": "2018-11-06T19:55:21.484Z",
+    "_order": 63
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 65,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ad\u03b3\u03b1\u03c2",
+    "gloss": "large, great",
+    "created": "2018-11-06T19:55:21.486Z",
+    "updated": "2018-11-06T19:55:21.486Z",
+    "_order": 64
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 66,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f05\u03b3\u03b9\u03bf\u03c2",
+    "gloss": "set apart, holy, sacred",
+    "created": "2018-11-06T19:55:21.488Z",
+    "updated": "2018-11-06T19:55:21.488Z",
+    "_order": 65
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 67,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c1\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I answer, reply",
+    "created": "2018-11-06T19:55:21.490Z",
+    "updated": "2018-11-06T19:55:21.490Z",
+    "_order": 66
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 68,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f50\u03b4\u03b5\u03af\u03c2",
+    "gloss": "no one, none, nothing",
+    "created": "2018-11-06T19:55:21.492Z",
+    "updated": "2018-11-06T19:55:21.492Z",
+    "_order": 67
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 69,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f44\u03bd\u03bf\u03bc\u03b1",
+    "gloss": "name, character, reputation",
+    "created": "2018-11-06T19:55:21.493Z",
+    "updated": "2018-11-06T19:55:21.493Z",
+    "_order": 68
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 70,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03b9\u03bd\u03ce\u03c3\u03ba\u03c9",
+    "gloss": "I come to know, learn, realize",
+    "created": "2018-11-06T19:55:21.495Z",
+    "updated": "2018-11-06T19:55:21.495Z",
+    "_order": 69
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 71,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f51\u03c0\u03cc",
+    "gloss": "by, under, about",
+    "created": "2018-11-06T19:55:21.497Z",
+    "updated": "2018-11-06T19:55:21.497Z",
+    "_order": 70
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 72,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bd\u03ae\u03c1",
+    "gloss": "a male human being, a man",
+    "created": "2018-11-06T19:55:21.498Z",
+    "updated": "2018-11-06T19:55:21.498Z",
+    "_order": 71
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 73,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03be\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I go out, come out",
+    "created": "2018-11-06T19:55:21.501Z",
+    "updated": "2018-11-06T19:55:21.501Z",
+    "_order": 72
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 74,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03ad",
+    "gloss": "and, both",
+    "created": "2018-11-06T19:55:21.503Z",
+    "updated": "2018-11-06T19:55:21.503Z",
+    "_order": 73
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 75,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03c5\u03bd\u03ae",
+    "gloss": "a woman, wife, my lady",
+    "created": "2018-11-06T19:55:21.505Z",
+    "updated": "2018-11-06T19:55:21.505Z",
+    "_order": 74
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 76,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b1\u03b9",
+    "gloss": "I am powerful, am able",
+    "created": "2018-11-06T19:55:21.507Z",
+    "updated": "2018-11-06T19:55:21.507Z",
+    "_order": 75
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 77,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03ad\u03bb\u03c9",
+    "gloss": "I will, wish, desire",
+    "created": "2018-11-06T19:55:21.508Z",
+    "updated": "2018-11-06T19:55:21.508Z",
+    "_order": 76
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 78,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f55\u03c4\u03c9(\u03c2)",
+    "gloss": "thus, so, in this manner",
+    "created": "2018-11-06T19:55:21.510Z",
+    "updated": "2018-11-06T19:55:21.510Z",
+    "_order": 77
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 79,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f30\u03b4\u03bf\u03cd",
+    "gloss": "See! Lo! Behold! Look!",
+    "created": "2018-11-06T19:55:21.511Z",
+    "updated": "2018-11-06T19:55:21.511Z",
+    "_order": 78
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 80,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f38\u03bf\u03c5\u03b4\u03b1\u1fd6\u03bf\u03c2",
+    "gloss": "Jewish",
+    "created": "2018-11-06T19:55:21.513Z",
+    "updated": "2018-11-06T19:55:21.513Z",
+    "_order": 79
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 81,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c1\u03ac",
+    "gloss": "from, in the presence of",
+    "created": "2018-11-06T19:55:21.514Z",
+    "updated": "2018-11-06T19:55:21.514Z",
+    "_order": 80
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 82,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bd\u03cc\u03bc\u03bf\u03c2",
+    "gloss": "a law, the Mosaic Law",
+    "created": "2018-11-06T19:55:21.515Z",
+    "updated": "2018-11-06T19:55:21.515Z",
+    "_order": 81
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 83,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f30\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I go in, come in, enter",
+    "created": "2018-11-06T19:55:21.517Z",
+    "updated": "2018-11-06T19:55:21.517Z",
+    "_order": 82
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 84,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03c1\u03ac\u03c6\u03c9",
+    "gloss": "I write",
+    "created": "2018-11-06T19:55:21.519Z",
+    "updated": "2018-11-06T19:55:21.519Z",
+    "_order": 83
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 85,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03cc\u03c3\u03bc\u03bf\u03c2",
+    "gloss": "the world, universe",
+    "created": "2018-11-06T19:55:21.521Z",
+    "updated": "2018-11-06T19:55:21.521Z",
+    "_order": 84
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 86,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03b8\u03ce\u03c2",
+    "gloss": "just as, as",
+    "created": "2018-11-06T19:55:21.523Z",
+    "updated": "2018-11-06T19:55:21.523Z",
+    "_order": 85
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 87,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ad\u03bd",
+    "gloss": "truly, indeed",
+    "created": "2018-11-06T19:55:21.525Z",
+    "updated": "2018-11-06T19:55:21.525Z",
+    "_order": 86
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 88,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03b5\u03af\u03c1",
+    "gloss": "a hand",
+    "created": "2018-11-06T19:55:21.527Z",
+    "updated": "2018-11-06T19:55:21.527Z",
+    "_order": 87
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 89,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f51\u03c1\u03af\u03c3\u03ba\u03c9",
+    "gloss": "I find",
+    "created": "2018-11-06T19:55:21.529Z",
+    "updated": "2018-11-06T19:55:21.529Z",
+    "_order": 88
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 90,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03b3\u03b3\u03b5\u03bb\u03bf\u03c2",
+    "gloss": "an angel, messenger",
+    "created": "2018-11-06T19:55:21.531Z",
+    "updated": "2018-11-06T19:55:21.531Z",
+    "_order": 89
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 91,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f44\u03c7\u03bb\u03bf\u03c2",
+    "gloss": "a crowd",
+    "created": "2018-11-06T19:55:21.532Z",
+    "updated": "2018-11-06T19:55:21.532Z",
+    "_order": 90
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 92,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f01\u03bc\u03b1\u03c1\u03c4\u03af\u03b1",
+    "gloss": "a sin",
+    "created": "2018-11-06T19:55:21.534Z",
+    "updated": "2018-11-06T19:55:21.534Z",
+    "_order": 91
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 93,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03bd",
+    "gloss": "an untranslatable word that makes a statement contingent",
+    "created": "2018-11-06T19:55:21.535Z",
+    "updated": "2018-11-06T19:55:21.535Z",
+    "_order": 92
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 94,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c1\u03b3\u03bf\u03bd",
+    "gloss": "work, labor, action, deed",
+    "created": "2018-11-06T19:55:21.537Z",
+    "updated": "2018-11-06T19:55:21.537Z",
+    "_order": 93
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 95,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03cc\u03be\u03b1",
+    "gloss": "honor, renown, glory splendor",
+    "created": "2018-11-06T19:55:21.538Z",
+    "updated": "2018-11-06T19:55:21.538Z",
+    "_order": 94
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 96,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03cc\u03bb\u03b9\u03c2",
+    "gloss": "a city",
+    "created": "2018-11-06T19:55:21.540Z",
+    "updated": "2018-11-06T19:55:21.540Z",
+    "_order": 95
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 97,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03af\u03b1",
+    "gloss": "kingship, sovereignty, authority, rule, kingdom",
+    "created": "2018-11-06T19:55:21.542Z",
+    "updated": "2018-11-06T19:55:21.542Z",
+    "_order": 96
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 98,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03b8\u03bd\u03bf\u03c2",
+    "gloss": "a race, people, the Gentiles",
+    "created": "2018-11-06T19:55:21.544Z",
+    "updated": "2018-11-06T19:55:21.544Z",
+    "_order": 97
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 99,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03cc\u03c4\u03b5",
+    "gloss": "then",
+    "created": "2018-11-06T19:55:21.546Z",
+    "updated": "2018-11-06T19:55:21.546Z",
+    "_order": 98
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 100,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
+    "gloss": "Paul",
+    "created": "2018-11-06T19:55:21.547Z",
+    "updated": "2018-11-06T19:55:21.547Z",
+    "_order": 99
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 101,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03c3\u03b8\u03af\u03c9",
+    "gloss": "I eat",
+    "created": "2018-11-06T19:55:21.549Z",
+    "updated": "2018-11-06T19:55:21.549Z",
+    "_order": 100
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 102,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03c1\u03b4\u03af\u03b1",
+    "gloss": "the heart, inner life, intention",
+    "created": "2018-11-06T19:55:21.550Z",
+    "updated": "2018-11-06T19:55:21.550Z",
+    "_order": 101
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 103,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a0\u03ad\u03c4\u03c1\u03bf\u03c2",
+    "gloss": "Peter",
+    "created": "2018-11-06T19:55:21.552Z",
+    "updated": "2018-11-06T19:55:21.552Z",
+    "_order": 102
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 104,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03ac\u03c1\u03b9\u03c2",
+    "gloss": "grace, favor, kindness",
+    "created": "2018-11-06T19:55:21.553Z",
+    "updated": "2018-11-06T19:55:21.553Z",
+    "_order": 103
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 105,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03bb\u03bb\u03bf\u03c2",
+    "gloss": "other, another, different",
+    "created": "2018-11-06T19:55:21.555Z",
+    "updated": "2018-11-06T19:55:21.555Z",
+    "_order": 104
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 106,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "gloss": "I cause to stand, stand",
+    "created": "2018-11-06T19:55:21.556Z",
+    "updated": "2018-11-06T19:55:21.556Z",
+    "_order": 105
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 107,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u1ff6\u03c4\u03bf\u03c2",
+    "gloss": "first, before",
+    "created": "2018-11-06T19:55:21.558Z",
+    "updated": "2018-11-06T19:55:21.558Z",
+    "_order": 106
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 108,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f51\u03c0\u03ad\u03c1",
+    "gloss": "in behalf of, above",
+    "created": "2018-11-06T19:55:21.559Z",
+    "updated": "2018-11-06T19:55:21.559Z",
+    "_order": 107
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 109,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u03c1\u03b5\u03cd\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I travel, journey, go",
+    "created": "2018-11-06T19:55:21.560Z",
+    "updated": "2018-11-06T19:55:21.560Z",
+    "_order": 108
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 110,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "gloss": "I call, invite, name",
+    "created": "2018-11-06T19:55:21.562Z",
+    "updated": "2018-11-06T19:55:21.562Z",
+    "_order": 109
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 111,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03ac\u03c1\u03be",
+    "gloss": "flesh, body",
+    "created": "2018-11-06T19:55:21.563Z",
+    "updated": "2018-11-06T19:55:21.563Z",
+    "_order": 110
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 112,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bd\u1fe6\u03bd",
+    "gloss": "now, already, at present",
+    "created": "2018-11-06T19:55:21.565Z",
+    "updated": "2018-11-06T19:55:21.565Z",
+    "_order": 111
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 113,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f15\u03c9\u03c2",
+    "gloss": "until, as far as",
+    "created": "2018-11-06T19:55:21.566Z",
+    "updated": "2018-11-06T19:55:21.566Z",
+    "_order": 112
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 114,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c3\u03c4\u03b9\u03c2",
+    "gloss": "whosoever, whichsoever, whatsoever",
+    "created": "2018-11-06T19:55:21.567Z",
+    "updated": "2018-11-06T19:55:21.567Z",
+    "_order": 113
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 115,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
+    "gloss": "a prophet, poet",
+    "created": "2018-11-06T19:55:21.569Z",
+    "updated": "2018-11-06T19:55:21.569Z",
+    "_order": 114
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 116,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03ac\u03c9",
+    "gloss": "I love",
+    "created": "2018-11-06T19:55:21.570Z",
+    "updated": "2018-11-06T19:55:21.570Z",
+    "_order": 115
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 117,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03b3\u03b5\u03af\u03c1\u03c9",
+    "gloss": "I wake, arouse, raise up",
+    "created": "2018-11-06T19:55:21.571Z",
+    "updated": "2018-11-06T19:55:21.571Z",
+    "_order": 116
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 118,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c6\u03af\u03b7\u03bc\u03b9",
+    "gloss": "I send away, release, remit, forgive, permit",
+    "created": "2018-11-06T19:55:21.572Z",
+    "updated": "2018-11-06T19:55:21.572Z",
+    "_order": 117
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 119,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u1ff6\u03bc\u03b1",
+    "gloss": "body, flesh",
+    "created": "2018-11-06T19:55:21.574Z",
+    "updated": "2018-11-06T19:55:21.574Z",
+    "_order": 118
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 120,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f50\u03b4\u03ad",
+    "gloss": "neither, nor, not even",
+    "created": "2018-11-06T19:55:21.575Z",
+    "updated": "2018-11-06T19:55:21.575Z",
+    "_order": 119
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 121,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03b1\u03cc\u03c2",
+    "gloss": "a people, the crowd",
+    "created": "2018-11-06T19:55:21.576Z",
+    "updated": "2018-11-06T19:55:21.576Z",
+    "_order": 120
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 122,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b6\u03ac\u03c9",
+    "gloss": "I live",
+    "created": "2018-11-06T19:55:21.578Z",
+    "updated": "2018-11-06T19:55:21.578Z",
+    "_order": 121
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 123,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u03c9\u03bd\u03ae",
+    "gloss": "a sound, noise, voice",
+    "created": "2018-11-06T19:55:21.579Z",
+    "updated": "2018-11-06T19:55:21.580Z",
+    "_order": 122
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 124,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03ac\u03bb\u03b9\u03bd",
+    "gloss": "again, further, on the other hand",
+    "created": "2018-11-06T19:55:21.581Z",
+    "updated": "2018-11-06T19:55:21.581Z",
+    "_order": 123
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 125,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03ad\u03c9",
+    "gloss": "I bind",
+    "created": "2018-11-06T19:55:21.582Z",
+    "updated": "2018-11-06T19:55:21.582Z",
+    "_order": 124
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 126,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f38\u03c9\u03ac\u03bd\u03bd\u03b7\u03c2",
+    "gloss": "John",
+    "created": "2018-11-06T19:55:21.583Z",
+    "updated": "2018-11-06T19:55:21.583Z",
+    "_order": 125
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 127,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03cd\u03bf",
+    "gloss": "two",
+    "created": "2018-11-06T19:55:21.585Z",
+    "updated": "2018-11-06T19:55:21.585Z",
+    "_order": 126
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 128,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b6\u03c9\u03ae",
+    "gloss": "life",
+    "created": "2018-11-06T19:55:21.586Z",
+    "updated": "2018-11-06T19:55:21.586Z",
+    "_order": 127
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 129,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b2\u03bb\u03ad\u03c0\u03c9",
+    "gloss": "I look, see",
+    "created": "2018-11-06T19:55:21.587Z",
+    "updated": "2018-11-06T19:55:21.587Z",
+    "_order": 128
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 130,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03c3\u03c4\u03ad\u03bb\u03bb\u03c9",
+    "gloss": "I send forth, send, send away, dismiss",
+    "created": "2018-11-06T19:55:21.589Z",
+    "updated": "2018-11-06T19:55:21.589Z",
+    "_order": 129
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 131,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03cd\u03bd",
+    "gloss": "with",
+    "created": "2018-11-06T19:55:21.590Z",
+    "updated": "2018-11-06T19:55:21.591Z",
+    "_order": 130
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 132,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bc\u03ae\u03bd",
+    "gloss": "verily, truly, amen, so let it be",
+    "created": "2018-11-06T19:55:21.592Z",
+    "updated": "2018-11-06T19:55:21.592Z",
+    "_order": 131
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 133,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bd\u03b5\u03ba\u03c1\u03cc\u03c2",
+    "gloss": "dead, a corpse",
+    "created": "2018-11-06T19:55:21.593Z",
+    "updated": "2018-11-06T19:55:21.593Z",
+    "_order": 132
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 134,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
+    "gloss": "a male slave",
+    "created": "2018-11-06T19:55:21.595Z",
+    "updated": "2018-11-06T19:55:21.595Z",
+    "_order": 133
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 135,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c4\u03b1\u03bd",
+    "gloss": "when, whensoever",
+    "created": "2018-11-06T19:55:21.598Z",
+    "updated": "2018-11-06T19:55:21.598Z",
+    "_order": 134
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 136,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c1\u03c7\u03b9\u03b5\u03c1\u03b5\u03cd\u03c2",
+    "gloss": "high priest, chief priest",
+    "created": "2018-11-06T19:55:21.599Z",
+    "updated": "2018-11-06T19:55:21.599Z",
+    "_order": 135
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 137,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f30\u03ce\u03bd",
+    "gloss": "an age, a cycle of time",
+    "created": "2018-11-06T19:55:21.602Z",
+    "updated": "2018-11-06T19:55:21.602Z",
+    "_order": 136
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 138,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "gloss": "I cast, throw, rush, put, place, drop",
+    "created": "2018-11-06T19:55:21.605Z",
+    "updated": "2018-11-06T19:55:21.605Z",
+    "_order": 137
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 139,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03ac\u03bd\u03b1\u03c4\u03bf\u03c2",
+    "gloss": "death",
+    "created": "2018-11-06T19:55:21.606Z",
+    "updated": "2018-11-06T19:55:21.606Z",
+    "_order": 138
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 140,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b9\u03c2",
+    "gloss": "might, power, marvelous works",
+    "created": "2018-11-06T19:55:21.608Z",
+    "updated": "2018-11-06T19:55:21.608Z",
+    "_order": 139
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 141,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "gloss": "I hand over, deliver, betray",
+    "created": "2018-11-06T19:55:21.609Z",
+    "updated": "2018-11-06T19:55:21.609Z",
+    "_order": 140
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 142,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ad\u03bd\u03c9",
+    "gloss": "I remain, abide",
+    "created": "2018-11-06T19:55:21.611Z",
+    "updated": "2018-11-06T19:55:21.611Z",
+    "_order": 141
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 143,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b6\u03b7\u03c4\u03ad\u03c9",
+    "gloss": "I seek, search for, desire",
+    "created": "2018-11-06T19:55:21.612Z",
+    "updated": "2018-11-06T19:55:21.613Z",
+    "_order": 142
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 144,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I come or go away from, depart, return",
+    "created": "2018-11-06T19:55:21.614Z",
+    "updated": "2018-11-06T19:55:21.614Z",
+    "_order": 143
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 145,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03b3\u03ac\u03c0\u03b7",
+    "gloss": "love",
+    "created": "2018-11-06T19:55:21.615Z",
+    "updated": "2018-11-06T19:55:21.615Z",
+    "_order": 144
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 146,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03cd\u03c2",
+    "gloss": "a king, ruler, emperor",
+    "created": "2018-11-06T19:55:21.617Z",
+    "updated": "2018-11-06T19:55:21.617Z",
+    "_order": 145
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 147,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ba\u03ba\u03bb\u03b7\u03c3\u03af\u03b1",
+    "gloss": "an assembly, congregation, church",
+    "created": "2018-11-06T19:55:21.618Z",
+    "updated": "2018-11-06T19:55:21.618Z",
+    "_order": 146
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 148,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03c1\u03af\u03bd\u03c9",
+    "gloss": "I judge, decide, think good",
+    "created": "2018-11-06T19:55:21.620Z",
+    "updated": "2018-11-06T19:55:21.620Z",
+    "_order": 147
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 149,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f34\u03b4\u03b9\u03bf\u03c2",
+    "gloss": "one's own, private, personal",
+    "created": "2018-11-06T19:55:21.622Z",
+    "updated": "2018-11-06T19:55:21.622Z",
+    "_order": 148
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 150,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f36\u03ba\u03bf\u03c2",
+    "gloss": "a house, household",
+    "created": "2018-11-06T19:55:21.624Z",
+    "updated": "2018-11-06T19:55:21.624Z",
+    "_order": 149
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 151,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c3\u03bf\u03c2",
+    "gloss": "how much, how great, how many",
+    "created": "2018-11-06T19:55:21.626Z",
+    "updated": "2018-11-06T19:55:21.626Z",
+    "_order": 150
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 152,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03b8\u03bd\u1fc4\u03c3\u03ba\u03c9",
+    "gloss": "I am dying, am about to die",
+    "created": "2018-11-06T19:55:21.627Z",
+    "updated": "2018-11-06T19:55:21.627Z",
+    "_order": 151
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 153,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03cc\u03bd\u03bf\u03c2",
+    "gloss": "only, solitary, desolate",
+    "created": "2018-11-06T19:55:21.629Z",
+    "updated": "2018-11-06T19:55:21.629Z",
+    "_order": 152
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 154,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ad\u03bb\u03bb\u03c9",
+    "gloss": "I am about to",
+    "created": "2018-11-06T19:55:21.631Z",
+    "updated": "2018-11-06T19:55:21.631Z",
+    "_order": 153
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 155,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bb\u03ae\u03b8\u03b5\u03b9\u03b1",
+    "gloss": "truth",
+    "created": "2018-11-06T19:55:21.634Z",
+    "updated": "2018-11-06T19:55:21.634Z",
+    "_order": 154
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 156,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "gloss": "I summon, entreat, admonish, comfort",
+    "created": "2018-11-06T19:55:21.635Z",
+    "updated": "2018-11-06T19:55:21.635Z",
+    "_order": 155
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 157,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bd\u03af\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "gloss": "I raise up, set up, rise from",
+    "created": "2018-11-06T19:55:21.637Z",
+    "updated": "2018-11-06T19:55:21.637Z",
+    "_order": 156
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 158,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03bb\u03bf\u03c2",
+    "gloss": "all, the whole, entire",
+    "created": "2018-11-06T19:55:21.639Z",
+    "updated": "2018-11-06T19:55:21.639Z",
+    "_order": 157
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 159,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f65\u03c1\u03b1",
+    "gloss": "an hour, season",
+    "created": "2018-11-06T19:55:21.641Z",
+    "updated": "2018-11-06T19:55:21.641Z",
+    "_order": 158
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 160,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u1ff4\u03b6\u03c9",
+    "gloss": "I save, heal",
+    "created": "2018-11-06T19:55:21.643Z",
+    "updated": "2018-11-06T19:55:21.643Z",
+    "_order": 159
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 161,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u1ff6\u03c2",
+    "gloss": "how, in what manner",
+    "created": "2018-11-06T19:55:21.645Z",
+    "updated": "2018-11-06T19:55:21.645Z",
+    "_order": 160
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 162,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c4\u03b5",
+    "gloss": "when",
+    "created": "2018-11-06T19:55:21.646Z",
+    "updated": "2018-11-06T19:55:21.646Z",
+    "_order": 161
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 163,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03be\u03bf\u03c5\u03c3\u03af\u03b1",
+    "gloss": "power, authority, weight",
+    "created": "2018-11-06T19:55:21.648Z",
+    "updated": "2018-11-06T19:55:21.648Z",
+    "_order": 162
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 164,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c8\u03c5\u03c7\u03ae",
+    "gloss": "the soul, life, self",
+    "created": "2018-11-06T19:55:21.649Z",
+    "updated": "2018-11-06T19:55:21.649Z",
+    "_order": 163
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 165,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03b3\u03b1\u03b8\u03cc\u03c2",
+    "gloss": "good",
+    "created": "2018-11-06T19:55:21.650Z",
+    "updated": "2018-11-06T19:55:21.651Z",
+    "_order": 164
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 166,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f41\u03b4\u03cc\u03c2",
+    "gloss": "a way, road, journey",
+    "created": "2018-11-06T19:55:21.652Z",
+    "updated": "2018-11-06T19:55:21.652Z",
+    "_order": 165
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 167,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03bb\u03cc\u03c2",
+    "gloss": "beautiful, good, worthy",
+    "created": "2018-11-06T19:55:21.655Z",
+    "updated": "2018-11-06T19:55:21.655Z",
+    "_order": 166
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 168,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f34\u03c1\u03c9",
+    "gloss": "I raise, lift up",
+    "created": "2018-11-06T19:55:21.656Z",
+    "updated": "2018-11-06T19:55:21.656Z",
+    "_order": 167
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 169,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03af\u03b8\u03b7\u03bc\u03b9",
+    "gloss": "I put, place",
+    "created": "2018-11-06T19:55:21.658Z",
+    "updated": "2018-11-06T19:55:21.658Z",
+    "_order": 168
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 170,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bb\u03bb\u03ae\u03bb\u03c9\u03bd",
+    "gloss": "one another",
+    "created": "2018-11-06T19:55:21.659Z",
+    "updated": "2018-11-06T19:55:21.659Z",
+    "_order": 169
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 171,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f40\u03c6\u03b8\u03b1\u03bb\u03bc\u03cc\u03c2",
+    "gloss": "the eye",
+    "created": "2018-11-06T19:55:21.660Z",
+    "updated": "2018-11-06T19:55:21.660Z",
+    "_order": 170
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 172,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03ad\u03ba\u03bd\u03bf\u03bd",
+    "gloss": "a child, descendent, inhabitant",
+    "created": "2018-11-06T19:55:21.662Z",
+    "updated": "2018-11-06T19:55:21.662Z",
+    "_order": 171
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 173,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f15\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "gloss": "another, different",
+    "created": "2018-11-06T19:55:21.664Z",
+    "updated": "2018-11-06T19:55:21.664Z",
+    "_order": 172
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 174,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f37\u03bc\u03b1",
+    "gloss": "blood",
+    "created": "2018-11-06T19:55:21.666Z",
+    "updated": "2018-11-06T19:55:21.666Z",
+    "_order": 173
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 175,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03b5\u03bd\u03bd\u03ac\u03c9",
+    "gloss": "I beget, bring forth, give birth to",
+    "created": "2018-11-06T19:55:21.668Z",
+    "updated": "2018-11-06T19:55:21.669Z",
+    "_order": 174
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 176,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03c1\u03c4\u03bf\u03c2",
+    "gloss": "bread, a loaf, food",
+    "created": "2018-11-06T19:55:21.671Z",
+    "updated": "2018-11-06T19:55:21.671Z",
+    "_order": 175
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 177,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03c9",
+    "gloss": "I teach",
+    "created": "2018-11-06T19:55:21.672Z",
+    "updated": "2018-11-06T19:55:21.672Z",
+    "_order": 176
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 178,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a6\u03b1\u03c1\u03b9\u03c3\u03b1\u1fd6\u03bf\u03c2",
+    "gloss": "a Pharisee",
+    "created": "2018-11-06T19:55:21.674Z",
+    "updated": "2018-11-06T19:55:21.674Z",
+    "_order": 177
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 179,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ba\u03b5\u1fd6",
+    "gloss": "there, yonder, thither",
+    "created": "2018-11-06T19:55:21.676Z",
+    "updated": "2018-11-06T19:55:21.676Z",
+    "_order": 178
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 180,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u03bf\u03b2\u03ad\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I fear, am terrified",
+    "created": "2018-11-06T19:55:21.678Z",
+    "updated": "2018-11-06T19:55:21.678Z",
+    "_order": 179
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 181,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b5\u03c1\u03b9\u03c0\u03b1\u03c4\u03ad\u03c9",
+    "gloss": "I walk, conduct my life",
+    "created": "2018-11-06T19:55:21.680Z",
+    "updated": "2018-11-06T19:55:21.680Z",
+    "_order": 180
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 182,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03bd\u03ce\u03c0\u03b9\u03bf\u03bd",
+    "gloss": "before the face of, in the presence of",
+    "created": "2018-11-06T19:55:21.682Z",
+    "updated": "2018-11-06T19:55:21.682Z",
+    "_order": 181
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 183,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03cc\u03c0\u03bf\u03c2",
+    "gloss": "a place",
+    "created": "2018-11-06T19:55:21.683Z",
+    "updated": "2018-11-06T19:55:21.683Z",
+    "_order": 182
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 184,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f30\u03ba\u03af\u03b1",
+    "gloss": "a house, household",
+    "created": "2018-11-06T19:55:21.685Z",
+    "updated": "2018-11-06T19:55:21.685Z",
+    "_order": 183
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 185,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c4\u03b9",
+    "gloss": "still, yet, even now",
+    "created": "2018-11-06T19:55:21.686Z",
+    "updated": "2018-11-06T19:55:21.687Z",
+    "_order": 184
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 186,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u03cd\u03c2",
+    "gloss": "the foot",
+    "created": "2018-11-06T19:55:21.688Z",
+    "updated": "2018-11-06T19:55:21.688Z",
+    "_order": 185
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 187,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f30\u03c1\u03ae\u03bd\u03b7",
+    "gloss": "peace, peace of mind",
+    "created": "2018-11-06T19:55:21.690Z",
+    "updated": "2018-11-06T19:55:21.690Z",
+    "_order": 186
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 188,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b9\u03ba\u03b1\u03b9\u03bf\u03c3\u03cd\u03bd\u03b7",
+    "gloss": "justice, justness, righteousness",
+    "created": "2018-11-06T19:55:21.691Z",
+    "updated": "2018-11-06T19:55:21.691Z",
+    "_order": 187
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 189,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03ac\u03b8\u03b7\u03bc\u03b1\u03b9",
+    "gloss": "I sit, am seated",
+    "created": "2018-11-06T19:55:21.693Z",
+    "updated": "2018-11-06T19:55:21.693Z",
+    "_order": 188
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 190,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03cc\u03bb\u03bb\u03c5\u03bc\u03b9",
+    "gloss": "I destroy, lose, am perishing",
+    "created": "2018-11-06T19:55:21.695Z",
+    "updated": "2018-11-06T19:55:21.695Z",
+    "_order": 189
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 191,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b7\u03b4\u03b5\u03af\u03c2",
+    "gloss": "no one, nothing",
+    "created": "2018-11-06T19:55:21.696Z",
+    "updated": "2018-11-06T19:55:21.696Z",
+    "_order": 190
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 192,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03ac\u03bb\u03b1\u03c3\u03c3\u03b1",
+    "gloss": "the sea, lake",
+    "created": "2018-11-06T19:55:21.698Z",
+    "updated": "2018-11-06T19:55:21.698Z",
+    "_order": 191
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 193,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03af\u03c0\u03c4\u03c9",
+    "gloss": "I fall, fall under",
+    "created": "2018-11-06T19:55:21.700Z",
+    "updated": "2018-11-06T19:55:21.700Z",
+    "_order": 192
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 194,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ad\u03c9",
+    "gloss": "I accompany, attend, follow",
+    "created": "2018-11-06T19:55:21.703Z",
+    "updated": "2018-11-06T19:55:21.703Z",
+    "_order": 193
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 195,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f11\u03c0\u03c4\u03ac",
+    "gloss": "seven",
+    "created": "2018-11-06T19:55:21.705Z",
+    "updated": "2018-11-06T19:55:21.705Z",
+    "_order": 194
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 196,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f54\u03c4\u03b5",
+    "gloss": "and not, neither, nor",
+    "created": "2018-11-06T19:55:21.707Z",
+    "updated": "2018-11-06T19:55:21.707Z",
+    "_order": 195
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 197,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03c1\u03c7\u03c9",
+    "gloss": "I reign, rule",
+    "created": "2018-11-06T19:55:21.708Z",
+    "updated": "2018-11-06T19:55:21.708Z",
+    "_order": 196
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 198,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I come near, consent to",
+    "created": "2018-11-06T19:55:21.710Z",
+    "updated": "2018-11-06T19:55:21.710Z",
+    "_order": 197
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 199,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bb\u03b7\u03c1\u03cc\u03c9",
+    "gloss": "I fill, fulfill, complete",
+    "created": "2018-11-06T19:55:21.711Z",
+    "updated": "2018-11-06T19:55:21.711Z",
+    "_order": 198
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 200,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03b9\u03c1\u03cc\u03c2",
+    "gloss": "fitting season, opportunity, time",
+    "created": "2018-11-06T19:55:21.713Z",
+    "updated": "2018-11-06T19:55:21.713Z",
+    "_order": 199
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 201,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03b5\u03cd\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I pray, pray for",
+    "created": "2018-11-06T19:55:21.714Z",
+    "updated": "2018-11-06T19:55:21.714Z",
+    "_order": 200
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 202,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f65\u03c3\u03c4\u03b5",
+    "gloss": "so that, therefore",
+    "created": "2018-11-06T19:55:21.716Z",
+    "updated": "2018-11-06T19:55:21.716Z",
+    "_order": 201
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 203,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ae\u03c4\u03b7\u03c1",
+    "gloss": "a mother",
+    "created": "2018-11-06T19:55:21.717Z",
+    "updated": "2018-11-06T19:55:21.717Z",
+    "_order": 202
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 204,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u1f00\u03b3\u03ce",
+    "gloss": "I also, I too",
+    "created": "2018-11-06T19:55:21.719Z",
+    "updated": "2018-11-06T19:55:21.719Z",
+    "_order": 203
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 205,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c0\u03bf\u03c5",
+    "gloss": "where, whither",
+    "created": "2018-11-06T19:55:21.721Z",
+    "updated": "2018-11-06T19:55:21.721Z",
+    "_order": 204
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 206,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f15\u03ba\u03b1\u03c3\u03c4\u03bf\u03c2",
+    "gloss": "each, every one",
+    "created": "2018-11-06T19:55:21.723Z",
+    "updated": "2018-11-06T19:55:21.723Z",
+    "_order": 205
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 207,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u1fb6\u03bb\u03bb\u03bf\u03bd",
+    "gloss": "more, rather",
+    "created": "2018-11-06T19:55:21.724Z",
+    "updated": "2018-11-06T19:55:21.724Z",
+    "_order": 206
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 208,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bd\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "gloss": "I go up, mount, ascend",
+    "created": "2018-11-06T19:55:21.726Z",
+    "updated": "2018-11-06T19:55:21.726Z",
+    "_order": 207
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 209,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03ba\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "gloss": "I throw, cast, put out, banish, bring forth, produce",
+    "created": "2018-11-06T19:55:21.728Z",
+    "updated": "2018-11-06T19:55:21.728Z",
+    "_order": 208
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 210,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03c4\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "gloss": "I go down, come down",
+    "created": "2018-11-06T19:55:21.730Z",
+    "updated": "2018-11-06T19:55:21.730Z",
+    "_order": 209
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 211,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u039c\u03c9\u03cb\u03c3\u1fc6\u03c2",
+    "gloss": "Moses",
+    "created": "2018-11-06T19:55:21.732Z",
+    "updated": "2018-11-06T19:55:21.732Z",
+    "_order": 210
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 212,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03af\u03ba\u03b1\u03b9\u03bf\u03c2",
+    "gloss": "just, righteous, impartial",
+    "created": "2018-11-06T19:55:21.733Z",
+    "updated": "2018-11-06T19:55:21.733Z",
+    "_order": 211
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 213,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f51\u03c0\u03ac\u03b3\u03c9",
+    "gloss": "I go away, depart",
+    "created": "2018-11-06T19:55:21.735Z",
+    "updated": "2018-11-06T19:55:21.735Z",
+    "_order": 212
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 214,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03ad\u03bc\u03c0\u03c9",
+    "gloss": "I send",
+    "created": "2018-11-06T19:55:21.736Z",
+    "updated": "2018-11-06T19:55:21.736Z",
+    "_order": 213
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 215,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+    "gloss": "an apostle, a messenger, an envoy, a delegate",
+    "created": "2018-11-06T19:55:21.738Z",
+    "updated": "2018-11-06T19:55:21.738Z",
+    "_order": 214
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 216,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u03bd\u03b7\u03c1\u03cc\u03c2",
+    "gloss": "evil, bad, wicked",
+    "created": "2018-11-06T19:55:21.739Z",
+    "updated": "2018-11-06T19:55:21.739Z",
+    "_order": 215
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 217,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03c4\u03cc\u03bc\u03b1",
+    "gloss": "the mouth, speech",
+    "created": "2018-11-06T19:55:21.741Z",
+    "updated": "2018-11-06T19:55:21.741Z",
+    "_order": 216
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 218,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b2\u03b1\u03c0\u03c4\u03af\u03b6\u03c9",
+    "gloss": "I dip, submerge, baptize",
+    "created": "2018-11-06T19:55:21.743Z",
+    "updated": "2018-11-06T19:55:21.743Z",
+    "_order": 217
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 219,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03bd\u03bf\u03af\u03b3\u03c9",
+    "gloss": "I open",
+    "created": "2018-11-06T19:55:21.744Z",
+    "updated": "2018-11-06T19:55:21.744Z",
+    "_order": 218
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 220,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03b7\u03bc\u03b5\u1fd6\u03bf\u03bd",
+    "gloss": "a sign, miracle, indication",
+    "created": "2018-11-06T19:55:21.745Z",
+    "updated": "2018-11-06T19:55:21.745Z",
+    "_order": 219
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 221,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b1\u03c1\u03c4\u03c5\u03c1\u03ad\u03c9",
+    "gloss": "I witness, testify",
+    "created": "2018-11-06T19:55:21.747Z",
+    "updated": "2018-11-06T19:55:21.747Z",
+    "_order": 220
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 222,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03bc\u03cc\u03c2",
+    "gloss": "mine",
+    "created": "2018-11-06T19:55:21.748Z",
+    "updated": "2018-11-06T19:55:21.748Z",
+    "_order": 221
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 223,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f38\u03b5\u03c1\u03bf\u03c5\u03c3\u03b1\u03bb\u03ae\u03bc",
+    "gloss": "Jerusalem",
+    "created": "2018-11-06T19:55:21.749Z",
+    "updated": "2018-11-06T19:55:21.749Z",
+    "_order": 222
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 224,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf\u03bd",
+    "gloss": "the face, countenance, surface",
+    "created": "2018-11-06T19:55:21.751Z",
+    "updated": "2018-11-06T19:55:21.751Z",
+    "_order": 223
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 225,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f55\u03b4\u03c9\u03c1",
+    "gloss": "water",
+    "created": "2018-11-06T19:55:21.752Z",
+    "updated": "2018-11-06T19:55:21.752Z",
+    "_order": 224
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 226,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b5\u03c6\u03b1\u03bb\u03ae",
+    "gloss": "the head",
+    "created": "2018-11-06T19:55:21.753Z",
+    "updated": "2018-11-06T19:55:21.753Z",
+    "_order": 225
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 227,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03ad\u03bb\u03b9\u03bf\u03bd",
+    "gloss": "the good news, the gospel",
+    "created": "2018-11-06T19:55:21.755Z",
+    "updated": "2018-11-06T19:55:21.755Z",
+    "_order": 226
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 228,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03ce\u03b4\u03b5\u03ba\u03b1",
+    "gloss": "twelve",
+    "created": "2018-11-06T19:55:21.756Z",
+    "updated": "2018-11-06T19:55:21.756Z",
+    "_order": 227
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 229,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a3\u03af\u03bc\u03c9\u03bd",
+    "gloss": "Simon",
+    "created": "2018-11-06T19:55:21.757Z",
+    "updated": "2018-11-06T19:55:21.757Z",
+    "_order": 228
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 230,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c4\u03b5\u03af\u03bd\u03c9",
+    "gloss": "I put to death, kill",
+    "created": "2018-11-06T19:55:21.758Z",
+    "updated": "2018-11-06T19:55:21.758Z",
+    "_order": 229
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 231,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03b1\u03af\u03c1\u03c9",
+    "gloss": "I rejoice, am glad",
+    "created": "2018-11-06T19:55:21.760Z",
+    "updated": "2018-11-06T19:55:21.760Z",
+    "_order": 230
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 232,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f08\u03b2\u03c1\u03b1\u03ac\u03bc",
+    "gloss": "Abraham",
+    "created": "2018-11-06T19:55:21.761Z",
+    "updated": "2018-11-06T19:55:21.761Z",
+    "_order": 231
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 233,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u1ff6\u03c2",
+    "gloss": "light, a source of light",
+    "created": "2018-11-06T19:55:21.763Z",
+    "updated": "2018-11-06T19:55:21.763Z",
+    "_order": 232
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 234,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03af\u03bd\u03c9",
+    "gloss": "I drink, imbibe",
+    "created": "2018-11-06T19:55:21.765Z",
+    "updated": "2018-11-06T19:55:21.765Z",
+    "_order": 233
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 235,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u1fe6\u03c1",
+    "gloss": "fire, trials",
+    "created": "2018-11-06T19:55:21.766Z",
+    "updated": "2018-11-06T19:55:21.766Z",
+    "_order": 234
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 236,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03b7\u03c1\u03ad\u03c9",
+    "gloss": "I keep, guard, observe",
+    "created": "2018-11-06T19:55:21.767Z",
+    "updated": "2018-11-06T19:55:21.767Z",
+    "_order": 235
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 237,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f30\u03c4\u03ad\u03c9",
+    "gloss": "I ask, request, beg, petition",
+    "created": "2018-11-06T19:55:21.769Z",
+    "updated": "2018-11-06T19:55:21.769Z",
+    "_order": 236
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 238,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b1\u1f30\u03ce\u03bd\u03b9\u03bf\u03c2",
+    "gloss": "eternal, unending",
+    "created": "2018-11-06T19:55:21.770Z",
+    "updated": "2018-11-06T19:55:21.770Z",
+    "_order": 237
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 239,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03ac\u03b2\u03b2\u03b1\u03c4\u03bf\u03bd",
+    "gloss": "the Sabbath, a week",
+    "created": "2018-11-06T19:55:21.771Z",
+    "updated": "2018-11-06T19:55:21.771Z",
+    "_order": 238
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 240,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f38\u03c3\u03c1\u03b1\u03ae\u03bb",
+    "gloss": "Israel",
+    "created": "2018-11-06T19:55:21.772Z",
+    "updated": "2018-11-06T19:55:21.772Z",
+    "_order": 239
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 241,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03c1\u03b5\u1fd6\u03c2",
+    "gloss": "three",
+    "created": "2018-11-06T19:55:21.836Z",
+    "updated": "2018-11-06T19:55:21.836Z",
+    "_order": 240
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 242,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "gloss": "trustworthy, faithful, believing",
+    "created": "2018-11-06T19:55:21.852Z",
+    "updated": "2018-11-06T19:55:21.852Z",
+    "_order": 241
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 243,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03bb\u03cd\u03c9",
+    "gloss": "I release, let go, send away, divorce",
+    "created": "2018-11-06T19:55:21.862Z",
+    "updated": "2018-11-06T19:55:21.862Z",
+    "_order": 242
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 244,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bb\u03bf\u1fd6\u03bf\u03bd",
+    "gloss": "a ship, vessel",
+    "created": "2018-11-06T19:55:21.864Z",
+    "updated": "2018-11-06T19:55:21.864Z",
+    "_order": 243
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 245,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1fe5\u1fc6\u03bc\u03b1",
+    "gloss": "a thing spoken",
+    "created": "2018-11-06T19:55:21.866Z",
+    "updated": "2018-11-06T19:55:21.866Z",
+    "_order": 244
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 246,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u03ad\u03c1\u03c9",
+    "gloss": "I carry, bear, bring, lead",
+    "created": "2018-11-06T19:55:21.881Z",
+    "updated": "2018-11-06T19:55:21.881Z",
+    "_order": 245
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 247,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03b3\u03c9",
+    "gloss": "I lead",
+    "created": "2018-11-06T19:55:21.882Z",
+    "updated": "2018-11-06T19:55:21.882Z",
+    "_order": 246
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 248,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03c1\u03c0\u03cc\u03c2",
+    "gloss": "fruit, result, gain",
+    "created": "2018-11-06T19:55:21.884Z",
+    "updated": "2018-11-06T19:55:21.884Z",
+    "_order": 247
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 249,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03bd\u03c4\u03bf\u03bb\u03ae",
+    "gloss": "an ordinance, injunction, command",
+    "created": "2018-11-06T19:55:21.885Z",
+    "updated": "2018-11-06T19:55:21.885Z",
+    "_order": 248
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 250,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03b5\u03c3\u03b2\u03cd\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "gloss": "elder",
+    "created": "2018-11-06T19:55:21.887Z",
+    "updated": "2018-11-06T19:55:21.887Z",
+    "_order": 249
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 251,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u03b7\u03bc\u03af",
+    "gloss": "I say",
+    "created": "2018-11-06T19:55:21.888Z",
+    "updated": "2018-11-06T19:55:21.888Z",
+    "_order": 250
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 252,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f34\u03c4\u03b5",
+    "gloss": "and if, whether",
+    "created": "2018-11-06T19:55:21.890Z",
+    "updated": "2018-11-06T19:55:21.891Z",
+    "_order": 251
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 253,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b1\u03b9\u03bc\u03cc\u03bd\u03b9\u03bf\u03bd",
+    "gloss": "an evil-spirit, demon",
+    "created": "2018-11-06T19:55:21.892Z",
+    "updated": "2018-11-06T19:55:21.892Z",
+    "_order": 252
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 254,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f39\u03b5\u03c1\u03bf\u03c3\u03cc\u03bb\u03c5\u03bc\u03b1",
+    "gloss": "Jerusalem",
+    "created": "2018-11-06T19:55:21.894Z",
+    "updated": "2018-11-06T19:55:21.894Z",
+    "_order": 253
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 255,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "gloss": "a throne, seat",
+    "created": "2018-11-06T19:55:21.896Z",
+    "updated": "2018-11-06T19:55:21.896Z",
+    "_order": 254
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 256,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b5\u03cd\u03c2",
+    "gloss": "a scribe, town-clerk, man of learning",
+    "created": "2018-11-06T19:55:21.898Z",
+    "updated": "2018-11-06T19:55:21.899Z",
+    "_order": 255
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 257,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "gloss": "I ask, question, request",
+    "created": "2018-11-06T19:55:21.901Z",
+    "updated": "2018-11-06T19:55:21.901Z",
+    "_order": 256
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 258,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03bf\u03ba\u03ad\u03c9",
+    "gloss": "I think, seem, appear, it seems",
+    "created": "2018-11-06T19:55:21.903Z",
+    "updated": "2018-11-06T19:55:21.903Z",
+    "_order": 257
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 259,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03ad\u03bb\u03b7\u03bc\u03b1",
+    "gloss": "will, wish, desire",
+    "created": "2018-11-06T19:55:21.905Z",
+    "updated": "2018-11-06T19:55:21.905Z",
+    "_order": 258
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 260,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03be\u03c9",
+    "gloss": "without, outside",
+    "created": "2018-11-06T19:55:21.907Z",
+    "updated": "2018-11-06T19:55:21.908Z",
+    "_order": 259
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 261,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f44\u03c1\u03bf\u03c2",
+    "gloss": "a mountain",
+    "created": "2018-11-06T19:55:21.910Z",
+    "updated": "2018-11-06T19:55:21.910Z",
+    "_order": 260
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 262,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bd\u03cd\u03be",
+    "gloss": "the night, night-time",
+    "created": "2018-11-06T19:55:21.913Z",
+    "updated": "2018-11-06T19:55:21.913Z",
+    "_order": 261
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 263,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f67\u03b4\u03b5",
+    "gloss": "here",
+    "created": "2018-11-06T19:55:21.915Z",
+    "updated": "2018-11-06T19:55:21.915Z",
+    "_order": 262
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 264,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03b7\u03c4\u03cc\u03c2",
+    "gloss": "loved, beloved",
+    "created": "2018-11-06T19:55:21.917Z",
+    "updated": "2018-11-06T19:55:21.917Z",
+    "_order": 263
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 265,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03bf\u03be\u03ac\u03b6\u03c9",
+    "gloss": "I glorify, honor, bestow glory on",
+    "created": "2018-11-06T19:55:21.918Z",
+    "updated": "2018-11-06T19:55:21.918Z",
+    "_order": 264
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 266,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b7\u03c1\u03cd\u03c3\u03c3\u03c9",
+    "gloss": "I proclaim, herald, preach",
+    "created": "2018-11-06T19:55:21.920Z",
+    "updated": "2018-11-06T19:55:21.920Z",
+    "_order": 265
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 267,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u03af\u03b1",
+    "gloss": "Galilee",
+    "created": "2018-11-06T19:55:21.922Z",
+    "updated": "2018-11-06T19:55:21.922Z",
+    "_order": 266
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 268,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f31\u03bc\u03ac\u03c4\u03b9\u03bf\u03bd",
+    "gloss": "outer garment",
+    "created": "2018-11-06T19:55:21.923Z",
+    "updated": "2018-11-06T19:55:21.923Z",
+    "_order": 267
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 269,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f51\u03c0\u03ac\u03c1\u03c7\u03c9",
+    "gloss": "I am, exist, am in possession",
+    "created": "2018-11-06T19:55:21.925Z",
+    "updated": "2018-11-06T19:55:21.925Z",
+    "_order": 268
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 270,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ba\u03c5\u03bd\u03ad\u03c9",
+    "gloss": "I worship",
+    "created": "2018-11-06T19:55:21.927Z",
+    "updated": "2018-11-06T19:55:21.927Z",
+    "_order": 269
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 271,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f24\u03b4\u03b7",
+    "gloss": "now, already",
+    "created": "2018-11-06T19:55:21.928Z",
+    "updated": "2018-11-06T19:55:21.928Z",
+    "_order": 270
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 272,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03c5\u03bd\u03ac\u03b3\u03c9",
+    "gloss": "I gather together",
+    "created": "2018-11-06T19:55:21.930Z",
+    "updated": "2018-11-06T19:55:21.930Z",
+    "_order": 271
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 273,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u0394\u03b1\u03c5\u03af\u03b4",
+    "gloss": "David",
+    "created": "2018-11-06T19:55:21.932Z",
+    "updated": "2018-11-06T19:55:21.932Z",
+    "_order": 272
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 274,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f50\u03b8\u03cd\u03c2",
+    "gloss": "straight, immediately",
+    "created": "2018-11-06T19:55:21.934Z",
+    "updated": "2018-11-06T19:55:21.934Z",
+    "_order": 273
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 275,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03b1\u03c1\u03ac",
+    "gloss": "joy, gladness",
+    "created": "2018-11-06T19:55:21.936Z",
+    "updated": "2018-11-06T19:55:21.936Z",
+    "_order": 274
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 276,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c3\u03c0\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I greet, salute, pay my respects to",
+    "created": "2018-11-06T19:55:21.938Z",
+    "updated": "2018-11-06T19:55:21.938Z",
+    "_order": 275
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 277,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03c2",
+    "gloss": "a teacher",
+    "created": "2018-11-06T19:55:21.940Z",
+    "updated": "2018-11-06T19:55:21.940Z",
+    "_order": 276
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 278,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b8\u03b5\u03c9\u03c1\u03ad\u03c9",
+    "gloss": "I behold, look at, experience",
+    "created": "2018-11-06T19:55:21.942Z",
+    "updated": "2018-11-06T19:55:21.942Z",
+    "_order": 277
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 279,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03af\u03b8\u03bf\u03c2",
+    "gloss": "a stone",
+    "created": "2018-11-06T19:55:21.943Z",
+    "updated": "2018-11-06T19:55:21.943Z",
+    "_order": 278
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 280,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b7\u03b4\u03ad",
+    "gloss": "and not, not even",
+    "created": "2018-11-06T19:55:21.945Z",
+    "updated": "2018-11-06T19:55:21.945Z",
+    "_order": 279
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 281,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03c0\u03b5\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "gloss": "I interrogate, question, demand of",
+    "created": "2018-11-06T19:55:21.946Z",
+    "updated": "2018-11-06T19:55:21.946Z",
+    "_order": 280
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 282,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03c5\u03bd\u03b1\u03b3\u03c9\u03b3\u03ae",
+    "gloss": "an assembly, congregation, synagogue",
+    "created": "2018-11-06T19:55:21.947Z",
+    "updated": "2018-11-06T19:55:21.947Z",
+    "_order": 281
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 283,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03ad\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "gloss": "I take, receive, accept, welcome",
+    "created": "2018-11-06T19:55:21.949Z",
+    "updated": "2018-11-06T19:55:21.949Z",
+    "_order": 282
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 284,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03bf\u03b9\u03bf\u1fe6\u03c4\u03bf\u03c2",
+    "gloss": "of such a kind, such",
+    "created": "2018-11-06T19:55:21.950Z",
+    "updated": "2018-11-06T19:55:21.950Z",
+    "_order": 283
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 285,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03ad\u03c3\u03bf\u03c2",
+    "gloss": "middle, in the middle",
+    "created": "2018-11-06T19:55:21.951Z",
+    "updated": "2018-11-06T19:55:21.951Z",
+    "_order": 284
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 286,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bb\u03bf\u03b9\u03c0\u03cc\u03c2",
+    "gloss": "left, left behind, the remainder",
+    "created": "2018-11-06T19:55:21.952Z",
+    "updated": "2018-11-06T19:55:21.952Z",
+    "_order": 285
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 287,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03c1\u03af\u03c4\u03bf\u03c2",
+    "gloss": "third",
+    "created": "2018-11-06T19:55:21.954Z",
+    "updated": "2018-11-06T19:55:21.954Z",
+    "_order": 286
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 288,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c1\u03c7\u03ae",
+    "gloss": "ruler, beginning",
+    "created": "2018-11-06T19:55:21.955Z",
+    "updated": "2018-11-06T19:55:21.955Z",
+    "_order": 287
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 289,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03c1\u03ac\u03b6\u03c9",
+    "gloss": "I cry aloud, shriek",
+    "created": "2018-11-06T19:55:21.957Z",
+    "updated": "2018-11-06T19:55:21.957Z",
+    "_order": 288
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 290,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03a0\u03b9\u03bb\u1fb6\u03c4\u03bf\u03c2",
+    "gloss": "Pilate",
+    "created": "2018-11-06T19:55:21.958Z",
+    "updated": "2018-11-06T19:55:21.958Z",
+    "_order": 289
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 291,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b6\u03c9",
+    "gloss": "I bring good news, preach good tidings",
+    "created": "2018-11-06T19:55:21.960Z",
+    "updated": "2018-11-06T19:55:21.960Z",
+    "_order": 290
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 292,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b5\u03be\u03b9\u03cc\u03c2",
+    "gloss": "on the right hand, right hand, right",
+    "created": "2018-11-06T19:55:21.962Z",
+    "updated": "2018-11-06T19:55:21.962Z",
+    "_order": 291
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 293,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f45\u03c0\u03c9\u03c2",
+    "gloss": "how, in order that, so that",
+    "created": "2018-11-06T19:55:21.964Z",
+    "updated": "2018-11-06T19:55:21.965Z",
+    "_order": 292
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 294,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "gloss": "time, a particular time, season",
+    "created": "2018-11-06T19:55:21.966Z",
+    "updated": "2018-11-06T19:55:21.966Z",
+    "_order": 293
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 295,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b4\u03b9\u03cc",
+    "gloss": "wherefore",
+    "created": "2018-11-06T19:55:21.969Z",
+    "updated": "2018-11-06T19:55:21.969Z",
+    "_order": 294
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 296,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bf\u1f50\u03c7\u03af",
+    "gloss": "by no means, not at all",
+    "created": "2018-11-06T19:55:21.971Z",
+    "updated": "2018-11-06T19:55:21.971Z",
+    "_order": 295
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 297,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03bb\u03c0\u03af\u03c2",
+    "gloss": "hope, expectation",
+    "created": "2018-11-06T19:55:21.973Z",
+    "updated": "2018-11-06T19:55:21.973Z",
+    "_order": 296
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 298,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c3\u03c7\u03b1\u03c4\u03bf\u03c2",
+    "gloss": "last, at the last, finally",
+    "created": "2018-11-06T19:55:21.975Z",
+    "updated": "2018-11-06T19:55:21.975Z",
+    "_order": 297
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 299,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b5\u03af\u03b8\u03c9",
+    "gloss": "I persuade, urge",
+    "created": "2018-11-06T19:55:21.977Z",
+    "updated": "2018-11-06T19:55:21.977Z",
+    "_order": 298
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 300,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03c0\u03b5\u03af\u03c1\u03c9",
+    "gloss": "I sow, spread, scatter",
+    "created": "2018-11-06T19:55:21.978Z",
+    "updated": "2018-11-06T19:55:21.978Z",
+    "_order": 299
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 301,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f10\u03c0\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b1",
+    "gloss": "a promise",
+    "created": "2018-11-06T19:55:21.980Z",
+    "updated": "2018-11-06T19:55:21.980Z",
+    "_order": 300
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 302,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03b9\u03b4\u03af\u03bf\u03bd",
+    "gloss": "a little child, an infant",
+    "created": "2018-11-06T19:55:21.982Z",
+    "updated": "2018-11-06T19:55:21.982Z",
+    "_order": 301
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 303,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c3\u03bf\u03c6\u03af\u03b1",
+    "gloss": "wisdom",
+    "created": "2018-11-06T19:55:21.984Z",
+    "updated": "2018-11-06T19:55:21.984Z",
+    "_order": 302
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 304,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c4\u03c5\u03c6\u03bb\u03cc\u03c2",
+    "gloss": "blind",
+    "created": "2018-11-06T19:55:21.985Z",
+    "updated": "2018-11-06T19:55:21.985Z",
+    "_order": 303
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 305,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03ba\u03b1\u03ba\u03cc\u03c2",
+    "gloss": "bad, evil",
+    "created": "2018-11-06T19:55:21.987Z",
+    "updated": "2018-11-06T19:55:21.987Z",
+    "_order": 304
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 306,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b2\u03bf\u03bb\u03ae",
+    "gloss": "a parable, comparison",
+    "created": "2018-11-06T19:55:21.988Z",
+    "updated": "2018-11-06T19:55:21.989Z",
+    "_order": 305
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 307,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03bf\u1fe6",
+    "gloss": "where, whither",
+    "created": "2018-11-06T19:55:21.990Z",
+    "updated": "2018-11-06T19:55:21.990Z",
+    "_order": 306
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 308,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03bb\u1ff6\u03c3\u03c3\u03b1",
+    "gloss": "the tongue, a language, nation",
+    "created": "2018-11-06T19:55:21.992Z",
+    "updated": "2018-11-06T19:55:21.992Z",
+    "_order": 307
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 309,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03bc\u03b1\u03ba\u03ac\u03c1\u03b9\u03bf\u03c2",
+    "gloss": "happy, blessed",
+    "created": "2018-11-06T19:55:21.994Z",
+    "updated": "2018-11-06T19:55:21.994Z",
+    "_order": 308
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 310,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "gloss": "I take, receive",
+    "created": "2018-11-06T19:55:21.995Z",
+    "updated": "2018-11-06T19:55:21.995Z",
+    "_order": 309
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 311,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f04\u03c1\u03b1",
+    "gloss": "then, therefore, since",
+    "created": "2018-11-06T19:55:21.996Z",
+    "updated": "2018-11-06T19:55:21.997Z",
+    "_order": 310
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 312,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03b3\u03c1\u03b1\u03c6\u03ae",
+    "gloss": "a writing, passage of scripture, the scriptures",
+    "created": "2018-11-06T19:55:21.998Z",
+    "updated": "2018-11-06T19:55:21.998Z",
+    "_order": 311
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 313,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c4\u03bf\u03c2",
+    "gloss": "a year",
+    "created": "2018-11-06T19:55:22.000Z",
+    "updated": "2018-11-06T19:55:22.000Z",
+    "_order": 312
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 314,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c7\u03c1\u03b5\u03af\u03b1",
+    "gloss": "need, necessity, business",
+    "created": "2018-11-06T19:55:22.001Z",
+    "updated": "2018-11-06T19:55:22.001Z",
+    "_order": 313
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 315,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03c1\u03b7\u03bc\u03bf\u03c2",
+    "gloss": "deserted, desolate, a desert",
+    "created": "2018-11-06T19:55:22.003Z",
+    "updated": "2018-11-06T19:55:22.003Z",
+    "_order": 314
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 316,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f14\u03bc\u03c0\u03c1\u03bf\u03c3\u03b8\u03b5\u03bd",
+    "gloss": "in front, before the face",
+    "created": "2018-11-06T19:55:22.005Z",
+    "updated": "2018-11-06T19:55:22.005Z",
+    "_order": 315
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 317,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u1f00\u03c0\u03bf\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "gloss": "I give back, return, sell",
+    "created": "2018-11-06T19:55:22.007Z",
+    "updated": "2018-11-06T19:55:22.007Z",
+    "_order": 316
+  }
+},
+{
+  "model": "vocab_list.vocabularylistentry",
+  "pk": 318,
+  "fields": {
+    "vocabulary_list": 1,
+    "lemma": "\u03c6\u03b1\u03bd\u03b5\u03c1\u03cc\u03c9",
+    "gloss": "I make clear, visible, or manifest",
+    "created": "2018-11-06T19:55:22.010Z",
+    "updated": "2018-11-06T19:55:22.010Z",
+    "_order": 317
+  }
+}
+]
