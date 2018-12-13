@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # @@@ maybe move this elsewhere
 # ISO 639.2 CODES
 LANGUAGES = {
