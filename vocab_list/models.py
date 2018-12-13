@@ -21,7 +21,8 @@ class VocabularyList(models.Model):
         "self", null=True, editable=False, on_delete=models.SET_NULL
     )
 
-    def load_tab_delimited(self, fd):
+    @staticmethod
+    def load_tab_delimited(fd):
         for line in fd:
             lemma, gloss = line.strip().split("\t")
             VocabularyListEntry.objects.create(
@@ -35,7 +36,6 @@ class VocabularyList(models.Model):
 
     def __str__(self):
         return self.title
-
 
 
 class VocabularyListEntry(models.Model):
