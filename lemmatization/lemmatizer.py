@@ -1,7 +1,7 @@
+from vocab_list.models import VocabularyList
+
 from .models import lookup_form
 from .morpheus import morpheus
-
-from vocab_list.models import VocabularyList
 
 
 """
