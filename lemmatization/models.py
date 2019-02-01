@@ -17,7 +17,7 @@ class FormToLemma(models.Model):
     This can be viewed as a cache of some external lemmatization process.
 
     The "context" is just an optional label to clarify the source of the
-    lookup and should be interpreted the same as in the `lemma_lattices` app.
+    lookup and should be interpreted the same as in the `lattices` app.
     """
 
     context = models.CharField(max_length=255, blank=True)

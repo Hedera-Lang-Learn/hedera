@@ -1,4 +1,4 @@
-from lemma_lattices.utils import get_lattice_node
+from lattices.utils import get_lattice_node
 # from vocab_list.models import VocabularyList
 
 from .models import add_form, lookup_form

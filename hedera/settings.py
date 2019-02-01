@@ -141,7 +141,7 @@ INSTALLED_APPS = [
     # local apps
     "databasetext",
     "vocab_list",
-    "lemma_lattices",
+    "lattices",
     "lemmatization",
 
     # project

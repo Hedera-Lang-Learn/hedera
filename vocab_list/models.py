@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from lemma_lattices.models import LatticeNode
+from lattices.models import LatticeNode
 
 
 class VocabularyList(models.Model):
