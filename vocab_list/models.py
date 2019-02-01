@@ -23,8 +23,7 @@ class VocabularyList(models.Model):
         "self", null=True, editable=False, on_delete=models.SET_NULL
     )
 
-    @staticmethod
-    def load_tab_delimited(fd):
+    def load_tab_delimited(self, fd):
         for line in fd:
             headword, gloss = line.strip().split("\t")
             VocabularyListEntry.objects.create(
