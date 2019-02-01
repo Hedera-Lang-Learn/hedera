@@ -3,6 +3,7 @@ from django.db import models
 
 class LatticeNode(models.Model):
 
+    label = models.TextField()
     children = models.ManyToManyField("self", symmetrical=False)
 
 
@@ -67,16 +68,3 @@ class LemmaNode(models.Model):
     node = models.ForeignKey(
         LatticeNode,
         related_name="lemma_strings", on_delete=models.CASCADE)
-
-
-class NodeGloss(models.Model):
-    """
-    a human-readable gloss for a particular lattice node
-
-    May not be a "gloss" in the traditional sense but just some text that
-    helps indicate what a node "means". For example, the node representing
-    an ambiguous "est" might just be glossed "ambiguous est" or similar.
-    """
-    node = models.ForeignKey(
-        LatticeNode, related_name="glosses", on_delete=models.CASCADE)
-    gloss = models.TextField()
