@@ -7,7 +7,6 @@ from .morpheus import morpheus
 # from vocab_list.models import VocabularyList
 
 
-
 def lemmatize_word(form, lang, force_refresh=False):
     s = lookup_form(form)
     if not s or force_refresh:
