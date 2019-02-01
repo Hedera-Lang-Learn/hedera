@@ -1,8 +1,11 @@
 from lattices.utils import get_lattice_node
-# from vocab_list.models import VocabularyList
 
 from .models import add_form, lookup_form
 from .morpheus import morpheus
+
+
+# from vocab_list.models import VocabularyList
+
 
 
 def lemmatize_word(form, lang, force_refresh=False):
