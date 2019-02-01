@@ -15,7 +15,9 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    "localhost",
+    'localhost',
+    '127.0.0.1',
+    'atg-dev-hedera-lb-2073615562.us-east-1.elb.amazonaws.com'
 ]
 
 # Local time zone for this installation. Choices can be found here:
