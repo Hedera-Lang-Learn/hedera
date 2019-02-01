@@ -12,7 +12,7 @@ pipenv run pip install pip==18.0
 pipenv install
 pipenv shell
 ./manage.py migrate
-./manage.py loaddata sites cana livy tolstoy
+./manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
 ```
 
 Then, in two different terminals:

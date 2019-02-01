@@ -6,6 +6,27 @@ class LemmaLatticeNode(models.Model):
     children = models.ManyToManyField("self", symmetrical=False)
 
 
+def node_info(pk):
+    print(pk)
+    node = LemmaLatticeNode.objects.get(pk=pk)
+    if node.form_strings.exists():
+        print("forms:")
+        for form_node in node.form_strings.all():
+            print(f"    - {form_node.form} [{form_node.context}]")
+    if node.lemma_strings.exists():
+        print("lemmas:")
+        for lemma_node in node.lemma_strings.all():
+            print(f"    - {lemma_node.lemma} [{lemma_node.context}]")
+    if node.glosses.exists():
+        print("glosses:")
+        for node_gloss in node.glosses.all():
+            print(f"    - {node_gloss.gloss}")
+    if node.children.exists():
+        print("children:")
+        for child in node.children.all():
+            print(f"    - {child.pk}")
+
+
 class FormNode(models.Model):
     """
     mapping from form string to lemma lattice node (in a given context)

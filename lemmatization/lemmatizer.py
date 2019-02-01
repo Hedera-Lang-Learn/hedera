@@ -1,63 +1,42 @@
+from lemma_lattices.utils import get_lattice_node
 from vocab_list.models import VocabularyList
 
-from .models import lookup_form
+from .models import lookup_form, add_form
 from .morpheus import morpheus
 
 
-"""
-Just test examples for now.
-"""
+def lemmatize_word(form, lang, force_refresh=False):
+    s = lookup_form(form)
+    if not s or force_refresh:
+        s |= add_form("morpheus", lang, form, morpheus(form, lang))
+    return list(s)
 
-print("est", lookup_form("est"), morpheus("est", "lat"))
 
-# est set() ['edo1', 'sum1']
+def lemmatize_text(text, lang):
+    result = []
+    for token in text.split():
+        lemmas = lemmatize_word(token, lang)
+        node = get_lattice_node(token, lemmas)  # @@@ not sure what to use for context here
+        if not node or node.children.exists():
+            resolved = False
+        else:
+            resolved = True
+        if node:
+            node_pk = node.pk
+        else:
+            node_pk = None
+        result.append({"token": token, "node": node_pk, "resolved": resolved})
+    return result
 
-print("ἤρχοντο", lookup_form("ἤρχοντο"), morpheus("ἤρχοντο", "grc"))
 
-# ἤρχοντο {'ἄρχω', 'ἔρχομαι'} ['ἄρχω', 'ἔρχομαι']
-
-text = """Καὶ τῇ ἡμέρᾳ τῇ τρίτῃ γάμος ἐγένετο ἐν Κανὰ τῆς Γαλιλαίας"""
-
-for token in text.split():
-    print(token, lookup_form(token), morpheus(token, "grc"))
-
-# Καὶ {'καί'} ['καί']
-# τῇ {'ὁ'} ['ὁ', 'τῇ']
-# ἡμέρᾳ {'ἡμέρα'} ['ἥμερος', 'ἡμέρα']
-# τῇ {'ὁ'} ['ὁ', 'τῇ']
-# τρίτῃ {'τρίτος'} ['τρίτος']
-# γάμος {'γάμος'} ['γάμος']
-# ἐγένετο {'γίνομαι'} ['γίγνομαι']
-# ἐν {'ἐν'} ['ἐν', 'εἰς']
-# Κανὰ {'Κανά'} []
-# τῆς {'ὁ'} ['ὁ']
-# Γαλιλαίας {'Γαλιλαία'} []
-
-text = """ἐξῆλθον ἐκ τῆς πόλεως καὶ ἤρχοντο πρὸς αὐτόν"""
-
-for token in text.split():
-    print(token, lookup_form(token), morpheus(token, "grc"))
-
-# ἐξῆλθον {'ἐξέρχομαι'} ['ἐξέρχομαι']
-# ἐκ {'ἐκ'} ['ἐκ']
-# τῆς {'ὁ'} ['ὁ']
-# πόλεως {'πόλις'} ['πόλις']
-# καὶ {'καί'} ['καί']
-# ἤρχοντο {'ἔρχομαι', 'ἄρχω'} ['ἄρχω', 'ἔρχομαι']
-# πρὸς {'πρός'} ['πρός']
-# αὐτόν {'αὐτός'} ['αὐτός']
-
-gnt80 = VocabularyList.objects.get(pk=1)
-
-entry = gnt80.entries.get(lemma="ἄρχω")
-print(entry.lemma, entry.gloss)
+# gnt80 = VocabularyList.objects.get(pk=1)
+#
+# entry = gnt80.entries.get(lemma="ἄρχω")
+# print(entry.lemma, entry.gloss)
 
 # ἄρχω I reign, rule
 
-entry = gnt80.entries.get(lemma="ἔρχομαι")
-print(entry.lemma, entry.gloss)
+# entry = gnt80.entries.get(lemma="ἔρχομαι")
+# print(entry.lemma, entry.gloss)
 
 # ἔρχομαι I come, go
-
-
-# TODO: hook all this up to the lemma lattices

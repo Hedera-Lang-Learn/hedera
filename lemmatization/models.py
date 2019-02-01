@@ -49,3 +49,14 @@ def lookup_form(form, lang=None, contexts=None, annotated=False):
         return entries.values("lemma", "lang", "context")
     else:
         return set(entries.values_list("lemma", flat=True))
+
+
+def add_form(context, lang, form, lemmas):
+    for lemma in lemmas:
+        FormToLemma.objects.create(
+            context=context,
+            lang=lang,
+            form=form,
+            lemma=lemma,
+        )
+    return set(lemmas)

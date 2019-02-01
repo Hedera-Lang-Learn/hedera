@@ -10,4 +10,4 @@ class VocabularyListAdmin(admin.ModelAdmin):
 
 @admin.register(models.VocabularyListEntry)
 class VocabularyListEntryAdmin(admin.ModelAdmin):
-    list_display = ["id", "lemma", "gloss", "vocabulary_list"]
+    list_display = ["id", "headword", "gloss", "vocabulary_list"]
