@@ -12,7 +12,7 @@ LANGUAGES = {
 
 class FormToLemma(models.Model):
     """
-    mapping from surface form to lemma before any lemma lattice consideration
+    mapping from surface form to lemma before any lattice consideration
 
     This can be viewed as a cache of some external lemmatization process.
 

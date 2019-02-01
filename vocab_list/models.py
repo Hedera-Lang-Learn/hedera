@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from lemma_lattices.models import LemmaLatticeNode
+from lemma_lattices.models import LatticeNode
 
 
 class VocabularyList(models.Model):
@@ -48,7 +48,7 @@ class VocabularyListEntry(models.Model):
     gloss = models.TextField(blank=True)
 
     node = models.ForeignKey(
-        LemmaLatticeNode, null=True, on_delete=models.SET_NULL)
+        LatticeNode, null=True, on_delete=models.SET_NULL)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

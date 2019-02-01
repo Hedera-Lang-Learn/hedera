@@ -1,14 +1,14 @@
 from django.db import models
 
 
-class LemmaLatticeNode(models.Model):
+class LatticeNode(models.Model):
 
     children = models.ManyToManyField("self", symmetrical=False)
 
 
 def node_info(pk):
     print(pk)
-    node = LemmaLatticeNode.objects.get(pk=pk)
+    node = LatticeNode.objects.get(pk=pk)
     if node.form_strings.exists():
         print("forms:")
         for form_node in node.form_strings.all():
@@ -29,9 +29,9 @@ def node_info(pk):
 
 class FormNode(models.Model):
     """
-    mapping from form string to lemma lattice node (in a given context)
+    mapping from form string to lattice node (in a given context)
 
-    This effectively defines a node in a lemma lattice as "meaning" this form.
+    This effectively defines a node in a lattice as "meaning" this form.
     Note that not all forms should be mapped in this way, only those that have
     their own node in the lattice (for example, because their ambiguous).  If
     the form string is ambiguous, the referenced node can have a child for each
@@ -44,15 +44,15 @@ class FormNode(models.Model):
     context = models.CharField(max_length=255, blank=True)
     form = models.CharField(max_length=255)
     node = models.ForeignKey(
-        LemmaLatticeNode,
+        LatticeNode,
         related_name="form_strings", on_delete=models.CASCADE)
 
 
 class LemmaNode(models.Model):
     """
-    mapping from lemma string to lemma lattice node (in a given context)
+    mapping from lemma string to lattice node (in a given context)
 
-    This effectively defines a node in a lemma lattice as "meaning" anything
+    This effectively defines a node in a lattice as "meaning" anything
     with a lemma of this string. If the lemma string is ambiguous, or has
     multiple senses to be distinguished, the referenced node can have a child
     for each possibility.
@@ -65,7 +65,7 @@ class LemmaNode(models.Model):
     context = models.CharField(max_length=255, blank=True)
     lemma = models.CharField(max_length=255)
     node = models.ForeignKey(
-        LemmaLatticeNode,
+        LatticeNode,
         related_name="lemma_strings", on_delete=models.CASCADE)
 
 
@@ -78,5 +78,5 @@ class NodeGloss(models.Model):
     an ambiguous "est" might just be glossed "ambiguous est" or similar.
     """
     node = models.ForeignKey(
-        LemmaLatticeNode, related_name="glosses", on_delete=models.CASCADE)
+        LatticeNode, related_name="glosses", on_delete=models.CASCADE)
     gloss = models.TextField()
