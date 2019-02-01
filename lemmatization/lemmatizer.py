@@ -1,7 +1,7 @@
 from lemma_lattices.utils import get_lattice_node
 from vocab_list.models import VocabularyList
 
-from .models import lookup_form, add_form
+from .models import add_form, lookup_form
 from .morpheus import morpheus
 
 

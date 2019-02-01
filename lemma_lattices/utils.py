@@ -1,4 +1,4 @@
-from .models import LemmaLatticeNode, FormNode, LemmaNode, NodeGloss
+from .models import FormNode, LemmaLatticeNode, LemmaNode, NodeGloss
 
 
 def make_gloss(kind, value, context):
