@@ -16,7 +16,7 @@
   "pk": 1,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f41",
+    "headword": "\u1f41",
     "gloss": "the",
     "created": "2018-11-06T19:55:21.349Z",
     "updated": "2018-11-06T19:55:21.349Z",
@@ -28,7 +28,7 @@
   "pk": 2,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03af",
+    "headword": "\u03ba\u03b1\u03af",
     "gloss": "and, even, also, namely",
     "created": "2018-11-06T19:55:21.370Z",
     "updated": "2018-11-06T19:55:21.370Z",
@@ -40,7 +40,7 @@
   "pk": 3,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f50\u03c4\u03cc\u03c2",
+    "headword": "\u03b1\u1f50\u03c4\u03cc\u03c2",
     "gloss": "he, she, it, they, them, same",
     "created": "2018-11-06T19:55:21.372Z",
     "updated": "2018-11-06T19:55:21.372Z",
@@ -52,7 +52,7 @@
   "pk": 4,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03cd",
+    "headword": "\u03c3\u03cd",
     "gloss": "you",
     "created": "2018-11-06T19:55:21.375Z",
     "updated": "2018-11-06T19:55:21.375Z",
@@ -64,7 +64,7 @@
   "pk": 5,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03ad",
+    "headword": "\u03b4\u03ad",
     "gloss": "but, on the other hand, and",
     "created": "2018-11-06T19:55:21.376Z",
     "updated": "2018-11-06T19:55:21.376Z",
@@ -76,7 +76,7 @@
   "pk": 6,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03bd",
+    "headword": "\u1f10\u03bd",
     "gloss": "in, on, among",
     "created": "2018-11-06T19:55:21.378Z",
     "updated": "2018-11-06T19:55:21.378Z",
@@ -88,7 +88,7 @@
   "pk": 7,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03b3\u03ce",
+    "headword": "\u1f10\u03b3\u03ce",
     "gloss": "I",
     "created": "2018-11-06T19:55:21.379Z",
     "updated": "2018-11-06T19:55:21.379Z",
@@ -100,7 +100,7 @@
   "pk": 8,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f30\u03bc\u03af",
+    "headword": "\u03b5\u1f30\u03bc\u03af",
     "gloss": "I am, exist",
     "created": "2018-11-06T19:55:21.381Z",
     "updated": "2018-11-06T19:55:21.381Z",
@@ -112,7 +112,7 @@
   "pk": 9,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03ad\u03b3\u03c9",
+    "headword": "\u03bb\u03ad\u03b3\u03c9",
     "gloss": "I say, speak",
     "created": "2018-11-06T19:55:21.383Z",
     "updated": "2018-11-06T19:55:21.383Z",
@@ -124,7 +124,7 @@
   "pk": 10,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f30\u03c2",
+    "headword": "\u03b5\u1f30\u03c2",
     "gloss": "into, in, among, till, for",
     "created": "2018-11-06T19:55:21.385Z",
     "updated": "2018-11-06T19:55:21.385Z",
@@ -136,7 +136,7 @@
   "pk": 11,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f50",
+    "headword": "\u03bf\u1f50",
     "gloss": "no, not",
     "created": "2018-11-06T19:55:21.387Z",
     "updated": "2018-11-06T19:55:21.387Z",
@@ -148,7 +148,7 @@
   "pk": 12,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c2",
+    "headword": "\u1f45\u03c2",
     "gloss": "who, which, what, that",
     "created": "2018-11-06T19:55:21.389Z",
     "updated": "2018-11-06T19:55:21.389Z",
@@ -160,7 +160,7 @@
   "pk": 13,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f57\u03c4\u03bf\u03c2",
+    "headword": "\u03bf\u1f57\u03c4\u03bf\u03c2",
     "gloss": "this, he, she, it",
     "created": "2018-11-06T19:55:21.391Z",
     "updated": "2018-11-06T19:55:21.391Z",
@@ -172,7 +172,7 @@
   "pk": 14,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03b5\u03cc\u03c2",
+    "headword": "\u03b8\u03b5\u03cc\u03c2",
     "gloss": "God, a god",
     "created": "2018-11-06T19:55:21.394Z",
     "updated": "2018-11-06T19:55:21.394Z",
@@ -184,7 +184,7 @@
   "pk": 15,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c4\u03b9",
+    "headword": "\u1f45\u03c4\u03b9",
     "gloss": "that, since, because",
     "created": "2018-11-06T19:55:21.396Z",
     "updated": "2018-11-06T19:55:21.396Z",
@@ -196,7 +196,7 @@
   "pk": 16,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u1fb6\u03c2",
+    "headword": "\u03c0\u1fb6\u03c2",
     "gloss": "all, the whole, every kind of",
     "created": "2018-11-06T19:55:21.398Z",
     "updated": "2018-11-06T19:55:21.398Z",
@@ -208,7 +208,7 @@
   "pk": 17,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03ac\u03c1",
+    "headword": "\u03b3\u03ac\u03c1",
     "gloss": "for",
     "created": "2018-11-06T19:55:21.400Z",
     "updated": "2018-11-06T19:55:21.400Z",
@@ -220,7 +220,7 @@
   "pk": 18,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ae",
+    "headword": "\u03bc\u03ae",
     "gloss": "not, lest",
     "created": "2018-11-06T19:55:21.402Z",
     "updated": "2018-11-06T19:55:21.402Z",
@@ -232,7 +232,7 @@
   "pk": 19,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ba",
+    "headword": "\u1f10\u03ba",
     "gloss": "from out, out from among, from",
     "created": "2018-11-06T19:55:21.405Z",
     "updated": "2018-11-06T19:55:21.405Z",
@@ -244,7 +244,7 @@
   "pk": 20,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+    "headword": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
     "gloss": "Jesus",
     "created": "2018-11-06T19:55:21.409Z",
     "updated": "2018-11-06T19:55:21.409Z",
@@ -256,7 +256,7 @@
   "pk": 21,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03c0\u03af",
+    "headword": "\u1f10\u03c0\u03af",
     "gloss": "on, to, against, on the basis of, at",
     "created": "2018-11-06T19:55:21.411Z",
     "updated": "2018-11-06T19:55:21.411Z",
@@ -268,7 +268,7 @@
   "pk": 22,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03cd\u03c1\u03b9\u03bf\u03c2",
+    "headword": "\u03ba\u03cd\u03c1\u03b9\u03bf\u03c2",
     "gloss": "lord, Lord, master, sir",
     "created": "2018-11-06T19:55:21.413Z",
     "updated": "2018-11-06T19:55:21.413Z",
@@ -280,7 +280,7 @@
   "pk": 23,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c7\u03c9",
+    "headword": "\u1f14\u03c7\u03c9",
     "gloss": "I have, hold, possess",
     "created": "2018-11-06T19:55:21.415Z",
     "updated": "2018-11-06T19:55:21.415Z",
@@ -292,7 +292,7 @@
   "pk": 24,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03cc\u03c2",
+    "headword": "\u03c0\u03c1\u03cc\u03c2",
     "gloss": "to, towards, with",
     "created": "2018-11-06T19:55:21.416Z",
     "updated": "2018-11-06T19:55:21.416Z",
@@ -304,7 +304,7 @@
   "pk": 25,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03b3\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I come into being, am born",
     "created": "2018-11-06T19:55:21.418Z",
     "updated": "2018-11-06T19:55:21.418Z",
@@ -316,7 +316,7 @@
   "pk": 26,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b9\u03ac",
+    "headword": "\u03b4\u03b9\u03ac",
     "gloss": "through, on account of",
     "created": "2018-11-06T19:55:21.419Z",
     "updated": "2018-11-06T19:55:21.419Z",
@@ -328,7 +328,7 @@
   "pk": 27,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f35\u03bd\u03b1",
+    "headword": "\u1f35\u03bd\u03b1",
     "gloss": "in order that, so that",
     "created": "2018-11-06T19:55:21.421Z",
     "updated": "2018-11-06T19:55:21.421Z",
@@ -340,7 +340,7 @@
   "pk": 28,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03cc",
+    "headword": "\u1f00\u03c0\u03cc",
     "gloss": "from, away from",
     "created": "2018-11-06T19:55:21.423Z",
     "updated": "2018-11-06T19:55:21.423Z",
@@ -352,7 +352,7 @@
   "pk": 29,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bb\u03bb\u03ac",
+    "headword": "\u1f00\u03bb\u03bb\u03ac",
     "gloss": "but, except",
     "created": "2018-11-06T19:55:21.424Z",
     "updated": "2018-11-06T19:55:21.424Z",
@@ -364,7 +364,7 @@
   "pk": 30,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I come, go",
     "created": "2018-11-06T19:55:21.426Z",
     "updated": "2018-11-06T19:55:21.427Z",
@@ -376,7 +376,7 @@
   "pk": 31,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u03b9\u03ad\u03c9",
+    "headword": "\u03c0\u03bf\u03b9\u03ad\u03c9",
     "gloss": "I do, make",
     "created": "2018-11-06T19:55:21.428Z",
     "updated": "2018-11-06T19:55:21.428Z",
@@ -388,7 +388,7 @@
   "pk": 32,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03af\u03c2",
+    "headword": "\u03c4\u03af\u03c2",
     "gloss": "who, which, what",
     "created": "2018-11-06T19:55:21.430Z",
     "updated": "2018-11-06T19:55:21.430Z",
@@ -400,7 +400,7 @@
   "pk": 33,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03bd\u03b8\u03c1\u03c9\u03c0\u03bf\u03c2",
+    "headword": "\u1f04\u03bd\u03b8\u03c1\u03c9\u03c0\u03bf\u03c2",
     "gloss": "a man, one of the human race",
     "created": "2018-11-06T19:55:21.432Z",
     "updated": "2018-11-06T19:55:21.432Z",
@@ -412,7 +412,7 @@
   "pk": 34,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "headword": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
     "gloss": "anointed, the Messiah, the Christ",
     "created": "2018-11-06T19:55:21.433Z",
     "updated": "2018-11-06T19:55:21.433Z",
@@ -424,7 +424,7 @@
   "pk": 35,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03b9\u03c2",
+    "headword": "\u03c4\u03b9\u03c2",
     "gloss": "any one, some one",
     "created": "2018-11-06T19:55:21.435Z",
     "updated": "2018-11-06T19:55:21.435Z",
@@ -436,7 +436,7 @@
   "pk": 36,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f61\u03c2",
+    "headword": "\u1f61\u03c2",
     "gloss": "as, like as, how, while, so that",
     "created": "2018-11-06T19:55:21.437Z",
     "updated": "2018-11-06T19:55:21.437Z",
@@ -448,7 +448,7 @@
   "pk": 37,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f30",
+    "headword": "\u03b5\u1f30",
     "gloss": "if",
     "created": "2018-11-06T19:55:21.438Z",
     "updated": "2018-11-06T19:55:21.438Z",
@@ -460,7 +460,7 @@
   "pk": 38,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f56\u03bd",
+    "headword": "\u03bf\u1f56\u03bd",
     "gloss": "therefore, then",
     "created": "2018-11-06T19:55:21.440Z",
     "updated": "2018-11-06T19:55:21.440Z",
@@ -472,7 +472,7 @@
   "pk": 39,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f41\u03c1\u03ac\u03c9",
+    "headword": "\u1f41\u03c1\u03ac\u03c9",
     "gloss": "I see, look upon, experience",
     "created": "2018-11-06T19:55:21.442Z",
     "updated": "2018-11-06T19:55:21.442Z",
@@ -484,7 +484,7 @@
   "pk": 40,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b5\u03c4\u03ac",
+    "headword": "\u03bc\u03b5\u03c4\u03ac",
     "gloss": "with, after",
     "created": "2018-11-06T19:55:21.444Z",
     "updated": "2018-11-06T19:55:21.444Z",
@@ -496,7 +496,7 @@
   "pk": 41,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03c4\u03ac",
+    "headword": "\u03ba\u03b1\u03c4\u03ac",
     "gloss": "down from, against, according to, throughout, during",
     "created": "2018-11-06T19:55:21.445Z",
     "updated": "2018-11-06T19:55:21.445Z",
@@ -508,7 +508,7 @@
   "pk": 42,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03ba\u03bf\u03cd\u03c9",
+    "headword": "\u1f00\u03ba\u03bf\u03cd\u03c9",
     "gloss": "I hear, listen",
     "created": "2018-11-06T19:55:21.446Z",
     "updated": "2018-11-06T19:55:21.446Z",
@@ -520,7 +520,7 @@
   "pk": 43,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "headword": "\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
     "gloss": "I offer, give",
     "created": "2018-11-06T19:55:21.448Z",
     "updated": "2018-11-06T19:55:21.448Z",
@@ -532,7 +532,7 @@
   "pk": 44,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u03bb\u03cd\u03c2",
+    "headword": "\u03c0\u03bf\u03bb\u03cd\u03c2",
     "gloss": "much, many, often",
     "created": "2018-11-06T19:55:21.449Z",
     "updated": "2018-11-06T19:55:21.449Z",
@@ -544,7 +544,7 @@
   "pk": 45,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c4\u03ae\u03c1",
+    "headword": "\u03c0\u03b1\u03c4\u03ae\u03c1",
     "gloss": "father, Father, ancestor",
     "created": "2018-11-06T19:55:21.450Z",
     "updated": "2018-11-06T19:55:21.450Z",
@@ -556,7 +556,7 @@
   "pk": 46,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f21\u03bc\u03ad\u03c1\u03b1",
+    "headword": "\u1f21\u03bc\u03ad\u03c1\u03b1",
     "gloss": "a day",
     "created": "2018-11-06T19:55:21.452Z",
     "updated": "2018-11-06T19:55:21.452Z",
@@ -568,7 +568,7 @@
   "pk": 47,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bd\u03b5\u1fe6\u03bc\u03b1",
+    "headword": "\u03c0\u03bd\u03b5\u1fe6\u03bc\u03b1",
     "gloss": "wind, breath, spirit",
     "created": "2018-11-06T19:55:21.453Z",
     "updated": "2018-11-06T19:55:21.453Z",
@@ -580,7 +580,7 @@
   "pk": 48,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c5\u1f31\u03cc\u03c2",
+    "headword": "\u03c5\u1f31\u03cc\u03c2",
     "gloss": "a son, descendent",
     "created": "2018-11-06T19:55:21.455Z",
     "updated": "2018-11-06T19:55:21.455Z",
@@ -592,7 +592,7 @@
   "pk": 49,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f24",
+    "headword": "\u1f24",
     "gloss": "or, than",
     "created": "2018-11-06T19:55:21.456Z",
     "updated": "2018-11-06T19:55:21.456Z",
@@ -604,7 +604,7 @@
   "pk": 50,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03b4\u03b5\u03bb\u03c6\u03cc\u03c2",
+    "headword": "\u1f00\u03b4\u03b5\u03bb\u03c6\u03cc\u03c2",
     "gloss": "a brother",
     "created": "2018-11-06T19:55:21.457Z",
     "updated": "2018-11-06T19:55:21.457Z",
@@ -616,7 +616,7 @@
   "pk": 51,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f37\u03c2",
+    "headword": "\u03b5\u1f37\u03c2",
     "gloss": "one",
     "created": "2018-11-06T19:55:21.459Z",
     "updated": "2018-11-06T19:55:21.459Z",
@@ -628,7 +628,7 @@
   "pk": 52,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f11\u03b1\u03c5\u03c4\u03bf\u1fe6",
+    "headword": "\u1f11\u03b1\u03c5\u03c4\u03bf\u1fe6",
     "gloss": "himself, herself, itself",
     "created": "2018-11-06T19:55:21.460Z",
     "updated": "2018-11-06T19:55:21.460Z",
@@ -640,7 +640,7 @@
   "pk": 53,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b5\u03c1\u03af",
+    "headword": "\u03c0\u03b5\u03c1\u03af",
     "gloss": "about, concerning, around",
     "created": "2018-11-06T19:55:21.462Z",
     "updated": "2018-11-06T19:55:21.462Z",
@@ -652,7 +652,7 @@
   "pk": 54,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ac\u03bd",
+    "headword": "\u1f10\u03ac\u03bd",
     "gloss": "if",
     "created": "2018-11-06T19:55:21.465Z",
     "updated": "2018-11-06T19:55:21.465Z",
@@ -664,7 +664,7 @@
   "pk": 55,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03cc\u03b3\u03bf\u03c2",
+    "headword": "\u03bb\u03cc\u03b3\u03bf\u03c2",
     "gloss": "a word, speech, divine utterance, analogy",
     "created": "2018-11-06T19:55:21.467Z",
     "updated": "2018-11-06T19:55:21.467Z",
@@ -676,7 +676,7 @@
   "pk": 56,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03b1\u03bb\u03ad\u03c9",
+    "headword": "\u03bb\u03b1\u03bb\u03ad\u03c9",
     "gloss": "I speak, say",
     "created": "2018-11-06T19:55:21.469Z",
     "updated": "2018-11-06T19:55:21.469Z",
@@ -688,7 +688,7 @@
   "pk": 57,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f36\u03b4\u03b1",
+    "headword": "\u03bf\u1f36\u03b4\u03b1",
     "gloss": "I know, remember",
     "created": "2018-11-06T19:55:21.470Z",
     "updated": "2018-11-06T19:55:21.471Z",
@@ -700,7 +700,7 @@
   "pk": 58,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+    "headword": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
     "gloss": "the sky, the heaven",
     "created": "2018-11-06T19:55:21.473Z",
     "updated": "2018-11-06T19:55:21.473Z",
@@ -712,7 +712,7 @@
   "pk": 59,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b1\u03b8\u03b7\u03c4\u03ae\u03c2",
+    "headword": "\u03bc\u03b1\u03b8\u03b7\u03c4\u03ae\u03c2",
     "gloss": "a learner, disciple, pupil",
     "created": "2018-11-06T19:55:21.474Z",
     "updated": "2018-11-06T19:55:21.474Z",
@@ -724,7 +724,7 @@
   "pk": 60,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "headword": "\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
     "gloss": "I receive, take",
     "created": "2018-11-06T19:55:21.476Z",
     "updated": "2018-11-06T19:55:21.476Z",
@@ -736,7 +736,7 @@
   "pk": 61,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u1fc6",
+    "headword": "\u03b3\u1fc6",
     "gloss": "the earth, soil, land",
     "created": "2018-11-06T19:55:21.479Z",
     "updated": "2018-11-06T19:55:21.479Z",
@@ -748,7 +748,7 @@
   "pk": 62,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ba\u03b5\u1fd6\u03bd\u03bf\u03c2",
+    "headword": "\u1f10\u03ba\u03b5\u1fd6\u03bd\u03bf\u03c2",
     "gloss": "that, that one there, yonder",
     "created": "2018-11-06T19:55:21.481Z",
     "updated": "2018-11-06T19:55:21.481Z",
@@ -760,7 +760,7 @@
   "pk": 63,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03af\u03c3\u03c4\u03b9\u03c2",
+    "headword": "\u03c0\u03af\u03c3\u03c4\u03b9\u03c2",
     "gloss": "faith, belief, trust",
     "created": "2018-11-06T19:55:21.483Z",
     "updated": "2018-11-06T19:55:21.483Z",
@@ -772,7 +772,7 @@
   "pk": 64,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03b5\u03cd\u03c9",
+    "headword": "\u03c0\u03b9\u03c3\u03c4\u03b5\u03cd\u03c9",
     "gloss": "I believe, have faith in",
     "created": "2018-11-06T19:55:21.484Z",
     "updated": "2018-11-06T19:55:21.484Z",
@@ -784,7 +784,7 @@
   "pk": 65,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ad\u03b3\u03b1\u03c2",
+    "headword": "\u03bc\u03ad\u03b3\u03b1\u03c2",
     "gloss": "large, great",
     "created": "2018-11-06T19:55:21.486Z",
     "updated": "2018-11-06T19:55:21.486Z",
@@ -796,7 +796,7 @@
   "pk": 66,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f05\u03b3\u03b9\u03bf\u03c2",
+    "headword": "\u1f05\u03b3\u03b9\u03bf\u03c2",
     "gloss": "set apart, holy, sacred",
     "created": "2018-11-06T19:55:21.488Z",
     "updated": "2018-11-06T19:55:21.488Z",
@@ -808,7 +808,7 @@
   "pk": 67,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c1\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u1f00\u03c0\u03bf\u03ba\u03c1\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I answer, reply",
     "created": "2018-11-06T19:55:21.490Z",
     "updated": "2018-11-06T19:55:21.490Z",
@@ -820,7 +820,7 @@
   "pk": 68,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f50\u03b4\u03b5\u03af\u03c2",
+    "headword": "\u03bf\u1f50\u03b4\u03b5\u03af\u03c2",
     "gloss": "no one, none, nothing",
     "created": "2018-11-06T19:55:21.492Z",
     "updated": "2018-11-06T19:55:21.492Z",
@@ -832,7 +832,7 @@
   "pk": 69,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f44\u03bd\u03bf\u03bc\u03b1",
+    "headword": "\u1f44\u03bd\u03bf\u03bc\u03b1",
     "gloss": "name, character, reputation",
     "created": "2018-11-06T19:55:21.493Z",
     "updated": "2018-11-06T19:55:21.493Z",
@@ -844,7 +844,7 @@
   "pk": 70,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03b9\u03bd\u03ce\u03c3\u03ba\u03c9",
+    "headword": "\u03b3\u03b9\u03bd\u03ce\u03c3\u03ba\u03c9",
     "gloss": "I come to know, learn, realize",
     "created": "2018-11-06T19:55:21.495Z",
     "updated": "2018-11-06T19:55:21.495Z",
@@ -856,7 +856,7 @@
   "pk": 71,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f51\u03c0\u03cc",
+    "headword": "\u1f51\u03c0\u03cc",
     "gloss": "by, under, about",
     "created": "2018-11-06T19:55:21.497Z",
     "updated": "2018-11-06T19:55:21.497Z",
@@ -868,7 +868,7 @@
   "pk": 72,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bd\u03ae\u03c1",
+    "headword": "\u1f00\u03bd\u03ae\u03c1",
     "gloss": "a male human being, a man",
     "created": "2018-11-06T19:55:21.498Z",
     "updated": "2018-11-06T19:55:21.498Z",
@@ -880,7 +880,7 @@
   "pk": 73,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03be\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u1f10\u03be\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I go out, come out",
     "created": "2018-11-06T19:55:21.501Z",
     "updated": "2018-11-06T19:55:21.501Z",
@@ -892,7 +892,7 @@
   "pk": 74,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03ad",
+    "headword": "\u03c4\u03ad",
     "gloss": "and, both",
     "created": "2018-11-06T19:55:21.503Z",
     "updated": "2018-11-06T19:55:21.503Z",
@@ -904,7 +904,7 @@
   "pk": 75,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03c5\u03bd\u03ae",
+    "headword": "\u03b3\u03c5\u03bd\u03ae",
     "gloss": "a woman, wife, my lady",
     "created": "2018-11-06T19:55:21.505Z",
     "updated": "2018-11-06T19:55:21.505Z",
@@ -916,7 +916,7 @@
   "pk": 76,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b1\u03b9",
+    "headword": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b1\u03b9",
     "gloss": "I am powerful, am able",
     "created": "2018-11-06T19:55:21.507Z",
     "updated": "2018-11-06T19:55:21.507Z",
@@ -928,7 +928,7 @@
   "pk": 77,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03ad\u03bb\u03c9",
+    "headword": "\u03b8\u03ad\u03bb\u03c9",
     "gloss": "I will, wish, desire",
     "created": "2018-11-06T19:55:21.508Z",
     "updated": "2018-11-06T19:55:21.508Z",
@@ -940,7 +940,7 @@
   "pk": 78,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f55\u03c4\u03c9(\u03c2)",
+    "headword": "\u03bf\u1f55\u03c4\u03c9(\u03c2)",
     "gloss": "thus, so, in this manner",
     "created": "2018-11-06T19:55:21.510Z",
     "updated": "2018-11-06T19:55:21.510Z",
@@ -952,7 +952,7 @@
   "pk": 79,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f30\u03b4\u03bf\u03cd",
+    "headword": "\u1f30\u03b4\u03bf\u03cd",
     "gloss": "See! Lo! Behold! Look!",
     "created": "2018-11-06T19:55:21.511Z",
     "updated": "2018-11-06T19:55:21.511Z",
@@ -964,7 +964,7 @@
   "pk": 80,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f38\u03bf\u03c5\u03b4\u03b1\u1fd6\u03bf\u03c2",
+    "headword": "\u1f38\u03bf\u03c5\u03b4\u03b1\u1fd6\u03bf\u03c2",
     "gloss": "Jewish",
     "created": "2018-11-06T19:55:21.513Z",
     "updated": "2018-11-06T19:55:21.513Z",
@@ -976,7 +976,7 @@
   "pk": 81,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c1\u03ac",
+    "headword": "\u03c0\u03b1\u03c1\u03ac",
     "gloss": "from, in the presence of",
     "created": "2018-11-06T19:55:21.514Z",
     "updated": "2018-11-06T19:55:21.514Z",
@@ -988,7 +988,7 @@
   "pk": 82,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bd\u03cc\u03bc\u03bf\u03c2",
+    "headword": "\u03bd\u03cc\u03bc\u03bf\u03c2",
     "gloss": "a law, the Mosaic Law",
     "created": "2018-11-06T19:55:21.515Z",
     "updated": "2018-11-06T19:55:21.515Z",
@@ -1000,7 +1000,7 @@
   "pk": 83,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f30\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03b5\u1f30\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I go in, come in, enter",
     "created": "2018-11-06T19:55:21.517Z",
     "updated": "2018-11-06T19:55:21.517Z",
@@ -1012,7 +1012,7 @@
   "pk": 84,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03c1\u03ac\u03c6\u03c9",
+    "headword": "\u03b3\u03c1\u03ac\u03c6\u03c9",
     "gloss": "I write",
     "created": "2018-11-06T19:55:21.519Z",
     "updated": "2018-11-06T19:55:21.519Z",
@@ -1024,7 +1024,7 @@
   "pk": 85,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03cc\u03c3\u03bc\u03bf\u03c2",
+    "headword": "\u03ba\u03cc\u03c3\u03bc\u03bf\u03c2",
     "gloss": "the world, universe",
     "created": "2018-11-06T19:55:21.521Z",
     "updated": "2018-11-06T19:55:21.521Z",
@@ -1036,7 +1036,7 @@
   "pk": 86,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03b8\u03ce\u03c2",
+    "headword": "\u03ba\u03b1\u03b8\u03ce\u03c2",
     "gloss": "just as, as",
     "created": "2018-11-06T19:55:21.523Z",
     "updated": "2018-11-06T19:55:21.523Z",
@@ -1048,7 +1048,7 @@
   "pk": 87,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ad\u03bd",
+    "headword": "\u03bc\u03ad\u03bd",
     "gloss": "truly, indeed",
     "created": "2018-11-06T19:55:21.525Z",
     "updated": "2018-11-06T19:55:21.525Z",
@@ -1060,7 +1060,7 @@
   "pk": 88,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03b5\u03af\u03c1",
+    "headword": "\u03c7\u03b5\u03af\u03c1",
     "gloss": "a hand",
     "created": "2018-11-06T19:55:21.527Z",
     "updated": "2018-11-06T19:55:21.527Z",
@@ -1072,7 +1072,7 @@
   "pk": 89,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f51\u03c1\u03af\u03c3\u03ba\u03c9",
+    "headword": "\u03b5\u1f51\u03c1\u03af\u03c3\u03ba\u03c9",
     "gloss": "I find",
     "created": "2018-11-06T19:55:21.529Z",
     "updated": "2018-11-06T19:55:21.529Z",
@@ -1084,7 +1084,7 @@
   "pk": 90,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03b3\u03b3\u03b5\u03bb\u03bf\u03c2",
+    "headword": "\u1f04\u03b3\u03b3\u03b5\u03bb\u03bf\u03c2",
     "gloss": "an angel, messenger",
     "created": "2018-11-06T19:55:21.531Z",
     "updated": "2018-11-06T19:55:21.531Z",
@@ -1096,7 +1096,7 @@
   "pk": 91,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f44\u03c7\u03bb\u03bf\u03c2",
+    "headword": "\u1f44\u03c7\u03bb\u03bf\u03c2",
     "gloss": "a crowd",
     "created": "2018-11-06T19:55:21.532Z",
     "updated": "2018-11-06T19:55:21.532Z",
@@ -1108,7 +1108,7 @@
   "pk": 92,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f01\u03bc\u03b1\u03c1\u03c4\u03af\u03b1",
+    "headword": "\u1f01\u03bc\u03b1\u03c1\u03c4\u03af\u03b1",
     "gloss": "a sin",
     "created": "2018-11-06T19:55:21.534Z",
     "updated": "2018-11-06T19:55:21.534Z",
@@ -1120,7 +1120,7 @@
   "pk": 93,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03bd",
+    "headword": "\u1f04\u03bd",
     "gloss": "an untranslatable word that makes a statement contingent",
     "created": "2018-11-06T19:55:21.535Z",
     "updated": "2018-11-06T19:55:21.535Z",
@@ -1132,7 +1132,7 @@
   "pk": 94,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c1\u03b3\u03bf\u03bd",
+    "headword": "\u1f14\u03c1\u03b3\u03bf\u03bd",
     "gloss": "work, labor, action, deed",
     "created": "2018-11-06T19:55:21.537Z",
     "updated": "2018-11-06T19:55:21.537Z",
@@ -1144,7 +1144,7 @@
   "pk": 95,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03cc\u03be\u03b1",
+    "headword": "\u03b4\u03cc\u03be\u03b1",
     "gloss": "honor, renown, glory splendor",
     "created": "2018-11-06T19:55:21.538Z",
     "updated": "2018-11-06T19:55:21.538Z",
@@ -1156,7 +1156,7 @@
   "pk": 96,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03cc\u03bb\u03b9\u03c2",
+    "headword": "\u03c0\u03cc\u03bb\u03b9\u03c2",
     "gloss": "a city",
     "created": "2018-11-06T19:55:21.540Z",
     "updated": "2018-11-06T19:55:21.540Z",
@@ -1168,7 +1168,7 @@
   "pk": 97,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03af\u03b1",
+    "headword": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03af\u03b1",
     "gloss": "kingship, sovereignty, authority, rule, kingdom",
     "created": "2018-11-06T19:55:21.542Z",
     "updated": "2018-11-06T19:55:21.542Z",
@@ -1180,7 +1180,7 @@
   "pk": 98,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03b8\u03bd\u03bf\u03c2",
+    "headword": "\u1f14\u03b8\u03bd\u03bf\u03c2",
     "gloss": "a race, people, the Gentiles",
     "created": "2018-11-06T19:55:21.544Z",
     "updated": "2018-11-06T19:55:21.544Z",
@@ -1192,7 +1192,7 @@
   "pk": 99,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03cc\u03c4\u03b5",
+    "headword": "\u03c4\u03cc\u03c4\u03b5",
     "gloss": "then",
     "created": "2018-11-06T19:55:21.546Z",
     "updated": "2018-11-06T19:55:21.546Z",
@@ -1204,7 +1204,7 @@
   "pk": 100,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
+    "headword": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
     "gloss": "Paul",
     "created": "2018-11-06T19:55:21.547Z",
     "updated": "2018-11-06T19:55:21.547Z",
@@ -1216,7 +1216,7 @@
   "pk": 101,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03c3\u03b8\u03af\u03c9",
+    "headword": "\u1f10\u03c3\u03b8\u03af\u03c9",
     "gloss": "I eat",
     "created": "2018-11-06T19:55:21.549Z",
     "updated": "2018-11-06T19:55:21.549Z",
@@ -1228,7 +1228,7 @@
   "pk": 102,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03c1\u03b4\u03af\u03b1",
+    "headword": "\u03ba\u03b1\u03c1\u03b4\u03af\u03b1",
     "gloss": "the heart, inner life, intention",
     "created": "2018-11-06T19:55:21.550Z",
     "updated": "2018-11-06T19:55:21.550Z",
@@ -1240,7 +1240,7 @@
   "pk": 103,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a0\u03ad\u03c4\u03c1\u03bf\u03c2",
+    "headword": "\u03a0\u03ad\u03c4\u03c1\u03bf\u03c2",
     "gloss": "Peter",
     "created": "2018-11-06T19:55:21.552Z",
     "updated": "2018-11-06T19:55:21.552Z",
@@ -1252,7 +1252,7 @@
   "pk": 104,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03ac\u03c1\u03b9\u03c2",
+    "headword": "\u03c7\u03ac\u03c1\u03b9\u03c2",
     "gloss": "grace, favor, kindness",
     "created": "2018-11-06T19:55:21.553Z",
     "updated": "2018-11-06T19:55:21.553Z",
@@ -1264,7 +1264,7 @@
   "pk": 105,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03bb\u03bb\u03bf\u03c2",
+    "headword": "\u1f04\u03bb\u03bb\u03bf\u03c2",
     "gloss": "other, another, different",
     "created": "2018-11-06T19:55:21.555Z",
     "updated": "2018-11-06T19:55:21.555Z",
@@ -1276,7 +1276,7 @@
   "pk": 106,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "headword": "\u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
     "gloss": "I cause to stand, stand",
     "created": "2018-11-06T19:55:21.556Z",
     "updated": "2018-11-06T19:55:21.556Z",
@@ -1288,7 +1288,7 @@
   "pk": 107,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u1ff6\u03c4\u03bf\u03c2",
+    "headword": "\u03c0\u03c1\u1ff6\u03c4\u03bf\u03c2",
     "gloss": "first, before",
     "created": "2018-11-06T19:55:21.558Z",
     "updated": "2018-11-06T19:55:21.558Z",
@@ -1300,7 +1300,7 @@
   "pk": 108,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f51\u03c0\u03ad\u03c1",
+    "headword": "\u1f51\u03c0\u03ad\u03c1",
     "gloss": "in behalf of, above",
     "created": "2018-11-06T19:55:21.559Z",
     "updated": "2018-11-06T19:55:21.559Z",
@@ -1312,7 +1312,7 @@
   "pk": 109,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u03c1\u03b5\u03cd\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03c0\u03bf\u03c1\u03b5\u03cd\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I travel, journey, go",
     "created": "2018-11-06T19:55:21.560Z",
     "updated": "2018-11-06T19:55:21.560Z",
@@ -1324,7 +1324,7 @@
   "pk": 110,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "headword": "\u03ba\u03b1\u03bb\u03ad\u03c9",
     "gloss": "I call, invite, name",
     "created": "2018-11-06T19:55:21.562Z",
     "updated": "2018-11-06T19:55:21.562Z",
@@ -1336,7 +1336,7 @@
   "pk": 111,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03ac\u03c1\u03be",
+    "headword": "\u03c3\u03ac\u03c1\u03be",
     "gloss": "flesh, body",
     "created": "2018-11-06T19:55:21.563Z",
     "updated": "2018-11-06T19:55:21.563Z",
@@ -1348,7 +1348,7 @@
   "pk": 112,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bd\u1fe6\u03bd",
+    "headword": "\u03bd\u1fe6\u03bd",
     "gloss": "now, already, at present",
     "created": "2018-11-06T19:55:21.565Z",
     "updated": "2018-11-06T19:55:21.565Z",
@@ -1360,7 +1360,7 @@
   "pk": 113,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f15\u03c9\u03c2",
+    "headword": "\u1f15\u03c9\u03c2",
     "gloss": "until, as far as",
     "created": "2018-11-06T19:55:21.566Z",
     "updated": "2018-11-06T19:55:21.566Z",
@@ -1372,7 +1372,7 @@
   "pk": 114,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c3\u03c4\u03b9\u03c2",
+    "headword": "\u1f45\u03c3\u03c4\u03b9\u03c2",
     "gloss": "whosoever, whichsoever, whatsoever",
     "created": "2018-11-06T19:55:21.567Z",
     "updated": "2018-11-06T19:55:21.567Z",
@@ -1384,7 +1384,7 @@
   "pk": 115,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
+    "headword": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
     "gloss": "a prophet, poet",
     "created": "2018-11-06T19:55:21.569Z",
     "updated": "2018-11-06T19:55:21.569Z",
@@ -1396,7 +1396,7 @@
   "pk": 116,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03ac\u03c9",
+    "headword": "\u1f00\u03b3\u03b1\u03c0\u03ac\u03c9",
     "gloss": "I love",
     "created": "2018-11-06T19:55:21.570Z",
     "updated": "2018-11-06T19:55:21.570Z",
@@ -1408,7 +1408,7 @@
   "pk": 117,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03b3\u03b5\u03af\u03c1\u03c9",
+    "headword": "\u1f10\u03b3\u03b5\u03af\u03c1\u03c9",
     "gloss": "I wake, arouse, raise up",
     "created": "2018-11-06T19:55:21.571Z",
     "updated": "2018-11-06T19:55:21.571Z",
@@ -1420,7 +1420,7 @@
   "pk": 118,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c6\u03af\u03b7\u03bc\u03b9",
+    "headword": "\u1f00\u03c6\u03af\u03b7\u03bc\u03b9",
     "gloss": "I send away, release, remit, forgive, permit",
     "created": "2018-11-06T19:55:21.572Z",
     "updated": "2018-11-06T19:55:21.572Z",
@@ -1432,7 +1432,7 @@
   "pk": 119,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u1ff6\u03bc\u03b1",
+    "headword": "\u03c3\u1ff6\u03bc\u03b1",
     "gloss": "body, flesh",
     "created": "2018-11-06T19:55:21.574Z",
     "updated": "2018-11-06T19:55:21.574Z",
@@ -1444,7 +1444,7 @@
   "pk": 120,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f50\u03b4\u03ad",
+    "headword": "\u03bf\u1f50\u03b4\u03ad",
     "gloss": "neither, nor, not even",
     "created": "2018-11-06T19:55:21.575Z",
     "updated": "2018-11-06T19:55:21.575Z",
@@ -1456,7 +1456,7 @@
   "pk": 121,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03b1\u03cc\u03c2",
+    "headword": "\u03bb\u03b1\u03cc\u03c2",
     "gloss": "a people, the crowd",
     "created": "2018-11-06T19:55:21.576Z",
     "updated": "2018-11-06T19:55:21.576Z",
@@ -1468,7 +1468,7 @@
   "pk": 122,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b6\u03ac\u03c9",
+    "headword": "\u03b6\u03ac\u03c9",
     "gloss": "I live",
     "created": "2018-11-06T19:55:21.578Z",
     "updated": "2018-11-06T19:55:21.578Z",
@@ -1480,7 +1480,7 @@
   "pk": 123,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u03c9\u03bd\u03ae",
+    "headword": "\u03c6\u03c9\u03bd\u03ae",
     "gloss": "a sound, noise, voice",
     "created": "2018-11-06T19:55:21.579Z",
     "updated": "2018-11-06T19:55:21.580Z",
@@ -1492,7 +1492,7 @@
   "pk": 124,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03ac\u03bb\u03b9\u03bd",
+    "headword": "\u03c0\u03ac\u03bb\u03b9\u03bd",
     "gloss": "again, further, on the other hand",
     "created": "2018-11-06T19:55:21.581Z",
     "updated": "2018-11-06T19:55:21.581Z",
@@ -1504,7 +1504,7 @@
   "pk": 125,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03ad\u03c9",
+    "headword": "\u03b4\u03ad\u03c9",
     "gloss": "I bind",
     "created": "2018-11-06T19:55:21.582Z",
     "updated": "2018-11-06T19:55:21.582Z",
@@ -1516,7 +1516,7 @@
   "pk": 126,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f38\u03c9\u03ac\u03bd\u03bd\u03b7\u03c2",
+    "headword": "\u1f38\u03c9\u03ac\u03bd\u03bd\u03b7\u03c2",
     "gloss": "John",
     "created": "2018-11-06T19:55:21.583Z",
     "updated": "2018-11-06T19:55:21.583Z",
@@ -1528,7 +1528,7 @@
   "pk": 127,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03cd\u03bf",
+    "headword": "\u03b4\u03cd\u03bf",
     "gloss": "two",
     "created": "2018-11-06T19:55:21.585Z",
     "updated": "2018-11-06T19:55:21.585Z",
@@ -1540,7 +1540,7 @@
   "pk": 128,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b6\u03c9\u03ae",
+    "headword": "\u03b6\u03c9\u03ae",
     "gloss": "life",
     "created": "2018-11-06T19:55:21.586Z",
     "updated": "2018-11-06T19:55:21.586Z",
@@ -1552,7 +1552,7 @@
   "pk": 129,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b2\u03bb\u03ad\u03c0\u03c9",
+    "headword": "\u03b2\u03bb\u03ad\u03c0\u03c9",
     "gloss": "I look, see",
     "created": "2018-11-06T19:55:21.587Z",
     "updated": "2018-11-06T19:55:21.587Z",
@@ -1564,7 +1564,7 @@
   "pk": 130,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03c3\u03c4\u03ad\u03bb\u03bb\u03c9",
+    "headword": "\u1f00\u03c0\u03bf\u03c3\u03c4\u03ad\u03bb\u03bb\u03c9",
     "gloss": "I send forth, send, send away, dismiss",
     "created": "2018-11-06T19:55:21.589Z",
     "updated": "2018-11-06T19:55:21.589Z",
@@ -1576,7 +1576,7 @@
   "pk": 131,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03cd\u03bd",
+    "headword": "\u03c3\u03cd\u03bd",
     "gloss": "with",
     "created": "2018-11-06T19:55:21.590Z",
     "updated": "2018-11-06T19:55:21.591Z",
@@ -1588,7 +1588,7 @@
   "pk": 132,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bc\u03ae\u03bd",
+    "headword": "\u1f00\u03bc\u03ae\u03bd",
     "gloss": "verily, truly, amen, so let it be",
     "created": "2018-11-06T19:55:21.592Z",
     "updated": "2018-11-06T19:55:21.592Z",
@@ -1600,7 +1600,7 @@
   "pk": 133,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bd\u03b5\u03ba\u03c1\u03cc\u03c2",
+    "headword": "\u03bd\u03b5\u03ba\u03c1\u03cc\u03c2",
     "gloss": "dead, a corpse",
     "created": "2018-11-06T19:55:21.593Z",
     "updated": "2018-11-06T19:55:21.593Z",
@@ -1612,7 +1612,7 @@
   "pk": 134,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
+    "headword": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
     "gloss": "a male slave",
     "created": "2018-11-06T19:55:21.595Z",
     "updated": "2018-11-06T19:55:21.595Z",
@@ -1624,7 +1624,7 @@
   "pk": 135,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c4\u03b1\u03bd",
+    "headword": "\u1f45\u03c4\u03b1\u03bd",
     "gloss": "when, whensoever",
     "created": "2018-11-06T19:55:21.598Z",
     "updated": "2018-11-06T19:55:21.598Z",
@@ -1636,7 +1636,7 @@
   "pk": 136,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c1\u03c7\u03b9\u03b5\u03c1\u03b5\u03cd\u03c2",
+    "headword": "\u1f00\u03c1\u03c7\u03b9\u03b5\u03c1\u03b5\u03cd\u03c2",
     "gloss": "high priest, chief priest",
     "created": "2018-11-06T19:55:21.599Z",
     "updated": "2018-11-06T19:55:21.599Z",
@@ -1648,7 +1648,7 @@
   "pk": 137,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f30\u03ce\u03bd",
+    "headword": "\u03b1\u1f30\u03ce\u03bd",
     "gloss": "an age, a cycle of time",
     "created": "2018-11-06T19:55:21.602Z",
     "updated": "2018-11-06T19:55:21.602Z",
@@ -1660,7 +1660,7 @@
   "pk": 138,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "headword": "\u03b2\u03ac\u03bb\u03bb\u03c9",
     "gloss": "I cast, throw, rush, put, place, drop",
     "created": "2018-11-06T19:55:21.605Z",
     "updated": "2018-11-06T19:55:21.605Z",
@@ -1672,7 +1672,7 @@
   "pk": 139,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03ac\u03bd\u03b1\u03c4\u03bf\u03c2",
+    "headword": "\u03b8\u03ac\u03bd\u03b1\u03c4\u03bf\u03c2",
     "gloss": "death",
     "created": "2018-11-06T19:55:21.606Z",
     "updated": "2018-11-06T19:55:21.606Z",
@@ -1684,7 +1684,7 @@
   "pk": 140,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b9\u03c2",
+    "headword": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b9\u03c2",
     "gloss": "might, power, marvelous works",
     "created": "2018-11-06T19:55:21.608Z",
     "updated": "2018-11-06T19:55:21.608Z",
@@ -1696,7 +1696,7 @@
   "pk": 141,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "headword": "\u03c0\u03b1\u03c1\u03b1\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
     "gloss": "I hand over, deliver, betray",
     "created": "2018-11-06T19:55:21.609Z",
     "updated": "2018-11-06T19:55:21.609Z",
@@ -1708,7 +1708,7 @@
   "pk": 142,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ad\u03bd\u03c9",
+    "headword": "\u03bc\u03ad\u03bd\u03c9",
     "gloss": "I remain, abide",
     "created": "2018-11-06T19:55:21.611Z",
     "updated": "2018-11-06T19:55:21.611Z",
@@ -1720,7 +1720,7 @@
   "pk": 143,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b6\u03b7\u03c4\u03ad\u03c9",
+    "headword": "\u03b6\u03b7\u03c4\u03ad\u03c9",
     "gloss": "I seek, search for, desire",
     "created": "2018-11-06T19:55:21.612Z",
     "updated": "2018-11-06T19:55:21.613Z",
@@ -1732,7 +1732,7 @@
   "pk": 144,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u1f00\u03c0\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I come or go away from, depart, return",
     "created": "2018-11-06T19:55:21.614Z",
     "updated": "2018-11-06T19:55:21.614Z",
@@ -1744,7 +1744,7 @@
   "pk": 145,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03b3\u03ac\u03c0\u03b7",
+    "headword": "\u1f00\u03b3\u03ac\u03c0\u03b7",
     "gloss": "love",
     "created": "2018-11-06T19:55:21.615Z",
     "updated": "2018-11-06T19:55:21.615Z",
@@ -1756,7 +1756,7 @@
   "pk": 146,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03cd\u03c2",
+    "headword": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03cd\u03c2",
     "gloss": "a king, ruler, emperor",
     "created": "2018-11-06T19:55:21.617Z",
     "updated": "2018-11-06T19:55:21.617Z",
@@ -1768,7 +1768,7 @@
   "pk": 147,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ba\u03ba\u03bb\u03b7\u03c3\u03af\u03b1",
+    "headword": "\u1f10\u03ba\u03ba\u03bb\u03b7\u03c3\u03af\u03b1",
     "gloss": "an assembly, congregation, church",
     "created": "2018-11-06T19:55:21.618Z",
     "updated": "2018-11-06T19:55:21.618Z",
@@ -1780,7 +1780,7 @@
   "pk": 148,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03c1\u03af\u03bd\u03c9",
+    "headword": "\u03ba\u03c1\u03af\u03bd\u03c9",
     "gloss": "I judge, decide, think good",
     "created": "2018-11-06T19:55:21.620Z",
     "updated": "2018-11-06T19:55:21.620Z",
@@ -1792,7 +1792,7 @@
   "pk": 149,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f34\u03b4\u03b9\u03bf\u03c2",
+    "headword": "\u1f34\u03b4\u03b9\u03bf\u03c2",
     "gloss": "one's own, private, personal",
     "created": "2018-11-06T19:55:21.622Z",
     "updated": "2018-11-06T19:55:21.622Z",
@@ -1804,7 +1804,7 @@
   "pk": 150,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f36\u03ba\u03bf\u03c2",
+    "headword": "\u03bf\u1f36\u03ba\u03bf\u03c2",
     "gloss": "a house, household",
     "created": "2018-11-06T19:55:21.624Z",
     "updated": "2018-11-06T19:55:21.624Z",
@@ -1816,7 +1816,7 @@
   "pk": 151,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c3\u03bf\u03c2",
+    "headword": "\u1f45\u03c3\u03bf\u03c2",
     "gloss": "how much, how great, how many",
     "created": "2018-11-06T19:55:21.626Z",
     "updated": "2018-11-06T19:55:21.626Z",
@@ -1828,7 +1828,7 @@
   "pk": 152,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03b8\u03bd\u1fc4\u03c3\u03ba\u03c9",
+    "headword": "\u1f00\u03c0\u03bf\u03b8\u03bd\u1fc4\u03c3\u03ba\u03c9",
     "gloss": "I am dying, am about to die",
     "created": "2018-11-06T19:55:21.627Z",
     "updated": "2018-11-06T19:55:21.627Z",
@@ -1840,7 +1840,7 @@
   "pk": 153,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03cc\u03bd\u03bf\u03c2",
+    "headword": "\u03bc\u03cc\u03bd\u03bf\u03c2",
     "gloss": "only, solitary, desolate",
     "created": "2018-11-06T19:55:21.629Z",
     "updated": "2018-11-06T19:55:21.629Z",
@@ -1852,7 +1852,7 @@
   "pk": 154,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ad\u03bb\u03bb\u03c9",
+    "headword": "\u03bc\u03ad\u03bb\u03bb\u03c9",
     "gloss": "I am about to",
     "created": "2018-11-06T19:55:21.631Z",
     "updated": "2018-11-06T19:55:21.631Z",
@@ -1864,7 +1864,7 @@
   "pk": 155,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bb\u03ae\u03b8\u03b5\u03b9\u03b1",
+    "headword": "\u1f00\u03bb\u03ae\u03b8\u03b5\u03b9\u03b1",
     "gloss": "truth",
     "created": "2018-11-06T19:55:21.634Z",
     "updated": "2018-11-06T19:55:21.634Z",
@@ -1876,7 +1876,7 @@
   "pk": 156,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "headword": "\u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ad\u03c9",
     "gloss": "I summon, entreat, admonish, comfort",
     "created": "2018-11-06T19:55:21.635Z",
     "updated": "2018-11-06T19:55:21.635Z",
@@ -1888,7 +1888,7 @@
   "pk": 157,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bd\u03af\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "headword": "\u1f00\u03bd\u03af\u03c3\u03c4\u03b7\u03bc\u03b9",
     "gloss": "I raise up, set up, rise from",
     "created": "2018-11-06T19:55:21.637Z",
     "updated": "2018-11-06T19:55:21.637Z",
@@ -1900,7 +1900,7 @@
   "pk": 158,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03bb\u03bf\u03c2",
+    "headword": "\u1f45\u03bb\u03bf\u03c2",
     "gloss": "all, the whole, entire",
     "created": "2018-11-06T19:55:21.639Z",
     "updated": "2018-11-06T19:55:21.639Z",
@@ -1912,7 +1912,7 @@
   "pk": 159,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f65\u03c1\u03b1",
+    "headword": "\u1f65\u03c1\u03b1",
     "gloss": "an hour, season",
     "created": "2018-11-06T19:55:21.641Z",
     "updated": "2018-11-06T19:55:21.641Z",
@@ -1924,7 +1924,7 @@
   "pk": 160,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u1ff4\u03b6\u03c9",
+    "headword": "\u03c3\u1ff4\u03b6\u03c9",
     "gloss": "I save, heal",
     "created": "2018-11-06T19:55:21.643Z",
     "updated": "2018-11-06T19:55:21.643Z",
@@ -1936,7 +1936,7 @@
   "pk": 161,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u1ff6\u03c2",
+    "headword": "\u03c0\u1ff6\u03c2",
     "gloss": "how, in what manner",
     "created": "2018-11-06T19:55:21.645Z",
     "updated": "2018-11-06T19:55:21.645Z",
@@ -1948,7 +1948,7 @@
   "pk": 162,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c4\u03b5",
+    "headword": "\u1f45\u03c4\u03b5",
     "gloss": "when",
     "created": "2018-11-06T19:55:21.646Z",
     "updated": "2018-11-06T19:55:21.646Z",
@@ -1960,7 +1960,7 @@
   "pk": 163,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03be\u03bf\u03c5\u03c3\u03af\u03b1",
+    "headword": "\u1f10\u03be\u03bf\u03c5\u03c3\u03af\u03b1",
     "gloss": "power, authority, weight",
     "created": "2018-11-06T19:55:21.648Z",
     "updated": "2018-11-06T19:55:21.648Z",
@@ -1972,7 +1972,7 @@
   "pk": 164,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c8\u03c5\u03c7\u03ae",
+    "headword": "\u03c8\u03c5\u03c7\u03ae",
     "gloss": "the soul, life, self",
     "created": "2018-11-06T19:55:21.649Z",
     "updated": "2018-11-06T19:55:21.649Z",
@@ -1984,7 +1984,7 @@
   "pk": 165,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03b3\u03b1\u03b8\u03cc\u03c2",
+    "headword": "\u1f00\u03b3\u03b1\u03b8\u03cc\u03c2",
     "gloss": "good",
     "created": "2018-11-06T19:55:21.650Z",
     "updated": "2018-11-06T19:55:21.651Z",
@@ -1996,7 +1996,7 @@
   "pk": 166,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f41\u03b4\u03cc\u03c2",
+    "headword": "\u1f41\u03b4\u03cc\u03c2",
     "gloss": "a way, road, journey",
     "created": "2018-11-06T19:55:21.652Z",
     "updated": "2018-11-06T19:55:21.652Z",
@@ -2008,7 +2008,7 @@
   "pk": 167,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03bb\u03cc\u03c2",
+    "headword": "\u03ba\u03b1\u03bb\u03cc\u03c2",
     "gloss": "beautiful, good, worthy",
     "created": "2018-11-06T19:55:21.655Z",
     "updated": "2018-11-06T19:55:21.655Z",
@@ -2020,7 +2020,7 @@
   "pk": 168,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f34\u03c1\u03c9",
+    "headword": "\u03b1\u1f34\u03c1\u03c9",
     "gloss": "I raise, lift up",
     "created": "2018-11-06T19:55:21.656Z",
     "updated": "2018-11-06T19:55:21.656Z",
@@ -2032,7 +2032,7 @@
   "pk": 169,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03af\u03b8\u03b7\u03bc\u03b9",
+    "headword": "\u03c4\u03af\u03b8\u03b7\u03bc\u03b9",
     "gloss": "I put, place",
     "created": "2018-11-06T19:55:21.658Z",
     "updated": "2018-11-06T19:55:21.658Z",
@@ -2044,7 +2044,7 @@
   "pk": 170,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bb\u03bb\u03ae\u03bb\u03c9\u03bd",
+    "headword": "\u1f00\u03bb\u03bb\u03ae\u03bb\u03c9\u03bd",
     "gloss": "one another",
     "created": "2018-11-06T19:55:21.659Z",
     "updated": "2018-11-06T19:55:21.659Z",
@@ -2056,7 +2056,7 @@
   "pk": 171,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f40\u03c6\u03b8\u03b1\u03bb\u03bc\u03cc\u03c2",
+    "headword": "\u1f40\u03c6\u03b8\u03b1\u03bb\u03bc\u03cc\u03c2",
     "gloss": "the eye",
     "created": "2018-11-06T19:55:21.660Z",
     "updated": "2018-11-06T19:55:21.660Z",
@@ -2068,7 +2068,7 @@
   "pk": 172,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03ad\u03ba\u03bd\u03bf\u03bd",
+    "headword": "\u03c4\u03ad\u03ba\u03bd\u03bf\u03bd",
     "gloss": "a child, descendent, inhabitant",
     "created": "2018-11-06T19:55:21.662Z",
     "updated": "2018-11-06T19:55:21.662Z",
@@ -2080,7 +2080,7 @@
   "pk": 173,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f15\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "headword": "\u1f15\u03c4\u03b5\u03c1\u03bf\u03c2",
     "gloss": "another, different",
     "created": "2018-11-06T19:55:21.664Z",
     "updated": "2018-11-06T19:55:21.664Z",
@@ -2092,7 +2092,7 @@
   "pk": 174,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f37\u03bc\u03b1",
+    "headword": "\u03b1\u1f37\u03bc\u03b1",
     "gloss": "blood",
     "created": "2018-11-06T19:55:21.666Z",
     "updated": "2018-11-06T19:55:21.666Z",
@@ -2104,7 +2104,7 @@
   "pk": 175,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03b5\u03bd\u03bd\u03ac\u03c9",
+    "headword": "\u03b3\u03b5\u03bd\u03bd\u03ac\u03c9",
     "gloss": "I beget, bring forth, give birth to",
     "created": "2018-11-06T19:55:21.668Z",
     "updated": "2018-11-06T19:55:21.669Z",
@@ -2116,7 +2116,7 @@
   "pk": 176,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03c1\u03c4\u03bf\u03c2",
+    "headword": "\u1f04\u03c1\u03c4\u03bf\u03c2",
     "gloss": "bread, a loaf, food",
     "created": "2018-11-06T19:55:21.671Z",
     "updated": "2018-11-06T19:55:21.671Z",
@@ -2128,7 +2128,7 @@
   "pk": 177,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03c9",
+    "headword": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03c9",
     "gloss": "I teach",
     "created": "2018-11-06T19:55:21.672Z",
     "updated": "2018-11-06T19:55:21.672Z",
@@ -2140,7 +2140,7 @@
   "pk": 178,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a6\u03b1\u03c1\u03b9\u03c3\u03b1\u1fd6\u03bf\u03c2",
+    "headword": "\u03a6\u03b1\u03c1\u03b9\u03c3\u03b1\u1fd6\u03bf\u03c2",
     "gloss": "a Pharisee",
     "created": "2018-11-06T19:55:21.674Z",
     "updated": "2018-11-06T19:55:21.674Z",
@@ -2152,7 +2152,7 @@
   "pk": 179,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ba\u03b5\u1fd6",
+    "headword": "\u1f10\u03ba\u03b5\u1fd6",
     "gloss": "there, yonder, thither",
     "created": "2018-11-06T19:55:21.676Z",
     "updated": "2018-11-06T19:55:21.676Z",
@@ -2164,7 +2164,7 @@
   "pk": 180,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u03bf\u03b2\u03ad\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03c6\u03bf\u03b2\u03ad\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I fear, am terrified",
     "created": "2018-11-06T19:55:21.678Z",
     "updated": "2018-11-06T19:55:21.678Z",
@@ -2176,7 +2176,7 @@
   "pk": 181,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b5\u03c1\u03b9\u03c0\u03b1\u03c4\u03ad\u03c9",
+    "headword": "\u03c0\u03b5\u03c1\u03b9\u03c0\u03b1\u03c4\u03ad\u03c9",
     "gloss": "I walk, conduct my life",
     "created": "2018-11-06T19:55:21.680Z",
     "updated": "2018-11-06T19:55:21.680Z",
@@ -2188,7 +2188,7 @@
   "pk": 182,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03bd\u03ce\u03c0\u03b9\u03bf\u03bd",
+    "headword": "\u1f10\u03bd\u03ce\u03c0\u03b9\u03bf\u03bd",
     "gloss": "before the face of, in the presence of",
     "created": "2018-11-06T19:55:21.682Z",
     "updated": "2018-11-06T19:55:21.682Z",
@@ -2200,7 +2200,7 @@
   "pk": 183,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03cc\u03c0\u03bf\u03c2",
+    "headword": "\u03c4\u03cc\u03c0\u03bf\u03c2",
     "gloss": "a place",
     "created": "2018-11-06T19:55:21.683Z",
     "updated": "2018-11-06T19:55:21.683Z",
@@ -2212,7 +2212,7 @@
   "pk": 184,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f30\u03ba\u03af\u03b1",
+    "headword": "\u03bf\u1f30\u03ba\u03af\u03b1",
     "gloss": "a house, household",
     "created": "2018-11-06T19:55:21.685Z",
     "updated": "2018-11-06T19:55:21.685Z",
@@ -2224,7 +2224,7 @@
   "pk": 185,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c4\u03b9",
+    "headword": "\u1f14\u03c4\u03b9",
     "gloss": "still, yet, even now",
     "created": "2018-11-06T19:55:21.686Z",
     "updated": "2018-11-06T19:55:21.687Z",
@@ -2236,7 +2236,7 @@
   "pk": 186,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u03cd\u03c2",
+    "headword": "\u03c0\u03bf\u03cd\u03c2",
     "gloss": "the foot",
     "created": "2018-11-06T19:55:21.688Z",
     "updated": "2018-11-06T19:55:21.688Z",
@@ -2248,7 +2248,7 @@
   "pk": 187,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f30\u03c1\u03ae\u03bd\u03b7",
+    "headword": "\u03b5\u1f30\u03c1\u03ae\u03bd\u03b7",
     "gloss": "peace, peace of mind",
     "created": "2018-11-06T19:55:21.690Z",
     "updated": "2018-11-06T19:55:21.690Z",
@@ -2260,7 +2260,7 @@
   "pk": 188,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b9\u03ba\u03b1\u03b9\u03bf\u03c3\u03cd\u03bd\u03b7",
+    "headword": "\u03b4\u03b9\u03ba\u03b1\u03b9\u03bf\u03c3\u03cd\u03bd\u03b7",
     "gloss": "justice, justness, righteousness",
     "created": "2018-11-06T19:55:21.691Z",
     "updated": "2018-11-06T19:55:21.691Z",
@@ -2272,7 +2272,7 @@
   "pk": 189,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03ac\u03b8\u03b7\u03bc\u03b1\u03b9",
+    "headword": "\u03ba\u03ac\u03b8\u03b7\u03bc\u03b1\u03b9",
     "gloss": "I sit, am seated",
     "created": "2018-11-06T19:55:21.693Z",
     "updated": "2018-11-06T19:55:21.693Z",
@@ -2284,7 +2284,7 @@
   "pk": 190,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03cc\u03bb\u03bb\u03c5\u03bc\u03b9",
+    "headword": "\u1f00\u03c0\u03cc\u03bb\u03bb\u03c5\u03bc\u03b9",
     "gloss": "I destroy, lose, am perishing",
     "created": "2018-11-06T19:55:21.695Z",
     "updated": "2018-11-06T19:55:21.695Z",
@@ -2296,7 +2296,7 @@
   "pk": 191,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b7\u03b4\u03b5\u03af\u03c2",
+    "headword": "\u03bc\u03b7\u03b4\u03b5\u03af\u03c2",
     "gloss": "no one, nothing",
     "created": "2018-11-06T19:55:21.696Z",
     "updated": "2018-11-06T19:55:21.696Z",
@@ -2308,7 +2308,7 @@
   "pk": 192,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03ac\u03bb\u03b1\u03c3\u03c3\u03b1",
+    "headword": "\u03b8\u03ac\u03bb\u03b1\u03c3\u03c3\u03b1",
     "gloss": "the sea, lake",
     "created": "2018-11-06T19:55:21.698Z",
     "updated": "2018-11-06T19:55:21.698Z",
@@ -2320,7 +2320,7 @@
   "pk": 193,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03af\u03c0\u03c4\u03c9",
+    "headword": "\u03c0\u03af\u03c0\u03c4\u03c9",
     "gloss": "I fall, fall under",
     "created": "2018-11-06T19:55:21.700Z",
     "updated": "2018-11-06T19:55:21.700Z",
@@ -2332,7 +2332,7 @@
   "pk": 194,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ad\u03c9",
+    "headword": "\u1f00\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ad\u03c9",
     "gloss": "I accompany, attend, follow",
     "created": "2018-11-06T19:55:21.703Z",
     "updated": "2018-11-06T19:55:21.703Z",
@@ -2344,7 +2344,7 @@
   "pk": 195,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f11\u03c0\u03c4\u03ac",
+    "headword": "\u1f11\u03c0\u03c4\u03ac",
     "gloss": "seven",
     "created": "2018-11-06T19:55:21.705Z",
     "updated": "2018-11-06T19:55:21.705Z",
@@ -2356,7 +2356,7 @@
   "pk": 196,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f54\u03c4\u03b5",
+    "headword": "\u03bf\u1f54\u03c4\u03b5",
     "gloss": "and not, neither, nor",
     "created": "2018-11-06T19:55:21.707Z",
     "updated": "2018-11-06T19:55:21.707Z",
@@ -2368,7 +2368,7 @@
   "pk": 197,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03c1\u03c7\u03c9",
+    "headword": "\u1f04\u03c1\u03c7\u03c9",
     "gloss": "I reign, rule",
     "created": "2018-11-06T19:55:21.708Z",
     "updated": "2018-11-06T19:55:21.708Z",
@@ -2380,7 +2380,7 @@
   "pk": 198,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03c0\u03c1\u03bf\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I come near, consent to",
     "created": "2018-11-06T19:55:21.710Z",
     "updated": "2018-11-06T19:55:21.710Z",
@@ -2392,7 +2392,7 @@
   "pk": 199,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bb\u03b7\u03c1\u03cc\u03c9",
+    "headword": "\u03c0\u03bb\u03b7\u03c1\u03cc\u03c9",
     "gloss": "I fill, fulfill, complete",
     "created": "2018-11-06T19:55:21.711Z",
     "updated": "2018-11-06T19:55:21.711Z",
@@ -2404,7 +2404,7 @@
   "pk": 200,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03b9\u03c1\u03cc\u03c2",
+    "headword": "\u03ba\u03b1\u03b9\u03c1\u03cc\u03c2",
     "gloss": "fitting season, opportunity, time",
     "created": "2018-11-06T19:55:21.713Z",
     "updated": "2018-11-06T19:55:21.713Z",
@@ -2416,7 +2416,7 @@
   "pk": 201,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03b5\u03cd\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03c0\u03c1\u03bf\u03c3\u03b5\u03cd\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I pray, pray for",
     "created": "2018-11-06T19:55:21.714Z",
     "updated": "2018-11-06T19:55:21.714Z",
@@ -2428,7 +2428,7 @@
   "pk": 202,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f65\u03c3\u03c4\u03b5",
+    "headword": "\u1f65\u03c3\u03c4\u03b5",
     "gloss": "so that, therefore",
     "created": "2018-11-06T19:55:21.716Z",
     "updated": "2018-11-06T19:55:21.716Z",
@@ -2440,7 +2440,7 @@
   "pk": 203,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ae\u03c4\u03b7\u03c1",
+    "headword": "\u03bc\u03ae\u03c4\u03b7\u03c1",
     "gloss": "a mother",
     "created": "2018-11-06T19:55:21.717Z",
     "updated": "2018-11-06T19:55:21.717Z",
@@ -2452,7 +2452,7 @@
   "pk": 204,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u1f00\u03b3\u03ce",
+    "headword": "\u03ba\u1f00\u03b3\u03ce",
     "gloss": "I also, I too",
     "created": "2018-11-06T19:55:21.719Z",
     "updated": "2018-11-06T19:55:21.719Z",
@@ -2464,7 +2464,7 @@
   "pk": 205,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c0\u03bf\u03c5",
+    "headword": "\u1f45\u03c0\u03bf\u03c5",
     "gloss": "where, whither",
     "created": "2018-11-06T19:55:21.721Z",
     "updated": "2018-11-06T19:55:21.721Z",
@@ -2476,7 +2476,7 @@
   "pk": 206,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f15\u03ba\u03b1\u03c3\u03c4\u03bf\u03c2",
+    "headword": "\u1f15\u03ba\u03b1\u03c3\u03c4\u03bf\u03c2",
     "gloss": "each, every one",
     "created": "2018-11-06T19:55:21.723Z",
     "updated": "2018-11-06T19:55:21.723Z",
@@ -2488,7 +2488,7 @@
   "pk": 207,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u1fb6\u03bb\u03bb\u03bf\u03bd",
+    "headword": "\u03bc\u1fb6\u03bb\u03bb\u03bf\u03bd",
     "gloss": "more, rather",
     "created": "2018-11-06T19:55:21.724Z",
     "updated": "2018-11-06T19:55:21.724Z",
@@ -2500,7 +2500,7 @@
   "pk": 208,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bd\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "headword": "\u1f00\u03bd\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
     "gloss": "I go up, mount, ascend",
     "created": "2018-11-06T19:55:21.726Z",
     "updated": "2018-11-06T19:55:21.726Z",
@@ -2512,7 +2512,7 @@
   "pk": 209,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03ba\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "headword": "\u1f10\u03ba\u03b2\u03ac\u03bb\u03bb\u03c9",
     "gloss": "I throw, cast, put out, banish, bring forth, produce",
     "created": "2018-11-06T19:55:21.728Z",
     "updated": "2018-11-06T19:55:21.728Z",
@@ -2524,7 +2524,7 @@
   "pk": 210,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03c4\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "headword": "\u03ba\u03b1\u03c4\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
     "gloss": "I go down, come down",
     "created": "2018-11-06T19:55:21.730Z",
     "updated": "2018-11-06T19:55:21.730Z",
@@ -2536,7 +2536,7 @@
   "pk": 211,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u039c\u03c9\u03cb\u03c3\u1fc6\u03c2",
+    "headword": "\u039c\u03c9\u03cb\u03c3\u1fc6\u03c2",
     "gloss": "Moses",
     "created": "2018-11-06T19:55:21.732Z",
     "updated": "2018-11-06T19:55:21.732Z",
@@ -2548,7 +2548,7 @@
   "pk": 212,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03af\u03ba\u03b1\u03b9\u03bf\u03c2",
+    "headword": "\u03b4\u03af\u03ba\u03b1\u03b9\u03bf\u03c2",
     "gloss": "just, righteous, impartial",
     "created": "2018-11-06T19:55:21.733Z",
     "updated": "2018-11-06T19:55:21.733Z",
@@ -2560,7 +2560,7 @@
   "pk": 213,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f51\u03c0\u03ac\u03b3\u03c9",
+    "headword": "\u1f51\u03c0\u03ac\u03b3\u03c9",
     "gloss": "I go away, depart",
     "created": "2018-11-06T19:55:21.735Z",
     "updated": "2018-11-06T19:55:21.735Z",
@@ -2572,7 +2572,7 @@
   "pk": 214,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03ad\u03bc\u03c0\u03c9",
+    "headword": "\u03c0\u03ad\u03bc\u03c0\u03c9",
     "gloss": "I send",
     "created": "2018-11-06T19:55:21.736Z",
     "updated": "2018-11-06T19:55:21.736Z",
@@ -2584,7 +2584,7 @@
   "pk": 215,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+    "headword": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
     "gloss": "an apostle, a messenger, an envoy, a delegate",
     "created": "2018-11-06T19:55:21.738Z",
     "updated": "2018-11-06T19:55:21.738Z",
@@ -2596,7 +2596,7 @@
   "pk": 216,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u03bd\u03b7\u03c1\u03cc\u03c2",
+    "headword": "\u03c0\u03bf\u03bd\u03b7\u03c1\u03cc\u03c2",
     "gloss": "evil, bad, wicked",
     "created": "2018-11-06T19:55:21.739Z",
     "updated": "2018-11-06T19:55:21.739Z",
@@ -2608,7 +2608,7 @@
   "pk": 217,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03c4\u03cc\u03bc\u03b1",
+    "headword": "\u03c3\u03c4\u03cc\u03bc\u03b1",
     "gloss": "the mouth, speech",
     "created": "2018-11-06T19:55:21.741Z",
     "updated": "2018-11-06T19:55:21.741Z",
@@ -2620,7 +2620,7 @@
   "pk": 218,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b2\u03b1\u03c0\u03c4\u03af\u03b6\u03c9",
+    "headword": "\u03b2\u03b1\u03c0\u03c4\u03af\u03b6\u03c9",
     "gloss": "I dip, submerge, baptize",
     "created": "2018-11-06T19:55:21.743Z",
     "updated": "2018-11-06T19:55:21.743Z",
@@ -2632,7 +2632,7 @@
   "pk": 219,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03bd\u03bf\u03af\u03b3\u03c9",
+    "headword": "\u1f00\u03bd\u03bf\u03af\u03b3\u03c9",
     "gloss": "I open",
     "created": "2018-11-06T19:55:21.744Z",
     "updated": "2018-11-06T19:55:21.744Z",
@@ -2644,7 +2644,7 @@
   "pk": 220,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03b7\u03bc\u03b5\u1fd6\u03bf\u03bd",
+    "headword": "\u03c3\u03b7\u03bc\u03b5\u1fd6\u03bf\u03bd",
     "gloss": "a sign, miracle, indication",
     "created": "2018-11-06T19:55:21.745Z",
     "updated": "2018-11-06T19:55:21.745Z",
@@ -2656,7 +2656,7 @@
   "pk": 221,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b1\u03c1\u03c4\u03c5\u03c1\u03ad\u03c9",
+    "headword": "\u03bc\u03b1\u03c1\u03c4\u03c5\u03c1\u03ad\u03c9",
     "gloss": "I witness, testify",
     "created": "2018-11-06T19:55:21.747Z",
     "updated": "2018-11-06T19:55:21.747Z",
@@ -2668,7 +2668,7 @@
   "pk": 222,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03bc\u03cc\u03c2",
+    "headword": "\u1f10\u03bc\u03cc\u03c2",
     "gloss": "mine",
     "created": "2018-11-06T19:55:21.748Z",
     "updated": "2018-11-06T19:55:21.748Z",
@@ -2680,7 +2680,7 @@
   "pk": 223,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f38\u03b5\u03c1\u03bf\u03c5\u03c3\u03b1\u03bb\u03ae\u03bc",
+    "headword": "\u1f38\u03b5\u03c1\u03bf\u03c5\u03c3\u03b1\u03bb\u03ae\u03bc",
     "gloss": "Jerusalem",
     "created": "2018-11-06T19:55:21.749Z",
     "updated": "2018-11-06T19:55:21.749Z",
@@ -2692,7 +2692,7 @@
   "pk": 224,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf\u03bd",
+    "headword": "\u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf\u03bd",
     "gloss": "the face, countenance, surface",
     "created": "2018-11-06T19:55:21.751Z",
     "updated": "2018-11-06T19:55:21.751Z",
@@ -2704,7 +2704,7 @@
   "pk": 225,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f55\u03b4\u03c9\u03c1",
+    "headword": "\u1f55\u03b4\u03c9\u03c1",
     "gloss": "water",
     "created": "2018-11-06T19:55:21.752Z",
     "updated": "2018-11-06T19:55:21.752Z",
@@ -2716,7 +2716,7 @@
   "pk": 226,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b5\u03c6\u03b1\u03bb\u03ae",
+    "headword": "\u03ba\u03b5\u03c6\u03b1\u03bb\u03ae",
     "gloss": "the head",
     "created": "2018-11-06T19:55:21.753Z",
     "updated": "2018-11-06T19:55:21.753Z",
@@ -2728,7 +2728,7 @@
   "pk": 227,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03ad\u03bb\u03b9\u03bf\u03bd",
+    "headword": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03ad\u03bb\u03b9\u03bf\u03bd",
     "gloss": "the good news, the gospel",
     "created": "2018-11-06T19:55:21.755Z",
     "updated": "2018-11-06T19:55:21.755Z",
@@ -2740,7 +2740,7 @@
   "pk": 228,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03ce\u03b4\u03b5\u03ba\u03b1",
+    "headword": "\u03b4\u03ce\u03b4\u03b5\u03ba\u03b1",
     "gloss": "twelve",
     "created": "2018-11-06T19:55:21.756Z",
     "updated": "2018-11-06T19:55:21.756Z",
@@ -2752,7 +2752,7 @@
   "pk": 229,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a3\u03af\u03bc\u03c9\u03bd",
+    "headword": "\u03a3\u03af\u03bc\u03c9\u03bd",
     "gloss": "Simon",
     "created": "2018-11-06T19:55:21.757Z",
     "updated": "2018-11-06T19:55:21.757Z",
@@ -2764,7 +2764,7 @@
   "pk": 230,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c4\u03b5\u03af\u03bd\u03c9",
+    "headword": "\u1f00\u03c0\u03bf\u03ba\u03c4\u03b5\u03af\u03bd\u03c9",
     "gloss": "I put to death, kill",
     "created": "2018-11-06T19:55:21.758Z",
     "updated": "2018-11-06T19:55:21.758Z",
@@ -2776,7 +2776,7 @@
   "pk": 231,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03b1\u03af\u03c1\u03c9",
+    "headword": "\u03c7\u03b1\u03af\u03c1\u03c9",
     "gloss": "I rejoice, am glad",
     "created": "2018-11-06T19:55:21.760Z",
     "updated": "2018-11-06T19:55:21.760Z",
@@ -2788,7 +2788,7 @@
   "pk": 232,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f08\u03b2\u03c1\u03b1\u03ac\u03bc",
+    "headword": "\u1f08\u03b2\u03c1\u03b1\u03ac\u03bc",
     "gloss": "Abraham",
     "created": "2018-11-06T19:55:21.761Z",
     "updated": "2018-11-06T19:55:21.761Z",
@@ -2800,7 +2800,7 @@
   "pk": 233,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u1ff6\u03c2",
+    "headword": "\u03c6\u1ff6\u03c2",
     "gloss": "light, a source of light",
     "created": "2018-11-06T19:55:21.763Z",
     "updated": "2018-11-06T19:55:21.763Z",
@@ -2812,7 +2812,7 @@
   "pk": 234,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03af\u03bd\u03c9",
+    "headword": "\u03c0\u03af\u03bd\u03c9",
     "gloss": "I drink, imbibe",
     "created": "2018-11-06T19:55:21.765Z",
     "updated": "2018-11-06T19:55:21.765Z",
@@ -2824,7 +2824,7 @@
   "pk": 235,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u1fe6\u03c1",
+    "headword": "\u03c0\u1fe6\u03c1",
     "gloss": "fire, trials",
     "created": "2018-11-06T19:55:21.766Z",
     "updated": "2018-11-06T19:55:21.766Z",
@@ -2836,7 +2836,7 @@
   "pk": 236,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03b7\u03c1\u03ad\u03c9",
+    "headword": "\u03c4\u03b7\u03c1\u03ad\u03c9",
     "gloss": "I keep, guard, observe",
     "created": "2018-11-06T19:55:21.767Z",
     "updated": "2018-11-06T19:55:21.767Z",
@@ -2848,7 +2848,7 @@
   "pk": 237,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f30\u03c4\u03ad\u03c9",
+    "headword": "\u03b1\u1f30\u03c4\u03ad\u03c9",
     "gloss": "I ask, request, beg, petition",
     "created": "2018-11-06T19:55:21.769Z",
     "updated": "2018-11-06T19:55:21.769Z",
@@ -2860,7 +2860,7 @@
   "pk": 238,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b1\u1f30\u03ce\u03bd\u03b9\u03bf\u03c2",
+    "headword": "\u03b1\u1f30\u03ce\u03bd\u03b9\u03bf\u03c2",
     "gloss": "eternal, unending",
     "created": "2018-11-06T19:55:21.770Z",
     "updated": "2018-11-06T19:55:21.770Z",
@@ -2872,7 +2872,7 @@
   "pk": 239,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03ac\u03b2\u03b2\u03b1\u03c4\u03bf\u03bd",
+    "headword": "\u03c3\u03ac\u03b2\u03b2\u03b1\u03c4\u03bf\u03bd",
     "gloss": "the Sabbath, a week",
     "created": "2018-11-06T19:55:21.771Z",
     "updated": "2018-11-06T19:55:21.771Z",
@@ -2884,7 +2884,7 @@
   "pk": 240,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f38\u03c3\u03c1\u03b1\u03ae\u03bb",
+    "headword": "\u1f38\u03c3\u03c1\u03b1\u03ae\u03bb",
     "gloss": "Israel",
     "created": "2018-11-06T19:55:21.772Z",
     "updated": "2018-11-06T19:55:21.772Z",
@@ -2896,7 +2896,7 @@
   "pk": 241,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03c1\u03b5\u1fd6\u03c2",
+    "headword": "\u03c4\u03c1\u03b5\u1fd6\u03c2",
     "gloss": "three",
     "created": "2018-11-06T19:55:21.836Z",
     "updated": "2018-11-06T19:55:21.836Z",
@@ -2908,7 +2908,7 @@
   "pk": 242,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "headword": "\u03c0\u03b9\u03c3\u03c4\u03cc\u03c2",
     "gloss": "trustworthy, faithful, believing",
     "created": "2018-11-06T19:55:21.852Z",
     "updated": "2018-11-06T19:55:21.852Z",
@@ -2920,7 +2920,7 @@
   "pk": 243,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03bb\u03cd\u03c9",
+    "headword": "\u1f00\u03c0\u03bf\u03bb\u03cd\u03c9",
     "gloss": "I release, let go, send away, divorce",
     "created": "2018-11-06T19:55:21.862Z",
     "updated": "2018-11-06T19:55:21.862Z",
@@ -2932,7 +2932,7 @@
   "pk": 244,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bb\u03bf\u1fd6\u03bf\u03bd",
+    "headword": "\u03c0\u03bb\u03bf\u1fd6\u03bf\u03bd",
     "gloss": "a ship, vessel",
     "created": "2018-11-06T19:55:21.864Z",
     "updated": "2018-11-06T19:55:21.864Z",
@@ -2944,7 +2944,7 @@
   "pk": 245,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1fe5\u1fc6\u03bc\u03b1",
+    "headword": "\u1fe5\u1fc6\u03bc\u03b1",
     "gloss": "a thing spoken",
     "created": "2018-11-06T19:55:21.866Z",
     "updated": "2018-11-06T19:55:21.866Z",
@@ -2956,7 +2956,7 @@
   "pk": 246,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u03ad\u03c1\u03c9",
+    "headword": "\u03c6\u03ad\u03c1\u03c9",
     "gloss": "I carry, bear, bring, lead",
     "created": "2018-11-06T19:55:21.881Z",
     "updated": "2018-11-06T19:55:21.881Z",
@@ -2968,7 +2968,7 @@
   "pk": 247,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03b3\u03c9",
+    "headword": "\u1f04\u03b3\u03c9",
     "gloss": "I lead",
     "created": "2018-11-06T19:55:21.882Z",
     "updated": "2018-11-06T19:55:21.882Z",
@@ -2980,7 +2980,7 @@
   "pk": 248,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03c1\u03c0\u03cc\u03c2",
+    "headword": "\u03ba\u03b1\u03c1\u03c0\u03cc\u03c2",
     "gloss": "fruit, result, gain",
     "created": "2018-11-06T19:55:21.884Z",
     "updated": "2018-11-06T19:55:21.884Z",
@@ -2992,7 +2992,7 @@
   "pk": 249,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03bd\u03c4\u03bf\u03bb\u03ae",
+    "headword": "\u1f10\u03bd\u03c4\u03bf\u03bb\u03ae",
     "gloss": "an ordinance, injunction, command",
     "created": "2018-11-06T19:55:21.885Z",
     "updated": "2018-11-06T19:55:21.885Z",
@@ -3004,7 +3004,7 @@
   "pk": 250,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03b5\u03c3\u03b2\u03cd\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "headword": "\u03c0\u03c1\u03b5\u03c3\u03b2\u03cd\u03c4\u03b5\u03c1\u03bf\u03c2",
     "gloss": "elder",
     "created": "2018-11-06T19:55:21.887Z",
     "updated": "2018-11-06T19:55:21.887Z",
@@ -3016,7 +3016,7 @@
   "pk": 251,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u03b7\u03bc\u03af",
+    "headword": "\u03c6\u03b7\u03bc\u03af",
     "gloss": "I say",
     "created": "2018-11-06T19:55:21.888Z",
     "updated": "2018-11-06T19:55:21.888Z",
@@ -3028,7 +3028,7 @@
   "pk": 252,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f34\u03c4\u03b5",
+    "headword": "\u03b5\u1f34\u03c4\u03b5",
     "gloss": "and if, whether",
     "created": "2018-11-06T19:55:21.890Z",
     "updated": "2018-11-06T19:55:21.891Z",
@@ -3040,7 +3040,7 @@
   "pk": 253,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b1\u03b9\u03bc\u03cc\u03bd\u03b9\u03bf\u03bd",
+    "headword": "\u03b4\u03b1\u03b9\u03bc\u03cc\u03bd\u03b9\u03bf\u03bd",
     "gloss": "an evil-spirit, demon",
     "created": "2018-11-06T19:55:21.892Z",
     "updated": "2018-11-06T19:55:21.892Z",
@@ -3052,7 +3052,7 @@
   "pk": 254,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f39\u03b5\u03c1\u03bf\u03c3\u03cc\u03bb\u03c5\u03bc\u03b1",
+    "headword": "\u1f39\u03b5\u03c1\u03bf\u03c3\u03cc\u03bb\u03c5\u03bc\u03b1",
     "gloss": "Jerusalem",
     "created": "2018-11-06T19:55:21.894Z",
     "updated": "2018-11-06T19:55:21.894Z",
@@ -3064,7 +3064,7 @@
   "pk": 255,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "headword": "\u03b8\u03c1\u03cc\u03bd\u03bf\u03c2",
     "gloss": "a throne, seat",
     "created": "2018-11-06T19:55:21.896Z",
     "updated": "2018-11-06T19:55:21.896Z",
@@ -3076,7 +3076,7 @@
   "pk": 256,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b5\u03cd\u03c2",
+    "headword": "\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b5\u03cd\u03c2",
     "gloss": "a scribe, town-clerk, man of learning",
     "created": "2018-11-06T19:55:21.898Z",
     "updated": "2018-11-06T19:55:21.899Z",
@@ -3088,7 +3088,7 @@
   "pk": 257,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "headword": "\u1f10\u03c1\u03c9\u03c4\u03ac\u03c9",
     "gloss": "I ask, question, request",
     "created": "2018-11-06T19:55:21.901Z",
     "updated": "2018-11-06T19:55:21.901Z",
@@ -3100,7 +3100,7 @@
   "pk": 258,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03bf\u03ba\u03ad\u03c9",
+    "headword": "\u03b4\u03bf\u03ba\u03ad\u03c9",
     "gloss": "I think, seem, appear, it seems",
     "created": "2018-11-06T19:55:21.903Z",
     "updated": "2018-11-06T19:55:21.903Z",
@@ -3112,7 +3112,7 @@
   "pk": 259,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03ad\u03bb\u03b7\u03bc\u03b1",
+    "headword": "\u03b8\u03ad\u03bb\u03b7\u03bc\u03b1",
     "gloss": "will, wish, desire",
     "created": "2018-11-06T19:55:21.905Z",
     "updated": "2018-11-06T19:55:21.905Z",
@@ -3124,7 +3124,7 @@
   "pk": 260,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03be\u03c9",
+    "headword": "\u1f14\u03be\u03c9",
     "gloss": "without, outside",
     "created": "2018-11-06T19:55:21.907Z",
     "updated": "2018-11-06T19:55:21.908Z",
@@ -3136,7 +3136,7 @@
   "pk": 261,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f44\u03c1\u03bf\u03c2",
+    "headword": "\u1f44\u03c1\u03bf\u03c2",
     "gloss": "a mountain",
     "created": "2018-11-06T19:55:21.910Z",
     "updated": "2018-11-06T19:55:21.910Z",
@@ -3148,7 +3148,7 @@
   "pk": 262,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bd\u03cd\u03be",
+    "headword": "\u03bd\u03cd\u03be",
     "gloss": "the night, night-time",
     "created": "2018-11-06T19:55:21.913Z",
     "updated": "2018-11-06T19:55:21.913Z",
@@ -3160,7 +3160,7 @@
   "pk": 263,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f67\u03b4\u03b5",
+    "headword": "\u1f67\u03b4\u03b5",
     "gloss": "here",
     "created": "2018-11-06T19:55:21.915Z",
     "updated": "2018-11-06T19:55:21.915Z",
@@ -3172,7 +3172,7 @@
   "pk": 264,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03b7\u03c4\u03cc\u03c2",
+    "headword": "\u1f00\u03b3\u03b1\u03c0\u03b7\u03c4\u03cc\u03c2",
     "gloss": "loved, beloved",
     "created": "2018-11-06T19:55:21.917Z",
     "updated": "2018-11-06T19:55:21.917Z",
@@ -3184,7 +3184,7 @@
   "pk": 265,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03bf\u03be\u03ac\u03b6\u03c9",
+    "headword": "\u03b4\u03bf\u03be\u03ac\u03b6\u03c9",
     "gloss": "I glorify, honor, bestow glory on",
     "created": "2018-11-06T19:55:21.918Z",
     "updated": "2018-11-06T19:55:21.918Z",
@@ -3196,7 +3196,7 @@
   "pk": 266,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b7\u03c1\u03cd\u03c3\u03c3\u03c9",
+    "headword": "\u03ba\u03b7\u03c1\u03cd\u03c3\u03c3\u03c9",
     "gloss": "I proclaim, herald, preach",
     "created": "2018-11-06T19:55:21.920Z",
     "updated": "2018-11-06T19:55:21.920Z",
@@ -3208,7 +3208,7 @@
   "pk": 267,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u03af\u03b1",
+    "headword": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u03af\u03b1",
     "gloss": "Galilee",
     "created": "2018-11-06T19:55:21.922Z",
     "updated": "2018-11-06T19:55:21.922Z",
@@ -3220,7 +3220,7 @@
   "pk": 268,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f31\u03bc\u03ac\u03c4\u03b9\u03bf\u03bd",
+    "headword": "\u1f31\u03bc\u03ac\u03c4\u03b9\u03bf\u03bd",
     "gloss": "outer garment",
     "created": "2018-11-06T19:55:21.923Z",
     "updated": "2018-11-06T19:55:21.923Z",
@@ -3232,7 +3232,7 @@
   "pk": 269,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f51\u03c0\u03ac\u03c1\u03c7\u03c9",
+    "headword": "\u1f51\u03c0\u03ac\u03c1\u03c7\u03c9",
     "gloss": "I am, exist, am in possession",
     "created": "2018-11-06T19:55:21.925Z",
     "updated": "2018-11-06T19:55:21.925Z",
@@ -3244,7 +3244,7 @@
   "pk": 270,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ba\u03c5\u03bd\u03ad\u03c9",
+    "headword": "\u03c0\u03c1\u03bf\u03c3\u03ba\u03c5\u03bd\u03ad\u03c9",
     "gloss": "I worship",
     "created": "2018-11-06T19:55:21.927Z",
     "updated": "2018-11-06T19:55:21.927Z",
@@ -3256,7 +3256,7 @@
   "pk": 271,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f24\u03b4\u03b7",
+    "headword": "\u1f24\u03b4\u03b7",
     "gloss": "now, already",
     "created": "2018-11-06T19:55:21.928Z",
     "updated": "2018-11-06T19:55:21.928Z",
@@ -3268,7 +3268,7 @@
   "pk": 272,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03c5\u03bd\u03ac\u03b3\u03c9",
+    "headword": "\u03c3\u03c5\u03bd\u03ac\u03b3\u03c9",
     "gloss": "I gather together",
     "created": "2018-11-06T19:55:21.930Z",
     "updated": "2018-11-06T19:55:21.930Z",
@@ -3280,7 +3280,7 @@
   "pk": 273,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u0394\u03b1\u03c5\u03af\u03b4",
+    "headword": "\u0394\u03b1\u03c5\u03af\u03b4",
     "gloss": "David",
     "created": "2018-11-06T19:55:21.932Z",
     "updated": "2018-11-06T19:55:21.932Z",
@@ -3292,7 +3292,7 @@
   "pk": 274,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f50\u03b8\u03cd\u03c2",
+    "headword": "\u03b5\u1f50\u03b8\u03cd\u03c2",
     "gloss": "straight, immediately",
     "created": "2018-11-06T19:55:21.934Z",
     "updated": "2018-11-06T19:55:21.934Z",
@@ -3304,7 +3304,7 @@
   "pk": 275,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03b1\u03c1\u03ac",
+    "headword": "\u03c7\u03b1\u03c1\u03ac",
     "gloss": "joy, gladness",
     "created": "2018-11-06T19:55:21.936Z",
     "updated": "2018-11-06T19:55:21.936Z",
@@ -3316,7 +3316,7 @@
   "pk": 276,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c3\u03c0\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u1f00\u03c3\u03c0\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I greet, salute, pay my respects to",
     "created": "2018-11-06T19:55:21.938Z",
     "updated": "2018-11-06T19:55:21.938Z",
@@ -3328,7 +3328,7 @@
   "pk": 277,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03c2",
+    "headword": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03c2",
     "gloss": "a teacher",
     "created": "2018-11-06T19:55:21.940Z",
     "updated": "2018-11-06T19:55:21.940Z",
@@ -3340,7 +3340,7 @@
   "pk": 278,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b8\u03b5\u03c9\u03c1\u03ad\u03c9",
+    "headword": "\u03b8\u03b5\u03c9\u03c1\u03ad\u03c9",
     "gloss": "I behold, look at, experience",
     "created": "2018-11-06T19:55:21.942Z",
     "updated": "2018-11-06T19:55:21.942Z",
@@ -3352,7 +3352,7 @@
   "pk": 279,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03af\u03b8\u03bf\u03c2",
+    "headword": "\u03bb\u03af\u03b8\u03bf\u03c2",
     "gloss": "a stone",
     "created": "2018-11-06T19:55:21.943Z",
     "updated": "2018-11-06T19:55:21.943Z",
@@ -3364,7 +3364,7 @@
   "pk": 280,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b7\u03b4\u03ad",
+    "headword": "\u03bc\u03b7\u03b4\u03ad",
     "gloss": "and not, not even",
     "created": "2018-11-06T19:55:21.945Z",
     "updated": "2018-11-06T19:55:21.945Z",
@@ -3376,7 +3376,7 @@
   "pk": 281,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03c0\u03b5\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "headword": "\u1f10\u03c0\u03b5\u03c1\u03c9\u03c4\u03ac\u03c9",
     "gloss": "I interrogate, question, demand of",
     "created": "2018-11-06T19:55:21.946Z",
     "updated": "2018-11-06T19:55:21.946Z",
@@ -3388,7 +3388,7 @@
   "pk": 282,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03c5\u03bd\u03b1\u03b3\u03c9\u03b3\u03ae",
+    "headword": "\u03c3\u03c5\u03bd\u03b1\u03b3\u03c9\u03b3\u03ae",
     "gloss": "an assembly, congregation, synagogue",
     "created": "2018-11-06T19:55:21.947Z",
     "updated": "2018-11-06T19:55:21.947Z",
@@ -3400,7 +3400,7 @@
   "pk": 283,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03ad\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "headword": "\u03b4\u03ad\u03c7\u03bf\u03bc\u03b1\u03b9",
     "gloss": "I take, receive, accept, welcome",
     "created": "2018-11-06T19:55:21.949Z",
     "updated": "2018-11-06T19:55:21.949Z",
@@ -3412,7 +3412,7 @@
   "pk": 284,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03bf\u03b9\u03bf\u1fe6\u03c4\u03bf\u03c2",
+    "headword": "\u03c4\u03bf\u03b9\u03bf\u1fe6\u03c4\u03bf\u03c2",
     "gloss": "of such a kind, such",
     "created": "2018-11-06T19:55:21.950Z",
     "updated": "2018-11-06T19:55:21.950Z",
@@ -3424,7 +3424,7 @@
   "pk": 285,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03ad\u03c3\u03bf\u03c2",
+    "headword": "\u03bc\u03ad\u03c3\u03bf\u03c2",
     "gloss": "middle, in the middle",
     "created": "2018-11-06T19:55:21.951Z",
     "updated": "2018-11-06T19:55:21.951Z",
@@ -3436,7 +3436,7 @@
   "pk": 286,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bb\u03bf\u03b9\u03c0\u03cc\u03c2",
+    "headword": "\u03bb\u03bf\u03b9\u03c0\u03cc\u03c2",
     "gloss": "left, left behind, the remainder",
     "created": "2018-11-06T19:55:21.952Z",
     "updated": "2018-11-06T19:55:21.952Z",
@@ -3448,7 +3448,7 @@
   "pk": 287,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03c1\u03af\u03c4\u03bf\u03c2",
+    "headword": "\u03c4\u03c1\u03af\u03c4\u03bf\u03c2",
     "gloss": "third",
     "created": "2018-11-06T19:55:21.954Z",
     "updated": "2018-11-06T19:55:21.954Z",
@@ -3460,7 +3460,7 @@
   "pk": 288,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c1\u03c7\u03ae",
+    "headword": "\u1f00\u03c1\u03c7\u03ae",
     "gloss": "ruler, beginning",
     "created": "2018-11-06T19:55:21.955Z",
     "updated": "2018-11-06T19:55:21.955Z",
@@ -3472,7 +3472,7 @@
   "pk": 289,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03c1\u03ac\u03b6\u03c9",
+    "headword": "\u03ba\u03c1\u03ac\u03b6\u03c9",
     "gloss": "I cry aloud, shriek",
     "created": "2018-11-06T19:55:21.957Z",
     "updated": "2018-11-06T19:55:21.957Z",
@@ -3484,7 +3484,7 @@
   "pk": 290,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03a0\u03b9\u03bb\u1fb6\u03c4\u03bf\u03c2",
+    "headword": "\u03a0\u03b9\u03bb\u1fb6\u03c4\u03bf\u03c2",
     "gloss": "Pilate",
     "created": "2018-11-06T19:55:21.958Z",
     "updated": "2018-11-06T19:55:21.958Z",
@@ -3496,7 +3496,7 @@
   "pk": 291,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b6\u03c9",
+    "headword": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b6\u03c9",
     "gloss": "I bring good news, preach good tidings",
     "created": "2018-11-06T19:55:21.960Z",
     "updated": "2018-11-06T19:55:21.960Z",
@@ -3508,7 +3508,7 @@
   "pk": 292,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b5\u03be\u03b9\u03cc\u03c2",
+    "headword": "\u03b4\u03b5\u03be\u03b9\u03cc\u03c2",
     "gloss": "on the right hand, right hand, right",
     "created": "2018-11-06T19:55:21.962Z",
     "updated": "2018-11-06T19:55:21.962Z",
@@ -3520,7 +3520,7 @@
   "pk": 293,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f45\u03c0\u03c9\u03c2",
+    "headword": "\u1f45\u03c0\u03c9\u03c2",
     "gloss": "how, in order that, so that",
     "created": "2018-11-06T19:55:21.964Z",
     "updated": "2018-11-06T19:55:21.965Z",
@@ -3532,7 +3532,7 @@
   "pk": 294,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "headword": "\u03c7\u03c1\u03cc\u03bd\u03bf\u03c2",
     "gloss": "time, a particular time, season",
     "created": "2018-11-06T19:55:21.966Z",
     "updated": "2018-11-06T19:55:21.966Z",
@@ -3544,7 +3544,7 @@
   "pk": 295,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b4\u03b9\u03cc",
+    "headword": "\u03b4\u03b9\u03cc",
     "gloss": "wherefore",
     "created": "2018-11-06T19:55:21.969Z",
     "updated": "2018-11-06T19:55:21.969Z",
@@ -3556,7 +3556,7 @@
   "pk": 296,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bf\u1f50\u03c7\u03af",
+    "headword": "\u03bf\u1f50\u03c7\u03af",
     "gloss": "by no means, not at all",
     "created": "2018-11-06T19:55:21.971Z",
     "updated": "2018-11-06T19:55:21.971Z",
@@ -3568,7 +3568,7 @@
   "pk": 297,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03bb\u03c0\u03af\u03c2",
+    "headword": "\u1f10\u03bb\u03c0\u03af\u03c2",
     "gloss": "hope, expectation",
     "created": "2018-11-06T19:55:21.973Z",
     "updated": "2018-11-06T19:55:21.973Z",
@@ -3580,7 +3580,7 @@
   "pk": 298,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c3\u03c7\u03b1\u03c4\u03bf\u03c2",
+    "headword": "\u1f14\u03c3\u03c7\u03b1\u03c4\u03bf\u03c2",
     "gloss": "last, at the last, finally",
     "created": "2018-11-06T19:55:21.975Z",
     "updated": "2018-11-06T19:55:21.975Z",
@@ -3592,7 +3592,7 @@
   "pk": 299,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b5\u03af\u03b8\u03c9",
+    "headword": "\u03c0\u03b5\u03af\u03b8\u03c9",
     "gloss": "I persuade, urge",
     "created": "2018-11-06T19:55:21.977Z",
     "updated": "2018-11-06T19:55:21.977Z",
@@ -3604,7 +3604,7 @@
   "pk": 300,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03c0\u03b5\u03af\u03c1\u03c9",
+    "headword": "\u03c3\u03c0\u03b5\u03af\u03c1\u03c9",
     "gloss": "I sow, spread, scatter",
     "created": "2018-11-06T19:55:21.978Z",
     "updated": "2018-11-06T19:55:21.978Z",
@@ -3616,7 +3616,7 @@
   "pk": 301,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f10\u03c0\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b1",
+    "headword": "\u1f10\u03c0\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b1",
     "gloss": "a promise",
     "created": "2018-11-06T19:55:21.980Z",
     "updated": "2018-11-06T19:55:21.980Z",
@@ -3628,7 +3628,7 @@
   "pk": 302,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03b9\u03b4\u03af\u03bf\u03bd",
+    "headword": "\u03c0\u03b1\u03b9\u03b4\u03af\u03bf\u03bd",
     "gloss": "a little child, an infant",
     "created": "2018-11-06T19:55:21.982Z",
     "updated": "2018-11-06T19:55:21.982Z",
@@ -3640,7 +3640,7 @@
   "pk": 303,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c3\u03bf\u03c6\u03af\u03b1",
+    "headword": "\u03c3\u03bf\u03c6\u03af\u03b1",
     "gloss": "wisdom",
     "created": "2018-11-06T19:55:21.984Z",
     "updated": "2018-11-06T19:55:21.984Z",
@@ -3652,7 +3652,7 @@
   "pk": 304,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c4\u03c5\u03c6\u03bb\u03cc\u03c2",
+    "headword": "\u03c4\u03c5\u03c6\u03bb\u03cc\u03c2",
     "gloss": "blind",
     "created": "2018-11-06T19:55:21.985Z",
     "updated": "2018-11-06T19:55:21.985Z",
@@ -3664,7 +3664,7 @@
   "pk": 305,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03ba\u03b1\u03ba\u03cc\u03c2",
+    "headword": "\u03ba\u03b1\u03ba\u03cc\u03c2",
     "gloss": "bad, evil",
     "created": "2018-11-06T19:55:21.987Z",
     "updated": "2018-11-06T19:55:21.987Z",
@@ -3676,7 +3676,7 @@
   "pk": 306,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b2\u03bf\u03bb\u03ae",
+    "headword": "\u03c0\u03b1\u03c1\u03b1\u03b2\u03bf\u03bb\u03ae",
     "gloss": "a parable, comparison",
     "created": "2018-11-06T19:55:21.988Z",
     "updated": "2018-11-06T19:55:21.989Z",
@@ -3688,7 +3688,7 @@
   "pk": 307,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03bf\u1fe6",
+    "headword": "\u03c0\u03bf\u1fe6",
     "gloss": "where, whither",
     "created": "2018-11-06T19:55:21.990Z",
     "updated": "2018-11-06T19:55:21.990Z",
@@ -3700,7 +3700,7 @@
   "pk": 308,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03bb\u1ff6\u03c3\u03c3\u03b1",
+    "headword": "\u03b3\u03bb\u1ff6\u03c3\u03c3\u03b1",
     "gloss": "the tongue, a language, nation",
     "created": "2018-11-06T19:55:21.992Z",
     "updated": "2018-11-06T19:55:21.992Z",
@@ -3712,7 +3712,7 @@
   "pk": 309,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03bc\u03b1\u03ba\u03ac\u03c1\u03b9\u03bf\u03c2",
+    "headword": "\u03bc\u03b1\u03ba\u03ac\u03c1\u03b9\u03bf\u03c2",
     "gloss": "happy, blessed",
     "created": "2018-11-06T19:55:21.994Z",
     "updated": "2018-11-06T19:55:21.994Z",
@@ -3724,7 +3724,7 @@
   "pk": 310,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "headword": "\u03c0\u03b1\u03c1\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
     "gloss": "I take, receive",
     "created": "2018-11-06T19:55:21.995Z",
     "updated": "2018-11-06T19:55:21.995Z",
@@ -3736,7 +3736,7 @@
   "pk": 311,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f04\u03c1\u03b1",
+    "headword": "\u1f04\u03c1\u03b1",
     "gloss": "then, therefore, since",
     "created": "2018-11-06T19:55:21.996Z",
     "updated": "2018-11-06T19:55:21.997Z",
@@ -3748,7 +3748,7 @@
   "pk": 312,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03b3\u03c1\u03b1\u03c6\u03ae",
+    "headword": "\u03b3\u03c1\u03b1\u03c6\u03ae",
     "gloss": "a writing, passage of scripture, the scriptures",
     "created": "2018-11-06T19:55:21.998Z",
     "updated": "2018-11-06T19:55:21.998Z",
@@ -3760,7 +3760,7 @@
   "pk": 313,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c4\u03bf\u03c2",
+    "headword": "\u1f14\u03c4\u03bf\u03c2",
     "gloss": "a year",
     "created": "2018-11-06T19:55:22.000Z",
     "updated": "2018-11-06T19:55:22.000Z",
@@ -3772,7 +3772,7 @@
   "pk": 314,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c7\u03c1\u03b5\u03af\u03b1",
+    "headword": "\u03c7\u03c1\u03b5\u03af\u03b1",
     "gloss": "need, necessity, business",
     "created": "2018-11-06T19:55:22.001Z",
     "updated": "2018-11-06T19:55:22.001Z",
@@ -3784,7 +3784,7 @@
   "pk": 315,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03c1\u03b7\u03bc\u03bf\u03c2",
+    "headword": "\u1f14\u03c1\u03b7\u03bc\u03bf\u03c2",
     "gloss": "deserted, desolate, a desert",
     "created": "2018-11-06T19:55:22.003Z",
     "updated": "2018-11-06T19:55:22.003Z",
@@ -3796,7 +3796,7 @@
   "pk": 316,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f14\u03bc\u03c0\u03c1\u03bf\u03c3\u03b8\u03b5\u03bd",
+    "headword": "\u1f14\u03bc\u03c0\u03c1\u03bf\u03c3\u03b8\u03b5\u03bd",
     "gloss": "in front, before the face",
     "created": "2018-11-06T19:55:22.005Z",
     "updated": "2018-11-06T19:55:22.005Z",
@@ -3808,7 +3808,7 @@
   "pk": 317,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u1f00\u03c0\u03bf\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "headword": "\u1f00\u03c0\u03bf\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
     "gloss": "I give back, return, sell",
     "created": "2018-11-06T19:55:22.007Z",
     "updated": "2018-11-06T19:55:22.007Z",
@@ -3820,7 +3820,7 @@
   "pk": 318,
   "fields": {
     "vocabulary_list": 1,
-    "lemma": "\u03c6\u03b1\u03bd\u03b5\u03c1\u03cc\u03c9",
+    "headword": "\u03c6\u03b1\u03bd\u03b5\u03c1\u03cc\u03c9",
     "gloss": "I make clear, visible, or manifest",
     "created": "2018-11-06T19:55:22.010Z",
     "updated": "2018-11-06T19:55:22.010Z",
