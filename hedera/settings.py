@@ -15,9 +15,9 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'atg-dev-hedera-lb-2073615562.us-east-1.elb.amazonaws.com'
+    "localhost",
+    "127.0.0.1",
+    "atg-dev-hedera-lb-2073615562.us-east-1.elb.amazonaws.com"
 ]
 
 # Local time zone for this installation. Choices can be found here:
@@ -143,6 +143,8 @@ INSTALLED_APPS = [
     # local apps
     "databasetext",
     "vocab_list",
+    "lattices",
+    "lemmatization",
 
     # project
     "hedera",
@@ -155,7 +157,7 @@ WEBPACK_LOADER = {
         "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
-        "IGNORE": [".*\.hot-update.js", ".+\.map"]
+        "IGNORE": [r".*\.hot-update.js", r".+\.map"]
     }
 }
 

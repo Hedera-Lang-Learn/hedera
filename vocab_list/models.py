@@ -1,6 +1,8 @@
 from django.conf import settings
 from django.db import models
 
+from lattices.models import LatticeNode
+
 
 class VocabularyList(models.Model):
 
@@ -23,10 +25,10 @@ class VocabularyList(models.Model):
 
     def load_tab_delimited(self, fd):
         for line in fd:
-            lemma, gloss = line.strip().split("\t")
+            headword, gloss = line.strip().split("\t")
             VocabularyListEntry.objects.create(
                 vocabulary_list=self,
-                lemma=lemma,
+                headword=headword,
                 gloss=gloss
             )
 
@@ -37,14 +39,16 @@ class VocabularyList(models.Model):
         return self.title
 
 
-
 class VocabularyListEntry(models.Model):
 
     vocabulary_list = models.ForeignKey(
         VocabularyList, related_name="entries", on_delete=models.CASCADE)
 
-    lemma = models.CharField(max_length=255)
+    headword = models.CharField(max_length=255)
     gloss = models.TextField(blank=True)
+
+    node = models.ForeignKey(
+        LatticeNode, null=True, on_delete=models.SET_NULL)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -53,3 +57,4 @@ class VocabularyListEntry(models.Model):
         verbose_name = "vocabulary list entry"
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
+        unique_together = ("vocabulary_list", "headword")
