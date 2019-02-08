@@ -1,0 +1,152 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="Harvard-Ivy3.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- CharftJS -->
+      <script>
+        window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Known words in Babrius, Fabulae Aesopeae"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} {y}",
+                dataPoints: [
+                    {y: 80, label: "Known words"},
+                    {y: 20, label: "Unknown words"}
+                ]
+            }]
+        });
+        chart.render();
+
+        }
+      </script>
+
+    <title>Hedera</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+      <!-- Navbar content -->
+        <a class="navbar-brand" href="#">
+            <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Greek</a>
+                        <a class="dropdown-item" href="#">Pусский</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About Hedera</a>
+                <input class="form-control mr-sm-2" type="search" placeholder="Sign in or sign up" aria-label="Sign in or sign up">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in/up</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col" style="margin-top: 1em;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Description of Hedera (based on the words I know, how much of an article can I read?)
+                    and call to action (concise instructions on how to use the limited features of this pre-logged in
+                    interface. E.g. “Here are 5 things you could do now...”)
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div><!-- Hedera introduction -->
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="card border-dark mb-3">
+                    <div class="card-header">
+                        English language - 200 words
+                    </div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">
+                            Babrius, Fabulae Aesopeae
+                        </h5>
+                        <h6>
+                            Fabulae Aesopeae
+                        </h6>
+                        <p class="text-muted">
+                            Book 1 Chapter 1 Section 1 (1.1.1)
+                        </p>
+                        <p class="card-text">
+                            Pseudodositheus, qui genealogiam Hygini interpretamentis adiectam (p. 65 sq. B.) scripsit
+                            ‘Maximo et Apro consulibus’, i. e. anno p. Chr. n. 207 (CIL. III 2 p. 1125), duas Babrii
+                            fabulas (84. 140) omnibus verbis opusculo suo recepit, alias sermone pedestri imitatus esse
+                            videtur (cf. Hausrath, Unters. zur Überl. der aesop. Fabeln 299). Itaque, si ab eodem
+                            interpretamenta omnia scripta sunt auctore, aut ipso a. 207 aut aliquot annis ante vel post
+                            a. 20 fabularum Babrianarum conlectio quaedam homuinum manibus terebatur.
+                        </p>
+                    </div>
+                </div>
+            </div><!-- Hedera passage -->
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="card border-dark mb-3">
+                    <div class="card-header">
+                        Standardized learned list
+                    </div>
+                    <div class="card-body text-dark">
+                        <p class="card-text">
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                                200 words
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                                2000 words
+                            </button>
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                                Dylan Thomas vocabulary
+                            </button>
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success">
+                        <div id="chartContainer" style="height: 200px; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </div>
+                </div>
+            </div><!-- Word choices -->
+        </div><!-- Hedera main content -->
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+</html>
