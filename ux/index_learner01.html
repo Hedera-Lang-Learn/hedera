@@ -2,7 +2,7 @@
 
 <html lang="en">
 
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,14 +10,15 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- canvasjs -->
-      <script>
+    <script>
         window.onload = function() {
 
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -39,10 +40,11 @@
         chart.render();
 
         }
-      </script>
+
+    </script>
 
     <title>Hedera</title>
-  </head>
+</head>
 
   <body>
 
@@ -58,7 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -72,82 +74,82 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0 ml-auto">
-                <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About Hedera</a>
-                <input class="form-control mr-sm-2" type="search" placeholder="Sign in or sign up" aria-label="Sign in or sign up">
-                <a href="index_learner01.html" class="btn btn-primary" role="button">Sign in/up</a>
+                <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">
+                    About Hedera
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto">
+                    <strong>
+                        Hi Ivy Livingston!
+                    </strong>
+                </a>
+                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-0">Sign out</a>
             </form>
         </div>
     </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col" style="margin-top: 6em;">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Description of Hedera (based on the words I know, how much of an article can I read?)
-                    and call to action (concise instructions on how to use the limited features of this pre-logged in
-                    interface. E.g. “Here are 5 things you could do now...”)
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        </div><!-- Hedera introduction -->
-        <div class="row">
+        <div class="row" style="margin-top: 6em;">
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
                     <div class="card-header">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
-                            English language - 200 words
+                            Create your vocabulary list
                         </h2>
                     </div>
                     <div class="card-body text-dark">
-                        <h5 class="card-title">
-                            Babrius, Fabulae Aesopeae
-                        </h5>
-                        <h6>
-                            Fabulae Aesopeae
-                        </h6>
-                        <p class="text-muted">
-                            Book 1 Chapter 1 Section 1 (1.1.1)
-                        </p>
-                        <p class="card-text">
-                            Pseudodositheus, qui genealogiam Hygini interpretamentis adiectam (p. 65 sq. B.) scripsit
-                            ‘Maximo et Apro consulibus’, i. e. anno p. Chr. n. 207 (CIL. III 2 p. 1125), duas Babrii
-                            fabulas (84. 140) omnibus verbis opusculo suo recepit, alias sermone pedestri imitatus esse
-                            videtur (cf. Hausrath, Unters. zur Überl. der aesop. Fabeln 299). Itaque, si ab eodem
-                            interpretamenta omnia scripta sunt auctore, aut ipso a. 207 aut aliquot annis ante vel post
-                            a. 20 fabularum Babrianarum conlectio quaedam homuinum manibus terebatur.
-                        </p>
+                        <label for="preExistingVocabularySets">
+                            Search from pre-existing vocabulary sets
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search for any of our 50 startup lists
+"
+                                   aria-label="Search for any of our 50 startup lists
+" aria-describedby="button-addon2" id="preExistingVocabularySets">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="button-addon2">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <label for="uploadVocabularyList">
+                            Upload vocabulary list from an excel or CSV file
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+  </div>
+                                    <input type="file" class="custom-file-input" id="uploadVocabularyList">
+                                    <label class="custom-file-label" for="uploadVocabularyList"
+                                           aria-describedby="uploadVocabularyList2">Choose file</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="uploadVocabularyList2">Upload</span>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div><!-- Hedera passage -->
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
-                    <div class="card-header">
+                    <div class="card-header card-header--hedera">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
-                            Standardized learned list
+                            Edit your vocabulary lists
                         </h2>
                     </div>
                     <div class="card-body text-dark">
                         <p class="card-text">
-                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-                                200 words
-                            </button>
-                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-                                2000 words
-                            </button>
-                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">
-                                Dylan Thomas vocabulary
-                            </button>
+                            (Work in progress)
                         </p>
-                    </div>
-                    <div class="card-footer bg-transparent border-success">
-                        <!--Commenting out Canvas JS chart until we figure out how to make it work from GitHub-->
-                        <div id="chartContainer" style="height: 200px; width: 100%;"></div>
-                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-                        <!--Placing here a screen capture of the CanvasJS rendered chart-->
-                        <!--<img src="canvasjs-placeholder.png" alt="Pie Chart showing percentage of unknown words"  class="img-fluid">-->
                     </div>
                 </div>
             </div><!-- Word choices -->
