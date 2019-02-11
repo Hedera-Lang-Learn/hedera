@@ -92,7 +92,7 @@
 
     <div class="container">
         <div class="row" style="margin-top: 6em;">
-            <div class="col-md-8 col-sm-12 col-xs-12">
+            <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
                     <div class="card-header">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
@@ -147,30 +147,10 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                                <div class="col-md-12">
-                                    <label for="NewVocabularyList">
-                                        Clone and save this new vocabulary list
-                                    </label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control"
-                                               placeholder="Type here your vocabulary list name"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2"
-                                               id="NewVocabularyList">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button"
-                                                    id="NewVocabularyList2">
-                                                Save
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                     </div>
                 </div>
             </div><!-- Hedera passage -->
-            <div class="col-md-4 col-sm-12 col-xs-12">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
                     <div class="card-header card-header--hedera">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
@@ -179,12 +159,82 @@
                     </div>
                     <div class="card-body text-dark">
                         <p class="card-text">
-                            (Work in progress)
+                            Select your  vocabulary list
                         </p>
+
+                        <div class="btn-group btn-block">
+                            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                My list A
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">My list B</a>
+                                <a class="dropdown-item" href="#">My list C</a>
+                                <a class="dropdown-item" href="#">My list D</a>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-primary btn-block">
+                            Edit my list
+                        </button>
+
+                        <hr>
+
+                        <p class="card-text">
+                            Search based on your  vocabulary list
+                        </p>
+
+                        <button type="button" class="btn btn-outline-primary btn-block">
+                            Search
+                        </button>
+
                     </div>
                 </div>
             </div><!-- Word choices -->
         </div><!-- Hedera main content -->
+
+        <div class="row">
+            <div class="col-md-9">
+                <label for="NewVocabularyList">
+                    Clone and save this new vocabulary list
+                </label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control"
+                           placeholder="Type here your vocabulary list name"
+                           aria-label="Recipient's username" aria-describedby="button-addon2"
+                           id="NewVocabularyList">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"
+                                id="NewVocabularyList2">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <label for="NewVocabularyList">
+                    Or… Append to any of your lists
+                </label>
+                <br>
+                <div class="btn-group btn-block" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            My list A
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start"
+                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
+                            <a class="dropdown-item" href="#">My list B</a>
+                            <a class="dropdown-item" href="#">My list C</a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary">Append</button>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
