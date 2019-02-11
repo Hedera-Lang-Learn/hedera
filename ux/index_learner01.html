@@ -123,8 +123,10 @@
                             <div class="input-group mb-3">
                                 <div class="custom-file">
                                     <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-  </div>
+                                        <span class="input-group-text" id="inputGroupFileAddon01">
+                                            Upload
+                                        </span>
+                                    </div>
                                     <input type="file" class="custom-file-input" id="uploadVocabularyList">
                                     <label class="custom-file-label" for="uploadVocabularyList"
                                            aria-describedby="uploadVocabularyList2">Choose file</label>
@@ -133,8 +135,37 @@
                                     <span class="input-group-text" id="uploadVocabularyList2">Upload</span>
                                 </div>
                             </div>
-
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="setListVocabularyTerms" hidden>Example textarea</label>
+                                    <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="8">(Input form with set list of vocabulary terms. Edit, add, customize and save.)
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <label for="NewVocabularyList">
+                                        Clone and save this new vocabulary list
+                                    </label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control"
+                                               placeholder="Type here your vocabulary list name"
+                                               aria-label="Recipient's username" aria-describedby="button-addon2"
+                                               id="NewVocabularyList">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button"
+                                                    id="NewVocabularyList2">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                     </div>
                 </div>
