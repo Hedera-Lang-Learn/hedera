@@ -16,7 +16,7 @@ pipenv shell
 npm start
 ```
 
-Open a new Terminal window and run:
+Leave the first Terminal window (above) running. Open a second Terminal window and run:
 
 ```
 cd <path to hedera>
