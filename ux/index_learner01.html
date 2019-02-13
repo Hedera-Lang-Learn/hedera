@@ -53,14 +53,25 @@
         <a class="navbar-brand" href="#">
             <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
+        <form class="form-inline my-2 my-lg-0 mx-auto">
+            <div class="input-group mb-3" style="margin-top:.5em;">
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-top:.25em;">
+                    <strong>
+                        Hi Ivy Livingston!
+                    </strong>
+                </a>
+                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign out</a>
+            </div>
+        </form>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -72,22 +83,16 @@
                         <a class="dropdown-item" href="#">Pусский</a>
                     </div>
                 </li>
+                <li>
+                    <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                        Hedera</a>
+                </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0 ml-auto">
-                <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">
-                    About Hedera
-                </a>
-                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </a>
-                <a href="#" class="nav-item nav-link ml-auto">
-                    <strong>
-                        Hi Ivy Livingston!
-                    </strong>
-                </a>
-                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-0">Sign out</a>
-            </form>
         </div>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </nav>
 
     <div class="container">
