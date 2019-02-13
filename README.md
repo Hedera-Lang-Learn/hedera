@@ -13,17 +13,10 @@ pipenv install
 pipenv shell
 ./manage.py migrate
 ./manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
-```
-
-Then, open two different terminals. In the first one run:
-
-```
-cd <path to hedera>
-pipenv shell
 npm start
 ```
 
-In the second terminal run:
+Open a new Terminal window and run:
 
 ```
 cd <path to hedera>
