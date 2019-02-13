@@ -18,6 +18,7 @@ pipenv shell
 Then, open two different terminals. In the first one run:
 
 ```
+cd <path to hedera>
 pipenv shell
 npm start
 ```
@@ -25,6 +26,7 @@ npm start
 In the second terminal run:
 
 ```
+cd <path to hedera>
 pipenv shell
 ./manage.py runserver
 ```
