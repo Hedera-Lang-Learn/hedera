@@ -13,15 +13,14 @@ pipenv install
 pipenv shell
 ./manage.py migrate
 ./manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
-npm start
+./manage.py runserver
 ```
 
 Leave the first Terminal window (above) running. Open a second Terminal window and run:
 
 ```
 cd <path to hedera>
-pipenv shell
-./manage.py runserver
+npm start
 ```
 
 Browse to http://localhost:8000/ or http://localhost:8000/read/1/
