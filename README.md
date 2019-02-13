@@ -15,10 +15,17 @@ pipenv shell
 ./manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
 ```
 
-Then, in two different terminals:
+Then, open two different terminals. In the first one run:
 
 ```
+pipenv shell
 npm start
+```
+
+In the second terminal run:
+
+```
+pipenv shell
 ./manage.py runserver
 ```
 
