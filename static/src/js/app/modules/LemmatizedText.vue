@@ -8,7 +8,7 @@
         :selected="selectedIndex === index"
         @selected="onSelect"
       />
-      {{ '' }}
+      {{ ' ' }}
     </template>
   </div>
 </template>
