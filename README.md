@@ -19,8 +19,26 @@ pipenv shell
 Leave the first Terminal window (above) running. Open a second Terminal window and run:
 
 ```
-cd <path to hedera>
+cd <path to hedera repo>
 npm start
 ```
 
 Browse to http://localhost:8000/ or http://localhost:8000/read/1/
+
+
+You many want to sign up an activate an account on a local desktop/laptop. After signing up, you will see an error stating that the is not active. Since you probably won't be receiving an email, the easiest way to activate it is to run the following commands:
+
+```
+cd <path to hedera repo>
+pipenv shell
+./manage.py shell
+```
+
+In the shell, type:
+
+```
+from django.contrib.auth.models import User
+user = User.objects.get(pk=1)
+user.is_active = True
+user.save()
+```
