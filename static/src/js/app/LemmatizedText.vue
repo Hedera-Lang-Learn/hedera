@@ -2,7 +2,7 @@
   <div class="lemmatized-text">
       <span
         v-for="(item, index) in items" :key="index"
-        class="token" :class="{unresolved: !item.resolved, selected: selectedToken === item, 'no-lemma': item.node === null }"
+        class="token" :class="{unresolved: !item.resolved, selected: selectedIndex === index, 'no-lemma': item.node === null }"
         @click.prevent="onClick(item, index)"
       >{{ item.token }} </span>
   </div>
@@ -23,6 +23,9 @@ export default {
     },
     selectedToken() {
       return this.$store.state.selectedToken;
+    },
+    selectedIndex() {
+      return this.$store.state.selectedIndex;
     }
   }
 };

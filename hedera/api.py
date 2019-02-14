@@ -31,9 +31,11 @@ class LemmatizationAPI(APIView):
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
         node_id = data["nodeId"]
+        resolved = data["resolved"]
 
         text_data = json.loads(text.data)
         text_data[token_index]["node"] = node_id
+        text_data[token_index]["resolved"] = resolved
         text.data = json.dumps(text_data)
         text.save()
 

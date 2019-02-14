@@ -6,6 +6,8 @@
         <div v-else>
             No Lemma
         </div>
+
+        <a href="" @click.prevent="markResolved(!token.resolved)">Mark {{ token.resolved ? 'Unresolved' : 'Resolved '}}</a>
     </div>
 </template>
 <script>
@@ -15,13 +17,26 @@ import { UPDATE_TOKEN } from './constants';
 export default {
     props: ['token', 'index', 'node'],
     components: { LatticeNode },
+    computed: {
+        textId() {
+            return this.$route.params.id;
+        }
+    },
     methods: {
         onSelect(node) {
-            const textId = this.$route.params.id;
             this.$store.dispatch(UPDATE_TOKEN, {
-                id: textId,
+                id: this.textId,
                 tokenIndex: this.index,
-                nodeId: node.pk
+                nodeId: node.pk,
+                resolved: this.token.resolved,
+            });
+        },
+        markResolved(resolved) {
+            this.$store.dispatch(UPDATE_TOKEN, {
+                id: this.textId,
+                tokenIndex: this.index,
+                nodeId: this.node ? this.node.pk : null,
+                resolved: resolved,
             });
         }
     }

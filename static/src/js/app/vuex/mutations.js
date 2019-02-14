@@ -16,7 +16,6 @@ export default {
   },
   [UPDATE_TOKEN]: (state, data) => {
     state.texts = data;
-    state.selectedIndex = null;
-    state.selectedToken = null;
+    state.selectedToken = state.texts[state.selectedIndex];
   },
 };

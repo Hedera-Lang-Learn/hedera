@@ -13,7 +13,7 @@ export default {
   fetchNode: (id, cb) => {
     return axios.get(`/lattices/${id}.json`).then(r => cb(r.data));
   },
-  updateToken: (id, tokenIndex, nodeId, cb) => {
-    return axios.post(`${BASE_URL}texts/${id}/`, { tokenIndex, nodeId }).then(r => cb(r.data));
+  updateToken: (id, tokenIndex, nodeId, resolved, cb) => {
+    return axios.post(`${BASE_URL}texts/${id}/`, { tokenIndex, nodeId, resolved }).then(r => cb(r.data));
   },
 };
