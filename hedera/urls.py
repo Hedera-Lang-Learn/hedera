@@ -13,4 +13,6 @@ urlpatterns = [
     re_path(r"^account/", include("account.urls")),
 
     path("read/<int:text_id>/", views.read, name="read"),
+
+    path("lemmatized_text/", include("lemmatized_text.urls")),
 ]

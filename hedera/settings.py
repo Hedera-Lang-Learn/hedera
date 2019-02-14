@@ -145,6 +145,7 @@ INSTALLED_APPS = [
     "vocab_list",
     "lattices",
     "lemmatization",
+    "lemmatized_text",
 
     # project
     "hedera",

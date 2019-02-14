@@ -18,10 +18,8 @@ def node_info(pk):
         print("lemmas:")
         for lemma_node in node.lemma_strings.all():
             print(f"    - {lemma_node.lemma} [{lemma_node.context}]")
-    if node.glosses.exists():
-        print("glosses:")
-        for node_gloss in node.glosses.all():
-            print(f"    - {node_gloss.gloss}")
+    print("label:")
+    print(f"    - {node.label}")
     if node.children.exists():
         print("children:")
         for child in node.children.all():

@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Reader{% endblock %}
+
+{% block body_class %}reader{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+{% block nav_items %}{% endblock %}
+
+{% block body %}
+  <h1>Lemmatized Text</h1>
+
+  <div class="text text-lg">
+    {% for item in data %}
+      <span class="token{% if not item.resolved %} unresolved{% endif %}">
+        {{ item.token }} ({{ item.node.pk }})
+      </span>
+    {% endfor %}
+  </div>
+
+{% endblock %}
