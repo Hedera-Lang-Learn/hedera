@@ -1,15 +1,15 @@
 <template>
   <div class="lemmatized-text">
     <template v-for="(token, index) in tokens">
-    <Token
-      :key="index"
-      :token="token"
-      :index="index"
-      :selected="selectedIndex === index"
-      @selected="onSelect"
-    />
-    {{ '' }}
-  </template>
+      <Token
+        :key="index"
+        :token="token"
+        :index="index"
+        :selected="selectedIndex === index"
+        @selected="onSelect"
+      />
+      {{ '' }}
+    </template>
   </div>
 </template>
 <script>
