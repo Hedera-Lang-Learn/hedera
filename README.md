@@ -26,7 +26,7 @@ npm start
 Browse to http://localhost:8000/ or http://localhost:8000/read/1/
 
 
-You many want to sign up an activate an account on a local desktop/laptop. After signing up, you will see an error stating that the is not active. Since you probably won't be receiving an email, the easiest way to activate it is to run the following commands:
+You many want to sign up and activate an account on a local desktop/laptop. After signing up, you will see an error stating that the is not active. Since you probably won't be receiving an email, the easiest way to activate it is to run the following commands:
 
 ```
 cd <path to hedera repo>
