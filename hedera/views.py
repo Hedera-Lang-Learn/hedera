@@ -11,7 +11,3 @@ def read(request, text_id):
     return render(request, "read.html", {
         "text": text
     })
-
-
-def app(request, path=None):
-    return render(request, "app.html", {})

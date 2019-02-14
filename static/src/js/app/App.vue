@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-8">
-        <router-view />
+        <LemmatizedText />
       </div>
       <div class="col-4">
         <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
@@ -13,13 +13,16 @@
   </div>
 </template>
 <script>
-import LatticeTree from './LatticeTree.vue';
 import { FETCH_TOKENS } from './constants';
 
+import LatticeTree from './modules/LatticeTree.vue';
+import LemmatizedText from './modules/LemmatizedText.vue';
+
 export default {
-  components: { LatticeTree },
+  props: ["textId"],
+  components: { LatticeTree, LemmatizedText },
   created() {
-    this.$store.dispatch(FETCH_TOKENS, { id: this.$route.params.id });
+    this.$store.dispatch(FETCH_TOKENS, { id: this.textId });
   },
   computed: {
     selectedToken() {

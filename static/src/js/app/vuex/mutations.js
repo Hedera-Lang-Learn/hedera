@@ -1,6 +1,9 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID } from '../constants';
 
 export default {
+  [SET_TEXT_ID]: (state, id) => {
+    state.textId = id;
+  },
   [FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },

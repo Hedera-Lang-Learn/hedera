@@ -18,3 +18,8 @@ def create(request):
         lt = models.LemmatizedText.objects.create(data=data)
         return redirect(f"/lemmatized_text/{lt.pk}")
     return render(request, "lemmatized_text/create.html", {})
+
+
+def text(request, pk):
+    text = get_object_or_404(models.LemmatizedText, pk=pk)
+    return render(request, "lemmatized_text/text.html", { "text": text })

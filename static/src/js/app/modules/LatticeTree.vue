@@ -12,14 +12,14 @@
 </template>
 <script>
 import LatticeNode from './LatticeNode.vue';
-import { UPDATE_TOKEN } from './constants';
+import { UPDATE_TOKEN } from '../constants';
 
 export default {
     props: ['token', 'index', 'node'],
     components: { LatticeNode },
     computed: {
         textId() {
-            return this.$route.params.id;
+            return this.$store.state.textId;
         }
     },
     methods: {

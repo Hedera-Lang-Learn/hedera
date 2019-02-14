@@ -1,10 +1,7 @@
 export default {
-  sidebarLeftOpened: true,
-  sidebarRightOpened: true,
-
+  textId: null,
   tokens: [],
   selectedToken: null,
   selectedIndex: null,
-
   nodes: {},
 };

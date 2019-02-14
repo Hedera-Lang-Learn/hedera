@@ -2,7 +2,6 @@ import Vue from 'vue';
 
 import globalComponents from './components';
 import store from './store';
-import router from './router';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
@@ -16,9 +15,10 @@ export default () => {
     /* eslint-disable no-new */
     new Vue({
       el: '#app',
-      render: h => h(App),
+      render(h) {
+        return h(App, { props: { textId: this.$el.attributes['text-id'].value } });
+      },
       store,
-      router,
     });
   }
 };
