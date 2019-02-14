@@ -15,4 +15,5 @@ urlpatterns = [
     path("read/<int:text_id>/", views.read, name="read"),
 
     path("lemmatized_text/", include("lemmatized_text.urls")),
+    path("lattices/", include("lattices.urls")),
 ]
