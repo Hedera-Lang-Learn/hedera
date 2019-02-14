@@ -6,7 +6,7 @@
         :token="token"
         :index="index"
         :selected="selectedIndex === index"
-        @selected="onSelect"
+        @toggleSelected="onToggleSelect"
       />
       {{ ' ' }}
     </template>
@@ -20,10 +20,14 @@ import Token from "./Token.vue";
 export default {
   components: { Token },
   methods: {
-    onSelect({ token, index }) {
-      this.$store.dispatch(SELECT_TOKEN, { token, index });
-      if (token.node !== null) {
-        this.$store.dispatch(FETCH_NODE, { id: token.node });
+    onToggleSelect({ token, index }) {
+      if (this.selectedIndex === index && this.selectedToken === token) {
+        this.$store.dispatch(SELECT_TOKEN, { token: null, index: null });
+      } else {
+        this.$store.dispatch(SELECT_TOKEN, { token, index });
+        if (token.node !== null) {
+          this.$store.dispatch(FETCH_NODE, { id: token.node });
+        }
       }
     }
   },
@@ -33,6 +37,9 @@ export default {
     },
     selectedIndex() {
       return this.$store.state.selectedIndex;
+    },
+    selectedToken() {
+      return this.$store.state.selectedToken;
     }
   }
 };

@@ -9,7 +9,7 @@ export default {
   props: ['token', 'index', 'selected'],
   methods: {
     onClick() {
-      this.$emit('selected', { token: this.token, index: this.index });
+      this.$emit('toggleSelected', { token: this.token, index: this.index });
     }
   },
   computed: {
