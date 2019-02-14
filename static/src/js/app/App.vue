@@ -1,16 +1,23 @@
 <template>
   <div class="app-container">
-    <router-view />
-    <aside v-if="selectedToken">
-      <pre>{{ selectedToken }} @ {{ selectedIndex }}</pre>
-      <pre>{{ selectedNode }}</pre>
-    </aside>
+    <h1>Lemmatized Text</h1>
+
+    <div class="row">
+      <div class="col-8">
+        <router-view />
+      </div>
+      <div class="col-4">
+        <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
+import LatticeTree from './LatticeTree.vue';
 import { FETCH_ITEMS } from './constants';
 
 export default {
+  components: { LatticeTree },
   created() {
     this.$store.dispatch(FETCH_ITEMS, { id: this.$route.params.id });
   },

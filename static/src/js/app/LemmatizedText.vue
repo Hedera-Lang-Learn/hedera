@@ -1,14 +1,10 @@
 <template>
   <div class="lemmatized-text">
-    <h1>Lemmatized Text</h1>
-
-    <div class="text text-lg">
       <span
         v-for="(item, index) in items" :key="index"
         class="token" :class="{unresolved: !item.resolved, selected: selectedToken === item, 'no-lemma': item.node === null }"
         @click.prevent="onClick(item, index)"
       >{{ item.token }} </span>
-    </div>
   </div>
 </template>
 <script>
