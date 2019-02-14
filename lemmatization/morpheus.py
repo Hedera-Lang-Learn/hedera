@@ -27,7 +27,7 @@ def morpheus(form, lang):
         "Accept": "application/json",
     }
     r = requests.get(url, headers=headers)
-    if r.status_code == 200:
+    if r.ok:
         body = r.json().get("RDF", {}).get("Annotation", {}).get("Body", [])
         if not isinstance(body, list):
             body = [body]
