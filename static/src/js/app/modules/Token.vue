@@ -1,7 +1,7 @@
 <template>
   <span class="token"
     :class="{unresolved, selected, 'no-lemma': noLemma }"
-    @click.prevent="onClick()">{{ token.token }} </span>
+    @click.prevent="onClick()">{{ token.token }}</span>
   </span>
 </template>
 <script>
