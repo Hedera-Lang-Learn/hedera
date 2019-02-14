@@ -1,6 +1,6 @@
 <template>
   <a class="mark-resolved" href @click.prevent="toggleResolved">
-      {{ label }}
+    {{ label }}
   </a>
 </template>
 <script>
