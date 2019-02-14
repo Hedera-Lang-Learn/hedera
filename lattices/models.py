@@ -4,13 +4,13 @@ from django.db import models
 class LatticeNode(models.Model):
 
     label = models.TextField()
-    children = models.ManyToManyField("self", symmetrical=False)
+    children = models.ManyToManyField("self", symmetrical=False, related_name="parents")
 
-    def to_dict(self):
+    def to_dict(self, up=True, down=True):
         """
         serialises the node with its form/lemma strings and descendants
         """
-        return {
+        d = {
             "pk": self.pk,
             "label": self.label,
             "forms": [
@@ -25,10 +25,21 @@ class LatticeNode(models.Model):
                     "context": lemma_node.context,
                 } for lemma_node in self.lemma_strings.all()
             ],
-            "children": [
-                child.to_dict() for child in self.children.all()
-            ],
         }
+        if down:
+            d.update({
+                "children": [
+                    child.to_dict(up=False) for child in self.children.all()
+                ],
+            })
+        if up:
+            d.update({
+                "parents": [
+                    parent.to_dict(down=False) for parent in self.parents.all()
+                ],
+            })
+
+        return d
 
 
 class FormNode(models.Model):
