@@ -1,0 +1,29 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Reader{% endblock %}
+
+{% block body_class %}reader{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+{% block nav_items %}{% endblock %}
+
+{% block body %}
+    <form method="post" action=".">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Language</label>
+            <select name="lang" class="form-control">
+                <option value="grc">Greek</option>
+                <option value="lat">Latin</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Text</label>
+            <textarea name="text" class="form-control" rows="10"></textarea>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

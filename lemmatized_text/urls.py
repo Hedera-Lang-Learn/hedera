@@ -8,5 +8,6 @@ from . import views
 
 
 urlpatterns = [
-    path("<int:text_id>/", views.read, name="read"),
+    path("", views.lemmatized_texts, name="lemmatized_texts_list"),
+    path("create/", views.create, name="lemmatized_texts_create"),
 ]

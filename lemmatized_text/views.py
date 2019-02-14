@@ -1,25 +1,20 @@
 import json
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from . import models
-from lattices.models import LatticeNode
+from lemmatization.lemmatizer import lemmatize_text
 
 
-def read(request, text_id):
-    text = get_object_or_404(models.LemmatizedText, pk=text_id)
-
-    data = []
-
-    for item in json.loads(text.data):
-        node = LatticeNode.objects.get(pk=item["node"])
-        data.append({
-            "token": item["token"],
-            "node": node,
-            "resolved": item["resolved"],
-        })
+def lemmatized_texts(request):
+    return render(request, "lemmatized_text/list.html", { "lemmatized_texts": models.LemmatizedText.objects.all() })
 
 
-    return render(request, "lemmatized_text/read.html", {
-        "data": data,
-    })
+def create(request):
+    if request.method == "POST":
+        lang = request.POST.get("lang")
+        text = request.POST.get("text")
+        data = json.dumps(lemmatize_text(text, lang))
+        lt = models.LemmatizedText.objects.create(data=data)
+        return redirect(f"/lemmatized_text/{lt.pk}")
+    return render(request, "lemmatized_text/create.html", {})

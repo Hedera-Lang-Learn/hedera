@@ -11,14 +11,9 @@
 {% block nav_items %}{% endblock %}
 
 {% block body %}
-  <h1>Lemmatized Text</h1>
-
-  <div class="text text-lg">
-    {% for item in data %}
-      <span class="token{% if not item.resolved %} unresolved{% endif %}">
-        {{ item.token }} ({{ item.node.pk }})
-      </span>
+    <ul>
+    {% for text in lemmatized_texts %}
+        <li><a href="/lemmatized_text/{{ text.pk }}/">Text {{ text.pk }}</a></li>
     {% endfor %}
-  </div>
-
+    </ul>
 {% endblock %}
