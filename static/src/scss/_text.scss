@@ -8,8 +8,13 @@ div.text {
 }
 
 .unresolved {
+  font-weight: 700;
+}
+
+.no-lemma {
   color: red;
 }
+
 
 .selected {
   background: #CCC;
