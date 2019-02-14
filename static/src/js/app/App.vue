@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <h1>Lemmatized Text</h1>
+    <nav><a href="/lemmatized_text/">Lemmatized Texts</a></nav>
 
     <div class="row">
       <div class="col-8">

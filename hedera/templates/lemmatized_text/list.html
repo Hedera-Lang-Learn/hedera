@@ -11,9 +11,13 @@
 {% block nav_items %}{% endblock %}
 
 {% block body %}
-    <ul>
-    {% for text in lemmatized_texts %}
-        <li><a href="/lemmatized_text/{{ text.pk }}/">Text {{ text.pk }}</a></li>
-    {% endfor %}
-    </ul>
+  <h1>Lemmatized Texts</h1>
+
+  <ul>
+  {% for text in lemmatized_texts %}
+    <li><a href="/lemmatized_text/{{ text.pk }}/">Text {{ text.pk }}</a></li>
+  {% endfor %}
+  </ul>
+
+  <a class="btn btn-primary" href="{% url 'lemmatized_texts_create' %}"><i class="fa fa-plus"></i> Create</a>
 {% endblock %}
