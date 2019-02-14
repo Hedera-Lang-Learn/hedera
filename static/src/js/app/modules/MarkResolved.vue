@@ -1,7 +1,9 @@
 <template>
-  <a class="mark-resolved" href @click.prevent="toggleResolved">
-    {{ label }}
-  </a>
+  <div class="mark-resolved">
+    <a href @click.prevent="toggleResolved">
+      {{ label }}
+    </a>
+  </div>
 </template>
 <script>
 export default {
