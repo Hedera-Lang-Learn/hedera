@@ -14,12 +14,12 @@
 </template>
 <script>
 import LatticeTree from './LatticeTree.vue';
-import { FETCH_ITEMS } from './constants';
+import { FETCH_TOKENS } from './constants';
 
 export default {
   components: { LatticeTree },
   created() {
-    this.$store.dispatch(FETCH_ITEMS, { id: this.$route.params.id });
+    this.$store.dispatch(FETCH_TOKENS, { id: this.$route.params.id });
   },
   computed: {
     selectedToken() {

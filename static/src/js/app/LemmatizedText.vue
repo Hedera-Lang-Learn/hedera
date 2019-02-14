@@ -1,10 +1,10 @@
 <template>
   <div class="lemmatized-text">
       <span
-        v-for="(item, index) in items" :key="index"
-        class="token" :class="{unresolved: !item.resolved, selected: selectedIndex === index, 'no-lemma': item.node === null }"
-        @click.prevent="onClick(item, index)"
-      >{{ item.token }} </span>
+        v-for="(token, index) in tokens" :key="index"
+        class="token" :class="{unresolved: !token.resolved, selected: selectedIndex === index, 'no-lemma': token.node === null }"
+        @click.prevent="onClick(token, index)"
+      >{{ token.token }} </span>
   </div>
 </template>
 <script>
@@ -12,14 +12,14 @@ import { SELECT_TOKEN, FETCH_NODE } from './constants';
 
 export default {
   methods: {
-      onClick(item, index) {
-          this.$store.dispatch(SELECT_TOKEN, { token: item, index });
-          this.$store.dispatch(FETCH_NODE, { id: item.node });
+      onClick(token, index) {
+          this.$store.dispatch(SELECT_TOKEN, { token, index });
+          this.$store.dispatch(FETCH_NODE, { id: token.node });
       }
   },
   computed: {
-    items() {
-      return this.$store.state.texts;
+    tokens() {
+      return this.$store.state.tokens;
     },
     selectedToken() {
       return this.$store.state.selectedToken;

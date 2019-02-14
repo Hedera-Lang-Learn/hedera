@@ -2,7 +2,7 @@ export default {
   sidebarLeftOpened: true,
   sidebarRightOpened: true,
 
-  texts: [],
+  tokens: [],
   selectedToken: null,
   selectedIndex: null,
 

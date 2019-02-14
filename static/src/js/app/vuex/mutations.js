@@ -1,8 +1,8 @@
-import { FETCH_ITEMS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN } from '../constants';
 
 export default {
-  [FETCH_ITEMS]: (state, data) => {
-    state.texts = data;
+  [FETCH_TOKENS]: (state, data) => {
+    state.tokens = data;
   },
   [SELECT_TOKEN]: (state, { token, index }) => {
     state.selectedToken = token;
@@ -15,7 +15,7 @@ export default {
     };
   },
   [UPDATE_TOKEN]: (state, data) => {
-    state.texts = data;
-    state.selectedToken = state.texts[state.selectedIndex];
+    state.tokens = data;
+    state.selectedToken = state.tokens[state.selectedIndex];
   },
 };
