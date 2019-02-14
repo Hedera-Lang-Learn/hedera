@@ -12,12 +12,13 @@
   </div>
 </template>
 <script>
-import { SELECT_TOKEN } from './constants';
+import { SELECT_TOKEN, FETCH_NODE } from './constants';
 
 export default {
   methods: {
       onClick(item, index) {
           this.$store.dispatch(SELECT_TOKEN, { token: item, index });
+          this.$store.dispatch(FETCH_NODE, { id: item.node });
       }
   },
   computed: {

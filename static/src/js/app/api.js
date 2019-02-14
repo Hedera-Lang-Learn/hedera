@@ -10,4 +10,7 @@ export default {
   fetchItems: (id, cb) => {
     return axios.get(`${BASE_URL}texts/${id}/`).then(r => cb(r.data));
   },
+  fetchNode: (id, cb) => {
+    return axios.get(`/lattices/${id}.json`).then(r => cb(r.data));
+  },
 };

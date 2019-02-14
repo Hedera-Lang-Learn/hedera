@@ -5,4 +5,6 @@ export default {
   texts: [],
   selectedToken: null,
   selectedIndex: null,
+
+  nodes: {},
 };

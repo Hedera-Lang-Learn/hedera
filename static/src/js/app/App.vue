@@ -2,7 +2,8 @@
   <div class="app-container">
     <router-view />
     <aside v-if="selectedToken">
-      {{ selectedToken }} @ {{ selectedIndex }}
+      <pre>{{ selectedToken }} @ {{ selectedIndex }}</pre>
+      <pre>{{ selectedNode }}</pre>
     </aside>
   </div>
 </template>
@@ -19,6 +20,9 @@ export default {
     },
     selectedIndex() {
       return this.$store.state.selectedIndex;
+    },
+    selectedNode() {
+      return this.$store.state.nodes[this.selectedToken.node];
     }
   }
 }
