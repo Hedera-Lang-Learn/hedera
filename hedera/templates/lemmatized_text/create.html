@@ -15,6 +15,9 @@
   <form method="post" action=".">
     {% csrf_token %}
     <div class="form-group">
+      <label>Title</label>
+      <input type="text" name="title" class="form-control">
+    <div class="form-group">
       <label>Language</label>
       <select name="lang" class="form-control">
         <option value="grc">Greek</option>

@@ -12,10 +12,11 @@ def lemmatized_texts(request):
 
 def create(request):
     if request.method == "POST":
+        title = request.POST.get("title")
         lang = request.POST.get("lang")
         text = request.POST.get("text")
         data = json.dumps(lemmatize_text(text, lang))
-        lt = models.LemmatizedText.objects.create(data=data)
+        lt = models.LemmatizedText.objects.create(title=title, data=data)
         return redirect(f"/lemmatized_text/{lt.pk}")
     return render(request, "lemmatized_text/create.html", {})
 
