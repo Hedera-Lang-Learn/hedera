@@ -1,4 +1,4 @@
-import { FETCH_ITEMS, SELECT_TOKEN, FETCH_NODE } from '../constants';
+import { FETCH_ITEMS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN } from '../constants';
 
 export default {
   [FETCH_ITEMS]: (state, data) => {
@@ -13,5 +13,10 @@ export default {
       ...state.nodes,
       [data.pk]: data,
     };
+  },
+  [UPDATE_TOKEN]: (state, data) => {
+    state.texts = data;
+    state.selectedIndex = null;
+    state.selectedToken = null;
   },
 };
