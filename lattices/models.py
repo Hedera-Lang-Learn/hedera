@@ -7,6 +7,9 @@ class LatticeNode(models.Model):
     children = models.ManyToManyField("self", symmetrical=False)
 
     def to_dict(self):
+        """
+        serialises the node with its form/lemma strings and descendants
+        """
         return {
             "pk": self.pk,
             "label": self.label,
