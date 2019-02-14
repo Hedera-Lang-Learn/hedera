@@ -11,5 +11,6 @@
 {% block nav_items %}{% endblock %}
 
 {% block body %}
-    <div id="app" text-id="{{ text.pk }}"></div>
+  <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &raquo; <b>{{ text.title }}</b></nav>
+  <div id="app" text-id="{{ text.pk }}"></div>
 {% endblock %}

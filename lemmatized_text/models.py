@@ -5,6 +5,8 @@ from django.db import models
 
 class LemmatizedText(models.Model):
 
+    title = models.CharField(max_length=100)
+
     # this should be a JSON list of the form
     # [
     #   {"token": "res publica", "node": 1537, "resolved": true},
@@ -14,3 +16,6 @@ class LemmatizedText(models.Model):
     # where node is the pk of the LatticeNode
 
     data = models.TextField()
+
+    def __str__(self):
+        return self.title

@@ -15,7 +15,7 @@
 
   <ul>
   {% for text in lemmatized_texts %}
-    <li><a href="/lemmatized_text/{{ text.pk }}/">Text {{ text.pk }}</a></li>
+    <li><a href="/lemmatized_text/{{ text.pk }}/">{{ text.title }}</a></li>
   {% endfor %}
   </ul>
 

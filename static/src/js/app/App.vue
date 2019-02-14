@@ -1,7 +1,5 @@
 <template>
   <div class="app-container">
-    <nav><a href="/lemmatized_text/">Lemmatized Texts</a></nav>
-
     <div class="row">
       <div class="col-8">
         <LemmatizedText />
