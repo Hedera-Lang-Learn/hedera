@@ -2,6 +2,7 @@ import Vue from 'vue';
 
 import globalComponents from './components';
 import store from './store';
+import router from './router';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
@@ -17,6 +18,7 @@ export default () => {
       el: '#app',
       render: h => h(App),
       store,
+      router,
     });
   }
 };

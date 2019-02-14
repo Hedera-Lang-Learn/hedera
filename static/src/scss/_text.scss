@@ -3,6 +3,14 @@ div.text {
   font-family: 'Noto Serif';
 }
 
+.token {
+  cursor: pointer;
+}
+
 .unresolved {
   color: red;
+}
+
+.selected {
+  background: #CCC;
 }

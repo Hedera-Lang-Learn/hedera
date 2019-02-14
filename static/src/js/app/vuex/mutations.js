@@ -1,10 +1,11 @@
-import { TOGGLE_SIDEBAR_LEFT, TOGGLE_SIDEBAR_RIGHT } from '../constants';
+import { FETCH_ITEMS, SELECT_TOKEN } from '../constants';
 
 export default {
-  [TOGGLE_SIDEBAR_LEFT]: (state) => {
-    state.sidebarLeftOpened = !state.sidebarLeftOpened;
+  [FETCH_ITEMS]: (state, data) => {
+    state.texts = data;
   },
-  [TOGGLE_SIDEBAR_RIGHT]: (state) => {
-    state.sidebarRightOpened = !state.sidebarRightOpened;
+  [SELECT_TOKEN]: (state, { token, index }) => {
+    state.selectedToken = token;
+    state.selectedIndex = index;
   },
 };

@@ -1,2 +1,2 @@
-export const TOGGLE_SIDEBAR_LEFT = 'toggleSidebarLeft';
-export const TOGGLE_SIDEBAR_RIGHT = 'toggleSidebarRight';
+export const FETCH_ITEMS = 'fetchItems';
+export const SELECT_TOKEN = 'selectToken';

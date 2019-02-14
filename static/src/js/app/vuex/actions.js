@@ -1,6 +1,7 @@
-import { TOGGLE_SIDEBAR_LEFT, TOGGLE_SIDEBAR_RIGHT } from '../constants';
+import { FETCH_ITEMS, SELECT_TOKEN } from '../constants';
+import api from '../api';
 
 export default {
-  [TOGGLE_SIDEBAR_LEFT]: ({ commit }) => commit(TOGGLE_SIDEBAR_LEFT),
-  [TOGGLE_SIDEBAR_RIGHT]: ({ commit }) => commit(TOGGLE_SIDEBAR_RIGHT),
+  [FETCH_ITEMS]: ({ commit }, { id }) => api.fetchItems(id, data => commit(FETCH_ITEMS, data.data)),
+  [SELECT_TOKEN]: ({ commit }, { token, index }) => commit(SELECT_TOKEN, { token, index }),
 };
