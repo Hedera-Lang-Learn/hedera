@@ -95,31 +95,128 @@
         </button>
     </nav>
 
-    <div class="container">
-        <div class="row" style="margin-top: 6em;">
-            <div class="col-md-8 col-sm-12 col-xs-12">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 7em;">
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
-                    <div class="card-header">
+                    <div class="card-header card-header--hedera">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
-                            Create your vocabulary list
+                            My vocabulary words
                         </h2>
                     </div>
                     <div class="card-body text-dark">
-                        <label for="preExistingVocabularySets">
-                            Search from pre-existing vocabulary sets
-                        </label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search for any of our 50 startup lists
-"
-                                   aria-label="Search for any of our 50 startup lists
-" aria-describedby="button-addon2" id="preExistingVocabularySets">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" id="button-addon2">
-                                    Search
-                                </button>
-                            </div>
+
+                        <div style="width: 100%; height: 24.65em; overflow-y: scroll; overflow-x:hidden; border: 1px solid rgba(0,0,0,.125);">
+                             <div class="ml-2 mt-n3">
+                            Ego
+                            <br>
+                            Tu
+                            <br>
+                            Nos
+                            <br>
+                            Vos
+                            <br>
+                            Is
+                            <br>
+                            Ea<
+                            <br>
+                            Id
+                            <br>
+                            Suus
+                            <br>
+                            Tuus, uester
+                            <br>
+                            Meus
+                            <br>
+                            Eius
+                            <br>
+                            Ipse,a,um
+                            <br>
+                            in
+                            <br>
+                            a,ab
+                            <br>
+                            de
+                            <br>
+                            pro
+                            <br>
+                            sine
+                            <br>
+                            ante
+                            <br>
+                            contra
+                            per
+                            <br>
+                            post
+                            <br>
+                            trans
+                            <br>
+                            ad
+                            <br>
+                            ex
+                            <br>
+                            cum
+                            <br>
+                            et, atque
+                            <br>
+                            nam
+                            <br>
+                            sed
+                            <br>
+                            deinde
+                            <br>
+                            quia
+                            <br>
+                            si
+                            <br>
+                            tamen
+                            <br>
+                            dum
+                            <br>
+                            uel….uel
+                            <br>
+                            nemo
+                            <br>
+                            nihil
+                            <br>
+                            non
+                            <br>
+                            ut
+                            <br>
+                            nunc
+                            <br>
+                            ita
+                            <br>
+                            Bonus
+                            <br>
+                            Malus
+                            <br>
+                            Multus
+                            <br>
+                            Parvus
+                            <br>
+                            Magnus
+                            <br>
+                            Solus
+                        </div>
                         </div>
 
+                        <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                            <i class="fas fa-file-export"></i>
+                            Export to CSV
+                        </button>
+
+                    </div>
+                </div>
+            </div><!-- My vocabulary words -->
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="card border-dark mb-3">
+                    <div class="card-header">
+                        <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
+                            Create or edit your vocabulary list
+                        </h2>
+                    </div>
+                    <div class="card-body text-dark" style="height: 30.5em;"><!-- we may use Bootstrap card-deck class to match cards height -->
 
                         <label for="uploadVocabularyList">
                             Upload vocabulary list from an excel or CSV file
@@ -140,29 +237,41 @@
                                     <span class="input-group-text" id="uploadVocabularyList2">Upload</span>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- Upload -->
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="setListVocabularyTerms" hidden>Example textarea</label>
-                                    <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="8">(Input form with set list of vocabulary terms. Edit, add, customize and save.)
+                        <div class="form-group">
+                            <label for="setListVocabularyTerms" hidden>Example textarea</label>
+                            <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="10">(Input form with set list of vocabulary terms. Edit, add, customize and save.)
                                     </textarea>
-                                </div>
+                        </div><!-- Text area -->
+
+                        <label for="NewVocabularyList">
+                            Clone and save this new vocabulary list
+                        </label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"
+                                   placeholder="Type here your vocabulary list name"
+                                   aria-label="Recipient's username" aria-describedby="button-addon2"
+                                   id="NewVocabularyList">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button"
+                                        id="NewVocabularyList2">
+                                    Save
+                                </button>
                             </div>
-                        </div>
+                        </div><!-- Clone and save this new vocabulary list -->
 
                     </div>
                 </div>
-            </div><!-- Hedera passage -->
-            <div class="col-md-4 col-sm-12 col-xs-12">
+            </div><!-- Create or edit your vocabulary list -->
+            <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="card border-dark mb-3">
                     <div class="card-header card-header--hedera">
                         <h2 style="font-size: 1.25em; font-weigth: 500; margin-bottom: -.25em;">
                             Edit your vocabulary lists
                         </h2>
                     </div>
-                    <div class="card-body text-dark">
+                    <div class="card-body text-dark" style="height: 30.5em;"><!-- we may use Bootstrap card-deck class to match cards height -->
                         <p class="card-text">
                             Select your  vocabulary list
                         </p>
@@ -193,53 +302,19 @@
                             Search
                         </button>
 
+                        <hr>
+
+                        <label for="preExistingVocabularySets">
+                            Search from pre-existing vocabulary sets
+                        </label>
+                        <button type="button" class="btn btn-outline-primary btn-block" id="preExistingVocabularySets">
+                            Search
+                        </button>
+
                     </div>
                 </div>
-            </div><!-- Word choices -->
+            </div><!-- Edit your vocabulary lists -->
         </div><!-- Hedera main content -->
-
-        <div class="row">
-            <div class="col-md-8">
-                <label for="NewVocabularyList">
-                    Clone and save this new vocabulary list
-                </label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control"
-                           placeholder="Type here your vocabulary list name"
-                           aria-label="Recipient's username" aria-describedby="button-addon2"
-                           id="NewVocabularyList">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"
-                                id="NewVocabularyList2">
-                            Save
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <label for="NewVocabularyList">
-                    Or… Append to any of your lists
-                </label>
-                <br>
-                <div class="btn-group btn-block" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            My list A
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" x-placement="bottom-start"
-                             style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 38px, 0px);">
-                            <a class="dropdown-item" href="#">My list B</a>
-                            <a class="dropdown-item" href="#">My list C</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary">Append</button>
-
-
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Optional JavaScript -->

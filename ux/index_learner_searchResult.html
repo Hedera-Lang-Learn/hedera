@@ -1,0 +1,309 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- canvasjs -->
+    <script>
+        window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Known words in Babrius, Fabulae Aesopeae"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} {y}",
+                dataPoints: [
+                    {y: 80, label: "Known words"},
+                    {y: 20, label: "Unknown words"}
+                ]
+            }]
+        });
+        chart.render();
+
+        }
+
+    </script>
+
+    <title>Hedera</title>
+</head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+      <!-- Navbar content -->
+        <a class="navbar-brand" href="#">
+            <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+        </a>
+
+        <form class="form-inline my-2 my-lg-0 mx-auto">
+            <div class="input-group mb-3" style="margin-top:.5em;">
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-top:.25em;">
+                    <strong>
+                        Hi Ivy Livingston!
+                    </strong>
+                </a>
+                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign out</a>
+            </div>
+        </form><!-- Sign in/out -->
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Greek</a>
+                        <a class="dropdown-item" href="#">Pусский</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                        Hedera</a>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="col" style="margin-top: 7em;">
+            <h2>
+                Search in repositories
+            </h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3">
+            <p class="card-text">
+                Search based on my list
+            </p>
+
+            <div class="btn-group btn-block">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    My list A
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">My list B</a>
+                    <a class="dropdown-item" href="#">My list C</a>
+                    <a class="dropdown-item" href="#">My list D</a>
+                </div>
+            </div>
+        </div><!--Search based on my list -->
+
+            <div class="col-md-3">
+            <p class="card-text">
+                Number of known words
+            </p>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    100
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">200</a>
+                    <a class="dropdown-item" href="#">300</a>
+                    <a class="dropdown-item" href="#">400</a>
+                </div>
+            </div>
+        </div><!--Number of known words-->
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                We found
+                <strong>##</strong>
+                passages with about 100 words from
+                <strong>My list A</strong>
+            </div>
+        </div><!--Search results info-->
+
+        <div class="col mt-4">
+            <div class="table-responsive-md" style="margin-bottom: 6em">
+                <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">
+                        <a href="#">
+                            % known vocab
+                            <i class="fas fa-sort-numeric-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#">
+                            Popularity
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#">
+                            Length
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #1</th>
+                    <td class="align-middle">98% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="9"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                9
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            200 words
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #2</th>
+                    <td class="align-middle">83% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="7"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                7
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            187 words
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #3</th>
+                    <td class="align-middle">72% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 50%;" aria-valuenow="5"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                5
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            160 words
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #4</th>
+                    <td class="align-middle">63% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="9"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                9
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            93 words
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #5</th>
+                    <td class="align-middle">61% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 30%;" aria-valuenow="3"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                3
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            85 words
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">Passage #6</th>
+                    <td class="align-middle">56% known vocab</td>
+                    <td class="align-middle">
+                        <div class="progress" style="height: 2.5em; font-size: 1em;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="7"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                7
+                            </div>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a href="" class="btn btn-outline-primary my-2 my-sm-1">
+                            50 words
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div><!--Search results table-->
+
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <div class="col-2">
+                <a href="#" class="btn btn-outline-primary btn-block my-2 my-sm-1">
+                    Edit “My list A”
+                </a>
+            </div>
+            <div class="col-2 col-md-offset-8">
+                <a href="#" class="btn btn-primary btn-block my-2 my-sm-1">
+                    Search again
+                </a>
+            </div>
+        </nav>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+</html>
