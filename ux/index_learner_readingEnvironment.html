@@ -1,0 +1,569 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- canvasjs -->
+        <script>
+            window.onload = function() {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: ""
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: [
+                        {y: 80, label: "Known words"},
+                        {y: 20, label: "Unknown words"}
+                    ]
+                }]
+            });
+            chart.render();
+
+            }
+
+        </script>
+
+        <!--Amending Bootstrap-->
+        <style>
+            h3 {
+                font-size: 1.25em;
+                margin-top: -.5em;
+            }
+        </style>
+
+        <title>Hedera</title>
+    </head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+      <!-- Navbar content -->
+        <a class="navbar-brand" href="#">
+            <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+        </a>
+
+        <form class="form-inline my-2 my-lg-0 mx-auto">
+            <div class="input-group mb-3" style="margin-top:.5em;">
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-top:.25em;">
+                    <strong>
+                        Hi Ivy Livingston!
+                    </strong>
+                </a>
+                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign out</a>
+            </div>
+        </form><!-- Sign in/out -->
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Greek</a>
+                        <a class="dropdown-item" href="#">Pусский</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                        Hedera</a>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="col" style="margin-top: 7em;">
+            <h2>
+                Reading environment
+            </h2>
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-md-2">
+                <a href="index_learner_searchResult.html" class="btn btn-outline-primary btn-block">
+                    Return to search
+                </a>
+            </div>
+        </div><!--/ Return to search -->
+
+        <div class="row mt-3">
+
+            <div class="col">
+
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Language A
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Language B</a>
+                        <a class="dropdown-item" href="#">Language C</a>
+                        <a class="dropdown-item" href="#">Language D</a>
+                    </div>
+                </div>
+
+            </div><!--/ Language drop down -->
+
+            <div class="col">
+
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        My library A
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">My library B</a>
+                        <a class="dropdown-item" href="#">My library C</a>
+                        <a class="dropdown-item" href="#">My library D</a>
+                    </div>
+                </div>
+            </div><!--/ My library drop down -->
+
+            <div class="col">
+
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Known words
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Known word B</a>
+                        <a class="dropdown-item" href="#">Known wordy C</a>
+                        <a class="dropdown-item" href="#">Etc.</a>
+                    </div>
+                </div>
+            </div><!--/ Known words drop down -->
+
+            <div class="col">
+
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        My bookmarks A
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">My bookmarks B</a>
+                        <a class="dropdown-item" href="#">My bookmarks C</a>
+                        <a class="dropdown-item" href="#">My bookmarks D</a>
+                    </div>
+                </div>
+            </div><!--/ My bookmarks drop down -->
+
+            <div class="col">
+                <a href="#" class="btn btn-outline-primary btn-block">
+                    <i class="fas fa-tachometer-alt"></i>
+                    My dashboard
+                </a>
+            </div><!--/ My dashboard -->
+
+            <div class="col">
+
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Text size
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" style="font-size: 1em;">Medium</a>
+                        <a class="dropdown-item" href="#" style="font-size: 2em;">Large</a>
+                        <a class="dropdown-item" href="#" style="font-size: 3em;">Exra large</a>
+                    </div>
+                </div>
+
+            </div><!--/ Text size drop down -->
+
+        </div><!--/ Top row of drop downs and buttons -->
+
+        <div class="row mt-3">
+
+            <div class="col-2">
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Passage info
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Passage info B</a>
+                        <a class="dropdown-item" href="#">Passage info C</a>
+                        <a class="dropdown-item" href="#">Passage info D</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ Passage info drop down -->
+
+        <div class="row mt-3">
+
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="card border-success mb-3">
+
+                    <div class="card-header card-header--hedera" hidden>
+                        <h2 style="font-size: 1.25em; font-weight: 500; margin-bottom: -.25em;">
+                            Passage
+                        </h2>
+                    </div><!--/ Accessible header for assistive technology -->
+
+                    <div class="card-body text-dark">
+
+                        <div style="width: 100%; height: 39em; overflow-y: scroll; overflow-x:hidden; border: 1px solid rgba(0,0,0,.125);">
+                            &nbsp;
+                            <div class="ml-2 mt-n3">
+
+                                <table class="table table-sm">
+                                    <thead hidden>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row" rowspan="5">
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 46em;">
+                                                    1
+                                                </button>
+                                            </td>
+                                            <td scope="row" rowspan="5">
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 46em;">
+                                                    1
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 8em;">
+                                                    1
+                                                </button>
+                                            </td>
+                                            <td>
+                                                Gallia est omnis divisa in partes tres, quarum unam incolunt Belgae,
+                                                aliam Aquitani, tertiam qui ipsorum lingua Celtae, nostra Galli
+                                                <span class="bg-warning p-1">
+                                                    appellantur</span>.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 8em;">
+                                                    2
+                                                </button>
+                                            </td>
+                                            <td>
+                                                Hi omnes lingua, institutis, legibus inter se differunt. Gallos ab
+                                                Aquitanis Garumna flumen, a Belgis Matrona et Sequana dividit.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 8em;">
+                                                    3
+                                                </button>
+                                            </td>
+                                            <td>
+                                                Horum
+                                                <button type="button" class="btn btn-outline-success btn-sm"
+                                                        data-container="body" data-toggle="popover" data-placement="top"
+                                                        data-content="Of all these, the Belgians are the bravest/strongest.">
+                                                    <i class="far fa-comment mr-1"></i>
+                                                    omnium fortissimi
+                                                </button>
+                                                sunt Belgae, propterea quod a cultu atque
+                                                humanitate provinciae longissime absunt, minimeque ad eos mercatores
+                                                saepe commeant atque ea quae ad effeminandos animos pertinent
+                                            </td>
+                                        <tr>
+                                            <td>
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 8em;">
+                                                    4
+                                                </button>
+                                            </td>
+                                            <td>
+                                                proximique sunt Germanis, qui trans
+                                                <span class="bg-primary p-1 text-light mr-1">
+                                                    <i class="fas fa-edit"></i>
+                                                    Rhenum incolunt, quibuscum continenter bellum gerunt.
+                                                </span>
+                                                Qua de causa Helvetii quoque reliquos Gallos virtute praecedunt,
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <!--I couldn't find a way to make this button 100% high-->
+                                                <button class="btn btn-light btn-block" style="height: 12em;">
+                                                    5
+                                                </button>
+                                            </td>
+                                            <td>
+                                                quod fere cotidianis proeliis cum Germanis contendunt, cum aut suis
+                                                finibus eos prohibent aut ipsi in eorum finibus bellum gerunt. Eorum una
+                                                pars, quam Gallos obtinere dictum est, initium capit a flumine Rhodano,
+                                                continetur Garumna flumine, Oceano, finibus Belgarum, attingit etiam ab
+                                                Sequanis et Helvetiis flumen Rhenum, vergit ad septentriones.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div><!--/ Passage content -->
+
+                    <div class="row m-1">
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="tooltip" data-placement="top" title="Previous passage in scope of work">
+                                Previous
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-outline-primary btn-block">
+                                <i class="fas fa-search mr-1"></i>
+                                Find similar passages
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="tooltip" data-placement="top" title="Next passage in scope of work">
+                                Next
+                            </button>
+                        </div>
+                    </div><!--/ Passage buttons, row 1 -->
+
+                    <div class="row m-1">
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="tooltip" data-placement="top" title="The system remembers the last passage and also the last 5 passages">
+                                <i class="far fa-bookmark mr-1"></i>
+                                Bookmark or save for later
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="tooltip" data-placement="top" title="Rating this reading or aknowledgment">
+                                <i class="far fa-star mr-1"></i>
+                                Rate this reading
+                            </button>
+                        </div>
+                    </div><!--/ Passage buttons, row 2 -->
+
+                </div>
+            </div><!--/ Passage -->
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+
+                <div class="card border-warning mb-3">
+                    <div class="card-header card-header--hedera bg-warning">
+                        <h2 style="font-size: 1.25em; font-weight: 500; margin-bottom: -.25em;">
+                            Annotations
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">
+                            appellantur
+                        </p>
+                        <button type="button" class="btn btn-outline-warning btn-block text-dark" data-toggle="tooltip"
+                                data-placement="top"
+                                title="Toggle button">
+                            <i class="far fa-bookmark mr-1"></i>
+                            Mark as known
+                        </button>
+                    </div>
+                </div><!--/ Annotations -->
+
+                <div class="card border-dark mb-3">
+                    <div class="card-header card-header--hedera">
+                        <h2 style="font-size: 1.25em; font-weight: 500; margin-bottom: -.25em;">
+                            Custom glossary
+                        </h2>
+                    </div>
+                    <div class="card-body text-dark">
+                        <h3>
+                            Unkonwn words
+                        </h3>
+
+                        <div style="width: 100%; height: 10em; overflow-y: scroll; overflow-x:hidden; border: 1px solid rgba(0,0,0,.125);">
+                            &nbsp;
+                            <div class="ml-2 mt-n3">
+                                <div class="form-check">
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Word
+                                    </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            Word
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+                                    <label class="form-check-label" for="defaultCheck3">
+                                        Word
+                                    </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+                                        <label class="form-check-label" for="defaultCheck4">
+                                            Word
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck5">
+                                    <label class="form-check-label" for="defaultCheck5">
+                                        Word
+                                    </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck6">
+                                        <label class="form-check-label" for="defaultCheck6">
+                                            Word
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck7">
+                                    <label class="form-check-label" for="defaultCheck7">
+                                        Word
+                                    </label>
+                                    </p>
+                                    <p>
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                        <label class="form-check-label" for="defaultCheck2">
+                                            Word
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline-primary btn-block mt-3"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Button remains disabled until the first checkbox is selected">
+                            Add to my known word list
+                        </button>
+
+                        <!--Commenting out Canvas JS chart until we figure out how to make it work from GitHub-->
+                        <div id="chartContainer" style="height: 200px; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+                        <button type="button" class="btn btn-outline-primary btn-block mt-3"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Save edits made to the custom glossary">
+                            Update glossary
+                        </button>
+
+                    </div>
+                </div><!--/ Custom glossary -->
+
+            </div><!--/ Menus, column 1 -->
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+
+                <div class="card border-success mb-3">
+                    <div class="card-header card-header--hedera bg-success text-light">
+                        <h2 style="font-size: 1.25em; font-weight: 500; margin-bottom: -.25em;">
+                            <i class="far fa-comment mr-1"></i>
+                            Comments
+                        </h2>
+                    </div>
+                    <div class="card-body text-dark">
+                        <p>
+                            Select text to comment
+                        </p>
+                        <button type="button" class="btn btn-outline-success btn-block">
+                            <i class="fas fa-comment-medical mr-1"></i>
+                            Add comment
+                        </button>
+                        <div class="form-group mt-3">
+                            <label for="setListVocabularyTerms" hidden="">Add comment</label>
+                            <textarea class="form-control text-muted border-success" id="setListVocabularyTerms" rows="5" placeholder="(Add comment here)"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-outline-success btn-block">
+                            Save comment
+                        </button>
+                    </div>
+                </div><!--/ Comments -->
+
+                <div class="card border-success mb-3">
+                    <div class="card-header card-header--hedera bg-primary text-light">
+                        <h2 style="font-size: 1.25em; font-weight: 500; margin-bottom: -.25em;">
+                            <i class="fas fa-edit mr-1"></i>
+                            Annotations
+                        </h2>
+                    </div>
+                    <div class="card-body text-dark">
+                        <p>
+                            Select text to annotate
+                        </p>
+                        <button type="button" class="btn btn-outline-primary btn-block" data-toggle="tooltip" data-placement="top" title="" data-original-title="Post MVP: Annotations are user’s personal notes as opposed to official commentary">
+                            <i class="fas fa-edit mr-1"></i>
+                            Add annotation
+                        </button>
+                        <div class="form-group mt-3">
+                            <label for="setListVocabularyTerms" hidden="">Add comment</label>
+                            <textarea class="form-control text-muted border-primary" id="setListVocabularyTerms" rows="5" placeholder="(Add annotation here)"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-block">
+                            Save annotation
+                        </button>
+                    </div>
+                </div><!--/ Annotations -->
+
+            </div><!--/ Menus, column 2 -->
+
+        </div><!--/ Main content -->
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  <!--Tooltip and popover-->
+  <script>
+      $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+      $(function () {
+          $('[data-toggle="popover"]').popover()
+        })
+  </script>
+
+  </body>
+
+</html>
