@@ -7,6 +7,7 @@ const BASE_URL = '/api/v1/';
 
 
 export default {
+  fetchVocabLists: cb => axios.get(`${BASE_URL}vocab_lists/`).then(r => cb(r.data)),
   fetchTokens: (id, cb) => {
     return axios.get(`${BASE_URL}lemmatized_texts/${id}/`).then(r => cb(r.data));
   },

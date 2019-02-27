@@ -6,6 +6,7 @@ from django.views import View
 
 from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
+from vocab_list.models import VocabularyList
 
 class APIView(View):
 
@@ -45,3 +46,9 @@ class LemmatizationAPI(APIView):
 
         text.refresh_from_db()
         return JsonResponse({"data": json.loads(text.data)})
+
+
+class VocabularyListAPI(APIView):
+
+    def get_data(self):
+        return [v.data() for v in VocabularyList.objects.all()]

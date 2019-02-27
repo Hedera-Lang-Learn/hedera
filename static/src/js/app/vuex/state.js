@@ -4,4 +4,6 @@ export default {
   selectedToken: null,
   selectedIndex: null,
   nodes: {},
+  vocabLists: [],
+  selectedVocabList: null,
 };

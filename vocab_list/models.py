@@ -38,6 +38,13 @@ class VocabularyList(models.Model):
     def __str__(self):
         return self.title
 
+    def data(self):
+        return {
+            "id": self.pk,
+            "title": self.title,
+            "description": self.description,
+        }
+
 
 class VocabularyListEntry(models.Model):
 
