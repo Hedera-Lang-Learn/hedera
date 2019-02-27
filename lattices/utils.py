@@ -11,7 +11,18 @@ def make_label(kind, value, context):
     return label
 
 
-def get_lattice_node(form, lemmas, context=""):
+def get_lattice_node(lemmas, form=None, context=""):
+    """
+    get or create a LatticeNode from the given lemma(s) (and possibly form)
+
+    LemmaNode(s) (and FormNode) will also be created if necessary.
+
+    `lemmas` can be a string (a single lemma, in which case `form` is ignored)
+    or a list of strings (multiple lemmas, in which case `form` is required)
+    """
+
+    if not isinstance(lemmas, list):
+        lemmas = [lemmas]
 
     if not lemmas:
         return
@@ -27,6 +38,9 @@ def get_lattice_node(form, lemmas, context=""):
             return node
 
     else:  # more than one lemma
+        if form is None:
+            raise ValueError("form cannot be None if more than one lemma")
+
         form_node = FormNode.objects.filter(context=context, form=form).first()
         if form_node:
             node = form_node.node
