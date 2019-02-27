@@ -25,3 +25,10 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+@import "../../../scss/config";
+
+.in-vocab-list {
+  background: $highlight-color;
+}
+</style>
