@@ -1,6 +1,6 @@
 <template>
   <span class="token"
-    :class="{unresolved, selected, 'no-lemma': noLemma }"
+    :class="{unresolved, selected, 'no-lemma': noLemma, 'in-vocab-list': inVocabList }"
     @click.prevent="onClick()">{{ token.token }}</span>
   </span>
 </template>
@@ -13,6 +13,9 @@ export default {
     }
   },
   computed: {
+    inVocabList() {
+      return this.token.inVocabList;
+    },
     unresolved() {
       return !this.token.resolved;
     },
