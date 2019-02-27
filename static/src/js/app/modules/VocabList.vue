@@ -1,7 +1,8 @@
 <template>
     <div class="vocab-list">
         <h4>{{ title }}</h4>
-        <p class="lead">{{ description }}</p>
+        <p>{{ description }}</p>
+        <gauge-chart v-if="active" :rate="knownVocab" label="Known" />
         <button class="btn btn-block btn-outline-primary" :class="{ active }" @click.prevent="onSelect">Select</button>
     </div>
 </template>
@@ -17,6 +18,9 @@ export default {
       },
       description() {
         return this.vocabList.description;
+      },
+      knownVocab() {
+        return this.$store.getters.knownVocab;
       }
     },
     methods: {
