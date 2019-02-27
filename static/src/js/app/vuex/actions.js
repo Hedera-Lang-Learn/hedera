@@ -1,4 +1,4 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, ADD_LEMMA } from '../constants';
 import api from '../api';
 
 export default {
@@ -10,6 +10,9 @@ export default {
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, data => commit(FETCH_NODE, data)),
   [UPDATE_TOKEN]: ({ commit }, { id, tokenIndex, nodeId, resolved }) => {
     api.fetchNode(nodeId, data => commit(FETCH_NODE, data));
-    return api.updateToken(id, tokenIndex, nodeId, resolved, data => commit(UPDATE_TOKEN, data.data));
+    return api.updateToken(id, tokenIndex, resolved, nodeId, null, data => commit(UPDATE_TOKEN, data.data));
+  },
+  [ADD_LEMMA]: ({ commit }, { id, tokenIndex, lemma, resolved }) => {
+    return api.updateToken(id, tokenIndex, resolved, null, lemma, data => commit(UPDATE_TOKEN, data.data));
   },
 };
