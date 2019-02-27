@@ -3,9 +3,9 @@ import api from '../api';
 
 export default {
   [FETCH_VOCAB_LISTS]: ({ commit }) => api.fetchVocabLists(data => commit(FETCH_VOCAB_LISTS, data.data)),
-  [FETCH_TOKENS]: ({ commit }, { id }) => {
+  [FETCH_TOKENS]: ({ commit }, { id, vocabList }) => {
     commit(SET_TEXT_ID, id);
-    return api.fetchTokens(id, data => commit(FETCH_TOKENS, data.data));
+    return api.fetchTokens(id, vocabList, data => commit(FETCH_TOKENS, data.data));
   },
   [SELECT_TOKEN]: ({ commit }, { token, index }) => commit(SELECT_TOKEN, { token, index }),
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, data => commit(FETCH_NODE, data)),

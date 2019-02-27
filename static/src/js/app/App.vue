@@ -24,7 +24,6 @@ export default {
   props: ["textId"],
   components: { LatticeTree, LemmatizedText, VocabList },
   created() {
-    this.$store.dispatch(FETCH_TOKENS, { id: this.textId });
     this.$store.dispatch(FETCH_VOCAB_LISTS);
   },
   methods: {
@@ -32,7 +31,18 @@ export default {
       this.$store.dispatch(SELECT_VOCAB_LIST, id);
     }
   },
+  watch: {
+    selectedVocabList: {
+      immediate: true,
+      handler() {
+        this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
+      }
+    }
+  },
   computed: {
+    selectedVocabList() {
+      return this.$store.state.selectedVocabList;
+    },
     vocabLists() {
       return this.$store.state.vocabLists;
     },

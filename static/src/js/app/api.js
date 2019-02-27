@@ -8,8 +8,11 @@ const BASE_URL = '/api/v1/';
 
 export default {
   fetchVocabLists: cb => axios.get(`${BASE_URL}vocab_lists/`).then(r => cb(r.data)),
-  fetchTokens: (id, cb) => {
-    return axios.get(`${BASE_URL}lemmatized_texts/${id}/`).then(r => cb(r.data));
+  fetchTokens: (id, vocabList, cb) => {
+    if (vocabList === null) {
+      return axios.get(`${BASE_URL}lemmatized_texts/${id}/`).then(r => cb(r.data));
+    }
+    return axios.get(`${BASE_URL}lemmatized_texts/${id}/?vocablist=${vocabList}`).then(r => cb(r.data));
   },
   fetchNode: (id, cb) => {
     return axios.get(`/lattices/${id}.json`).then(r => cb(r.data));

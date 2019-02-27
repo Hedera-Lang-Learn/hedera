@@ -16,7 +16,7 @@ export default () => {
     new Vue({
       el: '#app',
       render(h) {
-        return h(App, { props: { textId: this.$el.attributes['text-id'].value } });
+        return h(App, { props: { textId: store.state.textId || this.$el.attributes['text-id'].value } });
       },
       store,
     });
