@@ -16,6 +16,10 @@ def make_lemma(lemma, context=""):
     node_for_lemma = LatticeNode.objects.create(label=make_label("lemma", lemma, context))
     LemmaNode.objects.create(context=context, lemma=lemma, node=node_for_lemma)
 
+    if lemma.endswith(("1", "2", "3")):
+        l = make_lemma(lemma.rstrip("123"))
+        l.children.add(node_for_lemma)
+
     return node_for_lemma
 
 
@@ -45,7 +49,7 @@ def get_or_create_node_for_form(form, context):
         return make_form(form, context)
 
 
-def foo(form, lemmas, context):
+def get_or_create_nodes_for_form_and_lemmas(form, lemmas, context):
 
     node_for_form = get_or_create_node_for_form(form, context)
 
@@ -71,11 +75,7 @@ def get_lattice_node(lemmas, form=None, context=""):
     if not lemmas:
         return
 
-    elif len(lemmas) == 1:
+    if form and len(lemmas) > 1:
+        return get_or_create_nodes_for_form_and_lemmas(form, lemmas, context)
+    else:
         return get_or_create_node_for_lemma(lemmas[0], context)
-
-    else:  # more than one lemma
-        if form is None:
-            raise ValueError("form cannot be None if more than one lemma")
-
-        return foo(form, lemmas, context)
