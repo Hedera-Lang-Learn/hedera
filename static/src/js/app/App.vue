@@ -6,7 +6,7 @@
       </div>
       <div class="col-4">
         <div class="">
-          <VocabList @selected="onVocabListSelect" v-for="vlist in vocabLists" :key="vlist.id" :vocab-list="vlist" />
+          <VocabList @toggleSelected="onVocabListToggle" v-for="vlist in vocabLists" :key="vlist.id" :vocab-list="vlist" />
         </div>
         <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
       </div>
@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_VOCAB_LISTS, SELECT_VOCAB_LIST } from './constants';
+import { FETCH_TOKENS, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST } from './constants';
 
 import LatticeTree from './modules/LatticeTree.vue';
 import LemmatizedText from './modules/LemmatizedText.vue';
@@ -27,8 +27,8 @@ export default {
     this.$store.dispatch(FETCH_VOCAB_LISTS);
   },
   methods: {
-    onVocabListSelect(id) {
-      this.$store.dispatch(SELECT_VOCAB_LIST, id);
+    onVocabListToggle(id) {
+      this.$store.dispatch(TOGGLE_VOCAB_LIST, id);
     }
   },
   watch: {

@@ -5,4 +5,4 @@ export const FETCH_NODE = 'fetchNode';
 export const UPDATE_TOKEN = 'updateToken';
 export const SET_TEXT_ID = 'setTextId';
 export const ADD_LEMMA = 'addLemma';
-export const SELECT_VOCAB_LIST = 'selectVocabList';
+export const TOGGLE_VOCAB_LIST = 'toggleVocabList';

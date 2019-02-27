@@ -1,4 +1,4 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, FETCH_VOCAB_LISTS, SELECT_VOCAB_LIST } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST } from '../constants';
 
 export default {
   [FETCH_VOCAB_LISTS]: (state, data) => {
@@ -24,7 +24,12 @@ export default {
     state.tokens = data;
     state.selectedToken = state.tokens[state.selectedIndex];
   },
-  [SELECT_VOCAB_LIST]: (state, id) => {
-    state.selectedVocabList = id;
+  [TOGGLE_VOCAB_LIST]: (state, id) => {
+    console.log(state.selectedVocabList, id);
+    if (state.selectedVocabList === id) {
+      state.selectedVocabList = null;
+    } else {
+      state.selectedVocabList = id;
+    }
   },
 };

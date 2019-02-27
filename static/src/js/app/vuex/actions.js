@@ -1,4 +1,4 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, ADD_LEMMA, FETCH_VOCAB_LISTS, SELECT_VOCAB_LIST } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, ADD_LEMMA, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST } from '../constants';
 import api from '../api';
 
 export default {
@@ -19,7 +19,7 @@ export default {
         dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node });
       });
   },
-  [SELECT_VOCAB_LIST]: ({ commit }, { id }) => {
-    commit(SELECT_VOCAB_LIST, id);
+  [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {
+    commit(TOGGLE_VOCAB_LIST, id);
   },
 };

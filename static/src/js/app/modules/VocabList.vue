@@ -2,13 +2,16 @@
     <div class="vocab-list">
         <h4>{{ title }}</h4>
         <p class="lead">{{ description }}</p>
-        <button class="btn btn-block btn-primary" @click.prevent="onSelect">Select</button>
+        <button class="btn btn-block btn-outline-primary" :class="{ active }" @click.prevent="onSelect">Select</button>
     </div>
 </template>
 <script>
 export default {
     props: ['vocabList'],
     computed: {
+      active() {
+        return this.vocabList.id === this.$store.state.selectedVocabList;
+      },
       title() {
         return this.vocabList.title;
       },
@@ -18,7 +21,7 @@ export default {
     },
     methods: {
       onSelect() {
-        this.$emit('selected', { id: this.vocabList.id });
+        this.$emit('toggleSelected', { id: this.vocabList.id });
       }
     }
 }
