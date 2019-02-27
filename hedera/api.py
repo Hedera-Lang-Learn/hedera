@@ -4,9 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 
-from lattices.models import LatticeNode
+from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
-
 
 class APIView(View):
 
@@ -32,6 +31,9 @@ class LemmatizationAPI(APIView):
         token_index = data["tokenIndex"]
         node_id = data["nodeId"]
         resolved = data["resolved"]
+
+        if node_id is None:
+            node_id = make_lemma(data["lemma"], context="user").pk
 
         text_data = json.loads(text.data)
         text_data[token_index]["node"] = node_id
