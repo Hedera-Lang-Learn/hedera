@@ -5,7 +5,7 @@
         <LemmatizedText />
       </div>
       <div class="col-4">
-        <div class="">
+        <div class="mb-5">
           <VocabList @toggleSelected="onVocabListToggle" v-for="vlist in vocabLists" :key="vlist.id" :vocab-list="vlist" />
         </div>
         <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
