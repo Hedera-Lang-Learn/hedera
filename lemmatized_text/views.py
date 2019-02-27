@@ -2,8 +2,9 @@ import json
 
 from django.shortcuts import get_object_or_404, redirect, render
 
-from . import models
 from lemmatization.lemmatizer import lemmatize_text
+
+from . import models
 
 
 def lemmatized_texts(request):
