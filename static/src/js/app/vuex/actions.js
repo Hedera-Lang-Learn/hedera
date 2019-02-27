@@ -12,7 +12,10 @@ export default {
     api.fetchNode(nodeId, data => commit(FETCH_NODE, data));
     return api.updateToken(id, tokenIndex, resolved, nodeId, null, data => commit(UPDATE_TOKEN, data.data));
   },
-  [ADD_LEMMA]: ({ commit }, { id, tokenIndex, lemma, resolved }) => {
-    return api.updateToken(id, tokenIndex, resolved, null, lemma, data => commit(UPDATE_TOKEN, data.data));
+  [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
+    return api.updateToken(id, tokenIndex, resolved, null, lemma, data => commit(UPDATE_TOKEN, data.data))
+      .then(() => {
+        dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node });
+      });
   },
 };
