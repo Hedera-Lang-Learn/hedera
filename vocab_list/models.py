@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 
 from lattices.models import LatticeNode
+from lattices.utils import make_lemma
 
 
 class VocabularyList(models.Model):
@@ -65,3 +66,8 @@ class VocabularyListEntry(models.Model):
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
         unique_together = ("vocabulary_list", "headword")
+
+    def link_node(self):
+        if self.node is None:
+            self.node = make_lemma(self.headword)  # context?
+            self.save()

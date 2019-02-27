@@ -1,0 +1,5408 @@
+[
+{
+  "model": "lattices.latticenode",
+  "pk": 1,
+  "fields": {
+    "label": "lemma \u1f41",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 2,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 3,
+  "fields": {
+    "label": "lemma \u03b1\u1f50\u03c4\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 4,
+  "fields": {
+    "label": "lemma \u03c3\u03cd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 5,
+  "fields": {
+    "label": "lemma \u03b4\u03ad",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 6,
+  "fields": {
+    "label": "lemma \u1f10\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 7,
+  "fields": {
+    "label": "lemma \u1f10\u03b3\u03ce",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 8,
+  "fields": {
+    "label": "lemma \u03b5\u1f30\u03bc\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 9,
+  "fields": {
+    "label": "lemma \u03bb\u03ad\u03b3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 10,
+  "fields": {
+    "label": "lemma \u03b5\u1f30\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 11,
+  "fields": {
+    "label": "lemma \u03bf\u1f50",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 12,
+  "fields": {
+    "label": "lemma \u1f45\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 13,
+  "fields": {
+    "label": "lemma \u03bf\u1f57\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 14,
+  "fields": {
+    "label": "lemma \u03b8\u03b5\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 15,
+  "fields": {
+    "label": "lemma \u1f45\u03c4\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 16,
+  "fields": {
+    "label": "lemma \u03c0\u1fb6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 17,
+  "fields": {
+    "label": "lemma \u03b3\u03ac\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 18,
+  "fields": {
+    "label": "lemma \u03bc\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 19,
+  "fields": {
+    "label": "lemma \u1f10\u03ba",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 20,
+  "fields": {
+    "label": "lemma \u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 21,
+  "fields": {
+    "label": "lemma \u1f10\u03c0\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 22,
+  "fields": {
+    "label": "lemma \u03ba\u03cd\u03c1\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 23,
+  "fields": {
+    "label": "lemma \u1f14\u03c7\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 24,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 25,
+  "fields": {
+    "label": "lemma \u03b3\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 26,
+  "fields": {
+    "label": "lemma \u03b4\u03b9\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 27,
+  "fields": {
+    "label": "lemma \u1f35\u03bd\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 28,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03cc",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 29,
+  "fields": {
+    "label": "lemma \u1f00\u03bb\u03bb\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 30,
+  "fields": {
+    "label": "lemma \u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 31,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u03b9\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 32,
+  "fields": {
+    "label": "lemma \u03c4\u03af\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 33,
+  "fields": {
+    "label": "lemma \u1f04\u03bd\u03b8\u03c1\u03c9\u03c0\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 34,
+  "fields": {
+    "label": "lemma \u03a7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 35,
+  "fields": {
+    "label": "lemma \u03c4\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 36,
+  "fields": {
+    "label": "lemma \u1f61\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 37,
+  "fields": {
+    "label": "lemma \u03b5\u1f30",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 38,
+  "fields": {
+    "label": "lemma \u03bf\u1f56\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 39,
+  "fields": {
+    "label": "lemma \u1f41\u03c1\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 40,
+  "fields": {
+    "label": "lemma \u03bc\u03b5\u03c4\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 41,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03c4\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 42,
+  "fields": {
+    "label": "lemma \u1f00\u03ba\u03bf\u03cd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 43,
+  "fields": {
+    "label": "lemma \u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 44,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u03bb\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 45,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c4\u03ae\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 46,
+  "fields": {
+    "label": "lemma \u1f21\u03bc\u03ad\u03c1\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 47,
+  "fields": {
+    "label": "lemma \u03c0\u03bd\u03b5\u1fe6\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 48,
+  "fields": {
+    "label": "lemma \u03c5\u1f31\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 49,
+  "fields": {
+    "label": "lemma \u1f24",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 50,
+  "fields": {
+    "label": "lemma \u1f00\u03b4\u03b5\u03bb\u03c6\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 51,
+  "fields": {
+    "label": "lemma \u03b5\u1f37\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 52,
+  "fields": {
+    "label": "lemma \u1f11\u03b1\u03c5\u03c4\u03bf\u1fe6",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 53,
+  "fields": {
+    "label": "lemma \u03c0\u03b5\u03c1\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 54,
+  "fields": {
+    "label": "lemma \u1f10\u03ac\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 55,
+  "fields": {
+    "label": "lemma \u03bb\u03cc\u03b3\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 56,
+  "fields": {
+    "label": "lemma \u03bb\u03b1\u03bb\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 57,
+  "fields": {
+    "label": "lemma \u03bf\u1f36\u03b4\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 58,
+  "fields": {
+    "label": "lemma \u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 59,
+  "fields": {
+    "label": "lemma \u03bc\u03b1\u03b8\u03b7\u03c4\u03ae\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 60,
+  "fields": {
+    "label": "lemma \u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 61,
+  "fields": {
+    "label": "lemma \u03b3\u1fc6",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 62,
+  "fields": {
+    "label": "lemma \u1f10\u03ba\u03b5\u1fd6\u03bd\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 63,
+  "fields": {
+    "label": "lemma \u03c0\u03af\u03c3\u03c4\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 64,
+  "fields": {
+    "label": "lemma \u03c0\u03b9\u03c3\u03c4\u03b5\u03cd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 65,
+  "fields": {
+    "label": "lemma \u03bc\u03ad\u03b3\u03b1\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 66,
+  "fields": {
+    "label": "lemma \u1f05\u03b3\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 67,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03ba\u03c1\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 68,
+  "fields": {
+    "label": "lemma \u03bf\u1f50\u03b4\u03b5\u03af\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 69,
+  "fields": {
+    "label": "lemma \u1f44\u03bd\u03bf\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 70,
+  "fields": {
+    "label": "lemma \u03b3\u03b9\u03bd\u03ce\u03c3\u03ba\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 71,
+  "fields": {
+    "label": "lemma \u1f51\u03c0\u03cc",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 72,
+  "fields": {
+    "label": "lemma \u1f00\u03bd\u03ae\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 73,
+  "fields": {
+    "label": "lemma \u1f10\u03be\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 74,
+  "fields": {
+    "label": "lemma \u03c4\u03ad",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 75,
+  "fields": {
+    "label": "lemma \u03b3\u03c5\u03bd\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 76,
+  "fields": {
+    "label": "lemma \u03b4\u03cd\u03bd\u03b1\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 77,
+  "fields": {
+    "label": "lemma \u03b8\u03ad\u03bb\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 78,
+  "fields": {
+    "label": "lemma \u03bf\u1f55\u03c4\u03c9(\u03c2)",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 79,
+  "fields": {
+    "label": "lemma \u1f30\u03b4\u03bf\u03cd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 80,
+  "fields": {
+    "label": "lemma \u1f38\u03bf\u03c5\u03b4\u03b1\u1fd6\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 81,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c1\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 82,
+  "fields": {
+    "label": "lemma \u03bd\u03cc\u03bc\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 83,
+  "fields": {
+    "label": "lemma \u03b5\u1f30\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 84,
+  "fields": {
+    "label": "lemma \u03b3\u03c1\u03ac\u03c6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 85,
+  "fields": {
+    "label": "lemma \u03ba\u03cc\u03c3\u03bc\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 86,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03b8\u03ce\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 87,
+  "fields": {
+    "label": "lemma \u03bc\u03ad\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 88,
+  "fields": {
+    "label": "lemma \u03c7\u03b5\u03af\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 89,
+  "fields": {
+    "label": "lemma \u03b5\u1f51\u03c1\u03af\u03c3\u03ba\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 90,
+  "fields": {
+    "label": "lemma \u1f04\u03b3\u03b3\u03b5\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 91,
+  "fields": {
+    "label": "lemma \u1f44\u03c7\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 92,
+  "fields": {
+    "label": "lemma \u1f01\u03bc\u03b1\u03c1\u03c4\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 93,
+  "fields": {
+    "label": "lemma \u1f04\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 94,
+  "fields": {
+    "label": "lemma \u1f14\u03c1\u03b3\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 95,
+  "fields": {
+    "label": "lemma \u03b4\u03cc\u03be\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 96,
+  "fields": {
+    "label": "lemma \u03c0\u03cc\u03bb\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 97,
+  "fields": {
+    "label": "lemma \u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 98,
+  "fields": {
+    "label": "lemma \u1f14\u03b8\u03bd\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 99,
+  "fields": {
+    "label": "lemma \u03c4\u03cc\u03c4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 100,
+  "fields": {
+    "label": "lemma \u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 101,
+  "fields": {
+    "label": "lemma \u1f10\u03c3\u03b8\u03af\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 102,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03c1\u03b4\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 103,
+  "fields": {
+    "label": "lemma \u03a0\u03ad\u03c4\u03c1\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 104,
+  "fields": {
+    "label": "lemma \u03c7\u03ac\u03c1\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 105,
+  "fields": {
+    "label": "lemma \u1f04\u03bb\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 106,
+  "fields": {
+    "label": "lemma \u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 107,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u1ff6\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 108,
+  "fields": {
+    "label": "lemma \u1f51\u03c0\u03ad\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 109,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u03c1\u03b5\u03cd\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 110,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03bb\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 111,
+  "fields": {
+    "label": "lemma \u03c3\u03ac\u03c1\u03be",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 112,
+  "fields": {
+    "label": "lemma \u03bd\u1fe6\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 113,
+  "fields": {
+    "label": "lemma \u1f15\u03c9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 114,
+  "fields": {
+    "label": "lemma \u1f45\u03c3\u03c4\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 115,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 116,
+  "fields": {
+    "label": "lemma \u1f00\u03b3\u03b1\u03c0\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 117,
+  "fields": {
+    "label": "lemma \u1f10\u03b3\u03b5\u03af\u03c1\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 118,
+  "fields": {
+    "label": "lemma \u1f00\u03c6\u03af\u03b7\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 119,
+  "fields": {
+    "label": "lemma \u03c3\u1ff6\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 120,
+  "fields": {
+    "label": "lemma \u03bf\u1f50\u03b4\u03ad",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 121,
+  "fields": {
+    "label": "lemma \u03bb\u03b1\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 122,
+  "fields": {
+    "label": "lemma \u03b6\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 123,
+  "fields": {
+    "label": "lemma \u03c6\u03c9\u03bd\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 124,
+  "fields": {
+    "label": "lemma \u03c0\u03ac\u03bb\u03b9\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 125,
+  "fields": {
+    "label": "lemma \u03b4\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 126,
+  "fields": {
+    "label": "lemma \u1f38\u03c9\u03ac\u03bd\u03bd\u03b7\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 127,
+  "fields": {
+    "label": "lemma \u03b4\u03cd\u03bf",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 128,
+  "fields": {
+    "label": "lemma \u03b6\u03c9\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 129,
+  "fields": {
+    "label": "lemma \u03b2\u03bb\u03ad\u03c0\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 130,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03c3\u03c4\u03ad\u03bb\u03bb\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 131,
+  "fields": {
+    "label": "lemma \u03c3\u03cd\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 132,
+  "fields": {
+    "label": "lemma \u1f00\u03bc\u03ae\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 133,
+  "fields": {
+    "label": "lemma \u03bd\u03b5\u03ba\u03c1\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 134,
+  "fields": {
+    "label": "lemma \u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 135,
+  "fields": {
+    "label": "lemma \u1f45\u03c4\u03b1\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 136,
+  "fields": {
+    "label": "lemma \u1f00\u03c1\u03c7\u03b9\u03b5\u03c1\u03b5\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 137,
+  "fields": {
+    "label": "lemma \u03b1\u1f30\u03ce\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 138,
+  "fields": {
+    "label": "lemma \u03b2\u03ac\u03bb\u03bb\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 139,
+  "fields": {
+    "label": "lemma \u03b8\u03ac\u03bd\u03b1\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 140,
+  "fields": {
+    "label": "lemma \u03b4\u03cd\u03bd\u03b1\u03bc\u03b9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 141,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c1\u03b1\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 142,
+  "fields": {
+    "label": "lemma \u03bc\u03ad\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 143,
+  "fields": {
+    "label": "lemma \u03b6\u03b7\u03c4\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 144,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 145,
+  "fields": {
+    "label": "lemma \u1f00\u03b3\u03ac\u03c0\u03b7",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 146,
+  "fields": {
+    "label": "lemma \u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 147,
+  "fields": {
+    "label": "lemma \u1f10\u03ba\u03ba\u03bb\u03b7\u03c3\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 148,
+  "fields": {
+    "label": "lemma \u03ba\u03c1\u03af\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 149,
+  "fields": {
+    "label": "lemma \u1f34\u03b4\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 150,
+  "fields": {
+    "label": "lemma \u03bf\u1f36\u03ba\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 151,
+  "fields": {
+    "label": "lemma \u1f45\u03c3\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 152,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03b8\u03bd\u1fc4\u03c3\u03ba\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 153,
+  "fields": {
+    "label": "lemma \u03bc\u03cc\u03bd\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 154,
+  "fields": {
+    "label": "lemma \u03bc\u03ad\u03bb\u03bb\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 155,
+  "fields": {
+    "label": "lemma \u1f00\u03bb\u03ae\u03b8\u03b5\u03b9\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 156,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 157,
+  "fields": {
+    "label": "lemma \u1f00\u03bd\u03af\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 158,
+  "fields": {
+    "label": "lemma \u1f45\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 159,
+  "fields": {
+    "label": "lemma \u1f65\u03c1\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 160,
+  "fields": {
+    "label": "lemma \u03c3\u1ff4\u03b6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 161,
+  "fields": {
+    "label": "lemma \u03c0\u1ff6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 162,
+  "fields": {
+    "label": "lemma \u1f45\u03c4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 163,
+  "fields": {
+    "label": "lemma \u1f10\u03be\u03bf\u03c5\u03c3\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 164,
+  "fields": {
+    "label": "lemma \u03c8\u03c5\u03c7\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 165,
+  "fields": {
+    "label": "lemma \u1f00\u03b3\u03b1\u03b8\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 166,
+  "fields": {
+    "label": "lemma \u1f41\u03b4\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 167,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03bb\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 168,
+  "fields": {
+    "label": "lemma \u03b1\u1f34\u03c1\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 169,
+  "fields": {
+    "label": "lemma \u03c4\u03af\u03b8\u03b7\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 170,
+  "fields": {
+    "label": "lemma \u1f00\u03bb\u03bb\u03ae\u03bb\u03c9\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 171,
+  "fields": {
+    "label": "lemma \u1f40\u03c6\u03b8\u03b1\u03bb\u03bc\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 172,
+  "fields": {
+    "label": "lemma \u03c4\u03ad\u03ba\u03bd\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 173,
+  "fields": {
+    "label": "lemma \u1f15\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 174,
+  "fields": {
+    "label": "lemma \u03b1\u1f37\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 175,
+  "fields": {
+    "label": "lemma \u03b3\u03b5\u03bd\u03bd\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 176,
+  "fields": {
+    "label": "lemma \u1f04\u03c1\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 177,
+  "fields": {
+    "label": "lemma \u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 178,
+  "fields": {
+    "label": "lemma \u03a6\u03b1\u03c1\u03b9\u03c3\u03b1\u1fd6\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 179,
+  "fields": {
+    "label": "lemma \u1f10\u03ba\u03b5\u1fd6",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 180,
+  "fields": {
+    "label": "lemma \u03c6\u03bf\u03b2\u03ad\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 181,
+  "fields": {
+    "label": "lemma \u03c0\u03b5\u03c1\u03b9\u03c0\u03b1\u03c4\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 182,
+  "fields": {
+    "label": "lemma \u1f10\u03bd\u03ce\u03c0\u03b9\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 183,
+  "fields": {
+    "label": "lemma \u03c4\u03cc\u03c0\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 184,
+  "fields": {
+    "label": "lemma \u03bf\u1f30\u03ba\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 185,
+  "fields": {
+    "label": "lemma \u1f14\u03c4\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 186,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 187,
+  "fields": {
+    "label": "lemma \u03b5\u1f30\u03c1\u03ae\u03bd\u03b7",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 188,
+  "fields": {
+    "label": "lemma \u03b4\u03b9\u03ba\u03b1\u03b9\u03bf\u03c3\u03cd\u03bd\u03b7",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 189,
+  "fields": {
+    "label": "lemma \u03ba\u03ac\u03b8\u03b7\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 190,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03cc\u03bb\u03bb\u03c5\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 191,
+  "fields": {
+    "label": "lemma \u03bc\u03b7\u03b4\u03b5\u03af\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 192,
+  "fields": {
+    "label": "lemma \u03b8\u03ac\u03bb\u03b1\u03c3\u03c3\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 193,
+  "fields": {
+    "label": "lemma \u03c0\u03af\u03c0\u03c4\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 194,
+  "fields": {
+    "label": "lemma \u1f00\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 195,
+  "fields": {
+    "label": "lemma \u1f11\u03c0\u03c4\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 196,
+  "fields": {
+    "label": "lemma \u03bf\u1f54\u03c4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 197,
+  "fields": {
+    "label": "lemma \u1f04\u03c1\u03c7\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 198,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03bf\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 199,
+  "fields": {
+    "label": "lemma \u03c0\u03bb\u03b7\u03c1\u03cc\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 200,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03b9\u03c1\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 201,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03bf\u03c3\u03b5\u03cd\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 202,
+  "fields": {
+    "label": "lemma \u1f65\u03c3\u03c4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 203,
+  "fields": {
+    "label": "lemma \u03bc\u03ae\u03c4\u03b7\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 204,
+  "fields": {
+    "label": "lemma \u03ba\u1f00\u03b3\u03ce",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 205,
+  "fields": {
+    "label": "lemma \u1f45\u03c0\u03bf\u03c5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 206,
+  "fields": {
+    "label": "lemma \u1f15\u03ba\u03b1\u03c3\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 207,
+  "fields": {
+    "label": "lemma \u03bc\u1fb6\u03bb\u03bb\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 208,
+  "fields": {
+    "label": "lemma \u1f00\u03bd\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 209,
+  "fields": {
+    "label": "lemma \u1f10\u03ba\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 210,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03c4\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 211,
+  "fields": {
+    "label": "lemma \u039c\u03c9\u03cb\u03c3\u1fc6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 212,
+  "fields": {
+    "label": "lemma \u03b4\u03af\u03ba\u03b1\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 213,
+  "fields": {
+    "label": "lemma \u1f51\u03c0\u03ac\u03b3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 214,
+  "fields": {
+    "label": "lemma \u03c0\u03ad\u03bc\u03c0\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 215,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 216,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u03bd\u03b7\u03c1\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 217,
+  "fields": {
+    "label": "lemma \u03c3\u03c4\u03cc\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 218,
+  "fields": {
+    "label": "lemma \u03b2\u03b1\u03c0\u03c4\u03af\u03b6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 219,
+  "fields": {
+    "label": "lemma \u1f00\u03bd\u03bf\u03af\u03b3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 220,
+  "fields": {
+    "label": "lemma \u03c3\u03b7\u03bc\u03b5\u1fd6\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 221,
+  "fields": {
+    "label": "lemma \u03bc\u03b1\u03c1\u03c4\u03c5\u03c1\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 222,
+  "fields": {
+    "label": "lemma \u1f10\u03bc\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 223,
+  "fields": {
+    "label": "lemma \u1f38\u03b5\u03c1\u03bf\u03c5\u03c3\u03b1\u03bb\u03ae\u03bc",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 224,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 225,
+  "fields": {
+    "label": "lemma \u1f55\u03b4\u03c9\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 226,
+  "fields": {
+    "label": "lemma \u03ba\u03b5\u03c6\u03b1\u03bb\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 227,
+  "fields": {
+    "label": "lemma \u03b5\u1f50\u03b1\u03b3\u03b3\u03ad\u03bb\u03b9\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 228,
+  "fields": {
+    "label": "lemma \u03b4\u03ce\u03b4\u03b5\u03ba\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 229,
+  "fields": {
+    "label": "lemma \u03a3\u03af\u03bc\u03c9\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 230,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03ba\u03c4\u03b5\u03af\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 231,
+  "fields": {
+    "label": "lemma \u03c7\u03b1\u03af\u03c1\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 232,
+  "fields": {
+    "label": "lemma \u1f08\u03b2\u03c1\u03b1\u03ac\u03bc",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 233,
+  "fields": {
+    "label": "lemma \u03c6\u1ff6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 234,
+  "fields": {
+    "label": "lemma \u03c0\u03af\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 235,
+  "fields": {
+    "label": "lemma \u03c0\u1fe6\u03c1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 236,
+  "fields": {
+    "label": "lemma \u03c4\u03b7\u03c1\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 237,
+  "fields": {
+    "label": "lemma \u03b1\u1f30\u03c4\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 238,
+  "fields": {
+    "label": "lemma \u03b1\u1f30\u03ce\u03bd\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 239,
+  "fields": {
+    "label": "lemma \u03c3\u03ac\u03b2\u03b2\u03b1\u03c4\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 240,
+  "fields": {
+    "label": "lemma \u1f38\u03c3\u03c1\u03b1\u03ae\u03bb",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 241,
+  "fields": {
+    "label": "lemma \u03c4\u03c1\u03b5\u1fd6\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 242,
+  "fields": {
+    "label": "lemma \u03c0\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 243,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03bb\u03cd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 244,
+  "fields": {
+    "label": "lemma \u03c0\u03bb\u03bf\u1fd6\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 245,
+  "fields": {
+    "label": "lemma \u1fe5\u1fc6\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 246,
+  "fields": {
+    "label": "lemma \u03c6\u03ad\u03c1\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 247,
+  "fields": {
+    "label": "lemma \u1f04\u03b3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 248,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03c1\u03c0\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 249,
+  "fields": {
+    "label": "lemma \u1f10\u03bd\u03c4\u03bf\u03bb\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 250,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03b5\u03c3\u03b2\u03cd\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 251,
+  "fields": {
+    "label": "lemma \u03c6\u03b7\u03bc\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 252,
+  "fields": {
+    "label": "lemma \u03b5\u1f34\u03c4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 253,
+  "fields": {
+    "label": "lemma \u03b4\u03b1\u03b9\u03bc\u03cc\u03bd\u03b9\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 254,
+  "fields": {
+    "label": "lemma \u1f39\u03b5\u03c1\u03bf\u03c3\u03cc\u03bb\u03c5\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 255,
+  "fields": {
+    "label": "lemma \u03b8\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 256,
+  "fields": {
+    "label": "lemma \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b5\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 257,
+  "fields": {
+    "label": "lemma \u1f10\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 258,
+  "fields": {
+    "label": "lemma \u03b4\u03bf\u03ba\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 259,
+  "fields": {
+    "label": "lemma \u03b8\u03ad\u03bb\u03b7\u03bc\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 260,
+  "fields": {
+    "label": "lemma \u1f14\u03be\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 261,
+  "fields": {
+    "label": "lemma \u1f44\u03c1\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 262,
+  "fields": {
+    "label": "lemma \u03bd\u03cd\u03be",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 263,
+  "fields": {
+    "label": "lemma \u1f67\u03b4\u03b5",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 264,
+  "fields": {
+    "label": "lemma \u1f00\u03b3\u03b1\u03c0\u03b7\u03c4\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 265,
+  "fields": {
+    "label": "lemma \u03b4\u03bf\u03be\u03ac\u03b6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 266,
+  "fields": {
+    "label": "lemma \u03ba\u03b7\u03c1\u03cd\u03c3\u03c3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 267,
+  "fields": {
+    "label": "lemma \u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 268,
+  "fields": {
+    "label": "lemma \u1f31\u03bc\u03ac\u03c4\u03b9\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 269,
+  "fields": {
+    "label": "lemma \u1f51\u03c0\u03ac\u03c1\u03c7\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 270,
+  "fields": {
+    "label": "lemma \u03c0\u03c1\u03bf\u03c3\u03ba\u03c5\u03bd\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 271,
+  "fields": {
+    "label": "lemma \u1f24\u03b4\u03b7",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 272,
+  "fields": {
+    "label": "lemma \u03c3\u03c5\u03bd\u03ac\u03b3\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 273,
+  "fields": {
+    "label": "lemma \u0394\u03b1\u03c5\u03af\u03b4",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 274,
+  "fields": {
+    "label": "lemma \u03b5\u1f50\u03b8\u03cd\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 275,
+  "fields": {
+    "label": "lemma \u03c7\u03b1\u03c1\u03ac",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 276,
+  "fields": {
+    "label": "lemma \u1f00\u03c3\u03c0\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 277,
+  "fields": {
+    "label": "lemma \u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 278,
+  "fields": {
+    "label": "lemma \u03b8\u03b5\u03c9\u03c1\u03ad\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 279,
+  "fields": {
+    "label": "lemma \u03bb\u03af\u03b8\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 280,
+  "fields": {
+    "label": "lemma \u03bc\u03b7\u03b4\u03ad",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 281,
+  "fields": {
+    "label": "lemma \u1f10\u03c0\u03b5\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 282,
+  "fields": {
+    "label": "lemma \u03c3\u03c5\u03bd\u03b1\u03b3\u03c9\u03b3\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 283,
+  "fields": {
+    "label": "lemma \u03b4\u03ad\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 284,
+  "fields": {
+    "label": "lemma \u03c4\u03bf\u03b9\u03bf\u1fe6\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 285,
+  "fields": {
+    "label": "lemma \u03bc\u03ad\u03c3\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 286,
+  "fields": {
+    "label": "lemma \u03bb\u03bf\u03b9\u03c0\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 287,
+  "fields": {
+    "label": "lemma \u03c4\u03c1\u03af\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 288,
+  "fields": {
+    "label": "lemma \u1f00\u03c1\u03c7\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 289,
+  "fields": {
+    "label": "lemma \u03ba\u03c1\u03ac\u03b6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 290,
+  "fields": {
+    "label": "lemma \u03a0\u03b9\u03bb\u1fb6\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 291,
+  "fields": {
+    "label": "lemma \u03b5\u1f50\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b6\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 292,
+  "fields": {
+    "label": "lemma \u03b4\u03b5\u03be\u03b9\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 293,
+  "fields": {
+    "label": "lemma \u1f45\u03c0\u03c9\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 294,
+  "fields": {
+    "label": "lemma \u03c7\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 295,
+  "fields": {
+    "label": "lemma \u03b4\u03b9\u03cc",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 296,
+  "fields": {
+    "label": "lemma \u03bf\u1f50\u03c7\u03af",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 297,
+  "fields": {
+    "label": "lemma \u1f10\u03bb\u03c0\u03af\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 298,
+  "fields": {
+    "label": "lemma \u1f14\u03c3\u03c7\u03b1\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 299,
+  "fields": {
+    "label": "lemma \u03c0\u03b5\u03af\u03b8\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 300,
+  "fields": {
+    "label": "lemma \u03c3\u03c0\u03b5\u03af\u03c1\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 301,
+  "fields": {
+    "label": "lemma \u1f10\u03c0\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 302,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03b9\u03b4\u03af\u03bf\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 303,
+  "fields": {
+    "label": "lemma \u03c3\u03bf\u03c6\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 304,
+  "fields": {
+    "label": "lemma \u03c4\u03c5\u03c6\u03bb\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 305,
+  "fields": {
+    "label": "lemma \u03ba\u03b1\u03ba\u03cc\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 306,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c1\u03b1\u03b2\u03bf\u03bb\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 307,
+  "fields": {
+    "label": "lemma \u03c0\u03bf\u1fe6",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 308,
+  "fields": {
+    "label": "lemma \u03b3\u03bb\u1ff6\u03c3\u03c3\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 309,
+  "fields": {
+    "label": "lemma \u03bc\u03b1\u03ba\u03ac\u03c1\u03b9\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 310,
+  "fields": {
+    "label": "lemma \u03c0\u03b1\u03c1\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 311,
+  "fields": {
+    "label": "lemma \u1f04\u03c1\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 312,
+  "fields": {
+    "label": "lemma \u03b3\u03c1\u03b1\u03c6\u03ae",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 313,
+  "fields": {
+    "label": "lemma \u1f14\u03c4\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 314,
+  "fields": {
+    "label": "lemma \u03c7\u03c1\u03b5\u03af\u03b1",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 315,
+  "fields": {
+    "label": "lemma \u1f14\u03c1\u03b7\u03bc\u03bf\u03c2",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 316,
+  "fields": {
+    "label": "lemma \u1f14\u03bc\u03c0\u03c1\u03bf\u03c3\u03b8\u03b5\u03bd",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 317,
+  "fields": {
+    "label": "lemma \u1f00\u03c0\u03bf\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.latticenode",
+  "pk": 318,
+  "fields": {
+    "label": "lemma \u03c6\u03b1\u03bd\u03b5\u03c1\u03cc\u03c9",
+    "children": []
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 1,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f41",
+    "node": 1
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 2,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03af",
+    "node": 2
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 3,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f50\u03c4\u03cc\u03c2",
+    "node": 3
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 4,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03cd",
+    "node": 4
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 5,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03ad",
+    "node": 5
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 6,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03bd",
+    "node": 6
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 7,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03b3\u03ce",
+    "node": 7
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 8,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f30\u03bc\u03af",
+    "node": 8
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 9,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03ad\u03b3\u03c9",
+    "node": 9
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 10,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f30\u03c2",
+    "node": 10
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 11,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f50",
+    "node": 11
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 12,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c2",
+    "node": 12
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 13,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f57\u03c4\u03bf\u03c2",
+    "node": 13
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 14,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03b5\u03cc\u03c2",
+    "node": 14
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 15,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c4\u03b9",
+    "node": 15
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 16,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u1fb6\u03c2",
+    "node": 16
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 17,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03ac\u03c1",
+    "node": 17
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 18,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ae",
+    "node": 18
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 19,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ba",
+    "node": 19
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 20,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+    "node": 20
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 21,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03c0\u03af",
+    "node": 21
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 22,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03cd\u03c1\u03b9\u03bf\u03c2",
+    "node": 22
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 23,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c7\u03c9",
+    "node": 23
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 24,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03cc\u03c2",
+    "node": 24
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 25,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "node": 25
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 26,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b9\u03ac",
+    "node": 26
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 27,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f35\u03bd\u03b1",
+    "node": 27
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 28,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03cc",
+    "node": 28
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 29,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bb\u03bb\u03ac",
+    "node": 29
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 30,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 30
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 31,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u03b9\u03ad\u03c9",
+    "node": 31
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 32,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03af\u03c2",
+    "node": 32
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 33,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03bd\u03b8\u03c1\u03c9\u03c0\u03bf\u03c2",
+    "node": 33
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 34,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "node": 34
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 35,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03b9\u03c2",
+    "node": 35
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 36,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f61\u03c2",
+    "node": 36
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 37,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f30",
+    "node": 37
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 38,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f56\u03bd",
+    "node": 38
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 39,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f41\u03c1\u03ac\u03c9",
+    "node": 39
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 40,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b5\u03c4\u03ac",
+    "node": 40
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 41,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03c4\u03ac",
+    "node": 41
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 42,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03ba\u03bf\u03cd\u03c9",
+    "node": 42
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 43,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "node": 43
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 44,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u03bb\u03cd\u03c2",
+    "node": 44
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 45,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c4\u03ae\u03c1",
+    "node": 45
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 46,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f21\u03bc\u03ad\u03c1\u03b1",
+    "node": 46
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 47,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bd\u03b5\u1fe6\u03bc\u03b1",
+    "node": 47
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 48,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c5\u1f31\u03cc\u03c2",
+    "node": 48
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 49,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f24",
+    "node": 49
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 50,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03b4\u03b5\u03bb\u03c6\u03cc\u03c2",
+    "node": 50
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 51,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f37\u03c2",
+    "node": 51
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 52,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f11\u03b1\u03c5\u03c4\u03bf\u1fe6",
+    "node": 52
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 53,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b5\u03c1\u03af",
+    "node": 53
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 54,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ac\u03bd",
+    "node": 54
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 55,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03cc\u03b3\u03bf\u03c2",
+    "node": 55
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 56,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03b1\u03bb\u03ad\u03c9",
+    "node": 56
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 57,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f36\u03b4\u03b1",
+    "node": 57
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 58,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+    "node": 58
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 59,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b1\u03b8\u03b7\u03c4\u03ae\u03c2",
+    "node": 59
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 60,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "node": 60
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 61,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u1fc6",
+    "node": 61
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 62,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ba\u03b5\u1fd6\u03bd\u03bf\u03c2",
+    "node": 62
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 63,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03af\u03c3\u03c4\u03b9\u03c2",
+    "node": 63
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 64,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03b5\u03cd\u03c9",
+    "node": 64
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 65,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ad\u03b3\u03b1\u03c2",
+    "node": 65
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 66,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f05\u03b3\u03b9\u03bf\u03c2",
+    "node": 66
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 67,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c1\u03af\u03bd\u03bf\u03bc\u03b1\u03b9",
+    "node": 67
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 68,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f50\u03b4\u03b5\u03af\u03c2",
+    "node": 68
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 69,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f44\u03bd\u03bf\u03bc\u03b1",
+    "node": 69
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 70,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03b9\u03bd\u03ce\u03c3\u03ba\u03c9",
+    "node": 70
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 71,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f51\u03c0\u03cc",
+    "node": 71
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 72,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bd\u03ae\u03c1",
+    "node": 72
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 73,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03be\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 73
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 74,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03ad",
+    "node": 74
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 75,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03c5\u03bd\u03ae",
+    "node": 75
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 76,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b1\u03b9",
+    "node": 76
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 77,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03ad\u03bb\u03c9",
+    "node": 77
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 78,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f55\u03c4\u03c9(\u03c2)",
+    "node": 78
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 79,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f30\u03b4\u03bf\u03cd",
+    "node": 79
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 80,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f38\u03bf\u03c5\u03b4\u03b1\u1fd6\u03bf\u03c2",
+    "node": 80
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 81,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c1\u03ac",
+    "node": 81
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 82,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bd\u03cc\u03bc\u03bf\u03c2",
+    "node": 82
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 83,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f30\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 83
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 84,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03c1\u03ac\u03c6\u03c9",
+    "node": 84
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 85,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03cc\u03c3\u03bc\u03bf\u03c2",
+    "node": 85
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 86,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03b8\u03ce\u03c2",
+    "node": 86
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 87,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ad\u03bd",
+    "node": 87
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 88,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03b5\u03af\u03c1",
+    "node": 88
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 89,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f51\u03c1\u03af\u03c3\u03ba\u03c9",
+    "node": 89
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 90,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03b3\u03b3\u03b5\u03bb\u03bf\u03c2",
+    "node": 90
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 91,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f44\u03c7\u03bb\u03bf\u03c2",
+    "node": 91
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 92,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f01\u03bc\u03b1\u03c1\u03c4\u03af\u03b1",
+    "node": 92
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 93,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03bd",
+    "node": 93
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 94,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c1\u03b3\u03bf\u03bd",
+    "node": 94
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 95,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03cc\u03be\u03b1",
+    "node": 95
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 96,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03cc\u03bb\u03b9\u03c2",
+    "node": 96
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 97,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03af\u03b1",
+    "node": 97
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 98,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03b8\u03bd\u03bf\u03c2",
+    "node": 98
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 99,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03cc\u03c4\u03b5",
+    "node": 99
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 100,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
+    "node": 100
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 101,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03c3\u03b8\u03af\u03c9",
+    "node": 101
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 102,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03c1\u03b4\u03af\u03b1",
+    "node": 102
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 103,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a0\u03ad\u03c4\u03c1\u03bf\u03c2",
+    "node": 103
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 104,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03ac\u03c1\u03b9\u03c2",
+    "node": 104
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 105,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03bb\u03bb\u03bf\u03c2",
+    "node": 105
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 106,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "node": 106
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 107,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u1ff6\u03c4\u03bf\u03c2",
+    "node": 107
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 108,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f51\u03c0\u03ad\u03c1",
+    "node": 108
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 109,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u03c1\u03b5\u03cd\u03bf\u03bc\u03b1\u03b9",
+    "node": 109
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 110,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "node": 110
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 111,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03ac\u03c1\u03be",
+    "node": 111
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 112,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bd\u1fe6\u03bd",
+    "node": 112
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 113,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f15\u03c9\u03c2",
+    "node": 113
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 114,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c3\u03c4\u03b9\u03c2",
+    "node": 114
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 115,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
+    "node": 115
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 116,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03ac\u03c9",
+    "node": 116
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 117,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03b3\u03b5\u03af\u03c1\u03c9",
+    "node": 117
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 118,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c6\u03af\u03b7\u03bc\u03b9",
+    "node": 118
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 119,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u1ff6\u03bc\u03b1",
+    "node": 119
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 120,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f50\u03b4\u03ad",
+    "node": 120
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 121,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03b1\u03cc\u03c2",
+    "node": 121
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 122,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b6\u03ac\u03c9",
+    "node": 122
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 123,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u03c9\u03bd\u03ae",
+    "node": 123
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 124,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03ac\u03bb\u03b9\u03bd",
+    "node": 124
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 125,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03ad\u03c9",
+    "node": 125
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 126,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f38\u03c9\u03ac\u03bd\u03bd\u03b7\u03c2",
+    "node": 126
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 127,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03cd\u03bf",
+    "node": 127
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 128,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b6\u03c9\u03ae",
+    "node": 128
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 129,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b2\u03bb\u03ad\u03c0\u03c9",
+    "node": 129
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 130,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03c3\u03c4\u03ad\u03bb\u03bb\u03c9",
+    "node": 130
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 131,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03cd\u03bd",
+    "node": 131
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 132,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bc\u03ae\u03bd",
+    "node": 132
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 133,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bd\u03b5\u03ba\u03c1\u03cc\u03c2",
+    "node": 133
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 134,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
+    "node": 134
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 135,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c4\u03b1\u03bd",
+    "node": 135
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 136,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c1\u03c7\u03b9\u03b5\u03c1\u03b5\u03cd\u03c2",
+    "node": 136
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 137,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f30\u03ce\u03bd",
+    "node": 137
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 138,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "node": 138
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 139,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03ac\u03bd\u03b1\u03c4\u03bf\u03c2",
+    "node": 139
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 140,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03cd\u03bd\u03b1\u03bc\u03b9\u03c2",
+    "node": 140
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 141,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "node": 141
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 142,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ad\u03bd\u03c9",
+    "node": 142
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 143,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b6\u03b7\u03c4\u03ad\u03c9",
+    "node": 143
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 144,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 144
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 145,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03b3\u03ac\u03c0\u03b7",
+    "node": 145
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 146,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b2\u03b1\u03c3\u03b9\u03bb\u03b5\u03cd\u03c2",
+    "node": 146
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 147,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ba\u03ba\u03bb\u03b7\u03c3\u03af\u03b1",
+    "node": 147
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 148,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03c1\u03af\u03bd\u03c9",
+    "node": 148
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 149,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f34\u03b4\u03b9\u03bf\u03c2",
+    "node": 149
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 150,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f36\u03ba\u03bf\u03c2",
+    "node": 150
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 151,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c3\u03bf\u03c2",
+    "node": 151
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 152,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03b8\u03bd\u1fc4\u03c3\u03ba\u03c9",
+    "node": 152
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 153,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03cc\u03bd\u03bf\u03c2",
+    "node": 153
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 154,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ad\u03bb\u03bb\u03c9",
+    "node": 154
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 155,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bb\u03ae\u03b8\u03b5\u03b9\u03b1",
+    "node": 155
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 156,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ad\u03c9",
+    "node": 156
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 157,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bd\u03af\u03c3\u03c4\u03b7\u03bc\u03b9",
+    "node": 157
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 158,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03bb\u03bf\u03c2",
+    "node": 158
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 159,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f65\u03c1\u03b1",
+    "node": 159
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 160,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u1ff4\u03b6\u03c9",
+    "node": 160
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 161,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u1ff6\u03c2",
+    "node": 161
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 162,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c4\u03b5",
+    "node": 162
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 163,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03be\u03bf\u03c5\u03c3\u03af\u03b1",
+    "node": 163
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 164,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c8\u03c5\u03c7\u03ae",
+    "node": 164
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 165,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03b3\u03b1\u03b8\u03cc\u03c2",
+    "node": 165
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 166,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f41\u03b4\u03cc\u03c2",
+    "node": 166
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 167,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03bb\u03cc\u03c2",
+    "node": 167
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 168,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f34\u03c1\u03c9",
+    "node": 168
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 169,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03af\u03b8\u03b7\u03bc\u03b9",
+    "node": 169
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 170,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bb\u03bb\u03ae\u03bb\u03c9\u03bd",
+    "node": 170
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 171,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f40\u03c6\u03b8\u03b1\u03bb\u03bc\u03cc\u03c2",
+    "node": 171
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 172,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03ad\u03ba\u03bd\u03bf\u03bd",
+    "node": 172
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 173,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f15\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "node": 173
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 174,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f37\u03bc\u03b1",
+    "node": 174
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 175,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03b5\u03bd\u03bd\u03ac\u03c9",
+    "node": 175
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 176,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03c1\u03c4\u03bf\u03c2",
+    "node": 176
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 177,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03c9",
+    "node": 177
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 178,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a6\u03b1\u03c1\u03b9\u03c3\u03b1\u1fd6\u03bf\u03c2",
+    "node": 178
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 179,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ba\u03b5\u1fd6",
+    "node": 179
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 180,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u03bf\u03b2\u03ad\u03bf\u03bc\u03b1\u03b9",
+    "node": 180
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 181,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b5\u03c1\u03b9\u03c0\u03b1\u03c4\u03ad\u03c9",
+    "node": 181
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 182,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03bd\u03ce\u03c0\u03b9\u03bf\u03bd",
+    "node": 182
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 183,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03cc\u03c0\u03bf\u03c2",
+    "node": 183
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 184,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f30\u03ba\u03af\u03b1",
+    "node": 184
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 185,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c4\u03b9",
+    "node": 185
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 186,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u03cd\u03c2",
+    "node": 186
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 187,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f30\u03c1\u03ae\u03bd\u03b7",
+    "node": 187
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 188,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b9\u03ba\u03b1\u03b9\u03bf\u03c3\u03cd\u03bd\u03b7",
+    "node": 188
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 189,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03ac\u03b8\u03b7\u03bc\u03b1\u03b9",
+    "node": 189
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 190,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03cc\u03bb\u03bb\u03c5\u03bc\u03b9",
+    "node": 190
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 191,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b7\u03b4\u03b5\u03af\u03c2",
+    "node": 191
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 192,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03ac\u03bb\u03b1\u03c3\u03c3\u03b1",
+    "node": 192
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 193,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03af\u03c0\u03c4\u03c9",
+    "node": 193
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 194,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03ba\u03bf\u03bb\u03bf\u03c5\u03b8\u03ad\u03c9",
+    "node": 194
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 195,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f11\u03c0\u03c4\u03ac",
+    "node": 195
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 196,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f54\u03c4\u03b5",
+    "node": 196
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 197,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03c1\u03c7\u03c9",
+    "node": 197
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 198,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ad\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 198
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 199,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bb\u03b7\u03c1\u03cc\u03c9",
+    "node": 199
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 200,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03b9\u03c1\u03cc\u03c2",
+    "node": 200
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 201,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03b5\u03cd\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 201
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 202,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f65\u03c3\u03c4\u03b5",
+    "node": 202
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 203,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ae\u03c4\u03b7\u03c1",
+    "node": 203
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 204,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u1f00\u03b3\u03ce",
+    "node": 204
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 205,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c0\u03bf\u03c5",
+    "node": 205
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 206,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f15\u03ba\u03b1\u03c3\u03c4\u03bf\u03c2",
+    "node": 206
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 207,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u1fb6\u03bb\u03bb\u03bf\u03bd",
+    "node": 207
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 208,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bd\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "node": 208
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 209,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03ba\u03b2\u03ac\u03bb\u03bb\u03c9",
+    "node": 209
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 210,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03c4\u03b1\u03b2\u03b1\u03af\u03bd\u03c9",
+    "node": 210
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 211,
+  "fields": {
+    "context": "",
+    "lemma": "\u039c\u03c9\u03cb\u03c3\u1fc6\u03c2",
+    "node": 211
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 212,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03af\u03ba\u03b1\u03b9\u03bf\u03c2",
+    "node": 212
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 213,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f51\u03c0\u03ac\u03b3\u03c9",
+    "node": 213
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 214,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03ad\u03bc\u03c0\u03c9",
+    "node": 214
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 215,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+    "node": 215
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 216,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u03bd\u03b7\u03c1\u03cc\u03c2",
+    "node": 216
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 217,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03c4\u03cc\u03bc\u03b1",
+    "node": 217
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 218,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b2\u03b1\u03c0\u03c4\u03af\u03b6\u03c9",
+    "node": 218
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 219,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03bd\u03bf\u03af\u03b3\u03c9",
+    "node": 219
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 220,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03b7\u03bc\u03b5\u1fd6\u03bf\u03bd",
+    "node": 220
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 221,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b1\u03c1\u03c4\u03c5\u03c1\u03ad\u03c9",
+    "node": 221
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 222,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03bc\u03cc\u03c2",
+    "node": 222
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 223,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f38\u03b5\u03c1\u03bf\u03c5\u03c3\u03b1\u03bb\u03ae\u03bc",
+    "node": 223
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 224,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03cc\u03c3\u03c9\u03c0\u03bf\u03bd",
+    "node": 224
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 225,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f55\u03b4\u03c9\u03c1",
+    "node": 225
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 226,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b5\u03c6\u03b1\u03bb\u03ae",
+    "node": 226
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 227,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03ad\u03bb\u03b9\u03bf\u03bd",
+    "node": 227
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 228,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03ce\u03b4\u03b5\u03ba\u03b1",
+    "node": 228
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 229,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a3\u03af\u03bc\u03c9\u03bd",
+    "node": 229
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 230,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03ba\u03c4\u03b5\u03af\u03bd\u03c9",
+    "node": 230
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 231,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03b1\u03af\u03c1\u03c9",
+    "node": 231
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 232,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f08\u03b2\u03c1\u03b1\u03ac\u03bc",
+    "node": 232
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 233,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u1ff6\u03c2",
+    "node": 233
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 234,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03af\u03bd\u03c9",
+    "node": 234
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 235,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u1fe6\u03c1",
+    "node": 235
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 236,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03b7\u03c1\u03ad\u03c9",
+    "node": 236
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 237,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f30\u03c4\u03ad\u03c9",
+    "node": 237
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 238,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b1\u1f30\u03ce\u03bd\u03b9\u03bf\u03c2",
+    "node": 238
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 239,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03ac\u03b2\u03b2\u03b1\u03c4\u03bf\u03bd",
+    "node": 239
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 240,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f38\u03c3\u03c1\u03b1\u03ae\u03bb",
+    "node": 240
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 241,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03c1\u03b5\u1fd6\u03c2",
+    "node": 241
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 242,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b9\u03c3\u03c4\u03cc\u03c2",
+    "node": 242
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 243,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03bb\u03cd\u03c9",
+    "node": 243
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 244,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bb\u03bf\u1fd6\u03bf\u03bd",
+    "node": 244
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 245,
+  "fields": {
+    "context": "",
+    "lemma": "\u1fe5\u1fc6\u03bc\u03b1",
+    "node": 245
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 246,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u03ad\u03c1\u03c9",
+    "node": 246
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 247,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03b3\u03c9",
+    "node": 247
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 248,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03c1\u03c0\u03cc\u03c2",
+    "node": 248
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 249,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03bd\u03c4\u03bf\u03bb\u03ae",
+    "node": 249
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 250,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03b5\u03c3\u03b2\u03cd\u03c4\u03b5\u03c1\u03bf\u03c2",
+    "node": 250
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 251,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u03b7\u03bc\u03af",
+    "node": 251
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 252,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f34\u03c4\u03b5",
+    "node": 252
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 253,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b1\u03b9\u03bc\u03cc\u03bd\u03b9\u03bf\u03bd",
+    "node": 253
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 254,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f39\u03b5\u03c1\u03bf\u03c3\u03cc\u03bb\u03c5\u03bc\u03b1",
+    "node": 254
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 255,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "node": 255
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 256,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b5\u03cd\u03c2",
+    "node": 256
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 257,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "node": 257
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 258,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03bf\u03ba\u03ad\u03c9",
+    "node": 258
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 259,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03ad\u03bb\u03b7\u03bc\u03b1",
+    "node": 259
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 260,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03be\u03c9",
+    "node": 260
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 261,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f44\u03c1\u03bf\u03c2",
+    "node": 261
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 262,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bd\u03cd\u03be",
+    "node": 262
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 263,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f67\u03b4\u03b5",
+    "node": 263
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 264,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03b3\u03b1\u03c0\u03b7\u03c4\u03cc\u03c2",
+    "node": 264
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 265,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03bf\u03be\u03ac\u03b6\u03c9",
+    "node": 265
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 266,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b7\u03c1\u03cd\u03c3\u03c3\u03c9",
+    "node": 266
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 267,
+  "fields": {
+    "context": "",
+    "lemma": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u03af\u03b1",
+    "node": 267
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 268,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f31\u03bc\u03ac\u03c4\u03b9\u03bf\u03bd",
+    "node": 268
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 269,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f51\u03c0\u03ac\u03c1\u03c7\u03c9",
+    "node": 269
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 270,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03c1\u03bf\u03c3\u03ba\u03c5\u03bd\u03ad\u03c9",
+    "node": 270
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 271,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f24\u03b4\u03b7",
+    "node": 271
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 272,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03c5\u03bd\u03ac\u03b3\u03c9",
+    "node": 272
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 273,
+  "fields": {
+    "context": "",
+    "lemma": "\u0394\u03b1\u03c5\u03af\u03b4",
+    "node": 273
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 274,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f50\u03b8\u03cd\u03c2",
+    "node": 274
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 275,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03b1\u03c1\u03ac",
+    "node": 275
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 276,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c3\u03c0\u03ac\u03b6\u03bf\u03bc\u03b1\u03b9",
+    "node": 276
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 277,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b9\u03b4\u03ac\u03c3\u03ba\u03b1\u03bb\u03bf\u03c2",
+    "node": 277
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 278,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b8\u03b5\u03c9\u03c1\u03ad\u03c9",
+    "node": 278
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 279,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03af\u03b8\u03bf\u03c2",
+    "node": 279
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 280,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b7\u03b4\u03ad",
+    "node": 280
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 281,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03c0\u03b5\u03c1\u03c9\u03c4\u03ac\u03c9",
+    "node": 281
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 282,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03c5\u03bd\u03b1\u03b3\u03c9\u03b3\u03ae",
+    "node": 282
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 283,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03ad\u03c7\u03bf\u03bc\u03b1\u03b9",
+    "node": 283
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 284,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03bf\u03b9\u03bf\u1fe6\u03c4\u03bf\u03c2",
+    "node": 284
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 285,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03ad\u03c3\u03bf\u03c2",
+    "node": 285
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 286,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bb\u03bf\u03b9\u03c0\u03cc\u03c2",
+    "node": 286
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 287,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03c1\u03af\u03c4\u03bf\u03c2",
+    "node": 287
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 288,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c1\u03c7\u03ae",
+    "node": 288
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 289,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03c1\u03ac\u03b6\u03c9",
+    "node": 289
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 290,
+  "fields": {
+    "context": "",
+    "lemma": "\u03a0\u03b9\u03bb\u1fb6\u03c4\u03bf\u03c2",
+    "node": 290
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 291,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b5\u1f50\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b6\u03c9",
+    "node": 291
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 292,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b5\u03be\u03b9\u03cc\u03c2",
+    "node": 292
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 293,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f45\u03c0\u03c9\u03c2",
+    "node": 293
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 294,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03c1\u03cc\u03bd\u03bf\u03c2",
+    "node": 294
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 295,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b4\u03b9\u03cc",
+    "node": 295
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 296,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bf\u1f50\u03c7\u03af",
+    "node": 296
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 297,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03bb\u03c0\u03af\u03c2",
+    "node": 297
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 298,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c3\u03c7\u03b1\u03c4\u03bf\u03c2",
+    "node": 298
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 299,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b5\u03af\u03b8\u03c9",
+    "node": 299
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 300,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03c0\u03b5\u03af\u03c1\u03c9",
+    "node": 300
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 301,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f10\u03c0\u03b1\u03b3\u03b3\u03b5\u03bb\u03af\u03b1",
+    "node": 301
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 302,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03b9\u03b4\u03af\u03bf\u03bd",
+    "node": 302
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 303,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c3\u03bf\u03c6\u03af\u03b1",
+    "node": 303
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 304,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c4\u03c5\u03c6\u03bb\u03cc\u03c2",
+    "node": 304
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 305,
+  "fields": {
+    "context": "",
+    "lemma": "\u03ba\u03b1\u03ba\u03cc\u03c2",
+    "node": 305
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 306,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03b2\u03bf\u03bb\u03ae",
+    "node": 306
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 307,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03bf\u1fe6",
+    "node": 307
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 308,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03bb\u1ff6\u03c3\u03c3\u03b1",
+    "node": 308
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 309,
+  "fields": {
+    "context": "",
+    "lemma": "\u03bc\u03b1\u03ba\u03ac\u03c1\u03b9\u03bf\u03c2",
+    "node": 309
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 310,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c0\u03b1\u03c1\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+    "node": 310
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 311,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f04\u03c1\u03b1",
+    "node": 311
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 312,
+  "fields": {
+    "context": "",
+    "lemma": "\u03b3\u03c1\u03b1\u03c6\u03ae",
+    "node": 312
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 313,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c4\u03bf\u03c2",
+    "node": 313
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 314,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c7\u03c1\u03b5\u03af\u03b1",
+    "node": 314
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 315,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03c1\u03b7\u03bc\u03bf\u03c2",
+    "node": 315
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 316,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f14\u03bc\u03c0\u03c1\u03bf\u03c3\u03b8\u03b5\u03bd",
+    "node": 316
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 317,
+  "fields": {
+    "context": "",
+    "lemma": "\u1f00\u03c0\u03bf\u03b4\u03af\u03b4\u03c9\u03bc\u03b9",
+    "node": 317
+  }
+},
+{
+  "model": "lattices.lemmanode",
+  "pk": 318,
+  "fields": {
+    "context": "",
+    "lemma": "\u03c6\u03b1\u03bd\u03b5\u03c1\u03cc\u03c9",
+    "node": 318
+  }
+}
+]
