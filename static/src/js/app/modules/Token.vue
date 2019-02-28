@@ -27,6 +27,9 @@ export default {
 </script>
 <style lang="scss">
   @import "../../../scss/config";
+  .selected {
+    background: $selected-color;
+  }
 
   .highlight-not-in-list {
     .token {
