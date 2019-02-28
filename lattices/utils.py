@@ -53,10 +53,16 @@ def get_or_create_nodes_for_form_and_lemmas(form, lemmas, context):
 
     node_for_form = get_or_create_node_for_form(form, context)
 
-    for lemma in lemmas:
-        node_for_form.children.add(get_or_create_node_for_lemma(lemma, context))
+    if len(lemmas) > 1:
+        for lemma in lemmas:
+            node_for_form.children.add(get_or_create_node_for_lemma(lemma, context))
 
-    return node_for_form
+        return node_for_form
+    else:
+        node_for_lemma = get_or_create_node_for_lemma(lemmas[0], context)
+        node_for_form.children.add(node_for_lemma)
+
+    return node_for_lemma
 
 
 def get_lattice_node(lemmas, form=None, context=""):
@@ -75,7 +81,7 @@ def get_lattice_node(lemmas, form=None, context=""):
     if not lemmas:
         return
 
-    if form and len(lemmas) > 1:
+    if form:
         return get_or_create_nodes_for_form_and_lemmas(form, lemmas, context)
     else:
         return get_or_create_node_for_lemma(lemmas[0], context)

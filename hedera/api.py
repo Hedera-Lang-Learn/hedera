@@ -28,7 +28,7 @@ class LemmatizationAPI(APIView):
         if self.request.GET.get("vocablist", None) is not None:
             vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
             for token in data:
-                token["inVocabList"] = vl.entries.filter(pk=token["node"]).exists()
+                token["inVocabList"] = token["resolved"] and vl.entries.filter(pk=token["node"]).exists()
         return data
 
     def get_data(self):
