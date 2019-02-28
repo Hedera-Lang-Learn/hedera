@@ -4,7 +4,16 @@
         <p>{{ description }}</p>
         <gauge-chart v-if="active" :rate="knownVocab" label="Known" />
         <button class="btn btn-block btn-outline-primary" :class="{ active }" @click.prevent="onSelect">Select</button>
-        <a href @click.prevent="toggleKnown" v-if="active">Highlight {{ showInVocabList ? 'Unknown' : 'Known' }}</a>
+        <div v-if="active" class="toggle-link-container">
+          <span v-if="showInVocabList">
+            The known words are highlighted.
+            <a href @click.prevent="toggleKnown" v-if="active">Highlight Unknown</a>
+          </span>
+          <span v-else>
+            The unknown words are highlighted.
+            <a href @click.prevent="toggleKnown" v-if="active">Highlight Known</a>
+          </span>
+        </div>
     </div>
 </template>
 
@@ -52,10 +61,14 @@ export default {
       font-size: 10pt;
       color: $gray-700;
     }
+    .toggle-link-container {
+      margin-top: 10px;
+      text-align: center;
+    }
     a {
-      margin-top: 5px;
       display: block;
       text-align: center;
+      margin-top: 5px;
     }
     margin-bottom: 25px;
     background: $gray-100;
