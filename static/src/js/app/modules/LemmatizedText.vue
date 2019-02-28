@@ -13,6 +13,7 @@
   </div>
 </template>
 <script>
+import debounce from 'lodash.debounce';
 import { SELECT_TOKEN, FETCH_NODE } from "../constants";
 
 import Token from "./Token.vue";
@@ -28,7 +29,7 @@ export default {
           index = this.tokens.length - 1;
         }
       }
-      this.$store.dispatch(SELECT_TOKEN, { index });
+      this.selectToken(index);
     },
     nextWord() {
       let index = 0;
@@ -38,18 +39,28 @@ export default {
           index = 0;
         }
       }
-      this.$store.dispatch(SELECT_TOKEN, { index });
+      this.selectToken(index);
     }
   },
   methods: {
-    onToggleSelect({ token, index }) {
+    selectToken(index) {
+      const fetchNode = () => {
+        if (this.selectedToken.node !== null) {
+          this.$store.dispatch(FETCH_NODE, { id: this.selectedToken.node });
+        }
+      }
+      const debouncedFetchNode = debounce(fetchNode, 300);
+
+      // The debounce is delaying the call but it's accumulating all the instances
+      // so the network call is happening multiple times.
+      this.$store.dispatch(SELECT_TOKEN, { index });
+      debouncedFetchNode();
+    },
+    onToggleSelect({ index }) {
       if (this.selectedIndex === index && this.selectedToken === token) {
         this.$store.dispatch(SELECT_TOKEN, { index: null });
       } else {
-        this.$store.dispatch(SELECT_TOKEN, { index });
-        if (token.node !== null) {
-          this.$store.dispatch(FETCH_NODE, { id: token.node });
-        }
+        this.selectToken(index);
       }
     }
   },
