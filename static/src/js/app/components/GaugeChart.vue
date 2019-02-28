@@ -60,6 +60,10 @@ export default {
     height: 180px;
     margin: 20px auto;
 
+    .rate {
+      font-size: 24pt;
+    }
+
     .tier-1 {
       fill: $tier-1-fill;
     }
