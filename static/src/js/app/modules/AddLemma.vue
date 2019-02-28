@@ -6,6 +6,7 @@
         </div>
     </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -23,3 +24,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .add-lemma {
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+  }
+</style>

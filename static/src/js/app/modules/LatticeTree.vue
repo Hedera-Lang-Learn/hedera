@@ -1,8 +1,8 @@
 <template>
   <div class="lattice-tree">
     <h4>{{ token.token }}</h4>
-    <AddLemma @addLemma="onAddLemma" />
     <LatticeNode :node="node" @selected="onSelect" />
+    <AddLemma @addLemma="onAddLemma" />
     <MarkResolved :resolved="token.resolved" @toggle="markResolved" />
   </div>
 </template>
