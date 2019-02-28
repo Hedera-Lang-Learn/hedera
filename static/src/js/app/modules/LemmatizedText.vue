@@ -1,5 +1,5 @@
 <template>
-  <div class="lemmatized-text">
+  <div class="lemmatized-text" :class="highlightClass">
     <template v-for="(token, index) in tokens">
       <Token
         :key="index"
@@ -32,6 +32,15 @@ export default {
     }
   },
   computed: {
+    highlightClass() {
+      if (this.$store.state.selectedVocabList === null) {
+        return '';
+      }
+      return this.showInVocabList ? 'highlight-in-list' : 'highlight-not-in-list'
+    },
+    showInVocabList() {
+      return this.$store.state.showInVocabList;
+    },
     tokens() {
       return this.$store.state.tokens;
     },

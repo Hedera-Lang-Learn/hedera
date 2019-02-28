@@ -1,4 +1,4 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, ADD_LEMMA, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, ADD_LEMMA, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, TOGGLE_SHOW_IN_VOCAB_LIST } from '../constants';
 import api from '../api';
 
 export default {
@@ -22,4 +22,7 @@ export default {
   [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {
     commit(TOGGLE_VOCAB_LIST, id);
   },
+  [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
+    commit(TOGGLE_SHOW_IN_VOCAB_LIST);
+  }
 };

@@ -6,4 +6,5 @@ export default {
   nodes: {},
   vocabLists: [],
   selectedVocabList: null,
+  showInVocabList: true,
 };

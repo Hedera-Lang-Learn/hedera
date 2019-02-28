@@ -26,9 +26,20 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../../../scss/config";
+  @import "../../../scss/config";
 
-.in-vocab-list {
-  background: $highlight-color;
-}
+  .highlight-not-in-list {
+    .token {
+      background: $highlight-color;
+      &.in-vocab-list {
+        background: inherit;
+      }
+    }
+  }
+  .highlight-in-list {
+    .in-vocab-list {
+      background: $highlight-color;
+    }
+  }
+
 </style>
