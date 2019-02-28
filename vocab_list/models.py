@@ -57,7 +57,7 @@ class VocabularyListEntry(models.Model):
     gloss = models.TextField(blank=True)
 
     node = models.ForeignKey(
-        LatticeNode, null=True, on_delete=models.SET_NULL)
+        LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

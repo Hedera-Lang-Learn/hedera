@@ -25,6 +25,12 @@ class LatticeNode(models.Model):
                     "context": lemma_node.context,
                 } for lemma_node in self.lemma_strings.all()
             ],
+            "vocabulary_entries": [  # @@@ temporarily here
+                {
+                    "headword": entry.headword,
+                    "gloss": entry.gloss,
+                } for entry in self.vocabulary_entries.all()
+            ],
         }
         if down:
             d.update({
