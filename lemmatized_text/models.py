@@ -20,3 +20,10 @@ class LemmatizedText(models.Model):
 
     def __str__(self):
         return self.title
+
+    def api_data(self):
+        return {
+            "id": self.pk,
+            "title": self.title,
+            "lang": self.lang,
+        }

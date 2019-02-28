@@ -21,6 +21,13 @@ class APIView(View):
         return self.render_to_response()
 
 
+class LemmatizedTextDetailAPI(APIView):
+
+    def get_data(self):
+        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+        return text.api_data()
+
+
 class LemmatizationAPI(APIView):
 
     def decorate_token_data(self, text):
@@ -62,4 +69,4 @@ class LemmatizationAPI(APIView):
 class VocabularyListAPI(APIView):
 
     def get_data(self):
-        return [v.data() for v in VocabularyList.objects.all()]
+        return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]

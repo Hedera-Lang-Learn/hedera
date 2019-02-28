@@ -1,6 +1,9 @@
-import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, TOGGLE_SHOW_IN_VOCAB_LIST } from '../constants';
+import { FETCH_TOKENS, SELECT_TOKEN, FETCH_NODE, UPDATE_TOKEN, SET_TEXT_ID, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, TOGGLE_SHOW_IN_VOCAB_LIST, FETCH_TEXT } from '../constants';
 
 export default {
+  [FETCH_TEXT]: (state, data) => {
+    state.text = data;
+  },
   [FETCH_VOCAB_LISTS]: (state, data) => {
     state.vocabLists = data;
   },

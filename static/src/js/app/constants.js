@@ -7,3 +7,4 @@ export const SET_TEXT_ID = 'setTextId';
 export const ADD_LEMMA = 'addLemma';
 export const TOGGLE_VOCAB_LIST = 'toggleVocabList';
 export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
+export const FETCH_TEXT = 'fetchText';

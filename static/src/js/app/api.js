@@ -7,7 +7,8 @@ const BASE_URL = '/api/v1/';
 
 
 export default {
-  fetchVocabLists: cb => axios.get(`${BASE_URL}vocab_lists/`).then(r => cb(r.data)),
+  fetchText: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`).then(r => cb(r.data)),
+  fetchVocabLists: (lang, cb) => axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`).then(r => cb(r.data)),
   fetchTokens: (id, vocabList, cb) => {
     if (vocabList === null) {
       return axios.get(`${BASE_URL}lemmatized_texts/${id}/`).then(r => cb(r.data));

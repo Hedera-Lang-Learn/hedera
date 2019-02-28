@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST } from './constants';
+import { FETCH_TOKENS, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, FETCH_TEXT } from './constants';
 
 import LatticeTree from './modules/LatticeTree.vue';
 import LemmatizedText from './modules/LemmatizedText.vue';
@@ -23,15 +23,18 @@ import VocabList from './modules/VocabList.vue';
 export default {
   props: ["textId"],
   components: { LatticeTree, LemmatizedText, VocabList },
-  created() {
-    this.$store.dispatch(FETCH_VOCAB_LISTS);
-  },
   methods: {
     onVocabListToggle(id) {
       this.$store.dispatch(TOGGLE_VOCAB_LIST, id);
     }
   },
   watch: {
+    textId: {
+      immediate: true,
+      handler() {
+        this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_VOCAB_LISTS));
+      }
+    },
     selectedVocabList: {
       immediate: true,
       handler() {
