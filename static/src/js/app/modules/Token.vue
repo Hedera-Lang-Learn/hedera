@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
   @import "../../../scss/config";
   .selected {
-    background: $selected-color;
+    border-bottom: 4px solid red;
   }
 
   .highlight-not-in-list {
