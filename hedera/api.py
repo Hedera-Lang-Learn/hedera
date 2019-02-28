@@ -23,13 +23,17 @@ class APIView(View):
 
 class LemmatizationAPI(APIView):
 
-    def get_data(self):
-        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+    def decorate_token_data(self, text):
         data = json.loads(text.data)
         if self.request.GET.get("vocablist", None) is not None:
             vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
             for token in data:
                 token["inVocabList"] = vl.entries.filter(pk=token["node"]).exists()
+        return data
+
+    def get_data(self):
+        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+        data = self.decorate_token_data(text)
         return data
 
     def post(self, request, *args, **kwargs):
@@ -51,7 +55,8 @@ class LemmatizationAPI(APIView):
         text.save()
 
         text.refresh_from_db()
-        return JsonResponse({"data": json.loads(text.data)})
+        data = self.decorate_token_data(text)
+        return JsonResponse({"data": data})
 
 
 class VocabularyListAPI(APIView):
