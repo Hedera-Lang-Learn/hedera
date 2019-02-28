@@ -45,7 +45,7 @@ export default {
       return this.node.vocabulary_entries;
     },
     selectedToken() {
-      return this.$store.state.selectedToken;
+      return this.$store.getters.selectedToken;
     }
   }
 }

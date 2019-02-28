@@ -21,7 +21,7 @@ export default {
     commit(SET_TEXT_ID, id);
     return api.fetchTokens(id, vocabList, data => commit(FETCH_TOKENS, data.data));
   },
-  [SELECT_TOKEN]: ({ commit }, { token, index }) => commit(SELECT_TOKEN, { token, index }),
+  [SELECT_TOKEN]: ({ commit }, { index }) => commit(SELECT_TOKEN, { index }),
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, data => commit(FETCH_NODE, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
     api.fetchNode(nodeId, data => commit(FETCH_NODE, data));

@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueKeybindings from 'vue-keybindings'
 
 import globalComponents from './components';
 import store from './store';
@@ -10,6 +11,13 @@ export default () => {
   if (document.getElementById('app')) {
     globalComponents.forEach((component) => {
       Vue.component(component.name, component);
+    });
+
+    Vue.use(VueKeybindings, {
+      alias: {
+        prevWord: ['arrowleft'],
+        nextWord: ['arrowright']
+      },
     });
 
     /* eslint-disable no-new */

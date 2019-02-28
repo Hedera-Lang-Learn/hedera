@@ -19,12 +19,34 @@ import Token from "./Token.vue";
 
 export default {
   components: { Token },
+  shortcuts: {
+    prevWord() {
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        index = this.selectedIndex - 1;
+        if (index === -1) {
+          index = this.tokens.length - 1;
+        }
+      }
+      this.$store.dispatch(SELECT_TOKEN, { index });
+    },
+    nextWord() {
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        index = this.selectedIndex + 1;
+        if (index === this.tokens.length) {
+          index = 0;
+        }
+      }
+      this.$store.dispatch(SELECT_TOKEN, { index });
+    }
+  },
   methods: {
     onToggleSelect({ token, index }) {
       if (this.selectedIndex === index && this.selectedToken === token) {
-        this.$store.dispatch(SELECT_TOKEN, { token: null, index: null });
+        this.$store.dispatch(SELECT_TOKEN, { index: null });
       } else {
-        this.$store.dispatch(SELECT_TOKEN, { token, index });
+        this.$store.dispatch(SELECT_TOKEN, { index });
         if (token.node !== null) {
           this.$store.dispatch(FETCH_NODE, { id: token.node });
         }
@@ -48,7 +70,7 @@ export default {
       return this.$store.state.selectedIndex;
     },
     selectedToken() {
-      return this.$store.state.selectedToken;
+      return this.$store.getters.selectedToken;
     }
   }
 };

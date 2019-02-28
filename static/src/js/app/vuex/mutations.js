@@ -13,8 +13,7 @@ export default {
   [FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },
-  [SELECT_TOKEN]: (state, { token, index }) => {
-    state.selectedToken = token;
+  [SELECT_TOKEN]: (state, { index }) => {
     state.selectedIndex = index;
   },
   [FETCH_NODE]: (state, data) => {

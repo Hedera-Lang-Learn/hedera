@@ -50,7 +50,7 @@ export default {
       return this.$store.state.vocabLists;
     },
     selectedToken() {
-      return this.$store.state.selectedToken;
+      return this.$store.getters.selectedToken;
     },
     selectedIndex() {
       return this.$store.state.selectedIndex;
