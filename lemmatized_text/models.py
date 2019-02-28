@@ -6,6 +6,7 @@ from django.db import models
 class LemmatizedText(models.Model):
 
     title = models.CharField(max_length=100)
+    lang = models.CharField(max_length=3)  # ISO 639.2
 
     # this should be a JSON list of the form
     # [

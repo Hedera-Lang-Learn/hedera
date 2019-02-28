@@ -16,6 +16,7 @@ class VocabularyList(models.Model):
     )
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
+    lang = models.CharField(max_length=3)  # ISO 639.2
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

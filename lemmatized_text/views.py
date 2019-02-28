@@ -17,7 +17,7 @@ def create(request):
         lang = request.POST.get("lang")
         text = request.POST.get("text")
         data = json.dumps(lemmatize_text(text, lang))
-        lt = models.LemmatizedText.objects.create(title=title, data=data)
+        lt = models.LemmatizedText.objects.create(title=title, data=data, lang=lang)
         return redirect(f"/lemmatized_text/{lt.pk}")
     return render(request, "lemmatized_text/create.html", {})
 

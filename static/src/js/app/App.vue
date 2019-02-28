@@ -53,7 +53,7 @@ export default {
       return this.$store.state.selectedIndex;
     },
     selectedNode() {
-      return this.$store.state.nodes[this.selectedToken.node];
+      return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
     }
   }
 }
