@@ -40,7 +40,39 @@ export default {
         }
       }
       this.selectToken(index);
-    }
+    },
+    prevUnresolved() {
+      const currentIndex = this.selectedIndex || 0;
+      const unresolvedTokens = this.tokens
+        .filter(t => !t.resolved || t === this.selectedToken);
+
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        let unresolvedTokenIndex = unresolvedTokens.indexOf(this.selectedToken) - 1;
+        if (unresolvedTokenIndex === -1) {
+          unresolvedTokenIndex = unresolvedTokens.length - 1;
+        }
+        const token = unresolvedTokens[unresolvedTokenIndex];
+        index = this.tokens.indexOf(token);
+      }
+      this.selectToken(index);
+    },
+    nextUnresolved() {
+      const currentIndex = this.selectedIndex || 0;
+      const unresolvedTokens = this.tokens
+        .filter(t => !t.resolved || t === this.selectedToken);
+
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        let unresolvedTokenIndex = unresolvedTokens.indexOf(this.selectedToken) + 1;
+        if (unresolvedTokenIndex === unresolvedTokens.length) {
+          unresolvedTokenIndex = 0;
+        }
+        const token = unresolvedTokens[unresolvedTokenIndex];
+        index = this.tokens.indexOf(token);
+      }
+      this.selectToken(index);
+    },
   },
   methods: {
     selectToken(index) {
@@ -53,8 +85,8 @@ export default {
 
       // The debounce is delaying the call but it's accumulating all the instances
       // so the network call is happening multiple times.
-      this.$store.dispatch(SELECT_TOKEN, { index });
-      debouncedFetchNode();
+      this.$store.dispatch(SELECT_TOKEN, { index })
+        .then(debouncedFetchNode());
     },
     onToggleSelect({ index }) {
       if (this.selectedIndex === index && this.selectedToken === token) {

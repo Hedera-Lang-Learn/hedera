@@ -5,7 +5,7 @@ export default {
     return knownTokens / totalTokens;
   },
   selectedToken: (state) => {
-    if (state.selectedIndex && state.tokens.length > 0) {
+    if (state.selectedIndex !== null && state.tokens.length > 0) {
       return state.tokens[state.selectedIndex];
     }
     return null;

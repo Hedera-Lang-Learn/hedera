@@ -16,7 +16,9 @@ export default () => {
     Vue.use(VueKeybindings, {
       alias: {
         prevWord: ['arrowleft'],
-        nextWord: ['arrowright']
+        nextWord: ['arrowright'],
+        prevUnresolved: ['shift', 'arrowleft'],
+        nextUnresolved: ['shift', 'arrowright'],
       },
     });
 
