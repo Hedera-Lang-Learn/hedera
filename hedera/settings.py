@@ -7,16 +7,30 @@ BASE_DIR = PACKAGE_ROOT
 
 DEBUG = True
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ.get("DB_NAME" "hedera"),
-        "USER": os.environ.get("DB_USER", "hedera"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", "password"),
-        "HOST": os.environ.get("DB_HOST", "localhost"),
-        "PORT": os.environ.get("DB_PORT", "")
+DB_NAME = os.environ.get("DB_NAME")
+if DB_NAME:
+    # If an environment variable called DB_NAME exists, e.g. as it would 
+    # in a production environment, use Postgres as your database backend.
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": DB_NAME,
+            "USER": os.environ.get("DB_USER", ""),
+            "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+            "HOST": os.environ.get("DB_HOST", ""),
+            "PORT": os.environ.get("DB_PORT", "")
+        }
     }
-}
+else:
+    # If the DB_NAME environment variable does not exist, e.g. as it probably
+    # would not in your local environment, use sqlite as your database backend.
+    # To use Postgres for local development, see README. 
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "dev.db"
+        }
+    }
 
 ALLOWED_HOSTS = [
     "localhost",
