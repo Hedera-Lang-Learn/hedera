@@ -18,26 +18,36 @@ import { SELECT_TOKEN, FETCH_NODE } from "../constants";
 
 import Token from "./Token.vue";
 
+const prevIndex = (currentIndex, tokens) => {
+  let index = currentIndex - 1;
+  if (index === -1) {
+    index = tokens.length - 1;
+  }
+  return index;
+}
+
+const nextIndex = (currentIndex, tokens) => {
+  let index = currentIndex + 1;
+  if (index === tokens.length) {
+    index = 0;
+  }
+  return index;
+}
+
 export default {
   components: { Token },
   shortcuts: {
     prevWord() {
       let index = 0;
       if (this.selectedIndex !== null) {
-        index = this.selectedIndex - 1;
-        if (index === -1) {
-          index = this.tokens.length - 1;
-        }
+        index = prevIndex(this.selectedIndex, this.tokens);
       }
       this.selectToken(index);
     },
     nextWord() {
       let index = 0;
       if (this.selectedIndex !== null) {
-        index = this.selectedIndex + 1;
-        if (index === this.tokens.length) {
-          index = 0;
-        }
+        index = nextIndex(this.selectedIndex, this.tokens);
       }
       this.selectToken(index);
     },
@@ -48,10 +58,7 @@ export default {
 
       let index = 0;
       if (this.selectedIndex !== null) {
-        let unresolvedTokenIndex = unresolvedTokens.indexOf(this.selectedToken) - 1;
-        if (unresolvedTokenIndex === -1) {
-          unresolvedTokenIndex = unresolvedTokens.length - 1;
-        }
+        const unresolvedTokenIndex = prevIndex(unresolvedTokens.indexOf(this.selectedToken), unresolvedTokens);
         const token = unresolvedTokens[unresolvedTokenIndex];
         index = this.tokens.indexOf(token);
       }
@@ -64,10 +71,7 @@ export default {
 
       let index = 0;
       if (this.selectedIndex !== null) {
-        let unresolvedTokenIndex = unresolvedTokens.indexOf(this.selectedToken) + 1;
-        if (unresolvedTokenIndex === unresolvedTokens.length) {
-          unresolvedTokenIndex = 0;
-        }
+        const unresolvedTokenIndex = nextIndex(unresolvedTokens.indexOf(this.selectedToken), unresolvedTokens);
         const token = unresolvedTokens[unresolvedTokenIndex];
         index = this.tokens.indexOf(token);
       }
