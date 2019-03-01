@@ -2,7 +2,6 @@
   <span class="token"
     :class="{unresolved, selected, 'no-lemma': noLemma, 'in-vocab-list': inVocabList }"
     @click.prevent="onClick()">{{ token.token }}</span>
-  </span>
 </template>
 <script>
 export default {

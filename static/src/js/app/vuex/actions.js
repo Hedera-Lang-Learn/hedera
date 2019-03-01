@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import {
   FETCH_TEXT,
   FETCH_TOKENS,
@@ -25,18 +26,18 @@ export default {
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, data => commit(FETCH_NODE, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
     api.fetchNode(nodeId, data => commit(FETCH_NODE, data));
-    return api.updateToken(id, tokenIndex, resolved, state.selectedVocabList, nodeId, null, data => commit(UPDATE_TOKEN, data.data));
+    const mutate = data => commit(UPDATE_TOKEN, data.data);
+    return api.updateToken(id, tokenIndex, resolved, state.selectedVocabList, nodeId, null, mutate);
   },
   [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
-    return api.updateToken(id, tokenIndex, resolved, null, lemma, data => commit(UPDATE_TOKEN, data.data))
-      .then(() => {
-        dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node });
-      });
+    const mutate = data => commit(UPDATE_TOKEN, data.data);
+    return api.updateToken(id, tokenIndex, resolved, null, lemma, mutate)
+      .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }));
   },
   [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {
     commit(TOGGLE_VOCAB_LIST, id);
   },
   [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
     commit(TOGGLE_SHOW_IN_VOCAB_LIST);
-  }
+  },
 };

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import VueKeybindings from 'vue-keybindings'
+import VueKeybindings from 'vue-keybindings';
 
 import globalComponents from './components';
 import store from './store';
