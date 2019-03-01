@@ -38,44 +38,16 @@ export default {
   components: { Token },
   shortcuts: {
     prevWord() {
-      let index = 0;
-      if (this.selectedIndex !== null) {
-        index = prevIndex(this.selectedIndex, this.tokens);
-      }
-      this.selectToken(index);
+      this.goToWord(prevIndex);
     },
     nextWord() {
-      let index = 0;
-      if (this.selectedIndex !== null) {
-        index = nextIndex(this.selectedIndex, this.tokens);
-      }
-      this.selectToken(index);
+      this.goToWord(nextIndex);
     },
     prevUnresolved() {
-      const currentIndex = this.selectedIndex || 0;
-      const unresolvedTokens = this.tokens
-        .filter(t => !t.resolved || t === this.selectedToken);
-
-      let index = 0;
-      if (this.selectedIndex !== null) {
-        const unresolvedTokenIndex = prevIndex(unresolvedTokens.indexOf(this.selectedToken), unresolvedTokens);
-        const token = unresolvedTokens[unresolvedTokenIndex];
-        index = this.tokens.indexOf(token);
-      }
-      this.selectToken(index);
+      this.goToUnresolved(prevIndex);
     },
     nextUnresolved() {
-      const currentIndex = this.selectedIndex || 0;
-      const unresolvedTokens = this.tokens
-        .filter(t => !t.resolved || t === this.selectedToken);
-
-      let index = 0;
-      if (this.selectedIndex !== null) {
-        const unresolvedTokenIndex = nextIndex(unresolvedTokens.indexOf(this.selectedToken), unresolvedTokens);
-        const token = unresolvedTokens[unresolvedTokenIndex];
-        index = this.tokens.indexOf(token);
-      }
-      this.selectToken(index);
+      this.goToUnresolved(nextIndex);
     },
   },
   methods: {
@@ -98,9 +70,31 @@ export default {
       } else {
         this.selectToken(index);
       }
+    },
+    goToWord(indexFunction) {
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        index = indexFunction(this.selectedIndex, this.tokens);
+      }
+      this.selectToken(index);
+    },
+    goToUnresolved(indexFunction) {
+      let index = 0;
+      if (this.selectedIndex !== null) {
+        const unresolvedTokenIndex = indexFunction(
+          this.unresolvedTokens.indexOf(this.selectedToken),
+          this.unresolvedTokens
+        );
+        const token = this.unresolvedTokens[unresolvedTokenIndex];
+        index = this.tokens.indexOf(token);
+      }
+      this.selectToken(index);
     }
   },
   computed: {
+    unresolvedTokens() {
+      return this.tokens.filter(t => !t.resolved || t === this.selectedToken);
+    },
     highlightClass() {
       if (this.$store.state.selectedVocabList === null) {
         return '';
