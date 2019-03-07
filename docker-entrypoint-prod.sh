@@ -19,7 +19,6 @@ export SITE_ID=4
 
 
 python manage.py migrate
-python manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
 python manage.py collectstatic --noinput
 
 sudo gunicorn hedera.wsgi:application \
