@@ -14,6 +14,9 @@ django-webpack-loader = "*"
 pinax-templates = "*"
 requests = "*"
 gunicorn = "*"
+psycopg2-binary = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
 "flake8" = "*"
