@@ -11,8 +11,9 @@ npm install
 pipenv run pip install pip==18.0
 pipenv install
 pipenv shell
+createdb hedera
 ./manage.py migrate
-./manage.py loaddata sites cana livy tolstoy gnt80 morphgnt-lemmatization
+./manage.py loaddata sites lattices cana livy tolstoy gnt80 morphgnt-lemmatization dcc_latin
 ./manage.py runserver
 ```
 

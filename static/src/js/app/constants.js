@@ -1,2 +1,10 @@
-export const TOGGLE_SIDEBAR_LEFT = 'toggleSidebarLeft';
-export const TOGGLE_SIDEBAR_RIGHT = 'toggleSidebarRight';
+export const FETCH_VOCAB_LISTS = 'fetchVocabLists';
+export const FETCH_TOKENS = 'fetchTokens';
+export const SELECT_TOKEN = 'selectToken';
+export const FETCH_NODE = 'fetchNode';
+export const UPDATE_TOKEN = 'updateToken';
+export const SET_TEXT_ID = 'setTextId';
+export const ADD_LEMMA = 'addLemma';
+export const TOGGLE_VOCAB_LIST = 'toggleVocabList';
+export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
+export const FETCH_TEXT = 'fetchText';

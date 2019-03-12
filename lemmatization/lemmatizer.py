@@ -17,8 +17,8 @@ def lemmatize_word(form, lang, force_refresh=False):
 def lemmatize_text(text, lang):
     result = []
     for token in text.split():
-        lemmas = lemmatize_word(token, lang)
-        node = get_lattice_node(token, lemmas)  # @@@ not sure what to use for context here
+        lemmas = lemmatize_word(token.strip(",.?:;·"), lang)
+        node = get_lattice_node(lemmas, token)  # @@@ not sure what to use for context here
         if not node or node.children.exists():
             resolved = False
         else:

@@ -27,12 +27,15 @@ def morpheus(form, lang):
         "Accept": "application/json",
     }
     r = requests.get(url, headers=headers)
-    r.raise_for_status()
-    body = r.json().get("RDF", {}).get("Annotation", {}).get("Body", [])
-    if not isinstance(body, list):
-        body = [body]
+    if r.ok:
+        body = r.json().get("RDF", {}).get("Annotation", {}).get("Body", [])
+        if not isinstance(body, list):
+            body = [body]
+    else:
+        body = []
 
     lemmas = []
     for item in body:
         lemmas.append(item["rest"]["entry"]["dict"]["hdwd"]["$"])
+
     return lemmas

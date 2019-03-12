@@ -1,5 +1,7 @@
 import os
 
+import dj_database_url
+
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -7,30 +9,9 @@ BASE_DIR = PACKAGE_ROOT
 
 DEBUG = True
 
-DB_NAME = os.environ.get("DB_NAME")
-if DB_NAME:
-    # If an environment variable called DB_NAME exists, e.g. as it would 
-    # in a production environment, use Postgres as your database backend.
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": DB_NAME,
-            "USER": os.environ.get("DB_USER", ""),
-            "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-            "HOST": os.environ.get("DB_HOST", ""),
-            "PORT": os.environ.get("DB_PORT", "")
-        }
-    }
-else:
-    # If the DB_NAME environment variable does not exist, e.g. as it probably
-    # would not in your local environment, use sqlite as your database backend.
-    # To use Postgres for local development, see README. 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "dev.db"
-        }
-    }
+DATABASES = {
+    "default": dj_database_url.config(default="postgres://localhost/hedera")
+}
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -185,6 +166,7 @@ INSTALLED_APPS = [
     "vocab_list",
     "lattices",
     "lemmatization",
+    "lemmatized_text",
 
     # project
     "hedera",
