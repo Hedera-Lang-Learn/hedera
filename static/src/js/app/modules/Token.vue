@@ -32,7 +32,7 @@ export default {
 
   .highlight-not-in-list {
     .token {
-      background: $highlight-color;
+      background: hsl(0, 44%, 80%);
       &.in-vocab-list {
         background: inherit;
       }
@@ -40,7 +40,7 @@ export default {
   }
   .highlight-in-list {
     .in-vocab-list {
-      background: $highlight-color;
+      background: hsl(120, 24%, 80%); // hedera green but lighter
     }
   }
 
