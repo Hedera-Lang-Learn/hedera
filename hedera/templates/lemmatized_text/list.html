@@ -17,7 +17,11 @@
     <tr><th>Text</th><th>Language</th><th>Length</th><th></th></tr>
   {% for text in lemmatized_texts %}
     <tr>
-      <td><a href="/lemmatized_text/{{ text.pk }}/">{{ text.title }}</a></td>
+      <td>
+        {{ text.title }}
+        <a href="/lemmatized_text/{{ text.pk }}/">Teacher</a>
+        <a href="/lemmatized_text/{{ text.pk }}/learner/">Learner</a>
+      </td>
       <td>{{ text.lang }}</td>
       <td>{{ text.token_count }}</td>
       <td>

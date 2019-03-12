@@ -34,6 +34,12 @@ def delete(request, pk):
         return redirect("lemmatized_texts_list")
     return render(request, "lemmatized_text/delete.html", { "text": text })
 
+
 def text(request, pk):
     text = get_object_or_404(models.LemmatizedText, pk=pk)
     return render(request, "lemmatized_text/text.html", { "text": text })
+
+
+def learner_text(request, pk):
+    text = get_object_or_404(models.LemmatizedText, pk=pk)
+    return render(request, "lemmatized_text/learner_text.html", { "text": text })

@@ -5,6 +5,7 @@ export default {
   selectedIndex: null,
   nodes: {},
   vocabLists: [],
+  personalVocabList: null,
   selectedVocabList: null,
   showInVocabList: true,
 };

@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{ text.title }}{% endblock %}
+
+{% block body_class %}lemmatized-text{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+{% block nav_items %}{% endblock %}
+
+{% block body %}
+  <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &raquo; <b>{{ text.title }}</b></nav>
+  <div id="learner-app" text-id="{{ text.pk }}"></div>
+{% endblock %}
