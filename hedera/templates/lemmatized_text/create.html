@@ -16,17 +16,20 @@
     {% csrf_token %}
     <div class="form-group">
       <label>Title</label>
-      <input type="text" name="title" class="form-control">
+      <input type="text" name="title" class="form-control" value="{{ cloned_from.title }}">
     <div class="form-group">
       <label>Language</label>
       <select name="lang" class="form-control">
-        <option value="grc">Greek</option>
-        <option value="lat">Latin</option>
+        <option value="grc" {% if cloned_from.lang == "grc" %}select{% endif %}>Greek</option>
+        <option value="lat" {% if cloned_from.lang == "lat" %}select{% endif %}>Latin</option>
       </select>
     </div>
+    {% if cloned_from %}
+      <input type="hidden" name="cloned_from" value="{{ cloned_from.pk }}" />
+    {% endif %}
     <div class="form-group">
       <label>Text</label>
-      <textarea name="text" class="form-control" rows="10"></textarea>
+      <textarea name="text" class="form-control" rows="10">{{ cloned_from.text }}</textarea>
     </div>
     <button class="btn btn-primary">Submit</button>
     <a class="btn btn-default" href="{% url 'lemmatized_texts_list' %}">Cancel</a>

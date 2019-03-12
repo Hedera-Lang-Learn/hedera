@@ -13,11 +13,20 @@
 {% block body %}
   <h1>Lemmatized Texts</h1>
 
-  <ul>
+  <table class="table">
+    <tr><th>Text</th><th>Language</th><th>Length</th><th></th></tr>
   {% for text in lemmatized_texts %}
-    <li><a href="/lemmatized_text/{{ text.pk }}/">{{ text.title }}</a></li>
+    <tr>
+      <td><a href="/lemmatized_text/{{ text.pk }}/">{{ text.title }}</a></td>
+      <td>{{ text.lang }}</td>
+      <td>{{ text.token_count }}</td>
+      <td>
+        <a class="btn btn-outline-primary btn-sm" href="{% url 'lemmatized_texts_create' %}?cloned_from={{ text.pk }}"><i class="fa fa-copy"></i> Clone</a>
+        <a class="btn btn-outline-danger btn-sm" href="{% url 'lemmatized_texts_delete' text.pk %}"><i class="fa fa-trash"></i> Delete</a>
+      </td>
+    </tr>
   {% endfor %}
-  </ul>
+  </table>
 
   <a class="btn btn-primary" href="{% url 'lemmatized_texts_create' %}"><i class="fa fa-plus"></i> Create</a>
 {% endblock %}
