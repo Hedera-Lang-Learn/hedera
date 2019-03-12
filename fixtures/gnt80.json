@@ -6,8 +6,9 @@
     "owner": null,
     "title": "Greek New Testament Core 80% List",
     "description": "The most frequent lemmas in the Greek New Testament up to 80% coverage.\r\n\r\nSee https://github.com/jtauber/core-gnt-vocab for details.",
+    "lang": "grc",
     "created": "2018-11-06T19:51:53.441Z",
-    "updated": "2018-11-06T19:51:53.441Z",
+    "updated": "2019-03-12T17:34:04.408Z",
     "cloned_from": null
   }
 },
