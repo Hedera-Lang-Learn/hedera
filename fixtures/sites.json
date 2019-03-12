@@ -6,5 +6,29 @@
             "domain": "localhost:8000",
             "name": "Hedera"
         }
+    },
+    {
+        "pk": 2,
+        "model": "sites.site",
+        "fields": {
+            "domain": "dev.hederaproject.com",
+            "name": "Hedera"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "sites.site",
+        "fields": {
+            "domain": "stage.hederaproject.com",
+            "name": "Hedera"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "sites.site",
+        "fields": {
+            "domain": "hederaproject.com",
+            "name": "Hedera"
+        }
     }
 ]

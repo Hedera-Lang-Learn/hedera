@@ -16,6 +16,8 @@ requests = "*"
 gunicorn = "*"
 psycopg2 = "*"
 dj-database-url = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
 "flake8" = "*"

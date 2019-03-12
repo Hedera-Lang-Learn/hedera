@@ -16,7 +16,14 @@ DATABASES = {
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "atg-dev-hedera-lb-2073615562.us-east-1.elb.amazonaws.com"
+    "hederaproject.com",
+    "www.hederaproject.com",
+    "dev.hederaproject.com",
+    "stage.hederaproject.com",
+    "hederaproject.org",
+    "www.hederaproject.org",
+    "dev.hederaproject.org",
+    "stage.hederaproject.org"
 ]
 
 # Local time zone for this installation. Choices can be found here:
@@ -45,31 +52,45 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "media")
+USE_S3 = os.environ.get("USE_S3", False)
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'hedera.custom_storages.StaticStorage'
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'hedera.custom_storages.MediaStorage'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+else:
+    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
+    # trailing slash.
+    # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+    MEDIA_URL = "/site_media/media/"
+    # URL prefix for static files.
+    # Example: "http://media.lawrence.com/static/"
+    STATIC_URL = "/site_media/static/"
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = "/site_media/media/"
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
-# Absolute path to the directory static files should be collected to.
-# Don"t put anything in this directory yourself; store your static files
-# in apps" "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "static")
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/site_media/static/"
-
+    # Absolute filesystem path to the directory that will hold user-uploaded files.
+    # Example: "/home/media/media.lawrence.com/media/"
+    MEDIA_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "media")
+    # Absolute path to the directory static files should be collected to.
+    # Don"t put anything in this directory yourself; store your static files
+    # in apps" "static/" subdirectories and in STATICFILES_DIRS.
+    # Example: "/home/media/media.lawrence.com/static/"
+    STATIC_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "static")
 # Additional locations of static files
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "static", "dist"),
 ]
-
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -79,7 +100,7 @@ STATICFILES_FINDERS = [
 ]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = "-)h^-(t5rq4lqk_)82rk%77v%90o37+w=^g#-6q=+195n78*78"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', "secretkey")
 
 TEMPLATES = [
     {
@@ -130,6 +151,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "webpack_loader",
+    "storages",
 
     # templates
     "bootstrapform",
@@ -218,11 +240,12 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_URL = "account_login"
 
-EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+#EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
 EMAIL_PORT = os.environ.get("EMAIL_PORT", "")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+#DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_EMAIL_FROM", "")
 EMAIL_USE_TLS = True
 
 TEXT_PROVIDER_BACKENDS = [
