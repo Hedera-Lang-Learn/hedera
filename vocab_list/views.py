@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import DetailView, ListView
 
 from .models import VocabularyList
 
@@ -13,4 +13,3 @@ class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
-
