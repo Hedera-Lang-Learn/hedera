@@ -2,51 +2,131 @@
 
 <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <!-- canvasjs -->
-    <script>
-        window.onload = function() {
+        <!-- canvasjs -->
+        <script>
+            window.onload = function () {
 
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title: {
-                text: "Known words in Babrius, Fabulae Aesopeae"
-            },
-            data: [{
-                type: "pie",
-                startAngle: 240,
-                yValueFormatString: "##0.00\"%\"",
-                indexLabel: "{label} {y}",
-                dataPoints: [
-                    {y: 80, label: "Known words"},
-                    {y: 20, label: "Unknown words"}
-                ]
-            }]
-        });
-        chart.render();
+                var chart1 = new CanvasJS.Chart("chartContainer1",{
+        title :{
+            text: ""
+        },
+        data: [{
+        type: "pie",
+            showInLegend: false,
+            dataPoints : [
+            { label: "",  y: 90  },
+            { label: "", y: 10  }
+        ]
+        }]
+    });
+    var chart2 = new CanvasJS.Chart("chartContainer2",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 80  },
+            { label: "", y: 20  }
+        ]
+        }]
+    });
+    var chart3 = new CanvasJS.Chart("chartContainer3",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 75  },
+            { label: "", y: 25  }
+        ]
+        }]
+    });
+    var chart4 = new CanvasJS.Chart("chartContainer4",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 60  },
+            { label: "", y: 40  }
+        ]
+        }]
+    });
+    var chart5 = new CanvasJS.Chart("chartContainer5",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 70  },
+            { label: "", y: 30  }
+        ]
+        }]
+    });
+    var chart6 = new CanvasJS.Chart("chartContainer6",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 80  },
+            { label: "", y: 20  }
+        ]
+        }]
+    });
 
-        }
+    chart1.render();
+    chart2.render();
+    chart3.render();
+    chart4.render();
+    chart5.render();
+    chart6.render();
 
-    </script>
+            }
 
-    <title>Hedera</title>
-</head>
+        </script>
 
-  <body>
+        <!--Styling Bootstrap-->
+        <style>
+            h2 {
+                font-size: 1.25em;
+                font-weight: 500;
+            }
+            h3 {
+                font-size: 1.15em;
+                font-weight: 500;
+            }
+        </style>
+
+        <title>Hedera</title>
+    </head>
+
+    <body>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
       <!-- Navbar content -->
@@ -97,50 +177,12 @@
 
     <div class="container-fluid">
 
-        <div class="col" style="margin-top: 7em;">
-            <h2>
-                Search in repositories
-            </h2>
-        </div>
-
         <div class="row">
-
-            <div class="col-md-3">
-            <p class="card-text">
-                Search based on my list
-            </p>
-
-            <div class="btn-group btn-block">
-                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    My list A
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">My list B</a>
-                    <a class="dropdown-item" href="#">My list C</a>
-                    <a class="dropdown-item" href="#">My list D</a>
-                </div>
+            <div class="col" style="margin-top: 7em;">
+                <h2>
+                    Search in repositories
+                </h2>
             </div>
-        </div><!--Search based on my list -->
-
-            <div class="col-md-3">
-            <p class="card-text">
-                Number of known words
-            </p>
-
-            <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    100
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">200</a>
-                    <a class="dropdown-item" href="#">300</a>
-                    <a class="dropdown-item" href="#">400</a>
-                </div>
-            </div>
-        </div><!--Number of known words-->
-
         </div>
 
         <div class="row mt-4">
@@ -149,15 +191,121 @@
                 <strong>##</strong>
                 passages with about 100 words from
                 <strong>My list A</strong>
+                with most of the words that you know
             </div>
         </div><!--Search results info-->
 
-        <div class="col mt-4">
+        <div class="row mt-4">
+            <div class="col">
+                You limited your search to the following criteria:
+            </div>
+        </div><!--Search criteria summary-->
+
+        <div class="row mt-2">
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary">
+                    time
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2 ">
+                    genre
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2">
+                    author
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2">
+                    length
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+        </div><!--Search criteria info-->
+
+        <div class="row mt-4">
+
+            <div class="col-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            Search criteria
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="searchCriteriaTime" checked>
+                            <label class="form-check-label" for="searchCriteriaTime">
+                                time
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaGenre" checked>
+                            <label class="form-check-label" for="searchCriteriaGenre">
+                                genre
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaAuthor" checked>
+                            <label class="form-check-label" for="searchCriteriaAuthor">
+                                author
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaLength" checked>
+                            <label class="form-check-label" for="searchCriteriaLength">
+                                length
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther1" >
+                            <label class="form-check-label" for="searchCriteriaOther1">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther2" >
+                            <label class="form-check-label" for="searchCriteriaOther2">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther3" >
+                            <label class="form-check-label" for="searchCriteriaOther3">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther4" >
+                            <label class="form-check-label" for="searchCriteriaOther4">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther5" >
+                            <label class="form-check-label" for="searchCriteriaOther5">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther6" >
+                            <label class="form-check-label" for="searchCriteriaOther6">
+                                (other)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Search criteria selection-->
+
+            <div class="col">
             <div class="table-responsive-md" style="margin-bottom: 6em">
                 <table class="table table-sm">
                 <thead>
                 <tr>
-                    <th scope="col"></th>
+                    <th scope="col">
+                        <a href="#">
+                            Passages
+                        </a>
+                    </th>
                     <th scope="col">
                         <a href="#">
                             % known vocab
@@ -183,14 +331,16 @@
                             Caesar De Bello Gallico
                         </a>
                     </th>
-                    <td class="align-middle">98% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="9"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                9
-                            </div>
-                        </div>
+                        <div id="chartContainer1" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         200 words
@@ -202,14 +352,15 @@
                             Babrius, Fabulae Aesopeae
                         </a>
                     </th>
-                    <td class="align-middle">83% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="7"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                7
-                            </div>
-                        </div>
+                        <div id="chartContainer2" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         187 words
@@ -221,14 +372,14 @@
                             Adamantius Judaeus
                         </a>
                     </th>
-                    <td class="align-middle">72% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 50%;" aria-valuenow="5"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                5
-                            </div>
-                        </div>
+                        <div id="chartContainer3" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         160 words
@@ -240,14 +391,16 @@
                             Certamen Homeri et Hesiodi
                         </a>
                     </th>
-                    <td class="align-middle">63% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="9"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                9
-                            </div>
-                        </div>
+                        <div id="chartContainer4" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         93 words
@@ -259,14 +412,13 @@
                             Firmicus Maternus, Julius
                         </a>
                     </th>
-                    <td class="align-middle">61% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 30%;" aria-valuenow="3"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                3
-                            </div>
-                        </div>
+                        <div id="chartContainer5" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         85 words
@@ -278,14 +430,14 @@
                             Horace
                         </a>
                     </th>
-                    <td class="align-middle">56% known vocab</td>
                     <td class="align-middle">
-                        <div class="progress" style="height: 2.5em; font-size: 1em;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="7"
-                                 aria-valuemin="0" aria-valuemax="100">
-                                7
-                            </div>
-                        </div>
+                        <div id="chartContainer6" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
                     </td>
                     <td class="align-middle">
                         50 words
@@ -296,10 +448,15 @@
             </div>
         </div><!--Search results table-->
 
+        </div>
+
         <nav class="navbar fixed-bottom navbar-light bg-light">
-            <div class="col-2">
-                <a href="index_learner01.html" class="btn btn-outline-primary btn-block my-2 my-sm-1">
-                    Edit “My list A”
+            <div class="col-4">
+                <a href="#" class="btn btn-outline-primary my-2 my-sm-1">
+                    Edit vocabulary
+                </a>
+                <a href="#" class="btn btn-outline-primary my-2 my-sm-1">
+                    Dashboard
                 </a>
             </div>
             <div class="col-2 col-md-offset-8">
