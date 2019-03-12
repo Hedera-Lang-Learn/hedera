@@ -1,5 +1,4 @@
-import json
-
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 
 
@@ -19,20 +18,16 @@ class LemmatizedText(models.Model):
     # ]
     # where node is the pk of the LatticeNode
 
-    data = models.TextField()
+    data = JSONField()
 
     def __str__(self):
         return self.title
 
-    @property
-    def json(self):
-        return json.loads(self.data)
-
     def token_count(self):
-        return len(self.json)
+        return len(self.data)
 
     def text(self):
-        return " ".join([d["token"] for d in self.json])
+        return " ".join([d["token"] for d in self.data])
 
     def api_data(self):
         return {
