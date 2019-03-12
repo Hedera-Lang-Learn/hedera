@@ -37,4 +37,3 @@ def delete(request, pk):
 def text(request, pk):
     text = get_object_or_404(models.LemmatizedText, pk=pk)
     return render(request, "lemmatized_text/text.html", { "text": text })
-
