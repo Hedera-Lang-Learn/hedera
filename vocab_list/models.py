@@ -86,11 +86,11 @@ class PersonalVocabularyList(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "vocabulary list"
+        verbose_name = "personal vocabulary list"
         unique_together = [("user", "lang")]
 
     def __str__(self):
-        return f"{self.user} personal vocab list"
+        return f"{self.user} personal {self.lang} vocab list"
 
 
 class PersonalVocabularyListEntry(models.Model):
@@ -112,7 +112,7 @@ class PersonalVocabularyListEntry(models.Model):
 
     familiarity = models.IntegerField(null=True)
 
-    node = models.ForeignKey(LatticeNode, null=True, on_delete=models.SET_NULL)
+    node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
