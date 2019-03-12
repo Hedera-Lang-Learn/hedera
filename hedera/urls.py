@@ -16,6 +16,7 @@ urlpatterns = [
 
     path("lemmatized_text/", include("lemmatized_text.urls")),
     path("lattices/", include("lattices.urls")),
+    path("vocab/", include("vocab_list.urls")),
 
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
