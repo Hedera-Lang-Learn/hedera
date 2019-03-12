@@ -12,16 +12,22 @@ def lemmatized_texts(request):
 
 
 def create(request):
+    cloned_from = None
     if request.method == "POST":
         title = request.POST.get("title")
         lang = request.POST.get("lang")
         text = request.POST.get("text")
+        if request.POST.get("cloned_from"):
+            cloned_from = get_object_or_404(models.LemmatizedText, pk=request.POST.get("cloned_from"))
         data = json.dumps(lemmatize_text(text, lang))
-        lt = models.LemmatizedText.objects.create(title=title, data=data, lang=lang)
+        lt = models.LemmatizedText.objects.create(title=title, data=data, lang=lang, cloned_from=cloned_from)
         return redirect(f"/lemmatized_text/{lt.pk}")
-    return render(request, "lemmatized_text/create.html", {})
+    if request.GET.get("cloned_from"):
+        cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
+    return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from})
 
 
 def text(request, pk):
     text = get_object_or_404(models.LemmatizedText, pk=pk)
     return render(request, "lemmatized_text/text.html", { "text": text })
+

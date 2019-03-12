@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 
@@ -7,6 +9,7 @@ class LemmatizedText(models.Model):
 
     title = models.CharField(max_length=100)
     lang = models.CharField(max_length=3)  # ISO 639.2
+    cloned_from = models.ForeignKey("LemmatizedText", null=True, blank=True, on_delete=models.SET_NULL)
 
     # this should be a JSON list of the form
     # [
@@ -20,6 +23,16 @@ class LemmatizedText(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def json(self):
+        return json.loads(self.data)
+
+    def token_count(self):
+        return len(self.json)
+
+    def text(self):
+        return " ".join([d["token"] for d in self.json])
 
     def api_data(self):
         return {
