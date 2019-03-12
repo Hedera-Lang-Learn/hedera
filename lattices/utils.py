@@ -31,7 +31,7 @@ def make_form(form, context=""):
     return node_for_form
 
 
-def get_or_create_node_for_lemma(lemma, context):
+def get_or_create_node_for_lemma(lemma, context=""):
 
     lemma_node = LemmaNode.objects.filter(context=context, lemma=lemma).first()
     if lemma_node:
