@@ -27,6 +27,13 @@ def create(request):
     return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from})
 
 
+def delete(request, pk):
+    text = get_object_or_404(models.LemmatizedText, pk=pk)
+    if request.method == "POST":
+        text.delete()
+        return redirect("lemmatized_texts_list")
+    return render(request, "lemmatized_text/delete.html", { "text": text })
+
 def text(request, pk):
     text = get_object_or_404(models.LemmatizedText, pk=pk)
     return render(request, "lemmatized_text/text.html", { "text": text })
