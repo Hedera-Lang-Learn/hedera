@@ -7,6 +7,17 @@
       <div class="col-4">
         <div class="mb-5">
           <PersonalVocabList v-if="personalVocabList" :vocab-list="personalVocabList" />
+          <VocabularyEntries :vocabEntries="vocabEntries" />
+          <div> <!-- make own component -->
+            <div class="likert-group">
+              <span class="">x</span>
+              <span class="">x</span>
+              <span class="">x</span>
+              <span class="">x</span>
+              <span class="">x</span>
+            </div>
+            <div class="help-text"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -15,13 +26,13 @@
 <script>
 import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT } from './constants';
 
-import LatticeTree from './modules/LatticeTree.vue';
 import LemmatizedText from './modules/LemmatizedText.vue';
 import PersonalVocabList from './modules/PersonalVocabList.vue';
+import VocabularyEntries from './modules/VocabularyEntries.vue';
 
 export default {
   props: ["textId"],
-  components: { LatticeTree, LemmatizedText, PersonalVocabList },
+  components: { LemmatizedText, PersonalVocabList, VocabularyEntries },
   watch: {
     textId: {
       immediate: true,
@@ -40,6 +51,15 @@ export default {
     personalVocabList() {
       return this.$store.state.personalVocabList;
     },
+    vocabEntries() {
+      return this.selectedNode && this.selectedNode.vocabulary_entries;
+    },
+    selectedToken() {
+      return this.$store.getters.selectedToken;
+    },
+    selectedNode() {
+      return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+    }
   }
 }
 </script>
