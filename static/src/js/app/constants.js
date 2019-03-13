@@ -9,3 +9,11 @@ export const ADD_LEMMA = 'addLemma';
 export const TOGGLE_VOCAB_LIST = 'toggleVocabList';
 export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
+
+export const RATINGS = {
+  1: 'I don\'t recognise this word',
+  2: 'I recognise this word but don\'t know what it means',
+  3: 'I think I know what this word means',
+  4: 'I definitely know what this word means but could forget soon',
+  5: 'I know this word so well, I am unlikely to ever forget it',
+};

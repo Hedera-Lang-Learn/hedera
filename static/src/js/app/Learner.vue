@@ -8,16 +8,7 @@
         <div class="mb-5">
           <PersonalVocabList v-if="personalVocabList" :vocab-list="personalVocabList" />
           <VocabularyEntries :vocabEntries="vocabEntries" />
-          <div> <!-- make own component -->
-            <div class="likert-group">
-              <span class="">x</span>
-              <span class="">x</span>
-              <span class="">x</span>
-              <span class="">x</span>
-              <span class="">x</span>
-            </div>
-            <div class="help-text"></div>
-          </div>
+          <FamiliarityRating v-if="selectedNode" v-model="selectedNodeRating" />
         </div>
       </div>
     </div>
@@ -29,10 +20,16 @@ import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT } from './constants
 import LemmatizedText from './modules/LemmatizedText.vue';
 import PersonalVocabList from './modules/PersonalVocabList.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
+import FamiliarityRating from './modules/FamiliarityRating.vue';
 
 export default {
   props: ["textId"],
-  components: { LemmatizedText, PersonalVocabList, VocabularyEntries },
+  components: { FamiliarityRating, LemmatizedText, PersonalVocabList, VocabularyEntries },
+  data() {
+    return {
+      selectedNodeRating: null,
+    }
+  },
   watch: {
     textId: {
       immediate: true,
@@ -44,6 +41,16 @@ export default {
       immediate: true,
       handler() {
         this.$store.dispatch(FETCH_TOKENS, { id: this.textId, personalVocabList: this.selectedVocabList });
+      }
+    },
+    selectedNode: {
+      handler() {
+        console.log(this.selectedNode);
+      }
+    },
+    selectedNodeRating: {
+      handler() {
+        console.log('the rating changed', this.selectedNodeRating);
       }
     }
   },
