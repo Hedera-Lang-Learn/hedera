@@ -72,3 +72,58 @@ class VocabularyListEntry(models.Model):
         if self.node is None:
             self.node = make_lemma(self.headword)  # context?
             self.save()
+
+
+class PersonalVocabularyList(models.Model):
+
+    user = models.ForeignKey(
+        getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+        on_delete=models.CASCADE
+    )
+    lang = models.CharField(max_length=3)  # ISO 639.2
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "personal vocabulary list"
+        unique_together = [("user", "lang")]
+
+    def __str__(self):
+        return f"{self.user} personal {self.lang} vocab list"
+
+
+class PersonalVocabularyListEntry(models.Model):
+
+    vocabulary_list = models.ForeignKey(
+        PersonalVocabularyList,
+        related_name="entries",
+        on_delete=models.CASCADE
+    )
+
+    headword = models.CharField(max_length=255)
+    gloss = models.TextField(blank=True)
+
+    # 1. I don't recognise this word
+    # 2. I recognise this word but don't know what it means
+    # 3. I think I know what this word means
+    # 4. I definitely know what this word means but could forget soon
+    # 5. I know this word so well, I am unlikely to ever forget it
+
+    familiarity = models.IntegerField(null=True)
+
+    node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "personal vocabulary list entry"
+        verbose_name_plural = "personal vocabulary list entries"
+        order_with_respect_to = "vocabulary_list"
+        unique_together = ("vocabulary_list", "headword")
+
+    def link_node(self):
+        if self.node is None:
+            self.node = make_lemma(self.headword)  # context?
+            self.save()
