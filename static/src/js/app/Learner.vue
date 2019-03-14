@@ -2,7 +2,11 @@
   <div class="app-container">
     <div class="row">
       <div class="col-8">
-        <LemmatizedText :vocab-entries="personalVocabList && personalVocabList.entries" :show-familiarity="showFamiliarity" />
+        <LemmatizedText
+          :vocab-entries="personalVocabList && personalVocabList.entries"
+          :show-familiarity="showFamiliarity"
+          @setRating="onSetRating"
+        />
       </div>
       <div class="col-4">
         <div class="mb-5">
@@ -77,6 +81,13 @@ export default {
           headword,
           gloss,
         });
+      }
+    },
+    onSetRating({ rating, token }) {
+      if (this.selectedNode) {
+        this.onRatingChange(rating);
+      } else {
+        console.info('You need to select a node to rate with keystrokes.');
       }
     }
   },

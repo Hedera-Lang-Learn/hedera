@@ -51,6 +51,21 @@ export default {
     nextUnresolved() {
       this.goToUnresolved(nextIndex);
     },
+    one() {
+      this.$emit('setRating', { rating: 1, token: this.selectedToken });
+    },
+    two() {
+      this.$emit('setRating', { rating: 2, token: this.selectedToken });
+    },
+    three() {
+      this.$emit('setRating', { rating: 3, token: this.selectedToken });
+    },
+    four() {
+      this.$emit('setRating', { rating: 4, token: this.selectedToken });
+    },
+    five() {
+      this.$emit('setRating', { rating: 5, token: this.selectedToken });
+    }
   },
   methods: {
     selectToken(index) {
