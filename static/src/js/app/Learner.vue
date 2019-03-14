@@ -2,12 +2,15 @@
   <div class="app-container">
     <div class="row">
       <div class="col-8">
-        <LemmatizedText />
+        <LemmatizedText :vocab-entries="personalVocabList && personalVocabList.entries" :show-familiarity="showFamiliarity" />
       </div>
       <div class="col-4">
         <div class="mb-5">
           <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
           <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
+        </div>
+        <div>
+          <a href @click.prevent="toggleFamiliarity">Toggle Familiarity</a>
         </div>
       </div>
     </div>
@@ -26,6 +29,7 @@ export default {
   data() {
     return {
       selectedNodeRating: null,
+      showFamiliarity: false,
     }
   },
   watch: {
@@ -52,6 +56,9 @@ export default {
     },
   },
   methods: {
+    toggleFamiliarity() {
+      this.showFamiliarity = !this.showFamiliarity;
+    },
     onRatingChange(rating) {
       const headword = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].headword) || '';
       const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss) || '';
