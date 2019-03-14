@@ -9,6 +9,14 @@ const BASE_URL = '/api/v1/';
 export default {
   fetchText: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`).then(r => cb(r.data)),
   fetchPersonalVocabList: (lang, cb) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`).then(r => cb(r.data)),
+  updatePersonalVocabList: (lang, nodeId, familiarity, headword, gloss, entryId, cb) => {
+    let data = { familiarity, headword, gloss };
+    if (entryId !== null) {
+      return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then(r => cb(r.data));
+    }
+    data = { ...data, nodeId };
+    return axios.post(`${BASE_URL}personal_vocab_list/?lang=${lang}`, data).then(r => cb(r.data));
+  },
   fetchVocabLists: (lang, cb) => axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`).then(r => cb(r.data)),
   fetchTokens: (id, vocabList, personalVocabList, cb) => {
     if (!vocabList && !personalVocabList) {

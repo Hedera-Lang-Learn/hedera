@@ -97,7 +97,7 @@ class PersonalVocabularyList(models.Model):
 
     def data(self):
         return {
-            "words": [w.data() for w in self.entries.all().order_by("headword")]
+            "entries": [w.data() for w in self.entries.all().order_by("headword")]
         }
 
 
@@ -138,7 +138,9 @@ class PersonalVocabularyListEntry(models.Model):
 
     def data(self):
         return dict(
+            id=self.pk,
             headword=self.headword,
             gloss=self.gloss,
-            familiarity=self.familiarity
+            familiarity=self.familiarity,
+            node=self.node.pk if self.node is not None else None,
         )

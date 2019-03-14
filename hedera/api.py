@@ -4,9 +4,10 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
 
+from lattices.models import LatticeNode
 from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
-from vocab_list.models import PersonalVocabularyList, VocabularyList
+from vocab_list.models import PersonalVocabularyList, PersonalVocabularyListEntry, VocabularyList
 
 
 class APIView(View):
@@ -80,9 +81,39 @@ class VocabularyListAPI(APIView):
 
 class PersonalVocabularyListAPI(APIView):
 
-    def get_data(self):
-        vl, created = PersonalVocabularyList.objects.get_or_create(
+    def get_object(self):
+        vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
             lang=self.request.GET.get("lang"),
         )
+        return vl
+
+    def get_data(self):
+        vl = self.get_object()
         return vl.data()
+
+    def post(self, request, *args, **kwargs):
+        vl = self.get_object()
+
+        data = json.loads(request.body)
+        familiarity = int(data["familiarity"])
+
+        pk = kwargs.get("pk", None)
+        if pk is not None:
+            entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
+            entry.familiarity = familiarity
+            entry.save()
+        else:
+            node = get_object_or_404(LatticeNode, pk=data["nodeId"])
+            headword = data["headword"]
+            gloss = data["gloss"]
+            vl.entries.create(
+                headword=headword,
+                gloss=gloss,
+                familiarity=familiarity,
+                node=node,
+            )
+        vl.refresh_from_db()
+
+        return JsonResponse({"data": vl.data()})
+

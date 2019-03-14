@@ -9,6 +9,8 @@ export const ADD_LEMMA = 'addLemma';
 export const TOGGLE_VOCAB_LIST = 'toggleVocabList';
 export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
+export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
+export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
 
 export const RATINGS = {
   1: 'I don\'t recognise this word',

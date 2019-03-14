@@ -1,5 +1,5 @@
 <template>
-  <span @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" @click.prevent="onClick" :class="{ selected }">
+  <span class="familiarity-rating-node" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" @click.prevent="onClick" :class="{ selected }">
     <icon name="circle" />
   </span>
 </template>
@@ -25,3 +25,10 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .familiarity-rating-node {
+    cursor: pointer;
+  }
+</style>
+

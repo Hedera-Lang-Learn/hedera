@@ -8,14 +8,14 @@
         <div class="mb-5">
           <PersonalVocabList v-if="personalVocabList" :vocab-list="personalVocabList" />
           <VocabularyEntries :vocabEntries="vocabEntries" />
-          <FamiliarityRating v-if="selectedNode" v-model="selectedNodeRating" />
+          <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT } from './constants';
+import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY } from './constants';
 
 import LemmatizedText from './modules/LemmatizedText.vue';
 import PersonalVocabList from './modules/PersonalVocabList.vue';
@@ -45,18 +45,42 @@ export default {
     },
     selectedNode: {
       handler() {
-        console.log(this.selectedNode);
+        if (this.personalVocabEntry) {
+          this.selectedNodeRating = this.personalVocabEntry.familiarity;
+        } else {
+          this.selectedNodeRating = null;
+        }
       }
     },
-    selectedNodeRating: {
-      handler() {
-        console.log('the rating changed', this.selectedNodeRating);
+  },
+  methods: {
+    onRatingChange(rating) {
+      this.selectedNodeRating = rating;
+      if (this.personalVocabEntry) {
+        this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+          entryId: this.personalVocabEntry.id,
+          familiarity: rating,
+          headword: this.vocabEntries[0].headword,
+          gloss: this.vocabEntries[0].gloss,
+        });
+      } else {
+        this.$store.dispatch(CREATE_VOCAB_ENTRY, {
+          nodeId: this.selectedNode.pk,
+          familiarity: rating,
+          headword: this.vocabEntries[0].headword,
+          gloss: this.vocabEntries[0].gloss,
+        });
       }
     }
   },
   computed: {
     personalVocabList() {
       return this.$store.state.personalVocabList;
+    },
+    personalVocabEntry() {
+      return this.selectedNode && this.personalVocabList && this.personalVocabList.entries && this.personalVocabList.entries.filter(e => {
+        return e.node === this.selectedNode.pk
+      })[0];
     },
     vocabEntries() {
       return this.selectedNode && this.selectedNode.vocabulary_entries;

@@ -11,6 +11,8 @@ import {
   TOGGLE_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_PERSONAL_VOCAB_LIST,
+  CREATE_VOCAB_ENTRY,
+  UPDATE_VOCAB_ENTRY,
 } from '../constants';
 import api from '../api';
 
@@ -18,6 +20,16 @@ export default {
   [FETCH_TEXT]: ({ commit }, { id }) => api.fetchText(id, data => commit(FETCH_TEXT, data.data)),
   [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
     api.fetchVocabLists(state.text.lang, data => commit(FETCH_VOCAB_LISTS, data.data));
+  },
+  [CREATE_VOCAB_ENTRY]: ({ commit, state }, { nodeId, familiarity, headword, gloss }) => {
+    return api.updatePersonalVocabList(state.text.lang, nodeId, familiarity, headword, gloss, null, (data) => {
+      commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
+    });
+  },
+  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss }) => {
+    return api.updatePersonalVocabList(state.text.lang, null, familiarity, headword, gloss, entryId, (data) => {
+      commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
+    });
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit, state }) => {
     api.fetchPersonalVocabList(state.text.lang, data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data));
