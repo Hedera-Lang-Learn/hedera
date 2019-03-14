@@ -5,7 +5,8 @@
         :key="index"
         :token="token"
         :index="index"
-        :selected="selectedIndex === index"
+        :selected-token="selectedToken"
+        :selected-index="selectedIndex"
         :class="familiarityClass(token)"
         @toggleSelected="onToggleSelect"
       />

@@ -1,17 +1,23 @@
 <template>
   <span class="token"
-    :class="{unresolved, selected, 'no-lemma': noLemma, 'in-vocab-list': inVocabList }"
+    :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList }"
     @click.prevent="onClick()">{{ token.token }}</span>
 </template>
 <script>
 export default {
-  props: ['token', 'index', 'selected'],
+  props: ['token', 'index', 'selectedIndex', 'selectedToken'],
   methods: {
     onClick() {
       this.$emit('toggleSelected', { index: this.index });
     }
   },
   computed: {
+    selected() {
+      return this.selectedIndex && this.selectedIndex === this.index;
+    },
+    sameNode() {
+      return this.selectedToken && this.selectedToken.node === this.token.node;
+    },
     inVocabList() {
       return this.token.inVocabList;
     },
@@ -26,7 +32,11 @@ export default {
 </script>
 <style lang="scss">
   @import "../../../scss/config";
-  .selected {
+  .sameNode {
+    border-bottom: 2px solid red;
+  }
+  .selected,
+  .selected.sameNode {
     border-bottom: 4px solid red;
   }
 
