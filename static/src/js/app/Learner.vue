@@ -7,7 +7,7 @@
       <div class="col-4">
         <div class="mb-5">
           <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
-          <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
+          <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
         <div>
           <a href @click.prevent="toggleFamiliarity">Toggle Familiarity</a>
