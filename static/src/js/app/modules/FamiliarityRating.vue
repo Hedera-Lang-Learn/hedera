@@ -38,3 +38,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "../../../scss/config";
+
+  .familiarity-rating .help-text {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: $gray-500;
+  }
+</style>

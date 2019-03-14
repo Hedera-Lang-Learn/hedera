@@ -6,7 +6,7 @@
       </div>
       <div class="col-4">
         <div class="mb-5">
-          <VocabularyEntries :vocabEntries="vocabEntries" />
+          <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
           <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
       </div>
@@ -94,3 +94,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.vocab-entries.at-root {
+  padding: 0;
+  margin-bottom: 20px;
+
+  .vocab-entry > span {
+    display: block;
+    &.headword {
+      font-size: 1rem;
+    }
+  }
+}
+</style>
+
