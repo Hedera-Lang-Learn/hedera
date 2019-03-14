@@ -17,8 +17,9 @@
   {% for text in lemmatized_texts %}
     <tr>
       <td>
-        {{ text.title }}
+        <b>{{ text.title }}</b><br>
         <a href="/lemmatized_text/{{ text.pk }}/">Teacher</a>
+        &bull;
         <a href="/lemmatized_text/{{ text.pk }}/learner/">Learner</a>
       </td>
       <td>{{ text.lang }}</td>
