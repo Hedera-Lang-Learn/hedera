@@ -10,7 +10,7 @@
           <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
         <div>
-          <a href @click.prevent="toggleFamiliarity">Toggle Familiarity</a>
+          <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
         </div>
       </div>
     </div>
