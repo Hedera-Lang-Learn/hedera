@@ -11,7 +11,7 @@
         "pk": 2,
         "model": "sites.site",
         "fields": {
-            "domain": "dev.hederaproject.com",
+            "domain": "dev.hederaproject.org",
             "name": "Hedera"
         }
     },
@@ -19,7 +19,7 @@
         "pk": 3,
         "model": "sites.site",
         "fields": {
-            "domain": "stage.hederaproject.com",
+            "domain": "stage.hederaproject.org",
             "name": "Hedera"
         }
     },
@@ -27,7 +27,7 @@
         "pk": 4,
         "model": "sites.site",
         "fields": {
-            "domain": "hederaproject.com",
+            "domain": "hederaproject.org",
             "name": "Hedera"
         }
     }
