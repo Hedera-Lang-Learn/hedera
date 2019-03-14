@@ -6,7 +6,6 @@
       </div>
       <div class="col-4">
         <div class="mb-5">
-          <PersonalVocabList v-if="personalVocabList" :vocab-list="personalVocabList" />
           <VocabularyEntries :vocabEntries="vocabEntries" />
           <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
@@ -18,13 +17,12 @@
 import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY } from './constants';
 
 import LemmatizedText from './modules/LemmatizedText.vue';
-import PersonalVocabList from './modules/PersonalVocabList.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
 import FamiliarityRating from './modules/FamiliarityRating.vue';
 
 export default {
   props: ["textId"],
-  components: { FamiliarityRating, LemmatizedText, PersonalVocabList, VocabularyEntries },
+  components: { FamiliarityRating, LemmatizedText, VocabularyEntries },
   data() {
     return {
       selectedNodeRating: null,
