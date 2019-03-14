@@ -7,7 +7,11 @@ from django.views import View
 from lattices.models import LatticeNode
 from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
-from vocab_list.models import PersonalVocabularyList, PersonalVocabularyListEntry, VocabularyList
+from vocab_list.models import (
+    PersonalVocabularyList,
+    PersonalVocabularyListEntry,
+    VocabularyList
+)
 
 
 class APIView(View):
@@ -116,4 +120,3 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
-
