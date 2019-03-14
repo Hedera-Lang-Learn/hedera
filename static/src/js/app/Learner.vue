@@ -55,20 +55,22 @@ export default {
   },
   methods: {
     onRatingChange(rating) {
+      const headword = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].headword) || '';
+      const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss) || '';
       this.selectedNodeRating = rating;
       if (this.personalVocabEntry) {
         this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId: this.personalVocabEntry.id,
           familiarity: rating,
-          headword: this.vocabEntries[0].headword,
-          gloss: this.vocabEntries[0].gloss,
+          headword,
+          gloss,
         });
       } else {
         this.$store.dispatch(CREATE_VOCAB_ENTRY, {
           nodeId: this.selectedNode.pk,
           familiarity: rating,
-          headword: this.vocabEntries[0].headword,
-          gloss: this.vocabEntries[0].gloss,
+          headword,
+          gloss,
         });
       }
     }
