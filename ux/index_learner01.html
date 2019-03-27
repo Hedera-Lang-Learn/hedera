@@ -44,18 +44,6 @@
 
         </script>
 
-        <!--Styling Bootstrap-->
-        <style>
-            h2 {
-                font-size: 1.25em;
-                font-weight: 500;
-            }
-            h3 {
-                font-size: 1.15em;
-                font-weight: 500;
-            }
-        </style>
-
         <title>Hedera</title>
     </head>
 
@@ -478,10 +466,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-2">
                             <input type="text" class="form-control"
-                                   placeholder="Search for any of our 50 startup lists"
-                                   aria-label="Search for any of our 50 startup lists" aria-describedby="button-addon2"
+                                   placeholder="Search from any of our 50 startup lists"
+                                   aria-label="Search from any of our 50 startup lists" aria-describedby="button-addon2"
                                    id="NewVocabularyList">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button"
@@ -490,6 +478,125 @@
                                 </button>
                             </div>
                         </div><!-- Search from pre-existing vocabulary sets -->
+
+                        <div class="col mb-2">
+                            <div class="alert alert-success" role="alert">
+                                We found 15 search results
+                            </div>
+                        </div>
+                        <div class="col mb-2" style="height: 7em; overflow-y: scroll; border: 1px solid #ced4da; border-radius: .25rem;">
+                            <div class="form-check">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkAll">
+                                    <label class="form-check-label" for="searchResult1">
+                                        <strong>Wheelock’s Latin</strong>
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult1">
+                                        Chapter 1
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult2">
+                                        Chapter 2
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult3">
+                                        Chapter 3
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult4">
+                                        Chapter 4
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult5">
+                                        Chapter 5
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <strong>Cambridge Latin Course</strong>
+                            </div>
+                            <div class="form-check">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult1">
+                                    <label class="form-check-label" for="searchResult1">
+                                        Chapter 1
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult2">
+                                    <label class="form-check-label" for="searchResult2">
+                                        Chapter 2
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult3">
+                                    <label class="form-check-label" for="searchResult3">
+                                        Chapter 3
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult4">
+                                    <label class="form-check-label" for="searchResult4">
+                                        Chapter 4
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult5">
+                                    <label class="form-check-label" for="searchResult5">
+                                        Chapter 5
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <strong>Shelmerdine’s Intro to Latin</strong>
+                            </div>
+                            <div class="form-check">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult1">
+                                    <label class="form-check-label" for="searchResult1">
+                                        Chapter 1
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult2">
+                                    <label class="form-check-label" for="searchResult2">
+                                        Chapter 2
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult3">
+                                    <label class="form-check-label" for="searchResult3">
+                                        Chapter 3
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult4">
+                                    <label class="form-check-label" for="searchResult4">
+                                        Chapter 4
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="searchResult5">
+                                    <label class="form-check-label" for="searchResult5">
+                                        Chapter 5
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div><!-- Search results -->
 
                         <label for="uploadVocabularyList">
                             Upload vocabulary list from an excel or CSV file
@@ -503,7 +610,7 @@
                                             </span>
                                     </div>
                                     <input type="file" class="custom-file-input" id="uploadVocabularyList">
-                                    <label class="custom-file-label" for="uploadVocabularyList" aria-describedby="uploadVocabularyList2">myVocabularyList.csv</label>
+                                    <label class="custom-file-label" for="uploadVocabularyList" aria-describedby="uploadVocabularyList2">myVocabularytList.csv</label>
                                 </div>
                                 <div class="input-group-append">
                                     <span class="input-group-text bg-primary text-white" id="uploadVocabularyList2">Upload</span>
@@ -511,9 +618,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-n2">
                             <label for="setListVocabularyTerms">Add individual words</label>
-                            <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="5"
+                            <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="3"
                                       placeholder="Word:definition (e.g.: acqua:water)"></textarea>
                         </div><!-- Text area -->
 
