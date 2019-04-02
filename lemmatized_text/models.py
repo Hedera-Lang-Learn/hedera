@@ -11,7 +11,7 @@ def lemmatize_text_job(text, lang, pk):
     obj = LemmatizedText.objects.get(pk=pk)
 
     def update(percentage):
-        obj.completed = percentage
+        obj.completed = int(percentage * 100)
         obj.save()
 
     obj.data = lemmatize_text(text, lang, cb=update)
