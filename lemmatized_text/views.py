@@ -19,8 +19,8 @@ def create(request):
         text = request.POST.get("text")
         if request.POST.get("cloned_from"):
             cloned_from = get_object_or_404(models.LemmatizedText, pk=request.POST.get("cloned_from"))
-        data = lemmatize_text(text, lang)
-        lt = models.LemmatizedText.objects.create(title=title, data=data, lang=lang, cloned_from=cloned_from)
+        lt = models.LemmatizedText.objects.create(title=title, lang=lang, data={}, cloned_from=cloned_from)
+        lt.lemmatize(text, lang)
         return redirect(f"/lemmatized_text/{lt.pk}")
     if request.GET.get("cloned_from"):
         cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
