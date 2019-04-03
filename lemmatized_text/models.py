@@ -1,7 +1,9 @@
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 
+from django.contrib.postgres.fields import JSONField
+
 from django_rq import job
+
 from lemmatization.lemmatizer import lemmatize_text
 
 
