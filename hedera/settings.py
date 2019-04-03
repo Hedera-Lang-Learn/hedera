@@ -160,6 +160,7 @@ INSTALLED_APPS = [
     # external
     "account",
     "pinax.eventlog",
+    "django_rq",
 
     # local apps
     "databasetext",
@@ -171,6 +172,16 @@ INSTALLED_APPS = [
     # project
     "hedera",
 ]
+
+RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
+RQ_DATABASE = 1
+RQ_QUEUES = {
+    "default": {
+        "URL": os.getenv("REDIS_URL", "redis://localhost:6379/"),
+        "DB": RQ_DATABASE,
+        "ASYNC": RQ_ASYNC
+    }
+}
 
 WEBPACK_LOADER = {
     "DEFAULT": {
@@ -245,7 +256,7 @@ EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
 EMAIL_PORT = os.environ.get("EMAIL_PORT", "")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
-#DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_EMAIL_FROM", "")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 EMAIL_USE_TLS = True
 
 TEXT_PROVIDER_BACKENDS = [

@@ -1,3 +1,4 @@
+<!--Sprint 63 - 3 UI comments-->
 <!doctype html>
 
 <html lang="en">
@@ -23,7 +24,7 @@
 
                 var chart1 = new CanvasJS.Chart("chartContainer1",{
         title :{
-            text: "Quiz outcome"
+            text: "Words read over time"
         },
         data: [{
         type: "column",
@@ -85,9 +86,6 @@
                 font-size: 1.15em;
                 font-weight: 500;
             }
-            .card-header {
-                height: 6em;
-            }
         </style>
 
         <title>Hedera | Dashboard</title>
@@ -100,38 +98,35 @@
             <a class="navbar-brand" href="#">
                 <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
             </a>
-
-            <form class="form-inline my-2 my-lg-0 mx-auto">
-                <div class="input-group mb-3" style="margin-top:.5em;">
-                    <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
-                        You reached level
-                        <span class="badge badge-pill badge-success">7</span>!
-                    </a>
-                    <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
-                        You received
-                        <span class="badge badge-pill badge-primary">4</span>
-                        notifications
-                    </a>
-                    <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
-                        <i class="fas fa-user-circle fa-2x"></i>
-                    </a>
-                    <a href="#" class="nav-item nav-link ml-auto" style="margin-top:.25em;">
-                        <strong>
-                            Hi Ivy Livingston!
-                        </strong>
-                    </a>
-                    <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign out</a>
-                </div>
-            </form>
-
+<!--Sprint 63 UI comment #1 - rearranging navbar items-->
+<!--Sprint 63 UI comment #2 - Modal with role and language selection-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-link mr-4 mt-n2" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <strong>
+                    Hi Ivy!
+                    <i class="fas fa-sort-down"></i>
+                </strong>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="#" class="nav-item nav-link ml-auto mr-1">
+                            You received
+                            <span class="badge badge-pill badge-primary">4</span>
+                            notifications
+                        </a>
+                    </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index_learner_dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li>
-                        <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                        <a class="nav-item nav-link ml-auto mr-3" href="http://hedera.fas.harvard.edu/" target="_blank">About
                             Hedera</a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign
+                            out</a>
                     </li>
                 </ul>
             </div>
@@ -141,327 +136,302 @@
             </button>
         </nav>
 
-        <div class="container-fluid">
-            <div class="row" style="margin-top: 7em;">
+<!--Sprint 63 UI comment #3 - Modal with role and language selection-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">My settings</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your role
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Student"
+                                           value="Student" checked>
+                                    <label class="form-check-label ml-4" for="Student">
+                                        Student
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Teacher"
+                                           value="Teacher">
+                                    <label class="form-check-label ml-4" for="Teacher">
+                                        Teacher
+                                    </label>
+                                </div>
+                            </div>
 
-                <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your language
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Latin"
+                                           value="Latin" checked>
+                                    <label class="form-check-label ml-4" for="Latin">
+                                        Latin
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Greek"
+                                           value="Greek">
+                                    <label class="form-check-label ml-4" for="Greek">
+                                        Greek
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Russian"
+                                           value="Russian">
+                                    <label class="form-check-label ml-4" for="Russian">
+                                        Russian
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="ml-3 mb-3 mr-3 mt-4">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary float-right" data-dismiss="modal">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+
+            <div class="row mt-5">
+                <div class="col mt-5">
                     <div class="card border-dark mb-3">
                         <div class="card-header card-header--hedera">
                             <h2 class="mb-n1">
                                 My individual progress
                             </h2>
                         </div>
-                        <div class="card-body text-dark"><!-- we may use Bootstrap card-deck class to match cards height -->
-
-                            <button type="button" class="btn btn-outline-primary btn-block mt-3">
-                                <i class="far fa-flag"></i>
-                                Flagged content
-                            </button>
-
-                            <p class="text-center mt-4">
-                                My language:
-                                <br/>
-                                <strong>
-                                    Latin
-                                </strong>
-                            </p>
-
-                            <button type="button" class="btn btn-outline-primary btn-block">
-                                <i class="far fa-clock"></i>
-                                Set a self reminder
-                            </button>
-
-                            <p class="text-center mt-4">
-                                My average:
-                                <br/>
-                                <strong>
-                                    98% known vocab
-                                </strong>
-                            </p>
-
-                            <p class="text-center mt-4">
-                                My learned words:
-                                <br/>
-                                <strong>
-                                    153 words
-                                </strong>
-                            </p>
-
-                            <h3 class="text-center mt-4">
-                                My lesson text
-                            </h3>
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Lesson #1
+                        <div class="card-body text-dark"><!-- we could use Bootstrap card-deck class to match cards height -->
+<!--Sprint 63 UI comment #4 - moving here level information from navbar-->
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
+                                    You reached level
+                                    <span class="badge badge-pill badge-success">7</span>!
+                                </a>
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    Goals setting
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Lesson #1</a>
-                                    <a class="dropdown-item" href="#">Lesson #2</a>
-                                    <a class="dropdown-item" href="#">Lesson #3</a>
-                                </div>
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="far fa-flag"></i>
+                                    Flagged content
+                                </button>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="far fa-clock"></i>
+                                    Set a self reminder
+                                </button>
                             </div>
 
-                            <button type="button" class="btn btn-outline-primary btn-block mt-3">
-                                View my text
-                            </button>
+                            <div class="col">
 
-                            <h3 class="text-center mt-4">
-                                My progress
-                            </h3>
+                                <p class="text-center mt-4">
+                                    My language:
+                                    <br/>
+                                    <strong>
+                                        Latin
+                                    </strong>
+                                </p>
 
-                            <div class="btn-group btn-block mt-3 mb-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Quiz outcome
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Vocabulary gains</a>
-                                    <a class="dropdown-item" href="#">Read texts</a>
-                                </div>
+                                <p class="text-center mt-4">
+                                    My average:
+                                    <br/>
+                                    <strong>
+                                        98% known vocab
+                                    </strong>
+                                </p>
+
+                                <p class="text-center mt-4">
+                                    My learned words:
+                                    <br/>
+                                    <strong>
+                                        153 words
+                                    </strong>
+                                </p>
                             </div>
 
-                            <div id="chartContainer1" style="height: 10em; width: 100%;"></div>
-                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My lesson text
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Lesson #1
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Lesson #1</a>
+                                        <a class="dropdown-item" href="#">Lesson #2</a>
+                                        <a class="dropdown-item" href="#">Lesson #3</a>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    View my text
+                                </button>
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My progress
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Words read over time
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">New words read over time</a>
+                                    </div>
+                                </div>
+
+                                <div id="chartContainer1" style="height: 10em; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            </div>
+                        </div>
 
                         </div>
                     </div>
                 </div><!-- My individual progress -->
+            </div>
 
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                    <div class="card border-dark mb-3">
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="card border-dark">
                         <div class="card-header card-header--hedera">
                             <h2 class="mb-n1">
-                                My progress on the classes I am taking as a student
+                                My progress as a student
                             </h2>
                         </div>
-                        <div class="card-body text-dark"><!-- we may use Bootstrap card-deck class to match cards height -->
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    My class A
+                        <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
+                                    You reached level
+                                    <span class="badge badge-pill badge-success">3</span>!
+                                </a>
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    Goals setting
                                 </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">My class B</a>
-                                    <a class="dropdown-item" href="#">My class C</a>
-                                    <a class="dropdown-item" href="#">My class D</a>
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        My class A
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">My class B</a>
+                                        <a class="dropdown-item" href="#">My class C</a>
+                                        <a class="dropdown-item" href="#">My class D</a>
+                                    </div>
                                 </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="far fa-envelope"></i>
+                                    Contact my class A
+                                </button>
                             </div>
 
-                            <p class="text-center mt-4">
-                                My language:
-                                <br/>
-                                <strong>
-                                    Latin
-                                </strong>
-                            </p>
+                            <div class="col">
 
-                            <button type="button" class="btn btn-outline-primary btn-block">
-                                <i class="far fa-envelope"></i>
-                                Contact My class A
-                            </button>
+                                <p class="text-center mt-4">
+                                    My language:
+                                    <br/>
+                                    <strong>
+                                        Latin
+                                    </strong>
+                                </p>
 
-                            <p class="text-center mt-4">
-                                My average:
-                                <br/>
-                                <strong>
-                                    98% known vocab
-                                </strong>
-                            </p>
+                                <p class="text-center mt-4">
+                                    My average:
+                                    <br/>
+                                    <strong>
+                                        98% known vocab
+                                    </strong>
+                                </p>
 
-                            <p class="text-center mt-4">
-                                My learned words:
-                                <br/>
-                                <strong>
-                                    218 words
-                                </strong>
-                            </p>
-
-                            <h3 class="text-center mt-4">
-                                My lesson text
-                            </h3>
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Lesson #1
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Lesson #1</a>
-                                    <a class="dropdown-item" href="#">Lesson #2</a>
-                                    <a class="dropdown-item" href="#">Lesson #3</a>
-                                </div>
+                                <p class="text-center mt-4">
+                                    My learned words:
+                                    <br/>
+                                    <strong>
+                                        153 words
+                                    </strong>
+                                </p>
                             </div>
 
-                            <button type="button" class="btn btn-outline-primary btn-block mt-3">
-                                View my text
-                            </button>
+                            <div class="col">
 
-                            <h3 class="text-center mt-4">
-                                Class progress
-                            </h3>
+                                <h3 class="text-center mt-4">
+                                    My lesson text
+                                </h3>
 
-                            <div class="btn-group btn-block mt-3 mb-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Vocabulary gains
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Quiz outcome</a>
-                                    <a class="dropdown-item" href="#">Read texts</a>
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Lesson #1
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Lesson #1</a>
+                                        <a class="dropdown-item" href="#">Lesson #2</a>
+                                        <a class="dropdown-item" href="#">Lesson #3</a>
+                                    </div>
                                 </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    View my text
+                                </button>
                             </div>
 
-                            <div id="chartContainer2" style="height: 10em; width: 100%;"></div>
-                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My progress
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Vocabulary gains
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Vocabulary gains</a>
+                                        <a class="dropdown-item" href="#">Read texts</a>
+                                    </div>
+                                </div>
+
+                                <div id="chartContainer2" style="height: 10em; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            </div>
+                        </div>
 
                         </div>
                     </div>
-                </div><!-- My progress on the classes I am taking as a student -->
+                </div><!-- My individual progress -->
+            </div>
 
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                    <div class="card border-dark mb-3">
-                        <div class="card-header card-header--hedera">
-                            <h2 class="mb-n1">
-                                My progress on my goals as a student
-                            </h2>
-                        </div>
-                        <div class="card-body text-dark"><!-- we may use Bootstrap card-deck class to match cards height -->
-
-                            <a href="#" class="nav-item nav-link ml-auto mr-1">
-                                You reached level
-                                <span class="badge badge-pill badge-success">7</span>!
-                            </a>
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    My class A
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">My class B</a>
-                                    <a class="dropdown-item" href="#">My class C</a>
-                                    <a class="dropdown-item" href="#">My class D</a>
-                                </div>
-                            </div>
-
-                            <p class="text-center mt-4">
-                                My language:
-                                <br/>
-                                <strong>
-                                    Latin
-                                </strong>
-                            </p>
-
-                            <button type="button" class="btn btn-outline-primary btn-block">
-                                <i class="far fa-envelope"></i>
-                                Contact My class A
-                            </button>
-
-                            <p class="text-center mt-4">
-                                My average:
-                                <br/>
-                                <strong>
-                                    98% known vocab
-                                </strong>
-                            </p>
-
-                            <p class="text-center mt-4">
-                                My learned words:
-                                <br/>
-                                <strong>
-                                    218 words
-                                </strong>
-                            </p>
-
-                            <h3 class="text-center mt-4">
-                                My lesson text
-                            </h3>
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Lesson #1
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Lesson #1</a>
-                                    <a class="dropdown-item" href="#">Lesson #2</a>
-                                    <a class="dropdown-item" href="#">Lesson #3</a>
-                                </div>
-                            </div>
-
-                            <button type="button" class="btn btn-outline-primary btn-block mt-3">
-                                View my text
-                            </button>
-
-                            <h3 class="text-center mt-4">
-                                Goal progress
-                            </h3>
-
-                            <div class="btn-group btn-block mt-3 mb-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    My rewards
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">My cadence</a>
-                                    <a class="dropdown-item" href="#">My effort</a>
-                                </div>
-                            </div>
-
-                            <div id="chartContainer3" style="height: 10em; width: 100%;"></div>
-                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-                        </div>
-                    </div>
-                </div><!-- My progress on my goals as a student -->
-
-                <div class="col-md-3 col-sm-12 col-xs-12">
-                    <div class="card border-dark mb-3">
-                        <div class="card-header card-header--hedera">
-                            <h2 class="mb-n1">
-                                My profile
-                            </h2>
-                        </div>
-                        <div class="card-body text-dark"><!-- we may use Bootstrap card-deck class to match cards height -->
-
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                       value="option1" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    Student
-                                </label>
-                            </div>
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                                       value="option2">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    Teacher
-                                </label>
-                            </div>
-
-                            <div class="btn-group btn-block mt-3">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    Latin
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Greek</a>
-                                    <a class="dropdown-item" href="#">Russian</a>
-                                </div>
-                            </div>
-
-                            <button type="button" class="btn btn-primary btn-block">
-                                Submit profile and language
-                            </button>
-
-                        </div>
-                    </div>
-                </div><!-- My profile -->
-
-            </div><!-- Hedera main content -->
         </div>
 
         <!-- Optional JavaScript -->
