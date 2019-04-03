@@ -1,8 +1,4 @@
-import json
-
 from django.shortcuts import get_object_or_404, redirect, render
-
-from lemmatization.lemmatizer import lemmatize_text
 
 from . import models
 
