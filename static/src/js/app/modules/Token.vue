@@ -1,6 +1,6 @@
 <template>
   <span class="token"
-    :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList }"
+    :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList, ignored }"
     @click.prevent="onClick()">{{ token.token }}</span>
 </template>
 <script>
@@ -19,7 +19,10 @@ export default {
       return this.selectedToken && this.selectedToken.node === this.token.node;
     },
     inVocabList() {
-      return this.token.inVocabList;
+      return this.token.inVocabList && !this.ignored;
+    },
+    ignored() {
+      return this.token.token !== this.token.token.toLowerCase();
     },
     unresolved() {
       return !this.token.resolved;
@@ -43,12 +46,18 @@ export default {
   .highlight-not-in-list {
     .token {
       background: hsl(0, 44%, 80%);
+      &.ignored {
+        background: $gray-300;
+      }
       &.in-vocab-list {
         background: inherit;
       }
     }
   }
   .highlight-in-list {
+    .ignored {
+      background: $gray-300;
+    }
     .in-vocab-list {
       background: hsl(120, 24%, 80%); // hedera green but lighter
     }

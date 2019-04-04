@@ -1,7 +1,8 @@
 export default {
   knownVocab: (state) => {
-    const totalTokens = state.tokens.length;
-    const knownTokens = state.tokens.filter(t => t.inVocabList).length;
+    const tokens = state.tokens.filter(t => t.token === t.token.toLowerCase());
+    const totalTokens = tokens.length;
+    const knownTokens = tokens.filter(t => t.inVocabList).length;
     return knownTokens / totalTokens;
   },
   selectedToken: (state) => {
