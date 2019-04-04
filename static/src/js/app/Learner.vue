@@ -79,6 +79,11 @@ export default {
     },
     onRatingChange(rating) {
       const headword = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].headword) || '';
+
+      if (headword === '') {
+        return;
+      }
+
       const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss) || '';
       this.selectedNodeRating = rating;
       if (this.personalVocabEntry) {
