@@ -10,6 +10,7 @@
       </div>
       <div class="col-4">
         <div class="mb-5">
+          <TextFamiliarity :ranks="ranks" />
           <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
           <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
@@ -26,10 +27,11 @@ import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY
 import LemmatizedText from './modules/LemmatizedText.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
 import FamiliarityRating from './modules/FamiliarityRating.vue';
+import TextFamiliarity from './modules/TextFamiliarity.vue';
 
 export default {
   props: ["textId"],
-  components: { FamiliarityRating, LemmatizedText, VocabularyEntries },
+  components: { FamiliarityRating, LemmatizedText, VocabularyEntries, TextFamiliarity },
   data() {
     return {
       selectedNodeRating: null,
@@ -92,6 +94,20 @@ export default {
     }
   },
   computed: {
+    ranks() {
+      const uniqueNodes = [...new Set(this.tokens.map(token => token.node))];
+      const familiarities = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+      if (this.personalVocabList) {
+        this.personalVocabList.entries.forEach(entry => familiarities[entry.familiarity] += 1);
+        return Object.keys(familiarities).reduce((map, familiarity) => {
+          map[familiarity] = 100 * (familiarities[familiarity] / uniqueNodes.length);
+          return map;
+        }, {});
+      }
+    },
+    tokens() {
+      return this.$store.state.tokens;
+    },
     personalVocabList() {
       return this.$store.state.personalVocabList;
     },
