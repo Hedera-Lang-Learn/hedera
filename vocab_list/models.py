@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 
+from lemmatized_text.models import LemmatizedText
 from lattices.models import LatticeNode
 from lattices.utils import make_lemma
 
@@ -144,3 +145,22 @@ class PersonalVocabularyListEntry(models.Model):
             familiarity=self.familiarity,
             node=self.node.pk if self.node is not None else None,
         )
+
+
+# Perhaps these belong in a seperate app - Vocab Stats or something as it
+# introduces bringing in dependency on LemmatizedText
+
+class PersonalVocabularyStats(models.Model):
+    text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
+    vocab_list = models.ForeignKey(PersonalVocabularyList, on_delete=models.CASCADE)
+
+    unranked = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    one = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    two = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    three = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    four = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    five = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+
+    def update(self):
+        # calculate the stats and save
+        pass

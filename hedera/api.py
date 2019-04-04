@@ -10,7 +10,8 @@ from lemmatized_text.models import LemmatizedText
 from vocab_list.models import (
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
-    VocabularyList
+    PersonalVocabularyStats,
+    VocabularyList,
 )
 
 
@@ -85,10 +86,16 @@ class VocabularyListAPI(APIView):
 
 class PersonalVocabularyListAPI(APIView):
 
+    @property
+    def text(self):
+        if getattr(self, "_text", None) is None:
+            self._text = get_object_or_404(LemmatizedText, pk=self.request.GET.get("text"))
+        return self._text
+
     def get_object(self):
         vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
-            lang=self.request.GET.get("lang"),
+            lang=self.text.lang,
         )
         return vl
 
@@ -117,6 +124,10 @@ class PersonalVocabularyListAPI(APIView):
                 familiarity=familiarity,
                 node=node,
             )
+
+        stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
+        stats.update()
+
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
