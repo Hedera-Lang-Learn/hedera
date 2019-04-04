@@ -97,8 +97,12 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def data(self):
+        stats = {}
+        for stat in self.personalvocabularystats_set.all():
+            stats[stat.text.pk] = stat.data()
         return {
-            "entries": [w.data() for w in self.entries.all().order_by("headword")]
+            "entries": [w.data() for w in self.entries.all().order_by("headword")],
+            "statsByText": stats,
         }
 
 

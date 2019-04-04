@@ -1,17 +1,39 @@
 <template>
     <div class="text-familiarity">
-        <div class="familiarity-null">{{ ranks.unranked.toFixed(1) }}%</div>
-        <div class="familiarity-1">{{ ranks['1'].toFixed(1) }}%</div>
-        <div class="familiarity-2">{{ ranks['2'].toFixed(1) }}%</div>
-        <div class="familiarity-3">{{ ranks['3'].toFixed(1) }}%</div>
-        <div class="familiarity-4">{{ ranks['4'].toFixed(1) }}%</div>
-        <div class="familiarity-5">{{ ranks['5'].toFixed(1) }}%</div>
+        <div class="familiarity-null">{{ unranked }}%</div>
+        <div class="familiarity-1">{{ one }}%</div>
+        <div class="familiarity-2">{{ two }}%</div>
+        <div class="familiarity-3">{{ three }}%</div>
+        <div class="familiarity-4">{{ four }}%</div>
+        <div class="familiarity-5">{{ five }}%</div>
     </div>
 </template>
 
 <script>
+const convert = decimalString => (parseFloat(decimalString) * 100).toFixed(1);
+
 export default {
     props: ['ranks'],
+    computed: {
+      unranked() {
+        return convert(this.ranks.unranked);
+      },
+      one() {
+        return convert(this.ranks.one);
+      },
+      two() {
+        return convert(this.ranks.two);
+      },
+      three() {
+        return convert(this.ranks.three);
+      },
+      four() {
+        return convert(this.ranks.four);
+      },
+      five() {
+        return convert(this.ranks.five);
+      }
+    }
 }
 </script>
 
