@@ -92,6 +92,14 @@ class PersonalVocabularyList(models.Model):
     def __str__(self):
         return f"{self.user} personal {self.lang} vocab list"
 
+    def node_familiarity(self):
+        return 10
+
+    def data(self):
+        return {
+            "entries": [w.data() for w in self.entries.all().order_by("headword")]
+        }
+
 
 class PersonalVocabularyListEntry(models.Model):
 
@@ -127,3 +135,12 @@ class PersonalVocabularyListEntry(models.Model):
         if self.node is None:
             self.node = make_lemma(self.headword)  # context?
             self.save()
+
+    def data(self):
+        return dict(
+            id=self.pk,
+            headword=self.headword,
+            gloss=self.gloss,
+            familiarity=self.familiarity,
+            node=self.node.pk if self.node is not None else None,
+        )

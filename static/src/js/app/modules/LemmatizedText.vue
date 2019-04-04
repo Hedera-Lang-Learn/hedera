@@ -5,7 +5,9 @@
         :key="index"
         :token="token"
         :index="index"
-        :selected="selectedIndex === index"
+        :selected-token="selectedToken"
+        :selected-index="selectedIndex"
+        :class="familiarityClass(token)"
         @toggleSelected="onToggleSelect"
       />
       {{ ' ' }}
@@ -35,6 +37,7 @@ const nextIndex = (currentIndex, tokens) => {
 }
 
 export default {
+  props: ['showFamiliarity', 'vocabEntries'],
   components: { Token },
   shortcuts: {
     prevWord() {
@@ -49,6 +52,21 @@ export default {
     nextUnresolved() {
       this.goToUnresolved(nextIndex);
     },
+    one() {
+      this.$emit('setRating', { rating: 1, token: this.selectedToken });
+    },
+    two() {
+      this.$emit('setRating', { rating: 2, token: this.selectedToken });
+    },
+    three() {
+      this.$emit('setRating', { rating: 3, token: this.selectedToken });
+    },
+    four() {
+      this.$emit('setRating', { rating: 4, token: this.selectedToken });
+    },
+    five() {
+      this.$emit('setRating', { rating: 5, token: this.selectedToken });
+    }
   },
   methods: {
     selectToken(index) {
@@ -89,7 +107,17 @@ export default {
         index = this.tokens.indexOf(token);
       }
       this.selectToken(index);
-    }
+    },
+    familiarityClass(token) {
+      if (this.showFamiliarity && this.vocabEntries) {
+        const entries = this.vocabEntries.reduce((map, obj) => {
+          map[obj.node] = obj.familiarity;
+          return map;
+        }, {});
+        const className = entries[token.node] !== undefined ? `rating-${entries[token.node]}` : '';
+        return className;
+      }
+    },
   },
   computed: {
     unresolvedTokens() {
@@ -116,3 +144,24 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import "../../../scss/config";
+  .lemmatized-text {
+    .token.rating-1 {
+      color: $rating-1;
+    }
+    .token.rating-2 {
+      color: $rating-2;
+    }
+    .token.rating-3 {
+      color: $rating-3;
+    }
+    .token.rating-4 {
+      color: $rating-4;
+    }
+    .token.rating-5 {
+      color: $rating-5;
+    }
+  }
+</style>

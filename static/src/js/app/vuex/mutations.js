@@ -8,6 +8,7 @@ import {
   TOGGLE_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_TEXT,
+  FETCH_PERSONAL_VOCAB_LIST,
 } from '../constants';
 
 export default {
@@ -16,6 +17,9 @@ export default {
   },
   [FETCH_VOCAB_LISTS]: (state, data) => {
     state.vocabLists = data;
+  },
+  [FETCH_PERSONAL_VOCAB_LIST]: (state, data) => {
+    state.personalVocabList = data;
   },
   [SET_TEXT_ID]: (state, id) => {
     state.textId = id;

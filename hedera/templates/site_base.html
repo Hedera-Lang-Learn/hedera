@@ -29,6 +29,10 @@
           {% block nav %}
             <ul class="navbar-nav mr-auto">
               {% block nav_items %}
+              {% if request.user.is_authenticated %}
+                <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Lemmatized Texts</a></li>
+                <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
+              {% endif %}
               {% endblock %}
             </ul>
           {% endblock %}

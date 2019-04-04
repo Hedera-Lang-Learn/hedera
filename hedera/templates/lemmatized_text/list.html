@@ -8,7 +8,6 @@
 
 {% block site_brand %}{% endblock %}
 {% block navbar-toggler %}{% endblock %}
-{% block nav_items %}{% endblock %}
 
 {% block body %}
   <h1>Lemmatized Texts</h1>
@@ -17,7 +16,12 @@
     <tr><th>Text</th><th>Language</th><th>Length</th><th>Lemmatized</th><th></th></tr>
   {% for text in lemmatized_texts %}
     <tr>
-      <td>{% if text.completed == 100 %}<a href="/lemmatized_text/{{ text.pk }}/">{{ text.title }}</a>{% else %}{{ text.title }}{% endif %}</td>
+      <td>
+        <b>{{ text.title }}</b>{% if text.completed == 100 %}<br>
+        <a href="/lemmatized_text/{{ text.pk }}/">Teacher</a>
+        &bull;
+        <a href="/lemmatized_text/{{ text.pk }}/learner/">Learner</a>{% endif %}
+      </td>
       <td>{{ text.lang }}</td>
       <td>{% if text.completed == 100 %}{{ text.token_count }}{% else %}In Progress{% endif %}</td>
       <td style="vertical-align: middle;">
