@@ -9,23 +9,25 @@
         />
       </div>
       <div class="col-4">
-        <div class="mb-5">
-          <div class="text-stats">
-            <div class="total-tokens">
-              {{ tokens.length }}
-              <div class="title">Total Tokens</div>
+        <div class="position-fixed">
+          <div class="mb-5">
+            <div class="text-stats">
+              <div class="total-tokens">
+                {{ tokens.length }}
+                <div class="title">Total Tokens</div>
+              </div>
+              <div class="unique-tokens">
+                {{ uniqueNodes.length }}
+                <div class="title">Unique Tokens</div>
+              </div>
             </div>
-            <div class="unique-tokens">
-              {{ uniqueNodes.length }}
-              <div class="title">Unique Tokens</div>
-            </div>
+            <TextFamiliarity v-if="ranks" :ranks="ranks" />
+            <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
+            <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
           </div>
-          <TextFamiliarity v-if="ranks" :ranks="ranks" />
-          <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
-          <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
-        </div>
-        <div>
-          <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
+          <div>
+            <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
+          </div>
         </div>
       </div>
     </div>
