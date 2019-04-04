@@ -108,8 +108,10 @@ export default {
       return  [...new Set(this.tokens.map(token => token.node))];
     },
     ranks() {
-      const familiarities = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+      const familiarities = {unranked: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
       if (this.personalVocabList) {
+        const rankedNodes = this.personalVocabList.entries.map(entry => entry.node);
+        familiarities.unranked = this.uniqueNodes.filter(nodeId => rankedNodes.indexOf(nodeId) === -1).length;
         this.personalVocabList.entries.forEach(entry => familiarities[entry.familiarity] += 1);
         return Object.keys(familiarities).reduce((map, familiarity) => {
           map[familiarity] = 100 * (familiarities[familiarity] / this.uniqueNodes.length);

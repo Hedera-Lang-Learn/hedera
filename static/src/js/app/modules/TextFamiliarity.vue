@@ -1,5 +1,6 @@
 <template>
     <div class="text-familiarity">
+        <div class="familiarity-null">{{ ranks.unranked.toFixed(1) }}%</div>
         <div class="familiarity-1">{{ ranks['1'].toFixed(1) }}%</div>
         <div class="familiarity-2">{{ ranks['2'].toFixed(1) }}%</div>
         <div class="familiarity-3">{{ ranks['3'].toFixed(1) }}%</div>
@@ -28,6 +29,9 @@ export default {
       }
   }
 
+  .familiarity-null {
+      background-color: $gray-300;
+  }
   .familiarity-1 {
     color: $white;
     background-color: $rating-1;
