@@ -9,7 +9,7 @@
         />
       </div>
       <div class="col-4">
-        <div class="position-fixed">
+        <div class="xxxposition-fixed">
           <div class="mb-5">
             <div class="text-stats">
               <div class="total-tokens">
