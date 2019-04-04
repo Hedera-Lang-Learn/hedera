@@ -10,7 +10,17 @@
       </div>
       <div class="col-4">
         <div class="mb-5">
-          <TextFamiliarity :ranks="ranks" />
+          <div class="text-stats">
+            <div class="total-tokens">
+              {{ tokens.length }}
+              <div class="title">Total Tokens</div>
+            </div>
+            <div class="unique-tokens">
+              {{ uniqueNodes.length }}
+              <div class="title">Unique Tokens</div>
+            </div>
+          </div>
+          <TextFamiliarity v-if="ranks" :ranks="ranks" />
           <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
           <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
         </div>
@@ -94,13 +104,15 @@ export default {
     }
   },
   computed: {
+    uniqueNodes() {
+      return  [...new Set(this.tokens.map(token => token.node))];
+    },
     ranks() {
-      const uniqueNodes = [...new Set(this.tokens.map(token => token.node))];
       const familiarities = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
       if (this.personalVocabList) {
         this.personalVocabList.entries.forEach(entry => familiarities[entry.familiarity] += 1);
         return Object.keys(familiarities).reduce((map, familiarity) => {
-          map[familiarity] = 100 * (familiarities[familiarity] / uniqueNodes.length);
+          map[familiarity] = 100 * (familiarities[familiarity] / this.uniqueNodes.length);
           return map;
         }, {});
       }
@@ -139,6 +151,20 @@ export default {
     &.headword {
       font-size: 1rem;
     }
+  }
+}
+
+.text-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  .title {
+    font-size: 18px;
+    font-weight: normal;
   }
 }
 </style>
