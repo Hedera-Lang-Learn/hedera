@@ -154,13 +154,39 @@ class PersonalVocabularyStats(models.Model):
     text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
     vocab_list = models.ForeignKey(PersonalVocabularyList, on_delete=models.CASCADE)
 
-    unranked = models.DecimalField(max_digits=5, decimal_places=2, default="0")
-    one = models.DecimalField(max_digits=5, decimal_places=2, default="0")
-    two = models.DecimalField(max_digits=5, decimal_places=2, default="0")
-    three = models.DecimalField(max_digits=5, decimal_places=2, default="0")
-    four = models.DecimalField(max_digits=5, decimal_places=2, default="0")
-    five = models.DecimalField(max_digits=5, decimal_places=2, default="0")
+    unranked = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    one = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    two = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    three = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    four = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    five = models.DecimalField(max_digits=5, decimal_places=4, default="0")
 
     def update(self):
-        # calculate the stats and save
-        pass
+        unique_nodes = list(set([token["node"] for token in self.text.data]))
+        ranked_nodes = [e.node.pk for e in self.vocab_list.entries.filter(node__isnull=False)]
+        unranked_nodes = list(filter(lambda node_id: node_id not in ranked_nodes, unique_nodes))
+
+        familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
+        for entry in self.vocab_list.entries.filter(familiarity__isnull=False):
+            familiarities[str(entry.familiarity)] += 1
+
+        self.unranked = len(unranked_nodes) / len(unique_nodes)
+        self.one = familiarities["1"] / len(unique_nodes)
+        self.two = familiarities["2"] / len(unique_nodes)
+        self.three = familiarities["3"] / len(unique_nodes)
+        self.four = familiarities["4"] / len(unique_nodes)
+        self.five = familiarities["5"] / len(unique_nodes)
+
+        self.save()
+
+    def data(self):
+        return dict(
+            text=self.text.pk,
+            personalVocabList=self.vocab_list.pk,
+            unranked=self.unranked,
+            one=self.one,
+            two=self.two,
+            three=self.three,
+            four=self.four,
+            five=self.five,
+        )
