@@ -6,6 +6,13 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ## Getting Started
 
+You'll need Redis running.  To get it going locally on the Mac, simply run:
+
+```
+brew install redis
+brew services start redis
+```
+
 ```
 npm install
 pipenv run pip install pip==18.0
@@ -15,6 +22,20 @@ createdb hedera
 ./manage.py migrate
 ./manage.py loaddata sites lattices cana livy tolstoy gnt80 morphgnt-lemmatization dcc_latin
 ./manage.py runserver
+```
+
+By default, the there is a background worker that will work syncronously (won't need the worker running to process the lemmatization).  If you want to process asyncronously locally:
+
+```
+export RQ_ASYNC=1
+./manage.py runserver
+```
+
+Then in another terminal:
+
+```
+export RQ_ASYNC=1
+./manage.py rqworker ${RQ_QUEUES:-default}
 ```
 
 Leave the first Terminal window (above) running. Open a second Terminal window and run:
