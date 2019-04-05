@@ -3,6 +3,7 @@ from django.db import models
 
 from lattices.models import LatticeNode
 from lattices.utils import make_lemma
+from lemmatized_text.models import LemmatizedText
 
 
 class VocabularyList(models.Model):
@@ -96,8 +97,12 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def data(self):
+        stats = {}
+        for stat in self.personalvocabularystats_set.all():
+            stats[stat.text.pk] = stat.data()
         return {
-            "entries": [w.data() for w in self.entries.all().order_by("headword")]
+            "entries": [w.data() for w in self.entries.all().order_by("headword")],
+            "statsByText": stats,
         }
 
 
@@ -143,4 +148,49 @@ class PersonalVocabularyListEntry(models.Model):
             gloss=self.gloss,
             familiarity=self.familiarity,
             node=self.node.pk if self.node is not None else None,
+        )
+
+
+# Perhaps these belong in a seperate app - Vocab Stats or something as it
+# introduces bringing in dependency on LemmatizedText
+
+class PersonalVocabularyStats(models.Model):
+    text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
+    vocab_list = models.ForeignKey(PersonalVocabularyList, on_delete=models.CASCADE)
+
+    unranked = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    one = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    two = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    three = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    four = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+    five = models.DecimalField(max_digits=5, decimal_places=4, default="0")
+
+    def update(self):
+        unique_nodes = list(set([token["node"] for token in self.text.data]))
+        ranked_nodes = [e.node.pk for e in self.vocab_list.entries.filter(node__isnull=False)]
+        unranked_nodes = list(filter(lambda node_id: node_id not in ranked_nodes, unique_nodes))
+
+        familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
+        for entry in self.vocab_list.entries.filter(familiarity__isnull=False):
+            familiarities[str(entry.familiarity)] += 1
+
+        self.unranked = len(unranked_nodes) / len(unique_nodes)
+        self.one = familiarities["1"] / len(unique_nodes)
+        self.two = familiarities["2"] / len(unique_nodes)
+        self.three = familiarities["3"] / len(unique_nodes)
+        self.four = familiarities["4"] / len(unique_nodes)
+        self.five = familiarities["5"] / len(unique_nodes)
+
+        self.save()
+
+    def data(self):
+        return dict(
+            text=self.text.pk,
+            personalVocabList=self.vocab_list.pk,
+            unranked=self.unranked,
+            one=self.one,
+            two=self.two,
+            three=self.three,
+            four=self.four,
+            five=self.five,
         )

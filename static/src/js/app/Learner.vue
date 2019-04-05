@@ -9,12 +9,25 @@
         />
       </div>
       <div class="col-4">
-        <div class="mb-5">
-          <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
-          <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
-        </div>
-        <div>
-          <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
+        <div class="xxxposition-fixed">
+          <div class="mb-5">
+            <div class="text-stats">
+              <div class="total-tokens">
+                {{ tokens.length }}
+                <div class="title">Total Tokens</div>
+              </div>
+              <div class="unique-tokens">
+                {{ uniqueNodes.length }}
+                <div class="title">Unique Tokens</div>
+              </div>
+            </div>
+            <TextFamiliarity v-if="ranks" :ranks="ranks" />
+            <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
+            <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
+          </div>
+          <div>
+            <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
+          </div>
         </div>
       </div>
     </div>
@@ -26,10 +39,11 @@ import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY
 import LemmatizedText from './modules/LemmatizedText.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
 import FamiliarityRating from './modules/FamiliarityRating.vue';
+import TextFamiliarity from './modules/TextFamiliarity.vue';
 
 export default {
   props: ["textId"],
-  components: { FamiliarityRating, LemmatizedText, VocabularyEntries },
+  components: { FamiliarityRating, LemmatizedText, VocabularyEntries, TextFamiliarity },
   data() {
     return {
       selectedNodeRating: null,
@@ -65,6 +79,11 @@ export default {
     },
     onRatingChange(rating) {
       const headword = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].headword) || '';
+
+      if (headword === '') {
+        return;
+      }
+
       const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss) || '';
       this.selectedNodeRating = rating;
       if (this.personalVocabEntry) {
@@ -92,6 +111,15 @@ export default {
     }
   },
   computed: {
+    uniqueNodes() {
+      return  [...new Set(this.tokens.map(token => token.node))];
+    },
+    ranks() {
+      return this.personalVocabList && this.personalVocabList.statsByText[this.$store.state.textId];
+    },
+    tokens() {
+      return this.$store.state.tokens;
+    },
     personalVocabList() {
       return this.$store.state.personalVocabList;
     },
@@ -123,6 +151,20 @@ export default {
     &.headword {
       font-size: 1rem;
     }
+  }
+}
+
+.text-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  .title {
+    font-size: 18px;
+    font-weight: normal;
   }
 }
 </style>

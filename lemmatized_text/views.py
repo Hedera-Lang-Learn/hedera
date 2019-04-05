@@ -4,7 +4,9 @@ from . import models
 
 
 def lemmatized_texts(request):
-    return render(request, "lemmatized_text/list.html", { "lemmatized_texts": models.LemmatizedText.objects.all().order_by("pk") })
+    return render(request, "lemmatized_text/list.html", {
+        "lemmatized_texts": models.LemmatizedText.objects.all().order_by("pk")
+    })
 
 
 def create(request):
