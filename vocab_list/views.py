@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView
 
-from .models import VocabularyList, PersonalVocabularyList
+from .models import PersonalVocabularyList, VocabularyList
 
 
 class VocabularyListListView(ListView):
