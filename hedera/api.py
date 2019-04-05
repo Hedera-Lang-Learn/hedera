@@ -11,7 +11,7 @@ from vocab_list.models import (
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
     PersonalVocabularyStats,
-    VocabularyList,
+    VocabularyList
 )
 
 

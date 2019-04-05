@@ -1,9 +1,9 @@
 from django.conf import settings
 from django.db import models
 
-from lemmatized_text.models import LemmatizedText
 from lattices.models import LatticeNode
 from lattices.utils import make_lemma
+from lemmatized_text.models import LemmatizedText
 
 
 class VocabularyList(models.Model):
