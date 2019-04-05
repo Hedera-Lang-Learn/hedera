@@ -2,14 +2,16 @@ from urllib.parse import urlencode
 
 import requests
 
+SID = "morpheus"
 
-def morpheus(form, lang):
+
+def lemmatize_word(form, lang):
     """
     headword/lemma retrieval from the Perseids Morphology Service
 
-    >>> morpheus("λόγος", "grc")
+    >>> lemmatize_word("λόγος", "grc")
     ['λόγος']
-    >>> morpheus("est", "lat")
+    >>> lemmatize_word("est", "lat")
     ['edo1', 'sum1']
     """
 
