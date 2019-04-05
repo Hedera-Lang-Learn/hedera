@@ -1,7 +1,7 @@
 from lattices.utils import get_lattice_node
 
 from .models import add_form, lookup_form
-from .services import morpheus, clancydb
+from .services import clancydb, morpheus
 
 
 # from vocab_list.models import VocabularyList
