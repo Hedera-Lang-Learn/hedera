@@ -1,0 +1,32 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Your Vocabulary List{% endblock %}
+
+{% block body_class %}vocabulary{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1 class="mt-2 mb-4">{{ personalvocabularylist.lang }}</h1>
+
+  <table class="table">
+    <tr><th>Headword</th><th>Gloss</th><th>Familiarity</th><th>Created</th></tr>
+    {% for entry in personalvocabularylist.entries.all %}
+        <tr>
+        <td>{{ entry.headword }}</a></td>
+        <td>{{ entry.gloss }}</td>
+        <td>
+            {% for x in entry.familiarity_range %}
+            <span class="familiarity-rating-node rating-{{ entry.familiarity }} selected">
+                <i class="fas fa-circle"></i>
+            </span>
+            {% endfor %}
+        </td>
+        <td>{{ entry.created }}</td>
+        </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
