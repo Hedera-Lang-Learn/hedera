@@ -150,6 +150,10 @@ class PersonalVocabularyListEntry(models.Model):
             node=self.node.pk if self.node is not None else None,
         )
 
+    def familiarity_range(self):
+        # hack for template iteration
+        return range(self.familiarity)
+
 
 # Perhaps these belong in a seperate app - Vocab Stats or something as it
 # introduces bringing in dependency on LemmatizedText
