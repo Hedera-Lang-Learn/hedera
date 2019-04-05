@@ -10,7 +10,13 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-  <h1 class="mt-2 mb-4">{{ personalvocabularylist.lang }}</h1>
+    <ul class="nav nav-tabs">
+        {% for vocab_list in lists %}
+        <li class="nav-item">
+            <a class="nav-link {% if vocab_list == personalvocabularylist %}active{% endif %}" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.lang }}</a>
+        </li>
+        {% endfor %}
+    </ul>
 
   <table class="table">
     <tr><th>Headword</th><th>Gloss</th><th>Familiarity</th><th>Created</th></tr>

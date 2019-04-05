@@ -24,3 +24,11 @@ class PersonalVocabListDetailView(DetailView):
 
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        vocab_list = self.get_object()
+        context.update({
+            "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang")
+        })
+        return context
