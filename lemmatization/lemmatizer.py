@@ -8,7 +8,7 @@ from .services import morpheus, clancydb
 
 SERVICES = {
     "lat": morpheus,
-    "grk": morpheus,
+    "grc": morpheus,
     "rus": clancydb,
 }
 

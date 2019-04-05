@@ -4,6 +4,8 @@ import requests
 
 SID = "clancydb"
 
+LANGUAGES = ("rus",)
+
 def lemmatize_word(form, lang):
     """
     headword/lemma retrieval from Steven Clancy's russian database.
@@ -19,8 +21,9 @@ def lemmatize_word(form, lang):
     >>> lemmatize_word("мороженое", "rus")
     ['мороженый', 'мороженое']
     """
-    if lang != "rus":
-        raise ValueError("lang must be one of 'rus'")
+
+    if lang not in LANGUAGES:
+        raise ValueError(f"lang must be one of {LANGUAGES}")
 
     params = {"word": form}
     qs = urlencode(params)

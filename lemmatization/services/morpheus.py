@@ -4,6 +4,7 @@ import requests
 
 SID = "morpheus"
 
+LANGUAGES = ("grc", "lat")
 
 def lemmatize_word(form, lang):
     """
@@ -15,8 +16,8 @@ def lemmatize_word(form, lang):
     ['edo1', 'sum1']
     """
 
-    if lang not in ["grc", "lat"]:
-        raise ValueError("lang must be one of 'grc' or 'lat'")
+    if lang not in LANGUAGES:
+        raise ValueError(f"lang must be one of {LANGUAGES}")
 
     params = {
         "word": form,
