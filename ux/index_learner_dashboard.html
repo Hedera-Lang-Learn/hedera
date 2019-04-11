@@ -110,13 +110,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ml-auto">
-                    <li>
-                        <a href="#" class="nav-item nav-link ml-auto mr-1">
-                            You received
-                            <span class="badge badge-pill badge-primary">4</span>
-                            notifications
-                        </a>
-                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="index_learner_dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
@@ -226,10 +219,20 @@
                                     <i class="fas fa-flag-checkered"></i>
                                     Goals setting
                                 </button>
-                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
-                                    <i class="far fa-flag"></i>
-                                    Flagged content
-                                </button>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="far fa-flag"></i>
+                                        Flagged content
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Comment 1</a>
+                                        <a class="dropdown-item" href="#">Comment 2</a>
+                                        <a class="dropdown-item" href="#">Comment 3</a>
+                                    </div>
+                                </div>
 
                                 <button type="button" class="btn btn-outline-primary btn-block mt-3">
                                     <i class="far fa-clock"></i>
@@ -286,6 +289,20 @@
                                 <button type="button" class="btn btn-outline-primary btn-block mt-3">
                                     View my text
                                 </button>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Continue reading
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Abelard, Historia Calamitatum 5</a>
+                                        <a class="dropdown-item" href="#">Aesop (Romulus Anglicus 1)</a>
+                                        <a class="dropdown-item" href="#">Anthologia Latina 507-518 (Epitaphs of Vergil)</a>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="col">
@@ -402,6 +419,10 @@
                                 <button type="button" class="btn btn-outline-primary btn-block mt-3">
                                     View my text
                                 </button>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    Compare my vocabulary with the teacher’s
+                                </button>
                             </div>
 
                             <div class="col">
@@ -427,6 +448,121 @@
                             </div>
                         </div>
 
+                        </div>
+                    </div>
+                </div><!-- My individual progress -->
+            </div>
+
+            <div class="row mt-2 mb-4">
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header card-header--hedera">
+                            <h2 class="mb-n1">
+                                Bulletin Board
+                            </h2>
+                        </div>
+                        <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1">
+                                    You received
+                                    <span class="badge badge-pill badge-primary">4</span>
+                                    notifications
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table">
+                                    <thead>
+                                        <tr hidden>
+                                            <th scope="col">Select message</th>
+                                            <th scope="col">Sender</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Attachment</th>
+                                            <th scope="col">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Ivy Livingston's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Ivy Livingston</td>
+                                            <td>
+                                                <a href="#">
+                                                    Hoc septimana debitum Duis congue sem!
+                                                </a>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>Apr 8</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Rebecca Brown's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Rebecca Brown</td>
+                                                <td>
+                                                    <a href="#">
+                                                        Weather cancellation
+                                                    </a>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>Apr 8</td>
+                                            </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        BIll Barthelmy's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>BIll Barthelmy</td>
+                                                <td>
+                                                    <a href="#">
+                                                        I need help with this text
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <i class="fas fa-paperclip"></i>
+                                                </td>
+                                                <td>Apr 8</td>
+                                            </tr>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Ivy Livingston's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Ivy Livingston</td>
+                                            <td>
+                                                <a href="#">
+                                                    Crescat vestra loquantur verba
+                                                </a>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>Apr 8</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary">Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div><!-- My individual progress -->
