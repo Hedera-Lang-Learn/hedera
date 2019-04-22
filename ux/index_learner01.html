@@ -1,4 +1,4 @@
-<!--Sprint 63 - 4 UI comments-->
+<!--Sprint 65 - "Accessibility amendaments - color contrast styles", responsive table and 2 Sprint 65 UI comment-->
 <!doctype html>
 
 <html lang="en">
@@ -43,6 +43,149 @@
             }
 
         </script>
+
+        <style>
+            /* Accessibility amendaments - color contrast */
+            .btn-link {
+                font-weight: 400;
+                color: #0063CC; /* accessible color */
+            }
+            .btn-outline-primary {
+                color: #0063CC; /* accessible color */
+                border-color: #0063CC;
+            }
+            a {
+                color: #0063CC; /* accessible color */
+                text-decoration: none;
+                background-color: transparent;
+            }
+            .navbar-light .navbar-nav .nav-link {
+                color: rgba(0, 0, 0, 0.55); /* accessible color */
+            }
+            .badge-success {
+                color: #fff;
+                background-color: #208337; /* accessible color */
+            }
+            .badge-primary {
+                color: #fff;
+                background-color: #006FE6; /* accessible color */
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #0071EB; /* accessible color */
+                border-color: #007bff;
+            }
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #6B748E; /* accessible color */
+                border-radius: .25rem;
+                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            }
+            .input-group-text {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: center;
+                align-items: center;
+                padding: .375rem .75rem;
+                margin-bottom: 0;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                text-align: center;
+                white-space: nowrap;
+                background-color: #e9ecef;
+                border: 1px solid #6B748E; /* accessible color */
+                border-radius: .25rem;
+            }
+            .custom-file-label {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+                height: calc(2.25rem + 2px);
+                padding: .375rem .75rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                border: 1px solid #6E7691; /* accessible color */
+                border-radius: .25rem;
+            }
+            .bg-primary {
+                background-color: #006FE6!important; /* accessible color */
+            }
+        </style>
+
+        <style>
+            /* Responsive data table from https://css-tricks.com/responsive-data-tables/ */
+            /* This query will take effect for any screen smaller than 760px and also iPads specifically. */
+            @media
+              only screen
+            and (max-width: 760px), (min-device-width: 768px)
+            and (max-device-width: 1024px)  {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+              margin: 0 0 1rem 0;
+            }
+
+            tr:nth-child(odd) {
+              background: #eee;
+            }
+
+                td-responsive {
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    position: relative;
+                }
+
+                td-responsive:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 0;
+                    left: 6px;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                    font-weight: bold;
+                }
+
+                /* Label the data */
+                td:nth-of-type(1):before { content: "Delete"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(2):before { content: "Headword"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(3):before { content: "Definitions"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(4):before { content: "How well I know this word"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(5):before { content: "When added"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(6):before { content: "Part of speech"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(7):before { content: "Word origin"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(8):before { content: "Frequency rank"; font-weight: bold; margin-right: 1em; }
+
+                
+            }
+            </style>
 
         <title>Hedera</title>
     </head>
@@ -239,7 +382,7 @@
                                 <td>
                                     <div class="form-group">
                                         <label for="formGroupExampleInput" hidden>Headword</label>
-                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="et">
+                                        <input type="text" class="form-control form-control_access" id="formGroupExampleInput" placeholder="" value="et">
                                     </div>
                                 </td>
                                 <td>
@@ -449,13 +592,15 @@
 
 
         <nav class="navbar fixed-bottom navbar-light bg-light">
-            <div class="col-2">
+
+<!-- Sprint 65 UI comment #2 - changing col-2 to col-md-2 -->
+            <div class="col-md-2">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary btn-block my-2 my-sm-1" data-toggle="modal" data-target="#exampleModalAdd">
                     Add
                 </button>
             </div>
-            <div class="col-2 col-md-offset-8">
+            <div class="col-md-2 col-md-offset-8">
                 <a href="#" class="btn btn-outline-primary btn-block my-2 my-sm-1">
                     Export
                 </a>
@@ -484,7 +629,8 @@
                                    id="NewVocabularyList">
                         </div><!-- Search from pre-existing vocabulary sets -->
 
-                        <div class="col mb-2" style="height: 7em; overflow-y: scroll; border: 1px solid #ced4da; border-radius: .25rem;">
+<!-- Sprint 65 UI comment #1 - changing border color to be more accessible -->
+                        <div class="col mb-2" style="height: 7em; overflow-y: scroll; border: 1px solid #6E7691; border-radius: .25rem;">
                             <div>
                                 38 Latin Stories (Groton)
                                 <i class="fas fa-caret-down"></i>
