@@ -82,7 +82,7 @@ export default {
       this.$store.dispatch(SELECT_TOKEN, { index })
         .then(debouncedFetchNode());
     },
-    onToggleSelect({ index }) {
+    onToggleSelect({ token, index }) {
       if (this.selectedIndex === index && this.selectedToken === token) {
         this.$store.dispatch(SELECT_TOKEN, { index: null });
       } else {
