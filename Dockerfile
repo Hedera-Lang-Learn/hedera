@@ -15,5 +15,3 @@ RUN npm rebuild node-sass
 RUN npm run build
 
 RUN pip install awscli
-
-ENTRYPOINT ["bash", "-c", "source ./docker-entrypoint-dev.sh"]

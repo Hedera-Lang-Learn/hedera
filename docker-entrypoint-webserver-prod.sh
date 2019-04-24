@@ -18,11 +18,13 @@ export DEFAULT_FROM_EMAIL=`aws ssm get-parameter --name /hedera/default_from_ema
 export EMAIL_USE_TLS=True
 export USE_S3=True
 export SITE_ID=4
+export REDIS_URL=`aws ssm get-parameter --name /hedera/prod/redis_url --output text --query Parameter.Value --region us-east-1`
+export RQ_ASYNC=1
+
 
 python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput
-
 sudo gunicorn hedera.wsgi:application \
     --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
@@ -37,5 +39,7 @@ sudo gunicorn hedera.wsgi:application \
     --env DEFAULT_FROM_EMAIL=$DEFAULT_FROM_EMAIL \
     --env EMAIL_USE_TLS=$EMAIL_USE_TLS \
     --env SITE_ID=$SITE_ID \
+    --env REDIS_URL=$REDIS_URL \
+    --env RQ_ASYNC=$RQ_ASYNC \
     --bind :80 \
     --log-level debug
