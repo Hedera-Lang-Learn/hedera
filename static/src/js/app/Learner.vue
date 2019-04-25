@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :class="{'read-mode': readMode}">
     <div class="row">
       <div class="col-8">
         <LemmatizedText
@@ -9,7 +9,17 @@
         />
       </div>
       <div class="col-4">
-        <div class="xxxposition-fixed">
+        <div class="read-mode-toggle">
+          <label>Toggle Read Mode</label>
+          <div class="btn-group">
+            <button class="btn btn-outline-primary" :class="{active: readMode}" @click.prevent="readMode = true">On</button>
+            <button class="btn btn-outline-primary" :class="{active: !readMode}" @click.prevent="readMode = false">Off</button>
+          </div>
+        </div>
+        <div class="glosses" v-if="readMode">
+          <h4>Glosses</h4>
+        </div>
+        <div class="xxxposition-fixed" v-else>
           <div class="mb-5">
             <div class="text-stats">
               <div class="total-tokens">
@@ -48,6 +58,7 @@ export default {
     return {
       selectedNodeRating: null,
       showFamiliarity: false,
+      readMode: false,
     }
   },
   watch: {
@@ -142,6 +153,18 @@ export default {
 </script>
 
 <style lang="scss">
+.read-mode-toggle {
+  text-align: center;
+  label {
+    display: block;
+  }
+  background: #EFEFEF;
+  padding: 15px;
+  margin-bottom: 25px;
+  .btn-group {
+    background: #FFF;
+  }
+}
 .vocab-entries.at-root {
   padding: 0;
   margin-bottom: 20px;
@@ -165,6 +188,23 @@ export default {
   .title {
     font-size: 18px;
     font-weight: normal;
+  }
+}
+
+.read-mode {
+  .token {
+    cursor: inherit;
+  }
+  .unresolved {
+    font-weight: inherit;
+  }
+  .no-lemma,
+  .lemmatized-text .token.rating-1,
+  .lemmatized-text .token.rating-2,
+  .lemmatized-text .token.rating-3,
+  .lemmatized-text .token.rating-4,
+  .lemmatized-text .token.rating-5 {
+    color: inherit;
   }
 }
 </style>
