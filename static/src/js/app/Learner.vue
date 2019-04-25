@@ -219,6 +219,9 @@ export default {
   .lemmatized-text .token.rating-5 {
     color: inherit;
   }
+  .sameNode {
+    border: none;
+  }
 
   .glosses {
     .glossed-token {
