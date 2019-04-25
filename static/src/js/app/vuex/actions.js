@@ -30,7 +30,7 @@ export default {
     api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, cb);
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit, state }) => {
-    const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
+    const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
     api.fetchPersonalVocabList(state.text.id, cb);
   },
   [FETCH_TOKENS]: ({ commit }, { id, vocabList, personalVocabList }) => {

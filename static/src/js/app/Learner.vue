@@ -18,6 +18,10 @@
         </div>
         <div class="glosses" v-if="readMode">
           <h4>Glosses</h4>
+          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
+            <span class="token">{{ gloss.token }}</span>
+            <span class="gloss">{{ gloss.gloss }}</span>
+          </div>
         </div>
         <div class="xxxposition-fixed" v-else>
           <div class="mb-5">
@@ -147,6 +151,15 @@ export default {
     },
     selectedNode() {
       return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+    },
+    knownEntries() {
+      return this.personalVocabList.entries.filter(e => e.familiarity > 2);
+    },
+    glosses() {
+      return this.uniqueNodes
+        .filter(node => this.knownEntries.filter(k => k.node === node).length === 0)
+        .map(node => this.tokens.filter(t => t.node === node)[0] || null)
+        .filter(t => t !== null && t.gloss !== null);
     }
   }
 }
@@ -205,6 +218,20 @@ export default {
   .lemmatized-text .token.rating-4,
   .lemmatized-text .token.rating-5 {
     color: inherit;
+  }
+
+  .glosses {
+    .glossed-token {
+      font-size: 10pt;
+
+      .token {
+        font-weight: 700;
+      }
+      .gloss {
+        font-style: italic;
+        color: #666;
+      }
+    }
   }
 }
 </style>
