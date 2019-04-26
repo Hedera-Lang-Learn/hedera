@@ -17,7 +17,10 @@
           </div>
         </div>
         <div class="glosses" v-if="readMode">
-          <h4>Glosses</h4>
+          <h4>
+            Glosses
+            <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
+          </h4>
           <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
             <span class="token">{{ gloss.token }}</span>
             <span class="gloss">{{ gloss.gloss }}</span>
@@ -54,6 +57,35 @@ import LemmatizedText from './modules/LemmatizedText.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
 import FamiliarityRating from './modules/FamiliarityRating.vue';
 import TextFamiliarity from './modules/TextFamiliarity.vue';
+
+const toCSV = (data) => {
+  if (data.length === 0) {
+    return null;
+  }
+
+  let result, ctr;
+  const columnDelimiter = ',';
+  const lineDelimiter = '\n';
+  const keys = Object.keys(data[0]);
+
+  result = '';
+  result += keys.join(columnDelimiter);
+  result += lineDelimiter;
+
+  data.forEach(item => {
+      ctr = 0;
+      keys.forEach(key => {
+          if (ctr > 0) {
+            result += columnDelimiter;
+          }
+          result += `"${item[key]}"`;
+          ctr++;
+      });
+      result += lineDelimiter;
+  });
+
+  return result;
+}
 
 export default {
   props: ["textId"],
@@ -160,6 +192,12 @@ export default {
         .filter(node => this.knownEntries.filter(k => k.node === node).length === 0)
         .map(node => this.tokens.filter(t => t.node === node)[0] || null)
         .filter(t => t !== null && t.gloss !== null);
+    },
+    glossesDownload() {
+      const data = toCSV(this.glosses.map(g => ({token: g.token, gloss: g.gloss})));
+      if (data !== null) {
+        return encodeURI(`data:text/csv;charset=utf-8,${data}`);
+      }
     }
   }
 }
@@ -224,6 +262,15 @@ export default {
   }
 
   .glosses {
+    h4 {
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: 12pt;
+        font-weight: 400;
+        margin-top: auto;
+      }
+    }
     .glossed-token {
       font-size: 10pt;
 
