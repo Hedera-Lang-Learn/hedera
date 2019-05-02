@@ -11,7 +11,8 @@ from vocab_list.models import (
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
     PersonalVocabularyStats,
-    VocabularyList
+    VocabularyList,
+    VocabularyListEntry
 )
 
 
@@ -48,6 +49,15 @@ class LemmatizationAPI(APIView):
             for token in data:
                 token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
                 token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
+
+        # add glosses - probably a better way
+        entries = {
+            entry.node.id: entry.gloss
+            for entry in VocabularyListEntry.objects.filter(node__id__in=[t["node"] for t in data])
+        }
+        for token in data:
+            token["gloss"] = entries.get(token["node"], None)
+
         return data
 
     def get_data(self):
@@ -101,7 +111,10 @@ class PersonalVocabularyListAPI(APIView):
 
     def get_data(self):
         vl = self.get_object()
-        return vl.data()
+        return dict(
+            personalVocabList=vl.data(),
+            unknownGlosses=None
+        )
 
     def post(self, request, *args, **kwargs):
         vl = self.get_object()

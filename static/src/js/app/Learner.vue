@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :class="{'read-mode': readMode}">
     <div class="row">
       <div class="col-8">
         <LemmatizedText
@@ -9,7 +9,24 @@
         />
       </div>
       <div class="col-4">
-        <div class="xxxposition-fixed">
+        <div class="read-mode-toggle">
+          <label>Toggle Read Mode</label>
+          <div class="btn-group">
+            <button class="btn btn-outline-primary" :class="{active: readMode}" @click.prevent="readMode = true">On</button>
+            <button class="btn btn-outline-primary" :class="{active: !readMode}" @click.prevent="readMode = false">Off</button>
+          </div>
+        </div>
+        <div class="glosses" v-if="readMode">
+          <h4>
+            Glosses
+            <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
+          </h4>
+          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
+            <span class="token">{{ gloss.token }}</span>
+            <span class="gloss">{{ gloss.gloss }}</span>
+          </div>
+        </div>
+        <div class="xxxposition-fixed" v-else>
           <div class="mb-5">
             <div class="text-stats">
               <div class="total-tokens">
@@ -41,6 +58,35 @@ import VocabularyEntries from './modules/VocabularyEntries.vue';
 import FamiliarityRating from './modules/FamiliarityRating.vue';
 import TextFamiliarity from './modules/TextFamiliarity.vue';
 
+const toCSV = (data) => {
+  if (data.length === 0) {
+    return null;
+  }
+
+  let result, ctr;
+  const columnDelimiter = ',';
+  const lineDelimiter = '\n';
+  const keys = Object.keys(data[0]);
+
+  result = '';
+  result += keys.join(columnDelimiter);
+  result += lineDelimiter;
+
+  data.forEach(item => {
+      ctr = 0;
+      keys.forEach(key => {
+          if (ctr > 0) {
+            result += columnDelimiter;
+          }
+          result += `"${item[key]}"`;
+          ctr++;
+      });
+      result += lineDelimiter;
+  });
+
+  return result;
+}
+
 export default {
   props: ["textId"],
   components: { FamiliarityRating, LemmatizedText, VocabularyEntries, TextFamiliarity },
@@ -48,6 +94,7 @@ export default {
     return {
       selectedNodeRating: null,
       showFamiliarity: false,
+      readMode: false,
     }
   },
   watch: {
@@ -136,12 +183,39 @@ export default {
     },
     selectedNode() {
       return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+    },
+    knownEntries() {
+      return this.personalVocabList.entries.filter(e => e.familiarity > 2);
+    },
+    glosses() {
+      return this.uniqueNodes
+        .filter(node => this.knownEntries.filter(k => k.node === node).length === 0)
+        .map(node => this.tokens.filter(t => t.node === node)[0] || null)
+        .filter(t => t !== null && t.gloss !== null);
+    },
+    glossesDownload() {
+      const data = toCSV(this.glosses.map(g => ({token: g.token, gloss: g.gloss})));
+      if (data !== null) {
+        return encodeURI(`data:text/csv;charset=utf-8,${data}`);
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
+.read-mode-toggle {
+  text-align: center;
+  label {
+    display: block;
+  }
+  background: #EFEFEF;
+  padding: 15px;
+  margin-bottom: 25px;
+  .btn-group {
+    background: #FFF;
+  }
+}
 .vocab-entries.at-root {
   padding: 0;
   margin-bottom: 20px;
@@ -165,6 +239,49 @@ export default {
   .title {
     font-size: 18px;
     font-weight: normal;
+  }
+}
+
+.read-mode {
+  .token {
+    cursor: inherit;
+  }
+  .unresolved {
+    font-weight: inherit;
+  }
+  .no-lemma,
+  .lemmatized-text .token.rating-1,
+  .lemmatized-text .token.rating-2,
+  .lemmatized-text .token.rating-3,
+  .lemmatized-text .token.rating-4,
+  .lemmatized-text .token.rating-5 {
+    color: inherit;
+  }
+  .sameNode {
+    border: none;
+  }
+
+  .glosses {
+    h4 {
+      display: flex;
+      justify-content: space-between;
+      a {
+        font-size: 12pt;
+        font-weight: 400;
+        margin-top: auto;
+      }
+    }
+    .glossed-token {
+      font-size: 10pt;
+
+      .token {
+        font-weight: 700;
+      }
+      .gloss {
+        font-style: italic;
+        color: #666;
+      }
+    }
   }
 }
 </style>
