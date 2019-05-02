@@ -19,6 +19,7 @@ dj-database-url = "*"
 boto3 = "*"
 django-storages = "*"
 django-rq = "*"
+django-querycount = "*"
 
 [dev-packages]
 "flake8" = "*"
