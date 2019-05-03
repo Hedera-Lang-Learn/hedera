@@ -20,7 +20,7 @@ pipenv install
 pipenv shell
 createdb hedera
 ./manage.py migrate
-./manage.py loaddata sites lattices cana livy tolstoy gnt80 morphgnt-lemmatization dcc_latin
+./manage.py loaddata sites
 ./manage.py runserver
 ```
 
