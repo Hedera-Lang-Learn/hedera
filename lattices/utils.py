@@ -25,7 +25,7 @@ def make_lemma(lemma, context=""):
 
 def make_form(form, context=""):
 
-    node_for_form = LatticeNode.objects.create(label=make_label("form", form, context))
+    node_for_form = LatticeNode.objects.create(label=make_label("ambiguous", form, context))
     FormNode.objects.create(context=context, form=form, node=node_for_form)
 
     return node_for_form
