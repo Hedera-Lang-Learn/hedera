@@ -13,7 +13,9 @@ import VocabularyEntries from './VocabularyEntries.vue';
 
 const formFilter = (node, selectedToken) => {
   if (node.forms.length > 0) {
-    if (node.forms[0].form === selectedToken) {
+    /* remove trailing punctuation */
+    const strippedToken = selectedToken.replace(/[,\.\?:;·—]+$/, '');
+    if (node.forms[0].form === strippedToken) {
       return true;
     } else {
       return false;
@@ -61,4 +63,3 @@ export default {
     }
   }
 </style>
-

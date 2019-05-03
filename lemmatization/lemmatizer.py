@@ -16,11 +16,12 @@ def lemmatize_word(form, lang, force_refresh=False):
 
 def lemmatize_text(text, lang, cb=None):
     result = []
-    tokens = text.split()
+    tokens = text.replace("—", "— ").split()
     total_count = len(tokens)
     for index, token in enumerate(tokens):
-        lemmas = lemmatize_word(token.strip(",.?:;·"), lang)
-        node = get_lattice_node(lemmas, token)  # @@@ not sure what to use for context here
+        stripped_token = token.strip(",.?:;·—")
+        lemmas = lemmatize_word(stripped_token, lang)
+        node = get_lattice_node(lemmas, stripped_token)  # @@@ not sure what to use for context here
         if not node or node.children.exists():
             resolved = False
         else:
