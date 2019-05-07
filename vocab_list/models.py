@@ -175,7 +175,7 @@ class PersonalVocabularyStats(models.Model):
         unranked_nodes = list(filter(lambda node_id: node_id not in ranked_nodes, unique_nodes))
 
         familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
-        for entry in self.vocab_list.entries.filter(familiarity__isnull=False):
+        for entry in self.vocab_list.entries.filter(familiarity__isnull=False, node__pk__in=unique_nodes):
             familiarities[str(entry.familiarity)] += 1
 
         self.unranked = len(unranked_nodes) / len(unique_nodes)
