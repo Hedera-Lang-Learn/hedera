@@ -16,8 +16,8 @@ def make_lemma(lemma, context=""):
     node_for_lemma = LatticeNode.objects.create(label=make_label("lemma", lemma, context))
     LemmaNode.objects.create(context=context, lemma=lemma, node=node_for_lemma)
 
-    if lemma.endswith(("1", "2", "3")):
-        l = make_lemma(lemma.rstrip("123"))
+    if lemma.endswith(("1", "2", "3", "4", "5", "6")):
+        l = get_or_create_node_for_lemma(lemma.rstrip("123456"))
         l.children.add(node_for_lemma)
 
     return node_for_lemma
@@ -25,7 +25,7 @@ def make_lemma(lemma, context=""):
 
 def make_form(form, context=""):
 
-    node_for_form = LatticeNode.objects.create(label=make_label("form", form, context))
+    node_for_form = LatticeNode.objects.create(label=make_label("ambiguous", form, context))
     FormNode.objects.create(context=context, form=form, node=node_for_form)
 
     return node_for_form
