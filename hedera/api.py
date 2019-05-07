@@ -41,8 +41,13 @@ class LemmatizationAPI(APIView):
         data = text.data
         if self.request.GET.get("vocablist", None) is not None:
             vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
+            nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
             for token in data:
-                token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
+                node = nodes.filter(pk=token["node"]).first()  # does doing this avoid a second trip to the database?
+                if node is not None:
+                    token["inVocabList"] = token["resolved"] and vl.entries.filter(node__in=node.related_nodes()).exists()
+                else:
+                    token["inVocabList"] = False
 
         if self.request.GET.get("personalvocablist", None) is not None:
             vl = get_object_or_404(PersonalVocabularyList, pk=self.request.GET.get("personalvocablist"))

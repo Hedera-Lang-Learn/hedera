@@ -6,6 +6,16 @@ class LatticeNode(models.Model):
     label = models.TextField()
     children = models.ManyToManyField("self", symmetrical=False, related_name="parents")
 
+    def related_nodes(self, up=True, down=True):
+        nodes = [self]
+        if self.children.count() == 1 and down:
+            child = self.children.first()
+            nodes += child.related_nodes(up=False)
+        if self.parents.count() > 0 and up:
+            for parent in self.parents.all():
+                nodes += parent.related_nodes(down=False)
+        return nodes
+
     def to_dict(self, up=True, down=True):
         """
         serialises the node with its form/lemma strings and descendants
