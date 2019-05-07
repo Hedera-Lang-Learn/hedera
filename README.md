@@ -30,6 +30,7 @@ To import vocabulary list data (whichever ones you want):
 
 ```
 ./manage.py shell -c "import dcc_latin_morpheus_load"
+./manage.py shell -c "import shelmerdine_load"
 ./manage.py shell -c "import logeion_load"
 ```
 
