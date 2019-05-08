@@ -40,7 +40,7 @@ with open("import-data/shelmerdine.csv", newline="") as csvfile:
 
     for entry in vocab_list.entries.all():
         if entry.node is None:
-            lemma = entry.headword.split()[0]
+            lemma = entry.headword.split()[0].strip(",")
             l1 = get_or_create_node_for_lemma(lemma)
             stripped_lemma = strip_diacritics(lemma)
             if stripped_lemma != lemma:
