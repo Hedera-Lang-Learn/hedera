@@ -1,16 +1,26 @@
 from lattices.utils import get_lattice_node
 
 from .models import add_form, lookup_form
-from .morpheus import morpheus
+from .services import clancydb, morpheus
 
 
 # from vocab_list.models import VocabularyList
+
+SERVICES = {
+    "lat": morpheus,
+    "grc": morpheus,
+    "rus": clancydb,
+}
 
 
 def lemmatize_word(form, lang, force_refresh=False):
     s = lookup_form(form)
     if not s or force_refresh:
-        s |= add_form("morpheus", lang, form, morpheus(form, lang))
+        service = SERVICES.get(lang)
+        if service:
+            s |= add_form(service.SID, lang, form, service.lemmatize_word(form, lang))
+        else:
+            raise ValueError(f"Lemmatization not supported for language '{lang}''")
     return list(s)
 
 

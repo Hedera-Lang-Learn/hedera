@@ -2,19 +2,22 @@ from urllib.parse import urlencode
 
 import requests
 
+SID = "morpheus"
 
-def morpheus(form, lang):
+LANGUAGES = ("grc", "lat")
+
+def lemmatize_word(form, lang):
     """
     headword/lemma retrieval from the Perseids Morphology Service
 
-    >>> morpheus("λόγος", "grc")
+    >>> lemmatize_word("λόγος", "grc")
     ['λόγος']
-    >>> morpheus("est", "lat")
+    >>> lemmatize_word("est", "lat")
     ['edo1', 'sum1']
     """
 
-    if lang not in ["grc", "lat"]:
-        raise ValueError("lang must be one of 'grc' or 'lat'")
+    if lang not in LANGUAGES:
+        raise ValueError(f"lang must be one of {LANGUAGES}")
 
     params = {
         "word": form,
