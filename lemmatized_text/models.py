@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import JSONField
 
 from django_rq import job
 
-from lemmatization.lemmatizer import lemmatize_text
+from lemmatization.lemmatizer import Lemmatizer
 
 
 @job
@@ -15,7 +15,8 @@ def lemmatize_text_job(text, lang, pk):
         obj.completed = int(percentage * 100)
         obj.save()
 
-    obj.data = lemmatize_text(text, lang, cb=update)
+    lemmatizer = Lemmatizer(lang, cb=update)
+    obj.data = lemmatizer.lemmatize(text)
     obj.save()
 
 
