@@ -4,6 +4,7 @@ from .models import add_form, lookup_form
 from .services.clancydb import ClancyService
 from .services.morpheus import MorpheusService
 
+
 # from vocab_list.models import VocabularyList
 
 SERVICES = {
