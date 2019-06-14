@@ -1,44 +1,37 @@
-from urllib.parse import urlencode
+from .base import Service
 
-import requests
 
-SID = "clancydb"
-
-LANGUAGES = ("rus",)
-
-def lemmatize_word(form, lang):
+class ClancyService(Service):
     """
     headword/lemma retrieval from Steven Clancy's russian database.
 
-    >>> lemmatize_word("газету", "rus")
+    >>> clancy = ClancyService(lang="rus")
+    >>> clancy.lemmatize("газету")
     ['газета']
-    >>> lemmatize_word("дела", "rus")
+    >>> clancy.lemmatize("дела")
     ['дело', 'деть']
-    >>> lemmatize_word("ру́сская", "rus")
+    >>> clancy.lemmatize("ру́сская")
     ['русский']
-    >>> lemmatize_word("все", "rus")
+    >>> clancy.lemmatize("все")
     ['весь', 'все', 'всё']
-    >>> lemmatize_word("мороженое", "rus")
+    >>> clancy.lemmatize("мороженое")
     ['мороженый', 'мороженое']
     """
 
-    if lang not in LANGUAGES:
-        raise ValueError(f"lang must be one of {LANGUAGES}")
+    SID = "clancydb"
+    LANGUAGES = ["rus"]
+    ENDPOINT = "http://visualizingrussian.fas.harvard.edu/api/lemmatize"
 
-    params = {"word": form}
-    qs = urlencode(params)
-    url = f"http://visualizingrussian.fas.harvard.edu/api/lemmatize?{qs}"
-    headers = {
-        "Accept": "application/json",
-    }
-    r = requests.get(url, headers=headers)
-    if r.ok:
-        body = r.json().get("data", {}).get("lemmas", [])
-        if not isinstance(body, list):
-            body = [] 
-    else:
-        body = []
+    def _build_params(self, form):
+        return dict(word=form)
 
-    lemmas = [item["label"] for item in body]
-    return lemmas
+    def _response_to_lemmas(self, response):
+        if response.ok:
+            body = response.json().get("data", {}).get("lemmas", [])
+            if not isinstance(body, list):
+                body = []
+        else:
+            body = []
 
+        lemmas = [item["label"] for item in body]
+        return lemmas
