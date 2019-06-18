@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, FETCH_TEXT } from './constants';
+import { FETCH_TOKENS, FETCH_VOCAB_LISTS, TOGGLE_VOCAB_LIST, FETCH_TEXT, FETCH_USER_ROLES } from './constants';
 
 import LatticeTree from './modules/LatticeTree.vue';
 import LemmatizedText from './modules/LemmatizedText.vue';
@@ -41,6 +41,9 @@ export default {
         this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
       }
     }
+  },
+  created() {
+    this.$store.dispatch(FETCH_USER_ROLES);
   },
   computed: {
     selectedVocabList() {

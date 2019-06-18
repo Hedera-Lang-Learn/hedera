@@ -8,4 +8,5 @@ export default {
   personalVocabList: null,
   selectedVocabList: null,
   showInVocabList: true,
+  userRoles: {},
 };

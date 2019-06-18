@@ -28,6 +28,15 @@ class APIView(View):
         return self.render_to_response()
 
 
+class UserRolesAPI(APIView):
+
+    def get_data(self):
+        return {
+            [ur.lang]: ur.role
+            for ur in self.request.user.userrole_set.all()
+        }
+
+
 class LemmatizedTextDetailAPI(APIView):
 
     def get_data(self):

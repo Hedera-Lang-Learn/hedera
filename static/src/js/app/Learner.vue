@@ -51,7 +51,7 @@
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY } from './constants';
+import { FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY, FETCH_USER_ROLES } from './constants';
 
 import LemmatizedText from './modules/LemmatizedText.vue';
 import VocabularyEntries from './modules/VocabularyEntries.vue';
@@ -156,6 +156,9 @@ export default {
         console.info('You need to select a node to rate with keystrokes.');
       }
     }
+  },
+  created() {
+    this.$store.dispatch(FETCH_USER_ROLES);
   },
   computed: {
     uniqueNodes() {

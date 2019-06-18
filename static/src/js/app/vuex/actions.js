@@ -13,10 +13,12 @@ import {
   FETCH_PERSONAL_VOCAB_LIST,
   CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
+  FETCH_USER_ROLES,
 } from '../constants';
 import api from '../api';
 
 export default {
+  [FETCH_USER_ROLES]: ({ commit }) => api.fetchRoles(data => commit(FETCH_USER_ROLES, data.data)),
   [FETCH_TEXT]: ({ commit }, { id }) => api.fetchText(id, data => commit(FETCH_TEXT, data.data)),
   [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
     api.fetchVocabLists(state.text.lang, data => commit(FETCH_VOCAB_LISTS, data.data));

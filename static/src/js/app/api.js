@@ -8,6 +8,7 @@ const BASE_URL = '/api/v1/';
 
 export default {
   fetchText: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`).then(r => cb(r.data)),
+  fetchRoles: cb => axios.get(`${BASE_URL}user-roles/`).then(r => cb(r.data)),
   fetchPersonalVocabList: (textId, cb) => axios.get(`${BASE_URL}personal_vocab_list/?text=${textId}`).then(r => cb(r.data)),
   updatePersonalVocabList: (textId, nodeId, familiarity, headword, gloss, entryId, cb) => {
     let data = { familiarity, headword, gloss };

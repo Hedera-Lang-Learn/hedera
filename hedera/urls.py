@@ -18,9 +18,12 @@ urlpatterns = [
     path("lattices/", include("lattices.urls")),
     path("vocab/", include("vocab_list.urls")),
 
-    path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
-    path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
-    path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
-    path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
-    path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
+    path("api/v1/", include([
+        path("user-roles/", api.UserRolesAPI.as_view()),
+        path("lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
+        path("lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
+        path("vocab_lists/", api.VocabularyListAPI.as_view()),
+        path("personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
+        path("personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
+    ])),
 ]
