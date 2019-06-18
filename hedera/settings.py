@@ -263,3 +263,13 @@ EMAIL_USE_TLS = True
 TEXT_PROVIDER_BACKENDS = [
     "databasetext.backends.TextProviderBackend",
 ]
+
+# ISO 639.2 CODES
+HEDERA_LANGUAGE_GREEK = "grc"
+HEDERA_LANGUAGE_LATIN = "lat"
+HEDERA_LANGUAGE_RUSSIAN = "rus"
+HEDERA_LANGUAGES = {
+    HEDERA_LANGUAGE_GREEK: "Ancient Greek",
+    HEDERA_LANGUAGE_LATIN: "Latin",
+    HEDERA_LANGUAGE_RUSSIAN: "Russian",
+}

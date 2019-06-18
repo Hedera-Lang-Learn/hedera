@@ -1,3 +1,4 @@
+from django.conf import settings
 from .base import Service
 
 
@@ -16,7 +17,7 @@ class MorpheusService(Service):
 
 
     SID = "morpheus"
-    LANGUAGES = ["grc", "lat"]
+    LANGUAGES = [settings.HEDERA_LANGUAGE_GREEK, settings.HEDERA_LANGUAGE_LATIN]
     ENDPOINT = "http://services.perseids.org/bsp/morphologyservice/analysis/word"
 
     def _build_params(self, form):

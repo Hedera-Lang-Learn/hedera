@@ -1,3 +1,4 @@
+from django.conf import settings
 from .base import Service
 
 
@@ -19,7 +20,7 @@ class ClancyService(Service):
     """
 
     SID = "clancydb"
-    LANGUAGES = ["rus"]
+    LANGUAGES = [settings.HEDERA_LANGUAGE_RUSSIAN]
     ENDPOINT = "http://visualizingrussian.fas.harvard.edu/api/lemmatize"
 
     def _build_params(self, form):

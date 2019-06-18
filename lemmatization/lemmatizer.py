@@ -1,3 +1,4 @@
+from django.conf import settings
 from lattices.utils import get_lattice_node
 
 from .models import add_form, lookup_form
@@ -8,9 +9,9 @@ from .services.morpheus import MorpheusService
 # from vocab_list.models import VocabularyList
 
 SERVICES = {
-    "lat": MorpheusService(lang="lat"),
-    "grc": MorpheusService(lang="grc"),
-    "rus": ClancyService(lang="rus"),
+    settings.HEDERA_LANGUAGE_LATIN: MorpheusService(lang=settings.HEDERA_LANGUAGE_LATIN),
+    settings.HEDERA_LANGUAGE_GREEK: MorpheusService(lang=settings.HEDERA_LANGUAGE_GREEK),
+    settings.HEDERA_LANGUAGE_RUSSIAN: ClancyService(lang=settings.HEDERA_LANGUAGE_RUSSIAN),
 }
 
 
