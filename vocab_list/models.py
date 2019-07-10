@@ -5,6 +5,8 @@ from lattices.models import LatticeNode
 from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
 
+from iso639 import languages
+
 
 class VocabularyList(models.Model):
 
@@ -40,6 +42,9 @@ class VocabularyList(models.Model):
 
     def __str__(self):
         return self.title
+
+    def language_name(self):
+        return languages.get(part3=self.lang).name
 
     def data(self):
         return {

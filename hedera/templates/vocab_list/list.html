@@ -17,7 +17,7 @@
     {% for vocab_list in vocabularylist_list %}
         <tr>
         <td><a href="{% url "vocab_list_detail" vocab_list.pk %}">{{ vocab_list.title }}</a></td>
-        <td>{{ vocab_list.lang }}</td>
+        <td>{{ vocab_list.language_name }}</td>
         <td>{{ vocab_list.created }}</td>
         </tr>
     {% endfor %}
