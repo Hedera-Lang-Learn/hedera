@@ -16,6 +16,8 @@ export EMAIL_PORT=`aws ssm get-parameter --name /hedera/email_port --output text
 export EMAIL_HOST_USER=`aws ssm get-parameter --name /hedera/email_host_user --output text --query Parameter.Value --region us-east-1`
 export EMAIL_HOST_PASSWORD=`aws ssm get-parameter --name /hedera/email_host_password --with-decryption --output text --query Parameter.Value --region us-east-1`
 export DEFAULT_FROM_EMAIL=`aws ssm get-parameter --name /hedera/default_from_email --output text --query Parameter.Value --region us-east-1`
+export SENTRY_DSN=`aws ssm get-parameter --name /hedera/sentry_dsn --output text --query Parameter.Value --region us-east-1`
+export SENTRY_ENVIRONMENT=dev
 export EMAIL_USE_TLS=True
 export USE_S3=True
 export SITE_ID=2
@@ -43,5 +45,7 @@ sudo gunicorn hedera.wsgi:application \
     --env SITE_ID=$SITE_ID \
     --env REDIS_URL=$REDIS_URL \
     --env RQ_ASYNC=$RQ_ASYNC \
+    --env SENTRY_DSN="$SENTRY_DSN" \
+    --env SENTRY_ENVIRONMENT=$SENTRY_ENVIRONMENT \
     --bind :80 \
     --log-level debug
