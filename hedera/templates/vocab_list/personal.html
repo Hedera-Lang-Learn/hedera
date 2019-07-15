@@ -13,7 +13,7 @@
     <ul class="nav nav-tabs">
         {% for vocab_list in lists %}
         <li class="nav-item">
-            <a class="nav-link {% if vocab_list == personalvocabularylist %}active{% endif %}" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.lang }}</a>
+            <a class="nav-link {% if vocab_list == personalvocabularylist %}active{% endif %}" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.display_name }}</a>
         </li>
         {% endfor %}
     </ul>

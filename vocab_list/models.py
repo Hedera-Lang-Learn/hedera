@@ -43,7 +43,7 @@ class VocabularyList(models.Model):
     def __str__(self):
         return self.title
 
-    def language_name(self):
+    def display_name(self):
         return languages.get(part3=self.lang).name
 
     def data(self):
@@ -97,6 +97,9 @@ class PersonalVocabularyList(models.Model):
 
     def __str__(self):
         return f"{self.user} personal {self.lang} vocab list"
+
+    def display_name(self):
+        return languages.get(part3=self.lang).name
 
     def node_familiarity(self):
         return 10
