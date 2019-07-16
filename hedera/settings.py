@@ -1,7 +1,18 @@
 import os
 
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.rq import RqIntegration
 
+
+# Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
+sentry_sdk.init(
+    dsn=os.environ.get("SENTRY_DSN"),
+    debug=os.environ.get("SENTRY_DEBUG") == "1",
+    environment=os.environ.get("SENTRY_ENVIRONMENT"),
+    integrations=[DjangoIntegration(), RqIntegration()]
+)
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))

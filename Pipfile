@@ -20,6 +20,7 @@ boto3 = "*"
 django-storages = "*"
 django-rq = "*"
 django-querycount = "*"
+sentry-sdk = "==0.10.1"
 
 [dev-packages]
 "flake8" = "*"
