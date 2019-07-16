@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.db import models
 
+from iso639 import languages
+
 from lattices.models import LatticeNode
 from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
-
-from iso639 import languages
 
 
 class VocabularyList(models.Model):
