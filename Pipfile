@@ -21,6 +21,7 @@ django-storages = "*"
 django-rq = "*"
 django-querycount = "*"
 iso-639 = "*"
+cltk = "*"
 
 [dev-packages]
 "flake8" = "*"
