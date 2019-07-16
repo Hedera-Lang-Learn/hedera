@@ -64,7 +64,7 @@ class FormNode(models.Model):
 
     This effectively defines a node in a lattice as "meaning" this form.
     Note that not all forms should be mapped in this way, only those that have
-    their own node in the lattice (for example, because their ambiguous).  If
+    their own node in the lattice (for example, because they're ambiguous).  If
     the form string is ambiguous, the referenced node can have a child for each
     possibility.
 
