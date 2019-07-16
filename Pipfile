@@ -20,6 +20,8 @@ boto3 = "*"
 django-storages = "*"
 django-rq = "*"
 django-querycount = "*"
+iso-639 = "*"
+cltk = "*"
 sentry-sdk = "==0.10.1"
 
 [dev-packages]

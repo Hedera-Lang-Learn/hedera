@@ -19,9 +19,9 @@
     <div class="form-group">
       <label>Language</label>
       <select name="lang" class="form-control">
-        <option value="grc" {% if cloned_from.lang == "grc" %}select{% endif %}>Greek</option>
-        <option value="lat" {% if cloned_from.lang == "lat" %}select{% endif %}>Latin</option>
-        <option value="rus" {% if cloned_from.lang == "rus" %}select{% endif %}>Russian</option>
+        <option value="grc" {% if cloned_from.lang == "grc" %}selected{% endif %}>Greek</option>
+        <option value="lat" {% if cloned_from.lang == "lat" %}selected{% endif %}>Latin</option>
+        <option value="rus" {% if cloned_from.lang == "rus" %}selected{% endif %}>Russian</option>
       </select>
     </div>
     {% if cloned_from %}
