@@ -146,6 +146,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "querycount.middleware.QueryCountMiddleware",
+    "hedera.middleware.AuthenticatedMiddleware",
+]
+
+AUTHENTICATED_EXEMPT_URLS = [
+    "/favicon.ico",
+    "/account/signup/",
+    "/account/password/reset/",
+    "^/\.well-known/",
+    "^/$",
 ]
 
 ROOT_URLCONF = "hedera.urls"
