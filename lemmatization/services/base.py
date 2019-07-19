@@ -13,7 +13,13 @@ class Service(object):
         self.lang = lang
 
     def tokenize(self, text):
-        return text.replace("—", "— ").split()
+        if self.lang == 'lat':
+            word_tokenizer = WordTokenizer('latin')
+            word_tokens = word_tokenizer.tokenize(text.lower())
+            word_tokens = [token for token in word_tokens if token not in ['.', ',', ':', ';']]
+            return word_tokens
+        else:
+            return text.replace("—", "— ").split()
 
     def strip_token(self, token):
         return token.strip(",.?:;·—")
@@ -35,4 +41,3 @@ class Service(object):
 
     def lemmatize(self, form):
         return self._call_service(form)
-
