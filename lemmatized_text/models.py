@@ -4,6 +4,7 @@ from django.contrib.postgres.fields import JSONField
 
 from django_rq import job
 
+from iso639 import languages
 from lemmatization.lemmatizer import Lemmatizer
 
 
@@ -39,6 +40,9 @@ class LemmatizedText(models.Model):
     # where node is the pk of the LatticeNode
 
     data = JSONField()
+
+    def display_name(self):
+        return languages.get(part3=self.lang).name
 
     def lemmatize(self, text, lang):
         lemmatize_text_job.delay(text, lang, self.pk)

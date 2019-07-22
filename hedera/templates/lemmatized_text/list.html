@@ -23,7 +23,7 @@
         &bull;
         <a href="/lemmatized_text/{{ text.pk }}/learner/">Learner</a>{% endif %}
       </td>
-      <td style="vertical-align: middle;">{{ text.lang }}</td>
+      <td style="vertical-align: middle;">{{ text.display_name }}</td>
       <td style="vertical-align: middle;">{% if text.completed == 100 %}{{ text.token_count }}{% else %}In Progress{% endif %}</td>
       <td style="vertical-align: middle;">
         <div class="progress">
