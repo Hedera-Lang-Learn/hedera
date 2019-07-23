@@ -1,24 +1,29 @@
+import logging
+
 from django.db import models
 
 from django.contrib.postgres.fields import JSONField
 
 from django_rq import job
-
 from iso639 import languages
+
 from lemmatization.lemmatizer import Lemmatizer
 
 
 @job
 def lemmatize_text_job(text, lang, pk):
-    obj = LemmatizedText.objects.get(pk=pk)
+    try:
+        obj = LemmatizedText.objects.get(pk=pk)
 
-    def update(percentage):
-        obj.completed = int(percentage * 100)
+        def update(percentage):
+            obj.completed = int(percentage * 100)
+            obj.save()
+
+        lemmatizer = Lemmatizer(lang, cb=update)
+        obj.data = lemmatizer.lemmatize(text)
         obj.save()
-
-    lemmatizer = Lemmatizer(lang, cb=update)
-    obj.data = lemmatizer.lemmatize(text)
-    obj.save()
+    except Exception as e:
+        logging.exception(e)
 
 
 # this is for representing the lemmatized text
