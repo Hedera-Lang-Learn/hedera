@@ -1,6 +1,7 @@
 import os
 
 import dj_database_url
+import requests
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.rq import RqIntegration
@@ -27,15 +28,18 @@ DATABASES = {
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "hederaproject.com",
-    "www.hederaproject.com",
-    "dev.hederaproject.com",
-    "stage.hederaproject.com",
     "hederaproject.org",
-    "www.hederaproject.org",
-    "dev.hederaproject.org",
-    "stage.hederaproject.org"
+    ".hederaproject.org",
 ]
+
+EC2_PRIVATE_IP = None
+try:
+    EC2_PRIVATE_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4', timeout=0.01).text
+except requests.exceptions.RequestException:
+    pass
+
+if EC2_PRIVATE_IP:
+    ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
