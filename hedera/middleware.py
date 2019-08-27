@@ -29,11 +29,9 @@ class AuthenticatedMiddleware(object):
         if not request.user.is_authenticated:
             path = urlquote(request.get_full_path())
             tup = (self.login_url, self.redirect_field_name, path)
-            if request.is_ajax() or request.META.get("HTTP_X_VUE_FRONTEND") == "Made by Eldarion":
-                tup = (tup[0], tup[1], request.META.get("HTTP_REFERER").replace(request.META.get("HTTP_ORIGIN"), ""))
+            if request.is_ajax():
                 return JsonResponse({
-                    "error": "You must login to see this",
-                    "location": "%s?%s=%s" % tup
+                    "error": "You must login to see this"
                 }, status=403)
             return HttpResponseRedirect("%s?%s=%s" % tup)
         else:
