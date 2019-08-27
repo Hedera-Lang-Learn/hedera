@@ -1,7 +1,9 @@
 import logging
 
 from django.db import models
+from django.utils import timezone
 
+from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 
 from django_rq import job
@@ -35,6 +37,15 @@ class LemmatizedText(models.Model):
     cloned_from = models.ForeignKey("LemmatizedText", null=True, blank=True, on_delete=models.SET_NULL)
 
     completed = models.IntegerField(default=0)
+
+    # created_by is nullable because you can have Anonymous System Texts
+    # 1. Anonymous System Texts
+    # 2. Credited System Texts
+    # 3. Private Texts - default
+    public = models.BooleanField(default=False)
+    created_by = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(default=timezone.now)
 
     # this should be a JSON list of the form
     # [
