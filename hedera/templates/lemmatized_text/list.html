@@ -14,7 +14,7 @@
   <h1>Lemmatized Texts</h1>
 
   <table class="table">
-    <tr><th>Text</th><th>Language</th><th>Length</th><th>Lemmatized</th><th>Familiarity</th><th></th></tr>
+    <tr><th>Text</th><th>Language</th><th>Length</th><th>Familiarity</th><th></th></tr>
   {% for text in lemmatized_texts %}
     <tr>
       <td style="vertical-align: middle;">
@@ -25,11 +25,6 @@
       </td>
       <td style="vertical-align: middle;">{{ text.display_name }}</td>
       <td style="vertical-align: middle;">{% if text.completed == 100 %}{{ text.token_count }}{% else %}In Progress{% endif %}</td>
-      <td style="vertical-align: middle;">
-        <div class="progress">
-          <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </td>
       <td style="vertical-align: middle;">
         {% stats_for_text text request.user as stats %}
         {% if stats %}
