@@ -151,9 +151,10 @@ MIDDLEWARE = [
 
 AUTHENTICATED_EXEMPT_URLS = [
     "/favicon.ico",
+    "/account/login/",
     "/account/signup/",
     "/account/password/reset/",
-    "^/\.well-known/",
+    r"^/\.well-known/",
     "^/$",
 ]
 
