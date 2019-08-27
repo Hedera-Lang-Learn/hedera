@@ -43,13 +43,13 @@ def delete(request, pk):
 
 
 def text(request, pk):
-    qs = models.LemmatizedText.filter(Q(public=True) | Q(created_by=request.user))
+    qs = models.LemmatizedText.objects.filter(Q(public=True) | Q(created_by=request.user))
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/text.html", {"text": text})
 
 
 def learner_text(request, pk):
-    qs = models.LemmatizedText.filter(Q(public=True) | Q(created_by=request.user))
+    qs = models.LemmatizedText.objects.filter(Q(public=True) | Q(created_by=request.user))
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/learner_text.html", {"text": text})
 

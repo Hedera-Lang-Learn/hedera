@@ -32,7 +32,7 @@ class APIView(View):
 class LemmatizedTextDetailAPI(APIView):
 
     def get_data(self):
-        qs = LemmatizedText.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
 
@@ -68,13 +68,13 @@ class LemmatizationAPI(APIView):
         return data
 
     def get_data(self):
-        qs = LemmatizedText.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
 
     def post(self, request, *args, **kwargs):
-        qs = LemmatizedText.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
@@ -108,7 +108,7 @@ class PersonalVocabularyListAPI(APIView):
     @property
     def text(self):
         if getattr(self, "_text", None) is None:
-            qs = LemmatizedText.filter(Q(public=True) | Q(created_by=self.request.user))
+            qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
             self._text = get_object_or_404(qs, pk=self.kwargs.get("text"))
         return self._text
 
