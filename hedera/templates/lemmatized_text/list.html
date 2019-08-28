@@ -28,9 +28,19 @@
         {% if text.completed == 100 %}
           {{ text.token_count }}
         {% else %}
+        <div class="progress-container">
           <div class="progress">
             <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
+          <div class="status">
+            {% if text.can_retry %}
+              <form action="{% url 'lemmatized_texts_retry_lemmatization' text.pk %}" method="post">{% csrf_token %}<button class="btn-link--small">Retry</button></form>
+            {% endif %}
+            {% if text.can_cancel %}
+              <form action="{% url 'lemmatized_texts_cancel_lemmatization' text.pk %}" method="post">{% csrf_token %}<button class="btn-link--small">Cancel</button></form>
+            {% endif %}
+          </div>
+        </div>
         {% endif %}
       </td>
       <td style="vertical-align: middle;">

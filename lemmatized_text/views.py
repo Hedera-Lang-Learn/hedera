@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.http import require_POST
 
 from . import models
 
@@ -24,14 +25,29 @@ def create(request):
             title=title,
             lang=lang,
             data={},
+            original_text=text,
             cloned_from=cloned_from,
             created_by=request.user
         )
-        lt.lemmatize(text, lang)
+        lt.lemmatize()
         return redirect("lemmatized_texts_list")
     if request.GET.get("cloned_from"):
         cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
     return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from})
+
+
+@require_POST
+def retry_lemmatization(request, pk):
+    text = get_object_or_404(models.LemmatizedText, pk=pk, created_by=request.user)
+    text.retry_lemmatization()
+    return redirect("lemmatized_texts_list")
+
+
+@require_POST
+def cancel_lemmatization(request, pk):
+    text = get_object_or_404(models.LemmatizedText, pk=pk, created_by=request.user)
+    text.cancel_lemmatization()
+    return redirect("lemmatized_texts_list")
 
 
 def delete(request, pk):
