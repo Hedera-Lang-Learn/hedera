@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 
-from django_rq import job, get_connection
+from django_rq import get_connection, job
 from iso639 import languages
 from rq.job import Job, NoSuchJobError
 

@@ -1,8 +1,8 @@
 
 from django.urls import path
 
-
 from . import views
+
 
 urlpatterns = [
     path("", views.lemmatized_texts, name="lemmatized_texts_list"),
