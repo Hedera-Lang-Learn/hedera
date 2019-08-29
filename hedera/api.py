@@ -109,7 +109,7 @@ class PersonalVocabularyListAPI(APIView):
     def text(self):
         if getattr(self, "_text", None) is None:
             qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
-            self._text = get_object_or_404(qs, pk=self.kwargs.get("text"))
+            self._text = get_object_or_404(qs, pk=self.request.GET.get("text"))
         return self._text
 
     def get_object(self):
