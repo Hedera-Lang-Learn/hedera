@@ -49,7 +49,7 @@ export default {
   },
   [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
     const mutate = data => commit(UPDATE_TOKEN, data.data);
-    return api.updateToken(id, tokenIndex, resolved, null, lemma, mutate)
+    return api.updateToken(id, tokenIndex, resolved, null, null, lemma, mutate)
       .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }));
   },
   [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {
