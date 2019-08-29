@@ -11,7 +11,6 @@ export default {
   fetchPersonalVocabList: (lang, cb) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`).then(r => cb(r.data)),
   updatePersonalVocabList: (textId, nodeId, familiarity, headword, gloss, entryId, lang, cb) => {
     let data = { familiarity, headword, gloss };
-    console.log('api lang', lang);
     if (lang !== null && entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then(r => cb(r.data));
     }

@@ -27,7 +27,6 @@ export default {
   },
   [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss, lang = null }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
-    console.log('lang', lang)
     api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, lang, cb);
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
