@@ -152,6 +152,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/login/",
     "/account/signup/",
     "/account/password/reset/",
+    "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
 ]
