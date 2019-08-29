@@ -25,13 +25,14 @@ export default {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     api.updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, cb);
   },
-  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss }) => {
+  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss, lang = null }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
-    api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, cb);
+    console.log('lang', lang)
+    api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, lang, cb);
   },
-  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit, state }) => {
+  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
-    api.fetchPersonalVocabList(state.text.id, cb);
+    api.fetchPersonalVocabList(lang, cb);
   },
   [FETCH_TOKENS]: ({ commit }, { id, vocabList, personalVocabList }) => {
     commit(SET_TEXT_ID, id);
