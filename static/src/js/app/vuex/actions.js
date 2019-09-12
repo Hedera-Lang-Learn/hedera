@@ -25,8 +25,10 @@ export default {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     api.updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, cb);
   },
+  // eslint-disable-next-line max-len
   [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss, lang = null }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
+    // eslint-disable-next-line max-len
     api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, lang, cb);
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {

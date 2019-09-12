@@ -72,7 +72,7 @@ export default () => {
     new Vue({
       el: '#personal-vocab-app',
       render(h) {
-        return h(PersonalVocab, { props: { lang: this.$el.attributes['lang'].value } });
+        return h(PersonalVocab, { props: { lang: this.$el.attributes.lang.value } });
       },
       store,
     });
