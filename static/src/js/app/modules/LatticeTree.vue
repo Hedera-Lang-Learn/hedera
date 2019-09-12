@@ -1,6 +1,6 @@
 <template>
   <div class="lattice-tree">
-    <h4>{{ token.token }}</h4>
+    <h4>{{ token.word }}</h4>
     <LatticeNode :node="node" @selected="onSelect" />
     <AddLemma @addLemma="onAddLemma" />
     <MarkResolved :resolved="token.resolved" @toggle="markResolved" />

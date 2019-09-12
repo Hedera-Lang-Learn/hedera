@@ -27,9 +27,6 @@ class Lemmatizer(object):
     def _tokenize(self, text):
         return self._service.tokenize(text)
 
-    def _strip(self, token):
-        return self._service.strip_token(token)
-
     def _lemmatize_token(self, token):
         s = lookup_form(token)
         if not s or self.force_refresh:
@@ -48,15 +45,24 @@ class Lemmatizer(object):
 
     def lemmatize(self, text):
         result = []
-        tokens = self._tokenize(text)
+        tokens = list(self._tokenize(text))
         total_count = len(tokens)
         for index, token in enumerate(tokens):
-            stripped_token = self._strip(token)
-            lemmas = self._lemmatize_token(stripped_token)
-            node = get_lattice_node(lemmas, stripped_token)  # @@@ not sure what to use for context here
-            resolved = node and not node.children.exists()
+            word, following = token
+            if word:
+                lemmas = self._lemmatize_token(word)
+                node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
+                resolved = node and not node.children.exists()
+            else:
+                node = None
+                resolved = None
             node_pk = node.pk if node else None
-            result.append(dict(token=token, node=node_pk, resolved=resolved))
+            result.append(dict(
+                word=word,
+                following=following,
+                node=node_pk,
+                resolved=resolved
+            ))
             self._report_progress(index, total_count)
         return result
 
