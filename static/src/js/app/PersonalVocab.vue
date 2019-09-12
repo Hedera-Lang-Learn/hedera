@@ -1,5 +1,5 @@
 <template>
-  <table class="table">
+  <table class="table personal-vocab">
     <colgroup>
         <col style="width:20%">
         <col style="width:40%">
@@ -69,4 +69,19 @@
 </script>
 
 <style lang="scss">
+  .personal-vocab .familiarity-rating {
+    position: relative;
+    .help-text {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      color: #666;
+      background: #FFF;
+      padding: 2px 8px;
+      border: 1px solid #DDD;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      z-index: 9999;
+    }
+  }
 </style>
