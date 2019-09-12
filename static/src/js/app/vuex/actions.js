@@ -8,7 +8,7 @@ import {
   SET_TEXT_ID,
   ADD_LEMMA,
   FETCH_VOCAB_LISTS,
-  TOGGLE_VOCAB_LIST,
+  SET_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_PERSONAL_VOCAB_LIST,
   CREATE_VOCAB_ENTRY,
@@ -54,8 +54,8 @@ export default {
     return api.updateToken(id, tokenIndex, resolved, null, null, lemma, mutate)
       .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }));
   },
-  [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {
-    commit(TOGGLE_VOCAB_LIST, id);
+  [SET_VOCAB_LIST]: ({ commit }, { id }) => {
+    commit(SET_VOCAB_LIST, id);
   },
   [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
     commit(TOGGLE_SHOW_IN_VOCAB_LIST);
