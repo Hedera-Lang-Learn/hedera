@@ -25,13 +25,15 @@ export default {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     api.updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, cb);
   },
-  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss }) => {
+  // eslint-disable-next-line max-len
+  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss, lang = null }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
-    api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, cb);
+    // eslint-disable-next-line max-len
+    api.updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, lang, cb);
   },
-  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit, state }) => {
+  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
-    api.fetchPersonalVocabList(state.text.id, cb);
+    api.fetchPersonalVocabList(lang, cb);
   },
   [FETCH_TOKENS]: ({ commit }, { id, vocabList, personalVocabList }) => {
     commit(SET_TEXT_ID, id);
@@ -49,7 +51,7 @@ export default {
   },
   [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
     const mutate = data => commit(UPDATE_TOKEN, data.data);
-    return api.updateToken(id, tokenIndex, resolved, null, lemma, mutate)
+    return api.updateToken(id, tokenIndex, resolved, null, null, lemma, mutate)
       .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }));
   },
   [TOGGLE_VOCAB_LIST]: ({ commit }, { id }) => {

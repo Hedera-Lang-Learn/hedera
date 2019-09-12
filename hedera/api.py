@@ -107,15 +107,21 @@ class PersonalVocabularyListAPI(APIView):
 
     @property
     def text(self):
+        if self.request.GET.get("text") is None:
+            return
         if getattr(self, "_text", None) is None:
             qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
             self._text = get_object_or_404(qs, pk=self.request.GET.get("text"))
         return self._text
 
     def get_object(self):
+        if self.text:
+            lang = self.text.lang
+        else:
+            lang = self.request.GET.get("lang")
         vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
-            lang=self.text.lang,
+            lang=lang,
         )
         return vl
 
@@ -148,8 +154,9 @@ class PersonalVocabularyListAPI(APIView):
                 node=node,
             )
 
-        stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
-        stats.update()
+        if self.text:
+            stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
+            stats.update()
 
         vl.refresh_from_db()
 

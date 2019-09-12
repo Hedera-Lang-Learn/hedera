@@ -7,7 +7,7 @@
         <FamiliarityRatingNode :rating="4" :value="this.value" @selected="onSelected" @active="onActive" @inactive="onInactive" />
         <FamiliarityRatingNode :rating="5" :value="this.value" @selected="onSelected" @active="onActive" @inactive="onInactive" />
     </div>
-    <div class="help-text">{{ help }}</div>
+    <div class="help-text" v-show="help">{{ help }}</div>
   </div>
 </template>
 
