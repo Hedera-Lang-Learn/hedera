@@ -155,6 +155,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
+    r"/api/"
 ]
 
 ROOT_URLCONF = "hedera.urls"
