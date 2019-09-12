@@ -37,10 +37,10 @@ export default {
   },
   computed: {
     parents() {
-      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken.token));
+      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken.word));
     },
     children() {
-      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken.token));
+      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken.word));
     },
     vocabEntries() {
       return this.node.vocabulary_entries;

@@ -1,7 +1,11 @@
 <template>
-  <span class="token"
-    :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList, ignored }"
-    @click.prevent="onClick()">{{ token.token }}</span>
+  <span class="token">
+    <span
+      class="word"
+      :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList, ignored }"
+      @click.prevent="onClick()"
+    >{{ token.word }}</span><span class="following">{{ token.following }}</span>
+  </span>
 </template>
 <script>
 export default {
@@ -22,7 +26,7 @@ export default {
       return this.token.inVocabList && !this.ignored;
     },
     ignored() {
-      return this.token.token !== this.token.token.toLowerCase();
+      return this.token.word !== this.token.word.toLowerCase();
     },
     unresolved() {
       return !this.token.resolved;
