@@ -3,7 +3,7 @@
     <span
       class="word"
       v-if="token.word"
-      :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList, ignored }"
+      :class="[token.resolved, {selected, sameNode, 'in-vocab-list': inVocabList, ignored }]"
       @click.prevent="onClick()"
     >{{ token.word }}</span><span class="following" v-if="token.following">{{ token.following }}</span>
   </span>
@@ -29,12 +29,6 @@ export default {
     ignored() {
       return this.token.word !== this.token.word.toLowerCase();
     },
-    unresolved() {
-      return !this.token.resolved;
-    },
-    noLemma() {
-      return this.token.node === null;
-    }
   }
 };
 </script>
