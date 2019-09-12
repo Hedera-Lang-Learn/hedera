@@ -1,12 +1,13 @@
 <template>
-  <div class="vocab-list-select">
-    <div class="vocab-list-select--title" :class="{ open }" @click="open = !open">
-      <span v-if="selectedVocabList">{{ selectedVocabList.title }}</span>
-      <span v-else>Select a Vocab List</span>
-      <icon name="caret-down" />
-    </div>
-    <div class="vocab-list-select--opened" v-if="open">
-      <VocabListEntry v-for="vocabList in vocabLists" :key="vocabList.id" :vocab-list="vocabList" @selected="onSelect" />
+  <div class="vocab-list-select" >
+    <div class="vocab-list-select-dropdown" :class="{ open }">
+      <div class="vocab-list-select--title" :class="{ open }" @click="open = !open">
+        <span>Select a Vocab List</span>
+        <icon name="caret-down" />
+      </div>
+      <div class="vocab-list-select--opened" v-if="open">
+        <VocabListEntry v-for="vocabList in vocabLists" :key="vocabList.id" :vocab-list="vocabList" @selected="onSelect" />
+      </div>
     </div>
 
     <VocabListSelectedEntry v-if="selectedVocabList" :vocab-list="selectedVocabList" />
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-  import { TOGGLE_VOCAB_LIST } from '../../constants';
+  import { SET_VOCAB_LIST } from '../../constants';
   import VocabListEntry from './VocabListEntry.vue';
   import VocabListSelectedEntry from './VocabListSelectedEntry.vue';
 
@@ -31,7 +32,7 @@
     },
     methods: {
       onSelect(id) {
-        this.$store.dispatch(TOGGLE_VOCAB_LIST, id).then(() => (this.open = false));
+        this.$store.dispatch(SET_VOCAB_LIST, id).then(() => (this.open = false));
       }
     },
     computed: {
@@ -48,12 +49,14 @@
 <style lang="scss">
   @import "../../../../scss/config";
 
+  .vocab-list-select-dropdown.open {
+      border: 1px solid $primary;
+  }
   .vocab-list-select--title {
     background: $gray-100;
     border: 1px solid $gray-200;
     border-radius: 3px;
     padding: 4px 8px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     cursor: pointer;
@@ -62,11 +65,22 @@
       margin-bottom: auto;
     }
     &.open {
-      background: $white;
-      border-color: $primary;
+      // background: $white;
+      border-bottom: none;
     }
   }
-  .vocab-list-entry,
+  .vocab-list-entry {
+    cursor: pointer;
+    background: $gray-100;
+    padding: 15px 25px;
+    border: 1px solid $gray-300;
+    color: $gray-600;
+    &.active {
+      border-left: 5px solid $primary;
+      color: $gray-800;
+      background: $white;
+    }
+  }
   .vocab-list-selected-entry {
     h4 {
       font-size: 14pt;
@@ -84,7 +98,7 @@
       text-align: center;
       margin-top: 5px;
     }
-    margin-bottom: 25px;
+    margin-top: 25px;
     background: $gray-100;
     padding: 15px 25px;
     border: 1px solid $gray-300;

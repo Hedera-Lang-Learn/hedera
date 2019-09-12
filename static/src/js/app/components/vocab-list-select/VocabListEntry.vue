@@ -1,8 +1,7 @@
 <template>
-  <div class="vocab-list-entry">
+  <div class="vocab-list-entry" :class="{ active }" @click.prevent="onSelect">
     <h4>{{ title }}</h4>
     <p>{{ description }}</p>
-    <button class="btn btn-block btn-outline-primary" :class="{ active }" @click.prevent="onSelect">{{ active ? 'Unselect' : 'Select' }}</button>
   </div>
 </template>
 

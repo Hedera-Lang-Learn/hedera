@@ -5,7 +5,7 @@ import {
   UPDATE_TOKEN,
   SET_TEXT_ID,
   FETCH_VOCAB_LISTS,
-  TOGGLE_VOCAB_LIST,
+  SET_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_TEXT,
   FETCH_PERSONAL_VOCAB_LIST,
@@ -40,12 +40,8 @@ export default {
     state.tokens = data;
     state.selectedToken = state.tokens[state.selectedIndex];
   },
-  [TOGGLE_VOCAB_LIST]: (state, id) => {
-    if (state.selectedVocabList === id) {
-      state.selectedVocabList = null;
-    } else {
-      state.selectedVocabList = id;
-    }
+  [SET_VOCAB_LIST]: (state, id) => {
+    state.selectedVocabList = id;
   },
   [TOGGLE_SHOW_IN_VOCAB_LIST]: (state) => {
     state.showInVocabList = !state.showInVocabList;
