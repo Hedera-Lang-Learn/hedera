@@ -17,7 +17,26 @@ from vocab_list.models import (
 )
 
 
-class APIView(View):
+class JsonResponseAuthError(JsonResponse):
+
+    status_code = 401
+
+
+class AuthedView(View):
+
+    auth_required = True
+
+    @property
+    def user(self):
+        return self.request.user
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.auth_required and not request.user.is_authenticated:
+            return JsonResponseAuthError(data={"error": "Authentication required"})
+        return super().dispatch(request, *args, **kwargs)
+
+
+class APIView(AuthedView):
 
     def get_data(self):
         return {}
