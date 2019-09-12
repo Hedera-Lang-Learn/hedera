@@ -2,9 +2,10 @@
   <span class="token">
     <span
       class="word"
+      v-if="token.word"
       :class="{unresolved, selected, sameNode, 'no-lemma': noLemma, 'in-vocab-list': inVocabList, ignored }"
       @click.prevent="onClick()"
-    >{{ token.word }}</span><span class="following">{{ token.following }}</span>
+    >{{ token.word }}</span><span class="following" v-if="token.following">{{ token.following }}</span>
   </span>
 </template>
 <script>
