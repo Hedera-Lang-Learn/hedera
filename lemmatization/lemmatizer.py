@@ -13,6 +13,13 @@ SERVICES = {
     "rus": ClancyService(lang="rus"),
 }
 
+RESOLVED_NA = "na"
+RESOLVED_NO_LEMMA = "no-lemma"
+RESOLVED_UNRESOLVED = "unresolved"
+RESOLVED_NO_AMBIGUITY = "no-ambiguity"
+RESOLVED_AUTOMATIC = "resolved-automatic"
+RESOLVED_MANUAL = "resolved-manual"
+
 
 class Lemmatizer(object):
 
@@ -52,10 +59,16 @@ class Lemmatizer(object):
             if word:
                 lemmas = self._lemmatize_token(word)
                 node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
-                resolved = node and not node.children.exists()
+                if node:
+                    if node.children.exists():
+                        resolved = RESOLVED_UNRESOLVED
+                    else:
+                        resolved = RESOLVED_NO_AMBIGUITY
+                else:
+                    resolved = RESOLVED_NO_LEMMA
             else:
                 node = None
-                resolved = None
+                resolved = RESOLVED_NA
             node_pk = node.pk if node else None
             result.append(dict(
                 word=word,
