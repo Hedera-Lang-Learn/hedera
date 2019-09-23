@@ -22,7 +22,7 @@ django-rq = "*"
 django-querycount = "*"
 iso-639 = "*"
 cltk = "*"
-sentry-sdk = "==0.10.1"
+sentry-sdk = "==0.12.1"
 
 [dev-packages]
 "flake8" = "*"
