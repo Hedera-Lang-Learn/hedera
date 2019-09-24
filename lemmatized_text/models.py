@@ -112,7 +112,7 @@ class LemmatizedText(models.Model):
         return len(self.data)
 
     def text(self):
-        return " ".join([d["word"] + d["following"] for d in self.data])
+        return "".join([d["word"] + d["following"] for d in self.data])
 
     def api_data(self):
         return {
