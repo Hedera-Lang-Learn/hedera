@@ -18,21 +18,5 @@
         {% endfor %}
     </ul>
 
-  <table class="table">
-    <tr><th>Headword</th><th>Gloss</th><th>Familiarity</th><th>Created</th></tr>
-    {% for entry in personalvocabularylist.entries.all %}
-        <tr>
-        <td>{{ entry.headword }}</a></td>
-        <td>{{ entry.gloss }}</td>
-        <td>
-            {% for x in entry.familiarity_range %}
-            <span class="familiarity-rating-node rating-{{ entry.familiarity }} selected">
-                <i class="fas fa-circle"></i>
-            </span>
-            {% endfor %}
-        </td>
-        <td>{{ entry.created }}</td>
-        </tr>
-    {% endfor %}
-  </table>
+    <div id="personal-vocab-app" lang="{{ personalvocabularylist.lang }}"></div>
 {% endblock %}

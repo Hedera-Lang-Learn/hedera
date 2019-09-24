@@ -14,7 +14,7 @@
   <h1>Lemmatized Texts</h1>
 
   <table class="table">
-    <tr><th>Text</th><th>Language</th><th>Length</th><th>Lemmatized</th><th>Familiarity</th><th></th></tr>
+    <tr><th>Text</th><th>Language</th><th>Length</th><th>Familiarity</th><th></th></tr>
   {% for text in lemmatized_texts %}
     <tr>
       <td style="vertical-align: middle;">
@@ -24,11 +24,24 @@
         <a href="/lemmatized_text/{{ text.pk }}/learner/">Learner</a>{% endif %}
       </td>
       <td style="vertical-align: middle;">{{ text.display_name }}</td>
-      <td style="vertical-align: middle;">{% if text.completed == 100 %}{{ text.token_count }}{% else %}In Progress{% endif %}</td>
       <td style="vertical-align: middle;">
-        <div class="progress">
-          <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
+        {% if text.completed == 100 %}
+          {{ text.token_count }}
+        {% else %}
+        <div class="progress-container">
+          <div class="progress">
+            <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="status">
+            {% if text.can_retry %}
+              <form action="{% url 'lemmatized_texts_retry_lemmatization' text.pk %}" method="post">{% csrf_token %}<button class="btn-link--small">Retry</button></form>
+            {% endif %}
+            {% if text.can_cancel %}
+              <form action="{% url 'lemmatized_texts_cancel_lemmatization' text.pk %}" method="post">{% csrf_token %}<button class="btn-link--small">Cancel</button></form>
+            {% endif %}
+          </div>
         </div>
+        {% endif %}
       </td>
       <td style="vertical-align: middle;">
         {% stats_for_text text request.user as stats %}
@@ -44,9 +57,9 @@
         {% endif %}
       </td>
       <td style="vertical-align: middle;">
+        <a class="btn btn-outline-danger btn-sm" href="{% url 'lemmatized_texts_delete' text.pk %}"><i class="fa fa-trash"></i> Delete</a>
         {% if text.completed == 100 %}
         <a class="btn btn-outline-primary btn-sm" href="{% url 'lemmatized_texts_create' %}?cloned_from={{ text.pk }}"><i class="fa fa-copy"></i> Clone</a>
-        <a class="btn btn-outline-danger btn-sm" href="{% url 'lemmatized_texts_delete' text.pk %}"><i class="fa fa-trash"></i> Delete</a>
         {% endif %}
       </td>
     </tr>

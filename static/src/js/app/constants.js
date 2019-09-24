@@ -6,11 +6,18 @@ export const FETCH_NODE = 'fetchNode';
 export const UPDATE_TOKEN = 'updateToken';
 export const SET_TEXT_ID = 'setTextId';
 export const ADD_LEMMA = 'addLemma';
-export const TOGGLE_VOCAB_LIST = 'toggleVocabList';
+export const SET_VOCAB_LIST = 'setVocabList';
 export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
 export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
 export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
+
+export const RESOLVED_NA = 'na';
+export const RESOLVED_NO_LEMMA = 'no-lemma';
+export const RESOLVED_UNRESOLVED = 'unresolved';
+export const RESOLVED_NO_AMBIGUITY = 'no-ambiguity';
+export const RESOLVED_AUTOMATIC = 'resolved-automatical';
+export const RESOLVED_MANUAL = 'resolved-manual';
 
 export const RATINGS = {
   1: 'I don\'t recognise this word',

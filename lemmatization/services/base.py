@@ -1,4 +1,11 @@
+import re
 import requests
+
+
+def pairwise(iterable):
+    "s -> (s0, s1), (s2, s3), (s4, s5), ..."
+    a = iter(iterable)
+    return zip(a, a)
 
 
 class Service(object):
@@ -13,16 +20,14 @@ class Service(object):
         self.lang = lang
 
     def tokenize(self, text):
-        if self.lang == 'lat':
-            word_tokenizer = WordTokenizer('latin')
-            word_tokens = word_tokenizer.tokenize(text.lower())
-            word_tokens = [token for token in word_tokens if token not in ['.', ',', ':', ';']]
-            return word_tokens
-        else:
-            return text.replace("—", "— ").split()
+        """
+        Returns pairs of: (word, following)
 
-    def strip_token(self, token):
-        return token.strip(",.?:;·—")
+        The first item returned will have an empty string for `word` if the
+        text starts with a non-word.
+        """
+        tokens = re.split("(\W+)", text)
+        return pairwise(tokens)
 
     def _headers(self):
         return dict(Accept="application/json")

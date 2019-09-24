@@ -5,6 +5,8 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.rq import RqIntegration
 
+from .aws import get_ecs_task_ips
+
 
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
 sentry_sdk.init(
@@ -27,15 +29,11 @@ DATABASES = {
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "hederaproject.com",
-    "www.hederaproject.com",
-    "dev.hederaproject.com",
-    "stage.hederaproject.com",
     "hederaproject.org",
-    "www.hederaproject.org",
-    "dev.hederaproject.org",
-    "stage.hederaproject.org"
+    ".hederaproject.org",
 ]
+
+ALLOWED_HOSTS += get_ecs_task_ips()
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -146,6 +144,18 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "querycount.middleware.QueryCountMiddleware",
+    "hedera.middleware.AuthenticatedMiddleware",
+]
+
+AUTHENTICATED_EXEMPT_URLS = [
+    "/favicon.ico",
+    "/account/login/",
+    "/account/signup/",
+    "/account/password/reset/",
+    "/account/confirm_email/",
+    r"^/\.well-known/",
+    "^/$",
+    r"/api/"
 ]
 
 ROOT_URLCONF = "hedera.urls"

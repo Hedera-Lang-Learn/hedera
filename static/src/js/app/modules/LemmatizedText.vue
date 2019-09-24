@@ -10,7 +10,6 @@
         :class="familiarityClass(token)"
         @toggleSelected="onToggleSelect"
       />
-      {{ ' ' }}
     </template>
   </div>
 </template>

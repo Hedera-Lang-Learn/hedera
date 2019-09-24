@@ -101,7 +101,7 @@ export default {
     textId: {
       immediate: true,
       handler() {
-        this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST));
+        this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.text.lang }));
       }
     },
     selectedVocabList: {
@@ -158,6 +158,9 @@ export default {
     }
   },
   computed: {
+    text() {
+      return this.$store.state.text;
+    },
     uniqueNodes() {
       return  [...new Set(this.tokens.map(token => token.node))];
     },

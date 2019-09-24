@@ -1,5 +1,6 @@
 import json
 
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -16,7 +17,26 @@ from vocab_list.models import (
 )
 
 
-class APIView(View):
+class JsonResponseAuthError(JsonResponse):
+
+    status_code = 401
+
+
+class AuthedView(View):
+
+    auth_required = True
+
+    @property
+    def user(self):
+        return self.request.user
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.auth_required and not request.user.is_authenticated:
+            return JsonResponseAuthError(data={"error": "Authentication required"})
+        return super().dispatch(request, *args, **kwargs)
+
+
+class APIView(AuthedView):
 
     def get_data(self):
         return {}
@@ -31,7 +51,8 @@ class APIView(View):
 class LemmatizedTextDetailAPI(APIView):
 
     def get_data(self):
-        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
 
 
@@ -66,12 +87,14 @@ class LemmatizationAPI(APIView):
         return data
 
     def get_data(self):
-        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
 
     def post(self, request, *args, **kwargs):
-        text = get_object_or_404(LemmatizedText, pk=self.kwargs.get("pk"))
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
         node_id = data["nodeId"]
@@ -103,14 +126,21 @@ class PersonalVocabularyListAPI(APIView):
 
     @property
     def text(self):
+        if self.request.GET.get("text") is None:
+            return
         if getattr(self, "_text", None) is None:
-            self._text = get_object_or_404(LemmatizedText, pk=self.request.GET.get("text"))
+            qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+            self._text = get_object_or_404(qs, pk=self.request.GET.get("text"))
         return self._text
 
     def get_object(self):
+        if self.text:
+            lang = self.text.lang
+        else:
+            lang = self.request.GET.get("lang")
         vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
-            lang=self.text.lang,
+            lang=lang,
         )
         return vl
 
@@ -143,8 +173,9 @@ class PersonalVocabularyListAPI(APIView):
                 node=node,
             )
 
-        stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
-        stats.update()
+        if self.text:
+            stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
+            stats.update()
 
         vl.refresh_from_db()
 

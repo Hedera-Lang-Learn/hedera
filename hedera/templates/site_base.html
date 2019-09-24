@@ -3,6 +3,7 @@
 {% load staticfiles %}
 {% load render_bundle from webpack_loader %}
 {% load i18n %}
+{% load vocab_tags %}
 
 
 {% block styles %}
@@ -32,6 +33,14 @@
               {% if request.user.is_authenticated %}
                 <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Lemmatized Texts</a></li>
                 <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
+                <li class="navbar-item">
+                    {% default_vocab_list request.user as vocab_list %}
+                    {% if vocab_list %}
+                    <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
+                      Personal Vocabulary Lists
+                    </a>
+                    {% endif %}
+                </li>
               {% endif %}
               {% endblock %}
             </ul>
