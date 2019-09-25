@@ -16,6 +16,7 @@ import {
 } from '../constants';
 import api from '../api';
 
+// eslint-disable-next-line no-unused-vars
 const logoutOnError = commit => (error) => {
   if (error.response && error.response.status === 401) {
     window.location = '/';
