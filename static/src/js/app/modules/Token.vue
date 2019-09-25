@@ -42,6 +42,10 @@ export default {
     border-bottom: 4px solid red;
   }
 
+  .following {
+      white-space: pre-wrap;
+  }
+
   .highlight-not-in-list {
     .token {
       background: hsl(0, 44%, 80%);

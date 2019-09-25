@@ -53,8 +53,8 @@ class LemmatizedText(models.Model):
 
     # this should be a JSON list of the form
     # [
-    #   {"token": "res publica", "node": 1537, "resolved": true},
-    #   {"token": "est", "node": 42, "resolved": false},
+    #   {"word": "res publica", "following": " ", "node": 1537, "resolved": true},
+    #   {"word": "est", "following": " ", "node": 42, "resolved": false},
     #   ...
     # ]
     # where node is the pk of the LatticeNode
@@ -112,7 +112,7 @@ class LemmatizedText(models.Model):
         return len(self.data)
 
     def text(self):
-        return " ".join([d["token"] for d in self.data])
+        return "".join([d["word"] + d["following"] for d in self.data])
 
     def api_data(self):
         return {

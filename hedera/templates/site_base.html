@@ -35,9 +35,11 @@
                 <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
                 <li class="navbar-item">
                     {% default_vocab_list request.user as vocab_list %}
-                    <a class="nav-link" href="{% if vocab_list %}{% url "vocab_list_personal_detail" vocab_list.lang %}{% endif %}">
+                    {% if vocab_list %}
+                    <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
                       Personal Vocabulary Lists
                     </a>
+                    {% endif %}
                 </li>
               {% endif %}
               {% endblock %}

@@ -27,6 +27,8 @@ class Service(object):
         text starts with a non-word.
         """
         tokens = re.split("(\W+)", text)
+        # test to make sure there is an even number of items in array
+        if len(tokens) % 2 > 0: tokens.append(" ")
         return pairwise(tokens)
 
     def _headers(self):
@@ -46,4 +48,3 @@ class Service(object):
 
     def lemmatize(self, form):
         return self._call_service(form)
-
