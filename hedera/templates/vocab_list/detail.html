@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Vocabulary Lists{% endblock %}
+
+{% block body_class %}vocabulary{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <nav><a href="{% url "vocab_list_list" %}">Vocabulary Lists</a> &raquo; <b>{{ vocabularylist.title }}</b></nav>
+
+  <h1 class="mt-2 mb-4">{{ vocabularylist.title }}</h1>
+
+  <table class="table">
+    <tr><th>Headword</th><th>Gloss</th><th>Created</th></tr>
+    {% for entry in vocabularylist.entries.all %}
+        <tr>
+        <td>{{ entry.headword }}</a></td>
+        <td>{{ entry.gloss }}</td>
+        <td>{{ entry.created }}</td>
+        </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

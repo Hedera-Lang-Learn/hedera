@@ -1,5 +1,24 @@
 import os
 
+import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.rq import RqIntegration
+
+from .aws import get_ecs_task_ips
+
+
+# Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
+sentry_sdk.init(
+    dsn=os.environ.get("SENTRY_DSN"),
+    debug=os.environ.get("SENTRY_DEBUG") == "1",
+    environment=os.environ.get("SENTRY_ENVIRONMENT"),
+    integrations=[DjangoIntegration(), RqIntegration()],
+    # Enables tracing for sentry "Events V2"
+    # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
+    traces_sample_rate=1.0,
+    traceparent_v2=True,
+)
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -8,17 +27,17 @@ BASE_DIR = PACKAGE_ROOT
 DEBUG = True
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "dev.db",
-    }
+    "default": dj_database_url.config(default="postgres://localhost/hedera")
 }
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "atg-dev-hedera-lb-2073615562.us-east-1.elb.amazonaws.com"
+    "hederaproject.org",
+    ".hederaproject.org",
 ]
+
+ALLOWED_HOSTS += get_ecs_task_ips()
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -46,31 +65,45 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "media")
+USE_S3 = os.environ.get("USE_S3", False)
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+    AWS_DEFAULT_ACL = None
+    AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    STATICFILES_LOCATION = 'static'
+    STATICFILES_STORAGE = 'hedera.custom_storages.StaticStorage'
+    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'hedera.custom_storages.MediaStorage'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+else:
+    # URL that handles the media served from MEDIA_ROOT. Make sure to use a
+    # trailing slash.
+    # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+    MEDIA_URL = "/site_media/media/"
+    # URL prefix for static files.
+    # Example: "http://media.lawrence.com/static/"
+    STATIC_URL = "/site_media/static/"
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = "/site_media/media/"
+    STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
-# Absolute path to the directory static files should be collected to.
-# Don"t put anything in this directory yourself; store your static files
-# in apps" "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "static")
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/site_media/static/"
-
+    # Absolute filesystem path to the directory that will hold user-uploaded files.
+    # Example: "/home/media/media.lawrence.com/media/"
+    MEDIA_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "media")
+    # Absolute path to the directory static files should be collected to.
+    # Don"t put anything in this directory yourself; store your static files
+    # in apps" "static/" subdirectories and in STATICFILES_DIRS.
+    # Example: "/home/media/media.lawrence.com/static/"
+    STATIC_ROOT = os.path.join(PACKAGE_ROOT, "site_media", "static")
 # Additional locations of static files
 STATICFILES_DIRS = [
     os.path.join(PROJECT_ROOT, "static", "dist"),
 ]
-
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -80,7 +113,7 @@ STATICFILES_FINDERS = [
 ]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = "-)h^-(t5rq4lqk_)82rk%77v%90o37+w=^g#-6q=+195n78*78"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', "secretkey")
 
 TEMPLATES = [
     {
@@ -114,6 +147,19 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "querycount.middleware.QueryCountMiddleware",
+    "hedera.middleware.AuthenticatedMiddleware",
+]
+
+AUTHENTICATED_EXEMPT_URLS = [
+    "/favicon.ico",
+    "/account/login/",
+    "/account/signup/",
+    "/account/password/reset/",
+    "/account/confirm_email/",
+    r"^/\.well-known/",
+    "^/$",
+    r"/api/"
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -131,6 +177,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "webpack_loader",
+    "storages",
 
     # templates
     "bootstrapform",
@@ -139,16 +186,28 @@ INSTALLED_APPS = [
     # external
     "account",
     "pinax.eventlog",
+    "django_rq",
 
     # local apps
     "databasetext",
     "vocab_list",
     "lattices",
     "lemmatization",
+    "lemmatized_text",
 
     # project
     "hedera",
 ]
+
+RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
+RQ_DATABASE = 1
+RQ_QUEUES = {
+    "default": {
+        "URL": os.getenv("REDIS_URL", "redis://localhost:6379/"),
+        "DB": RQ_DATABASE,
+        "ASYNC": RQ_ASYNC
+    }
+}
 
 WEBPACK_LOADER = {
     "DEFAULT": {
@@ -223,6 +282,7 @@ EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
 EMAIL_PORT = os.environ.get("EMAIL_PORT", "")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 EMAIL_USE_TLS = True
 
 TEXT_PROVIDER_BACKENDS = [

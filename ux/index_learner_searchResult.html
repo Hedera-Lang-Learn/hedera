@@ -1,0 +1,478 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- canvasjs -->
+        <script>
+            window.onload = function () {
+
+                var chart1 = new CanvasJS.Chart("chartContainer1",{
+        title :{
+            text: ""
+        },
+        data: [{
+        type: "pie",
+            showInLegend: false,
+            dataPoints : [
+            { label: "",  y: 90  },
+            { label: "", y: 10  }
+        ]
+        }]
+    });
+    var chart2 = new CanvasJS.Chart("chartContainer2",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 80  },
+            { label: "", y: 20  }
+        ]
+        }]
+    });
+    var chart3 = new CanvasJS.Chart("chartContainer3",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 75  },
+            { label: "", y: 25  }
+        ]
+        }]
+    });
+    var chart4 = new CanvasJS.Chart("chartContainer4",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 60  },
+            { label: "", y: 40  }
+        ]
+        }]
+    });
+    var chart5 = new CanvasJS.Chart("chartContainer5",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 70  },
+            { label: "", y: 30  }
+        ]
+        }]
+    });
+    var chart6 = new CanvasJS.Chart("chartContainer6",{
+        title :{
+        text: ""
+        },
+        data: [{
+        type: "pie",
+        showInLegend: false,
+        dataPoints : [
+            { label: "",  y: 80  },
+            { label: "", y: 20  }
+        ]
+        }]
+    });
+
+    chart1.render();
+    chart2.render();
+    chart3.render();
+    chart4.render();
+    chart5.render();
+    chart6.render();
+
+            }
+
+        </script>
+
+        <!--Styling Bootstrap-->
+        <style>
+            h2 {
+                font-size: 1.25em;
+                font-weight: 500;
+            }
+            h3 {
+                font-size: 1.15em;
+                font-weight: 500;
+            }
+        </style>
+
+        <title>Hedera</title>
+    </head>
+
+    <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+      <!-- Navbar content -->
+        <a class="navbar-brand" href="#">
+            <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+        </a>
+
+        <form class="form-inline my-2 my-lg-0 mx-auto">
+            <div class="input-group mb-3" style="margin-top:.5em;">
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-right: -1.5em;">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+                <a href="#" class="nav-item nav-link ml-auto" style="margin-top:.25em;">
+                    <strong>
+                        Hi Ivy Livingston!
+                    </strong>
+                </a>
+                <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign out</a>
+            </div>
+        </form><!-- Sign in/out -->
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Latin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Greek</a>
+                        <a class="dropdown-item" href="#">Pусский</a>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav-item nav-link ml-auto" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                        Hedera</a>
+                </li>
+            </ul>
+        </div>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col" style="margin-top: 7em;">
+                <h2>
+                    Search in repositories
+                </h2>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">
+                We found
+                <strong>##</strong>
+                passages with about 100 words from
+                <strong>My list A</strong>
+                with most of the words that you know
+            </div>
+        </div><!--Search results info-->
+
+        <div class="row mt-4">
+            <div class="col">
+                You limited your search to the following criteria:
+            </div>
+        </div><!--Search criteria summary-->
+
+        <div class="row mt-2">
+            <div class="col">
+                <button type="button" class="btn btn-outline-secondary">
+                    time
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2 ">
+                    genre
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2">
+                    author
+                    <i class="fas fa-times-circle"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary ml-2">
+                    length
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+        </div><!--Search criteria info-->
+
+        <div class="row mt-4">
+
+            <div class="col-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>
+                            Search criteria
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="searchCriteriaTime" checked>
+                            <label class="form-check-label" for="searchCriteriaTime">
+                                time
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaGenre" checked>
+                            <label class="form-check-label" for="searchCriteriaGenre">
+                                genre
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaAuthor" checked>
+                            <label class="form-check-label" for="searchCriteriaAuthor">
+                                author
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaLength" checked>
+                            <label class="form-check-label" for="searchCriteriaLength">
+                                length
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther1" >
+                            <label class="form-check-label" for="searchCriteriaOther1">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther2" >
+                            <label class="form-check-label" for="searchCriteriaOther2">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther3" >
+                            <label class="form-check-label" for="searchCriteriaOther3">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther4" >
+                            <label class="form-check-label" for="searchCriteriaOther4">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther5" >
+                            <label class="form-check-label" for="searchCriteriaOther5">
+                                (other)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="searchCriteriaOther6" >
+                            <label class="form-check-label" for="searchCriteriaOther6">
+                                (other)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Search criteria selection-->
+
+            <div class="col">
+            <div class="table-responsive-md" style="margin-bottom: 6em">
+                <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        <a href="#">
+                            Passages
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#">
+                            % known vocab
+                            <i class="fas fa-sort-numeric-down"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#">
+                            Popularity
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#">
+                            Length
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Caesar De Bello Gallico
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer1" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        200 words
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Babrius, Fabulae Aesopeae
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer2" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        187 words
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Adamantius Judaeus
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer3" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        160 words
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Certamen Homeri et Hesiodi
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer4" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        93 words
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Firmicus Maternus, Julius
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer5" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        85 words
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="align-middle">
+                        <a href="index_learner_readingEnvironment.html" class="btn btn-outline-secondary my-2 my-sm-1" style="height: 2.5em;">
+                            Horace
+                        </a>
+                    </th>
+                    <td class="align-middle">
+                        <div id="chartContainer6" style="height: 5em; width: 100%;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </td>
+                    <td class="align-middle">
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                        <i class="fas fa-star text-success"></i>
+                    </td>
+                    <td class="align-middle">
+                        50 words
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div><!--Search results table-->
+
+        </div>
+
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+            <div class="col-4">
+                <a href="#" class="btn btn-outline-primary my-2 my-sm-1">
+                    Edit vocabulary
+                </a>
+                <a href="#" class="btn btn-outline-primary my-2 my-sm-1">
+                    Dashboard
+                </a>
+            </div>
+            <div class="col-2 col-md-offset-8">
+                <a href="#" class="btn btn-primary btn-block my-2 my-sm-1">
+                    Search again
+                </a>
+            </div>
+        </nav>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- canvasjs -->
+      <script>
+        window.onload = function() {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Known words in Babrius, Fabulae Aesopeae"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} {y}",
+                dataPoints: [
+                    {y: 80, label: "Known words"},
+                    {y: 20, label: "Unknown words"}
+                ]
+            }]
+        });
+        chart.render();
+
+        }
+      </script>
+
+    <title>Hedera</title>
+  </head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+      <!-- Navbar content -->
+        <a class="navbar-brand" href="#">
+            <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+        </a>
+
+        <h2 class="navbar-text mx-auto">
+            Hedera User Experience
+        </h2>
+
+        <span class="navbar-text ml-auto">
+            <a href="mailto:vittorio_bucchieri@harvard.edu?subject=HederaX%20User%20Experience"
+               class="navbar-link">
+                <h2 hidden="">Contact Vittorio Bucchieri</h2>
+                <i class="far fa-envelope fa-lg"></i>
+            </a>
+        </span>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5 mx-auto" style="margin-top: 6em;">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Updates are highlighted in green
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div><!-- Hedera introduction -->
+        <div class="row mt-5">
+            <div class="col-6 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Interface</th>
+                            <th scope="col">Wireframe</th>
+                            <th scope="col">Prototype</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">
+                                Unregistered landing page
+                            </th>
+                            <td>
+                                <a href="wireframe/wireframe_index_signOut.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_signOut.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="table-success">
+                            <th scope="row">
+                                Vocabulary List Management - MVP
+                            </th>
+                            <td>
+                                <a href="wireframe/ATGU-1432_Hedera-vocabularyListManagement_v5.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner01_mvp.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Vocabulary List Management
+                            </th>
+                            <td>
+                                <a href="wireframe/ATGU-1370_Learner_Registered_v4.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner01.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Search results page for student
+                            </th>
+                            <td>
+                                <a href="wireframe/wireframe-index_learner_searchResult.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner_searchResult.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Reading environment for student
+                            </th>
+                            <td>
+                                <a href="wireframe/ATGU-1221_index_learner_readingEnvironment.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner_readingEnvironment.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr class="table-success">
+                            <th scope="row">
+                                Dashboard for student - MVP
+                            </th>
+                            <td>
+                                <a href="wireframe/ATGU-1432_Hedera-interactionFlow_dashboard_learn_mvp1.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner_dashboard_mvp.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                Dashboard for student
+                            </th>
+                            <td>
+                                <a href="wireframe/ATGU-1370_Dashboard_learner-v4.pdf" target="_blank">
+                                    Wireframe
+                                    <sup><i class="far fa-file-pdf"></i></sup>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="https://raw.githack.com/Hedera-Lang-Learn/hedera/dev/ux/index_learner_dashboard.html" target="_blank">
+                                    Prototype
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+
+</html>

@@ -1,0 +1,610 @@
+<!--Sprint 65 - added Accessibility amendaments - color contrast-->
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- canvasjs -->
+        <script>
+            window.onload = function () {
+
+                var chart1 = new CanvasJS.Chart("chartContainer1",{
+        title :{
+            text: "Words read over time"
+        },
+        data: [{
+        type: "column",
+            showInLegend: false,
+            dataPoints : [
+            { label: "January",  y: 10  },
+            { label: "February", y: 15  },
+            { label: "March", y: 25  },
+            { label: "April",  y: 30  }
+        ]
+        }]
+    });
+    var chart2 = new CanvasJS.Chart("chartContainer2",{
+        title :{
+        text: "Vocabulary gains"
+        },
+        data: [{
+        type: "column",
+        showInLegend: false,
+        dataPoints : [
+            { label: "January",  y: 10  },
+            { label: "February", y: 15  },
+            { label: "March", y: 25  },
+            { label: "April",  y: 30  }
+        ]
+        }]
+    });
+    var chart3 = new CanvasJS.Chart("chartContainer3",{
+        title :{
+        text: "My rewards"
+        },
+        data: [{
+        type: "column",
+        showInLegend: false,
+        dataPoints : [
+            { label: "January",  y: 10  },
+            { label: "February", y: 15  },
+            { label: "March", y: 25  },
+            { label: "April",  y: 30  }
+        ]
+        }]
+    });
+
+    chart1.render();
+    chart2.render();
+    chart3.render();
+
+            }
+
+        </script>
+
+        <!--Styling Bootstrap-->
+        <style>
+            h2 {
+                font-size: 1.25em;
+                font-weight: 500;
+            }
+            h3 {
+                font-size: 1.15em;
+                font-weight: 500;
+            }
+            /* Accessibility amendaments - color contrast */
+            .btn-link {
+                font-weight: 400;
+                color: #0063CC;
+            }
+            .btn-outline-primary {
+                color: #0063CC;
+                border-color: #0063CC;
+            }
+            a {
+                color: #0063CC;
+                text-decoration: none;
+                background-color: transparent;
+            }
+            .navbar-light .navbar-nav .nav-link {
+                color: rgba(0, 0, 0, 0.55);
+            }
+            .badge-success {
+                color: #fff;
+                background-color: #208337;
+            }
+            .badge-primary {
+                color: #fff;
+                background-color: #006FE6;
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #0071EB;
+                border-color: #007bff;
+            }
+        </style>
+
+        <title>Hedera | Dashboard</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+          <!-- Navbar content -->
+            <a class="navbar-brand" href="#">
+                <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+            </a>
+<!--Sprint 63 UI comment #1 - rearranging navbar items-->
+<!--Sprint 63 UI comment #2 - Modal with role and language selection-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-link mr-4 mt-n2" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <strong>
+                    Hi Ivy!
+                    <i class="fas fa-sort-down"></i>
+                </strong>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index_learner_dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link ml-auto mr-3" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                            Hedera</a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign
+                            out</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+<!--Sprint 63 UI comment #3 - Modal with role and language selection-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">My settings</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your role
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Student"
+                                           value="Student" checked>
+                                    <label class="form-check-label ml-4" for="Student">
+                                        Student
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Teacher"
+                                           value="Teacher">
+                                    <label class="form-check-label ml-4" for="Teacher">
+                                        Teacher
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your language
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Latin"
+                                           value="Latin" checked>
+                                    <label class="form-check-label ml-4" for="Latin">
+                                        Latin
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Greek"
+                                           value="Greek">
+                                    <label class="form-check-label ml-4" for="Greek">
+                                        Greek
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Russian"
+                                           value="Russian">
+                                    <label class="form-check-label ml-4" for="Russian">
+                                        Russian
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="ml-3 mb-3 mr-3 mt-4">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary float-right" data-dismiss="modal">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+
+            <div class="row mt-5">
+                <div class="col mt-5">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header card-header--hedera">
+                            <h2 class="mb-n1">
+                                My individual progress
+                            </h2>
+                        </div>
+                        <div class="card-body text-dark"><!-- we could use Bootstrap card-deck class to match cards height -->
+<!--Sprint 63 UI comment #4 - moving here level information from navbar-->
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
+                                    You reached level
+                                    <span class="badge badge-pill badge-success">7</span>!
+                                </a>
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    Goals setting
+                                </button>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="far fa-flag"></i>
+                                        Flagged content
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Comment 1</a>
+                                        <a class="dropdown-item" href="#">Comment 2</a>
+                                        <a class="dropdown-item" href="#">Comment 3</a>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="far fa-clock"></i>
+                                    Set a self reminder
+                                </button>
+                            </div>
+
+                            <div class="col">
+
+                                <p class="text-center mt-4">
+                                    My language:
+                                    <br/>
+                                    <strong>
+                                        Latin
+                                    </strong>
+                                </p>
+
+                                <p class="text-center mt-4">
+                                    My average:
+                                    <br/>
+                                    <strong>
+                                        98% known vocab
+                                    </strong>
+                                </p>
+
+                                <p class="text-center mt-4">
+                                    My learned words:
+                                    <br/>
+                                    <strong>
+                                        153 words
+                                    </strong>
+                                </p>
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My lesson text
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Lesson #1
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Lesson #1</a>
+                                        <a class="dropdown-item" href="#">Lesson #2</a>
+                                        <a class="dropdown-item" href="#">Lesson #3</a>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    View my text
+                                </button>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Continue reading
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Abelard, Historia Calamitatum 5</a>
+                                        <a class="dropdown-item" href="#">Aesop (Romulus Anglicus 1)</a>
+                                        <a class="dropdown-item" href="#">Anthologia Latina 507-518 (Epitaphs of Vergil)</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My progress
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Words read over time
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">New words read over time</a>
+                                    </div>
+                                </div>
+
+                                <div id="chartContainer1" style="height: 10em; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div><!-- My individual progress -->
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header card-header--hedera">
+                            <h2 class="mb-n1">
+                                My progress as a student
+                            </h2>
+                        </div>
+                        <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1 mt-1">
+                                    You reached level
+                                    <span class="badge badge-pill badge-success">3</span>!
+                                </a>
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="fas fa-flag-checkered"></i>
+                                    Goals setting
+                                </button>
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        My class A
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">My class B</a>
+                                        <a class="dropdown-item" href="#">My class C</a>
+                                        <a class="dropdown-item" href="#">My class D</a>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    <i class="far fa-envelope"></i>
+                                    Contact my class A
+                                </button>
+                            </div>
+
+                            <div class="col">
+
+                                <p class="text-center mt-4">
+                                    My language:
+                                    <br/>
+                                    <strong>
+                                        Latin
+                                    </strong>
+                                </p>
+
+                                <p class="text-center mt-4">
+                                    My average:
+                                    <br/>
+                                    <strong>
+                                        98% known vocab
+                                    </strong>
+                                </p>
+
+                                <p class="text-center mt-4">
+                                    My learned words:
+                                    <br/>
+                                    <strong>
+                                        153 words
+                                    </strong>
+                                </p>
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My lesson text
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Lesson #1
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Lesson #1</a>
+                                        <a class="dropdown-item" href="#">Lesson #2</a>
+                                        <a class="dropdown-item" href="#">Lesson #3</a>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    View my text
+                                </button>
+
+                                <button type="button" class="btn btn-outline-primary btn-block mt-3">
+                                    Compare my vocabulary with the teacher’s
+                                </button>
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="text-center mt-4">
+                                    My progress
+                                </h3>
+
+                                <div class="btn-group btn-block mt-3 mb-3">
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        Vocabulary gains
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Vocabulary gains</a>
+                                        <a class="dropdown-item" href="#">Read texts</a>
+                                    </div>
+                                </div>
+
+                                <div id="chartContainer2" style="height: 10em; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                </div><!-- My individual progress -->
+            </div>
+
+            <div class="row mt-2 mb-4">
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header card-header--hedera">
+                            <h2 class="mb-n1">
+                                Bulletin Board
+                            </h2>
+                        </div>
+                        <div class="card-body text-dark">
+                        <div class="row">
+                            <div class="col">
+                                <a href="#" class="nav-item nav-link ml-auto mr-1">
+                                    You received
+                                    <span class="badge badge-pill badge-primary">4</span>
+                                    notifications
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <table class="table">
+                                    <thead>
+                                        <tr hidden>
+                                            <th scope="col">Select message</th>
+                                            <th scope="col">Sender</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Attachment</th>
+                                            <th scope="col">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Ivy Livingston's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Ivy Livingston</td>
+                                            <td>
+                                                <a href="#">
+                                                    Hoc septimana debitum Duis congue sem!
+                                                </a>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>Apr 8</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Rebecca Brown's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Rebecca Brown</td>
+                                                <td>
+                                                    <a href="#">
+                                                        Weather cancellation
+                                                    </a>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>Apr 8</td>
+                                            </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        BIll Barthelmy's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>BIll Barthelmy</td>
+                                                <td>
+                                                    <a href="#">
+                                                        I need help with this text
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <i class="fas fa-paperclip"></i>
+                                                </td>
+                                                <td>Apr 8</td>
+                                            </tr>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                    <label class="form-check-label" for="defaultCheck1" hidden="hidden">
+                                                        Ivy Livingston's message
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td>Ivy Livingston</td>
+                                            <td>
+                                                <a href="#">
+                                                    Crescat vestra loquantur verba
+                                                </a>
+                                            </td>
+                                            <td>&nbsp;</td>
+                                            <td>Apr 8</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn btn-primary">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- My individual progress -->
+            </div>
+
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+
+</html>

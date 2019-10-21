@@ -1,0 +1,750 @@
+<!--Sprint 65 - "Accessibility amendaments - color contrast styles", responsive table and 2 Sprint 65 UI comment-->
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+              integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+        <!--Font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+        <!-- canvasjs -->
+        <script>
+            window.onload = function() {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Known words in Babrius, Fabulae Aesopeae"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: [
+                        {y: 80, label: "Known words"},
+                        {y: 20, label: "Unknown words"}
+                    ]
+                }]
+            });
+            chart.render();
+
+            }
+
+        </script>
+
+        <style>
+            /* Accessibility amendaments - color contrast */
+            .btn-link {
+                font-weight: 400;
+                color: #0063CC; /* accessible color */
+            }
+            .btn-outline-primary {
+                color: #0063CC; /* accessible color */
+                border-color: #0063CC;
+            }
+            a {
+                color: #0063CC; /* accessible color */
+                text-decoration: none;
+                background-color: transparent;
+            }
+            .navbar-light .navbar-nav .nav-link {
+                color: rgba(0, 0, 0, 0.55); /* accessible color */
+            }
+            .badge-success {
+                color: #fff;
+                background-color: #208337; /* accessible color */
+            }
+            .badge-primary {
+                color: #fff;
+                background-color: #006FE6; /* accessible color */
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #0071EB; /* accessible color */
+                border-color: #007bff;
+            }
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #6B748E; /* accessible color */
+                border-radius: .25rem;
+                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            }
+            .input-group-text {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-align: center;
+                align-items: center;
+                padding: .375rem .75rem;
+                margin-bottom: 0;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                text-align: center;
+                white-space: nowrap;
+                background-color: #e9ecef;
+                border: 1px solid #6B748E; /* accessible color */
+                border-radius: .25rem;
+            }
+            .custom-file-label {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1;
+                height: calc(2.25rem + 2px);
+                padding: .375rem .75rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                border: 1px solid #6E7691; /* accessible color */
+                border-radius: .25rem;
+            }
+            .bg-primary {
+                background-color: #006FE6!important; /* accessible color */
+            }
+        </style>
+
+        <style>
+            /* Responsive data table from https://css-tricks.com/responsive-data-tables/ */
+            /* This query will take effect for any screen smaller than 760px and also iPads specifically. */
+            @media
+              only screen
+            and (max-width: 760px), (min-device-width: 768px)
+            and (max-device-width: 1024px)  {
+
+            /* Force table to not be like tables anymore */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+              margin: 0 0 1rem 0;
+            }
+
+            tr:nth-child(odd) {
+              background: #eee;
+            }
+
+                td-responsive {
+                    /* Behave  like a "row" */
+                    border: none;
+                    border-bottom: 1px solid #eee;
+                    position: relative;
+                }
+
+                td-responsive:before {
+                    /* Now like a table header */
+                    position: absolute;
+                    /* Top/left values mimic padding */
+                    top: 0;
+                    left: 6px;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                    font-weight: bold;
+                }
+
+                /* Label the data */
+                td:nth-of-type(1):before { content: "Delete"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(2):before { content: "Headword"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(3):before { content: "Definitions"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(4):before { content: "How well I know this word"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(5):before { content: "When added"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(6):before { content: "Part of speech"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(7):before { content: "Word origin"; font-weight: bold; margin-right: 1em; }
+                td:nth-of-type(8):before { content: "Frequency rank"; font-weight: bold; margin-right: 1em; }
+
+                
+            }
+            </style>
+
+        <title>Hedera</title>
+    </head>
+
+    <body>
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #d4edda;">
+          <!-- Navbar content -->
+            <a class="navbar-brand" href="#">
+                <img src="Harvard-Ivy3_text.png" alt="Hedera logo" class="d-inline-block align-top" style="width: 7em;">
+            </a>
+<!--Sprint 63 UI comment #1 - rearranging navbar items-->
+<!--Sprint 63 UI comment #2 - Modal with role and language selection-->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-link mr-4 mt-n2" data-toggle="modal" data-target="#exampleModal">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <strong>
+                    Hi Ivy!
+                    <i class="fas fa-sort-down"></i>
+                </strong>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="#" class="nav-item nav-link ml-auto mr-1">
+                            You received
+                            <span class="badge badge-pill badge-primary">4</span>
+                            notifications
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index_learner_dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link ml-auto mr-3" href="http://hedera.fas.harvard.edu/" target="_blank">About
+                            Hedera</a>
+                    </li>
+                    <li>
+                        <a href="index.html" class="btn btn-outline-primary my-2 my-sm-1" style="height: 2.5em;">Sign
+                            out</a>
+                    </li>
+                </ul>
+            </div>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+
+<!--Sprint 63 UI comment #3 - Modal with role and language selection-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">My settings</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your role
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Student"
+                                           value="Student" checked>
+                                    <label class="form-check-label ml-4" for="Student">
+                                        Student
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="role" id="Teacher"
+                                           value="Teacher">
+                                    <label class="form-check-label ml-4" for="Teacher">
+                                        Teacher
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-check">
+                                    <h2>
+                                        Select your language
+                                    </h2>
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Latin"
+                                           value="Latin" checked>
+                                    <label class="form-check-label ml-4" for="Latin">
+                                        Latin
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Greek"
+                                           value="Greek">
+                                    <label class="form-check-label ml-4" for="Greek">
+                                        Greek
+                                    </label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input ml-1" type="radio" name="language" id="Russian"
+                                           value="Russian">
+                                    <label class="form-check-label ml-4" for="Russian">
+                                        Russian
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="ml-3 mb-3 mr-3 mt-4">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary float-right" data-dismiss="modal">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+
+            <div class="row mt-5">
+                <div class="col mt-5">
+                    <h2>
+                        My known words list
+                    </h2>
+                    <label for="uploadFilterLive">
+                        Search with live filtering
+                    </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="" aria-label="Username"
+                               aria-describedby="basic-addon1" id="uploadFilterLive">
+                    </div>
+                </div>
+            </div><!-- Search with live filtering -->
+
+            <div class="row">
+                <div class="col mb-3">
+                    <table class="table mb-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Delete
+                                </th>
+                                <th scope="col">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        Headword
+                                    </a>
+                                </th>
+                                <th scope="col">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        Definitions
+                                    </a>
+                                </th>
+                                <th scope="col" class="text-wrap">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        How well I know this word
+                                    </a>
+                                </th>
+                                <th scope="col">
+                                    <a href="#" class="text-nowrap"><!-- Sorting - selected -->
+                                        When added
+                                        <i class="fas fa-sort-numeric-up"></i>
+                                    </a>
+                                </th>
+                                <th scope="col" class="text-nowrap">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        Part of speech
+                                    </a>
+                                </th>
+                                <th scope="col">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        Word origin
+                                    </a>
+                                </th>
+                                <th scope="col">
+                                    <a href="#"><!-- Sorting - unselected -->
+                                        Frequency rank
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control form-control_access" id="formGroupExampleInput" placeholder="" value="et">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="and">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal5.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 25, 2019
+                                </td>
+                                <td>Conjunction</td>
+                                <td>Topper</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="sum esse fuī futūrum">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="be, exist; fut. infin. often = fore, impf. subj. often = forem for essem">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal4.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 25, 2019
+                                </td>
+                                <td>Verb: Irregular</td>
+                                <td>Livius</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="quī quae quod">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="who, which, what">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal1.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 23, 2019
+                                </td>
+                                <td>Pronoun</td>
+                                <td>Topper</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="que">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="and (postpositive enclitic)">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal2.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 23, 2019
+                                </td>
+                                <td>Conjunction</td>
+                                <td>Andronicus</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="in">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="in, on (+ abl.); into, onto (+ acc)">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal4.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 22, 2019
+                                </td>
+                                <td>Preposition</td>
+                                <td>Andronicus</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="nōn">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="not">
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal3.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 23, 2019
+                                </td>
+                                <td>Adverb</td>
+                                <td>Livius</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="btn btn-outline-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput" hidden>Headword</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="hic haec hoc">
+                                    </div>
+                                </td>
+                                <td>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput" hidden>Headword</label>
+                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="this, these">
+                                </div>
+                            </td>
+                                <td class="text-center">
+                                    <button class="btn btn-outline-primary">
+                                        <img src="signal1.png" style="width: 2em;">
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    March 19, 2019
+                                </td>
+                                <td>Pronoun</td>
+                                <td>Topper</td>
+                                <td>7</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- Table -->
+
+        </div><!-- Hedera main content -->
+
+
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+
+<!-- Sprint 65 UI comment #2 - changing col-2 to col-md-2 -->
+            <div class="col-md-2">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-block my-2 my-sm-1" data-toggle="modal" data-target="#exampleModalAdd">
+                    Add
+                </button>
+            </div>
+            <div class="col-md-2 col-md-offset-8">
+                <a href="#" class="btn btn-outline-primary btn-block my-2 my-sm-1">
+                    Export
+                </a>
+            </div>
+        </nav>
+<!--Sprint 63 UI comment #4 - Editing the modal interface par sprint 63 feedback-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalAddLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalAddLabel">Add to my vocabulary list</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            
+                        </div>
+                        <div>
+                            <label for="NewVocabularyList">
+                                Start typing or scroll to see the lists, texts, and textbooks available
+                            </label>
+                            <input type="text" class="form-control"
+                                   placeholder="Search from any of our 50 startup lists"
+                                   aria-label="Search from any of our 50 startup lists" aria-describedby="button-addon2"
+                                   id="NewVocabularyList">
+                        </div><!-- Search from pre-existing vocabulary sets -->
+
+<!-- Sprint 65 UI comment #1 - changing border color to be more accessible -->
+                        <div class="col mb-2" style="height: 7em; overflow-y: scroll; border: 1px solid #6E7691; border-radius: .25rem;">
+                            <div>
+                                38 Latin Stories (Groton)
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div>
+                                50 Most Important Latin Verbs List
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div>
+                                Abelard, Historia Calamitatum 5-6
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                            <div class="form-check">
+                                <div class="ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult1">
+                                        Chapter 1
+                                    </label>
+                                </div>
+                                <div class="ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult2">
+                                        Chapter 2
+                                    </label>
+                                </div>
+                                <div class="ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult3">
+                                        Chapter 3
+                                    </label>
+                                </div>
+                                <div class="ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult4">
+                                        Chapter 4
+                                    </label>
+                                </div>
+                                <div class="ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="checkItem">
+                                    <label class="form-check-label" for="searchResult5">
+                                        Chapter 5
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                Aesop (Romulus Anglicus 1-10)
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+                            <div>
+                                Anthologia Latina 507-518 (Epitaphs of Vergil)
+                                <i class="fas fa-caret-down"></i>
+                            </div>
+
+                        </div><!-- Search results -->
+
+                        <label for="uploadVocabularyList">
+                            Upload vocabulary list from an excel or CSV file
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">
+                                                Upload
+                                            </span>
+                                    </div>
+                                    <input type="file" class="custom-file-input" id="uploadVocabularyList">
+                                    <label class="custom-file-label" for="uploadVocabularyList" aria-describedby="uploadVocabularyList2">myVocabularytList.csv</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-primary text-white" id="uploadVocabularyList2">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-n2">
+                            <label for="setListVocabularyTerms">Add individual words</label>
+                            <textarea class="form-control text-muted" id="setListVocabularyTerms" rows="3"
+                                      placeholder="Word:definition (e.g.: acqua:water)"></textarea>
+                        </div><!-- Text area -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <fieldset class="w-100">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary float-right"><!-- disabled until content is added -->
+                                Add to my known words list
+                            </button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        <!--Setting the size attribute to the length of the input contents-->
+        <script>
+            function resizeInput() {
+            $(this).attr('size', $(this).val().length);
+        }
+
+        $('input[type="text"]')
+            // event handler
+            .keyup(resizeInput)
+            // resize on page load
+            .each(resizeInput);
+        </script>
+  </body>
+
+</html>

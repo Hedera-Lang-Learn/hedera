@@ -1,34 +1,83 @@
 from lattices.utils import get_lattice_node
 
 from .models import add_form, lookup_form
-from .morpheus import morpheus
+from .services.clancydb import ClancyService
+from .services.morpheus import MorpheusService
 
 
 # from vocab_list.models import VocabularyList
 
+SERVICES = {
+    "lat": MorpheusService(lang="lat"),
+    "grc": MorpheusService(lang="grc"),
+    "rus": ClancyService(lang="rus"),
+}
 
-def lemmatize_word(form, lang, force_refresh=False):
-    s = lookup_form(form)
-    if not s or force_refresh:
-        s |= add_form("morpheus", lang, form, morpheus(form, lang))
-    return list(s)
+RESOLVED_NA = "na"
+RESOLVED_NO_LEMMA = "no-lemma"
+RESOLVED_UNRESOLVED = "unresolved"
+RESOLVED_NO_AMBIGUITY = "no-ambiguity"
+RESOLVED_AUTOMATIC = "resolved-automatic"
+RESOLVED_MANUAL = "resolved-manual"
 
 
-def lemmatize_text(text, lang):
-    result = []
-    for token in text.split():
-        lemmas = lemmatize_word(token, lang)
-        node = get_lattice_node(token, lemmas)  # @@@ not sure what to use for context here
-        if not node or node.children.exists():
-            resolved = False
-        else:
-            resolved = True
-        if node:
-            node_pk = node.pk
-        else:
-            node_pk = None
-        result.append({"token": token, "node": node_pk, "resolved": resolved})
-    return result
+class Lemmatizer(object):
+
+    def __init__(self, lang, cb=None, force_refresh=False):
+        self.lang = lang
+        self.cb = cb
+        self.force_refresh = force_refresh
+        self._service = SERVICES.get(lang)
+        if self._service is None:
+            raise ValueError(f"Lemmatization not supported for language '{lang}''")
+
+    def _tokenize(self, text):
+        return self._service.tokenize(text)
+
+    def _lemmatize_token(self, token):
+        s = lookup_form(token)
+        if not s or self.force_refresh:
+            lemmas = self._service.lemmatize(token)
+            s |= add_form(
+                context=self._service.SID,
+                lang=self.lang,
+                form=token,
+                lemmas=lemmas
+            )
+        return list(s)
+
+    def _report_progress(self, index, total_count):
+        if callable(self.cb):
+            self.cb((index + 1) / total_count)
+
+    def lemmatize(self, text):
+        result = []
+        tokens = list(self._tokenize(text))
+        total_count = len(tokens)
+        for index, token in enumerate(tokens):
+            word, following = token
+            if word:
+                lemmas = self._lemmatize_token(word)
+                node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
+                if node:
+                    if node.children.exists():
+                        resolved = RESOLVED_UNRESOLVED
+                    else:
+                        resolved = RESOLVED_NO_AMBIGUITY
+                else:
+                    resolved = RESOLVED_NO_LEMMA
+            else:
+                node = None
+                resolved = RESOLVED_NA
+            node_pk = node.pk if node else None
+            result.append(dict(
+                word=word,
+                following=following,
+                node=node_pk,
+                resolved=resolved
+            ))
+            self._report_progress(index, total_count)
+        return result
 
 
 # gnt80 = VocabularyList.objects.get(pk=1)

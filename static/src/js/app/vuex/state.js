@@ -1,4 +1,11 @@
 export default {
-  sidebarLeftOpened: true,
-  sidebarRightOpened: true,
+  textId: null,
+  text: {},
+  tokens: [],
+  selectedIndex: null,
+  nodes: {},
+  vocabLists: [],
+  personalVocabList: null,
+  selectedVocabList: null,
+  showInVocabList: true,
 };

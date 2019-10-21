@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 from django.contrib import admin
 
-from . import views
+from . import api, views
 
 
 urlpatterns = [
@@ -13,4 +13,14 @@ urlpatterns = [
     re_path(r"^account/", include("account.urls")),
 
     path("read/<int:text_id>/", views.read, name="read"),
+
+    path("lemmatized_text/", include("lemmatized_text.urls")),
+    path("lattices/", include("lattices.urls")),
+    path("vocab/", include("vocab_list.urls")),
+
+    path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
+    path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
+    path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
+    path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
+    path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
 ]

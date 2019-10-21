@@ -1,0 +1,23 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{ text.title }}{% endblock %}
+
+{% block body_class %}lemmatized-text{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &raquo; <b>{{ text.title }}</b></nav>
+  <h1 class="mt-2">{{ text.title }}</h1>
+  <p class="lead">Are you sure you want to delete this text?</p>
+  <div class="text mb-4">
+    {{ text.text }}
+  </div>
+  <form method="post" action=".">
+    {% csrf_token %}
+    <button class="btn btn-danger">Yes, Delete</button>
+  </form>
+{% endblock %}

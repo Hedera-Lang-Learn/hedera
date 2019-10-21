@@ -4,28 +4,58 @@ from django.db import models
 class LatticeNode(models.Model):
 
     label = models.TextField()
-    children = models.ManyToManyField("self", symmetrical=False)
+    children = models.ManyToManyField("self", symmetrical=False, related_name="parents")
 
+    def related_nodes(self, up=True, down=True):
+        nodes = [self]
+        if self.children.count() == 1 and down:
+            child = self.children.first()
+            nodes += child.related_nodes(up=False)
+        if self.parents.count() > 0 and up:
+            for parent in self.parents.all():
+                nodes += parent.related_nodes(down=False)
+        return nodes
 
-def node_info(pk):
-    print(pk)
-    node = LatticeNode.objects.get(pk=pk)
-    if node.form_strings.exists():
-        print("forms:")
-        for form_node in node.form_strings.all():
-            print(f"    - {form_node.form} [{form_node.context}]")
-    if node.lemma_strings.exists():
-        print("lemmas:")
-        for lemma_node in node.lemma_strings.all():
-            print(f"    - {lemma_node.lemma} [{lemma_node.context}]")
-    if node.glosses.exists():
-        print("glosses:")
-        for node_gloss in node.glosses.all():
-            print(f"    - {node_gloss.gloss}")
-    if node.children.exists():
-        print("children:")
-        for child in node.children.all():
-            print(f"    - {child.pk}")
+    def to_dict(self, up=True, down=True):
+        """
+        serialises the node with its form/lemma strings and descendants
+        """
+        d = {
+            "pk": self.pk,
+            "label": self.label,
+            "forms": [
+                {
+                    "form": form_node.form,
+                    "context": form_node.context,
+                } for form_node in self.form_strings.all()
+            ],
+            "lemmas": [
+                {
+                    "lemma": lemma_node.lemma,
+                    "context": lemma_node.context,
+                } for lemma_node in self.lemma_strings.all()
+            ],
+            "vocabulary_entries": [  # @@@ temporarily here
+                {
+                    "headword": entry.headword,
+                    "gloss": entry.gloss,
+                } for entry in self.vocabulary_entries.all()
+            ],
+        }
+        if down:
+            d.update({
+                "children": [
+                    child.to_dict(up=False) for child in self.children.all()
+                ],
+            })
+        if up:
+            d.update({
+                "parents": [
+                    parent.to_dict(down=False) for parent in self.parents.all()
+                ],
+            })
+
+        return d
 
 
 class FormNode(models.Model):
@@ -34,7 +64,7 @@ class FormNode(models.Model):
 
     This effectively defines a node in a lattice as "meaning" this form.
     Note that not all forms should be mapped in this way, only those that have
-    their own node in the lattice (for example, because their ambiguous).  If
+    their own node in the lattice (for example, because they're ambiguous).  If
     the form string is ambiguous, the referenced node can have a child for each
     possibility.
 

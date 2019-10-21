@@ -1,14 +1,56 @@
 <template>
   <div class="app-container">
-    <div class="container">
-      <p>Hello World!</p>
+    <div class="row">
+      <div class="col-8">
+        <LemmatizedText />
+      </div>
+      <div class="col-4">
+        <VocabListSelect class="mb-5" :vocab-lists="vocabLists" />
+        <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
+      </div>
     </div>
   </div>
 </template>
 <script>
+import { FETCH_TOKENS, FETCH_VOCAB_LISTS, FETCH_TEXT } from './constants';
+
+import LatticeTree from './modules/LatticeTree.vue';
+import LemmatizedText from './modules/LemmatizedText.vue';
+import VocabListSelect from './components/vocab-list-select';
 
 export default {
-  name: 'app',
-  components: {}
+  props: ["textId"],
+  components: { LatticeTree, LemmatizedText, VocabListSelect },
+  watch: {
+    textId: {
+      immediate: true,
+      handler() {
+        this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_VOCAB_LISTS));
+      }
+    },
+    selectedVocabList: {
+      immediate: true,
+      handler() {
+        this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
+      }
+    }
+  },
+  computed: {
+    selectedVocabList() {
+      return this.$store.state.selectedVocabList;
+    },
+    vocabLists() {
+      return this.$store.state.vocabLists;
+    },
+    selectedToken() {
+      return this.$store.getters.selectedToken;
+    },
+    selectedIndex() {
+      return this.$store.state.selectedIndex;
+    },
+    selectedNode() {
+      return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+    }
+  }
 }
 </script>

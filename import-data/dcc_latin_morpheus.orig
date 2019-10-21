@@ -1,0 +1,1060 @@
+Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,Shelmerdine,Part of Speech,Semantic Group
+21,ā,from (+abl.),ab,,,,,,,,Preposition,Place
+21,ā,by (+abl.),ab,,,,,,,,Preposition,Place
+21,ab,from (+abl.),ab,,,,,,,,Preposition,Place
+21,ab,by (+abl.),ab,,,,,,,,Preposition,Place
+553,abeō -īre -iī -itum,go away,,,,FALSE,FALSE,5,,,Verb: Irregular,Motion
+21,abs,from (+abl.),ab,,,,,,,,Preposition,Place
+21,abs,by (+abl.),ab,,,TRUE,FALSE,1,,,Preposition,Place
+445,absum abesse āfuī,"be away, absent",,,,FALSE,FALSE,14,,,Verb: Irregular,Travel
+36,ac,"and in addition, and also, and; (after comparatives) than; simul ac, as soon as; → atque",atque,ac does resolve to dcc atque,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+614,accēdō -cēdere -cessī -cessum,approach,,,,FALSE,FALSE,5,,,Verb: 3rd Conjugation -ō,Motion
+799,accidō -cidere -cidī,fall; happen,accido1,its actually marked accido1 rather than just accido,,FALSE,FALSE,14,,,Verb: 3rd Conjugation -ō,Motion
+110,accipiō -cipere -cēpī -ceptum,receive,,,,FALSE,FALSE,5,,,Verb: 3rd Conjugation -iō,Social Life
+587,ācer ācris ācre,"sharp, piercing",acer2,,,FALSE,FALSE,8,,,Adjective: 3rd Declension,Other Senses
+439,aciēs -ēī f.,edge; line of battle,,,,TRUE,FALSE,8,,,Noun: 5th Declension,War and Peace
+14,ad,"to, up to, towards (+acc.)",ad,only dcc lemma appears,,TRUE,FALSE,1,,,Preposition,Place
+433,addō -dere -didī -ditum,give to,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Social Life
+886,addūcō -ere -dūxī -ductum,"lead to, induce",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+555,adeō,"(adv.) to such a degree, so",adeo2,,,FALSE,FALSE,14,,,Adverb,Conjunctions/Adverbs
+595,adeō -īre -iī -itum,go to,adeo1,,,FALSE,FALSE,,,,Verb: Irregular,Motion
+959,adhibeō -hibēre -hibuī -hibitum,apply,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Making/Doing
+379,adhūc,"thus far, to this point",,,,FALSE,FALSE,,,,Adverb,Place
+279,adsum adesse affuī,be present,,,,TRUE,FALSE,14,,,Verb: Irregular,Place
+987,adveniō -īre -vēnī -ventum,"come to, arrive at",,,,TRUE,FALSE,,,,Verb: 4th Conjugation,Travel
+460,adversum,"facing, opposite, against, opposed (to)",adversus3,which doesn’t show up in Hedera? But this whole situation in Perseus is confusing,,FALSE,FALSE,,,,Adverb,War and Peace
+460,adversum,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
+460,adversus,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Adverb,War and Peace
+460,adversus,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
+657,adversus -a -um,"facing, opposed; unfavorable",adversus,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,War and Peace
+986,advertō -vertere -vertī -versum,turn towards,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+965,aedēs -is f.,building; (pl.) house,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The House
+810,aeger aegra aegrum,sick,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Life and Being
+984,aegrē,with difficulty,aeger,"aegrē is separate from aeger in dcc but it’s not being found, whereas aequē is",,FALSE,FALSE,,,,Adverb,Life and Being
+904,aequē,equally,aequus,this is giving choice of aequē or aequus from dcc which is fine,,FALSE,FALSE,,,,Adverb,Justice
+424,aequor aequoris n.,"level surface, sea, plain",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+610,aequus -a -um,equal,,,,TRUE,FALSE,10,,,Adjective: 1st and 2nd Declension,Justice
+845,āēr āeris m.,air,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+744,aes aeris n.,"copper, bronze",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+308,aetās -tātis f.,"age, time of life",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Lengths of Time
+734,aeternus -a -um,"everlasting, eternal",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Lengths of Time
+851,aethēr aetheris n.,"pure upper air, ether, heaven, sky",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+875,aevum -i n.,"eternity; lifetime, age",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Lengths of Time
+514,afferō afferre attulī allātum,bring to,,,,TRUE,FALSE,,,,Verb: Irregular,Verbs of Transport
+958,afficiō -ficere -fēcī -fectum,"affect, visit with (+ abl.)",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Social Life
+324,ager agrī m.,field,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+578,agitō -āre,drive,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Verbs of Compelling/Directing
+358,āgmen -minis n.,line of march,,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+69,agō agere ēgī āctum,"drive, do, act",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+406,aiō,"say, affirm, say yes; ut āiunt: as they say",,,,FALSE,FALSE,,,,Verb: Irregular,Speech/Oratory
+925,albus -a -um,white,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Vision
+37,aliās,at another time,alias,,,FALSE,FALSE,,,,,
+367,aliēnus -a -um,"foreign, strange",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+763,aliquandō,"at some time, at length",,,,FALSE,FALSE,,,,Adverb,Time
+77,aliquis -quae -quod,"some, any; si quis, si quid: anyone who, anything that",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+782,aliter,"otherwise, differently",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+37,alius -a -ud,"other, another",alius2,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+817,alō alere aluī alitum,nourish,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
+148,alter altera alterum,other of two,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+159,altus -a -um,"high, lofty; deep",altus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+219,amāns -ntis m./f.,lover,amo,split from dcc amō,,FALSE,FALSE,,,,,
+198,amīca -ae f. ,friend,,split from dcc amīcus -a -um,,FALSE,FALSE,,,,,
+690,amīcitia -ae f.,friendship,,,,FALSE,FALSE,,,,Noun: 1st Declension,Social Life
+198,amīcus -ī m.,friend,amicus2,,,FALSE,FALSE,,,,,
+198,amīcus -a -um,friendly,amicus1,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+486,āmittō -mittere -mīsī -missum,"let go, send away",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+467,amnis -is m.,"river, torrent",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+219,amō -āre,to love,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Love
+116,amor -ōris m.,love,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Love
+915,amplus -a -um,"large, spacious",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+94,an,or (in questions); utrum ... an: whether ... or,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+493,anima -ae f.,"breath, spirit",,,,FALSE,FALSE,,,,Noun: 1st Declension,Life and Being
+547,animal -ālis n.,"a living being, an animal",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+40,animus -ī m.,"spirit, mind",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
+167,annus -ī m.,year,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Lengths of Time
+112,ante,"before, in front (adv.)",,adv and prep have same morpheus ,,,,,,,Preposition,Time
+112,ante,"before, in front of (prep. + acc.)",,adv and prep have same morpheus ,,FALSE,FALSE,,,,Preposition,Time
+787,antequam,before,,,,FALSE,FALSE,,,,Conjunction,Time
+617,antīquus -a -um,"ancient, old-time, former",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Lengths of Time
+837,aperiō aperīre aperuī apertum,open,,,,FALSE,FALSE,,,,Verb: 4th Conjugation,The House
+830,appāreō -ēre -uī,"appear, become visible",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Vision
+700,appellō -pellāre,"call, address, name",appello2,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Social Life
+916,aptus -a -um,"fit, suitable",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+205,apud,"near, in the presence of (+acc.)",,,,FALSE,FALSE,,,,Preposition,Place
+272,aqua -ae f.,water,,,,FALSE,FALSE,,,,Noun: 1st Declension,Earth and Water
+374,āra -ae f.,altar,,,,FALSE,FALSE,,,,Noun: 1st Declension,Religion
+963,arbitror arbitrārī arbitrātus sum,"consider, think",,,,FALSE,FALSE,,,,Verb: Deponent,Education/Knowledge
+468,arbor arboris f.,tree,arbor1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+618,ārdeō ārdēre ārsī ārsum,"blaze, glow; be eager",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Air and Fire
+849,argentum -ī n.,"silver, money",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Business/Money
+98,arma -ōrum n. pl.,"arms, weapons",,,,TRUE,FALSE,,,,Noun: 2nd Declension,War and Peace
+258,ars artis f.,skill,,,,TRUE,FALSE,,,,Noun: 3rd Declension,Education/Knowledge
+637,arvum -ī n.,"ploughed land, field",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+638,arx arcis f.,"citadel, castle; summit",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+990,ascendō -ere -scendī -scēnsum,"climb up, ascend",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+483,aspiciō -ere -spēxī -spectum,"look to or at, behold",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Vision
+685,astrum -ī n.,star; constellation,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Air and Fire
+74,at,"but, but yet",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+35,atque,"and in addition, and also, and; (after comparatives) than; simul atque, as soon as; → ac",,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+546,auctor -ōris m.,"originator, founder",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Writing/Poetry
+898,auctōritās -ātis f.,"influence, clout, authority",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+876,audāx audācis,"bold, daring; reckless",,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+270,audeō audēre ausus sum,"dare, be eager",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Personality Traits/Characteristics
+165,audiō -īre -īvī/-iī -ītum,"hear, listen to",,,,TRUE,FALSE,,,,Verb: 4th Conjugation,Other Senses
+556,auferō auferre abstulī ablātum,take away,,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+709,augeō augēre auxī auctum,increase,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Making/Doing
+420,aura -ae f.,breeze,,,,FALSE,FALSE,,,,Noun: 1st Declension,Air and Fire
+691,aureus -a -um,golden; splendid,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Business/Money
+366,auris -is f.,ear,,,,TRUE,FALSE,,,,Noun: 3rd Declension,The Body
+303,aurum -ī n.,gold,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Business/Money
+24,aut,or,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+123,autem,"moreover, but, however",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+543,auxilium -ī n.,"support, assistance; (pl.) auxiliary forces",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+855,avis -is f.,bird,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+768,barbarus -ī m.,"foreigner, barbarian",,,,TRUE,FALSE,,,,Noun: 2nd Declension,War and Peace
+408,beātus -a -um,"happy, blessed, prosperous, fortunate",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+86,bellum -ī n.,war,,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+235,bene,well,,,,FALSE,FALSE,,,,Adverb,Personality Traits/Characteristics
+182,beneficium -ī n.,"service, kindness",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Social Life
+68,bonus -a -um,good,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+808,bōs bovis m.,ox; gen. pl. boum,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+589,brevis -e,"short, shallow, brief",,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Measurement
+992,breviter,briefly,,,,FALSE,FALSE,,,,Adverb,Measurement
+210,cadō cadere cecidī cāsum,"fall, be killed",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+728,caecus -a -um,"blind, unseeing; dark, obscure",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Vision
+415,caedēs -is f.,"killing, slaughter",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Violence
+612,caedō caedere cecīdī caesum,"strike, kill, cut down",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+960,caelestis -e,"from or of heaven; caelestēs, the gods",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Air and Fire
+117,caelum -ī n.,"sky, heavens",caelum1,,,TRUE,FALSE,,,,Noun: 2nd Declension,Air and Fire
+391,campus -ī m.,"plain, field",campus1,,,FALSE,FALSE,,,,Noun: 2nd Declension,Earth and Water
+692,candidus -a -um,"white, fair",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Vision
+687,canis -is m./f.,dog,canis1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+389,canō canere cecinī cantum,sing,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Writing/Poetry
+131,capiō capere cēpī captum,seize,capio1,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -iō,War and Peace
+124,caput capitis n.,head,,,,TRUE,FALSE,,,,Noun: 3rd Declension,The Body
+572,careō -ēre -uī,lack (+ abl.),,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Business/Money
+254,carmen -inis n.,song,carmen1,,,TRUE,FALSE,,,,Noun: 3rd Declension,Writing/Poetry
+462,cārus -a -um,dear,carus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+224,castrum -ī n.,"fortress, (regularly plural, castra camp)",,,,TRUE,FALSE,,,,Noun: 2nd Declension,War and Peace
+838,castus -a -um,"pure, spotless, chaste",castus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+344,cāsus -ūs m.,"a fall; chance, accident",casus1,,,FALSE,FALSE,,,,Noun: 4th Declension,Violence
+107,causā,for the sake of (+ preceding genitive),,split from causa noun,,,,,,,Noun: 1st Declension,Speech/Oratory
+107,causa -ae f.,"cause, reason",,,,TRUE,FALSE,,,,Noun: 1st Declension,Speech/Oratory
+941,caveō cavēre cāvī cautum,"be on guard, beware",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Violence
+304,cēdō cēdere cessī cessum,"go, move; yield",cedo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+893,celebrō -āre,"frequent, throng, crowd",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,The City
+745,celer -is -e,swift,celer1,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Time
+967,celeriter,quickly,,,,FALSE,FALSE,,,,Adverb,Time
+928,cēnseō cēnsēre cēnsuī cēnsum,"assess, rate; think, decide",censeo1,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Education/Knowledge
+730,centum,one hundred,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+655,cernō cernere crēvī crētum,"discern, separate",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+601,certē,"certainly, surely",certus,,,TRUE,FALSE,,,,Adverb,Measurement
+864,certō -āre,"decide by contest; fight, compete, vie",certo2,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Athletics
+285,certus -a -um,"sure, fixed",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+571,cēterum,"for the rest, in addition, however, that may be",,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+596,cēterus -a -um,"the others, the rest",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+863,cibus -ī m.,food,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
+814,cingō cingere cīnxī cīnctum,"encircle, surround, gird",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+779,cinis cineris m./f.,"ashes, embers",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+735,circā,around,,,,FALSE,FALSE,,,,Adverb,Place
+735,circā,around (+acc.),,,,FALSE,FALSE,,,,Preposition,Place
+590,citō,swiftly,cieo,split from citus ,,,,,,,Adjective: 1st and 2nd Declension,Time
+590,citus -a -um,swift,cieo,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
+471,cīvis -is m./f.,citizen,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+346,cīvitās -ātis f.,"citizenship, state",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+605,clāmor -ōris m.,"outcry, shout",,,,TRUE,FALSE,,,,Noun: 3rd Declension,Speech/Oratory
+395,clārus -a -um,"clear, distinguished",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+505,classis -is f.,"class, division, fleet",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+392,claudō claudere clausī clausum,"close, shut",claudo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,The House
+312,coepī coepisse coeptus,begin,coepio,,,FALSE,FALSE,,,,Verb: Irregular,Time
+515,cōgitō -āre,"think, reflect",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Education/Knowledge
+339,cōgnōscō -gnōscere -gnōvī -gnitum,"learn, understand",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+250,cōgō cōgere coēgī coāctum,drive together; compel,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+666,cohors cohortis f.,"cohort, band, troop",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+820,colligō -ere -lēgī -lēctum,"gather together, collect",colligo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+333,colō colere coluī cultum,"inhabit, cultivate",colo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Animals/Plants
+725,color -ōris m.,color,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Vision
+405,coma -ae f.,"hair, tresses",,,,FALSE,FALSE,,,,Noun: 1st Declension,The Body
+448,comes comitis m./f.,"companion, comrade; attendant, follower",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+608,committō -mittere -mīsī -missum,"join, entrust to (+ dat.); perform, do",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Social Life
+660,commūnis -e,"common, general",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,The City
+890,comparō -āre,"get ready, provide; compare",comparo1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Business/Money
+443,compōnō -pōnere posuī positum,"build, construct, arrange",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+663,concēdō -cēdere -cessī -cessum,"yield, withdraw",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+920,condīciō -ōnis f.,"agreement, condition",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+540,condō -dere -didī -ditum,"build, found; store up; hide, conceal",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,The City
+645,cōnferō cōnferre contulī collātum,"collect, bring to",,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+894,cōnficiō -ficere -fēcī -fectum,"complete, accomplish; destroy, kill, consume",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Violence
+972,cōnfiteor cōnfitērī cōnfessus sum,"admit (a fact), confess (a crime); reveal, disclose",,,,FALSE,FALSE,,,,Verb: Deponent,Justice
+218,coniunx coniugis m./f.,"spouse, husband, wife",conjunx,i/j problem,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+905,cōnor cōnārī cōnātus sum,"try, attempt",,,,FALSE,FALSE,,,,Verb: Deponent,Making/Doing
+917,cōnsequor -sequī -secūtus sum,"follow up, overtake, attain",,,,FALSE,FALSE,,,,Verb: Deponent,Motion
+217,cōnsilium -ī n.,"plan; council, group of advisors",,,,TRUE,FALSE,,,,Noun: 2nd Declension,The City
+780,cōnsistō -sistere -stitī,"take position; consist in, be composed of",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+652,cōnstituō -stituere -stituī -stitūtum,"establish, put together",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+731,cōnstō -stāre -stitī,"agree; constat, it is established that (+ acc. and infin.)",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+954,cōnsuētūdo -inis f.,"custom, habit",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Personality Traits/Characteristics
+321,cōnsul -ulis m.,consul,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+757,cōnsulō -sulere -suluī -sultum,"consult, plan (+ acc.); consider the interests of (+dat)",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,The City
+869,cōnsūmō -sūmere -sūmpsī -sūmptum,"to use up, consume",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
+615,contemnō -temnere -tempsī -temptum,"despise, scorn, disdain",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Emotions
+804,contineō -tinēre -tinuī -tentum,"contain, restrain",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Compelling/Directing
+494,contingō -tingere -tigī -tactum,"touch, be contiguous to",contingo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Place
+271,contrā,"against, opposite",,split from preposition,,TRUE,FALSE,,,,Adverb,Place
+271,contrā,"against, opposite (+acc.)",,,,FALSE,FALSE,,,,Preposition,Place
+698,conveniō -venīre -vēnī -ventum,"assemble, meet; agree",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Social Life
+834,convertō -vertere -vertī -versum,"turn about, turn, change",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+921,convīvium -iī n.,"banquet, feast",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Social Life
+331,cōpia -ae f.,abundance; (pl.) troops,copia1,,,FALSE,FALSE,,,,Noun: 1st Declension,War and Peace
+795,cor cordis n.,"heart; cordī est, it is pleasing to (+ dat.)",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+591,cornu -ūs n.,horn,,,,TRUE,FALSE,,,,Noun: 4th Declension,Animals/Plants
+75,corpus corporis n.,body,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+870,corrumpō -rumpere -rūpī -ruptum,"break up, destroy, ruin",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+109,crēdō crēdere crēdidī crēditum,believe,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+978,creō -āre,"produce, create; elect, choose",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Making/Doing
+609,crēscō crēscere crēvī crētum,"grow, increase",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Animals/Plants
+475,crīmen -inis n.,"verdict, accusation",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+769,culpa -ae f.,"guilt, fault, blame",,,,FALSE,FALSE,,,,Noun: 1st Declension,Justice
+10,cum,with (prep. + abl.),cum1,split from conjunction,,FALSE,FALSE,,,,Preposition,Conjunctions/Adverbs
+10,cum,"when, since, although (conjunction + subj.)",cum2,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+292,cūnctus -a -um,entire all together,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+906,cupīdō -inis f.,"desire, eagerness, craving",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Love
+441,cupiō -ere -īvī -ītum,desire,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Love
+404,cūr,why?,,,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
+186,cūra -ae f.,"care, concern",,,,TRUE,FALSE,,,,Noun: 1st Declension,Love
+743,cūrō -āre,"watch over, look after, care for (+ acc.)",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Love
+562,currō currere cucurrī cursum,run,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Athletics
+491,currus -ūs m.,chariot,,,,FALSE,FALSE,,,,Noun: 4th Declension,Athletics
+351,cursus -ūs m.,"course, advance",,,,FALSE,FALSE,,,,Noun: 4th Declension,Athletics
+622,custōs custōdis m.,guardian,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+751,damnō -āre,condemn,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Justice
+926,damnum -ī n.,"damage, injury",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Violence
+46,dē,"down from, about, concerning (+ abl.)",,,,FALSE,FALSE,,,,Preposition,Place
+42,dea -ae f.,goddess,dea,split from deus,,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+155,dēbeō dēbēre dēbuī dēbitum,"owe, be obliged",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Business/Money
+914,decem,ten,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+800,dēcernō -cernere -crēvī -crētum,"determine, decide",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+718,decet decēre decuīt,"it is right, proper, fitting (+ acc. + infin.)",,,,FALSE,FALSE,,,,Verb: Impersonal,Personality Traits/Characteristics
+548,decus decoris n.,"beauty, grace; ornament, glory, honor",decus1,Perseus only gives one thing for decus so unclear why it’s decus1,,FALSE,FALSE,,,,Noun: 3rd Declension,Personality Traits/Characteristics
+661,dēdūcō -dūcere -dūxī -ductum,"launch, lead away",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+653,dēfendō -fendere -fendī -fēnsum,"defend, ward off",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+805,dēferō -ferre -tulī -lātum,"carry away, report",,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+676,deficiō -ficere -fēcī -fectum,"fail, give out; revolt from",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,War and Peace
+150,dein,"then, next",deinde,split from deinde,,FALSE,FALSE,,,,Adverb,Time
+150,deinde,"then, next",deinde,,,FALSE,FALSE,,,,Adverb,Time
+796,dēnique,finally,,,,FALSE,FALSE,,,,Adverb,Time
+802,dēscendō -scendere -scendī -scēnsum,"climb down, descend",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+544,dēserō -ere dēseruī dēsertum,"leave, desert, abandon",desero2,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+892,dēsīderō -āre,"long for, desire greatly",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Love
+624,dēsinō -sinere -siī -situm,"leave off, cease",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+463,dēsum -esse -fuī,be lacking,,,,FALSE,FALSE,,,,Verb: Irregular,Business/Money
+42,deus -ī m.; dea -ae f.,god; goddess,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+260,dexter -tra -trum,right,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Place
+260,dextera -ae f.,right hand,dextera,split from dexter. Unclear why dcc gives adjective dextra but noun dextera,,FALSE,FALSE,,,,Noun: 1st Declension,Place
+33,dīcō dīcere dīxī dictum,"say; causam dīcere, plead a case; diem dīcere, appoint a day",dico2,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+54,diēs diēī m./f.,day,,,,FALSE,FALSE,,,,Noun: 5th Declension,Lengths of Time
+880,differō differre distulī dīlātum,"scatter; publish, divulge; differ; defer, postpone",,,,FALSE,FALSE,,,,Verb: Irregular,Making/Doing
+861,difficilis -e,"not easy, hard, difficult",,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+956,dīgnitās -ātis f.,"worth, reputation, honor",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Personality Traits/Characteristics
+291,dīgnus -a -um,worthy,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+973,dīligō -ligere -lēxī -lēctum,"choose, cherish, love",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Love
+777,dīmittō -mittere -mīsī -missum,send away,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+726,discēdō -ere -cessī -cessum,"go away, depart",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+982,disciplīna -ae f.,"training, instruction; learning, discipline",,,,FALSE,FALSE,,,,Noun: 1st Declension,Education/Knowledge
+465,discō -ere didicī,learn,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+361,diū,for a long time,diu,,,FALSE,FALSE,,,,Adverb,Time
+641,dīversus -a -um,"different, diverse",diverto,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+564,dīves dīvitis,"rich (poet. dīs, dītis)",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Business/Money
+628,dīvidō -ere dīvīsī dīvīsum,"divide, separate",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+712,dīvitiae -ārum f. pl.,"riches, wealth",,,,FALSE,FALSE,,,,Noun: 1st Declension,Business/Money
+962,dīvus -a -um,"divine, godlike",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Religion
+28,dō dare dedī datum,give,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Social Life
+393,doceō -ēre -uī doctum,teach,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Education/Knowledge
+785,doleō -ēre doluī,"feel pain or grief, grieve",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+193,dolor -ōris m.,"pain, grief",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Emotions
+701,dolus -ī m.,"artifice, device, trick",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Deception
+241,domina -ae f.,household mistress,domina,split from dominus,,FALSE,FALSE,,,,Noun: 1st Declension,The Household
+241,dominus -ī m.,"household master, lord",,,,TRUE,FALSE,,,,Noun: 2nd Declension,The Household
+73,domus -ūs f.,"house, home",,,,FALSE,FALSE,,,,Noun: 4th Declension,The House
+771,dōnec,until,,,,FALSE,FALSE,,,,Conjunction,Time
+606,dōnō -āre,present with a gift (+ acc. of person and abl. of thing),,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Social Life
+476,dōnum -ī n.,"gift, present",,,,TRUE,FALSE,,,,Noun: 2nd Declension,Social Life
+975,dormiō -īre,sleep,,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Life and Being
+521,dubitō -āre,"hesitate, doubt",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Education/Knowledge
+528,dubius -a -um,"doubtful, sine dubiō, without a doubt, certainly",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Deception
+133,dūcō dūcere dūxī ductum,"lead; uxōrem dūcere, marry",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+383,dulcis -e,sweet,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Other Senses
+103,dum,while (+ indic.); until (+ subj.); provided that (+ subj.),,,,FALSE,FALSE,,,,Conjunction,Time
+221,duo duae duo,two,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+249,dūrus -a -um,"hard, tough, harsh",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+239,dux ducis m./f.,"leader, general",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+643,ecce,behold!,,,,FALSE,FALSE,,,,Adverb,Vision
+996,ēdīcō -dīcere -dīxī -dictum,declare,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+688,ēdō ēdere ēdidī ēditum,"put forth, state, explain",edo2,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+935,ēdūcō -dūcere -dūxī -ductum,lead forth,educo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+573,efficiō -ficere -fēcī -fectum,"bring about, complete; render (+ ut + subj.)",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -iō,Making/Doing
+719,effundō -fundere -fūdī -fūsum,pour out,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
+11,ego meī mihi mē,"I, me",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+912,ēgredior ēgredī ēgressus sum,"stride out, depart, disembark from (+ abl.)",,,,FALSE,FALSE,,,,Verb: Deponent,Travel
+860,ēgregius -a -um,"distinguished, uncommon",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+942,ēligō ēligere ēlēgī ēlēctum,"pick out, select",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,The City
+57,enim,"for, indeed",,,,FALSE,FALSE,,,,Conjunction,Pronouns/Interrogatives
+470,eō,"(adv.) there, to that place",eo2,,,FALSE,FALSE,,,,Adverb,Place
+97,eō īre iī/īvī itum,go,eo1,,,FALSE,FALSE,,,,Verb: Irregular,Motion
+951,epistula -ae f.,letter,,,,FALSE,FALSE,,,,Noun: 1st Declension,Writing/Poetry
+296,eques -itis m.,"horseman, knight",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+248,equus -ī m.,horse,equus1,Perseus only gives one thing for equus so unclear why it’s equus1,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+134,ergō,therefore,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+349,ēripiō -ripere -ripuī -reptum,"snatch away, rescue, save",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Verbs of Transport
+402,errō -āre,"go astray, wander",erro1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Travel
+832,error -ōris m.,"wandering; error, mistake",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Travel
+1,et,and,,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+67,etiam,"also, even",,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+26,ē,"out of, from (+ abl.)",ex,split from ex,,FALSE,FALSE,,,,Preposition,Place
+26,ex,"out of, from (+ abl.)",ex,,,TRUE,FALSE,,,,Preposition,Place
+394,excipiō -cipere -cēpī -ceptum,take out,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -iō,Verbs of Transport
+519,exemplum -ī n.,"example, sample, copy",,,,TRUE,FALSE,,,,Noun: 2nd Declension,Speech/Oratory
+597,exeō -īre -iī -itum,go forth,,,,FALSE,FALSE,,,,Verb: Irregular,Motion
+576,exerceō -ercēre -ercuī -ercitum,"train, exercise, carry on",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Athletics
+267,exercitus -ūs m.,army,exercitus2,,,FALSE,FALSE,,,,Noun: 4th Declension,War and Peace
+500,exigō -igere -ēgī -āctum,drive out; collect,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+613,exīstimō -āre,"think, believe",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Education/Knowledge
+713,experior -perīrī -pertus sum,"try thoroughly, test, experience",,,,FALSE,FALSE,,,,Verb: Deponent,Education/Knowledge
+794,exsilium -ī n.,"exile, banishment",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Travel
+442,exspectō -āre,"watch, wait, expect",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Vision
+385,extrēmus -a -um,"farthest, situated at the end or tip, extreme",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+966,fābula -ae f.,"account, tale, story",fabula1,Perseus only gives one thing for fabula so unclear why it’s fabula1,,FALSE,FALSE,,,,Noun: 1st Declension,Writing/Poetry
+479,faciēs -ēī f.,"form, appearance",,,,FALSE,FALSE,,,,Noun: 5th Declension,Vision
+451,facilis -e,easy,,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+646,facinus facinoris n.,"deed, crime",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+32,faciō facere fēcī factum,"do, make",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -iō,Making/Doing
+611,factum -ī n.,"deed, accomplishment",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Making/Doing
+503,fallō fallere fefellī falsum,deceive,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Deception
+633,falsus -a -um,"deceptive, false",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Deception
+278,fāma -ae f.,"rumor, fame",,,,TRUE,FALSE,,,,Noun: 1st Declension,Speech/Oratory
+828,famēs -is f.,"hunger, famine",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Life and Being
+943,familia -ae f.,"household, family",,,,FALSE,FALSE,,,,Noun: 1st Declension,The Household
+689,fateor fatērī fassus sum,"admit, confess; profess, declare; assent, say yes",,,,FALSE,FALSE,,,,Verb: Deponent,Justice
+157,fātum -ī n.,fate; death,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+511,fax facis f.,torch,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+994,fēlīciter,luckily,felix1,Unrecognized by Morpheus but in L&S under felix,,FALSE,FALSE,,,,Adverb,Personality Traits/Characteristics
+309,fēlīx -īcis,lucky,felix1,Perseus only gives one thing for felix so unclear why it’s felix1,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+501,fēmina -ae f.,woman,,,,FALSE,FALSE,,,,Noun: 1st Declension,People
+907,ferē,almost,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+45,ferō ferre tulī lātum,"bear, carry, endure",,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+231,ferrum -ī n.,"iron, iron weapon or implement",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Violence
+222,fera -ae f.,wild animal,fera,split from ferus,,,,,,,Noun: 1st Declension,Animals/Plants
+222,ferus -a -um,"wild, fierce",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Animals/Plants
+625,fessus -a -um,"weary, tired",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Life and Being
+979,fidēlis -e,faithful,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+184,fidēs -eī f.,"trust, faith",fides1,,,FALSE,FALSE,,,,Noun: 5th Declension,Personality Traits/Characteristics
+909,fīlia -ae f.,daughter,,,,,,,,,Noun: 1st Declension,The Household
+909,fīlius -ī m.,son,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Household
+721,fingō fingere fīnxī fīctum,shape; invent,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+236,fīnis -is m.,"end, boundary",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Geography
+146,fīō fierī factus sum,"become, happen, be done",,,,TRUE,FALSE,,,,Verb: Irregular,Life and Being
+298,flamma -ae f.,"flame, fire",flamma1,,,FALSE,FALSE,,,,Noun: 1st Declension,Air and Fire
+457,fleō flēre flēvī flētum,weep,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+818,flōs flōris m.,"flower, bloom",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+498,fluctus -ūs m,"flood, billow, surf",,,,FALSE,FALSE,,,,Noun: 4th Declension,Earth and Water
+283,flūmen -inis n.,"stream, river",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+772,fluō fluere fluxī fluxum,flow,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
+922,foedus -a -um,foul,foedus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+706,fōns fontis m.,"spring, fountain",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+739,for fārī fātus sum,"report, say",,,,FALSE,FALSE,,,,Verb: Deponent,Speech/Oratory
+985,"fore = futūrum esse; forem, forēs, foret, forent = essem, essēs, esset, essen",,sum1,,,FALSE,FALSE,,,,Verb: Irregular,Life and Being
+422,fōrma -ae f.,shape; beauty,,,,FALSE,FALSE,,,,Noun: 1st Declension,Other Senses
+993,fors fortis f.,chance,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+833,forsitan,"perhaps, perchance",forsitan,,,,,,,,Adverb,Conjunctions/Adverbs
+833,fortasse,"perhaps, perchance",fortasse,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+579,fortē,by chance,fors,already separate in dcc but not resolving,,FALSE,FALSE,,,,Adverb,Religion
+286,fortis -e,brave,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+138,fortūna -ae f.,fortune,,,,FALSE,FALSE,,,,Noun: 1st Declension,Religion
+811,forum -ī n.,"market-place, forum",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+345,frangō frangere frēgī frāctum,"break, shatter",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+225,frāter frātris m.,brother,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+918,frequēns -ntis,"in large numbers, often",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+559,frōns frontis f.,"forehead, brow; front",frons2,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+927,frūctus -ūs m.,"fruit, crops; enjoyment, delight",fructus2,,,FALSE,FALSE,,,,Noun: 4th Declension,Animals/Plants
+936,frūmentum -ī n.,grain,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+923,fruor fruī frūctus sum,"enjoy the produce of, profit by, use (+ abl.)",,,,FALSE,FALSE,,,,Verb: Deponent,Emotions
+694,frūstrā,in vain,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+364,fuga -ae f.,"flight, route",,,,FALSE,FALSE,,,,Noun: 1st Declension,Travel
+177,fugiō fugere fūgī fugitum,"flee, escape",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Travel
+957,fugō -āre,put to flight,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Travel
+523,fundō fundere fūdī fūsum,"pour, scatter",fundo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
+524,fūnus fūneris n.,funeral; death; dead body,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+466,furor -ōris m.,"rage, fury",furor2,,,FALSE,FALSE,,,,Noun: 3rd Declension,Emotions
+407,gaudeō gaudēre gāvīsus sum,rejoice,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+727,gaudium -ī n.,"delight, joy, pleasure",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Emotions
+194,gēns gentis f.,"family, clan",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+170,genus generis n.,"origin, lineage, kind",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+237,gerō gerere gessī gestum,"bear, manage; bellum gerere, wage war",gero1,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+667,gīgnō gīgnere genuī genitum,"beget, bear, bring forth",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
+862,gladius -ī m.,sword,,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+360,glōria -ae f.,"glory, fame",,,,FALSE,FALSE,,,,Noun: 1st Declension,Social Life
+577,gradus -ūs m.,"step, pace; grade, rank",,,,FALSE,FALSE,,,,Noun: 4th Declension,War and Peace
+380,grātia -ae f.,"favor, influence, gratitude",,,,TRUE,FALSE,,,,Noun: 1st Declension,Social Life
+434,grātus -a -um,pleasant; grateful,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+140,gravis -e,"heavy, serious",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+39,habeō habēre habuī habitum,"have, hold",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Other Senses
+226,haud,not,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+80,hīc,here,,,,FALSE,FALSE,,,,Adverb,Place
+7,hic haec hoc,"this, these",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+803,hiems hiemis f.,winter,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Lengths of Time
+80,hinc,from here,,split from hīc,,FALSE,FALSE,,,,Adverb,Place
+981,hodiē,today,,,,FALSE,FALSE,,,,Adverb,Lengths of Time
+88,homō hominis m.,human being,,,,TRUE,FALSE,,,,Noun: 3rd Declension,People
+580,honestus -a -um,honorable,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+290,honor -ōris m.,"honor, glory; office, post",,,,TRUE,FALSE,,,,Noun: 3rd Declension,The City
+664,hōra -ae f.,hour,hora1,,,FALSE,FALSE,,,,Noun: 1st Declension,Lengths of Time
+887,hortor hortārī hortātus sum,"urge strongly, advise, exhort",,,,FALSE,FALSE,,,,Verb: Deponent,Speech/Oratory
+873,hospes hospitis m.,"guest, guest-friend; stranger; host",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+93,hostis -is m./f.,"stranger, enemy",,,,TRUE,FALSE,,,,Noun: 3rd Declension,War and Peace
+368,hūc,to this place,,,,FALSE,FALSE,,,,Adverb,Place
+355,hūmānus -a -um,human,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,People
+740,humus -ī f.,ground; humī: on the ground,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Earth and Water
+228,iaceō iacēre iacuī,lie,jaceo,i/j problem,,FALSE,FALSE,,,,Verb: 2nd Conjugation,The House
+899,iaciō iacere iēcī iactum,"throw, hurl",jacio,i/j problem,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Athletics
+34,iam,now; already,jam,i/j problem,,TRUE,FALSE,,,,Adverb,Time
+619,ibi,there,,,,FALSE,FALSE,,,,Adverb,Place
+819,īctus -ūs m.,"blow, stroke",ictus2,,,FALSE,FALSE,,,,Noun: 4th Declension,Violence
+59,īdem eadem idem,the same,,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+679,ideō,for this reason,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+313,igitur,therefore,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+151,ignis -is m.,fire,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+8,ille illa illud,that,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+396,illīc,"at that place, there",,,,FALSE,FALSE,,,,Adverb,Place
+,illinc,from that place,,split from illīc,,FALSE,FALSE,,,,Adverb,Place
+955,illūc,to that place,illic2,,,FALSE,FALSE,,,,Adverb,Place
+754,imāgō -inis f.,"image, form, figure",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Vision
+723,imperātor -ōris m.,commander,,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+200,imperium -ī n.,"command, power",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+602,imperō -āre,"command, control",,,,TRUE,FALSE,,,,Verb: 1st Conjugation,War and Peace
+421,impetus -ūs m.,attack,,,,FALSE,FALSE,,,,Noun: 4th Declension,Violence
+671,impleō -ēre -plēvī -plētum,"fill in, fill up",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Earth and Water
+437,impōnō -ere -posuī -positum,"put in, put on, impose, levy upon",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Measurement
+5,in,"in, on (+ abl.); into, onto (+ acc)",,,,TRUE,FALSE,,,,Preposition,Place
+871,incidō incidere incidī,"fall upon, fall into; happen",incido1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+411,incipiō -cipere -cēpī -ceptum,begin,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Time
+328,inde,"from there, from then",,,,FALSE,FALSE,,,,Adverb,Place
+980,indicō -āre,"point out, show, make known",indico1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+742,īnferō īnferre intulī illātum,"bring upon, against; bellum īnferre: make war on",,,,FALSE,FALSE,,,,Verb: Irregular,War and Peace
+428,īnferus -a -um,low; īnferior: lower; īnfimus or īmus: lowest,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+387,ingenium -ī n.,"disposition, ability, talent",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Education/Knowledge
+202,ingēns ingentis,"huge, enormous",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+592,ingrātus -a -um,"unpleasant, disagreeable",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+885,ingredior -gredī -gressus sum,"step in, enter",,,,FALSE,FALSE,,,,Verb: Deponent,Motion
+952,inimīcus -a -um,unfriendly,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+865,initium -ī n.,beginning,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Time
+381,iniūria -ae f.,"injustice, wrong, affront",injuria,i/j problem,,TRUE,FALSE,,,,Noun: 1st Declension,Justice
+163,"inquam, inquis, inquit, inquiunt",say (used with direct speech),inquam,,,FALSE,FALSE,,,,Verb: Irregular,Speech/Oratory
+931,īnstituō -stituere -stituī -stitūtum,undertake; equip,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+908,īnsula -ae f.,island,insula1,,,FALSE,FALSE,,,,Noun: 1st Declension,Geography
+815,integer -gra -grum,"untouched, fresh, complete, whole",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+512,intellegō -legere -lēxī -lēctum,understand,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+895,intendō -tendere -tendī -tentum,"stretch out, strain",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+64,inter,"between, among; during (+ acc.)",,,,FALSE,FALSE,,,,Preposition,Place
+699,interficiō -ficere -fēcī -fectum,kill,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Violence
+693,interim,meanwhile,,,,FALSE,FALSE,,,,Adverb,Time
+953,interrogō -āre,"put a question to, ask (+ acc.)",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+760,intersum -esse -fuī,"to be between; take part in, attend (+dat.); interest, it is in the interest of (+ gen.)",,,,FALSE,FALSE,,,,Verb: Irregular,Place
+704,intrā,within (+ acc.),,,,FALSE,FALSE,,,,Preposition,Place
+766,intrō -āre,enter,intro2,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Motion
+316,inveniō -venīre -vēnī -ventum,find; discover,,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Travel
+707,invidia -ae f.,"envy, jealousy, hatred",,,,FALSE,FALSE,,,,Noun: 1st Declension,Emotions
+22,ipse ipsa ipsum,him- her- itself,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+187,īra irae f.,"wrath, anger",,,,FALSE,FALSE,,,,Noun: 1st Declension,Emotions
+809,īrāscor īrāscī īrātus sum,grow angry,,,,FALSE,FALSE,,,,Verb: Deponent,Emotions
+,īrātus -a -um,angry,irascor,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,
+13,is ea id,"he, she, it",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+81,iste ista istud,"that, that of yours",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+81,istīc,over there,istic2,,,FALSE,FALSE,,,,Adverb,Place
+81,istūc,over there,,,,FALSE,FALSE,,,,Adverb,Place
+81,istinc,from over there,,,,FALSE,FALSE,,,,Adverb,Place
+120,ita,"thus, so",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+208,itaque,"and so, therefore",ita,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+932,item,likewise,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+230,iter itineris n.,"journey, route",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Travel
+758,iterum,again,,,,TRUE,FALSE,,,,Adverb,Time
+84,iubeō iubēre iussī iussum,"bid, order",jubeo,i/j problem,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Justice
+839,iūdex iūdicis m.,"judge, juror",judex,i/j problem,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+749,iūdicium -ī n.,"judgment, decision, trial",judicium,i/j problem,,FALSE,FALSE,,,,Noun: 2nd Declension,Justice
+565,iūdicō -āre,"judge, decide",judico,i/j problem,,FALSE,FALSE,,,,Verb: 1st Conjugation,Justice
+335,iugum -ī n.,"yoke; ridge, chain of hills",jugum,i/j problem,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+513,iungō iungere iūnxī iūnctum,join,jungo,i/j problem,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Making/Doing
+896,iūrō -āre,"take an oath, swear",juro,i/j problem,,FALSE,FALSE,,,,Verb: 1st Conjugation,Justice
+314,iūs iūris n.,"right, justice, law",jus2,i/j problem,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+,iūs iūrandum,oath,jusjurandum,i/j problem,,FALSE,FALSE,,,,,
+770,iūstus -a -um,"right, just, fair",justus,i/j problem,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Justice
+277,iuvenis -is m.,youth,juvenis,i/j problem,,FALSE,FALSE,,,,Noun: 3rd Declension,People
+390,iuvō iuvāre iūvī iūtum,"help, assist; please, delight",juvo,i/j problem,,FALSE,FALSE,,,,Verb: 1st Conjugation,Social Life
+201,labor -ōris m.,"toil, exertion",labor2,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+900,labōrō -āre,"toil, work; be in trouble or distress",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Business/Money
+354,lacrima -ae f.,tear,,,,TRUE,FALSE,,,,Noun: 1st Declension,Emotions
+783,laedō laedere laesī laesum,"injure by striking, hurt",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+262,laetus -a -um,"glad, joyful",laetus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Emotions
+840,lapis lapidis m.,stone,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+695,lateō latēre latuī,"lie hidden, be hidden",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Deception
+824,lātus -a -um,"broad, wide",latus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+382,latus -eris n.,"side, flank",latus2,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+435,laudō -āre,praise,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Social Life
+444,laus laudis f.,"praise, glory",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+464,lēgātus -ī m.,"lieutenant, envoy",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+370,legiō -ōnis f.,legion,,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+419,legō legere lēgī lēctum,"gather, choose, read",lego2,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Writing/Poetry
+220,levis -e,"light, trivial",levis1,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+264,lēx lēgis f.,law,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+229,līber lībera līberum,free,liber1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Justice
+,līberī -ōrum m. pl.,freeborn children,liberi,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Household
+901,liber librī m.,book,liber4,,,FALSE,FALSE,,,,Noun: 2nd Declension,Writing/Poetry
+495,lībertās -ātis f.,freedom,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+729,libet libēre libuit or libitum est,it is pleasing (+ dat. + infin.),,,,FALSE,FALSE,,,,Verb: Impersonal,Social Life
+761,libīdō -inis f.,"passion, lust",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Love
+778,licet,even though,licet,"the two licet’s were originally separate in dcc, but Hedera gives one lemma with two glosses",,FALSE,FALSE,,,,Conjunction,Justice
+175,licet licēre licuit licitum est,it is permitted (+ dat. + infin.),licet,,,TRUE,FALSE,,,,Verb: Impersonal,Justice
+516,līmen līminis n.,threshold,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The House
+732,lingua -ae f.,tongue; language,,,,FALSE,FALSE,,,,Noun: 1st Declension,The Body
+710,littera -ae f.,"letter, (pl.) literature",,,,FALSE,FALSE,,,,Noun: 1st Declension,Writing/Poetry
+245,lītus -oris n.,shore,litus2,,,TRUE,FALSE,,,,Noun: 3rd Declension,Geography
+62,locus -ī m.,place; loca (n. pl.) region,,,,TRUE,FALSE,,,,Noun: 2nd Declension,Geography
+400,longē,"far, far off",,Morpheus puts under longus but should resolve to dcc longē,,FALSE,FALSE,,,,Adverb,Measurement
+142,longus -a -um,"long, far",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+310,loquor loquī locūtus sum,"speak, talk",,,,FALSE,FALSE,,,,Verb: Deponent,Speech/Oratory
+375,lūmen luminis n.,light,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Vision
+902,lūna -ae f.,moon,,,,FALSE,FALSE,,,,Noun: 1st Declension,Air and Fire
+299,lūx lūcis f.,light of day,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+669,maestus -a -um,"sad, sorrowful; depressing",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Emotions
+90,magis,more,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+933,magister magistrī m.,"master, chief",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Education/Knowledge
+672,māgnitūdō -inis f.,"greatness, size",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Measurement
+25,māgnus -a -um,great,,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+764,māiōrēs māiōrum m.,ancestors,magnus,Morpheus online only gives magnus but Hedera returns majores as its own lemma,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+603,male,(adv.) badly,malus1,Morpheus puts under malus but should resolve to dcc male,,FALSE,FALSE,,,,Adverb,Personality Traits/Characteristics
+598,mālō mālle māluī,prefer,,,,FALSE,FALSE,,,,Verb: Irregular,Emotions
+227,malus -a -um,"bad, evil",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+357,maneō manēre mānsī mānsum,remain,,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Travel
+48,manus -ūs f.,hand; band of men,manus1,,,FALSE,FALSE,,,,Noun: 4th Declension,The Body
+125,mare -is n.,sea,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+654,marītus -ī m.,husband,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Household
+127,māter mātris f.,mother,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+857,māteria -ae f.,"material, subject matter; timber, lumber",,,,FALSE,FALSE,,,,Noun: 1st Declension,Speech/Oratory
+162,medius -a -um,"middle, central",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Place
+481,membrum -ī m.,"limb, member of the body",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Body
+670,meminī meminisse,"remember, recollect",,,,FALSE,FALSE,,,,Verb: Irregular,Education/Knowledge
+627,memoria -ae f.,"recollection, memory",,,,TRUE,FALSE,,,,Noun: 1st Declension,Education/Knowledge
+173,mēns mentis f.,mind,,,,TRUE,FALSE,,,,Noun: 3rd Declension,The Body
+747,mēnsa -ae f.,table,,,,FALSE,FALSE,,,,Noun: 1st Declension,The House
+852,mereō merēre meruī meritum,"deserve, merit; serve as a soldier",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Business/Money
+429,metuō metuere metuī,"to fear, to dread",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Emotions
+215,metus -ūs m.,"fear, dread",,,,FALSE,FALSE,,,,Noun: 4th Declension,Emotions
+41,meus -a -um,my,,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+161,mīles -itis m.,soldier,,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+247,mīlle (pl.) mīlia,thousand,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+504,mīror mīrārī mīrātus sum,"wonder at, marvel at (+ acc.)",,,,FALSE,FALSE,,,,Verb: Deponent,Emotions
+425,misceō miscēre miscuī mixtum,mix,,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Earth and Water
+137,miser misera miserum,"wretched, pitiable",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Emotions
+114,mittō mittere mīsī missum,"send, let go",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+152,modo,"just, just now; modo ... modo: now ... now, at one moment ... at another, sometimes ... sometimes",,,,TRUE,FALSE,,,,Adverb,Time
+195,modus -ī m.,"measure, manner, kind",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Measurement
+593,moenia -ium n. pl.,"walls, fortifications",moenia1,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+356,mollis -e,"soft, yielding, gentle",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Other Senses
+711,moneō monēre monuī monitum,"warn, advise",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Speech/Oratory
+242,mōns montis m.,mountain,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Geography
+399,mora -ae f.,"delay, hindrance",,,,FALSE,FALSE,,,,Noun: 1st Declension,Time
+658,morbus -ī m.,"sickness, disease",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Body
+253,morior morī mortuus sum,die,,,,FALSE,FALSE,,,,Verb: Deponent,Life and Being
+581,moror morārī morātus sum,delay,moror1,,,FALSE,FALSE,,,,Verb: Deponent,Time
+95,mors mortis f.,death,,,,TRUE,FALSE,,,,Noun: 3rd Declension,Life and Being
+950,mortālis -e,"liable to death, mortal",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Life and Being
+181,mōs mōris m.,"custom, habit; (pl.) character",,,,TRUE,FALSE,,,,Noun: 3rd Declension,Social Life
+192,moveō -ēre mōvī mōtum,move,,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Motion
+469,mox,soon,,,,FALSE,FALSE,,,,Adverb,Time
+961,mulier -eris f.,woman,,,,FALSE,FALSE,,,,Noun: 3rd Declension,People
+733,multitūdō -inis f.,"multitude, number",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Measurement
+43,multus -a -um,"much, many; multō, by far",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+997,mundus -a -um,"clean, neat, elegant",mundus1,"the two mundus’s were originally separate in dcc, but Hedera gives one lemma with two glosses",,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+350,mundus -ī m.,"world, universe, heavens",mundus2,,,FALSE,FALSE,,,,Noun: 2nd Declension,Earth and Water
+276,mūnus mūneris n.,"gift, offering; duty, obligation; (pl.) gladiatorial show",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+508,mūrus -ī m.,wall,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The House
+315,mūtō -āre,change,muto1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Making/Doing
+61,nam or namque,"for, indeed, really",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+61,namque,"for, indeed, really",nam,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+910,narrō -āre,"relate, recount",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+266,nāscor nāscī nātus sum,be born,,,,FALSE,FALSE,,,,Verb: Deponent,Life and Being
+180,nātūra -ae f.,nature,,,,FALSE,FALSE,,,,Noun: 1st Declension,Life and Being
+211,nātus -ī m.,son,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Household
+353,nāvis -is f.,ship,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Travel
+47,nē,"lest, that not",ne1,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+238,ne (enclitic),interrogative particle attached to the emphatic word in a question,ne2,ne2 isn’t offered as an option in Hedera,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
+19,nec,"and not, nor; nec ... nec, neither ... nor; → neque",neque,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+773,necesse (indecl. adj.),necessary,,,,TRUE,FALSE,,,,Adjective: Indeclinable,Business/Money
+911,necessitās -tātis f.,"necessity, need",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+541,nefās,"impiety, wickedness",,,,FALSE,FALSE,,,,Noun: Indeclinable,Justice
+294,negō -āre,"deny, refuse",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+846,negōtium -ī n.,business,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Business/Money
+179,nēmō,"no one (gen. nūllīus, dat. nūllī, abl. nūllō or nūllā → nūllus -a -um)",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+461,nemus nemoris n.,"grove, forest",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+72,neque,"and not, nor; neque ... neque, neither ... nor; → nec",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+525,nesciō -scīre,"not know, be ignorant",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Education/Knowledge
+634,niger nigra nigrum,black,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Vision
+55,nihil,nothing; not at all,,,,FALSE,FALSE,,,,Noun: Indeclinable,Measurement
+55,nīl,nothing; not at all,nihil,split from nihil,,FALSE,FALSE,,,,Noun: Indeclinable,Measurement
+841,nimis,excessively,,,,FALSE,FALSE,,,,Adverb,Personality Traits/Characteristics
+841,nimium,excessively,nimium,split from nimis,,FALSE,FALSE,,,,Adverb,Personality Traits/Characteristics
+502,nimius -a -um,"too much, excessive",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+100,nī,"if not, unless",ni,split from nisi,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+100,nisi,"if not, unless",,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+455,nōbilis -e,"distinguished, noble; (as subst.) a nobleman or woman",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+509,noceō nocēre nocuī,harm,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Violence
+458,nōlō nōlle nōluī,be unwilling,,,,FALSE,FALSE,,,,Verb: Irregular,Emotions
+135,nōmen -inis n.,name,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Social Life
+6,nōn,not,,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+436,nōndum,not yet,,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+51,nōs nostrum/nostrī nōbīs nōs,we,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+347,nōscō nōscere nōvī nōtum,"learn, know",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+52,noster nostra nostrum,our,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+477,nōtus -a -um,well-known,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+139,novus -a -um,new,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
+119,nox noctis f.,night,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Lengths of Time
+545,nūdus -a -um,"naked, bare",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,The Body
+49,nūllus -a -um,"not any, no one",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+924,num,interrogative particle implying negative answer,,,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
+452,nūmen -inis n.,"divine will, deity",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+338,numerus -ī m.,"number, amount",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Measurement
+251,numquam,never,,,,TRUE,FALSE,,,,Adverb,Time
+50,nunc,now,,,,TRUE,FALSE,,,,Adverb,Time
+919,nūntius -ī m.,messenger; news,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Travel
+449,ob,"against, on account of (+acc)",,,,FALSE,FALSE,,,,Preposition,Place
+801,occīdō -cīdere -cīdī -cīsum,"kill, cut down",occido1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+472,occupō -āre,"seize, occupy; anticipate, do a thing first (+ infin.)",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,War and Peace
+677,occurrō -currere -cucurrī -cursum,run to meet; come into one’s mind,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+206,oculus -ī m.,eye,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Body
+790,ōdī ōdisse,hate,,,,FALSE,FALSE,,,,Verb: Irregular,Emotions
+522,odium -ī n.,hatred,odium1,,,FALSE,FALSE,,,,Noun: 2nd Declension,Emotions
+812,offerō offerre obtulī oblātum,"present, offer, expose",,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+607,officium -ī n.,"service, duty",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+574,ōlim,"formerly, at that time",,,,FALSE,FALSE,,,,Adverb,Time
+18,omnis -e,"all, every, as a whole",,,,TRUE,FALSE,,,,Adjective: 3rd Declension,Measurement
+842,onus oneris n.,"load, burden",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Measurement
+843,opera -ae f.,"labor, activity, work",,,,FALSE,FALSE,,,,Noun: 1st Declension,Business/Money
+806,oportet -ēre -uit,"it is proper, right (+ acc. + infin.)",,,,TRUE,FALSE,,,,Verb: Impersonal,Social Life
+635,oppidum -ī n.,town,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+318,ops opis f.,"assistance, resources",ops1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+417,optō -āre,"choose, select",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Personality Traits/Characteristics
+332,opus operis n.,work,opus1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Business/Money
+736,ōrātiō -ōnis f.,"speech, address",,,,TRUE,FALSE,,,,Noun: 3rd Declension,Speech/Oratory
+322,orbis -is m.,circle; orbis terrārum: world,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Geography
+416,ōrdō -īnis m.,"order, rank",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+642,orior orīrī ortus sum,"arise, begin",,,,FALSE,FALSE,,,,Verb: Deponent,Time
+755,ōrō -āre,pray,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Religion
+147,ōs ōris n.,"mouth, face",os1,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+696,os ossis n.,bone,os2,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+371,ostendō ostendere ostendī ostentum,"show, hold out",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Other Senses
+715,ōtium -ī n.,leisure,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Social Life
+944,paene,almost,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+281,pār paris,equal,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+,parātus -a -um,ready,paro1,split from paro,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,
+412,parcō parcere pepercī parsum,"spare, be sparing of (+ dat.)",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+190,parēns -ntis m./f.,parent,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+847,pāreō pārēre pāruī,obey,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Compelling/Directing
+829,pariō parere peperī partum,"bring forth, give birth to; accomplish",pario1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Life and Being
+160,parō -āre,"prepare, acquire",paro1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Making/Doing
+65,pars partis f.,part,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Measurement
+204,parum,too little,,,,FALSE,FALSE,,,,Adverb,Measurement
+143,parvus -a -um,small,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+550,pateō patēre patuī,"lie open, extend; be evident or obvious",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Geography
+71,pater patris m.,"father, ancestor",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+185,patior patī passus sum,"permit, endure",,,,FALSE,FALSE,,,,Verb: Deponent,Verbs of Compelling/Directing
+342,patria -ae f.,"fatherland, country",,,,FALSE,FALSE,,,,Noun: 1st Declension,Geography
+858,paucī -ae -a,few,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+872,paulō,"to only a small extent, slightly, a little",paulum,"I’m inclinded to put both paulō and paulum under the lemma paulum, but L&S just direct reader to paulus anyway, so maybe just go with paulus1",,TRUE,FALSE,,,,Adverb,Measurement
+872,paulum,"to only a small extent, slightly, a little",paulum,split from paulō,,FALSE,FALSE,,,,Adverb,Measurement
+844,pauper -eris,"poor, lowly",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Business/Money
+388,pāx pācis f.,peace,,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+792,peccō -āre,"commit a wrong, injure",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Justice
+183,pectus -oris n.,"chest, breast",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+530,pecūnia -ae f.,money,,,,FALSE,FALSE,,,,Noun: 1st Declension,Business/Money
+566,pecus -oris n.,"cattle, sheep",pecus1,pecus1 isn’t offered in Hedera,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+563,pellō pellere pepulī pulsum,"strike, beat, push, drive",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+988,pendō pendere pependī pēnsum,"weigh, hang, suspend; pay",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Business/Money
+30,per,through (+acc.),,,,TRUE,FALSE,,,,Preposition,Place
+488,perdō -dere -didī -ditum,destroy,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+268,pereō -īre -iī -itum,"perish, be lost",,,,FALSE,FALSE,,,,Verb: Irregular,Violence
+821,pergō pergere perrēxī perrēctum,"continue, proceed; awaken",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+265,perīculum -ī n.,danger,,,,TRUE,FALSE,,,,Noun: 2nd Declension,Violence
+702,permittō -mittere -mīsī -missum,"yield, allow, permit",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+891,perpetuus -a -um,"unbroken, perpetual",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Lengths of Time
+866,pertineō -tinēre -tinuī,"extend over, reach; refer to, pertain to, be the business of",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Education/Knowledge
+409,perveniō -venīre -vēnī -ventum,"arrive, reach",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Travel
+199,pēs pedis m.,foot,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+83,petō petere petīvī petītum,"seek, aim at",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+767,pietās -tātis f.,"sense of duty, devotion, esp. between parents and children",pietas1,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+748,pius -a -um,"dutiful, devoted, just, pious",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+287,placeō placēre placuī placitum,please,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Social Life
+649,plēbs plēbis f.,the common people,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+459,plēnus -a -um,full,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+974,plērumque,generally,,not found in Morpheus. Already own entry in dcc.,,FALSE,FALSE,,,,Adverb,Measurement
+968,plērus- plēra- plērumque,"the greater part, very many, most, the majority",plerus,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+223,poena -ae f.,"penalty, punishment",,,,FALSE,FALSE,,,,Noun: 1st Declension,Justice
+913,poēta -ae m.,poet,,,,FALSE,FALSE,,,,Noun: 1st Declension,Writing/Poetry
+636,pondus ponderis n.,weight,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Measurement
+102,pōnō pōnere posuī positum,"put, place; put aside",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Transport
+630,pontus -ī m.,"the open sea, the deep",pontus1,,,FALSE,FALSE,,,,Noun: 2nd Declension,Earth and Water
+122,populus -ī m.,people,populus1,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+759,porta -ae f.,gate,,,,TRUE,FALSE,,,,Noun: 1st Declension,The City
+853,portō -āre,carry a load,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Measurement
+487,pōscō pōscere popōscī,"demand, claim; inquire into",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+23,possum posse potuī,be able,,,,TRUE,FALSE,,,,Verb: Irregular,Making/Doing
+164,post,after (adv.),post1,,,TRUE,FALSE,,,,Adverb,Time
+164,post,after (prep. +acc.),post1,split from adverb. post2 in elementary Lewis,,FALSE,FALSE,,,,Preposition,Time
+964,posteā,afterwards,,,,FALSE,FALSE,,,,Adverb,Time
+877,posterus -a -um,"next, later",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
+384,postquam,after,,,,FALSE,FALSE,,,,Conjunction,Time
+567,potēns potentis,"able, powerful",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+737,potestās -ātis f.,power,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+947,potis -e,"powerful, able",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+584,praebeō -ēre -uī -itum,"furnish, supply, render",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Transport
+825,praeceptum -ī n.,"rule, precept; command",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Justice
+945,praecipiō -cipere -cēpī -ceptum,"anticipate, advise, warn",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Speech/Oratory
+626,praeda -ae f.,"booty, prey",,,,FALSE,FALSE,,,,Noun: 1st Declension,War and Peace
+680,praemium -ī n.,"bounty, reward",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Business/Money
+822,praesēns -ntis,"present, in person, ready",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Place
+582,praesidium -ī n.,"garrison, protection",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+423,praestō -stāre -stitī -stitum,"excel, exhibit",praesto2,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Other Senses
+756,praeter,"by, along, past; besides, except (+ acc.)",,,,FALSE,FALSE,,,,Preposition,Place
+681,praetereā,"besides, moreover",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+878,praetor -ōris m.,"praetor, one of the chief Roman magistrates",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+492,precor -ārī,"pray, invoke",,,,FALSE,FALSE,,,,Verb: Deponent,Religion
+240,premō premere pressī pressum,"press, pursue, overwhelm",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+629,pretium -ī n.,"price, worth, reward; pretium operae: a reward for trouble",,,,TRUE,FALSE,,,,Noun: 2nd Declension,Business/Money
+520,prex precis f.,"prayers, entreaties",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+252,prīmum,"at first, firstly",primus,Already own thing in dcc,,FALSE,FALSE,,,,Adverb,Time
+91,prīmus -a -um,first,,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
+317,prīnceps -cipis,"first, chief",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,The City
+948,prīncipium -ī n.,beginning,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Time
+526,prior prius,"earlier, preceding",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Time
+484,prius,before,prior,,,FALSE,FALSE,,,,Adverb,Time
+484,priusquam,before,prior,split from prius,,FALSE,FALSE,,,,Adverb,Time
+882,prīvātus -a -um,"personal, private",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Social Life
+128,prō,"for, on behalf of, in proportion to (+abl.)",pro1,Morpheus L&S links seem off. pro2 in Elem Lewis,,TRUE,FALSE,,,,Preposition,Non-Directional Prepositions
+784,probō -āre,"approve, prove; convince one (dat.) of a thing (acc.)",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Verbs of Compelling/Directing
+746,prōcēdō -cēdere -cessī -cessum,"go forth, advance",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+397,procul,at a distance,,,,FALSE,FALSE,,,,Adverb,Place
+929,prōdō prōdere prōdidī prōditum,"publish, hand down; give over, betray",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Transport
+348,proelium -ī n.,battle,,,,TRUE,FALSE,,,,Noun: 2nd Declension,War and Peace
+835,proficīscor -ficīscī -fectus sum,"set forth, go",,,,TRUE,FALSE,,,,Verb: Deponent,Travel
+604,prohibeō -ēre -uī -itum,"restrain, keep away",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Compelling/Directing
+720,prōmittō -mittere -mīsī -missum,"send forth, offer",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+189,prope,"near, next; (comp.) propior, (superl.) proximus; (adv.) prope, nearly, almost",,Could split comparative/superlatives,,FALSE,FALSE,,,,Preposition,Place
+537,properō -āre,"hasten, speed",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Motion
+930,prōpōnō -pōnere -posuī -positum,"put forth, propose, present",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
+854,proprius -a -um,"one’s own, peculiar",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+560,propter,because of (+ acc.),,,,FALSE,FALSE,,,,Preposition,Non-Directional Prepositions
+373,prōsum prodesse profuī,"be of use, do good, help (+ dat.)",,,,FALSE,FALSE,,,,Verb: Irregular,Social Life
+903,prōtinus,"at once, forthwith",,,,FALSE,FALSE,,,,Adverb,Time
+620,prōvincia -ae f.,province; official duty,,,,FALSE,FALSE,,,,Noun: 1st Declension,The City
+517,pūblicus -a -um,"public, belonging to the state",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,The City
+616,pudor pudōris m.,"sense of shame, modesty, propriety",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Personality Traits/Characteristics
+233,puella -ae f.,girl; girl-friend,,,,FALSE,FALSE,,,,Noun: 1st Declension,People
+191,puer puerī m.,boy; slave,,,,FALSE,FALSE,,,,Noun: 2nd Declension,People
+650,pūgna -ae f.,fist-fight; battle,,,,FALSE,FALSE,,,,Noun: 1st Declension,Violence
+708,pūgnō -āre,fight,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Violence
+569,pulcher -chra -chrum,beautiful,pulcher1,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Vision
+166,putō -āre,"think, suppose",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Education/Knowledge
+336,quā,"where, how",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+113,quaerō -rere -sīvī -sītum,"seek, inquire",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
+263,quālis -e,of what kind? what?,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+29,quam,how?,,,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
+29,quam,(after comparative) than,,split from other quam,,,,,,,Adverb,Pronouns/Interrogatives
+644,quamquam,"however, although",,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+489,quamvīs,however you like; although,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+621,quandō,when?; since,,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+,sī quandō,if ever,,split from quandō,,FALSE,FALSE,,,,,
+557,quantum,(adv.) how much? how greatly? how much! how greatly! as much as,,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+311,quantus -a -um,"(interr.) how great? (rel.) of what size, amount, etc.",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+786,quārē,how? why?,,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+938,quasi,as if,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+867,quattuor,four,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+4,que,and (postpositive enclitic),,not in Morpheus?,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+531,quemadmodum,"in what manner, how",,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+518,queror querī questus sum,"complain of, lament",,,,FALSE,FALSE,,,,Verb: Deponent,Emotions
+3,quī quae quod,"who, which, what",qui1,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+132,quia,because,,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+284,quīcumque quaecumque quodcumque,"who-, whatever",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+126,quīdam quaedam quoddam,"a certain one, someone",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+136,quidem,"certainly, at least",,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+969,quiēscō quiēscere quiēvī quiētum,keep quiet; sleep,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
+456,quīn,"indeed, in fact",,,,,,,,,Adverb,Conjunctions/Adverbs
+456,quīn,so that ... not (+ subj.),,split from other quīn,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+499,quīppe,"(adv.) indeed, surely",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+212,quis quid,who? what? which?,quis1,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+12,quisquam quicquam/quidquam,"any (single) person, anyone at all",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+197,quisque quaeque quidque,"each one, everyone",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+129,quisquis quidquid,"whoever, whichever",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+305,quō,"for which reason; to or in what place; to what end, for what purpose?",,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+831,quōmodo,"in what way, how?",,,,FALSE,FALSE,,,,Conjunction,Pronouns/Interrogatives
+542,quondam,"formerly, once",,,,FALSE,FALSE,,,,Adverb,Time
+510,quoniam,"since, seeing that",,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+76,quoque,"also, too",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+970,quotiēns,how many times?,,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
+273,rapiō rapere rapuī raptum,"seize, tear away",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Violence
+752,rārus -a -um,"wide apart, loose, thin; rare, seldom",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+256,ratiō -ōnis f.,"method, plan, reason",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Education/Knowledge
+826,recēdō -cēdere -cessī -cessum,"step back, recoil, recede, withdraw",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+781,recēns -ntis,"fresh, new",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Time
+319,recipiō -cipere -cēpī -ceptum,"take back, receive; sē recipere, betake oneself, go",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Verbs of Transport
+823,rēctus -a -um,"straight, direct",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+174,reddō -dere -didī -ditum,"return, give back",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Transport
+301,redeō -īre -iī -itum,"go back, return",,,,FALSE,FALSE,,,,Verb: Irregular,Motion
+171,referō referre rettulī relātum,bring back; report,,,,FALSE,FALSE,,,,Verb: Irregular,Verbs of Transport
+585,regiō -ōnis f.,"boundary, region",,,,TRUE,FALSE,,,,Noun: 3rd Declension,Geography
+561,rēgius -a -um,"kingly, royal",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+121,rēgnum -ī n.,"kingship, kingdom",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Geography
+554,regō regere rēxī rēctum,"guide, rule",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,The City
+144,relinquō -linquere -līquī -lictum,abandon,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+788,reliquus -a -um,"remaining, rest",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+774,reor rērī rātus sum,"think, imagine, suppose, deem",,,,FALSE,FALSE,,,,Verb: Deponent,Education/Knowledge
+765,reperiō -perīre -pperī -pertum,"find, find out",,,,TRUE,FALSE,,,,Verb: 4th Conjugation,Education/Knowledge
+651,repetō -petere -petīvī -petītum,"demand, exact; revisit; call to mind, recollect; repeat",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+38,rēs reī f.,"thing (rēs pūblica, commonwealth; rēs familiāris, family property, estate; rēs mīlitāris, art of war; rēs novae, revolution)",,,,TRUE,FALSE,,,,Noun: 5th Declension,Life and Being
+722,respicio -ere -spēxī -spectum,"look back, regard, consider",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Vision
+535,respondeō -spondēre -spondī -spōnsum,answer,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Speech/Oratory
+647,retineō -tinēre -tinuī -tentum,"hold back, keep",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Compelling/Directing
+888,reus -ī m.,defendant,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Justice
+995,revertō -vertere -vertī,turn back,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+813,revocō -āre,"call back, recall",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Social Life
+60,rēx rēgis m.,king,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+874,rīdeō -ēre rīsī rīsum,"laugh, laugh at",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Emotions
+662,rīpa -ae f.,bank of a river,,,,FALSE,FALSE,,,,Noun: 1st Declension,Earth and Water
+551,rogō -āre,ask,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+480,rumpō rumpere rūpī ruptum,"break, rupture",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Violence
+440,rūrsus,"back, again",,,,FALSE,FALSE,,,,Adverb,Place
+879,rūs rūris n.,country,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Geography
+398,sacer sacra sacrum,"holy, sacred",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Religion
+939,sacerdōs -dōtis m./f.,"priest, priestess",sacerdos1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+776,saeculum -ī n.,"generation, age, century",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Lengths of Time
+145,saepe,often,,,,TRUE,FALSE,,,,Adverb,Time
+244,saevus -a -um,"fierce, raging, wrathful",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+549,salūs -ūtis f.,"health, safety",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Life and Being
+659,sānctus -a -um,"sacred, inviolable",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Religion
+214,sanguis -inis m.,blood,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Body
+946,sānus -a -um,"sound, sane",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Life and Being
+453,sapiēns -ntis,wise man,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Education/Knowledge
+797,sapientia -ae f.,wisdom,,,,FALSE,FALSE,,,,Noun: 1st Declension,Education/Knowledge
+341,sat,"(adv.) enough, sufficiently",sat1,split from satis,,,,,,,Adverb,Measurement
+341,satis,"(adv.) enough, sufficiently",satis1,,,TRUE,FALSE,,,,Adverb,Measurement
+306,saxum -ī n.,"rock, cliff, crag",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Earth and Water
+154,scelus -eris n.,"crime, sin",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+971,scientia -ae f.,knowledge,,,,TRUE,FALSE,,,,Noun: 1st Declension,Education/Knowledge
+889,scīlicet,"certainly, of course",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+172,sciō -īre -īvī/-iī -ītum,know,,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Education/Knowledge
+568,scrībō scrībere scrīpsī scrīptum,write,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Writing/Poetry
+836,secundus -a -um,following; favorable,secundus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+697,sēcūrus -a -um,"free from care, tranquil; careless",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+20,sed,but,,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+506,sedeō sedēre sēdī sessum,sit,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,The House
+403,sēdēs -is f.,"seat, abode, habitation",,,,FALSE,FALSE,,,,Noun: 3rd Declension,The House
+789,semel,once,,,,FALSE,FALSE,,,,Adverb,Time
+149,semper,"always, ever",,,,TRUE,FALSE,,,,Adverb,Time
+329,senātus -ūs m.,senate,,,,FALSE,FALSE,,,,Noun: 4th Declension,The City
+558,senex -is m.,"old man, elder; senior, older",,,,FALSE,FALSE,,,,Noun: 3rd Declension,People
+793,sēnsus -ūs m.,"feeling, emotion, sense",sensus2,,,FALSE,FALSE,,,,Noun: 4th Declension,Emotions
+586,sententia -ae f.,"opinion, judgment",,,,FALSE,FALSE,,,,Noun: 1st Declension,Education/Knowledge
+302,sentiō sentīre sēnsī sēnsum,"perceive, feel, hear, see",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Other Senses
+949,sepulcrum -ī n.,"place of burial, tomb, grave",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
+108,sequor sequī secūtus sum,follow,,,,TRUE,FALSE,,,,Verb: Deponent,Motion
+575,sermō -ōnis m.,"conversation, discourse",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Speech/Oratory
+883,serviō -īre,"be a slave, serve (+ dat.)",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,The Household
+289,servō -āre,"save, watch over",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,The Household
+496,servus -ī m.,slave,servus2,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Household
+343,seu,whether → sīve,sive,,,,,,,,Conjunction,Conjunctions/Adverbs
+343,seu … seu,whether ... or → sīve,sive,split from seu,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+16,sī,if,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+79,sīc,"in this manner, thus; sīc ... ut: in the same way as",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+791,sīcut,just as,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+359,sīdus -eris n.,"star, constellation",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+261,sīgnum -ī n.,"sign, standard, mark",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+234,silva -ae f.,"forest, grove",,,,TRUE,FALSE,,,,Noun: 1st Declension,Animals/Plants
+414,similis -e,"like, similar",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Personality Traits/Characteristics
+274,simul,at the same time,,,,FALSE,FALSE,,,,Adverb,Time
+104,sine,without (+ abl.),,,,TRUE,FALSE,,,,Preposition,Non-Directional Prepositions
+507,singulī -ae -a,one each,singulus,"Morpheus says singulus, but L&S entry days see singuli.",,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+717,sinō sinere sīvī situm,"allow, let go",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+478,sinus -ūs m.,"fold of a garment; lap, bay, gulf",sinus1,,,FALSE,FALSE,,,,Noun: 4th Declension,Earth and Water
+362,sīve,whether; sīve ... sīve: whether ... or → seu,,,,,,,,,Conjunction,Conjunctions/Adverbs
+362,sīve … sīve,whether ... or → seu,,split from sīve,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+372,socius -a -um,"friendly, allied",socius1,,,,,,,,Adjective: 1st and 2nd Declension,Social Life
+372,socius -ī m.,"partner, comrade",socius2,split from socius -a -um,,TRUE,FALSE,,,,Noun: 2nd Declension,Social Life
+320,sōl sōlis m.,sun,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
+246,soleō -ēre -uī -itum,be accustomed,,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Personality Traits/Characteristics
+897,sōlum,"only, merely",solus1,,,FALSE,FALSE,,,,Adverb,Measurement
+176,sōlus -a -um,"only, alone",solus1,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+325,solvō solvere solvī solūtum,"release, set sail",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Travel
+438,somnus -ī m.,"sleep, slumber; (pl.) dreams",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
+583,sonō sonāre sonuī sonitum,"sound, resound",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Other Senses
+497,soror -ōris f.,sister,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+639,sors sortis f.,"lot, fate, destiny; oracle",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Religion
+532,spargō spargere sparsī sparsum,scatter,spargo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
+426,spatium -ī n.,space,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Air and Fire
+599,speciēs -ēī f.,"aspect, appearance",,,,FALSE,FALSE,,,,Noun: 5th Declension,Vision
+473,spectō -āre,"look at, consider",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Vision
+648,spērō -āre,to hope,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Emotions
+232,spēs speī f.,hope,,,,FALSE,FALSE,,,,Noun: 5th Declension,Emotions
+703,spīritus -ūs m.,"breath, life, spirit",,,,FALSE,FALSE,,,,Noun: 4th Declension,Life and Being
+798,statim,immediately,,,,TRUE,FALSE,,,,Adverb,Time
+678,statuō -ere -uī -ūtum,"set up, determine",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Justice
+934,stella -ae f.,star,,,,FALSE,FALSE,,,,Noun: 1st Declension,Air and Fire
+168,stō stāre stetī statum,stand,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Life and Being
+989,studeō -ēre -uī,"be eager, be zealous, care for (+ dat.)",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+450,studium -ī n.,"eagerness, zeal",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Emotions
+118,sub,"under, close to (+acc. or abl.)",,,,FALSE,FALSE,,,,Preposition,Place
+538,subeō -īre -iī -itum,go under; endure,,,,FALSE,FALSE,,,,Verb: Irregular,Motion
+848,subitō,"suddenly, unexpectedly",,,,FALSE,FALSE,,,,Adverb,Time
+17,sui sibi sē/sēsē,"him- her- itself, themselves",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
+2,sum esse fuī,"be, exist",sum1,,,TRUE,FALSE,,,,Verb: Irregular,Life and Being
+454,sūmō sūmere sūmpsī sūmptum,take up,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+401,super,over (adv.),super2,,,,,,,,Adverb,Place
+401,super,over (prep. +acc.),super2,split from super adverb,,TRUE,FALSE,,,,Preposition,Place
+656,superbus -a -um,"overbearing, proud, haughty",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+714,superī -ōrum m. pl.,"those above, i.e. the gods",superi,"Morpheus offers superi, but L&S just say see superus anyway ",,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+668,superō -āre,"overcome, surpass, defeat",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,War and Peace
+623,supersum -esse -fuī,"remain, survive; be superfluous (to)",,,,FALSE,FALSE,,,,Verb: Irregular,Place
+99,superus -a -um,"situated above, upper",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Religion
+683,supplicium -ī n.,"punishment, penalty",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Justice
+588,suprā,"above, beyond (adv.)",,,,,,,,,Adverb,Place
+588,suprā,"above, beyond (prep. +acc.)",,split from suprā adverb,,FALSE,FALSE,,,,Preposition,Place
+570,surgō surgere surrēxī surrēctum,rise,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
+937,suscipiō -cipere -cēpī ceptum,take up,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Verbs of Transport
+762,sustineō sustinēre sustinuī sustentum,"hold up, sustain",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Social Life
+27,suus -a -um,"his own, her own, its own",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+369,taceō -ēre -uī -itum,be silent,,,,,,,,,Verb: 2nd Conjugation,Other Senses
+369,tacitus -a -um,silent,tacitus1,"split from tacitus. Morpheus gives tacitus, but L&S say see taceo. ",,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+203,tālis tāle,such,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Measurement
+96,tam,"so, so much",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+58,tamen,"nevertheless, still",,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+363,tamquam,"so as, just as",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+427,tandem,finally,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+534,tangō tangere tetigī tāctum,touch,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Other Senses
+216,tantum,only,tantus,,,,,,,,Adverb,Measurement
+216,tantummodo,only,tantus,split from tantum,,FALSE,FALSE,,,,Adverb,Measurement
+105,tantus -a -um,"so great, so much",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+738,tardus -a -um,"slow, sluggish, lingering",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
+386,tēctum -ī n.,"roof; building, house",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The House
+376,tegō tegere tēxī tēctum,"cover, conceal",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Deception
+337,tellus tellūris f.,earth,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Earth and Water
+255,tēlum -ī n.,"missile, weapon, spear",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+753,tempestas -tātis f.,"period of time, season; bad weather, storm",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Lengths of Time
+485,templum -ī n.,consecrated ground; temple,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+430,temptō -āre,"try, test",tento,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Making/Doing
+89,tempus -oris n.,time,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Time
+529,tendō tendere tetendī tentum,"stretch, extend, direct (one’s steps or course)",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+775,tenebrae -brārum f. pl.,"darkness, the shadows",,,,FALSE,FALSE,,,,Noun: 1st Declension,Vision
+106,teneō -ēre -uī tentum,"hold, keep",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Other Senses
+490,tener -era -erum,tender,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+474,tergum -ī n.,"back, rear; ā tergō: from the rear",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The Body
+70,terra -ae f.,land,,,,FALSE,FALSE,,,,Noun: 1st Declension,Earth and Water
+705,terreō terrēre terruī territum,"terrify, frighten",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+682,tertius -a -um,third,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+741,testis -is m.,witness,testis1,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
+153,timeō -ēre -uī,"to fear, to dread",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Emotions
+536,timor -ōris m.,fear,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Emotions
+293,tollō tollere sustulī sublātum,"raise up, destroy",,,,FALSE,FALSE,,,,Verb: Irregular,Violence
+259,tot,so many,,,,FALSE,FALSE,,,,Adverb,Measurement
+78,tōtus -a -um,"whole, entire",totus1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+297,trādō -dere -didī -ditum,"hand over, yield",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Business/Money
+213,trahō trahere trāxī trāctum,"drag, draw",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Verbs of Compelling/Directing
+431,trānseō -īre -iī -itum,go across,,,,FALSE,FALSE,,,,Verb: Irregular,Travel
+533,trēs tria,three,,,,FALSE,FALSE,,,,Adjective: Numeral,Measurement
+807,tribūnus -ī m.,"tribune, title of various Roman officials, as mīlitum, plēbis, aerāriī",,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+275,trīstis -e,"sad, solemn, grim",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Emotions
+9,tū tuī tibi tē,you (sing.),,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+56,tum,then,,,,,,,,,Adverb,Time
+56,tunc,then,tunc,split from tum,,FALSE,FALSE,,,,Adverb,Time
+323,turba -ae f.,"crowd, uproar",,,,FALSE,FALSE,,,,Noun: 1st Declension,The City
+868,turbō -āre,"disturb, confuse",turbo1,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+377,turpis -e,"ugly, unsightly; disgraceful",,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Other Senses
+365,tūtus -a -um,"safe, protected",tueor,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,War and Peace
+44,tuus -a -um,your,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+92,ubi,"where, when",,,,TRUE,FALSE,,,,Adverb,Place
+178,ūllus -a -um,"any, anyone",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+432,ultimus -a -um,"farthest, final, last, ultimate",ulter,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+600,ultrā,"beyond, further (adv.)",ultra1,,,,,,,,Adverb,Place
+600,ultrā,"beyond, further (prep. + acc.)",ultra1,split from adverb. ultra2 seems to be specifically the preposition in the elementary Lewis. ,,FALSE,FALSE,,,,Preposition,Place
+257,umbra -ae f.,"shade, shadow",,,,FALSE,FALSE,,,,Noun: 1st Declension,Vision
+482,umquam,ever,,,,TRUE,FALSE,,,,Adverb,Time
+207,unda -ae f.,"wave, flowing water, water",,,,FALSE,FALSE,,,,Noun: 1st Declension,Earth and Water
+300,unde,from where,,,,FALSE,FALSE,,,,Adverb,Place
+686,undique,"from all sides, on all sides",,,,FALSE,FALSE,,,,Adverb,Place
+53,ūnus -a -um,one,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+82,urbs urbis f.,city,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
+527,ūsque,up to; continuously,,,,FALSE,FALSE,,,,Adverb,Time
+446,ūsus -ūs m.,"use, experience",usus2,,,FALSE,FALSE,,,,Noun: 4th Declension,Education/Knowledge
+15,ut,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,ut,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,utī,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,utī,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+243,uterque utraque utrumque,each of two,uter3,,,FALSE,FALSE,,,,Conjunction,Measurement
+850,ūtilis -e,useful,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Making/Doing
+330,ūtor ūtī ūsus sum,"use, consume, employ (+ abl.)",,,,TRUE,FALSE,,,,Verb: Deponent,Making/Doing
+827,utrum,whether; utrum ... an: whether ... or,,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+552,uxor uxōris f.,wife,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The Household
+724,vacō vacāre,"be empty, open, unoccupied",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Measurement
+673,vacuus -a -um,empty,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
+539,valeō valēre valuī,"be strong, excel, be valid, prevail",,,,,,,,,Verb: 2nd Conjugation,Social Life
+,valē,farewell!,,split from valeō,,FALSE,FALSE,,,,,
+674,vagus -a -um,"wandering, shifting",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Travel
+539,valeō valēre valuī,"be strong, excel, be valid, prevail;: farewell!",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Social Life
+816,validus -a -um,strong,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
+856,vanus -a -um,"empty; false, deceitful",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Deception
+631,varius -a -um,"changing, varied, various",varius1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
+684,vātēs -is m.,"poet, bard",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Writing/Poetry
+307,ve,or (postpositive enclitic),,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+632,vehō vehere vēxī vectum,carry,,,,,,,,,Verb: 3rd Conjugation -ō,Travel
+632,vehor vehī vectus sum,"travel, ride",veho,split from vehō,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Travel
+141,vel,"or else, or; even",,,,,,,,,Conjunction,Conjunctions/Adverbs
+141,vel ... vel,either … or,vel,split from vel,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+447,velut,"even as, just as",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+63,veniō venīre vēnī ventum,come,,,,TRUE,FALSE,,,,Verb: 4th Conjugation,Motion
+269,ventus -ī m.,wind,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Air and Fire
+188,verbum -ī n.,word,,,,TRUE,FALSE,,,,Noun: 2nd Declension,Writing/Poetry
+983,vērē,truly,verus,,,FALSE,FALSE,,,,Adverb,Speech/Oratory
+884,vereor verērī veritus sum,"fear, stand in awe of",,,,FALSE,FALSE,,,,Verb: Deponent,Emotions
+280,vērō,"in fact, certainly, without doubt", verus,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
+288,vertō vertere vertī versum,turn,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
+410,vērus -a -um,"true,",,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Speech/Oratory
+282,vester vestra vestrum,your,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+716,vestīgium -ī n.,"footstep, footprint, track",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Travel
+413,vestis -is f.,"garment, robe, clothing",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Life and Being
+665,vetō -āre vetuī vetītum,forbid,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Verbs of Compelling/Directing
+295,vetus veteris,old,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Time
+196,via -ae f.,"way, street",,,,FALSE,FALSE,,,,Noun: 1st Declension,Travel
+940,vīcīnus -a -um,"neighboring, near",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
+340,victor -ōris m.,conqueror,victor1,,,TRUE,FALSE,,,,Noun: 3rd Declension,War and Peace
+750,victōria -ae f.,victory,,,,FALSE,FALSE,,,,Noun: 1st Declension,War and Peace
+31,videō vidēre vīdī vīsum,see,,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Vision
+101,vincō vincere vīcī victum,conquer,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
+594,vinculum -ī n.,"bond, fetter, tie",,,,FALSE,FALSE,,,,Noun: 2nd Declension,War and Peace
+640,vīnum -ī n.,"vine, wine",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Animals/Plants
+85,vir virī m.,man,,,,FALSE,FALSE,,,,Noun: 2nd Declension,People
+418,virgō -inis f.,"maiden, virgin, girl",,,,FALSE,FALSE,,,,Noun: 3rd Declension,People
+111,virtūs -ūtis f.,"valor, manliness, virtue",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Personality Traits/Characteristics
+115,vīs f.,"force; (acc.) vim, (abl.) vī; (pl.) vīrēs, strength",,,,FALSE,FALSE,,,,Noun: 3rd Declension,War and Peace
+87,vīta -ae f.,life,,,,TRUE,FALSE,,,,Noun: 1st Declension,Life and Being
+326,vitium -ī n.,"flaw, fault, crime",,,,TRUE,FALSE,,,,Noun: 2nd Declension,Justice
+881,vītō -āre,"avoid, shun",,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Social Life
+156,vīvō vīvere vīxī vīctum,live,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
+352,vix,scarcely,,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+158,vocō -āre,call,,,,TRUE,FALSE,,,,Verb: 1st Conjugation,Speech/Oratory
+66,volō velle voluī,"wish, be willing",volo1,,,TRUE,FALSE,,,,Verb: Irregular,Emotions
+977,volucer -cris -cre,flying,,volucer not found in Morpheus ,,TRUE,FALSE,,,,Adjective: 3rd Declension,Animals/Plants
+976,volucris -is f./m.,bird,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
+859,voluntās -ātis f.,"wish, desire",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Emotions
+378,voluptās -ātis f.,"pleasure, enjoyment",,,,TRUE,FALSE,,,,Noun: 3rd Declension,Social Life
+130,vōs,"you (pl.); (gen.) vestrum/vestrī, (dat./abl.) vōbīs, (acc.) vōs",tu,,,TRUE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
+334,vōtum -ī n.,"solemn promise, vow; hope",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
+169,vōx vōcis f.,"voice, utterance",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Speech/Oratory
+991,vulgō,commonly,vulgo1,L&S say see vulgus,,FALSE,FALSE,,,,Adverb,The City
+675,vulgus -ī n. and m.,the common people,,,,FALSE,FALSE,,,,Noun: 2nd Declension,The City
+327,vulnus -eris n.,wound,,,,FALSE,FALSE,,,,Noun: 3rd Declension,Violence
+209,vultus -ūs m.,"look, expression, face",,,,FALSE,FALSE,,,,Noun: 4th Declension,The Body

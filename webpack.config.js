@@ -56,7 +56,7 @@ const plugins = [
   }),
   new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false }),
   new webpack.HotModuleReplacementPlugin(),
-  new CleanWebpackPlugin(['./static/dist']),
+  new CleanWebpackPlugin(),
   new CopyWebpackPlugin([
     { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
   ]),
@@ -78,7 +78,7 @@ module.exports = {
   output: {
     path: path.resolve('./static/dist/'),
     filename: '[name]-[hash].js',
-    publicPath: hotReload ? 'http://localhost:8080/' : '',
+    publicPath: hotReload ? 'http://localhost:8080/' : 'https://s3.amazonaws.com/atg-hedera-dev-assets/static/',
   },
   devtool: devMode ? 'cheap-eval-source-map' : 'source-map',
   devServer: {
