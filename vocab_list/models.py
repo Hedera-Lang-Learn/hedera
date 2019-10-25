@@ -29,13 +29,16 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        for line in fd:
-            headword, gloss = line.strip().split("\t")
-            VocabularyListEntry.objects.create(
+        lines = [line.strip().split("\t") for line in fd]
+        entries = [
+            VocabularyListEntry(
                 vocabulary_list=self,
-                headword=headword,
-                gloss=gloss
+                headword=line[0].strip(),
+                gloss=line[1].strip()
             )
+            for line in lines
+        ]
+        return VocabularyListEntry.objects.bulk_create(entries)
 
     class Meta:
         verbose_name = "vocabulary list"
@@ -103,6 +106,19 @@ class PersonalVocabularyList(models.Model):
 
     def node_familiarity(self):
         return 10
+
+    def load_tab_delimited(self, fd, familiarity):
+        lines = [line.strip().split("\t") for line in fd]
+        entries = [
+            PersonalVocabularyListEntry(
+                vocabulary_list=self,
+                familiarity=familiarity,
+                headword=line[0].strip(),
+                gloss=line[1].strip()
+            )
+            for line in lines
+        ]
+        return PersonalVocabularyListEntry.objects.bulk_create(entries)
 
     def data(self):
         stats = {}
