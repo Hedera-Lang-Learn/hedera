@@ -1,5 +1,8 @@
-from django.views.generic import DetailView, ListView
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.views.generic import CreateView, DetailView, ListView
 
+from .forms import VocabularyListForm
 from .models import PersonalVocabularyList, VocabularyList
 
 
@@ -13,6 +16,19 @@ class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
+
+
+class VocabularyListCreateView(CreateView):
+
+    template_name = "vocab_list/create.html"
+    model = VocabularyList
+    form_class = VocabularyListForm
+
+    def form_valid(self, form):
+        vl = form.save()
+        entries = vl.load_tab_delimited(form.cleaned_data["data"].read().decode("utf-8"))
+        # @@@ kick off background tasks for linking the entries
+        return redirect(reverse("vocab_list_detail", args=[vl.pk]))
 
 
 class PersonalVocabListDetailView(DetailView):

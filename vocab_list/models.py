@@ -29,16 +29,17 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        lines = [line.strip().split("\t") for line in fd]
-        entries = [
-            VocabularyListEntry(
+        lines = [line.strip().split("\t") for line in fd.split("\n")]
+        return [
+            VocabularyListEntry.objects.create(
                 vocabulary_list=self,
                 headword=line[0].strip(),
                 gloss=line[1].strip()
             )
             for line in lines
         ]
-        return VocabularyListEntry.objects.bulk_create(entries)
+        # return VocabularyListEntry.objects.bulk_create(entries)
+
 
     class Meta:
         verbose_name = "vocabulary list"

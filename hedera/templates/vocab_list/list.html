@@ -12,6 +12,8 @@
 {% block body %}
   <h1 class=" mb-4">Vocabulary Lists</h1>
 
+  <a href="{% url 'vocab_list_create' %}">Create</a>
+
   <table class="table">
     <tr><th>Title</th><th>Language</th><th>Created</th></tr>
     {% for vocab_list in vocabularylist_list %}
