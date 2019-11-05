@@ -17,6 +17,7 @@
   <form class="form" method="post" action="." enctype="multipart/form-data">
       {% csrf_token %}
       {{ form|bootstrap }}
+      <a href="{% url "vocab_list_list" %}" class="btn btn-block btn-light">Cancel</a>
       <button class="btn btn-block btn-primary">Create</button>
   </form>
 {% endblock %}
