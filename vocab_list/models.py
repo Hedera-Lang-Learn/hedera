@@ -4,7 +4,7 @@ from django.db import models
 from iso639 import languages
 
 from lattices.models import LatticeNode
-from lattices.utils import make_lemma
+# from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -74,10 +74,10 @@ class VocabularyListEntry(models.Model):
         order_with_respect_to = "vocabulary_list"
         unique_together = ("vocabulary_list", "headword")
 
-    def link_node(self):
-        if self.node is None:
-            self.node = make_lemma(self.headword)  # context?
-            self.save()
+    # def link_node(self):
+    #     if self.node is None:
+    #         self.node = make_lemma(self.headword)  # context?
+    #         self.save()
 
 
 class PersonalVocabularyList(models.Model):

@@ -4,7 +4,11 @@ from django.db import models
 class LatticeNode(models.Model):
 
     label = models.TextField()
+    canonical = models.BooleanField(default=False)
     children = models.ManyToManyField("self", symmetrical=False, related_name="parents")
+
+    def __str__(self):
+        return self.label + (" [canonical]" if self.canonical else "")
 
     def related_nodes(self, up=True, down=True):
         nodes = [self]
@@ -23,6 +27,7 @@ class LatticeNode(models.Model):
         d = {
             "pk": self.pk,
             "label": self.label,
+            "canonical": self.canonical,
             "forms": [
                 {
                     "form": form_node.form,
@@ -98,3 +103,6 @@ class LemmaNode(models.Model):
     node = models.ForeignKey(
         LatticeNode,
         related_name="lemma_strings", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.lemma + " [" + self.context + "]"

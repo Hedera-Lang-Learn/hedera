@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.views import View
 
 from lattices.models import LatticeNode
-from lattices.utils import get_or_create_nodes_for_form_and_lemmas
+# from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -104,7 +104,7 @@ class LemmatizationAPI(APIView):
 
         if node_id is None:
             form = text_data[token_index]["token"]
-            node_id = get_or_create_nodes_for_form_and_lemmas(form, [data["lemma"]], context="user").pk
+            # node_id = get_or_create_nodes_for_form_and_lemmas(form, [data["lemma"]], context="user").pk
 
         text_data[token_index]["node"] = node_id
         text_data[token_index]["resolved"] = resolved
