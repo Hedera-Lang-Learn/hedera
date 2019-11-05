@@ -1,0 +1,30 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}Vocabulary Lists{% endblock %}
+
+{% block body_class %}vocabulary{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <ul class="nav nav-tabs mb-5">
+      {% for vocab_list in lists %}
+      <li class="nav-item">
+          <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.display_name }}</a>
+      </li>
+      {% endfor %}
+      <li class="nav-item">
+          <a class="nav-link active text-success" href=""><i class="fa fa-plus"></i> Import</a>
+      </li>
+  </ul>
+
+  <form class="form" method="post" action="." enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|bootstrap }}
+      <a href="{% url "vocab_list_list" %}" class="btn btn-block btn-light">Cancel</a>
+      <button class="btn btn-block btn-primary">Create</button>
+  </form>
+{% endblock %}

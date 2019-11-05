@@ -109,15 +109,16 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        lines = [line.strip().split("\t") for line in fd]
+        lines = [line.strip().split("\t") for line in fd.split("\n")]
         entries = [
             PersonalVocabularyListEntry(
                 vocabulary_list=self,
                 familiarity=familiarity,
                 headword=line[0].strip(),
-                gloss=line[1].strip()
+                gloss=line[1].strip(),
+                _order=index
             )
-            for line in lines
+            for index, line in enumerate(lines)
         ]
         return PersonalVocabularyListEntry.objects.bulk_create(entries)
 

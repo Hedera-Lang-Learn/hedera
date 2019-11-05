@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView
 
-from .forms import VocabularyListForm
+from .forms import VocabularyListForm, PersonalVocabularyListForm
 from .models import PersonalVocabularyList, VocabularyList
 
 
@@ -48,3 +48,25 @@ class PersonalVocabListDetailView(DetailView):
             "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang")
         })
         return context
+
+
+class PersonalVocabularyListEntriesCreateView(CreateView):
+
+    template_name = "vocab_list/personal_create.html"
+    model = PersonalVocabularyList
+    form_class = PersonalVocabularyListForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            "lists": self.request.user.personalvocabularylist_set.all().order_by("lang")
+        })
+        return context
+
+    def form_valid(self, form):
+        vl, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=form.cleaned_data["lang"])
+        entries = vl.load_tab_delimited(form.cleaned_data["data"].read().decode("utf-8"), familiarity=form.cleaned_data["rating"])
+        # @@@ kick off background tasks for linking the entries
+        return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))
+
+
