@@ -8,9 +8,8 @@ with open("import-data/ivy_lattice.tsv") as f:
     for row in f:
         print(row.strip())
         logeion_lemma, logeion_frequency, morpheus_lemma, sub_lemma, short_def, shorter_def = row.strip().split("|")
-        label = sub_lemma + " " + short_def
-        lattice_node, _ = LatticeNode.objects.get_or_create(label=label, canonical=True)
-        print("  created lattice_node", lattice_node.pk, label)
+        lattice_node, _ = LatticeNode.objects.get_or_create(label=sub_lemma, gloss=shorter_def, canonical=True)
+        print("  created lattice_node", lattice_node.pk, sub_lemma, shorter_def)
         morpheus_lemma_node, created = LemmaNode.objects.get_or_create(
             context="morpheus",
             lemma=morpheus_lemma,
@@ -24,7 +23,7 @@ with open("import-data/ivy_lattice.tsv") as f:
             existing_lattice_node = morpheus_lemma_node.node
             print("  morpheus node already existed pointing to lattice node", existing_lattice_node.pk, existing_lattice_node.label)
             if existing_lattice_node.canonical:
-                parent_lattice_node = LatticeNode.objects.create(label="morpheus " + morpheus_lemma, canonical=False)
+                parent_lattice_node = LatticeNode.objects.create(label=morpheus_lemma, gloss="from morpheus", canonical=False)
                 parent_lattice_node.children.add(existing_lattice_node)
                 parent_lattice_node.children.add(lattice_node)
                 parent_lattice_node.save()

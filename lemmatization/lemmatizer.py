@@ -74,7 +74,8 @@ class Lemmatizer(object):
                 else:
                     if len(lemmas) > 1:
                         lattice_node = LatticeNode.objects.create(
-                            label="morpheus " + label,
+                            label=label,
+                            gloss="morpheus ambiguity",
                             canonical=False,
                         )
                         for lemma in lemmas:
@@ -85,7 +86,8 @@ class Lemmatizer(object):
                                 child_lattice_node = lemma_node.node
                             else:
                                 child_lattice_node = LatticeNode.objects.create(
-                                    label="morpheus " + lemma,
+                                    label=label,
+                                    gloss="morpheus ambiguity",
                                     canonical=False,
                                 )
                                 lemma_node = LemmaNode.objects.create(
@@ -103,7 +105,8 @@ class Lemmatizer(object):
                         node = lattice_node
                     else:
                         lattice_node = LatticeNode.objects.create(
-                            label="morpheus " + lemma,
+                            label=label,
+                            gloss="from morpheus",
                             canonical=False,
                         )
                         lemma_node = LemmaNode.objects.create(

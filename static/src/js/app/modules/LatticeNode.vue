@@ -2,8 +2,9 @@
   <div class="lattice-node" v-if="node">
     <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" />
     <div class="lattice-node--heading" @click.prevent="onClick">
-      <div>{{ node.pk }}. {{ node.label }}</div>
-      <VocabularyEntries :vocab-entries="vocabEntries" :show-entries="true" />
+      <span class="lattice-id">{{ node.pk }}.</span>
+      <span class="lattice-label">{{ node.label }}</span>
+      <span class="lattice-gloss">{{ node.gloss }}</span>
     </div>
     <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" />
   </div>
@@ -54,12 +55,14 @@ export default {
 
 <style lang="scss">
   @import "../../../scss/config";
-  .vocab-entries {
-    padding-left: 2rem;
-    font-weight: 500;
-    font-size: 10pt;
-    .gloss {
-      color: $gray-600;
-    }
+  .lattice-id {
+
+  }
+  .lattice-label {
+    font-weight: bold;
+  }
+  .lattice-gloss {
+    color: $gray-600;
+
   }
 </style>

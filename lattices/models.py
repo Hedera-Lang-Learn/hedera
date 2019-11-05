@@ -4,6 +4,7 @@ from django.db import models
 class LatticeNode(models.Model):
 
     label = models.TextField()
+    gloss = models.TextField()
     canonical = models.BooleanField(default=False)
     children = models.ManyToManyField("self", symmetrical=False, related_name="parents")
 
@@ -27,6 +28,7 @@ class LatticeNode(models.Model):
         d = {
             "pk": self.pk,
             "label": self.label,
+            "gloss": self.gloss,
             "canonical": self.canonical,
             "forms": [
                 {
