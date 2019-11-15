@@ -21,6 +21,7 @@ urlpatterns = [
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
     path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
+    path("api/v1/vocab_lists/<int:pk>/entries/", api.VocabularyListEntriesAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
 ]

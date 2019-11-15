@@ -112,10 +112,13 @@ class VocabularyListEntry(models.Model):
         order_with_respect_to = "vocabulary_list"
         unique_together = ("vocabulary_list", "headword")
 
-    # def link_node(self):
-    #     if self.node is None:
-    #         self.node = make_lemma(self.headword)  # context?
-    #         self.save()
+    def data(self):
+        return dict(
+            id=self.pk,
+            headword=self.headword,
+            gloss=self.gloss,
+            node=self.node.pk if self.node is not None else None,
+        )
 
 
 class PersonalVocabularyList(models.Model):

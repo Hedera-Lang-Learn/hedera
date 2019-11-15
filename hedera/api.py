@@ -122,6 +122,13 @@ class VocabularyListAPI(APIView):
         return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]
 
 
+class VocabularyListEntriesAPI(APIView):
+
+    def get_data(self):
+        vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
+        return [v.data() for v in vocab_list.entries.all().order_by("headword")]
+
+
 class PersonalVocabularyListAPI(APIView):
 
     @property
