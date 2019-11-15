@@ -1,11 +1,19 @@
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 
+from django_rq import job
 from iso639 import languages
 
 from lattices.models import LatticeNode
 # from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
+
+
+@job("default", timeout=600)
+def link_vl_node(pk):
+    obj = VocabularyListEntry.objects.get(pk=pk)
+    obj.link()
 
 
 class VocabularyList(models.Model):
@@ -41,6 +49,10 @@ class VocabularyList(models.Model):
         ]
         return VocabularyListEntry.objects.bulk_create(entries)
 
+    @property
+    def link_status(self):
+        return self.entries.filter(link_job_ended__isnull=False).count() / self.entries.count()
+
     class Meta:
         verbose_name = "vocabulary list"
 
@@ -55,6 +67,7 @@ class VocabularyList(models.Model):
             "id": self.pk,
             "title": self.title,
             "description": self.description,
+            "link_status": self.link_status,
         }
 
 
@@ -69,8 +82,29 @@ class VocabularyListEntry(models.Model):
     node = models.ForeignKey(
         LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
+    link_job_id = models.CharField(max_length=250, blank=True)
+    link_job_started = models.DateTimeField(null=True)
+    link_job_ended = models.DateTimeField(null=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def link_job(self):
+        j = link_vl_node.delay(self.pk)
+        self.link_job_id = j.id
+        self.link_job_started = timezone.now()
+        self.save()
+
+    def link(self):
+        first = self.headword.split()[0]
+        # bias towards ambiguity
+        node = None
+        for node in LatticeNode.objects.filter(label__icontains=first):
+            if node.children.exists():
+                break
+        self.node = node
+        self.link_job_ended = timezone.now()
+        self.save()
 
     class Meta:
         verbose_name = "vocabulary list entry"
@@ -109,16 +143,17 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        lines = [line.strip().split("\t") for line in fd.split("\n")]
+        lines = [line.strip().split("\t") for line in fd]
         entries = [
             PersonalVocabularyListEntry(
                 vocabulary_list=self,
                 familiarity=familiarity,
-                headword=line[0].strip(),
-                gloss=line[1].strip(),
+                headword=line[0].strip().strip('"'),
+                gloss=line[1].strip().strip('"'),
                 _order=index
             )
             for index, line in enumerate(lines)
+            if line.strip() != ""
         ]
         return PersonalVocabularyListEntry.objects.bulk_create(entries)
 

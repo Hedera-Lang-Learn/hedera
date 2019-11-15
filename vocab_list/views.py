@@ -27,7 +27,8 @@ class VocabularyListCreateView(CreateView):
     def form_valid(self, form):
         vl = form.save()
         entries = vl.load_tab_delimited(form.cleaned_data["data"].read().decode("utf-8"))
-        # @@@ kick off background tasks for linking the entries
+        for entry in entries:
+            entry.link_job()
         return redirect(reverse("vocab_list_detail", args=[vl.pk]))
 
 
