@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView
 
-from .forms import VocabularyListForm, PersonalVocabularyListForm
+from .forms import PersonalVocabularyListForm, VocabularyListForm
 from .models import PersonalVocabularyList, VocabularyList
 
 
