@@ -10,7 +10,12 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-  <h1 class=" mb-4">Vocabulary Lists</h1>
+  <h1 class=" mb-4 d-flex justify-content-between">
+    <span>Vocabulary Lists</span>
+    <a class="btn btn-sm btn-primary mt-auto" href="{% url 'vocab_list_create' %}">Create</a>
+  </h1>
+
+
 
   <table class="table">
     <tr><th>Title</th><th>Language</th><th>Created</th></tr>

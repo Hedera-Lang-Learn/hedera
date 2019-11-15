@@ -10,12 +10,15 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs mb-5">
         {% for vocab_list in lists %}
         <li class="nav-item">
             <a class="nav-link {% if vocab_list == personalvocabularylist %}active{% endif %}" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.display_name }}</a>
         </li>
         {% endfor %}
+        <li class="nav-item">
+            <a class="nav-link text-success" href="{% url 'vocab_list_personal_create' %}"><i class="fa fa-plus"></i> Import</a>
+        </li>
     </ul>
 
     <div id="personal-vocab-app" lang="{{ personalvocabularylist.lang }}"></div>
