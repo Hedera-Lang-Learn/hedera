@@ -37,7 +37,7 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        lines = [line.strip().split("\t") for line in fd.split("\n")]
+        lines = [line.decode("utf-8").strip().split("\t") for line in fd]
         entries = [
             VocabularyListEntry(
                 vocabulary_list=self,
@@ -146,7 +146,7 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        lines = [line.strip().split("\t") for line in fd]
+        lines = [line.decode("utf-8").strip().split("\t") for line in fd]
         entries = [
             PersonalVocabularyListEntry(
                 vocabulary_list=self,
