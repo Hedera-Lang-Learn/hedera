@@ -84,6 +84,13 @@ export default () => {
       Vue.component(component.name, component);
     });
 
+    Vue.use(VueKeybindings, {
+      alias: {
+        nextVocabEntry: ['shift', 'arrowdown'],
+        prevVocabEntry: ['shift', 'arrowup'],
+      },
+    });
+
     /* eslint-disable no-new */
     new Vue({
       el: '#vocab-app',

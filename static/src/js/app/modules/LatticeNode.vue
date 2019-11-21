@@ -1,6 +1,6 @@
 <template>
   <div class="lattice-node" v-if="node">
-    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" :selectedToken="selectedToken" />
     <div class="lattice-node--heading" @click.prevent="onClick">
       <div>
         <span class="lattice-id">{{ node.pk }}.</span>
@@ -10,7 +10,7 @@
         <span class="lattice-gloss">{{ node.gloss }}</span>
       </div>
     </div>
-    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" :selectedToken="selectedToken" />
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ const formFilter = (node, selectedToken) => {
 }
 
 export default {
-  props: ['node'],
+  props: ['node', 'selectedToken'],
   name: 'LatticeNode',
   methods: {
     onClick() {
@@ -42,17 +42,14 @@ export default {
   },
   computed: {
     parents() {
-      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken.word));
+      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken));
     },
     children() {
-      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken.word));
+      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken));
     },
     vocabEntries() {
       return this.node.vocabulary_entries;
     },
-    selectedToken() {
-      return this.$store.getters.selectedToken;
-    }
   }
 }
 </script>
