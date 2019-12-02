@@ -25,7 +25,7 @@
   import { FETCH_NODE } from './constants';
 
   const prevIndex = (currentIndex, tokens) => {
-    let index = currentIndex - 1;
+    let index = (currentIndex || 0) - 1;
     if (index === -1) {
         index = tokens.length - 1;
     }
@@ -33,7 +33,7 @@
   }
 
   const nextIndex = (currentIndex, tokens) => {
-    let index = currentIndex + 1;
+    let index = (currentIndex || -1) + 1;
     if (index === tokens.length) {
         index = 0;
     }
@@ -67,10 +67,7 @@
     },
     methods: {
       goToWord(indexFunction) {
-        let index = 0;
-        if (this.selectedIndex !== null) {
-          index = indexFunction(this.selectedIndex, this.entries);
-        }
+        const index = indexFunction(this.selectedIndex, this.entries);
         this.selectEntry(this.entries[index]);
       },
       selectEntry(entry) {

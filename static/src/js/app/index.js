@@ -86,8 +86,8 @@ export default () => {
 
     Vue.use(VueKeybindings, {
       alias: {
-        nextVocabEntry: ['shift', 'arrowdown'],
-        prevVocabEntry: ['shift', 'arrowup'],
+        nextVocabEntry: ['arrowright'],
+        prevVocabEntry: ['arrowleft'],
       },
     });
 
