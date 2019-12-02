@@ -129,6 +129,19 @@ class VocabularyListEntriesAPI(APIView):
         return [v.data() for v in vocab_list.entries.all().order_by("headword")]
 
 
+class VocabularyListEntryAPI(APIView):
+
+    def post(self, request, *args, **kwargs):
+        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+
+        data = json.loads(request.body)
+        node = get_object_or_404(LatticeNode, pk=data["node"])
+        entry.node = node
+        entry.save()
+
+        return JsonResponse(entry.data())
+
+
 class PersonalVocabularyListAPI(APIView):
 
     @property

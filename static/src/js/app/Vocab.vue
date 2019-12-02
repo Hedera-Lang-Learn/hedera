@@ -1,20 +1,10 @@
 <template>
   <div class="vocab-list row">
     <div class="col-8">
-        <table class="table">
-            <colgroup>
-                <col style="width:20%">
-                <col style="width:80%">
-            </colgroup>
-            <tr><th>Headword</th><th>Gloss</th></tr>
-            <tr :class="{ 'selected-entry': selectedEntry && entry.id === selectedEntry.id }" v-for="entry in entries" :key="entry.id">
-                <td @click="selectEntry(entry)">{{ entry.headword }}</a></td>
-                <td>{{ entry.gloss }}</td>
-            </tr>
-        </table>
+        <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" />
     </div>
     <div class="col-4">
-        <LatticeNode :node="selectedNode" @selected="onSelect" />
+        <LatticeNode :node="selectedNode" @selected="onSelectNode" />
     </div>
   </div>
 </template>
@@ -22,27 +12,12 @@
 <script>
   import api from './api';
   import LatticeNode from "./modules/LatticeNode.vue";
+  import VocabListTable from './components/vocab-list-table';
   import { FETCH_NODE } from './constants';
-
-  const prevIndex = (currentIndex, tokens) => {
-    let index = (currentIndex || 0) - 1;
-    if (index === -1) {
-        index = tokens.length - 1;
-    }
-    return index;
-  }
-
-  const nextIndex = (currentIndex, tokens) => {
-    let index = (currentIndex || -1) + 1;
-    if (index === tokens.length) {
-        index = 0;
-    }
-    return index;
-  }
 
   export default {
     props: ['vocabId'],
-    components: { LatticeNode },
+    components: { LatticeNode, VocabListTable },
     data() {
       return {
         selectedEntry: null,
@@ -50,42 +25,36 @@
         entries: [],
       }
     },
-    shortcuts: {
-      prevVocabEntry() {
-        this.goToWord(prevIndex);
-      },
-      nextVocabEntry() {
-        this.goToWord(nextIndex);
-      },
-    },
     computed: {
       selectedIndex() {
         if (this.selectedEntry) {
-          return this.entries.indexOf(this.selectedEntry);
+          return this.entries.findIndex(e => e.id === this.selectedEntry.id);
         }
       }
     },
     methods: {
-      goToWord(indexFunction) {
-        const index = indexFunction(this.selectedIndex, this.entries);
-        this.selectEntry(this.entries[index]);
-      },
-      selectEntry(entry) {
+      onSelectEntry(entry) {
           this.selectedEntry = entry;
-          if (entry.node === null) {
-            this.selectedNode = null;
-            return;
-          }
-          if (this.$store.state.nodes[entry.node] && this.$store.state.nodes[entry.node].id) {
-            this.selectedNode = this.$store.state.nodes[entry.node];
-          } else {
-            this.$store.dispatch(FETCH_NODE, {id: entry.node}).then(() => {
-              this.selectedNode = this.$store.state.nodes[entry.node];
-            });
-          }
+          this.selectNode(entry.node);
       },
-      onSelect(node) {
-        console.log('select', node);
+      selectNode(node_pk) {
+        if (node_pk === null) {
+          this.selectedNode = null;
+          return;
+        }
+        if (this.$store.state.nodes[node_pk] && this.$store.state.nodes[node_pk].id) {
+          this.selectedNode = this.$store.state.nodes[node_pk];
+        } else {
+          this.$store.dispatch(FETCH_NODE, {id: node_pk}).then(() => {
+            this.selectedNode = this.$store.state.nodes[node_pk];
+          });
+        }
+      },
+      onSelectNode(node) {
+        api.vocabEntryLink(this.selectedEntry.id, node.pk, data => {
+          this.entries.splice(this.selectedIndex, 1, data);
+          this.selectNode(node.pk);
+        });
       },
     },
     watch: {
@@ -102,11 +71,4 @@
 </script>
 
 <style lang="scss" scoped>
-  tr {
-      border-left: 3px solid transparent;
-  }
-  tr.selected-entry {
-      border-left-color: #444;
-      background: #EFEFEF;
-  }
 </style>

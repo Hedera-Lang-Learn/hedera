@@ -52,4 +52,5 @@ export default {
       resolved,
     }).then(r => cb(r.data));
   },
+  vocabEntryLink: (id, node, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { node }).then(r => cb(r.data)),
 };
