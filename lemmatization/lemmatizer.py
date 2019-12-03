@@ -1,10 +1,10 @@
 # from lattices.utils import get_lattice_node
 
+from lattices.models import LatticeNode, LemmaNode
+
 from .models import add_form, lookup_form
 from .services.clancydb import ClancyService
 from .services.morpheus import MorpheusService
-
-from lattices.models import LemmaNode, LatticeNode
 
 
 # from vocab_list.models import VocabularyList
