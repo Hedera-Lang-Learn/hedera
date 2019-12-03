@@ -207,6 +207,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../scss/config";
 .read-mode-toggle {
   text-align: center;
   label {
@@ -275,14 +276,15 @@ export default {
       }
     }
     .glossed-token {
-      font-size: 10pt;
+      font-family: 'Noto Serif';
+      font-size: 13pt;
 
       .token {
-        font-weight: 700;
       }
       .gloss {
         font-style: italic;
-        color: #666;
+        color: $gray-600;
+        font-size: 11pt;
       }
     }
   }
