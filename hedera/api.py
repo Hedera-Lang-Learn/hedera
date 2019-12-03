@@ -78,7 +78,7 @@ class LemmatizationAPI(APIView):
 
         # add glosses - probably a better way
         entries = {
-            entry.node.id: entry.gloss
+            entry.node.id: dict(gloss=entry.gloss, label=entry.node.label)
             for entry in VocabularyListEntry.objects.filter(node__id__in=[t["node"] for t in data])
         }
         for token in data:
