@@ -23,7 +23,6 @@ django-querycount = "*"
 iso-639 = "*"
 cltk = "*"
 sentry-sdk = "==0.12.1"
-isort = "*"
 
 [dev-packages]
 "flake8" = "*"
