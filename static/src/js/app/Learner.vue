@@ -22,7 +22,7 @@
             <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
           </h4>
           <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
-            <span class="token">{{ gloss.token }}</span>
+            <span class="token">{{ gloss.word }}</span>
             <span class="gloss">{{ gloss.gloss }}</span>
           </div>
         </div>
