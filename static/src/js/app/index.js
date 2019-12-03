@@ -6,6 +6,7 @@ import store from './store';
 import App from './App.vue';
 import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
+import Vocab from './Vocab.vue';
 
 Vue.config.productionTip = false;
 
@@ -73,6 +74,28 @@ export default () => {
       el: '#personal-vocab-app',
       render(h) {
         return h(PersonalVocab, { props: { lang: this.$el.attributes.lang.value } });
+      },
+      store,
+    });
+  }
+
+  if (document.getElementById('vocab-app')) {
+    globalComponents.forEach((component) => {
+      Vue.component(component.name, component);
+    });
+
+    Vue.use(VueKeybindings, {
+      alias: {
+        nextVocabEntry: ['arrowright'],
+        prevVocabEntry: ['arrowleft'],
+      },
+    });
+
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#vocab-app',
+      render(h) {
+        return h(Vocab, { props: { vocabId: this.$el.attributes.vocabId.value } });
       },
       store,
     });

@@ -1,11 +1,16 @@
 <template>
   <div class="lattice-node" v-if="node">
-    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" :selectedToken="selectedToken" />
     <div class="lattice-node--heading" @click.prevent="onClick">
-      <div>{{ node.pk }}. {{ node.label }}</div>
-      <VocabularyEntries :vocab-entries="vocabEntries" :show-entries="true" />
+      <div>
+        <span class="lattice-id">{{ node.pk }}.</span>
+      </div>
+      <div>
+        <span class="lattice-label">{{ node.label }}</span>
+        <span class="lattice-gloss">{{ node.gloss }}</span>
+      </div>
     </div>
-    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" :selectedToken="selectedToken" />
   </div>
 </template>
 <script>
@@ -25,7 +30,7 @@ const formFilter = (node, selectedToken) => {
 }
 
 export default {
-  props: ['node'],
+  props: ['node', 'selectedToken'],
   name: 'LatticeNode',
   methods: {
     onClick() {
@@ -37,29 +42,35 @@ export default {
   },
   computed: {
     parents() {
-      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken.word));
+      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken));
     },
     children() {
-      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken.word));
+      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken));
     },
     vocabEntries() {
       return this.node.vocabulary_entries;
     },
-    selectedToken() {
-      return this.$store.getters.selectedToken;
-    }
   }
 }
 </script>
 
 <style lang="scss">
   @import "../../../scss/config";
-  .vocab-entries {
-    padding-left: 2rem;
-    font-weight: 500;
-    font-size: 10pt;
-    .gloss {
-      color: $gray-600;
-    }
+  .lattice-node--heading {
+    display: flex;
+  }
+  .lattice-id {
+    padding-right: 0.5em;
+    font-size: 9pt;
+  }
+  .lattice-label {
+    font-family: 'Noto Serif';
+    font-size: 13pt;
+  }
+  .lattice-gloss {
+    font-family: 'Noto Serif';
+    font-style: italic;
+    color: $gray-600;
+    font-size: 11pt;
   }
 </style>

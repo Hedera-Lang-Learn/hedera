@@ -1,4 +1,6 @@
-from lattices.utils import get_lattice_node
+# from lattices.utils import get_lattice_node
+
+from lattices.models import LatticeNode, LemmaNode
 
 from .models import add_form, lookup_form
 from .services.clancydb import ClancyService
@@ -58,7 +60,70 @@ class Lemmatizer(object):
             word, following = token
             if word:
                 lemmas = self._lemmatize_token(word)
-                node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
+
+                # node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
+
+                lemmas = sorted(l.rstrip("1") for l in lemmas)
+
+                label = " or ".join(lemmas)
+                lemma_node = LemmaNode.objects.filter(
+                    context="morpheus",
+                    lemma=label).first()
+                print(word, lemmas, label)
+
+                if lemma_node:
+                    node = lemma_node.node
+                else:
+                    if len(lemmas) > 1:
+                        lattice_node = LatticeNode.objects.create(
+                            label=label,
+                            gloss="morpheus ambiguity",
+                            canonical=False,
+                        )
+                        for lemma in lemmas:
+                            lemma_node = LemmaNode.objects.filter(
+                                context="morpheus",
+                                lemma=lemma).first()
+                            if lemma_node:
+                                child_lattice_node = lemma_node.node
+                                lattice_node.children.add(child_lattice_node)
+                            # else:
+                            #     child_lattice_node = LatticeNode.objects.create(
+                            #         label=lemma,
+                            #         gloss="from morpheus",
+                            #         canonical=False,
+                            #     )
+                            #     lemma_node = LemmaNode.objects.create(
+                            #         context="morpheus",
+                            #         lemma=lemma,
+                            #         node=child_lattice_node,
+                            #     )
+                            #     lattice_node.children.add(child_lattice_node)
+                        lattice_node.save()
+                        lemma_node = LemmaNode.objects.create(
+                            context="morpheus",
+                            lemma=label,
+                            node=lattice_node,
+                        )
+                        children = lattice_node.children.all()
+                        if len(children) == 1:
+                            node = children[0]
+                        else:
+                            node = lattice_node
+                    else:
+                        node = None
+                    #     lattice_node = LatticeNode.objects.create(
+                    #         label=label,
+                    #         gloss="from morpheus",
+                    #         canonical=False,
+                    #     )
+                    #     lemma_node = LemmaNode.objects.create(
+                    #         context="morpheus",
+                    #         lemma=label,
+                    #         node=lattice_node,
+                    #     )
+                    #     node = lattice_node
+
                 if node:
                     if node.children.exists():
                         resolved = RESOLVED_UNRESOLVED

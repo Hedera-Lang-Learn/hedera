@@ -1,15 +1,6 @@
 from django.db import models
 
 
-# @@@ maybe move this elsewhere
-# ISO 639.2 CODES
-LANGUAGES = {
-    "grc": "Ancient Greek",
-    "lat": "Latin",
-    "rus": "Russian",
-}
-
-
 class FormToLemma(models.Model):
     """
     mapping from surface form to lemma before any lattice consideration

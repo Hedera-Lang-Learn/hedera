@@ -288,3 +288,10 @@ EMAIL_USE_TLS = True
 TEXT_PROVIDER_BACKENDS = [
     "databasetext.backends.TextProviderBackend",
 ]
+
+# ISO 639.2 CODES
+SUPPORTED_LANGUAGES = [
+    ["grc", "Ancient Greek"],
+    ["lat", "Latin"],
+    ["rus", "Russian"],
+]

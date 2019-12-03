@@ -21,6 +21,7 @@ export default {
     return axios.post(`${BASE_URL}personal_vocab_list/?text=${textId}`, data).then(r => cb(r.data));
   },
   fetchVocabLists: (lang, cb) => axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`).then(r => cb(r.data)),
+  fetchVocabEntries: (id, cb) => axios.get(`${BASE_URL}vocab_lists/${id}/entries/`).then(r => cb(r.data)),
   fetchTokens: (id, vocabList, personalVocabList, cb) => {
     if (!vocabList && !personalVocabList) {
       return axios.get(`${BASE_URL}lemmatized_texts/${id}/`).then(r => cb(r.data));
@@ -51,4 +52,5 @@ export default {
       resolved,
     }).then(r => cb(r.data));
   },
+  vocabEntryLink: (id, node, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { node }).then(r => cb(r.data)),
 };
