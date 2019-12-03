@@ -1,3 +1,5 @@
+import unicodedata
+
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -5,9 +7,20 @@ from django.utils import timezone
 from django_rq import job
 from iso639 import languages
 
-from lattices.models import LatticeNode
+from lattices.models import LatticeNode, LemmaNode
 # from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
+
+
+def strip_diacritics(s):
+    return unicodedata.normalize(
+        "NFC",
+        "".join((
+            c
+            for c in unicodedata.normalize("NFD", s)
+            if unicodedata.category(c) != "Mn"
+        ))
+    )
 
 
 @job("default", timeout=600)
@@ -96,13 +109,14 @@ class VocabularyListEntry(models.Model):
         self.save()
 
     def link(self):
-        first = self.headword.split()[0]
-        # bias towards ambiguity
-        node = None
-        for node in LatticeNode.objects.filter(label__icontains=first):
-            if node.children.exists():
-                break
-        self.node = node
+        first = strip_diacritics(self.headword.split()[0].strip(","))
+        lemma_node = LemmaNode.objects.filter(lemma=first).first()
+        if lemma_node is None:
+            for lemma_node in LemmaNode.objects.filter(lemma__istartswith=first):
+                if lemma_node.node.children.exists():
+                    break
+        if lemma_node:
+            self.node = lemma_node.node
         self.link_job_ended = timezone.now()
         self.save()
 

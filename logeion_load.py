@@ -1,69 +1,46 @@
 #!/usr/bin/env python
 
-import unicodedata
 
-from lattices.utils import get_or_create_node_for_lemma
-from vocab_list.models import VocabularyList, VocabularyListEntry
+from lattices.models import LatticeNode, LemmaNode
 
 
-def strip_diacritics(s):
-    return unicodedata.normalize(
-        "NFC",
-        "".join((
-            c
-            for c in unicodedata.normalize("NFD", s)
-            if unicodedata.category(c) != "Mn"
-        ))
+def create_lemma_node(lemma, lattice_node, context):
+    lemma_node, created = LemmaNode.objects.get_or_create(
+        context=context,
+        lemma=lemma,
+        defaults={
+            "node": lattice_node,
+        }
     )
-
-
-def make_entries_and_nodes(vocab_list, vocab_file):
-    for row in vocab_file:
-        headword, gloss = row.strip().split("|")
-
-        entry = VocabularyListEntry.objects.create(
-            vocabulary_list=vocab_list,
-            headword=headword,
-            gloss=gloss
-        )
-
-    c = vocab_list.entries.count()
-    i = 0
-    for entry in vocab_list.entries.all():
-        i += 1
-        print(i, c)
-        if entry.node is None:
-            lemma = entry.headword.split()[0]
-            l1 = get_or_create_node_for_lemma(lemma)
-            stripped_lemma = strip_diacritics(lemma)
-            if stripped_lemma != lemma:
-                l2 = get_or_create_node_for_lemma(stripped_lemma)
-                l2.children.add(l1)
-            entry.node = l1
-            entry.save()
-
-
-with open("import-data/logeion-greek.txt") as f:
-
-    vocab_list, created = VocabularyList.objects.get_or_create(
-        title = "Logeion Greek",
-        lang = "grc",
-        defaults = {
-            "description": "Greek shortdefs from Logeion"
-        },
-    )
-
-    make_entries_and_nodes(vocab_list, f)
+    if created:
+        print("  created", context, "lemma node", lemma_node.pk, lemma)
+    else:
+        existing_lattice_node = lemma_node.node
+        print(" ", context, "node already existed pointing to lattice node", existing_lattice_node.pk, existing_lattice_node.label)
+        if existing_lattice_node.canonical:
+            parent_lattice_node = LatticeNode.objects.create(label=lemma, gloss="from " + context, canonical=False)
+            parent_lattice_node.children.add(existing_lattice_node)
+            parent_lattice_node.children.add(lattice_node)
+            parent_lattice_node.save()
+            lemma_node.node = parent_lattice_node
+            lemma_node.save()
+            print("  created parent lattice node", parent_lattice_node.pk, parent_lattice_node.label)
+            print("  lattice node", existing_lattice_node.pk, existing_lattice_node.label, "put under", parent_lattice_node.pk, parent_lattice_node.label)
+            print("  lattice node", lattice_node.pk, lattice_node.label, "put under", parent_lattice_node.pk, parent_lattice_node.label)
+            print(" ", context, "node now points to lattice node", lemma_node.node.pk, lemma_node.node.label)
+        else:
+            existing_lattice_node.children.add(lattice_node)
+            print("  lattice node", lattice_node.pk, lattice_node.label, "put under", existing_lattice_node.pk, existing_lattice_node.label)
+            existing_lattice_node.save()
 
 
 with open("import-data/logeion-latin.txt") as f:
-
-    vocab_list, created = VocabularyList.objects.get_or_create(
-        title = "Logeion Latin",
-        lang = "lat",
-        defaults = {
-            "description": "Latin shortdefs from Logeion"
-        },
-    )
-
-    make_entries_and_nodes(vocab_list, f)
+    for row in f:
+        logeion_lemma, short_def = row.strip().split("|")
+        if LemmaNode.objects.filter(lemma=logeion_lemma, context="morpheus").exists():
+            pass
+        else:
+            lattice_node, _ = LatticeNode.objects.get_or_create(label=logeion_lemma, gloss=short_def, canonical=False)
+            print("  created lattice_node", lattice_node.pk, logeion_lemma, short_def)
+            create_lemma_node(logeion_lemma, lattice_node, "morpheus")
+            print()

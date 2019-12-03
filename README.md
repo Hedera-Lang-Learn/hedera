@@ -26,10 +26,11 @@ createdb hedera
 ./manage.py loaddata sites
 ```
 
-To import vocabulary list data (whichever ones you want):
+To import lattice data:
 
 ```
 ./manage.py shell -c "import load_ivy_lattice"
+./manage.py shell -c "import logeion_load"
 ```
 
 And finally, to start Django,

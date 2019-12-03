@@ -40,5 +40,5 @@ with open("import-data/ivy_lattice.tsv") as f:
         logeion_lemma, logeion_frequency, morpheus_lemma, sub_lemma, short_def, shorter_def = row.strip().split("|")
         lattice_node, _ = LatticeNode.objects.get_or_create(label=sub_lemma, gloss=shorter_def, canonical=True)
         print("  created lattice_node", lattice_node.pk, sub_lemma, shorter_def)
-        create_lemma_node(morpheus_lemma, lattice_node, "morpheus")
+        create_lemma_node(morpheus_lemma.rstrip("1"), lattice_node, "morpheus")
         print()

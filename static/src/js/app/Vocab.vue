@@ -4,7 +4,9 @@
         <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" />
     </div>
     <div class="col-4">
-        <LatticeNode :node="selectedNode" @selected="onSelectNode" />
+        <div style="position: fixed;">
+          <LatticeNode :node="selectedNode" @selected="onSelectNode" />
+        </div>
     </div>
   </div>
 </template>

@@ -63,6 +63,8 @@ class Lemmatizer(object):
 
                 # node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
 
+                lemmas = sorted(l.rstrip("1") for l in lemmas)
+
                 label = " or ".join(lemmas)
                 lemma_node = LemmaNode.objects.filter(
                     context="morpheus",
@@ -84,37 +86,43 @@ class Lemmatizer(object):
                                 lemma=lemma).first()
                             if lemma_node:
                                 child_lattice_node = lemma_node.node
-                            else:
-                                child_lattice_node = LatticeNode.objects.create(
-                                    label=lemma,
-                                    gloss="from morpheus",
-                                    canonical=False,
-                                )
-                                lemma_node = LemmaNode.objects.create(
-                                    context="morpheus",
-                                    lemma=lemma,
-                                    node=child_lattice_node,
-                                )
-                            lattice_node.children.add(child_lattice_node)
+                                lattice_node.children.add(child_lattice_node)
+                            # else:
+                            #     child_lattice_node = LatticeNode.objects.create(
+                            #         label=lemma,
+                            #         gloss="from morpheus",
+                            #         canonical=False,
+                            #     )
+                            #     lemma_node = LemmaNode.objects.create(
+                            #         context="morpheus",
+                            #         lemma=lemma,
+                            #         node=child_lattice_node,
+                            #     )
+                            #     lattice_node.children.add(child_lattice_node)
                         lattice_node.save()
                         lemma_node = LemmaNode.objects.create(
                             context="morpheus",
                             lemma=label,
                             node=lattice_node,
                         )
-                        node = lattice_node
+                        children = lattice_node.children.all()
+                        if len(children) == 1:
+                            node = children[0]
+                        else:
+                            node = lattice_node
                     else:
-                        lattice_node = LatticeNode.objects.create(
-                            label=label,
-                            gloss="from morpheus",
-                            canonical=False,
-                        )
-                        lemma_node = LemmaNode.objects.create(
-                            context="morpheus",
-                            lemma=label,
-                            node=lattice_node,
-                        )
-                        node = lattice_node
+                        node = None
+                    #     lattice_node = LatticeNode.objects.create(
+                    #         label=label,
+                    #         gloss="from morpheus",
+                    #         canonical=False,
+                    #     )
+                    #     lemma_node = LemmaNode.objects.create(
+                    #         context="morpheus",
+                    #         lemma=label,
+                    #         node=lattice_node,
+                    #     )
+                    #     node = lattice_node
 
                 if node:
                     if node.children.exists():
