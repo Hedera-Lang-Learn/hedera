@@ -1,3 +1,5 @@
+import logging
+
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -15,6 +17,14 @@ def lemmatized_texts(request):
 
 def create(request):
     cloned_from = None
+    select_lang   = ""
+    # create the  selected language here, which is the lanaguage of the last submitted text
+    try:
+        select_lang = models.LemmatizedText.objects.filter(Q(created_by=request.user)).order_by("-pk")[0].lang
+    except Exception as e:
+        logging.exception(e)
+
+    # the POST is after form is submitted
     if request.method == "POST":
         title = request.POST.get("title")
         lang = request.POST.get("lang")
@@ -31,9 +41,15 @@ def create(request):
         )
         lt.lemmatize()
         return redirect("lemmatized_texts_list")
+
+    # the GET is for initial page or getting the cloned from object
     if request.GET.get("cloned_from"):
         cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
-    return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from})
+
+    # if the text is being cloned then make sure that language is the selected one
+    if cloned_from: select_lang = cloned_from.lang
+
+    return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from, "select_lang": select_lang})
 
 
 @require_POST
