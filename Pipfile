@@ -9,7 +9,7 @@ python_version = "3.7"
 [packages]
 django-user-accounts = "*"
 pinax-eventlog = "*"
-django = "*"
+django = "==2.2.7"
 django-webpack-loader = "*"
 pinax-templates = "*"
 requests = "*"
