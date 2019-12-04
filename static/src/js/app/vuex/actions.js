@@ -35,7 +35,7 @@ export default {
   [CREATE_VOCAB_ENTRY]: ({ commit, state }, { nodeId, familiarity, headword, gloss }) => {
     const cb = data => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     api
-      .updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, cb)
+      .updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, null, cb)
       .catch(logoutOnError(commit));
   },
   // eslint-disable-next-line max-len
