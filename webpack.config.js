@@ -67,8 +67,8 @@ if (devMode) {
 } else {
   plugins.push(
     new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-    ]),
+      'NODE_ENV'
+    ])
   );
 }
 
