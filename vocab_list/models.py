@@ -160,17 +160,30 @@ class PersonalVocabularyList(models.Model):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        lines = [line.decode("utf-8").strip().split("\t") for line in fd]
+        def clean(headword, gloss):
+            return (headword.strip().strip('"'), gloss.strip().strip('"'))
+
+        lines = [
+            clean(*line.decode("utf-8").strip().split("\t"))
+            for line in fd
+        ]
+        already_exist = [
+            p.headword
+            for p in PersonalVocabularyListEntry.objects.filter(
+                vocabulary_list=self,
+                headword__in=[line[0] for line in lines]
+            )
+        ]
         entries = [
             PersonalVocabularyListEntry(
                 vocabulary_list=self,
                 familiarity=familiarity,
-                headword=line[0].strip().strip('"'),
-                gloss=line[1].strip().strip('"'),
+                headword=line[0],
+                gloss=line[1],
                 _order=index
             )
             for index, line in enumerate(lines)
-            if line.strip() != ""
+            if line[0] != "" and line[0] not in already_exist
         ]
         return PersonalVocabularyListEntry.objects.bulk_create(entries)
 
