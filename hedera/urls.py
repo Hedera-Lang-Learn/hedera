@@ -1,4 +1,7 @@
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
@@ -25,4 +28,4 @@ urlpatterns = [
     path("api/v1/vocab_entries/<int:pk>/link/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)
