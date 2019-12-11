@@ -50,15 +50,29 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        lines = [line.decode("utf-8").strip().split("\t") for line in fd]
+        def clean(headword, gloss):
+            return (headword.strip().strip('"'), gloss.strip().strip('"'))
+
+        lines = [
+            clean(*line.decode("utf-8").strip().split("\t"))
+            for line in fd
+        ]
+        already_exist = [
+            p.headword
+            for p in VocabularyListEntry.objects.filter(
+                vocabulary_list=self,
+                headword__in=[line[0] for line in lines]
+            )
+        ]
         entries = [
             VocabularyListEntry(
                 vocabulary_list=self,
-                headword=line[0].strip(),
-                gloss=line[1].strip(),
+                headword=line[0],
+                gloss=line[1],
                 _order=index
             )
             for index, line in enumerate(lines)
+            if line[0] != "" and line[0] not in already_exist
         ]
         return VocabularyListEntry.objects.bulk_create(entries)
 
