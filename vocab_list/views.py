@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, DeleteView
 
 from .forms import PersonalVocabularyListForm, VocabularyListForm
 from .models import PersonalVocabularyList, VocabularyList
@@ -16,6 +16,15 @@ class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
+
+
+class VocabularyListDeleteView(DeleteView):
+
+    template_name = "vocab_list/delete.html"
+    model = VocabularyList
+
+    def get_success_url(self):
+        return reverse("vocab_list_list")
 
 
 class VocabularyListCreateView(CreateView):
