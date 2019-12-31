@@ -85,10 +85,10 @@ else:
     # URL that handles the media served from MEDIA_ROOT. Make sure to use a
     # trailing slash.
     # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-    MEDIA_URL = "/site_media/media/"
+    MEDIA_URL = "/media/"
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
-    STATIC_URL = "/site_media/static/"
+    STATIC_URL = "/static/"
 
     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
@@ -287,4 +287,11 @@ EMAIL_USE_TLS = True
 
 TEXT_PROVIDER_BACKENDS = [
     "databasetext.backends.TextProviderBackend",
+]
+
+# ISO 639.2 CODES
+SUPPORTED_LANGUAGES = [
+    ["grc", "Ancient Greek"],
+    ["lat", "Latin"],
+    ["rus", "Russian"],
 ]

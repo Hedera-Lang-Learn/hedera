@@ -1,15 +1,25 @@
-.lattice-node {
-  margin-left: 1em;
-  cursor: pointer;
-  &:hover {
-
-  }
+.lattice-tree h4 {
+  font-family: 'Noto Serif';
 }
-
-.lattice-tree > .lattice-node > .lattice-node--heading {
-  font-weight: bold;
+.lattice-node {
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .mark-resolved {
   margin-top: 20px;
+}
+
+.lattice-node--heading {
+  padding: 2px 8px;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid #999;
+  }
+}
+.lattice-tree > .lattice-node > .lattice-node--heading {
+  background-color: #F0F0F0;
+  .lattice-id {
+    color: red;
+  }
 }

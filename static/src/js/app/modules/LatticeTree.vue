@@ -1,7 +1,7 @@
 <template>
   <div class="lattice-tree">
     <h4>{{ token.word }}</h4>
-    <LatticeNode :node="node" @selected="onSelect" />
+    <LatticeNode :node="node" @selected="onSelect" :selectedToken="selectedToken" />
     <AddLemma @addLemma="onAddLemma" />
     <MarkResolved :resolved="token.resolved" @toggle="markResolved" />
   </div>
@@ -18,6 +18,9 @@ export default {
   computed: {
     textId() {
       return this.$store.state.textId;
+    },
+    selectedToken() {
+      return this.$store.getters.selectedToken.word;
     }
   },
   methods: {

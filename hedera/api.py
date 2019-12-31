@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.views import View
 
 from lattices.models import LatticeNode
-from lattices.utils import get_or_create_nodes_for_form_and_lemmas
+# from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -78,7 +78,7 @@ class LemmatizationAPI(APIView):
 
         # add glosses - probably a better way
         entries = {
-            entry.node.id: entry.gloss
+            entry.node.id: dict(gloss=entry.gloss, label=entry.node.label)
             for entry in VocabularyListEntry.objects.filter(node__id__in=[t["node"] for t in data])
         }
         for token in data:
@@ -104,7 +104,7 @@ class LemmatizationAPI(APIView):
 
         if node_id is None:
             form = text_data[token_index]["token"]
-            node_id = get_or_create_nodes_for_form_and_lemmas(form, [data["lemma"]], context="user").pk
+            # node_id = get_or_create_nodes_for_form_and_lemmas(form, [data["lemma"]], context="user").pk
 
         text_data[token_index]["node"] = node_id
         text_data[token_index]["resolved"] = resolved
@@ -120,6 +120,26 @@ class VocabularyListAPI(APIView):
 
     def get_data(self):
         return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]
+
+
+class VocabularyListEntriesAPI(APIView):
+
+    def get_data(self):
+        vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
+        return [v.data() for v in vocab_list.entries.all().order_by("headword")]
+
+
+class VocabularyListEntryAPI(APIView):
+
+    def post(self, request, *args, **kwargs):
+        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+
+        data = json.loads(request.body)
+        node = get_object_or_404(LatticeNode, pk=data["node"])
+        entry.node = node
+        entry.save()
+
+        return JsonResponse(entry.data())
 
 
 class PersonalVocabularyListAPI(APIView):

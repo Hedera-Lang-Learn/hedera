@@ -7,3 +7,6 @@ static/dist/
 .DS_Store
 .vscode
 .idea
+.env*
+db_dumps/
+npm-debug.log

@@ -38,7 +38,7 @@ const jsRule = {
 };
 
 const assetRule = {
-  test: /.(jpg|png|woff(2)?|eot|ttf|svg)$/,
+  test: /.(jpg|png|woff(2)?|eot|ttf|svg|ico)$/,
   loader: 'file-loader',
 };
 
@@ -65,11 +65,7 @@ const plugins = [
 if (devMode) {
   styleRule.use = ['css-hot-loader', ...styleRule.use];
 } else {
-  plugins.push(
-    new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-    ]),
-  );
+  plugins.push(new webpack.EnvironmentPlugin(['NODE_ENV']));
 }
 
 module.exports = {

@@ -47,7 +47,7 @@ export default {
   }
 
   .highlight-not-in-list {
-    .token {
+    .word {
       background: hsl(0, 44%, 80%);
       &.ignored {
         background: $gray-300;

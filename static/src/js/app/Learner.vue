@@ -22,8 +22,8 @@
             <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
           </h4>
           <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
-            <span class="token">{{ gloss.token }}</span>
-            <span class="gloss">{{ gloss.gloss }}</span>
+            <span class="token">{{ gloss.gloss.label }}</span>
+            <span class="gloss">{{ gloss.gloss.gloss }}</span>
           </div>
         </div>
         <div class="xxxposition-fixed" v-else>
@@ -131,7 +131,7 @@ export default {
         return;
       }
 
-      const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss) || '';
+      const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss && this.vocabEntries[0].gloss.gloss) || '';
       this.selectedNodeRating = rating;
       if (this.personalVocabEntry) {
         this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
@@ -197,7 +197,7 @@ export default {
         .filter(t => t !== null && t.gloss !== null);
     },
     glossesDownload() {
-      const data = toCSV(this.glosses.map(g => ({token: g.token, gloss: g.gloss})));
+      const data = toCSV(this.glosses.map(g => ({label: g.gloss.label, gloss: g.gloss.gloss})));
       if (data !== null) {
         return encodeURI(`data:text/csv;charset=utf-8,${data}`);
       }
@@ -207,6 +207,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../scss/config";
 .read-mode-toggle {
   text-align: center;
   label {
@@ -275,14 +276,15 @@ export default {
       }
     }
     .glossed-token {
-      font-size: 10pt;
+      font-family: 'Noto Serif';
+      font-size: 13pt;
 
       .token {
-        font-weight: 700;
       }
       .gloss {
         font-style: italic;
-        color: #666;
+        color: $gray-600;
+        font-size: 11pt;
       }
     }
   }

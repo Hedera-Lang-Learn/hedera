@@ -26,15 +26,12 @@ createdb hedera
 ./manage.py loaddata sites
 ```
 
-To import vocabulary list data (whichever ones you want):
+To import lattice data:
 
 ```
-./manage.py shell -c "import dcc_latin_morpheus_load"
-./manage.py shell -c "import shelmerdine_load"
+./manage.py shell -c "import load_ivy_lattice"
 ./manage.py shell -c "import logeion_load"
 ```
-
-Note: the last one takes a long time (potentially longer than an hour) and is mostly useful just to get a lot of glosses for words not in the DCC (or other) vocabulary lists.
 
 And finally, to start Django,
 

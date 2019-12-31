@@ -1,11 +1,32 @@
+import unicodedata
+
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 
+from django_rq import job
 from iso639 import languages
 
-from lattices.models import LatticeNode
-from lattices.utils import make_lemma
+from lattices.models import LatticeNode, LemmaNode
+# from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
+
+
+def strip_diacritics(s):
+    return unicodedata.normalize(
+        "NFC",
+        "".join((
+            c
+            for c in unicodedata.normalize("NFD", s)
+            if unicodedata.category(c) != "Mn"
+        ))
+    )
+
+
+@job("default", timeout=600)
+def link_vl_node(pk):
+    obj = VocabularyListEntry.objects.get(pk=pk)
+    obj.link()
 
 
 class VocabularyList(models.Model):
@@ -29,13 +50,35 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        for line in fd:
-            headword, gloss = line.strip().split("\t")
-            VocabularyListEntry.objects.create(
+        def clean(headword, gloss):
+            return (headword.strip().strip('"'), gloss.strip().strip('"'))
+
+        lines = [
+            clean(*line.decode("utf-8").strip().split("\t"))
+            for line in fd
+        ]
+        already_exist = [
+            p.headword
+            for p in VocabularyListEntry.objects.filter(
                 vocabulary_list=self,
-                headword=headword,
-                gloss=gloss
+                headword__in=[line[0] for line in lines]
             )
+        ]
+        entries = [
+            VocabularyListEntry(
+                vocabulary_list=self,
+                headword=line[0],
+                gloss=line[1],
+                _order=index
+            )
+            for index, line in enumerate(lines)
+            if line[0] != "" and line[0] not in already_exist
+        ]
+        return VocabularyListEntry.objects.bulk_create(entries)
+
+    @property
+    def link_status(self):
+        return self.entries.filter(link_job_ended__isnull=False).count() / self.entries.count()
 
     class Meta:
         verbose_name = "vocabulary list"
@@ -51,6 +94,7 @@ class VocabularyList(models.Model):
             "id": self.pk,
             "title": self.title,
             "description": self.description,
+            "link_status": self.link_status,
         }
 
 
@@ -65,8 +109,30 @@ class VocabularyListEntry(models.Model):
     node = models.ForeignKey(
         LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
+    link_job_id = models.CharField(max_length=250, blank=True)
+    link_job_started = models.DateTimeField(null=True)
+    link_job_ended = models.DateTimeField(null=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def link_job(self):
+        j = link_vl_node.delay(self.pk)
+        self.link_job_id = j.id
+        self.link_job_started = timezone.now()
+        self.save()
+
+    def link(self):
+        first = strip_diacritics(self.headword.split()[0].strip(","))
+        lemma_node = LemmaNode.objects.filter(lemma=first).first()
+        if lemma_node is None:
+            for lemma_node in LemmaNode.objects.filter(lemma__istartswith=first):
+                if lemma_node.node.children.exists():
+                    break
+        if lemma_node:
+            self.node = lemma_node.node
+        self.link_job_ended = timezone.now()
+        self.save()
 
     class Meta:
         verbose_name = "vocabulary list entry"
@@ -74,10 +140,13 @@ class VocabularyListEntry(models.Model):
         order_with_respect_to = "vocabulary_list"
         unique_together = ("vocabulary_list", "headword")
 
-    def link_node(self):
-        if self.node is None:
-            self.node = make_lemma(self.headword)  # context?
-            self.save()
+    def data(self):
+        return dict(
+            id=self.pk,
+            headword=self.headword,
+            gloss=self.gloss,
+            node=self.node.pk if self.node is not None else None,
+        )
 
 
 class PersonalVocabularyList(models.Model):
@@ -103,6 +172,34 @@ class PersonalVocabularyList(models.Model):
 
     def node_familiarity(self):
         return 10
+
+    def load_tab_delimited(self, fd, familiarity):
+        def clean(headword, gloss):
+            return (headword.strip().strip('"'), gloss.strip().strip('"'))
+
+        lines = [
+            clean(*line.decode("utf-8").strip().split("\t"))
+            for line in fd
+        ]
+        already_exist = [
+            p.headword
+            for p in PersonalVocabularyListEntry.objects.filter(
+                vocabulary_list=self,
+                headword__in=[line[0] for line in lines]
+            )
+        ]
+        entries = [
+            PersonalVocabularyListEntry(
+                vocabulary_list=self,
+                familiarity=familiarity,
+                headword=line[0],
+                gloss=line[1],
+                _order=index
+            )
+            for index, line in enumerate(lines)
+            if line[0] != "" and line[0] not in already_exist
+        ]
+        return PersonalVocabularyListEntry.objects.bulk_create(entries)
 
     def data(self):
         stats = {}
