@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView, DeleteView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView
 
 from .forms import PersonalVocabularyListForm, VocabularyListForm
 from .models import PersonalVocabularyList, VocabularyList
@@ -78,5 +78,3 @@ class PersonalVocabularyListEntriesCreateView(CreateView):
         entries = vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
         # @@@ kick off background tasks for linking the entries
         return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))
-
-
