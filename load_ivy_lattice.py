@@ -37,8 +37,10 @@ def create_lemma_node(lemma, lattice_node, context):
 with open("import-data/ivy_lattice.tsv") as f:
     for row in f:
         print(row.strip())
-        logeion_lemma, logeion_frequency, morpheus_lemma, sub_lemma, short_def, shorter_def = row.strip().split("|")
-        lattice_node, _ = LatticeNode.objects.get_or_create(label=sub_lemma, gloss=shorter_def, canonical=True)
+        logeion_lemma, logeion_frequency, morpheus_lemma, sub_lemma, short_def, shorter_def = (row.strip().split("\t") + [None, None, None, None, None, None])[:6]
+        if sub_lemma and shorter_def:
+            lattice_node, _ = LatticeNode.objects.get_or_create(label=sub_lemma, gloss=shorter_def, canonical=True)
         print("  created lattice_node", lattice_node.pk, sub_lemma, shorter_def)
-        create_lemma_node(morpheus_lemma.rstrip("1"), lattice_node, "morpheus")
+        if morpheus_lemma:
+            create_lemma_node(morpheus_lemma.rstrip("1"), lattice_node, "morpheus")
         print()
