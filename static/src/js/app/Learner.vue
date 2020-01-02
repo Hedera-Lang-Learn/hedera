@@ -21,9 +21,9 @@
             Glosses
             <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
           </h4>
-          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.node">
-            <span class="token">{{ gloss.gloss.label }}</span>
-            <span class="gloss">{{ gloss.gloss.gloss }}</span>
+          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.pk">
+            <span class="token">{{ gloss.label }}</span>
+            <span class="gloss">{{ gloss.gloss }}</span>
           </div>
         </div>
         <div class="xxxposition-fixed" v-else>
@@ -40,7 +40,7 @@
             </div>
             <TextFamiliarity v-if="ranks" :ranks="ranks" />
             <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
-            <FamiliarityRating v-if="selectedNode && vocabEntries.length > 0" :value="selectedNodeRating" @input="onRatingChange" />
+            <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
           </div>
           <div>
             <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
@@ -125,26 +125,21 @@ export default {
       this.showFamiliarity = !this.showFamiliarity;
     },
     onRatingChange(rating) {
-      const headword = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].headword) || '';
+      const { label, gloss } = this.selectedNode;
 
-      if (headword === '') {
-        return;
-      }
-
-      const gloss = (this.vocabEntries && this.vocabEntries[0] && this.vocabEntries[0].gloss && this.vocabEntries[0].gloss.gloss) || '';
       this.selectedNodeRating = rating;
       if (this.personalVocabEntry) {
         this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId: this.personalVocabEntry.id,
           familiarity: rating,
-          headword,
+          headword: label,
           gloss,
         });
       } else {
         this.$store.dispatch(CREATE_VOCAB_ENTRY, {
           nodeId: this.selectedNode.pk,
           familiarity: rating,
-          headword,
+          headword: label,
           gloss,
         });
       }
@@ -194,10 +189,10 @@ export default {
       return this.uniqueNodes
         .filter(node => this.knownEntries.filter(k => k.node === node).length === 0)
         .map(node => this.tokens.filter(t => t.node === node)[0] || null)
-        .filter(t => t !== null && t.gloss !== null);
+        .filter(t => t !== null && t.gloss !== null && t.resolved !== 'unresolved');
     },
     glossesDownload() {
-      const data = toCSV(this.glosses.map(g => ({label: g.gloss.label, gloss: g.gloss.gloss})));
+      const data = toCSV(this.glosses.map(g => ({label: g.label, gloss: g.gloss})));
       if (data !== null) {
         return encodeURI(`data:text/csv;charset=utf-8,${data}`);
       }
