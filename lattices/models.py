@@ -21,6 +21,14 @@ class LatticeNode(models.Model):
                 nodes += parent.related_nodes(down=False)
         return nodes
 
+    def gloss_data(self):
+        return dict(
+            pk=self.pk,
+            gloss=self.gloss,
+            label=self.label,
+            canonical=self.canonical,
+        )
+
     def to_dict(self, up=True, down=True):
         """
         serialises the node with its form/lemma strings and descendants
