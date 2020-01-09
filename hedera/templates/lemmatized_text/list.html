@@ -1,6 +1,7 @@
 {% extends "site_base.html" %}
 
 {% load i18n %}
+{% load static %}
 {% load lemmatized_text_tags %}
 
 {% block head_title %}Lemmatized Texts{% endblock %}
@@ -17,7 +18,7 @@
     <tr><th>Text</th><th>Language</th><th>Length</th><th>Familiarity</th><th></th></tr>
   {% for text in lemmatized_texts %}
     <tr>
-      <td style="vertical-align: middle;">
+      <td style="vertical-align: middle;" id="title-{{text.pk}}">
         <b>{{ text.title }}</b>{% if text.completed == 100 %}<br>
         <a href="/lemmatized_text/{{ text.pk }}/">Teacher</a>
         &bull;
@@ -28,9 +29,9 @@
         {% if text.completed == 100 %}
           {{ text.token_count }}
         {% else %}
-        <div class="progress-container">
+        <div class="progress-container" id="progress-{{ text.pk }}">
           <div class="progress">
-            <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar {% if text.completed < 100 %}bg-warning{% endif %}" id="{{ text.pk }}" role="progressbar" style="width: {{ text.completed }}%" aria-valuenow="{{ text.completed }}" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="status">
             {% if text.can_retry %}
@@ -56,7 +57,7 @@
         </div>
         {% endif %}
       </td>
-      <td style="vertical-align: middle;">
+      <td style="vertical-align: middle;" id="button-column-{{ text.pk }}">
         <a class="btn btn-outline-danger btn-sm" href="{% url 'lemmatized_texts_delete' text.pk %}"><i class="fa fa-trash"></i> Delete</a>
         {% if text.completed == 100 %}
         <a class="btn btn-outline-primary btn-sm" href="{% url 'lemmatized_texts_create' %}?cloned_from={{ text.pk }}"><i class="fa fa-copy"></i> Clone</a>
@@ -67,4 +68,8 @@
   </table>
 
   <a class="btn btn-primary" href="{% url 'lemmatized_texts_create' %}"><i class="fa fa-plus"></i> Create</a>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/completionStatus.js' %}"></script>
 {% endblock %}
