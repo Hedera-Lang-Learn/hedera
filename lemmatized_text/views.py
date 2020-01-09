@@ -90,5 +90,5 @@ def lemma_status(request, pk):
     lemma = models.LemmatizedText.objects.get(pk=pk)
     status = lemma.completed
     length = lemma.token_count()
-    return JsonResponse({"status": status, "length": length})
+    return JsonResponse({"status": status, "len": length})
     
