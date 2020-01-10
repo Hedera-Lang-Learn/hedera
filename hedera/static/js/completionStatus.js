@@ -14,7 +14,7 @@ const updatePage = (lemma, length) => {
   clone.href = `/lemmatized_text/create/?cloned_from=${lemma}`;
   clone.classList.add('btn', 'btn-outline-primary', 'btn-sm');
   cloneIcon.classList.add('fa', 'fa-copy');
-  const title = document.getElementById(`title-${lemma}`);  
+  const title = document.getElementById(`title-${lemma}`);
   title.appendChild(document.createElement('br'));
   title.appendChild(teacher);
   title.appendChild(document.createTextNode(' \u2022 '));
@@ -32,24 +32,22 @@ const updatePage = (lemma, length) => {
 
 const fetchStatus = (lemma) => {
   window.fetch(`${window.location.href}${lemma}/status/`)
-    .then( (r) => {
-      return r.json();
-    })
-    .then( (rj) => {
+    .then((r) => r.json())
+    .then((rj) => {
       const bar = document.getElementById(lemma);
       bar.setAttribute('aria-valuenow', rj.status);
       bar.setAttribute('style', `width: ${rj.status}%`);
-      if(rj.status !== 100){
+      if (rj.status !== 100) {
         setTimeout(fetchStatus, 5000, lemma);
       } else {
-        updatePage(lemma, rj.len);         
+        updatePage(lemma, rj.len);
       }
     });
-}
+};
 
-const lemmatizedTexts =  document.getElementsByClassName('progress-bar');
+const lemmatizedTexts = document.getElementsByClassName('progress-bar');
 const barIds = Array.prototype.map.call(lemmatizedTexts, (lemma) => lemma.id);
 
-barIds.forEach( (lemma) => {
+barIds.forEach((lemma) => {
   fetchStatus(lemma);
 });
