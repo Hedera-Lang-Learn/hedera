@@ -60,9 +60,9 @@ class LemmatizationAPI(APIView):
 
     def decorate_token_data(self, text):
         data = text.data
+        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
         if self.request.GET.get("vocablist", None) is not None:
             vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
-            nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
             for token in data:
                 node = nodes.filter(pk=token["node"]).first()  # does doing this avoid a second trip to the database?
                 if node is not None:
@@ -76,13 +76,10 @@ class LemmatizationAPI(APIView):
                 token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
                 token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
 
-        # add glosses - probably a better way
-        entries = {
-            entry.node.id: dict(gloss=entry.gloss, label=entry.node.label)
-            for entry in VocabularyListEntry.objects.filter(node__id__in=[t["node"] for t in data])
-        }
         for token in data:
-            token["gloss"] = entries.get(token["node"], None)
+            node = nodes.filter(pk=token["node"]).first()
+            if node is not None:
+                token.update(node.gloss_data())
 
         return data
 
