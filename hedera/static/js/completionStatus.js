@@ -32,7 +32,7 @@ const updatePage = (lemma, length) => {
 
 const fetchStatus = (lemma) => {
   window.fetch(`${window.location.href}${lemma}/status/`)
-    .then((r) => r.json())
+    .then(r => r.json())
     .then((rj) => {
       const bar = document.getElementById(lemma);
       bar.setAttribute('aria-valuenow', rj.status);
@@ -46,7 +46,7 @@ const fetchStatus = (lemma) => {
 };
 
 const lemmatizedTexts = document.getElementsByClassName('progress-bar');
-const barIds = Array.prototype.map.call(lemmatizedTexts, (lemma) => lemma.id);
+const barIds = Array.prototype.map.call(lemmatizedTexts, lemma => lemma.id);
 
 barIds.forEach((lemma) => {
   fetchStatus(lemma);
