@@ -1,6 +1,7 @@
 import logging
 
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
@@ -84,3 +85,10 @@ def learner_text(request, pk):
     qs = models.LemmatizedText.objects.filter(Q(public=True) | Q(created_by=request.user))
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/learner_text.html", {"text": text})
+    
+def lemma_status(request, pk):
+    lemma = models.LemmatizedText.objects.get(pk=pk)
+    status = lemma.completed
+    length = lemma.token_count()
+    return JsonResponse({"status": status, "len": length})
+    
