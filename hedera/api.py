@@ -48,6 +48,41 @@ class APIView(AuthedView):
         return self.render_to_response()
 
 
+class LemmatizedTextListAPI(APIView):
+
+    def get_data(self):
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user)).order_by("created_at")
+        return [
+            dict(text=text.api_data(), stats=text.stats_for_user(self.request.user))
+            for text in qs
+        ]
+
+
+class LemmatizedTextStatusAPI(APIView):
+
+    @property
+    def text(self):
+        if not hasattr(self, "_text"):
+            qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+            self._text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        return self._text
+
+    def get_data(self):
+        return dict(
+            completed=self.text.completed,
+            tokenCount=self.text.token_count() if self.text.completed == 100 else None,
+            lemmatizationStatus=self.text.lemmatization_status(),
+        )
+
+    def post(self, request, *args, **kwargs):
+        if self.kwargs.get("action") == "retry" and self.text.can_retry():
+            self.text.retry_lemmatization()
+        elif self.kwargs.get("action") == "cancel" and self.text.can_cancel():
+            self.text.cancel_lemmatization()
+        self.text.refresh_from_db()
+        return JsonResponse(data=dict(data=self.get_data()))
+
+
 class LemmatizedTextDetailAPI(APIView):
 
     def get_data(self):

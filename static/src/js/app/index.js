@@ -8,6 +8,7 @@ import App from './App.vue';
 import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
 import Vocab from './Vocab.vue';
+import Texts from './Texts.vue';
 
 Vue.config.productionTip = false;
 
@@ -17,7 +18,7 @@ const loadGlobals = () => {
   });
 };
 
-const loadApp = (appId, appComponent, keyBindingsConfig, appProps) => {
+const load = (appId, appComponent, keyBindingsConfig, appProps) => {
   if (document.getElementById(appId)) {
     loadGlobals();
 
@@ -70,8 +71,9 @@ const personalVocabAppProps = $el => ({ lang: $el.attributes.lang.value });
 const vocabAppProps = $el => ({ lang: $el.attributes.vocabId.value });
 
 export default () => {
-  loadApp('app', App, appKeyBindings, textAppProps);
-  loadApp('learner-app', Learner, learnerKeyBindings, textAppProps);
-  loadApp('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
-  loadApp('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
+  load('app', App, appKeyBindings, textAppProps);
+  load('learner-app', Learner, learnerKeyBindings, textAppProps);
+  load('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
+  load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
+  load('texts-app', Texts, null, () => {});
 };

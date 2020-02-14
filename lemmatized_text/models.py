@@ -1,16 +1,21 @@
 import logging
 
-from django.db import models
-from django.utils import timezone
-
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
+from django.db import models
+from django.template.defaultfilters import floatformat
+from django.utils import timezone
+from django.urls import reverse
 
 from django_rq import get_connection, job
 from iso639 import languages
 from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
+
+
+def to_percent(val):
+    return floatformat(val * 100, 2) + "%"
 
 
 @job("default", timeout=600)
@@ -114,9 +119,39 @@ class LemmatizedText(models.Model):
     def text(self):
         return "".join([d["word"] + d["following"] for d in self.data])
 
+    def stats_for_user(self, user):
+        stats = self.personalvocabularystats_set.filter(vocab_list__user=user).first()
+        if stats:
+            return {
+                "unranked": to_percent(stats.unranked),
+                "one": to_percent(stats.one),
+                "two": to_percent(stats.two),
+                "three": to_percent(stats.three),
+                "four": to_percent(stats.four),
+                "five": to_percent(stats.five),
+            }
+
+    @property
+    def delete_url(self):
+        return reverse("lemmatized_texts_delete", args=[self.pk])
+
+    @property
+    def clone_url(self):
+        url = reverse('lemmatized_texts_create')
+        return f"{url}?cloned_from={self.pk}"
+
     def api_data(self):
         return {
             "id": self.pk,
             "title": self.title,
             "lang": self.lang,
+            "language": languages.get(part3=self.lang).name,
+            "completed": self.completed,
+            "tokenCount": self.token_count(),
+            "lemmatizationStatus": self.lemmatization_status(),
+            "createdAt": self.created_at,
+            "canRetry": self.can_retry(),
+            "canCancel": self.can_cancel(),
+            "deleteUrl": self.delete_url,
+            "cloneUrl": self.clone_url,
         }

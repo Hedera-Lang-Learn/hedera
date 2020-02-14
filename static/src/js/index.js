@@ -1,7 +1,7 @@
 import '../scss/index.scss';
 
-import loadApp from './app';
+import loadApps from './app';
 import handleMessageDismiss from './messages';
 
-loadApp();
+loadApps();
 handleMessageDismiss();
