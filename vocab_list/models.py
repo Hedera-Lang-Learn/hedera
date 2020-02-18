@@ -50,13 +50,20 @@ class VocabularyList(models.Model):
     )
 
     def load_tab_delimited(self, fd):
-        def clean(headword, gloss):
+        def clean(headword, gloss, *args):
+            """Expect a headword and gloss, i.e., two columns,
+               & additional columns will be ingnored."""
             return (headword.strip().strip('"'), gloss.strip().strip('"'))
 
-        lines = [
-            clean(*line.decode("utf-8").strip().split("\t"))
-            for line in fd
-        ]
+        def parse_line(idx, line):
+            try:
+                columns = line.decode("utf-8").strip().split("\t")
+            except UnicodeDecodeError:
+                return ("Line "+str(idx), "Bad Data")
+            return clean(*columns)
+
+        lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
+
         already_exist = [
             p.headword
             for p in VocabularyListEntry.objects.filter(
