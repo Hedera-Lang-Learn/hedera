@@ -30,9 +30,7 @@ const load = (appId, appComponent, keyBindingsConfig, appProps) => {
     new Vue({
       el: `#${appId}`,
       render(h) {
-        return h(appComponent, {
-          props: appProps(this.$el)
-        });
+        return h(appComponent, { props: appProps(this.$el) });
       },
       store,
     });
