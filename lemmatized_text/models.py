@@ -1,11 +1,12 @@
 import logging
 
-from django.contrib.auth.models import User
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.template.defaultfilters import floatformat
-from django.utils import timezone
 from django.urls import reverse
+from django.utils import timezone
+
+from django.contrib.auth.models import User
+from django.contrib.postgres.fields import JSONField
 
 from django_rq import get_connection, job
 from iso639 import languages
