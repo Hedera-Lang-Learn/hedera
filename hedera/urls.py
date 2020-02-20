@@ -20,7 +20,10 @@ urlpatterns = [
     path("lattices/", include("lattices.urls")),
     path("vocab/", include("vocab_list.urls")),
 
+    path("api/v1/lemmatized_texts/", api.LemmatizedTextListAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
+    path("api/v1/lemmatized_texts/<int:pk>/status/", api.LemmatizedTextStatusAPI.as_view()),
+    path("api/v1/lemmatized_texts/<int:pk>/<str:action>/", api.LemmatizedTextStatusAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
     path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
     path("api/v1/vocab_lists/<int:pk>/entries/", api.VocabularyListEntriesAPI.as_view()),
