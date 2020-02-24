@@ -8,7 +8,7 @@ from django_rq import job
 from iso639 import languages
 
 from lattices.models import LatticeNode, LemmaNode
-# from lattices.utils import make_lemma
+from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
 
 

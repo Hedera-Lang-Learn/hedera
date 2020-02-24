@@ -15,11 +15,11 @@ class VocabularyListForm(forms.ModelForm):
 
 
 RATINGS = [
-  (1, "I don't recognize these words"),
-  (2, "I recognize these words but don't know what they mean"),
-  (3, "I think I know what these words mean"),
-  (4, "I definitely know what these words mean but could forget soon"),
-  (5, "I know these words so well, I am unlikely to ever forget them"),
+    (1, "I don't recognize these words"),
+    (2, "I recognize these words but don't know what they mean"),
+    (3, "I think I know what these words mean"),
+    (4, "I definitely know what these words mean but could forget soon"),
+    (5, "I know these words so well, I am unlikely to ever forget them"),
 ]
 
 

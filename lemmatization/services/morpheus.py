@@ -14,7 +14,6 @@ class MorpheusService(Service):
     ['edo1', 'sum1']
     """
 
-
     SID = "morpheus"
     LANGUAGES = ["grc", "lat"]
     ENDPOINT = "http://services.perseids.org/bsp/morphologyservice/analysis/word"

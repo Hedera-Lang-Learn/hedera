@@ -71,15 +71,15 @@ if USE_S3:
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
     AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
     AWS_DEFAULT_ACL = None
-    AWS_S3_CUSTOM_DOMAIN = 's3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_CUSTOM_DOMAIN = "s3.amazonaws.com/%s" % AWS_STORAGE_BUCKET_NAME
     AWS_S3_OBJECT_PARAMETERS = {
-        'CacheControl': 'max-age=86400',
+        "CacheControl": "max-age=86400",
     }
-    STATICFILES_LOCATION = 'static'
-    STATICFILES_STORAGE = 'hedera.custom_storages.StaticStorage'
-    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-    MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'hedera.custom_storages.MediaStorage'
+    STATICFILES_LOCATION = "static"
+    STATICFILES_STORAGE = "hedera.custom_storages.StaticStorage"
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    MEDIAFILES_LOCATION = "media"
+    DEFAULT_FILE_STORAGE = "hedera.custom_storages.MediaStorage"
     MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 else:
     # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -112,8 +112,8 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', "secretkey")
+# Make this unique, and don"t share it with anybody.
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "secretkey")
 
 TEMPLATES = [
     {
@@ -164,7 +164,7 @@ AUTHENTICATED_EXEMPT_URLS = [
 
 ROOT_URLCONF = "hedera.urls"
 
-# Python dotted path to the WSGI application used by Django's runserver.
+# Python dotted path to the WSGI application used by Django"s runserver.
 WSGI_APPLICATION = "hedera.wsgi.application"
 
 INSTALLED_APPS = [
