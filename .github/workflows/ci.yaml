@@ -23,6 +23,9 @@ jobs:
             path: ~/.local
             key: v1-${{ runner.os }}-${{ hashFiles('**/Pipfile.lock' )}}
 
+        - name: Setup flake8 annotations
+          uses: rbialon/flake8-annotations@v1
+
         - name: Install Python Dependences
           if: steps.pip-cache.outputs.cache-hit == false
           run: pipenv install --dev
