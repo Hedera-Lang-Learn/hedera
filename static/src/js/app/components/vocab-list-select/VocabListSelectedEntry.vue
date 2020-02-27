@@ -23,51 +23,51 @@
 </template>
 
 <script>
-import { TOGGLE_SHOW_IN_VOCAB_LIST, SET_VOCAB_LIST } from "../../constants";
+  import { TOGGLE_SHOW_IN_VOCAB_LIST, SET_VOCAB_LIST } from '../../constants';
 
-export default {
-  props: ["vocabList"],
-  computed: {
-    title() {
-      return this.vocabList.title;
+  export default {
+    props: ['vocabList'],
+    computed: {
+      title() {
+        return this.vocabList.title;
+      },
+      description() {
+        return this.vocabList.description;
+      },
+      knownVocab() {
+        return this.$store.getters.knownVocab;
+      },
+      weightedKnownVocab() {
+        return this.$store.getters.weightedKnownVocab;
+      },
+      showInVocabList() {
+        return this.$store.state.showInVocabList;
+      },
     },
-    description() {
-      return this.vocabList.description;
-    },
-    knownVocab() {
-      return this.$store.getters.knownVocab;
-    },
-    weightedKnownVocab() {
-      return this.$store.getters.weightedKnownVocab;
-    },
-    showInVocabList() {
-      return this.$store.state.showInVocabList;
-    }
-  },
-  methods: {
-    toggleKnown() {
-      this.$store.dispatch(TOGGLE_SHOW_IN_VOCAB_LIST);
-    },
-    closeVocabList() {
-      console.log("hhhh");
-      this.$store.dispatch(SET_VOCAB_LIST, { id: null });
+    methods: {
+      toggleKnown() {
+        this.$store.dispatch(TOGGLE_SHOW_IN_VOCAB_LIST);
+      },
+      closeVocabList() {
+        console.log('hhhh')
+        this.$store.dispatch(SET_VOCAB_LIST, { id: null });
+      }
     }
   }
-};
 </script>
 
 <style lang="scss" scoped>
-@import "../../../../scss/config";
-h4 {
-  display: flex;
-  justify-content: space-between;
-  span {
-    margin-right: -15px;
-    color: $gray-400;
-    cursor: pointer;
-    &:hover {
-      color: $gray-800;
+  @import "../../../../scss/config";
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    span {
+      margin-right: -15px;
+      color: $gray-400;
+      cursor: pointer;
+      &:hover {
+        color: $gray-800;
+      }
     }
   }
-}
 </style>
