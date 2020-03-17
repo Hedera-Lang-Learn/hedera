@@ -38,7 +38,7 @@ jobs:
 
         - name: Install Static Dependences
           if: steps.pip-cache.outputs.cache-hit == false
-          run: npm i -g --prefix=~/.local
+          run: npm i -g --prefix=~/.local --dev
 
         - name: Lint JavaScript
           run: npm run lint
