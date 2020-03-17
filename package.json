@@ -1,7 +1,8 @@
 {
+  "name": "hedera",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pinax/pinax-project"
+    "url": "https://github.com/Hedera-Lang-Learn/hedera"
   },
   "scripts": {
     "start": "HOT_RELOAD=1 webpack-dev-server --mode development",
