@@ -4,7 +4,7 @@ import requests
 
 
 def pairwise(iterable):
-    "s -> (s0, s1), (s2, s3), (s4, s5), ..."
+    """s -> (s0, s1), (s2, s3), (s4, s5), ..."""
     a = iter(iterable)
     return zip(a, a)
 
@@ -27,9 +27,10 @@ class Service(object):
         The first item returned will have an empty string for `word` if the
         text starts with a non-word.
         """
-        tokens = re.split("(\W+)", text)
+        tokens = re.split(r"(\W+)", text)
         # test to make sure there is an even number of items in array
-        if len(tokens) % 2 > 0: tokens.append(" ")
+        if len(tokens) % 2 > 0:
+            tokens.append(" ")
         return pairwise(tokens)
 
     def _headers(self):

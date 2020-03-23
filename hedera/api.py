@@ -134,10 +134,6 @@ class LemmatizationAPI(APIView):
 
         text_data = text.data
 
-        if node_id is None:
-            form = text_data[token_index]["token"]
-            # node_id = get_or_create_nodes_for_form_and_lemmas(form, [data["lemma"]], context="user").pk
-
         text_data[token_index]["node"] = node_id
         text_data[token_index]["resolved"] = resolved
         text.data = text_data

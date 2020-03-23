@@ -18,7 +18,7 @@ def lemmatized_texts(request):
 
 def create(request):
     cloned_from = None
-    select_lang   = ""
+    select_lang = ""
     # create the  selected language here, which is the lanaguage of the last submitted text
     try:
         select_lang = models.LemmatizedText.objects.filter(Q(created_by=request.user)).order_by("-pk")[0].lang
@@ -48,7 +48,8 @@ def create(request):
         cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
 
     # if the text is being cloned then make sure that language is the selected one
-    if cloned_from: select_lang = cloned_from.lang
+    if cloned_from:
+        select_lang = cloned_from.lang
 
     return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from, "select_lang": select_lang})
 
@@ -85,10 +86,10 @@ def learner_text(request, pk):
     qs = models.LemmatizedText.objects.filter(Q(public=True) | Q(created_by=request.user))
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/learner_text.html", {"text": text})
-    
+
+
 def lemma_status(request, pk):
     lemma = models.LemmatizedText.objects.get(pk=pk)
     status = lemma.completed
     length = lemma.token_count()
     return JsonResponse({"status": status, "len": length})
-    

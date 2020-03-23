@@ -8,7 +8,7 @@ from django_rq import job
 from iso639 import languages
 
 from lattices.models import LatticeNode, LemmaNode
-# from lattices.utils import make_lemma
+from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -59,7 +59,7 @@ class VocabularyList(models.Model):
             try:
                 columns = line.decode("utf-8").strip().split("\t")
             except UnicodeDecodeError:
-                return ("Line "+str(idx), "Bad Data")
+                return ("Line " + str(idx), "Bad Data")
             return clean(*columns)
 
         lines = [parse_line(idx, line) for idx, line in enumerate(fd)]

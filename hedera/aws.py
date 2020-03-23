@@ -16,10 +16,10 @@ def get_ecs_task_ips():
         return []
     if r.ok:
         task_metadata = r.json()
-        for container in task_metadata['Containers']:
-            for network in container['Networks']:
-                if network['NetworkMode'] == 'awsvpc':
-                    ip_addresses.extend(network['IPv4Addresses'])
+        for container in task_metadata["Containers"]:
+            for network in container["Networks"]:
+                if network["NetworkMode"] == "awsvpc":
+                    ip_addresses.extend(network["IPv4Addresses"])
     return list(set(ip_addresses))
 
 

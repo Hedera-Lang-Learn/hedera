@@ -1,0 +1,44 @@
+name: Code Checks
+on: [push]
+jobs:
+  qa:
+    name: Checking Code
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: Setup Python
+          uses: actions/setup-python@v1
+          with:
+            python-version: 3.7
+
+        - name: Setup Pipenv
+          uses: dschep/install-pipenv-action@v1
+
+        - name: Setup Cache
+          id: pip-cache
+          uses: actions/cache@v1
+          with:
+            path: ~/.local
+            key: v1-${{ runner.os }}-${{ hashFiles('**/Pipfile.lock' )}}
+
+        - name: Setup flake8 annotations
+          uses: rbialon/flake8-annotations@v1
+
+        - name: Install Python Dependences
+          if: steps.pip-cache.outputs.cache-hit == false
+          run: pipenv install --dev
+
+        - name: Check Python Import Sorting
+          run: pipenv run isort -c **/*.py
+
+        - name: Lint Python
+          run: pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list
+
+        - name: Install Static Dependences
+          if: steps.pip-cache.outputs.cache-hit == false
+          run: npm i --dev
+
+        - name: Lint JavaScript
+          run: npm run lint

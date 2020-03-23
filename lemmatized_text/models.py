@@ -138,7 +138,7 @@ class LemmatizedText(models.Model):
 
     @property
     def clone_url(self):
-        url = reverse('lemmatized_texts_create')
+        url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
     def api_data(self):
