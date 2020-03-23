@@ -7,7 +7,8 @@
       </span>
     </h4>
     <p>{{ description }}</p>
-    <gauge-chart :rate="knownVocab" label="Known" />
+    <gauge-chart :rate="knownVocab" label="Known (Unweighted)" />
+    <gauge-chart :rate="weightedKnownVocab" label="Known (Weighted)" />
     <div class="toggle-link-container">
       <span v-if="showInVocabList">
         The known words are highlighted.
@@ -35,6 +36,9 @@
       },
       knownVocab() {
         return this.$store.getters.knownVocab;
+      },
+      weightedKnownVocab() {
+        return this.$store.getters.weightedKnownVocab;
       },
       showInVocabList() {
         return this.$store.state.showInVocabList;
