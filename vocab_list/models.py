@@ -8,7 +8,7 @@ from django_rq import job
 from iso639 import languages
 
 from lattices.models import LatticeNode, LemmaNode
-from lattices.utils import make_lemma
+# from lattices.utils import make_lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -249,9 +249,10 @@ class PersonalVocabularyListEntry(models.Model):
         unique_together = ("vocabulary_list", "headword")
 
     def link_node(self):
-        if self.node is None:
-            self.node = make_lemma(self.headword)  # context?
-            self.save()
+        pass
+        # if self.node is None:
+        #     self.node = make_lemma(self.headword)  # context?
+        #     self.save()
 
     def data(self):
         return dict(
