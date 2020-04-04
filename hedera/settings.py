@@ -208,6 +208,7 @@ RQ_QUEUES = {
         "ASYNC": RQ_ASYNC
     }
 }
+RQ_SHOW_ADMIN_LINK = True
 
 WEBPACK_LOADER = {
     "DEFAULT": {
@@ -228,6 +229,8 @@ CONTACT_EMAIL = "support@example.com"
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
+_DEFAULT_LOG_LEVEL = os.environ.get("LOG_LEVEL", "ERROR")
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -237,6 +240,9 @@ LOGGING = {
         }
     },
     "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
         "mail_admins": {
             "level": "ERROR",
             "filters": ["require_debug_false"],
@@ -244,11 +250,25 @@ LOGGING = {
         }
     },
     "loggers": {
+        "": {
+            "handlers": ["console"],
+            "level": _DEFAULT_LOG_LEVEL,
+        },
         "django.request": {
             "handlers": ["mail_admins"],
             "level": "ERROR",
             "propagate": True,
         },
+        "rq.worker": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+        "lemmatization": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+            "propagate": False
+        }
     }
 }
 
