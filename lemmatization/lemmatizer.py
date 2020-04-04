@@ -92,18 +92,18 @@ class Lemmatizer(object):
                             if lemma_node:
                                 child_lattice_node = lemma_node.node
                                 lattice_node.children.add(child_lattice_node)
-                            else:
-                                child_lattice_node = LatticeNode.objects.create(
-                                    label=lemma,
-                                    gloss=f"from {context}",
-                                    canonical=False,
-                                )
-                                lemma_node = LemmaNode.objects.create(
-                                    context=context,
-                                    lemma=lemma,
-                                    node=child_lattice_node,
-                                )
-                                lattice_node.children.add(child_lattice_node)
+                            # else:
+                            #     child_lattice_node = LatticeNode.objects.create(
+                            #         label=lemma,
+                            #         gloss=f"from {context}",
+                            #         canonical=False,
+                            #     )
+                            #     lemma_node = LemmaNode.objects.create(
+                            #         context=context,
+                            #         lemma=lemma,
+                            #         node=child_lattice_node,
+                            #     )
+                            #     lattice_node.children.add(child_lattice_node)
                         lattice_node.save()
                         lemma_node = LemmaNode.objects.create(
                             context=context,
@@ -117,17 +117,17 @@ class Lemmatizer(object):
                             node = lattice_node
                     else:
                         node = None
-                        lattice_node = LatticeNode.objects.create(
-                            label=label,
-                            gloss=f"from {context}",
-                            canonical=False,
-                        )
-                        lemma_node = LemmaNode.objects.create(
-                            context=context,
-                            lemma=label,
-                            node=lattice_node,
-                        )
-                        node = lattice_node
+                    #     lattice_node = LatticeNode.objects.create(
+                    #         label=label,
+                    #         gloss=f"from {context}",
+                    #         canonical=False,
+                    #     )
+                    #     lemma_node = LemmaNode.objects.create(
+                    #         context=context,
+                    #         lemma=label,
+                    #         node=lattice_node,
+                    #     )
+                    #     node = lattice_node
 
                 if node:
                     if node.children.exists():
