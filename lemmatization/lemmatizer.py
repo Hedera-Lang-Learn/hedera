@@ -1,12 +1,13 @@
 # from lattices.utils import get_lattice_node
 
+import logging
+
 from lattices.models import LatticeNode, LemmaNode
 
 from .models import add_form, lookup_form
 from .services.clancy import ClancyService
 from .services.morpheus import MorpheusService
 
-import logging
 
 logger = logging.getLogger(__name__)
 
