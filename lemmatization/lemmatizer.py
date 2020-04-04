@@ -58,7 +58,7 @@ class Lemmatizer(object):
             self.cb((index + 1) / total_count)
 
     def lemmatize(self, text):
-        context = self._service.SID # e.g. "morpheus"
+        context = self._service.SID  # e.g. "morpheus"
         result = []
         tokens = list(self._tokenize(text))
         total_count = len(tokens)
