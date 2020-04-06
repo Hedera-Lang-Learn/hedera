@@ -12,6 +12,7 @@ from . import api, views
 urlpatterns = [
     path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
     path("admin/", admin.site.urls),
+    path("django-rq/", include("django_rq.urls")),
     re_path(r"^account/", include("account.urls")),
 
     path("read/<int:text_id>/", views.read, name="read"),

@@ -9,6 +9,15 @@ def pairwise(iterable):
     return zip(a, a)
 
 
+def tokenize(text):
+    """text -> [w0, _, w1, _, w2, _, ...]"""
+    tokens = re.split(r"(\W+)", text)
+    # test to make sure there is an even number of items in array
+    if len(tokens) % 2 > 0:
+        tokens.append(" ")
+    return tokens
+
+
 class Service(object):
 
     SID = None
@@ -27,11 +36,7 @@ class Service(object):
         The first item returned will have an empty string for `word` if the
         text starts with a non-word.
         """
-        tokens = re.split(r"(\W+)", text)
-        # test to make sure there is an even number of items in array
-        if len(tokens) % 2 > 0:
-            tokens.append(" ")
-        return pairwise(tokens)
+        return pairwise(tokenize(text))
 
     def _headers(self):
         return dict(Accept="application/json")
@@ -49,4 +54,7 @@ class Service(object):
         return self._response_to_lemmas(response)
 
     def lemmatize(self, form):
+        """
+        Returns list of lemmas for the given form: [lemma1, lemma2, ...]
+        """
         return self._call_service(form)

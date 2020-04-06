@@ -18,7 +18,7 @@ class ClancyService(Service):
     ['мороженый', 'мороженое']
     """
 
-    SID = "clancydb"
+    SID = "clancy"
     LANGUAGES = ["rus"]
     ENDPOINT = "http://visualizingrussian.fas.harvard.edu/api/lemmatize"
 
