@@ -79,7 +79,9 @@ class Lemmatizer(object):
 
                 if lemma_node:
                     node = lemma_node.node
+                    logger.debug(f"got lemma node {lemma_node.pk} pointing to lattice node {node.pk}")
                 else:
+                    logger.debug(f"did not get lemma node")
                     if len(lemmas) > 1:
                         lattice_node = LatticeNode.objects.create(
                             label=label,
@@ -87,24 +89,14 @@ class Lemmatizer(object):
                             canonical=False,
                         )
                         for lemma in lemmas:
+                            logger.debug(lemma)
                             lemma_node = LemmaNode.objects.filter(
                                 context=context,
                                 lemma=lemma).first()
+                            logger.debug(lemma_node)
                             if lemma_node:
                                 child_lattice_node = lemma_node.node
                                 lattice_node.children.add(child_lattice_node)
-                            # else:
-                            #     child_lattice_node = LatticeNode.objects.create(
-                            #         label=lemma,
-                            #         gloss=f"from {context}",
-                            #         canonical=False,
-                            #     )
-                            #     lemma_node = LemmaNode.objects.create(
-                            #         context=context,
-                            #         lemma=lemma,
-                            #         node=child_lattice_node,
-                            #     )
-                            #     lattice_node.children.add(child_lattice_node)
                         lattice_node.save()
                         lemma_node = LemmaNode.objects.create(
                             context=context,
@@ -112,23 +104,13 @@ class Lemmatizer(object):
                             node=lattice_node,
                         )
                         children = lattice_node.children.all()
+                        logger.debug(f"ambiguous so creating join node {lattice_node.pk} with children {children}")
                         if len(children) == 1:
                             node = children[0]
                         else:
                             node = lattice_node
                     else:
                         node = None
-                    #     lattice_node = LatticeNode.objects.create(
-                    #         label=label,
-                    #         gloss=f"from {context}",
-                    #         canonical=False,
-                    #     )
-                    #     lemma_node = LemmaNode.objects.create(
-                    #         context=context,
-                    #         lemma=label,
-                    #         node=lattice_node,
-                    #     )
-                    #     node = lattice_node
 
                 if node:
                     if node.children.exists():
@@ -149,16 +131,3 @@ class Lemmatizer(object):
             ))
             self._report_progress(index, total_count)
         return result
-
-
-# gnt80 = VocabularyList.objects.get(pk=1)
-#
-# entry = gnt80.entries.get(lemma="ἄρχω")
-# print(entry.lemma, entry.gloss)
-
-# ἄρχω I reign, rule
-
-# entry = gnt80.entries.get(lemma="ἔρχομαι")
-# print(entry.lemma, entry.gloss)
-
-# ἔρχομαι I come, go
