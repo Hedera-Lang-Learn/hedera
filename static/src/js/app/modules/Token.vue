@@ -3,14 +3,14 @@
     <span
       class="word"
       v-if="token.word"
-      :class="[token.resolved, {selected, sameNode, 'in-vocab-list': inVocabList, ignored }]"
+      :class="[token.resolved, {selected, sameNode, sameWord, 'in-vocab-list': inVocabList, ignored }]"
       @click.prevent="onClick()"
     >{{ token.word }}</span><span class="following" v-if="token.following">{{ token.following }}</span>
   </span>
 </template>
 <script>
   export default {
-    props: ['token', 'index', 'selectedIndex', 'selectedToken'],
+    props: ['token', 'index', 'selectedIndex', 'selectedToken', 'sameWords'],
     methods: {
       onClick() {
         this.$emit('toggleSelected', { index: this.index });
@@ -22,6 +22,9 @@
       },
       sameNode() {
         return this.selectedToken && this.selectedToken.node === this.token.node;
+      },
+      sameWord() {
+        return this.selectedToken && this.selectedToken.word === this.token.word && this.sameWords.length > 1;
       },
       inVocabList() {
         return this.token.inVocabList && !this.ignored;
@@ -40,6 +43,15 @@
   .selected,
   .selected.sameNode {
     border-bottom: 4px solid red;
+  }
+
+  .sameWord {
+    background: $highlight;
+    display: inline-block;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   .following {
