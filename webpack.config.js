@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer');
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -25,7 +25,7 @@ const styleRule = {
   use: [
     MiniCssExtractPlugin.loader,
     { loader: 'css-loader', options: { sourceMap: true } },
-    { loader: 'postcss-loader', options: { plugins: () => [autoprefixer({ browsers: ['last 2 versions'] })] } },
+    { loader: 'postcss-loader', options: { plugins: () => [autoprefixer()] } },
     'sass-loader',
   ],
 };
