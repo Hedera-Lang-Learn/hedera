@@ -69,13 +69,14 @@
 </script>
 
 <style lang="scss">
+  @import "../../scss/config";
   .personal-vocab .familiarity-rating {
     position: relative;
     .help-text {
       position: absolute;
       top: 30px;
       left: 0;
-      color: #666;
+      color: $gray-700;
       background: #FFF;
       padding: 2px 8px;
       border: 1px solid #DDD;
