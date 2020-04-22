@@ -9,28 +9,28 @@
   </span>
 </template>
 <script>
-export default {
-  props: ['token', 'index', 'selectedIndex', 'selectedToken'],
-  methods: {
-    onClick() {
-      this.$emit('toggleSelected', { index: this.index });
-    }
-  },
-  computed: {
-    selected() {
-      return this.selectedIndex && this.selectedIndex === this.index;
+  export default {
+    props: ['token', 'index', 'selectedIndex', 'selectedToken'],
+    methods: {
+      onClick() {
+        this.$emit('toggleSelected', { index: this.index });
+      },
     },
-    sameNode() {
-      return this.selectedToken && this.selectedToken.node === this.token.node;
+    computed: {
+      selected() {
+        return this.selectedIndex && this.selectedIndex === this.index;
+      },
+      sameNode() {
+        return this.selectedToken && this.selectedToken.node === this.token.node;
+      },
+      inVocabList() {
+        return this.token.inVocabList && !this.ignored;
+      },
+      ignored() {
+        return this.token.word !== this.token.word.toLowerCase();
+      },
     },
-    inVocabList() {
-      return this.token.inVocabList && !this.ignored;
-    },
-    ignored() {
-      return this.token.word !== this.token.word.toLowerCase();
-    },
-  }
-};
+  };
 </script>
 <style lang="scss">
   @import "../../../scss/config";

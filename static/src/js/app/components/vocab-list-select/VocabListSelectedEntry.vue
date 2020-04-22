@@ -45,11 +45,11 @@
         this.$store.dispatch(TOGGLE_SHOW_IN_VOCAB_LIST);
       },
       closeVocabList() {
-        console.log('hhhh')
+        console.log('hhhh');
         this.$store.dispatch(SET_VOCAB_LIST, { id: null });
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>

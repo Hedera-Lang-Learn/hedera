@@ -10,7 +10,7 @@
     computed: {
       selected() {
         return this.rating === this.value;
-      }
+      },
     },
     methods: {
       onClick() {
@@ -21,9 +21,9 @@
       },
       onMouseLeave() {
         this.$emit('inactive', this.rating);
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss">
@@ -58,4 +58,3 @@
     color: $rating-5;
   }
 </style>
-

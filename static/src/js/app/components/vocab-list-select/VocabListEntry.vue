@@ -11,7 +11,7 @@
     methods: {
       onSelect() {
         this.$emit('selected', { id: this.vocabList.id });
-      }
+      },
     },
     computed: {
       active() {
@@ -23,8 +23,8 @@
       description() {
         return this.vocabList.description;
       },
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss" scoped>

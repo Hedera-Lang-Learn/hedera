@@ -12,45 +12,45 @@
   </div>
 </template>
 <script>
-import { FETCH_TOKENS, FETCH_VOCAB_LISTS, FETCH_TEXT } from './constants';
+  import { FETCH_TOKENS, FETCH_VOCAB_LISTS, FETCH_TEXT } from './constants';
 
-import LatticeTree from './modules/LatticeTree.vue';
-import LemmatizedText from './modules/LemmatizedText.vue';
-import VocabListSelect from './components/vocab-list-select';
+  import LatticeTree from './modules/LatticeTree.vue';
+  import LemmatizedText from './modules/LemmatizedText.vue';
+  import VocabListSelect from './components/vocab-list-select';
 
-export default {
-  props: ["textId"],
-  components: { LatticeTree, LemmatizedText, VocabListSelect },
-  watch: {
-    textId: {
-      immediate: true,
-      handler() {
-        this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_VOCAB_LISTS));
-      }
+  export default {
+    props: ['textId'],
+    components: { LatticeTree, LemmatizedText, VocabListSelect },
+    watch: {
+      textId: {
+        immediate: true,
+        handler() {
+          this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_VOCAB_LISTS));
+        },
+      },
+      selectedVocabList: {
+        immediate: true,
+        handler() {
+          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
+        },
+      },
     },
-    selectedVocabList: {
-      immediate: true,
-      handler() {
-        this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
-      }
-    }
-  },
-  computed: {
-    selectedVocabList() {
-      return this.$store.state.selectedVocabList;
+    computed: {
+      selectedVocabList() {
+        return this.$store.state.selectedVocabList;
+      },
+      vocabLists() {
+        return this.$store.state.vocabLists;
+      },
+      selectedToken() {
+        return this.$store.getters.selectedToken;
+      },
+      selectedIndex() {
+        return this.$store.state.selectedIndex;
+      },
+      selectedNode() {
+        return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+      },
     },
-    vocabLists() {
-      return this.$store.state.vocabLists;
-    },
-    selectedToken() {
-      return this.$store.getters.selectedToken;
-    },
-    selectedIndex() {
-      return this.$store.state.selectedIndex;
-    },
-    selectedNode() {
-      return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
-    }
-  }
-}
+  };
 </script>

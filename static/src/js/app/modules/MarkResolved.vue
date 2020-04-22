@@ -7,40 +7,40 @@
   </div>
 </template>
 <script>
-import {
-  RESOLVED_UNRESOLVED,
-  RESOLVED_MANUAL,
-  RESOLVED_AUTOMATIC,
-} from '../constants';
+  import {
+    RESOLVED_UNRESOLVED,
+    RESOLVED_MANUAL,
+    RESOLVED_AUTOMATIC,
+  } from '../constants';
 
-export default {
-  props: ['resolved'],
-  computed: {
-    label() {
-      let label = this.resolved;
-      if (this.resolved === RESOLVED_UNRESOLVED) {
-        label = 'Mark Resolved';
-      } else if (this.resolved === RESOLVED_AUTOMATIC || this.resolved === RESOLVED_MANUAL) {
-        label = `Mark Unresolved`;
-      }
-      return label;
+  export default {
+    props: ['resolved'],
+    computed: {
+      label() {
+        let label = this.resolved;
+        if (this.resolved === RESOLVED_UNRESOLVED) {
+          label = 'Mark Resolved';
+        } else if (this.resolved === RESOLVED_AUTOMATIC || this.resolved === RESOLVED_MANUAL) {
+          label = 'Mark Unresolved';
+        }
+        return label;
+      },
+      canChange() {
+        return [RESOLVED_UNRESOLVED, RESOLVED_AUTOMATIC, RESOLVED_MANUAL].indexOf(this.resolved) > -1;
+      },
     },
-    canChange() {
-      return [RESOLVED_UNRESOLVED, RESOLVED_AUTOMATIC, RESOLVED_MANUAL].indexOf(this.resolved) > -1;
-    }
-  },
-  methods: {
-    toggleResolved() {
-      let resolved = this.resolved;
-      if (this.resolved === RESOLVED_UNRESOLVED) {
-        resolved = RESOLVED_MANUAL;
-      } else if (this.resolved === RESOLVED_AUTOMATIC || this.resolved === RESOLVED_MANUAL) {
-        resolved = RESOLVED_UNRESOLVED;
-      }
-      this.$emit('toggle', { resolved });
-    }
-  }
-};
+    methods: {
+      toggleResolved() {
+        let { resolved } = this;
+        if (this.resolved === RESOLVED_UNRESOLVED) {
+          resolved = RESOLVED_MANUAL;
+        } else if (this.resolved === RESOLVED_AUTOMATIC || this.resolved === RESOLVED_MANUAL) {
+          resolved = RESOLVED_UNRESOLVED;
+        }
+        this.$emit('toggle', { resolved });
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
