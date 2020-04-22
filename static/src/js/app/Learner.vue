@@ -9,18 +9,18 @@
         />
       </div>
       <div class="col-4">
-        <div class="read-mode-toggle">
-          <label>Toggle Read Mode</label>
-          <div class="btn-group">
-            <button class="btn btn-outline-primary" :class="{active: readMode}" @click.prevent="readMode = true">On</button>
-            <button class="btn btn-outline-primary" :class="{active: !readMode}" @click.prevent="readMode = false">Off</button>
+        <div>
+          <div class="nav nav-tabs mb-3">
+            <li class="nav-item"><a href class="nav-link" :class="{active: !readMode}" @click.prevent="readMode = false">Familiarity</a></li>
+            <li class="nav-item"><a href class="nav-link" :class="{active: readMode}" @click.prevent="readMode = true">Glosses</a></li>
           </div>
         </div>
         <div class="glosses" v-if="readMode">
-          <h4>
-            Glosses
-            <a v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">Export</a>
-          </h4>
+          <div class="text-right">
+            <a class="btn btn-sm btn-light" v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">
+              <icon name="download" /> Export
+            </a>
+          </div>
           <div class="glossed-token" v-for="gloss in glosses" :key="gloss.pk">
             <span class="token">{{ gloss.label }}</span>
             <span class="gloss">{{ gloss.gloss }}</span>
@@ -39,11 +39,23 @@
               </div>
             </div>
             <TextFamiliarity v-if="ranks" :ranks="ranks" />
+
+            <div class="mb-5">
+              <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity in Text</a>
+            </div>
+
+            <div v-if="selectedNode" class="selection-controls">
+              <div class="mb-3 selected-token-wrapper">
+                <span class="selected-token">{{ selectedToken.word }}</span>
+                <a href @click.prevent="revealGloss = !revealGloss">{{ revealGloss ? 'Hide' : 'Show' }} Gloss</a>
+              </div>
+              <div class="glossed-token revealable-gloss mb-3" :class="{show: revealGloss}">
+                <span class="token">{{ selectedNode.label }}</span>
+                <span class="gloss">{{ selectedNode.gloss }}</span>
+              </div>
+              <FamiliarityRating class="familiarity-rating" :value="selectedNodeRating" @input="onRatingChange" />
+            </div>
             <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
-            <FamiliarityRating v-if="selectedNode" :value="selectedNodeRating" @input="onRatingChange" />
-          </div>
-          <div>
-            <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity</a>
           </div>
         </div>
       </div>
@@ -95,6 +107,7 @@ export default {
       selectedNodeRating: null,
       showFamiliarity: false,
       readMode: false,
+      revealGloss: false,
     }
   },
   watch: {
@@ -208,8 +221,7 @@ export default {
   label {
     display: block;
   }
-  background: #EFEFEF;
-  padding: 15px;
+
   margin-bottom: 25px;
   .btn-group {
     background: #FFF;
@@ -223,6 +235,26 @@ export default {
     display: block;
     &.headword {
       font-size: 1rem;
+    }
+  }
+}
+
+.selection-controls {
+  background: $gray-100;
+  border: 1px solid $gray-200;
+  padding: 10px 15px;
+
+  .selected-token {
+    font-family: 'Noto Serif';
+    font-size: 20px;
+    border-bottom: 4px solid red;
+  }
+  .selected-token-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    a {
+      font-size: 80%;
     }
   }
 }
@@ -259,30 +291,52 @@ export default {
   .sameNode {
     border: none;
   }
-
-  .glosses {
-    h4 {
-      display: flex;
-      justify-content: space-between;
-      a {
-        font-size: 12pt;
-        font-weight: 400;
-        margin-top: auto;
-      }
-    }
-    .glossed-token {
-      font-family: 'Noto Serif';
-      font-size: 13pt;
-
-      .token {
-      }
-      .gloss {
-        font-style: italic;
-        color: $gray-600;
-        font-size: 11pt;
-      }
+}
+.glosses {
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    a {
+      font-size: 12pt;
+      font-weight: 400;
+      margin-top: auto;
     }
   }
 }
+  .glossed-token {
+    font-family: 'Noto Serif';
+    font-size: 13pt;
+
+    &.revealable-gloss {
+      opacity: 0;
+      &.show {
+        opacity: 1;
+      }
+    }
+    .token {
+    }
+    .gloss {
+      font-style: italic;
+      color: $gray-600;
+      font-size: 11pt;
+    }
+  }
+
+
+  .familiarity-rating {
+    position: relative;
+    .help-text {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      color: $gray-700;
+      background: #FFF;
+      padding: 2px 8px;
+      border: 1px solid #DDD;
+      border-radius: 4px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+      z-index: 9999;
+    }
+  }
 </style>
 
