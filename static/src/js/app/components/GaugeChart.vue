@@ -28,29 +28,27 @@
   </svg>
 </template>
 <script>
-const scale = (n, domainMax, rangeMax) => {
-  return rangeMax * ( n / domainMax );
-}
+  const scale = (n, domainMax, rangeMax) => rangeMax * (n / domainMax);
 
-export default {
-  name: 'gauge-chart',
-  props: ['label', 'rate'],
-  computed: {
-    rotation() {
-      return scale(this.rate, 1, 180);
+  export default {
+    name: 'gauge-chart',
+    props: ['label', 'rate'],
+    computed: {
+      rotation() {
+        return scale(this.rate, 1, 180);
+      },
+      colorClass() {
+        if (this.rate >= 0.95) return 'tier-1';
+        if (this.rate >= 0.9) return 'tier-2';
+        if (this.rate >= 0.8) return 'tier-3';
+        if (this.rate >= 0.5) return 'tier-4';
+        return 'tier-5';
+      },
     },
-    colorClass() {
-      if (this.rate >= 0.95) return 'tier-1';
-      if (this.rate >= 0.9) return 'tier-2';
-      if (this.rate >= 0.8) return 'tier-3';
-      if (this.rate >= 0.5) return 'tier-4';
-      return 'tier-5';
-    }
-  },
-  filters: {
-    percentage: n => `${(n * 100).toFixed(1)}%`,
-  }
-}
+    filters: {
+      percentage: (n) => `${(n * 100).toFixed(1)}%`,
+    },
+  };
 </script>
 
 <style lang="scss">

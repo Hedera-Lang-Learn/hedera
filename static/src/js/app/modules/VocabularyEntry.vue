@@ -7,20 +7,20 @@
 </template>
 
 <script>
-export default {
-  props: ['entry', 'showEntry'],
-  data() {
-    return {
-      showGloss: false,
-    }
-  },
-  watch: {
-    entry: {
-      immediate: true,
-      handler() {
-        this.showGloss = false;
-      }
-    }
-  }
-}
+  export default {
+    props: ['entry', 'showEntry'],
+    data() {
+      return {
+        showGloss: false,
+      };
+    },
+    watch: {
+      entry: {
+        immediate: true,
+        handler() {
+          this.showGloss = false;
+        },
+      },
+    },
+  };
 </script>

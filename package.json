@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "HOT_RELOAD=1 webpack-dev-server --mode development",
-    "lint": "eslint .",
+    "lint": "eslint --ext .js,.vue .",
+    "lint:fix": "eslint --ext .js,.vue --fix .",
     "build": "NODE_ENV=production webpack --mode production"
   },
   "private": true,
@@ -39,7 +40,7 @@
     "css-hot-loader": "^1.4.3",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-html": "^5.0.5",
     "eslint-plugin-import": "^2.18.2",
@@ -61,5 +62,63 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-bundle-tracker": "^0.3.0",
     "webpack-cli": "^3.3.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:vue/essential"
+    ],
+    "rules": {
+      "max-len": 0,
+      "no-console": 0,
+      "no-param-reassign": [
+        "error",
+        {
+          "props": true,
+          "ignorePropertyModificationsFor": [
+            "state",
+            "acc",
+            "e",
+            "ctx",
+            "req",
+            "request",
+            "res",
+            "response",
+            "map",
+            "$scope"
+          ]
+        }
+      ],
+      "vue/script-indent": [
+        "error",
+        2,
+        {
+          "baseIndent": 1,
+          "switchCase": 1
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.vue"
+        ],
+        "rules": {
+          "indent": "off"
+        }
+      }
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "vue"
+    ]
   }
 }

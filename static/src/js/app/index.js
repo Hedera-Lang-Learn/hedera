@@ -64,9 +64,9 @@ const vocabAppKeyBindings = {
     prevVocabEntry: ['arrowleft'],
   },
 };
-const textAppProps = $el => ({ textId: store.state.textId || $el.attributes['text-id'].value });
-const personalVocabAppProps = $el => ({ lang: $el.attributes.lang.value });
-const vocabAppProps = $el => ({ vocabId: $el.attributes.vocabId.value });
+const textAppProps = ($el) => ({ textId: store.state.textId || $el.attributes['text-id'].value });
+const personalVocabAppProps = ($el) => ({ lang: $el.attributes.lang.value });
+const vocabAppProps = ($el) => ({ vocabId: $el.attributes.vocabId.value });
 
 export default () => {
   load('app', App, appKeyBindings, textAppProps);

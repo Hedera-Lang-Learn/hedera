@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import VocabularyEntry from './VocabularyEntry.vue';
+  import VocabularyEntry from './VocabularyEntry.vue';
 
-export default {
-  props: ['vocabEntries', 'showEntries'],
-  components: { VocabularyEntry },
-  data() {
-    return {
-      showGloss: false,
-    }
-  },
-}
+  export default {
+    props: ['vocabEntries', 'showEntries'],
+    components: { VocabularyEntry },
+    data() {
+      return {
+        showGloss: false,
+      };
+    },
+  };
 </script>

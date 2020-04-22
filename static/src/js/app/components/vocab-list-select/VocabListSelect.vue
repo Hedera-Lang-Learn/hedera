@@ -27,13 +27,13 @@
     props: ['vocabLists'],
     data() {
       return {
-        open: false
-      }
+        open: false,
+      };
     },
     methods: {
       onSelect(id) {
-        this.$store.dispatch(SET_VOCAB_LIST, id).then(() => (this.open = false));
-      }
+        this.$store.dispatch(SET_VOCAB_LIST, id).then(() => { this.open = false; });
+      },
     },
     computed: {
       selectedVocabList() {
@@ -41,9 +41,9 @@
           map[l.id] = l;
           return map;
         }, {})[this.$store.state.selectedVocabList];
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

@@ -10,9 +10,9 @@
 </template>
 
 <script>
-const convert = decimalString => (parseFloat(decimalString) * 100).toFixed(1);
+  const convert = (decimalString) => (parseFloat(decimalString) * 100).toFixed(1);
 
-export default {
+  export default {
     props: ['ranks'],
     computed: {
       unranked() {
@@ -32,9 +32,9 @@ export default {
       },
       five() {
         return convert(this.ranks.five);
-      }
-    }
-}
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

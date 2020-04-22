@@ -16,7 +16,7 @@
 
 <script>
   import api from './api';
-  import LatticeNode from "./modules/LatticeNode.vue";
+  import LatticeNode from './modules/LatticeNode.vue';
   import VocabListTable from './components/vocab-list-table';
   import { FETCH_NODE } from './constants';
 
@@ -29,35 +29,33 @@
         selectedNode: null,
         entries: [],
         loading: false,
-      }
+      };
     },
     computed: {
       selectedIndex() {
-        if (this.selectedEntry) {
-          return this.entries.findIndex(e => e.id === this.selectedEntry.id);
-        }
-      }
+        return this.selectedEntry ? this.entries.findIndex((e) => e.id === this.selectedEntry.id) : null;
+      },
     },
     methods: {
       onSelectEntry(entry) {
-          this.selectedEntry = entry;
-          this.selectNode(entry.node);
+        this.selectedEntry = entry;
+        this.selectNode(entry.node);
       },
-      selectNode(node_pk) {
-        if (node_pk === null) {
+      selectNode(nodePK) {
+        if (nodePK === null) {
           this.selectedNode = null;
           return;
         }
-        if (this.$store.state.nodes[node_pk] && this.$store.state.nodes[node_pk].id) {
-          this.selectedNode = this.$store.state.nodes[node_pk];
+        if (this.$store.state.nodes[nodePK] && this.$store.state.nodes[nodePK].id) {
+          this.selectedNode = this.$store.state.nodes[nodePK];
         } else {
-          this.$store.dispatch(FETCH_NODE, {id: node_pk}).then(() => {
-            this.selectedNode = this.$store.state.nodes[node_pk];
+          this.$store.dispatch(FETCH_NODE, { id: nodePK }).then(() => {
+            this.selectedNode = this.$store.state.nodes[nodePK];
           });
         }
       },
       onSelectNode(node) {
-        api.vocabEntryLink(this.selectedEntry.id, node.pk, data => {
+        api.vocabEntryLink(this.selectedEntry.id, node.pk, (data) => {
           this.entries.splice(this.selectedIndex, 1, data);
           this.selectNode(node.pk);
         });
@@ -68,14 +66,14 @@
         immediate: true,
         handler() {
           this.loading = true;
-          api.fetchVocabEntries(this.vocabId, data => {
+          api.fetchVocabEntries(this.vocabId, (data) => {
             this.entries = data.data;
             this.loading = false;
           });
-        }
+        },
       },
     },
-  }
+  };
 </script>
 
 <style lang="scss" scoped>
