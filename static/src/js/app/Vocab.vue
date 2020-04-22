@@ -1,5 +1,8 @@
 <template>
-  <div class="vocab-list row">
+  <div class="vocab-list" v-if="loading">
+    <p class="lead">Loading...</p>
+  </div>
+  <div class="vocab-list row" v-else>
     <div class="col-8">
         <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" />
     </div>
@@ -25,6 +28,7 @@
         selectedEntry: null,
         selectedNode: null,
         entries: [],
+        loading: false,
       }
     },
     computed: {
@@ -63,8 +67,10 @@
       vocabId: {
         immediate: true,
         handler() {
+          this.loading = true;
           api.fetchVocabEntries(this.vocabId, data => {
             this.entries = data.data;
+            this.loading = false;
           });
         }
       },
