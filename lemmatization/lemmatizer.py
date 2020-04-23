@@ -7,6 +7,7 @@ from lattices.models import LatticeNode, LemmaNode
 from .models import add_form, lookup_form
 from .services.clancy import ClancyService
 from .services.morpheus import MorpheusService
+from .tokenizer import RUSTokenizer, Tokenizer
 
 
 logger = logging.getLogger(__name__)
@@ -18,6 +19,11 @@ SERVICES = {
     "lat": MorpheusService(lang="lat"),
     "grc": MorpheusService(lang="grc"),
     "rus": ClancyService(lang="rus"),
+}
+TOKENIZERS = {
+    "lat": Tokenizer(lang="lat"),
+    "grc": Tokenizer(lang="grc"),
+    "rus": RUSTokenizer(lang="rus"),
 }
 
 RESOLVED_NA = "na"
@@ -35,11 +41,14 @@ class Lemmatizer(object):
         self.cb = cb
         self.force_refresh = force_refresh
         self._service = SERVICES.get(lang)
+        self._tokenizer = TOKENIZERS.get(lang)
         if self._service is None:
             raise ValueError(f"Lemmatization not supported for language '{lang}''")
+        if self._tokenizer is None:
+            raise ValueError(f"Tokenization not supported for language '{lang}''")
 
     def _tokenize(self, text):
-        return self._service.tokenize(text)
+        return self._tokenizer.tokenize(text)
 
     def _lemmatize_token(self, token):
         s = lookup_form(token)
