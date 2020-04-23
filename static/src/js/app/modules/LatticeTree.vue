@@ -10,7 +10,7 @@
   import AddLemma from './AddLemma.vue';
   import LatticeNode from './LatticeNode.vue';
   import MarkResolved from './MarkResolved.vue';
-  import { UPDATE_TOKEN, ADD_LEMMA } from '../constants';
+  import { UPDATE_TOKEN, ADD_LEMMA, RESOLVED_MANUAL } from '../constants';
 
   export default {
     props: ['token', 'index', 'node'],
@@ -37,7 +37,7 @@
           id: this.textId,
           tokenIndex: this.index,
           nodeId: node.pk,
-          resolved: this.token.resolved,
+          resolved: RESOLVED_MANUAL,
         });
       },
       markResolved({ resolved }) {

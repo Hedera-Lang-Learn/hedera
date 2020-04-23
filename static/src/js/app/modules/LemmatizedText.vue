@@ -7,6 +7,7 @@
         :index="index"
         :selected-token="selectedToken"
         :selected-index="selectedIndex"
+        :same-words="sameWords"
         :class="familiarityClass(token)"
         @toggleSelected="onToggleSelect"
       />
@@ -140,6 +141,9 @@
       },
       selectedToken() {
         return this.$store.getters.selectedToken;
+      },
+      sameWords() {
+        return this.tokens.filter((t) => this.selectedToken && t.word === this.selectedToken.word);
       },
     },
   };
