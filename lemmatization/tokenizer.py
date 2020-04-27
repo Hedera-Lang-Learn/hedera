@@ -18,6 +18,15 @@ def eveniter(iterable, last=" "):
         yield last
 
 
+def triples(tokens, normalize=None):
+    pairs = pairwise(eveniter(tokens))
+    for token, following in pairs:
+        if normalize is None:
+            yield token, token, following
+        else:
+            yield token, normalize(token), following
+
+
 def maketrans_remove(accents=("COMBINING ACUTE ACCENT", "COMBINING GRAVE ACCENT")):
     """ Makes a translation for removing accents from a string. """
     return str.maketrans("", "", "".join([unicodedata.lookup(a) for a in accents]))
@@ -36,14 +45,14 @@ class Tokenizer(object):
 
     def tokenize(self, text):
         """
-        Returns an iterable of pairs: (word, following)
+        Returns an iterable of triples: (word, word_normalized, following)
 
         The first item returned will have an empty string for `word` if the
         text starts with a non-word.
         """
         text = unicodedata.normalize("NFC", text)
         tokens = re.split(r"(\W+)", text)
-        return pairwise(eveniter(tokens))
+        return triples(tokens)
 
 
 class RUSTokenizer(Tokenizer):
@@ -57,27 +66,37 @@ class RUSTokenizer(Tokenizer):
     ))
 
     def tokenize(self, text):
-        # The logic below ensures that accented words aren't split
-        # and that certain hyphenated words are treated as a single token.
-        # For reference:
-        #   0400-04FF is the cyrillic unicode block
-        #   0300-036F is the combining diacritical marks block
+        """
+        The logic below ensures that accented words aren't split
+        and that certain hyphenated words are treated as a single token.
+        For reference:
+          0400-04FF is the cyrillic unicode block
+          0300-036F is the combining diacritical marks block
+        """
         text = unicodedata.normalize("NFC", text)  # normalize
         tokens = re.split(r"([^-\u0400-\u04FF\u0300-\u036F]+)", text)
-        tokens = self._process(tokens)
-        return pairwise(eveniter(tokens))
+        tokens = self._split_hyphenated(tokens)
+        return triples(tokens, normalize=self._normalize)
 
     def _normalize(self, token):
+        """
+        Removes accents from the text.
+        """
         token = unicodedata.normalize("NFD", token)
         token = token.translate(self.TRANSLATION_REMOVE_ACCENTS)
         return unicodedata.normalize("NFC", token)
 
-    def _process(self, tokens):
+    def _split_hyphenated(self, tokens):
+        """
+        Splits hyphenated tokens with some exceptions for prefixes/suffixes.
+        """
+        prefixes = ("по-", "кое-")
+        suffixes = ("-либо", "-ка",  "-нибудь", "-то")
         processed = []
         for token in tokens:
-            token = self._normalize(token)
             if "-" in token:
-                if token.startswith("по-") or token.endswith("-то"):
+                w = self._normalize(token)
+                if any([w.startswith(s) for s in prefixes]) or any([w.endswith(s) for s in suffixes]):
                     processed.append(token)
                 else:
                     for t in re.split(r"(-)", token):

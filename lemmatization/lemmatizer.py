@@ -72,9 +72,9 @@ class Lemmatizer(object):
         tokens = list(self._tokenize(text))
         total_count = len(tokens)
         for index, token in enumerate(tokens):
-            word, following = token
-            if word:
-                lemmas = self._lemmatize_token(word)
+            word, word_normalized, following = token
+            if word_normalized:
+                lemmas = self._lemmatize_token(word_normalized)
 
                 # node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
 
@@ -134,6 +134,7 @@ class Lemmatizer(object):
             node_pk = node.pk if node else None
             result.append(dict(
                 word=word,
+                word_normalized=word_normalized,
                 following=following,
                 node=node_pk,
                 resolved=resolved
