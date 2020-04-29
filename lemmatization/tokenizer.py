@@ -91,7 +91,7 @@ class RUSTokenizer(Tokenizer):
         Splits hyphenated tokens with some exceptions for prefixes/suffixes.
         """
         prefixes = ("по-", "кое-")
-        suffixes = ("-либо", "-ка",  "-нибудь", "-то")
+        suffixes = ("-либо", "-ка", "-нибудь", "-то")
         processed = []
         for token in tokens:
             if "-" in token:
