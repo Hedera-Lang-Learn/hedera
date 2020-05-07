@@ -14,44 +14,38 @@
   </div>
 </template>
 <script>
-import VocabularyEntries from './VocabularyEntries.vue';
-
-const formFilter = (node, selectedToken) => {
-  if (node.forms.length > 0) {
-    /* remove trailing punctuation */
-    const strippedToken = selectedToken.replace(/[,\.\?:;·—]+$/, '');
-    if (node.forms[0].form === strippedToken) {
-      return true;
-    } else {
+  const formFilter = (node, selectedToken) => {
+    if (node.forms.length > 0) {
+      /* remove trailing punctuation */
+      const strippedToken = selectedToken.replace(/[,.?:;·—]+$/, '');
+      if (node.forms[0].form === strippedToken) {
+        return true;
+      }
       return false;
     }
-  }
-  return true;
-}
+    return true;
+  };
 
-export default {
-  props: ['node', 'selectedToken'],
-  name: 'LatticeNode',
-  methods: {
-    onClick() {
-      this.$emit('selected', this.node);
-    }
-  },
-  components: {
-    VocabularyEntries,
-  },
-  computed: {
-    parents() {
-      return this.node.parents && this.node.parents.filter(node => formFilter(node, this.selectedToken));
+  export default {
+    props: ['node', 'selectedToken'],
+    name: 'LatticeNode',
+    methods: {
+      onClick() {
+        this.$emit('selected', this.node);
+      },
     },
-    children() {
-      return this.node.children && this.node.children.filter(node => formFilter(node, this.selectedToken));
+    computed: {
+      parents() {
+        return this.node.parents && this.node.parents.filter((node) => formFilter(node, this.selectedToken));
+      },
+      children() {
+        return this.node.children && this.node.children.filter((node) => formFilter(node, this.selectedToken));
+      },
+      vocabEntries() {
+        return this.node.vocabulary_entries;
+      },
     },
-    vocabEntries() {
-      return this.node.vocabulary_entries;
-    },
-  }
-}
+  };
 </script>
 
 <style lang="scss">

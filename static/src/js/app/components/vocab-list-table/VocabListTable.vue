@@ -20,10 +20,10 @@
   const prevIndex = (currentIndex, tokens) => {
     let index = (currentIndex || 0) - 1;
     if (index === -1) {
-        index = tokens.length - 1;
+      index = tokens.length - 1;
     }
     return index;
-  }
+  };
 
   const nextIndex = (currentIndex, tokens) => {
     let index;
@@ -33,10 +33,10 @@
       index = currentIndex + 1;
     }
     if (index === tokens.length) {
-        index = 0;
+      index = 0;
     }
     return index;
-  }
+  };
 
   export default {
     props: ['entries', 'selectedIndex'],
@@ -54,8 +54,8 @@
         const index = indexFunction(this.selectedIndex, this.entries);
         this.$emit('selectEntry', this.entries[index]);
       },
-    }
-  }
+    },
+  };
 </script>
 
 <style lang="scss" scoped>

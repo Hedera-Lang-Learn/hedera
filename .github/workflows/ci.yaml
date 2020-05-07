@@ -37,7 +37,6 @@ jobs:
           run: pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list
 
         - name: Install Static Dependences
-          if: steps.pip-cache.outputs.cache-hit == false
           run: npm i --dev
 
         - name: Lint JavaScript

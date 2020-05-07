@@ -8,21 +8,21 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      model: {
-        lemma: '',
-      }
-    }
-  },
-  methods: {
-    onClick() {
-      this.$emit('addLemma', { lemma: this.model.lemma });
-      this.model.lemma = '';
-    }
-  }
-}
+  export default {
+    data() {
+      return {
+        model: {
+          lemma: '',
+        },
+      };
+    },
+    methods: {
+      onClick() {
+        this.$emit('addLemma', { lemma: this.model.lemma });
+        this.model.lemma = '';
+      },
+    },
+  };
 </script>
 
 <style lang="scss">

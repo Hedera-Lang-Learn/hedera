@@ -11,7 +11,7 @@
         <th>Familiarity</th>
     </tr>
     <tr v-for="entry in personalVocabEntries" :key="entry.id">
-        <td>{{ entry.headword }}</a></td>
+        <td>{{ entry.headword }}</td>
         <td>{{ entry.gloss }}</td>
         <td nowrap>
             <FamiliarityRating :value="entry.familiarity" @input="rating => onRatingChange(rating, entry)" />
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-  import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY, CREATE_VOCAB_ENTRY } from './constants';
+  import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY } from './constants';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
 
   export default {
@@ -32,7 +32,7 @@
         immediate: true,
         handler() {
           this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
-        }
+        },
       },
     },
     methods: {
@@ -40,17 +40,17 @@
         const headword = entry.headword || '';
 
         if (headword === '') {
-            return;
+          return;
         }
 
         const gloss = entry.gloss || '';
 
         this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
-            entryId: entry.id,
-            familiarity: rating,
-            headword,
-            gloss,
-            lang: this.lang,
+          entryId: entry.id,
+          familiarity: rating,
+          headword,
+          gloss,
+          lang: this.lang,
         });
       },
     },
@@ -63,19 +63,20 @@
       },
       personalVocabEntries() {
         return this.personalVocabList && this.personalVocabList.entries && this.personalVocabList.entries;
-      }
-    }
-  }
+      },
+    },
+  };
 </script>
 
 <style lang="scss">
+  @import "../../scss/config";
   .personal-vocab .familiarity-rating {
     position: relative;
     .help-text {
       position: absolute;
       top: 30px;
       left: 0;
-      color: #666;
+      color: $gray-700;
       background: #FFF;
       padding: 2px 8px;
       border: 1px solid #DDD;

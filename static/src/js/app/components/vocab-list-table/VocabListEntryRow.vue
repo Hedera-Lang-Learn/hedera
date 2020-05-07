@@ -8,8 +8,8 @@
 
 <script>
   export default {
-    props: ['entry', 'selected']
-  }
+    props: ['entry', 'selected'],
+  };
 </script>
 
 <style lang="scss" scoped>

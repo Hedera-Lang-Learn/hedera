@@ -12,31 +12,31 @@
 </template>
 
 <script>
-import FamiliarityRatingNode from './FamiliarityRatingNode.vue';
-import { RATINGS } from '../constants';
+  import FamiliarityRatingNode from './FamiliarityRatingNode.vue';
+  import { RATINGS } from '../constants';
 
-export default {
-  props: ['value'],
-  components: { FamiliarityRatingNode },
-  data() {
-    return {
-      help: '',
-    }
-  },
-  methods: {
-    onSelected(rating) {
-      this.$emit('input', rating);
+  export default {
+    props: ['value'],
+    components: { FamiliarityRatingNode },
+    data() {
+      return {
+        help: '',
+      };
     },
-    onActive(rating) {
-      this.help = RATINGS[rating];
+    methods: {
+      onSelected(rating) {
+        this.$emit('input', rating);
+      },
+      onActive(rating) {
+        this.help = RATINGS[rating];
+      },
+      onInactive(rating) {
+        if (this.help === RATINGS[rating]) {
+          this.help = '';
+        }
+      },
     },
-    onInactive(rating) {
-      if (this.help === RATINGS[rating]) {
-        this.help = '';
-      }
-    }
-  }
-}
+  };
 </script>
 
 <style lang="scss">

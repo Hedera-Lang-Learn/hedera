@@ -40,55 +40,55 @@
 </template>
 
 <script>
-import api from '../api';
+  import api from '../api';
 
-export default {
-  props: {
-    text: {
-      type: Object,
-      required: true,
+  export default {
+    props: {
+      text: {
+        type: Object,
+        required: true,
+      },
     },
-  },
-  data() {
-    return {
-      completed: this.text.completed,
-      tokenCount: this.text.tokenCount,
-      lemmatizationStatus: this.text.lemmatizationStatus,
-    }
-  },
-  created() {
-    if (this.text.completed < 100) {
-      this.updateStatus();
-    }
-  },
-  methods: {
-    updateStatus() {
-      api.fetchTextStatus(this.text.id, (data) => {
-        this.completed = data.data.completed;
-        this.tokenCount = data.data.tokenCount;
-        this.lemmatizationStatus = data.data.lemmatizationStatus;
-        if (this.completed < 100 && ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus) === -1) {
-          setTimeout(this.updateStatus, 1000);
-        }
-      })
+    data() {
+      return {
+        completed: this.text.completed,
+        tokenCount: this.text.tokenCount,
+        lemmatizationStatus: this.text.lemmatizationStatus,
+      };
     },
-    onRetry() {
-      api.textRetryLemmatization(this.text.id, (data) => {
-        this.completed = data.data.completed;
-        this.tokenCount = data.data.tokenCount;
-        if (this.completed < 100) {
-          setTimeout(this.updateStatus, 1000);
-        }
-      });
+    created() {
+      if (this.text.completed < 100) {
+        this.updateStatus();
+      }
     },
-    onCancel() {
-      api.textCancelLemmatization(this.text.id, (data) => {
-        this.completed = data.data.completed;
-        this.tokenCount = data.data.tokenCount;
-      });
+    methods: {
+      updateStatus() {
+        api.fetchTextStatus(this.text.id, (data) => {
+          this.completed = data.data.completed;
+          this.tokenCount = data.data.tokenCount;
+          this.lemmatizationStatus = data.data.lemmatizationStatus;
+          if (this.completed < 100 && ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus) === -1) {
+            setTimeout(this.updateStatus, 1000);
+          }
+        });
+      },
+      onRetry() {
+        api.textRetryLemmatization(this.text.id, (data) => {
+          this.completed = data.data.completed;
+          this.tokenCount = data.data.tokenCount;
+          if (this.completed < 100) {
+            setTimeout(this.updateStatus, 1000);
+          }
+        });
+      },
+      onCancel() {
+        api.textCancelLemmatization(this.text.id, (data) => {
+          this.completed = data.data.completed;
+          this.tokenCount = data.data.tokenCount;
+        });
+      },
     },
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped>
