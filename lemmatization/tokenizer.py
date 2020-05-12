@@ -55,6 +55,27 @@ class Tokenizer(object):
         return triples(tokens)
 
 
+class LATTokenizer(Tokenizer):
+    """
+    Tokenizer for Latin.
+    """
+    TRANSLATION_SPELLING = str.maketrans("jJuU", "iIvV")
+
+    def tokenize(self, text):
+        """
+        Returns an iterable of triples: (word, word_normalized, following)
+        """
+        text = unicodedata.normalize("NFC", text)
+        tokens = re.split(r"(\W+)", text)
+        return triples(tokens, normalize=self._normalize)
+
+    def _normalize(self, token):
+        """
+        Normalizes spelling (j->i, u->v).
+        """
+        return token.translate(self.TRANSLATION_SPELLING)
+
+
 class RUSTokenizer(Tokenizer):
     """
     Tokenizer for Russian.
