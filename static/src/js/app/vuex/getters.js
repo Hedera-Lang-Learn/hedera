@@ -11,4 +11,8 @@ export default {
     }
     return null;
   },
+  sameWords: (state, getters) => {
+    const selected = getters.selectedToken;
+    return state.tokens.filter((t) => selected && t.word === selected.word);
+  },
 };

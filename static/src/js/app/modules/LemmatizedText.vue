@@ -143,7 +143,7 @@
         return this.$store.getters.selectedToken;
       },
       sameWords() {
-        return this.tokens.filter((t) => this.selectedToken && t.word === this.selectedToken.word);
+        return this.$store.getters.sameWords;
       },
     },
   };
