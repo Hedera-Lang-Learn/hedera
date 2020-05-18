@@ -31,4 +31,6 @@ urlpatterns = [
     path("api/v1/vocab_entries/<int:pk>/link/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
+
+    path("", include("django.contrib.flatpages.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

@@ -1,0 +1,25 @@
+{% extends "site_base.html" %}
+
+{% load flatpages %}
+{% load i18n %}
+
+{% block head_title %}{{ flatpage.title }}{% endblock %}
+
+{% block body_class %}flatpage{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  {% get_flatpages as flatpages %}
+  <div class="row">
+    <div class="col-4">
+        <ul class="nav flex-column text-right">
+            {% for page in flatpages %}
+                <li class="nav-item"><a class="nav-link {% if flatpage == page %}active{% endif %}" href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-8">{{ flatpage.content|safe }}</div>
+  </div>
+{% endblock %}
