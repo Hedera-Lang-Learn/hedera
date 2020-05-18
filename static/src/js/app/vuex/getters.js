@@ -5,14 +5,8 @@ export default {
     const knownTokens = tokens.filter((t) => t.inVocabList).length;
     return knownTokens / totalTokens;
   },
-  selectedToken: (state) => {
-    if (state.selectedIndex !== null && state.tokens.length > 0) {
-      return state.tokens[state.selectedIndex];
-    }
-    return null;
-  },
-  sameWords: (state, getters) => {
-    const selected = getters.selectedToken;
+  sameWords: (state) => {
+    const selected = state.selectedToken;
     return state.tokens.filter((t) => selected && t.word === selected.word);
   },
 };

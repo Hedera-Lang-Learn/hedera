@@ -27,8 +27,8 @@ export default {
   [FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },
-  [SELECT_TOKEN]: (state, { index }) => {
-    state.selectedIndex = index;
+  [SELECT_TOKEN]: (state, { token }) => {
+    state.selectedToken = token;
   },
   [FETCH_NODE]: (state, data) => {
     state.nodes = {
@@ -38,7 +38,9 @@ export default {
   },
   [UPDATE_TOKEN]: (state, data) => {
     state.tokens = data;
-    state.selectedToken = state.tokens[state.selectedIndex];
+    if (state.selectedToken) {
+      state.selectedToken = state.tokens[state.selectedToken.tokenIndex];
+    }
   },
   [SET_VOCAB_LIST]: (state, id) => {
     state.selectedVocabList = id;

@@ -10,15 +10,15 @@
 </template>
 <script>
   export default {
-    props: ['token', 'index', 'selectedIndex', 'selectedToken', 'sameWords'],
+    props: ['token', 'selectedToken', 'sameWords'],
     methods: {
       onClick() {
-        this.$emit('toggleSelected', { index: this.index });
+        this.$emit('toggleSelected', this.token);
       },
     },
     computed: {
       selected() {
-        return this.selectedIndex && this.selectedIndex === this.index;
+        return this.selectedToken && this.selectedToken.tokenIndex === this.token.tokenIndex;
       },
       sameNode() {
         return this.selectedToken && this.selectedToken.node === this.token.node;

@@ -193,7 +193,7 @@
         return this.selectedNode && this.selectedNode.vocabulary_entries;
       },
       selectedToken() {
-        return this.$store.getters.selectedToken;
+        return this.$store.state.selectedToken;
       },
       selectedNode() {
         return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];

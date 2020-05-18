@@ -2,7 +2,7 @@ export default {
   textId: null,
   text: {},
   tokens: [],
-  selectedIndex: null,
+  selectedToken: null,
   nodes: {},
   vocabLists: [],
   personalVocabList: null,

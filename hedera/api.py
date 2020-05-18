@@ -111,7 +111,8 @@ class LemmatizationAPI(APIView):
                 token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
                 token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
 
-        for token in data:
+        for index, token in enumerate(data):
+            token["tokenIndex"] = index
             node = nodes.filter(pk=token["node"]).first()
             if node is not None:
                 token.update(node.gloss_data())
