@@ -65,7 +65,7 @@
         this.$store.dispatch(UPDATE_TOKEN, {
           id: this.$store.state.textId,
           tokenIndex: token.tokenIndex,
-          nodeId: token.node,
+          nodeId: this.selectedToken.node,
           resolved: this.resolveTo(token),
         });
       },
