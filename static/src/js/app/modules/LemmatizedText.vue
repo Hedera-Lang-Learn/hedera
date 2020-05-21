@@ -1,12 +1,10 @@
 <template>
   <div class="lemmatized-text" :class="highlightClass">
-    <template v-for="(token, index) in tokens">
+    <template v-for="token in tokens">
       <Token
-        :key="index"
+        :key="token.tokenIndex"
         :token="token"
-        :index="index"
         :selected-token="selectedToken"
-        :selected-index="selectedIndex"
         :same-words="sameWords"
         :class="familiarityClass(token)"
         @toggleSelected="onToggleSelect"
@@ -70,6 +68,7 @@
     },
     methods: {
       selectToken(index) {
+        const token = this.tokens[index];
         const fetchNode = () => {
           if (this.selectedToken.node !== null) {
             this.$store.dispatch(FETCH_NODE, { id: this.selectedToken.node });
@@ -79,26 +78,26 @@
 
         // The debounce is delaying the call but it's accumulating all the instances
         // so the network call is happening multiple times.
-        this.$store.dispatch(SELECT_TOKEN, { index })
+        this.$store.dispatch(SELECT_TOKEN, { token })
           .then(debouncedFetchNode());
       },
-      onToggleSelect({ token, index }) {
-        if (this.selectedIndex === index && this.selectedToken === token) {
-          this.$store.dispatch(SELECT_TOKEN, { index: null });
+      onToggleSelect(token) {
+        if (this.selectedToken === token) {
+          this.$store.dispatch(SELECT_TOKEN, { token: null });
         } else {
-          this.selectToken(index);
+          this.selectToken(token.tokenIndex);
         }
       },
       goToWord(indexFunction) {
         let index = 0;
-        if (this.selectedIndex !== null) {
-          index = indexFunction(this.selectedIndex, this.tokens);
+        if (this.selectedToken !== null) {
+          index = indexFunction(this.selectedToken.tokenIndex, this.tokens);
         }
         this.selectToken(index);
       },
       goToUnresolved(indexFunction) {
         let index = 0;
-        if (this.selectedIndex !== null) {
+        if (this.selectedToken !== null) {
           const unresolvedTokenIndex = indexFunction(
             this.unresolvedTokens.indexOf(this.selectedToken),
             this.unresolvedTokens,
@@ -136,14 +135,11 @@
       tokens() {
         return this.$store.state.tokens;
       },
-      selectedIndex() {
-        return this.$store.state.selectedIndex;
-      },
       selectedToken() {
-        return this.$store.getters.selectedToken;
+        return this.$store.state.selectedToken;
       },
       sameWords() {
-        return this.tokens.filter((t) => this.selectedToken && t.word === this.selectedToken.word);
+        return this.$store.getters.sameWords;
       },
     },
   };
