@@ -1,0 +1,52 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}{{ group.title }}{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <div><a href="{% url 'groups_list' %}">Classes</a></div>
+  <h1>
+    <div>{{ group.title }}</div>
+    <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
+  </h1>
+  <p class="lead">{{ group.description|linebreaks }}</p>
+
+  <p>@@@ show tables for texts and vocab lists for students/teachers</p>
+
+  {% if group.is_teacher %}
+  <h3>Teachers</h3>
+  <p>
+    You can send this link to fellow teachers for them to join the class:<br />
+    <code>{{ group.teachers_join_link }}</code>
+  </p>
+  <table class="table">
+    <thead><tr><td>Teacher</td><td></td></tr></thead>
+    <tbody>
+    {% for member in group.teachers.all %}
+    <tr><td>{{ member.email }}</td><td></td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Students</h3>
+  <p>
+    You can send this link to students for them to join the class:<br />
+    <code>{{ group.students_join_link }}</code>
+  </p>
+  <table class="table">
+    <thead><tr><td>Student</td><td></td></tr></thead>
+    <tbody>
+    {% for member in group.students.all %}
+    <tr><td>{{ member.email }}</td><td></td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% endif %}
+{% endblock %}

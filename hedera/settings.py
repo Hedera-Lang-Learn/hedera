@@ -195,6 +195,7 @@ INSTALLED_APPS = [
     "lattices",
     "lemmatization",
     "lemmatized_text",
+    "groups",
 
     # project
     "hedera",
