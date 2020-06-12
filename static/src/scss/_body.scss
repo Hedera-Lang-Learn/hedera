@@ -11,3 +11,9 @@ body {
 p.lead b {
   font-weight: bold;
 }
+
+.nav-link.active {
+    border-right: 5px solid $primary;
+    margin-right: -5px;
+    background: rgba($primary, 0.1);
+}

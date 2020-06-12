@@ -6,7 +6,7 @@
       </div>
       <div class="col-4">
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" />
-        <LatticeTree v-if="selectedToken" :node="selectedNode" :index="selectedIndex" :token="selectedToken" />
+        <LatticeTree v-if="selectedToken" />
       </div>
     </div>
   </div>
@@ -43,13 +43,7 @@
         return this.$store.state.vocabLists;
       },
       selectedToken() {
-        return this.$store.getters.selectedToken;
-      },
-      selectedIndex() {
-        return this.$store.state.selectedIndex;
-      },
-      selectedNode() {
-        return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+        return this.$store.state.selectedToken;
       },
     },
   };

@@ -59,7 +59,7 @@ export default {
       .fetchTokens(id, vocabList, personalVocabList, cb)
       .catch(logoutOnError(commit));
   },
-  [SELECT_TOKEN]: ({ commit }, { index }) => commit(SELECT_TOKEN, { index }),
+  [SELECT_TOKEN]: ({ commit }, { token }) => commit(SELECT_TOKEN, { token }),
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
     api
