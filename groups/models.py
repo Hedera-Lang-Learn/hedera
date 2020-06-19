@@ -8,9 +8,8 @@ from django.urls import reverse
 from lemmatized_text.models import LemmatizedText
 from vocab_list.models import VocabularyList
 
-
-class Course(models.Model):
-    pass
+# class Course(models.Model):
+#     pass
 
 class Group(models.Model):
     """
