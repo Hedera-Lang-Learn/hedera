@@ -9,6 +9,9 @@ from lemmatized_text.models import LemmatizedText
 from vocab_list.models import VocabularyList
 
 
+class Course(models.Model):
+    pass
+
 class Group(models.Model):
     """
     Respresents a Class but due to the reserved keyword of Class in Python we
