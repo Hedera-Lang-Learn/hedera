@@ -23,38 +23,88 @@
     </div>
     <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
   </h1>
-  <p class="lead">{{ group.description|linebreaks }}</p>
+  <div class="lead mt-4">{{ group.description|linebreaks }}</div>
 
-  <p>@@@ show tables for texts and vocab lists for students/teachers</p>
-
-  {% if group.is_teacher %}
-  <h3>Teachers</h3>
-  <p>
-    You can send this link to fellow teachers for them to join the class:<br />
-    <code>{{ group.teachers_join_link }}</code>
-  </p>
-  <table class="table">
-    <thead><tr><td>Teacher</td><td></td></tr></thead>
-    <tbody>
-    {% for member in group.teachers.all %}
-    <tr><td>{{ member.email }}</td><td></td></tr>
-    {% endfor %}
-    </tbody>
-  </table>
-
-  <h3>Students</h3>
-  <p>
-    You can send this link to students for them to join the class:<br />
-    <code>{{ group.students_join_link }}</code>
-  </p>
-  <table class="table">
-    <thead><tr><td>Student</td><td></td></tr></thead>
-    <tbody>
-    {% for member in group.students.all %}
-    <tr><td>{{ member.email }}</td><td></td></tr>
-    {% endfor %}
-    </tbody>
-  </table>
-
-  {% endif %}
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="text" aria-selected="true" id="texts-tab" href="#texts">Texts</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="vocab" aria-selected="false" id="vocab-tab" href="#vocab">Vocabulary</a>
+        </li>
+        {% if group.is_teacher %}
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="students" aria-selected="false" id="students-tab" href="#students">Students</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="teachers" aria-selected="false" id="teachers-tab" href="#teachers">Teachers</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="tab-content" id="group-content">
+      <div class="tab-pane fade show active" id="texts" role="tabpanel" aria-labelledby="texts-tab">
+        <div class="card-body">
+          <p>This class will use the following texts</p>
+        </div>
+        <table class="table">
+          <thead><tr><th>Title</th><th>Length</th></tr></thead>
+          <tbody>
+          {% for text in group.texts.all %}
+          <tr><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="vocab" role="tabpanel" aria-labelledby="vocab-tab">
+        <div class="card-body">
+          <p>This class will use the following vocabulary lists.</p>
+        </div>
+        <table class="table">
+          <thead><tr><th>Title</th><th>Description</th><th>Words</th></tr></thead>
+          <tbody>
+          {% for vlist in group.vocab_lists.all %}
+          <tr><td>{{ vlist.title }}</td><td>{{ vlist.description }}</td><td>{{ vlist.entries.count }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% if group.is_teacher %}
+      <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+        <div class="card-body">
+          <p>
+            You can send this link to fellow teachers for them to join the class:<br />
+            <code>{{ group.teachers_join_link }}</code>
+          </p>
+        </div>
+        <table class="table">
+          <thead><tr><th>Teacher</th><th></th></tr></thead>
+          <tbody>
+          {% for member in group.teachers.all %}
+          <tr><td>{{ member.email }}</td><td></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+        <div class="card-body">
+          <p>
+            You can send this link to students for them to join the class:<br />
+            <code>{{ group.students_join_link }}</code>
+          </p>
+        </div>
+        <table class="table">
+          <thead><tr><th>Student</th><th></th></tr></thead>
+          <tbody>
+          {% for member in group.students.all %}
+          <tr><td>{{ member.email }}</td><td></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
