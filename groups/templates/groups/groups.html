@@ -29,8 +29,7 @@
           <div><small>{{ group.description }}</small></div>
         </td>
         <td>
-          {% if group.is_teacher %}Teacher{% endif %}
-          {% if group.is_student %}Student{% endif %}
+          {% if group.is_teacher %}Teacher{% elif group.is_student %}Student{% endif %}
         </td>
       </tr>
       {% endfor %}
