@@ -78,13 +78,27 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(group.get_absolute_url())
 
 
-class GroupUpdateView(LoginRequiredMixin, UpdateView):
-
+class GroupUpdateBaseView(LoginRequiredMixin, UpdateView):
     model = Group
     slug_field = "class_key"
-    fields = ["title", "description"]
 
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(teachers__pk=self.request.user.pk)
         return queryset
+
+
+class GroupUpdateView(GroupUpdateBaseView):
+
+    fields = ["title", "description"]
+
+
+class GroupUpdateTextsView(GroupUpdateBaseView):
+
+    fields = ["texts"]
+
+
+class GroupUpdateVocabView(GroupUpdateBaseView):
+
+    fields = ["vocab_lists"]
+
