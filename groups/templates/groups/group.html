@@ -12,7 +12,15 @@
 {% block body %}
   <div><a href="{% url 'groups_list' %}">Classes</a></div>
   <h1>
-    <div>{{ group.title }}</div>
+    <div class="d-flex justify-content-between">
+      <span>{{ group.title }}</span>
+      {% if group.is_teacher %}
+      <a class="btn btn-sm btn-primary mt-auto" href="{% url 'groups_update' group.class_key %}">
+        <i class="fa fa-fw fa-edit"></i>
+        Update
+      </a>
+      {% endif %}
+    </div>
     <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
   </h1>
   <p class="lead">{{ group.description|linebreaks }}</p>
