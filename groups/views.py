@@ -83,3 +83,8 @@ class GroupUpdateView(LoginRequiredMixin, UpdateView):
     model = Group
     slug_field = "class_key"
     fields = ["title", "description"]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(teachers__pk=self.request.user.pk)
+        return queryset
