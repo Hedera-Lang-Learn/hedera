@@ -74,12 +74,17 @@
         </table>
       </div>
       {% if group.is_teacher %}
-      <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+      <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
         <div class="card-body">
           <p>
             You can send this link to fellow teachers for them to join the class:<br />
-            <code>{{ group.teachers_join_link }}</code>
           </p>
+          <div class="input-group">
+            <input class="form-control" id="teacher-join-link" value="{{ group.teachers_join_link }}" />
+            <div class="input-group-append">
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#teacher-join-link"><i class="fa fa-fw fa-copy"></i></button>
+            </div>
+          </div>
         </div>
         <table class="table">
           <thead><tr><th>Teacher</th><th></th></tr></thead>
@@ -90,12 +95,17 @@
           </tbody>
         </table>
       </div>
-      <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+      <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
         <div class="card-body">
           <p>
-            You can send this link to students for them to join the class:<br />
-            <code>{{ group.students_join_link }}</code>
+            You can send this link to students for them to join the class:
           </p>
+          <div class="input-group">
+            <input class="form-control" id="student-join-link" value="{{ group.students_join_link }}" />
+            <div class="input-group-append">
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#student-join-link"><i class="fa fa-fw fa-copy"></i></button>
+            </div>
+          </div>
         </div>
         <table class="table">
           <thead><tr><th>Student</th><th></th></tr></thead>
