@@ -1,0 +1,48 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Classes{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1>
+    {{ object.title }}
+  </h1>
+  <h2>Manage Texts</h2>
+
+
+  <form class="form" method="post" action=".">
+    {% csrf_token %}
+    <h3>Current Texts</h3>
+    <table class="table">
+      <thead><tr><th>Remove ?</th><th>Title</th><th>Length</th></tr></thead>
+      <tbody>
+      {% for text in group.texts.all %}
+      <tr><td><input class="form-control" name="text-delete" type="checkbox" /></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <h3>Available Texts</h3>
+    <table class="table">
+      <thead><tr><th>Add ?</th><th>Title</th><th>Length</th></tr></thead>
+      <tbody>
+      {% for text in avail_texts %}
+      <tr><td><input class="form-control" name="text-add" type="checkbox" /></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="form-actions">
+      <a href="{% url 'groups_list' %}" class="btn btn-light">
+        Cancel
+      </a>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+{% endblock %}

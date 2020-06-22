@@ -4,6 +4,9 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from account.mixins import LoginRequiredMixin
+
+from lemmatized_text.models import LemmatizedText
+
 from .models import Group
 
 
@@ -95,10 +98,35 @@ class GroupUpdateView(GroupUpdateBaseView):
 
 class GroupUpdateTextsView(GroupUpdateBaseView):
 
+    template_name = "groups/texts.html"
     fields = ["texts"]
+    ## Limit texts that can be added to only "yours"
+    ## Allow removal of any text
+    def get_context_data(self):
+        data = super().get_context_data()
+        all_avail_texts = LemmatizedText.objects.filter(
+            Q(public=True) | Q(created_by__in=self.object.teachers.all())
+        ).exclude(
+            pk__in=[t.pk for t in self.object.texts.all()]
+        )
+        data["avail_texts"] = all_avail_texts
+        return data
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        remove_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-delete"))
+        add_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-add"))
+        self.object.texts.remove(*remove_texts)
+        self.object.texts.add(*add_texts)
+        return HttpResponseRedirect(self.object.get_absolute_url())
 
 
 class GroupUpdateVocabView(GroupUpdateBaseView):
 
     fields = ["vocab_lists"]
 
+    ## Limit lists that can be added to only "yours"
+    ## Allow removal of any list
+    def get_context_data(self):
+        data = super().get_context_data()
+        return data
