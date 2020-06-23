@@ -20,20 +20,20 @@
     {% csrf_token %}
     <h3>Current Texts</h3>
     <table class="table">
-      <thead><tr><th>Remove ?</th><th>Title</th><th>Length</th></tr></thead>
+      <thead><tr><th>Remove</th><th>Title</th><th>Length</th></tr></thead>
       <tbody>
       {% for text in group.texts.all %}
-      <tr><td><input class="form-control" name="text-delete" type="checkbox" /></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+      <tr><td><div class="form-check"><input class="form-check-input position-static" name="text-delete" type="checkbox" value="{{ text.pk }}" /></div></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
       {% endfor %}
       </tbody>
     </table>
 
     <h3>Available Texts</h3>
     <table class="table">
-      <thead><tr><th>Add ?</th><th>Title</th><th>Length</th></tr></thead>
+      <thead><tr><th>Add</th><th>Title</th><th>Length</th></tr></thead>
       <tbody>
       {% for text in avail_texts %}
-      <tr><td><input class="form-control" name="text-add" type="checkbox" /></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+      <tr><td><div class="form-check"><input class="form-check-input position-static" name="text-add" type="checkbox" value="{{ text.pk }}" /></div></td><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
       {% endfor %}
       </tbody>
     </table>

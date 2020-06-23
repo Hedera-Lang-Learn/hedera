@@ -114,6 +114,7 @@ class GroupUpdateTextsView(GroupUpdateBaseView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        print(request.POST.getlist("text-add"))
         remove_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-delete"))
         add_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-add"))
         self.object.texts.remove(*remove_texts)
