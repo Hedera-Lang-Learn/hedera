@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from account.mixins import LoginRequiredMixin
 
 from lemmatized_text.models import LemmatizedText
+from vocab_list.models import VocabularyList
 
 from .models import Group
 
@@ -100,6 +101,7 @@ class GroupUpdateTextsView(GroupUpdateBaseView):
 
     template_name = "groups/texts.html"
     fields = ["texts"]
+
     ## Limit texts that can be added to only "yours"
     ## Allow removal of any text
     def get_context_data(self):
@@ -114,7 +116,6 @@ class GroupUpdateTextsView(GroupUpdateBaseView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
-        print(request.POST.getlist("text-add"))
         remove_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-delete"))
         add_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-add"))
         self.object.texts.remove(*remove_texts)
@@ -124,10 +125,25 @@ class GroupUpdateTextsView(GroupUpdateBaseView):
 
 class GroupUpdateVocabView(GroupUpdateBaseView):
 
+    template_name = "groups/lists.html"
     fields = ["vocab_lists"]
 
     ## Limit lists that can be added to only "yours"
     ## Allow removal of any list
     def get_context_data(self):
         data = super().get_context_data()
+        all_avail_lists = VocabularyList.objects.filter(
+            Q(owner__isnull=True) | Q(owner__in=self.object.teachers.all())
+        ).exclude(
+            pk__in=[t.pk for t in self.object.vocab_lists.all()]
+        )
+        data["avail_lists"] = all_avail_lists
         return data
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        remove_lists = VocabularyList.objects.filter(pk__in=request.POST.getlist("list-delete"))
+        add_lists = VocabularyList.objects.filter(pk__in=request.POST.getlist("list-add"))
+        self.object.vocab_lists.remove(*remove_lists)
+        self.object.vocab_lists.add(*add_lists)
+        return HttpResponseRedirect(self.object.get_absolute_url())
