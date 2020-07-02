@@ -1,13 +1,8 @@
 <template>
   <tr>
     <td>
-      <strong>{{ text.title }}</strong>
-      <span v-if="completed === 100" class="text-nav">
-        <br>
-        <a :href="`/lemmatized_text/${text.id}/`">Teacher</a>
-        &bull;
-        <a :href="`/lemmatized_text/${text.id}/learner/`">Learner</a>
-      </span>
+      <strong v-if="completed < 100">{{ text.title }}</strong>
+      <a v-else :href="textUrl">{{ text.title }}</a>
     </td>
     <td>{{ text.language }}</td>
     <td>
@@ -16,13 +11,17 @@
         <div class="progress">
           <div class="progress-bar" :class="{'bg-warning': completed < 100}" role="progressbar" :style="`width: ${completed}%`" :aria-valuenow="completed" aria-valuemin="0" aria-valuemax="100" />
         </div>
-        <div class="status">
+        <div class="status" v-if="teacherMode">
           <small><a v-if="text.canRetry" href @click.prevent="onRetry">Retry</a></smalL>
           <small><a v-if="text.canCancel" href @click.prevent="onCancel">Cancel</a></smalL>
         </div>
       </div>
     </td>
-    <td>
+    <td v-if="teacherMode">
+      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" /> Delete</a>
+      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" /> Clone</a>
+    </td>
+    <td v-else>
       <div v-if="text.stats" class="text-familiarity mb-0">
           <div class="familiarity-null">{{ text.stats.unranked }}</div>
           <div class="familiarity-1">{{ text.stats.one }}</div>
@@ -31,10 +30,6 @@
           <div class="familiarity-4">{{ text.stats.four }}</div>
           <div class="familiarity-5">{{ text.stats.five }}</div>
       </div>
-    </td>
-    <td>
-      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" /> Delete</a>
-      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" /> Clone</a>
     </td>
   </tr>
 </template>
@@ -47,6 +42,15 @@
       text: {
         type: Object,
         required: true,
+      },
+      teacherMode: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    computed: {
+      textUrl() {
+        return this.teacherMode ? `/lemmatized_text/${this.text.id}/` : `/lemmatized_text/${this.text.id}/learner/`;
       },
     },
     data() {
