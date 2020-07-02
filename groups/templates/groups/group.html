@@ -90,7 +90,7 @@
           <thead><tr><th>Teacher</th><th></th></tr></thead>
           <tbody>
           {% for member in group.teachers.all %}
-          <tr><td>{{ member.email }}</td><td></td></tr>
+          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
           {% endfor %}
           </tbody>
         </table>
@@ -111,7 +111,7 @@
           <thead><tr><th>Student</th><th></th></tr></thead>
           <tbody>
           {% for member in group.students.all %}
-          <tr><td>{{ member.email }}</td><td></td></tr>
+          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
           {% endfor %}
           </tbody>
         </table>

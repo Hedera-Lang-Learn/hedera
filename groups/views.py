@@ -1,5 +1,6 @@
 from django.db.models import Q
 from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
@@ -38,6 +39,17 @@ class GroupDetailView(LoginRequiredMixin, DetailView):
         group.is_teacher = group.teachers.filter(pk=self.request.user.pk).exists()
         group.is_student = group.students.filter(pk=self.request.user.pk).exists()
         return group
+
+    def post(self, request, *args, **kwargs):
+        if request.POST.get("remove") == "student":
+            group = self.get_object()
+            student = get_object_or_404(group.students.all(), pk=request.POST.get("member"))
+            group.students.remove(student)
+        if request.POST.get("remove") == "teacher":
+            group = self.get_object()
+            student = get_object_or_404(group.teachers.all(), pk=request.POST.get("member"))
+            group.teachers.remove(student)
+        return HttpResponseRedirect(group.get_absolute_url())
 
 
 class GroupJoinView(LoginRequiredMixin, DetailView):
