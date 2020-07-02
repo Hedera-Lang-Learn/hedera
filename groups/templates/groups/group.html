@@ -54,7 +54,17 @@
           <thead><tr><th>Title</th><th>Length</th></tr></thead>
           <tbody>
           {% for text in group.texts.all %}
-          <tr><td>{{ text.title }}</td><td>{{ text.token_count }}</td></tr>
+          <tr>
+            <td>
+              {% if group.is_teacher %}
+                {% url "lemmatized_texts_detail" text.id as text_url %}
+              {% else %}
+                {% url "lemmatized_texts_learner" text.id as text_url %}
+              {% endif %}
+              <a href="{{ text_url }}">{{ text.title }}</a>
+            </td>
+            <td>{{ text.token_count }}</td>
+          </tr>
           {% endfor %}
           </tbody>
         </table>
