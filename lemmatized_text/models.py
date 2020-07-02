@@ -156,4 +156,6 @@ class LemmatizedText(models.Model):
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
             "cloneUrl": self.clone_url,
+            "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
+            "clonedFor": self.cloned_for.pk if self.cloned_for else None,
         }
