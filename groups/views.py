@@ -1,8 +1,8 @@
 from django.db.models import Q
-from django.http import HttpResponseRedirect, Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from account.mixins import LoginRequiredMixin
 
