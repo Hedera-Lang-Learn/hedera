@@ -43,6 +43,7 @@ class LemmatizedText(models.Model):
     title = models.CharField(max_length=100)
     lang = models.CharField(max_length=3)  # ISO 639.2
     cloned_from = models.ForeignKey("LemmatizedText", null=True, blank=True, on_delete=models.SET_NULL)
+    cloned_for = models.ForeignKey("groups.Group", null=True, on_delete=models.SET_NULL)
     original_text = models.TextField()
     completed = models.IntegerField(default=0)
 
