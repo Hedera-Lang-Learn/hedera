@@ -22,11 +22,13 @@ export EMAIL_USE_TLS=True
 export USE_S3=True
 export SITE_ID=4
 export REDIS_URL=`aws ssm get-parameter --name /hedera/prod/redis_url --output text --query Parameter.Value --region us-east-1`
+export DJANGO_DEBUG=False
 export RQ_ASYNC=1
 
 
 python manage.py makemigrations
 python manage.py migrate
+python manage.py loaddata sites
 python manage.py collectstatic --noinput
 sudo gunicorn hedera.wsgi:application \
     --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
@@ -47,5 +49,6 @@ sudo gunicorn hedera.wsgi:application \
     --env RQ_ASYNC=$RQ_ASYNC \
     --env SENTRY_DSN="$SENTRY_DSN" \
     --env SENTRY_ENVIRONMENT=$SENTRY_ENVIRONMENT \
+    --env DJANGO_DEBUG=$DJANGO_DEBUG \
     --bind :80 \
     --log-level debug
