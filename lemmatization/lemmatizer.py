@@ -78,7 +78,7 @@ class Lemmatizer(object):
 
                 # node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
 
-                lemmas = sorted(l.rstrip("1") for l in lemmas)
+                lemmas = sorted(lemma.rstrip("1") for lemma in lemmas)
 
                 label = " or ".join(lemmas)
                 lemma_node = LemmaNode.objects.filter(
