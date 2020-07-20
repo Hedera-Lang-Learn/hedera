@@ -1,16 +1,16 @@
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path, re_path
-from django.views.generic import TemplateView
 
 from django.contrib import admin
+
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
 
 from . import api, views
 
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
     path("admin/", admin.site.urls),
     path("django-rq/", include("django_rq.urls")),
     re_path(r"^account/", include("account.urls")),
@@ -34,5 +34,11 @@ urlpatterns = [
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
 
-    path("", include("django.contrib.flatpages.urls")),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+    path("cms/", include(wagtailadmin_urls)),
+    re_path(r"", include(wagtail_urls)),
+
+] + static(
+    settings.STATIC_URL, document_root=settings.STATIC_URL
+) + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+)

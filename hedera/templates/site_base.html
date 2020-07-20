@@ -5,7 +5,9 @@
 {% load i18n %}
 {% load vocab_tags %}
 {% load static %}
-
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load cms_tags %}
 
 {% block styles %}
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap&subset=greek,greek-ext,latin-ext,russian" rel="stylesheet">
@@ -49,25 +51,40 @@
     <nav>
       <div class="container">
         {% block topbar %}
-          {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{% block site_name %}{{ SITE_NAME }}{% endblock %}</a>{% endblock %}
+          {% block site_brand %}
+            {% get_home_page as home %}
+            <a class="navbar-brand" href="{% pageurl home %}">
+              {% block site_name %}{{ SITE_NAME }}{% endblock %}
+            </a>
+          {% endblock %}
           {% block navbar-toggler %}{% endblock %}
           {% block nav %}
             <ul class="navbar-nav mr-auto">
               {% block nav_items %}
-                <li class="navbar-item"><a class="nav-link" href="/about/">About</a></li>
-              {% if request.user.is_authenticated %}
-                <li class="navbar-item"><a class="nav-link" href="{% url 'groups_list' %}">Classes</a></li>
-                <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Texts</a></li>
-                <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
-                <li class="navbar-item">
-                    {% default_vocab_list request.user as vocab_list %}
-                    {% if vocab_list %}
-                    <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
-                      Personal Vocabulary
+
+                {% get_site_nav as nav %}
+                {% for page in nav %}
+                  <li class="navbar-item">
+                    <a class="nav-link" href="{% pageurl page %}">
+                      {{ page.title }}
                     </a>
-                    {% endif %}
-                </li>
-              {% endif %}
+                  </li>
+                {% endfor %}
+
+                {% if request.user.is_authenticated %}
+                  <li class="navbar-item"><a class="nav-link" href="{% url 'groups_list' %}">Classes</a></li>
+                  <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Lemmatized Texts</a></li>
+                  <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
+                  <li class="navbar-item">
+                      {% default_vocab_list request.user as vocab_list %}
+                      {% if vocab_list %}
+                      <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
+                        Personal Vocabulary Lists
+                      </a>
+                      {% endif %}
+                  </li>
+                {% endif %}
+
               {% endblock %}
             </ul>
           {% endblock %}
@@ -90,6 +107,7 @@
         </div>
     </section>
     {% block content_right %}{% endblock %}
+    {% wagtailuserbar 'bottom-right' %}
 </main>
 {% endblock %}
 

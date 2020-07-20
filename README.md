@@ -24,6 +24,7 @@ pipenv shell
 createdb hedera
 ./manage.py migrate
 ./manage.py loaddata sites
+./manage.py create_cms
 ```
 
 To import lattice data:
