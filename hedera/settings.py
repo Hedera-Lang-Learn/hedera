@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "hederaproject.org",
-    "*.hederaproject.org",
+    ".hederaproject.org",
 ]
 
 ALLOWED_HOSTS += get_ecs_task_ips()
