@@ -9,11 +9,7 @@ from . import models
 
 
 def lemmatized_texts(request):
-    return render(request, "lemmatized_text/list.html", {
-        "lemmatized_texts": models.LemmatizedText.objects.filter(
-            Q(public=True) | Q(created_by=request.user)
-        ).order_by("pk")
-    })
+    return render(request, "lemmatized_text/list.html")
 
 
 def create(request):

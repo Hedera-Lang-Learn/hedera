@@ -22,7 +22,7 @@ export EMAIL_USE_TLS=True
 export USE_S3=True
 export SITE_ID=4
 export REDIS_URL=`aws ssm get-parameter --name /hedera/prod/redis_url --output text --query Parameter.Value --region us-east-1`
-export DJANGO_DEBUG=False
+export DJANGO_DEBUG=0
 export RQ_ASYNC=1
 
 

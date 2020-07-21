@@ -24,7 +24,10 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-DEBUG = os.environ.get("DJANGO_DEBUG", True)
+try:
+    DEBUG = bool(int(os.environ.get("DJANGO_DEBUG", "1")))
+except ValueError:
+    DEBUG = False
 
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
@@ -195,6 +198,7 @@ INSTALLED_APPS = [
     "lattices",
     "lemmatization",
     "lemmatized_text",
+    "groups",
 
     # project
     "hedera",
@@ -285,10 +289,10 @@ SESSION_COOKIE_NAME = "sv-sessionid"
 
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_EMAIL_UNIQUE = True
-ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_LOGIN_REDIRECT_URL = "home"
 ACCOUNT_LOGOUT_REDIRECT_URL = "home"
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
 AUTHENTICATION_BACKENDS = [

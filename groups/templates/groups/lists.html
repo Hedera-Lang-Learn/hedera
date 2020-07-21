@@ -1,0 +1,48 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Classes{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1>
+    {{ object.title }}
+  </h1>
+  <h2>Manage Vocabulary Lists</h2>
+
+
+  <form class="form" method="post" action=".">
+    {% csrf_token %}
+    <h3>Current Vocabulary Lists</h3>
+    <table class="table">
+      <thead><tr><th>Remove</th><th>Title</th><th>Description</th><th>Words</th></tr></thead>
+      <tbody>
+      {% for vl in group.vocab_lists.all %}
+      <tr><td><div class="form-check"><input class="form-check-input position-static" name="list-delete" type="checkbox" value="{{ vl.pk }}" /></div></td><td>{{ vl.title }}</td><td>{{ vl.description }}</td><td>{{ text.entries.count }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <h3>Available Vocabulary Lists</h3>
+    <table class="table">
+      <thead><tr><th>Add</th><th>Title</th><th>Description</th><th>Words</th></tr></thead>
+      <tbody>
+      {% for vl in avail_lists %}
+      <tr><td><div class="form-check"><input class="form-check-input position-static" name="list-add" type="checkbox" value="{{ vl.pk }}" /></div></td><td>{{ vl.title }}</td><td>{{ vl.description }}</td><td>{{ text.entries.count }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="form-actions">
+      <a href="{% url 'groups_list' %}" class="btn btn-light">
+        Cancel
+      </a>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </form>
+{% endblock %}
