@@ -24,7 +24,10 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-DEBUG = os.environ.get("DJANGO_DEBUG", True)
+try:
+    DEBUG = bool(int(os.environ.get("DJANGO_DEBUG", "1")))
+except ValueError:
+    DEBUG = False
 
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
@@ -34,7 +37,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "hederaproject.org",
-    ".hederaproject.org",
+    "*.hederaproject.org",
 ]
 
 ALLOWED_HOSTS += get_ecs_task_ips()
