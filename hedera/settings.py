@@ -24,7 +24,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", True)
 
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
@@ -224,7 +224,7 @@ WEBPACK_LOADER = {
 }
 
 ADMIN_URL = "admin:index"
-CONTACT_EMAIL = "support@example.com"
+CONTACT_EMAIL = "atg@fas.harvard.edu"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
