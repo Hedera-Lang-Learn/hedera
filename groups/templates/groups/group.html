@@ -1,0 +1,132 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}{{ group.title }}{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <div><a href="{% url 'groups_list' %}">Classes</a></div>
+  <h1>
+    <div class="d-flex justify-content-between">
+      <span>{{ group.title }}</span>
+      {% if group.is_teacher %}
+      <a class="btn btn-sm btn-primary mt-auto" href="{% url 'groups_update' group.class_key %}">
+        <i class="fa fa-fw fa-edit"></i>
+        Update
+      </a>
+      {% endif %}
+    </div>
+    <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
+  </h1>
+  <div class="lead mt-4">{{ group.description|linebreaks }}</div>
+
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="text" aria-selected="true" id="texts-tab" href="#texts">Texts</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="vocab" aria-selected="false" id="vocab-tab" href="#vocab">Vocabulary</a>
+        </li>
+        {% if group.is_teacher %}
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="students" aria-selected="false" id="students-tab" href="#students">Students</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="teachers" aria-selected="false" id="teachers-tab" href="#teachers">Teachers</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="tab-content" id="group-content">
+      <div class="tab-pane fade show active" id="texts" role="tabpanel" aria-labelledby="texts-tab">
+        <div class="card-body d-flex justify-content-between">
+          <p>This class will use the following texts</p>
+          {% if group.is_teacher %}<a href="{% url 'groups_update_texts' group.class_key %}" class="btn btn-sm btn-primary mb-auto">Manage Texts</a>{% endif %}
+        </div>
+        <table class="table">
+          <thead><tr><th>Title</th><th>Length</th></tr></thead>
+          <tbody>
+          {% for text in group.texts.all %}
+          <tr>
+            <td>
+              {% if group.is_teacher %}
+                {% url "lemmatized_texts_detail" text.id as text_url %}
+              {% else %}
+                {% url "lemmatized_texts_learner" text.id as text_url %}
+              {% endif %}
+              <a href="{{ text_url }}">{{ text.title }}</a>
+            </td>
+            <td>{{ text.token_count }}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="vocab" role="tabpanel" aria-labelledby="vocab-tab">
+        <div class="card-body d-flex justify-content-between">
+          <p>This class will use the following vocabulary lists.</p>
+          {% if group.is_teacher %}<a href="{% url 'groups_update_vocab' group.class_key %}" class="btn btn-sm btn-primary mb-auto">Manage Vocab</a>{% endif %}
+        </div>
+        <table class="table">
+          <thead><tr><th>Title</th><th>Description</th><th>Words</th></tr></thead>
+          <tbody>
+          {% for vlist in group.vocab_lists.all %}
+          <tr><td>{{ vlist.title }}</td><td>{{ vlist.description }}</td><td>{{ vlist.entries.count }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% if group.is_teacher %}
+      <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+        <div class="card-body">
+          <p>
+            You can send this link to fellow teachers for them to join the class:<br />
+          </p>
+          <div class="input-group">
+            <input class="form-control" id="teacher-join-link" value="{{ group.teachers_join_link }}" />
+            <div class="input-group-append">
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#teacher-join-link"><i class="fa fa-fw fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+        <table class="table">
+          <thead><tr><th>Teacher</th><th></th></tr></thead>
+          <tbody>
+          {% for member in group.teachers.all %}
+          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+        <div class="card-body">
+          <p>
+            You can send this link to students for them to join the class:
+          </p>
+          <div class="input-group">
+            <input class="form-control" id="student-join-link" value="{{ group.students_join_link }}" />
+            <div class="input-group-append">
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#student-join-link"><i class="fa fa-fw fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+        <table class="table">
+          <thead><tr><th>Student</th><th></th></tr></thead>
+          <tbody>
+          {% for member in group.students.all %}
+          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

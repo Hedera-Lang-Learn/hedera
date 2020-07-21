@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}{{ group.title }}{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <div><a href="{% url 'groups_list' %}">Classes</a></div>
+  <h1>
+    <div>{{ group.title }}</div>
+  </h1>
+  <p class="lead">{{ group.description|linebreaks }}</p>
+
+  <p>@@@ show tables for texts and vocab lists for students/teachers</p>
+
+  <h3>Join Class?</h3>
+  <form class="form" method="post" action=".">
+    {% csrf_token %}
+    <p class="lead">Join this class as a {% if group.teacher_invite %}teacher{% else %}student{% endif %}.</p>
+    <button class="btn btn-primary">Yes, Join</button>
+  </form>
+{% endblock %}

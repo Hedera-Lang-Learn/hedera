@@ -1,0 +1,38 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}Classes{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1 class="d-flex justify-content-between">
+    Classes
+    <a href="{% url 'groups_create' %}" class="btn btn-sm btn-primary mt-auto">
+      <i class="fa fa-fw fa-plus"></i>
+      Create
+    </a>
+  </h1>
+  <table class="table">
+    <thead>
+      <tr><th>Class</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      {% for group in group_list %}
+      <tr>
+        <td>
+          <div><a href="{{ group.get_absolute_url }}">{{ group.title }}</a></div>
+          <div><small>{{ group.description }}</small></div>
+        </td>
+        <td>
+          {% if group.is_teacher %}Teacher{% elif group.is_student %}Student{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
