@@ -38,6 +38,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "hederaproject.org",
     ".hederaproject.org",
+    "hedera.fas.harvard.edu",
+    "hedera-dev.fas.harvard.edu",
 ]
 
 ALLOWED_HOSTS += get_ecs_task_ips()
