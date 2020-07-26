@@ -1,0 +1,27 @@
+{% extends "site_base.html" %}
+
+{% load i18n bootstrap %}
+
+{% block head_title %}Classes{% endblock %}
+
+{% block body_class %}classes{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1>
+    Delete Class
+  </h1>
+  <form class="form" method="post" action=".">
+    {% csrf_token %}
+    <p class="lead">Are you sure you want to delete <em>{{ group.title }}</em>?</p>
+
+    <div class="form-actions">
+      <a href="{% url 'groups_detail' group.class_key %}" class="btn btn-light">
+        Cancel
+      </a>
+      <button class="btn btn-danger">Yes, Delete</button>
+    </div>
+  </form>
+{% endblock %}

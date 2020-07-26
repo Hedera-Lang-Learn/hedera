@@ -14,12 +14,20 @@
   <h1>
     <div class="d-flex justify-content-between">
       <span>{{ group.title }}</span>
-      {% if group.is_teacher %}
-      <a class="btn btn-sm btn-primary mt-auto" href="{% url 'groups_update' group.class_key %}">
-        <i class="fa fa-fw fa-edit"></i>
-        Update
-      </a>
-      {% endif %}
+      <span>
+        {% if group.is_owner %}
+        <a class="btn btn-sm btn-danger mt-auto" href="{% url 'groups_delete' group.class_key %}">
+          <i class="fa fa-fw fa-trash"></i>
+          Delete
+        </a>
+        {% endif %}
+        {% if group.is_teacher %}
+        <a class="btn btn-sm btn-primary mt-auto" href="{% url 'groups_update' group.class_key %}">
+          <i class="fa fa-fw fa-edit"></i>
+          Update
+        </a>
+        {% endif %}
+      </span>
     </div>
     <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
   </h1>

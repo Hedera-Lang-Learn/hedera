@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
@@ -30,6 +31,9 @@ class Group(models.Model):
 
     student_invite_key = models.UUIDField(default=uuid.uuid4)
     teacher_invite_key = models.UUIDField(default=uuid.uuid4)
+
+    created_by = models.ForeignKey(User, related_name="created_classes", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def get_absolute_url(self):
         return reverse("groups_detail", args=[self.class_key])
