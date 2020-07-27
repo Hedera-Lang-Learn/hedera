@@ -5,12 +5,13 @@ from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
 from django.contrib import admin
+from django.conf import settings
 
 from . import api, views
 
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
+    path("", TemplateView.as_view(template_name="homepage.html", extra_context={'is_lti': settings.IS_LTI}), name="home"),
     path("admin/", admin.site.urls),
     path("django-rq/", include("django_rq.urls")),
     re_path(r"^account/", include("account.urls")),
@@ -33,6 +34,8 @@ urlpatterns = [
     path("api/v1/vocab_entries/<int:pk>/link/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
+    
+    path('lti/', include('lti_provider.urls')),
 
     path("", include("django.contrib.flatpages.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

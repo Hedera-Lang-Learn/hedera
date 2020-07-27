@@ -6,7 +6,7 @@
     "url": "https://github.com/Hedera-Lang-Learn/hedera"
   },
   "scripts": {
-    "start": "HOT_RELOAD=1 webpack-dev-server --mode development",
+    "start": "HOT_RELOAD=1 webpack-dev-server --https --cert ./cert.pem --key ./key.pem --mode development",
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "eslint --ext .js,.vue --fix .",
     "build": "NODE_ENV=production webpack --mode production"

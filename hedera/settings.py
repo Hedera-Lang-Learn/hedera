@@ -162,7 +162,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
-    r"/api/"
+    r"/api/",
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -191,6 +191,7 @@ INSTALLED_APPS = [
     "account",
     "pinax.eventlog",
     "django_rq",
+    "lti_provider",
 
     # local apps
     "databasetext",
@@ -203,6 +204,9 @@ INSTALLED_APPS = [
     # project
     "hedera",
 ]
+
+if DEBUG:
+    INSTALLED_APPS.append('sslserver')
 
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
 RQ_DATABASE = 1
@@ -295,10 +299,51 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
-AUTHENTICATION_BACKENDS = [
-    "hedera.backends.UsernameAuthenticationBackend",
-    # "account.auth_backends.UsernameAuthenticationBackend",
-]
+# LTI configuration
+
+CSRF_COOKIE_SAMESITE = None
+CSRF_COOKIE_SECURE = True
+
+LTI_TOOL_CONFIGURATION = {
+    'title': 'Hedera',
+    'description': 'An LTI-compliant tool that enables users to interact with lemmatized texts.',
+    'launch_url': 'lti/',
+    'embed_url': '',
+    'embed_icon_url': '',
+    'embed_tool_id': '',
+    'landing_url': '/',
+    'navigation': True,
+    'new_tab': False,
+    'course_aware': False,
+}
+
+
+PYLTI_CONFIG = {
+    'consumers': {
+        os.environ.get('CONSUMER_KEY'): {
+            'secret': os.environ.get('LTI_SECRET')
+        }
+    }
+}
+
+X_FRAME_OPTIONS = os.environ.get('X_FRAME_OPTIONS', 'ALLOW-FROM https://canvas.harvard.edu')
+
+# This setting will add an LTI property to the session
+LTI_PROPERTY_LIST_EX = ['custom_canvas_course_id']
+
+IS_LTI = bool(os.environ.get('IS_LTI'))
+
+if IS_LTI:
+    AUTHENTICATION_BACKENDS = [
+        "hedera.backends.UsernameAuthenticationBackend",
+        "lti_provider.auth.LTIBackend",
+    ]
+else:
+    AUTHENTICATION_BACKENDS = [
+        "hedera.backends.UsernameAuthenticationBackend",
+        # "account.auth_backends.UsernameAuthenticationBackend",
+    ]    
+
 
 LOGIN_URL = "account_login"
 
@@ -320,3 +365,7 @@ SUPPORTED_LANGUAGES = [
     ["lat", "Latin"],
     ["rus", "Russian"],
 ]
+
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_COOKIE_SAMESITE = None

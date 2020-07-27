@@ -24,8 +24,10 @@ iso-639 = "*"
 cltk = "==0.1.117"
 sentry-sdk = "==0.14.3"
 rq = "==1.3.0"
+django-lti-provider = "==0.4.0"
 
 [dev-packages]
 "flake8" = "*"
 isort = "*"
 "flake8-quotes" = "*"
+django-sslserver = "==0.22"
