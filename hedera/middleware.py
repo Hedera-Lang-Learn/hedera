@@ -6,6 +6,9 @@ from django.urls import reverse_lazy
 from django.utils.http import urlquote
 
 from django.contrib.auth import REDIRECT_FIELD_NAME
+from django.core.exceptions import ObjectDoesNotExist
+
+from lti.utils import login_existing_user
 
 
 class AuthenticatedMiddleware(object):
@@ -26,6 +29,11 @@ class AuthenticatedMiddleware(object):
             if re.match(exemption, request.path):
                 response = self.get_response(request)
                 return response
+        if settings.IS_LTI and not request.user.is_authenticated:
+            try:
+                lti_user = login_existing_user(request)
+            except ObjectDoesNotExist:
+                return HttpResponseRedirect(reverse_lazy(settings.LTI_REGISTER_URL))
         if not request.user.is_authenticated:
             path = urlquote(request.get_full_path())
             tup = (self.login_url, self.redirect_field_name, path)

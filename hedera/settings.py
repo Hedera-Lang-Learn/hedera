@@ -8,17 +8,20 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
+IS_LTI = bool(os.environ.get('IS_LTI'))
+
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
-sentry_sdk.init(
-    dsn=os.environ.get("SENTRY_DSN"),
-    debug=os.environ.get("SENTRY_DEBUG") == "1",
-    environment=os.environ.get("SENTRY_ENVIRONMENT"),
-    integrations=[DjangoIntegration(), RqIntegration()],
-    # Enables tracing for sentry "Events V2"
-    # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
-    traces_sample_rate=1.0,
-    traceparent_v2=True,
-)
+if not IS_LTI:
+    sentry_sdk.init(
+        dsn=os.environ.get("SENTRY_DSN"),
+        debug=os.environ.get("SENTRY_DEBUG") == "1",
+        environment=os.environ.get("SENTRY_ENVIRONMENT"),
+        integrations=[DjangoIntegration(), RqIntegration()],
+        # Enables tracing for sentry "Events V2"
+        # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
+        traces_sample_rate=1.0,
+        traceparent_v2=True,
+    )
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -32,6 +35,8 @@ except ValueError:
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
 }
+
+CSRF_TRUSTED_ORIGINS = ['canvas.harvard.edu']
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -163,6 +168,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/\.well-known/",
     "^/$",
     r"/api/",
+    "/lti/lti_registration",
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -200,6 +206,7 @@ INSTALLED_APPS = [
     "lemmatization",
     "lemmatized_text",
     "groups",
+    "lti",
 
     # project
     "hedera",
@@ -307,11 +314,10 @@ CSRF_COOKIE_SECURE = True
 LTI_TOOL_CONFIGURATION = {
     'title': 'Hedera',
     'description': 'An LTI-compliant tool that enables users to interact with lemmatized texts.',
-    'launch_url': 'lti/',
+    'launch_url': 'lti/lti_initializer/',
     'embed_url': '',
     'embed_icon_url': '',
     'embed_tool_id': '',
-    'landing_url': '/',
     'navigation': True,
     'new_tab': False,
     'course_aware': False,
@@ -329,9 +335,7 @@ PYLTI_CONFIG = {
 X_FRAME_OPTIONS = os.environ.get('X_FRAME_OPTIONS', 'ALLOW-FROM https://canvas.harvard.edu')
 
 # This setting will add an LTI property to the session
-LTI_PROPERTY_LIST_EX = ['custom_canvas_course_id']
-
-IS_LTI = bool(os.environ.get('IS_LTI'))
+LTI_PROPERTY_LIST_EX = ['custom_canvas_course_id', 'lis_person_contact_email_primary']
 
 if IS_LTI:
     AUTHENTICATION_BACKENDS = [
@@ -346,6 +350,7 @@ else:
 
 
 LOGIN_URL = "account_login"
+LTI_REGISTER_URL = "lti_registration"
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")

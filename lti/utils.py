@@ -1,0 +1,19 @@
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from account.models import EmailAddress
+
+def login_existing_user(request):
+    """
+    Takes the request from the authentaction middleware.
+    It expects there to be 'lis_person_contact_email_primary' in the POST.
+    Returns the login function.
+    """
+    
+    lti_user_email = request.POST.get('lis_person_contact_email_primary', False)
+    if lti_user_email is False:
+        return None
+    account_email = EmailAddress.objects.get(email=lti_user_email)
+    # account_email = EmailAddress.objects.get(email='fakeemail@gmail.com')
+    user = User.objects.get(username=account_email.user.username)
+    return login(request, user, backend='hedera.backends.UsernameAuthenticationBackend')
+    
