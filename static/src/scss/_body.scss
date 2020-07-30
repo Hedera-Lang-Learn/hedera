@@ -17,3 +17,14 @@ p.lead b {
     margin-right: -5px;
     background: rgba($primary, 0.1);
 }
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.block-image,
+.block-text {
+  margin-bottom: 1rem;
+}

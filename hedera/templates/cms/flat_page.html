@@ -1,0 +1,39 @@
+{% extends "site_base.html" %}
+{% load i18n wagtailcore_tags cms_tags %}
+
+{% block head_title %}{{ page.title }}{% endblock %}
+
+{% block body_class %}flatpage{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  {% get_flatpage_nav as nav %}
+  <div class="row">
+    <div class="col-4">
+      <ul class="nav flex-column text-right">
+        {% for flatpage in nav %}
+          <li class="nav-item">
+            <a class="nav-link {% if page == flatpage.specific %}active{% endif %}" href="{% pageurl flatpage %}">
+              {{ flatpage.title }}
+            </a>
+          </li>
+          {% get_flatpage_subnav flatpage as subnav %}
+          {% if subnav %}
+            <ul>
+              {% for subpage in subnav %}
+                <li class="nav-item subpage">
+                  <a class="nav-link {% if page == subpage.specific %}active{% endif %}" href="{% pageurl subpage %}">
+                    {{ subpage.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-8">{{ page.body }}</div>
+  </div>
+{% endblock %}

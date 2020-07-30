@@ -32,3 +32,10 @@ header {
   }
   font-family: 'Noto Serif';
 }
+
+.flatpage li.nav-item.subpage {
+  list-style: none;
+}
+.flatpage li.nav-item.subpage > a {
+  font-size: 0.85rem;
+}
