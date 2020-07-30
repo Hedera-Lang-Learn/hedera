@@ -3,6 +3,7 @@
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata sites
+python manage.py create_cms
 python manage.py collectstatic --noinput
 sudo gunicorn hedera.wsgi:application \
     --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
