@@ -86,7 +86,12 @@ class LemmatizedTextStatusAPI(APIView):
 class LemmatizedTextDetailAPI(APIView):
 
     def get_data(self):
-        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.filter(
+            Q(public=True) |
+            Q(created_by=self.request.user) |
+            Q(classes__students=self.request.user) |
+            Q(classes__teachers=self.request.user)
+        )
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
 
@@ -120,7 +125,12 @@ class LemmatizationAPI(APIView):
         return data
 
     def get_data(self):
-        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.filter(
+            Q(public=True) |
+            Q(created_by=self.request.user) |
+            Q(classes__students=self.request.user) |
+            Q(classes__teachers=self.request.user)
+        )
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
