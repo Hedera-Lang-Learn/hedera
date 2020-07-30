@@ -30,5 +30,21 @@
             "domain": "hederaproject.org",
             "name": "Hedera"
         }
+    },
+    {
+        "pk": 5,
+        "model": "sites.site",
+        "fields": {
+            "domain": "hedera-dev.fas.harvard.edu",
+            "name": "Hedera"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "sites.site",
+        "fields": {
+            "domain": "hedera.fas.harvard.edu",
+            "name": "Hedera"
+        }
     }
 ]
