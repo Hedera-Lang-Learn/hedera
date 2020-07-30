@@ -2,7 +2,13 @@ from django.db.models import Q
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView
+)
 
 from account.mixins import LoginRequiredMixin
 
@@ -36,6 +42,7 @@ class GroupDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         group = super().get_object(queryset)
+        group.is_owner = group.created_by == self.request.user
         group.is_teacher = group.teachers.filter(pk=self.request.user.pk).exists()
         group.is_student = group.students.filter(pk=self.request.user.pk).exists()
         return group
@@ -89,9 +96,25 @@ class GroupCreateView(LoginRequiredMixin, CreateView):
     fields = ["title", "description"]
 
     def form_valid(self, form):
-        group = form.save()
+        group = form.save(commit=False)
+        group.created_by = self.request.user
+        group.save()
         group.teachers.add(self.request.user)
         return HttpResponseRedirect(group.get_absolute_url())
+
+
+class GroupDeleteView(LoginRequiredMixin, DeleteView):
+
+    model = Group
+    slug_field = "class_key"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(teachers__pk=self.request.user.pk)
+        return queryset
+
+    def get_success_url(self):
+        return reverse("groups_list")
 
 
 class GroupUpdateBaseView(LoginRequiredMixin, UpdateView):
