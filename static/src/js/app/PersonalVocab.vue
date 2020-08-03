@@ -1,5 +1,12 @@
 <template>
   <table class="table personal-vocab">
+    <thead>
+      <tr>
+        <th colspan="3" class="text-right">
+          <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+        </th>
+      </tr>
+    </thead>
     <colgroup>
         <col style="width:20%">
         <col style="width:40%">
@@ -23,10 +30,11 @@
 <script>
   import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY } from './constants';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
+  import DownloadVocab from './components/DownloadVocab.vue';
 
   export default {
     props: ['lang'],
-    components: { FamiliarityRating },
+    components: { FamiliarityRating, DownloadVocab },
     watch: {
       lang: {
         immediate: true,
@@ -55,6 +63,17 @@
       },
     },
     computed: {
+      glosses() {
+        if (!this.personalVocabEntries) {
+          return [];
+        }
+        return this.personalVocabEntries.map(e => {
+          return {
+            ...e,
+            label: e.headword,
+          };
+        });
+      },
       ranks() {
         return this.personalVocabList && this.personalVocabList.statsByText[this.$store.state.textId];
       },
