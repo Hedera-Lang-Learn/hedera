@@ -21,7 +21,7 @@
               <icon name="download" /> Export
             </a>
           </div>
-          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.pk">
+          <div class="glossed-token" :class="{selected: selectedToken && gloss.node === selectedToken.node }" v-for="gloss in glosses" :key="gloss.pk">
             <span class="token">{{ gloss.label }}</span>
             <span class="gloss">{{ gloss.gloss }}</span>
           </div>
@@ -275,9 +275,6 @@
 }
 
 .read-mode {
-  .token {
-    cursor: inherit;
-  }
   .unresolved {
     font-weight: inherit;
   }
@@ -308,6 +305,15 @@
     font-family: 'Noto Serif';
     font-size: 13pt;
 
+    &.selected {
+      border-width: 0;
+      background: $highlight;
+      padding: 0 0.5rem;
+      margin: 0 -0.5rem;
+      .gloss {
+        color: $gray-800;
+      }
+    }
     &.revealable-gloss {
       opacity: 0;
       &.show {
