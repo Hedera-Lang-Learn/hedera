@@ -12,7 +12,7 @@ from lti.views import LtiInitializerView, LtiRegistrationView
 
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="homepage.html", extra_context={'is_lti': settings.IS_LTI}), name="home"),
+    path("", TemplateView.as_view(template_name="homepage.html"), name="home"),
     path("admin/", admin.site.urls),
     path("django-rq/", include("django_rq.urls")),
     re_path(r"^account/", include("account.urls")),

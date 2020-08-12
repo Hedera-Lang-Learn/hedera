@@ -33,6 +33,10 @@ class AuthenticatedMiddleware(object):
             try:
                 lti_user = login_existing_user(request)
             except ObjectDoesNotExist:
+                request.session['lti_email'] = request.POST.get('lis_person_contact_email_primary', False)
+                request.session['course_id'] = request.POST.get('custom_canvas_course_id', False)
+                request.session['roles'] = request.POST.get('ext_roles', False)
+                request.session['title'] = request.POST.get('context_title', False)
                 return HttpResponseRedirect(reverse_lazy(settings.LTI_REGISTER_URL))
         if not request.user.is_authenticated:
             path = urlquote(request.get_full_path())

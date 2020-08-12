@@ -8,18 +8,20 @@
             {% default_vocab_list request.user as vocab_list %}
             <a class="nav-link" href="{% if vocab_list %}{% url "vocab_list_personal_detail" vocab_list.lang %}{% endif %}"><i class="fa fa-user"></i> {% user_display request.user %}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
-        </li>
-        {% if not is_lti %}
+        {% if not IS_LTI %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
             </li>
         {% endif %}
     {% else %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
-        {% if ACCOUNT_OPEN_SIGNUP %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
+        {% if not IS_LTI %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">{% trans "Log in" %}</a></li>
+            {% if ACCOUNT_OPEN_SIGNUP %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign up" %}</a></li>
+            {% endif %}
         {% endif %}
     {% endif %}
 </ul>
