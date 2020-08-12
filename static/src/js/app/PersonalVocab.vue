@@ -67,12 +67,10 @@
         if (!this.personalVocabEntries) {
           return [];
         }
-        return this.personalVocabEntries.map(e => {
-          return {
-            ...e,
-            label: e.headword,
-          };
-        });
+        return this.personalVocabEntries.map((e) => ({
+          ...e,
+          label: e.headword,
+        }));
       },
       ranks() {
         return this.personalVocabList && this.personalVocabList.statsByText[this.$store.state.textId];

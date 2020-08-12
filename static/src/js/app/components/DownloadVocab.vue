@@ -45,7 +45,7 @@
         const data = toCSV(this.glosses.map((g) => {
           const row = { label: g.label, gloss: g.gloss };
           if (this.withFamiliarity) {
-            const entry = this.personalVocabList.entries.filter(e => e.node === g.node);
+            const entry = this.personalVocabList.entries.filter((e) => e.node === g.node);
             row.familiarity = (entry[0] && entry[0].familiarity) || '';
           }
           return row;
