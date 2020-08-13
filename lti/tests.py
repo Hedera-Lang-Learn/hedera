@@ -1,12 +1,18 @@
+from django.test import RequestFactory, TestCase, override_settings
+
 from django.contrib.auth.models import User
 from django.contrib.sessions.middleware import SessionMiddleware
-from django.test import RequestFactory, TestCase, override_settings, Client
 
 from account.models import Account, EmailAddress
+
 from groups.models import Group
 
 from .utils import login_existing_user
-from .views import LtiInitializerView, LtiInitializerException, LtiRegistrationView
+from .views import (
+    LtiInitializerException,
+    LtiInitializerView,
+    LtiRegistrationView
+)
 
 
 @override_settings(

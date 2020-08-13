@@ -1,22 +1,17 @@
-from django.contrib.auth import login
-from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
-from django.urls import reverse, reverse_lazy
+import random
+import string
+
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import RedirectView
 from django.views.generic.edit import FormView
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.forms import UserCreationForm
 
-from lti_provider.mixins import LTIAuthMixin
-
-from account.models import EmailAddress
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 
 from groups.models import Group
 
 from .forms import LtiUsernameForm
 
-import random
-import string
 
 def get_random_alphanumeric_string(length):
     letters_and_digits = string.ascii_letters + string.digits
