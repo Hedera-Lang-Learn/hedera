@@ -13,5 +13,3 @@ EXPOSE 80
 
 RUN npm rebuild node-sass
 RUN npm run build
-
-RUN pip install awscli
