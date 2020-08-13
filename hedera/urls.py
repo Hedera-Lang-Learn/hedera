@@ -35,10 +35,10 @@ urlpatterns = [
     path("api/v1/vocab_entries/<int:pk>/link/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
-    
-    path("lti/", include('lti_provider.urls')),
+
+    path("lti/", include("lti_provider.urls")),
     path("lti/lti_initializer/", LtiInitializerView.as_view(), name="lti_initializer"),
-    path("lti/lti_registration",  LtiRegistrationView.as_view(), name="lti_registration"),
+    path("lti/lti_registration", LtiRegistrationView.as_view(), name="lti_registration"),
 
     path("", include("django.contrib.flatpages.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

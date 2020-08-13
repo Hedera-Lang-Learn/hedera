@@ -8,7 +8,7 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
-IS_LTI = bool(os.environ.get('IS_LTI'))
+IS_LTI = bool(os.environ.get("IS_LTI"))
 
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
 if not IS_LTI:
@@ -36,7 +36,7 @@ DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
 }
 
-CSRF_TRUSTED_ORIGINS = ['canvas.harvard.edu']
+CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -213,7 +213,7 @@ INSTALLED_APPS = [
 ]
 
 if DEBUG:
-    INSTALLED_APPS.append('sslserver')
+    INSTALLED_APPS.append("sslserver")
 
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
 RQ_DATABASE = 1
@@ -312,30 +312,30 @@ CSRF_COOKIE_SAMESITE = None
 CSRF_COOKIE_SECURE = True
 
 LTI_TOOL_CONFIGURATION = {
-    'title': 'Hedera',
-    'description': 'An LTI-compliant tool that enables users to interact with lemmatized texts.',
-    'launch_url': 'lti/lti_initializer/',
-    'embed_url': '',
-    'embed_icon_url': '',
-    'embed_tool_id': '',
-    'navigation': True,
-    'new_tab': False,
-    'course_aware': False,
+    "title": "Hedera",
+    "description": "An LTI-compliant tool that enables users to interact with lemmatized texts.",
+    "launch_url": "lti/lti_initializer/",
+    "embed_url": "",
+    "embed_icon_url": "",
+    "embed_tool_id": "",
+    "navigation": True,
+    "new_tab": False,
+    "course_aware": False
 }
 
 
 PYLTI_CONFIG = {
-    'consumers': {
-        os.environ.get('CONSUMER_KEY'): {
-            'secret': os.environ.get('LTI_SECRET')
+    "consumers": {
+        os.environ.get("CONSUMER_KEY"): {
+            "secret": os.environ.get("LTI_SECRET")
         }
     }
 }
 
-X_FRAME_OPTIONS = os.environ.get('X_FRAME_OPTIONS', 'ALLOW-FROM https://canvas.harvard.edu')
+X_FRAME_OPTIONS = os.environ.get("X_FRAME_OPTIONS", "ALLOW-FROM https://canvas.harvard.edu")
 
 # This setting will add an LTI property to the session
-LTI_PROPERTY_LIST_EX = ['custom_canvas_course_id', 'lis_person_contact_email_primary']
+LTI_PROPERTY_LIST_EX = ["custom_canvas_course_id", "lis_person_contact_email_primary"]
 
 if IS_LTI:
     AUTHENTICATION_BACKENDS = [
@@ -346,7 +346,7 @@ else:
     AUTHENTICATION_BACKENDS = [
         "hedera.backends.UsernameAuthenticationBackend",
         # "account.auth_backends.UsernameAuthenticationBackend",
-    ]    
+    ]
 
 
 LOGIN_URL = "account_login"
