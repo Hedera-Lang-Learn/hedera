@@ -1,12 +1,12 @@
 import re
 
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.utils.http import urlquote
 
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.core.exceptions import ObjectDoesNotExist
 
 from lti.utils import login_existing_user
 

@@ -5,10 +5,10 @@ from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 
 from django.contrib import admin
-from django.conf import settings
+
+from lti.views import LtiInitializerView, LtiRegistrationView
 
 from . import api, views
-from lti.views import LtiInitializerView, LtiRegistrationView
 
 
 urlpatterns = [
