@@ -130,7 +130,7 @@ class LtiRegistrationViewTests(TestCase):
         response = LtiRegistrationView.as_view()(request)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Choose a username")
-        
+
     def test_get_lti_failure(self):
         """ If a user attempts to access registration without the session variables set """
         response = self.client.get("/lti/lti_registration")
@@ -139,7 +139,6 @@ class LtiRegistrationViewTests(TestCase):
             response,
             "Your session has expired. Please, relaunch the tool via your canvas course."
         )
-        
 
     def test_post_success(self):
         """ Test that successful form post redirects to LtiInitializerView """

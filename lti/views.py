@@ -97,10 +97,10 @@ class LtiRegistrationView(FormView):
     template_name = "lti_registration.html"
     form_class = LtiUsernameForm
     success_url = "/lti/lti_initializer/"
-    
+
     def dispatch(self, request, *args, **kwargs):
         try:
-            r = request.session["lti_email"]
+            request.session["lti_email"]
         except KeyError:
             return render(request, "lti_failure.html")
         return super(LtiRegistrationView, self).dispatch(request, *args, **kwargs)
