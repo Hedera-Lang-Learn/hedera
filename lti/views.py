@@ -1,14 +1,13 @@
 import random
 import string
 
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import RedirectView
 from django.views.generic.edit import FormView
 
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-
-from django.shortcuts import render
 
 from groups.models import Group
 
