@@ -13,7 +13,8 @@ def login_existing_user(request):
 
     lti_user_email = request.POST.get("lis_person_contact_email_primary", False)
     if lti_user_email is False:
-        return None
+        return False
     account_email = EmailAddress.objects.get(email=lti_user_email)
     user = User.objects.get(username=account_email.user.username)
-    return login(request, user, backend="hedera.backends.UsernameAuthenticationBackend")
+    login(request, user, backend="hedera.backends.UsernameAuthenticationBackend")
+    return True

@@ -8,6 +8,8 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 
+from django.shortcuts import render
+
 from groups.models import Group
 
 from .forms import LtiUsernameForm
@@ -40,6 +42,7 @@ class LtiInitializerView(RedirectView):
                 roles = self.request.session["roles"]
                 title = self.request.session["title"]
             except KeyError:
+                # This should already be caught in middleware.py
                 raise LtiInitializerException("The required lti initialization parameters have not been provided.")
 
         # Get an existing group, or create a new one
@@ -95,6 +98,13 @@ class LtiRegistrationView(FormView):
     template_name = "lti_registration.html"
     form_class = LtiUsernameForm
     success_url = "/lti/lti_initializer/"
+    
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            r = request.session["lti_email"]
+        except KeyError:
+            return render(request, "lti_failure.html")
+        return super(LtiRegistrationView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
 

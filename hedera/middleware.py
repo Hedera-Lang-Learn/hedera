@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse_lazy
 from django.utils.http import urlquote
-
+from django.shortcuts import render
 from django.contrib.auth import REDIRECT_FIELD_NAME
 
 from lti.utils import login_existing_user
@@ -31,13 +31,17 @@ class AuthenticatedMiddleware(object):
                 return response
         if settings.IS_LTI and not request.user.is_authenticated:
             try:
-                login_existing_user(request)
+                lti_user = login_existing_user(request)
             except ObjectDoesNotExist:
                 request.session["lti_email"] = request.POST.get("lis_person_contact_email_primary", False)
                 request.session["course_id"] = request.POST.get("custom_canvas_course_id", False)
                 request.session["roles"] = request.POST.get("ext_roles", False)
                 request.session["title"] = request.POST.get("context_title", False)
+                if not request.session["lti_email"]:
+                    return render(request, "lti_failure.html")
                 return HttpResponseRedirect(reverse_lazy(settings.LTI_REGISTER_URL))
+            if lti_user is False:
+                return render(request, "lti_failure.html")
         if not request.user.is_authenticated:
             path = urlquote(request.get_full_path())
             tup = (self.login_url, self.redirect_field_name, path)

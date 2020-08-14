@@ -120,9 +120,26 @@ class LtiInitializerViewTests(TestCase):
 class LtiRegistrationViewTests(TestCase):
 
     def test_get(self):
-        response = self.client.get("/lti/lti_registration", {"lis_person_contact_email_primary": "user2@example.com"})
+        rf = RequestFactory()
+        request = rf.get("/lti/lti_registration")
+        request.user = None
+        middleware = SessionMiddleware()
+        middleware.process_request(request)
+        request.session["lti_email"] = "user2@example.com"
+        request.session.save()
+        response = LtiRegistrationView.as_view()(request)
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "<legend>Choose a username</legend>", html=True)
+        self.assertContains(response, "Choose a username")
+        
+    def test_get_lti_failure(self):
+        """ If a user attempts to access registration without the session variables set """
+        response = self.client.get("/lti/lti_registration")
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            "Your session has expired. Please, relaunch the tool via your canvas course."
+        )
+        
 
     def test_post_success(self):
         """ Test that successful form post redirects to LtiInitializerView """
@@ -142,6 +159,13 @@ class LtiRegistrationViewTests(TestCase):
     def test_post_form_error(self):
         """ Test that non-unique username does not redirect """
         User.objects.create_user("taken_username", email="test@test.com", password="1f2dDfv!")
-        response = self.client.post("/lti/lti_registration", data={"username": "taken_username"})
-        self.assertFalse(response.status_code == 302)
+        rf = RequestFactory()
+        request = rf.post("/lti/lti_registration", data={"username": "taken_username"})
+        request.user = None
+        middleware = SessionMiddleware()
+        middleware.process_request(request)
+        request.session["lti_email"] = "user2@example.com"
+        request.session.save()
+        response = LtiRegistrationView.as_view()(request)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Sorry, that username is taken.")
