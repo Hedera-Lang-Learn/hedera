@@ -308,9 +308,6 @@ ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
 # LTI configuration
 
-CSRF_COOKIE_SAMESITE = None
-CSRF_COOKIE_SECURE = True
-
 LTI_TOOL_CONFIGURATION = {
     "title": "Hedera",
     "description": "An LTI-compliant tool that enables users to interact with lemmatized texts.",
@@ -318,8 +315,11 @@ LTI_TOOL_CONFIGURATION = {
     "embed_url": "",
     "embed_icon_url": "",
     "embed_tool_id": "",
-    "navigation": True,
-    "new_tab": False,
+    "course_navigation": {
+        "default": "disabled",
+        "enabled": "true",
+        "windowTarget": "_blank"
+    },
     "course_aware": False
 }
 
