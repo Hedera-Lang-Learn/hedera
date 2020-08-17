@@ -35,6 +35,9 @@ jobs:
 
         - name: Lint Python
           run: pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
+          
+        - name: Run django tests with sqlite db
+          run: pipenv run python manage.py test
 
         - name: Install Static Dependences
           run: npm i --dev

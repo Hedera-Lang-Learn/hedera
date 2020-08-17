@@ -1,4 +1,5 @@
 import os
+import sys
 
 import dj_database_url
 import sentry_sdk
@@ -32,9 +33,18 @@ try:
 except ValueError:
     DEBUG = False
 
-DATABASES = {
-    "default": dj_database_url.config(default="postgres://localhost/hedera")
-}
+
+if sys.argv[1] == "test":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.config(default="postgres://localhost/hedera")
+    }
 
 CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
 
