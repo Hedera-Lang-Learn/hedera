@@ -17,11 +17,9 @@
         </div>
         <div class="glosses" v-if="readMode">
           <div class="text-right">
-            <a class="btn btn-sm btn-light" v-if="glossesDownload" :href="glossesDownload" download="glosses.csv">
-              <icon name="download" /> Export
-            </a>
+            <DownloadVocab v-if="glosses" :glosses="glosses" :with-familiarity="false" />
           </div>
-          <div class="glossed-token" v-for="gloss in glosses" :key="gloss.pk">
+          <div class="glossed-token" :class="{selected: selectedToken && gloss.node === selectedToken.node }" v-for="gloss in glosses" :key="gloss.pk">
             <span class="token">{{ gloss.label }}</span>
             <span class="gloss">{{ gloss.gloss }}</span>
           </div>
@@ -71,41 +69,16 @@
   import VocabularyEntries from './modules/VocabularyEntries.vue';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import TextFamiliarity from './modules/TextFamiliarity.vue';
-
-  const toCSV = (data) => {
-    if (data.length === 0) {
-      return null;
-    }
-
-    let result; let
-      ctr;
-    const columnDelimiter = ',';
-    const lineDelimiter = '\n';
-    const keys = Object.keys(data[0]);
-
-    result = '';
-    result += keys.join(columnDelimiter);
-    result += lineDelimiter;
-
-    data.forEach((item) => {
-      ctr = 0;
-      keys.forEach((key) => {
-        if (ctr > 0) {
-          result += columnDelimiter;
-        }
-        result += `"${item[key]}"`;
-        ctr += 1;
-      });
-      result += lineDelimiter;
-    });
-
-    return result;
-  };
+  import DownloadVocab from './components/DownloadVocab.vue';
 
   export default {
     props: ['textId'],
     components: {
-      FamiliarityRating, LemmatizedText, VocabularyEntries, TextFamiliarity,
+      FamiliarityRating,
+      LemmatizedText,
+      VocabularyEntries,
+      TextFamiliarity,
+      DownloadVocab,
     },
     data() {
       return {
@@ -207,10 +180,6 @@
           .map((node) => this.tokens.filter((t) => t.node === node)[0] || null)
           .filter((t) => t !== null && t.gloss !== null && t.resolved !== 'unresolved');
       },
-      glossesDownload() {
-        const data = toCSV(this.glosses.map((g) => ({ label: g.label, gloss: g.gloss })));
-        return data === null ? null : encodeURI(`data:text/csv;charset=utf-8,${data}`);
-      },
     },
   };
 </script>
@@ -275,9 +244,6 @@
 }
 
 .read-mode {
-  .token {
-    cursor: inherit;
-  }
   .unresolved {
     font-weight: inherit;
   }
@@ -308,6 +274,15 @@
     font-family: 'Noto Serif';
     font-size: 13pt;
 
+    &.selected {
+      border-width: 0;
+      background: $highlight;
+      padding: 0 0.5rem;
+      margin: 0 -0.5rem;
+      .gloss {
+        color: $gray-800;
+      }
+    }
     &.revealable-gloss {
       opacity: 0;
       &.show {

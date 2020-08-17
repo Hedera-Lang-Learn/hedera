@@ -1,28 +1,33 @@
-header {
-  nav {
-    @extend .navbar;
-    @extend .navbar-expand-lg;
-    @extend .navbar-dark;
-    @extend .bg-dark;
-    div.topbar-container {
-      @extend .container;
-      >a {
-        @extend .navbar-brand;
-      }
-      .nav-container {
-        .main-bar {
-          @extend .navbar-nav;
-          @extend .mr-auto;
-          li {
-            @extend .nav-item;
-            a {
-              @extend .nav-link;
-            }
-          }
-        }
-      }
-    }
-  }
+// header {
+//   nav {
+//     @extend .navbar;
+//     @extend .navbar-expand-lg;
+//     @extend .navbar-dark;
+//     @extend .bg-dark;
+//     div.topbar-container {
+//       @extend .container;
+//       >a {
+//         @extend .navbar-brand;
+//       }
+//       .nav-container {
+//         .main-bar {
+//           @extend .navbar-nav;
+//           @extend .mr-auto;
+//           li {
+//             @extend .nav-item;
+//             a {
+//               @extend .nav-link;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+button.navbar-toggler {
+    // color: $gray-600;
+    border-width: 0;
 }
 
 .navbar-brand {
@@ -31,4 +36,11 @@ header {
     margin: -12px 0;
   }
   font-family: 'Noto Serif';
+}
+
+.flatpage li.nav-item.subpage {
+  list-style: none;
+}
+.flatpage li.nav-item.subpage > a {
+  font-size: 0.85rem;
 }

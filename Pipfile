@@ -24,6 +24,7 @@ iso-639 = "*"
 cltk = "==0.1.117"
 sentry-sdk = "==0.14.3"
 rq = "==1.3.0"
+wagtail = "*"
 django-lti-provider = {git = "https://github.com/Harvard-ATG/django-lti-provider.git", editable = true, ref = "course-navigation"}
 
 [dev-packages]

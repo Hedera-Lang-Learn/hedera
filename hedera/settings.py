@@ -44,6 +44,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "hederaproject.org",
     ".hederaproject.org",
+    "hedera.fas.harvard.edu",
+    "hedera-dev.fas.harvard.edu",
 ]
 
 ALLOWED_HOSTS += get_ecs_task_ips()
@@ -156,6 +158,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "querycount.middleware.QueryCountMiddleware",
     "hedera.middleware.AuthenticatedMiddleware",
 ]
@@ -181,7 +184,6 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.flatpages",
     "django.contrib.messages",
     "django.contrib.sessions",
     "django.contrib.sites",
@@ -200,6 +202,21 @@ INSTALLED_APPS = [
     "django_rq",
     "lti_provider",
 
+    # wagtail
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail.core",
+    "modelcluster",
+    "taggit",
+
     # local apps
     "databasetext",
     "vocab_list",
@@ -207,6 +224,7 @@ INSTALLED_APPS = [
     "lemmatization",
     "lemmatized_text",
     "groups",
+    "cms",
     "lti",
 
     # project
@@ -302,8 +320,6 @@ SESSION_COOKIE_NAME = "sv-sessionid"
 ACCOUNT_OPEN_SIGNUP = True
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
-ACCOUNT_LOGIN_REDIRECT_URL = "home"
-ACCOUNT_LOGOUT_REDIRECT_URL = "home"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
@@ -375,3 +391,5 @@ SUPPORTED_LANGUAGES = [
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = None
+
+WAGTAIL_SITE_NAME = "Hedera"

@@ -7,6 +7,7 @@ import handleMessageDismiss from './messages';
 
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/tab';
+import 'bootstrap/js/dist/collapse';
 
 loadApps();
 handleMessageDismiss();

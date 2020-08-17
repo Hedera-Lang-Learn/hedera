@@ -5,7 +5,9 @@
 {% load i18n %}
 {% load vocab_tags %}
 {% load static %}
-
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load cms_tags %}
 
 {% block styles %}
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap&subset=greek,greek-ext,latin-ext,russian" rel="stylesheet">
@@ -38,7 +40,7 @@
 {% endblock %}
 
 {% block extra_head_base %}
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script src="https://kit.fontawesome.com/b59f827277.js" crossorigin="anonymous"></script>
   {% block extra_head %}{% endblock %}
 {% endblock %}
 
@@ -46,32 +48,46 @@
 
 {% block topbar_base %}
   <header>
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         {% block topbar %}
-          {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{% block site_name %}{{ SITE_NAME }}{% endblock %}</a>{% endblock %}
-          {% block navbar-toggler %}{% endblock %}
-          {% block nav %}
-            <ul class="navbar-nav mr-auto">
-              {% block nav_items %}
-                <li class="navbar-item"><a class="nav-link" href="/about/">About</a></li>
-              {% if request.user.is_authenticated %}
-                <li class="navbar-item"><a class="nav-link" href="{% url 'groups_list' %}">Classes</a></li>
-                <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Texts</a></li>
-                <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
-                <li class="navbar-item">
-                    {% default_vocab_list request.user as vocab_list %}
-                    {% if vocab_list %}
-                    <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
-                      Personal Vocabulary
-                    </a>
-                    {% endif %}
-                </li>
-              {% endif %}
-              {% endblock %}
-            </ul>
-          {% endblock %}
-          {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+          <a class="navbar-brand" href="/">Hedera</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="nav-container collapse navbar-collapse" id="navbar">
+            {% block nav %}
+              <ul class="navbar-nav mr-auto">
+                {% block nav_items %}
+
+                  {% get_site_nav as nav %}
+                  {% for page in nav %}
+                    <li class="navbar-item">
+                      <a class="nav-link" href="{% pageurl page %}">
+                        {{ page.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+
+                  {% if request.user.is_authenticated %}
+                    <li class="navbar-item"><a class="nav-link" href="{% url 'groups_list' %}">Classes</a></li>
+                    <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Lemmatized Texts</a></li>
+                    <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary Lists</a></li>
+                    <li class="navbar-item">
+                        {% default_vocab_list request.user as vocab_list %}
+                        {% if vocab_list %}
+                        <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
+                          Personal Vocabulary Lists
+                        </a>
+                        {% endif %}
+                    </li>
+                  {% endif %}
+
+                {% endblock %}
+              </ul>
+            {% endblock %}
+            {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+          </div>
         {% endblock %}
       </div>
     </nav>
@@ -90,6 +106,7 @@
         </div>
     </section>
     {% block content_right %}{% endblock %}
+    {% wagtailuserbar 'bottom-right' %}
 </main>
 {% endblock %}
 
