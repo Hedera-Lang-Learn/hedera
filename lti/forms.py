@@ -11,8 +11,4 @@ class LtiUsernameForm(forms.Form):
     )
 
     def unique_username(self, username):
-        try:
-            User.objects.get(username=username)
-        except User.DoesNotExist:
-            return True
-        return False
+        return not User.objects.filter(username__iexact=username.strip()).exists()

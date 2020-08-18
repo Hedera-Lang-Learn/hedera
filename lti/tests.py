@@ -1,6 +1,6 @@
 from django.test import RequestFactory, TestCase, override_settings
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AnonymousUser, User
 from django.contrib.sessions.middleware import SessionMiddleware
 
 from account.models import Account
@@ -52,7 +52,7 @@ class LtiInitializerViewTests(TestCase):
         self.assertEqual(response.url, "/lti/lti_registration")
 
     def test_get_or_create_group_doesnt_override_existing(self):
-        Group.objects.create(class_key=1, title="Test title")
+        Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
         existing_group = Group.objects.get(class_key=1)
         lti_initializer = LtiInitializerView()
         initializer_group = lti_initializer.get_or_create_group(course_id=1, title="Don't update")
@@ -60,13 +60,13 @@ class LtiInitializerViewTests(TestCase):
 
     def test_get_or_create_group_creates_new(self):
         lti_initializer = LtiInitializerView()
-        lti_initializer.get_or_create_group(course_id=2, title="Newly created")
+        lti_initializer.get_or_create_group(course_id=2, title="Newly created", user=self.created_user)
         created_group = Group.objects.get(class_key=2)
         self.assertEqual(created_group.title, "Newly created")
 
     def test_role_is_added(self):
         lti_initializer = LtiInitializerView()
-        Group.objects.create(class_key=1, title="Test title")
+        Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
         group = Group.objects.get(class_key=1)
         user = User.objects.get(username="user1")
         lti_initializer.update_roles(user=user, group=group, role="Student")
@@ -74,7 +74,7 @@ class LtiInitializerViewTests(TestCase):
 
     def test_role_is_updated(self):
         lti_initializer = LtiInitializerView()
-        Group.objects.create(class_key=1, title="Test title")
+        Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
         group = Group.objects.get(class_key=1)
         user = User.objects.get(username="user1")
         lti_initializer.update_roles(user=user, group=group, role="Student")
@@ -122,7 +122,7 @@ class LtiRegistrationViewTests(TestCase):
     def test_get(self):
         rf = RequestFactory()
         request = rf.get("/lti/lti_registration")
-        request.user = None
+        request.user = AnonymousUser()
         middleware = SessionMiddleware()
         middleware.process_request(request)
         request.session["lti_email"] = "user2@example.com"
@@ -160,7 +160,7 @@ class LtiRegistrationViewTests(TestCase):
         User.objects.create_user("taken_username", email="test@test.com", password="1f2dDfv!")
         rf = RequestFactory()
         request = rf.post("/lti/lti_registration", data={"username": "taken_username"})
-        request.user = None
+        request.user = AnonymousUser()
         middleware = SessionMiddleware()
         middleware.process_request(request)
         request.session["lti_email"] = "user2@example.com"

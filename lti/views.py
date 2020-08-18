@@ -26,7 +26,7 @@ class LtiInitializerException(Exception):
 
 class LtiInitializerView(RedirectView):
 
-    pattern_name = "home"
+    url = "/"
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
@@ -46,7 +46,7 @@ class LtiInitializerView(RedirectView):
 
         # Get an existing group, or create a new one
         if course_id is not None:
-            group = self.get_or_create_group(course_id=int(course_id), title=title)
+            group = self.get_or_create_group(course_id=int(course_id), title=title, user=request.user)
         else:
             raise LtiInitializerException("The required lti initialization parameters have not been provided.")
 
@@ -83,12 +83,16 @@ class LtiInitializerView(RedirectView):
         # indicative on an LTI failure.
         return "Student"
 
-    def get_or_create_group(self, course_id=None, title="Empty"):
+    def get_or_create_group(self, course_id=None, title="Empty", user=None):
         """ takes (int) course_id, and (str) title and returns a Group"""
         try:
             group = Group.objects.get(class_key=course_id)
         except Group.DoesNotExist:
-            group = Group.objects.create(class_key=course_id, title=title)
+            group = Group.objects.create(
+                class_key=course_id,
+                title=title,
+                created_by=user
+            )
         return group
 
 
