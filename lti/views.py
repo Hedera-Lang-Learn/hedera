@@ -30,32 +30,54 @@ class LtiInitializerView(RedirectView):
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
-
-        course_id = request.POST.get("custom_canvas_course_id", None)
-        roles = request.POST.get("ext_roles", None)
-        title = request.POST.get("context_title", None)
-
-        if course_id is None:
-            try:
-                course_id = self.request.session["course_id"]
-                roles = self.request.session["roles"]
-                title = self.request.session["title"]
-            except KeyError:
-                # This should already be caught in middleware.py
-                raise LtiInitializerException("The required lti initialization parameters have not been provided.")
-
-        # Get an existing group, or create a new one
+    
+        
+    
+        return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
+        
+    def get(self, request, *args, **kwargs):
+        """ Make some sort of comment """
+        
+        lti_params = {
+            'course_id': request.session.get("custom_canvas_course_id", None),
+            'roles': request.session.get("ext_roles", None),
+            'title': request.session.get("context_title", None)
+        }
+        
+        if None in lti_params.values():
+            return render(request, "lti_failure.html")
+            
+        self.initialize_group(course_id, title, roles, request.user)
+        
+        return super(LtiInitializerView, self).get(request, *args, **kwargs)
+        
+    def post(self, request, *args, **kwargs):
+        """ Make some sort of comment """
+        lti_params = {
+            'course_id': request.POST.get("custom_canvas_course_id", None),
+            'roles': request.POST.get("ext_roles", None),
+            'title': request.POST.get("context_title", None)
+        }
+        
+        if None in lti_params.values():
+            return render(request, "lti_failure.html")
+            
+        self.initialize_group(course_id, title, roles, request.user)
+        
+        return super(LtiInitializerView, self).post(request, *args, **kwargs)
+        
+    def initialize_group(self, course_id, title, roles, user):
+        """ Make some sort of comment """
         if course_id is not None:
-            group = self.get_or_create_group(course_id=int(course_id), title=title, user=request.user)
+            group = self.get_or_create_group(course_id=int(course_id), title=title, user=user)
         else:
-            raise LtiInitializerException("The required lti initialization parameters have not been provided.")
-
+            return render(request, "lti_failure.html")
+        
         # Determine if the user is a Teacher or Student
         role = self.determine_role(roles)
         # Update the roles at each launch
-        self.update_roles(user=request.user, group=group, role=role)
-
-        return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
+        self.update_roles(user=user, group=group, role=role)
+        return None
 
     def update_roles(self, user, group, role):
         """
