@@ -172,7 +172,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/\.well-known/",
     "^/$",
     r"/api/",
-    "/lti/lti_registration",
+    "lti/lti_initializer/",
+    "/lti/lti_registration"
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -352,7 +353,12 @@ PYLTI_CONFIG = {
 X_FRAME_OPTIONS = os.environ.get("X_FRAME_OPTIONS", "ALLOW-FROM https://canvas.harvard.edu")
 
 # This setting will add an LTI property to the session
-LTI_PROPERTY_LIST_EX = ["custom_canvas_course_id", "lis_person_contact_email_primary"]
+LTI_PROPERTY_LIST_EX = [
+    "custom_canvas_course_id",
+    "lis_person_contact_email_primary",
+    "ext_roles",
+    "context_title"
+]
 
 if IS_LTI:
     AUTHENTICATION_BACKENDS = [
@@ -366,8 +372,11 @@ else:
     ]
 
 
-LOGIN_URL = "account_login"
-LTI_REGISTER_URL = "lti_registration"
+if not IS_LTI:
+    LOGIN_URL = "account_login"
+else:
+    LOGIN_URL = "lti_initializer"
+
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")

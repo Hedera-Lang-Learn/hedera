@@ -30,19 +30,6 @@ class AuthenticatedMiddleware(object):
             if re.match(exemption, request.path):
                 response = self.get_response(request)
                 return response
-        if settings.IS_LTI and not request.user.is_authenticated:
-            try:
-                lti_user = login_existing_user(request)
-            except ObjectDoesNotExist:
-                request.session["lti_email"] = request.POST.get("lis_person_contact_email_primary", False)
-                request.session["course_id"] = request.POST.get("custom_canvas_course_id", False)
-                request.session["roles"] = request.POST.get("ext_roles", False)
-                request.session["title"] = request.POST.get("context_title", False)
-                if not request.session["lti_email"]:
-                    return render(request, "lti_failure.html")
-                return HttpResponseRedirect(reverse_lazy(settings.LTI_REGISTER_URL))
-            if lti_user is False:
-                return render(request, "lti_failure.html")
         if not request.user.is_authenticated:
             path = urlquote(request.get_full_path())
             tup = (self.login_url, self.redirect_field_name, path)

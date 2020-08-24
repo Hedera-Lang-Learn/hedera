@@ -1,17 +1,26 @@
 import random
 import string
 
+from django.urls import reverse
+
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import RedirectView
 from django.views.generic.edit import FormView
+from django.http import HttpResponseRedirect
 
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 
 from groups.models import Group
 
+from account.models import EmailAddress
+
 from .forms import LtiUsernameForm
+from .utils import login_existing_user
+
+from lti_provider.lti import LTI
+from pylti.common import LTIException
 
 
 def get_random_alphanumeric_string(length):
@@ -20,18 +29,29 @@ def get_random_alphanumeric_string(length):
     return result_str
 
 
-class LtiInitializerException(Exception):
-    pass
-
-
 class LtiInitializerView(RedirectView):
 
     url = "/"
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
-    
         
+        lti = LTI(request_type='any', role_type='any')
+        try:
+            lti.verify(request)
+        except LTIException:
+            return render(request, "lti_failure.html")
+            
+        if not request.user.is_authenticated:
+            try:
+                lti_user = login_existing_user(request)
+            except EmailAddress.DoesNotExist:
+                request.session['lti_email'] = request.POST.get("lis_person_contact_email_primary", None)
+                if request.session['lti_email'] is None:
+                    return render(request, "lti_failure.html")
+                return HttpResponseRedirect(reverse('lti_registration'))
+            if lti_user is False:
+                return render(request, "lti_failure.html")
     
         return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
         
@@ -46,8 +66,13 @@ class LtiInitializerView(RedirectView):
         
         if None in lti_params.values():
             return render(request, "lti_failure.html")
-            
-        self.initialize_group(course_id, title, roles, request.user)
+
+        self.initialize_group(
+            lti_params['course_id'],
+            lti_params['title'],
+            lti_params['roles'],
+            request.user
+        )
         
         return super(LtiInitializerView, self).get(request, *args, **kwargs)
         
@@ -61,8 +86,13 @@ class LtiInitializerView(RedirectView):
         
         if None in lti_params.values():
             return render(request, "lti_failure.html")
-            
-        self.initialize_group(course_id, title, roles, request.user)
+        
+        self.initialize_group(
+            lti_params['course_id'],
+            lti_params['title'],
+            lti_params['roles'],
+            request.user
+        )
         
         return super(LtiInitializerView, self).post(request, *args, **kwargs)
         
