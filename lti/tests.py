@@ -91,7 +91,6 @@ class LtiInitializerViewTests(TestCase):
 
     def test_dispatch_advises_relaunch(self):
         """ Test missing POST parameters will advise user to relaunch """
-        
         response = self.client.post(
             "/lti/lti_initializer/",
             {
