@@ -33,94 +33,79 @@ class LtiInitializerView(RedirectView):
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         """ Handle LTI verification and user authentication """
-        lti = LTI(request_type='any', role_type='any')
+        lti = LTI(request_type="any", role_type="any")
         try:
             lti.verify(request)
         except LTIException:
             return render(request, "lti_failure.html")
-            
+
         if not request.user.is_authenticated:
             try:
                 lti_user = login_existing_user(request)
             except EmailAddress.DoesNotExist:
-                request.session['lti_email'] = request.POST.get("lis_person_contact_email_primary", None)
-                if request.session['lti_email'] is None:
+                request.session["lti_email"] = request.POST.get("lis_person_contact_email_primary", None)
+                if request.session["lti_email"] is None:
                     return render(request, "lti_failure.html")
-                return HttpResponseRedirect(reverse('lti_registration'))
+                return HttpResponseRedirect(reverse("lti_registration"))
             if lti_user is False:
                 return render(request, "lti_failure.html")
-    
+
         return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
-        
+
     def get(self, request, *args, **kwargs):
         """ Handle the redirection coming from username registration """
-        
+
         lti_params = {
-            'course_id': request.session.get("custom_canvas_course_id", None),
-            'roles': request.session.get("ext_roles", None),
-            'title': request.session.get("context_title", None)
+            "course_id": request.session.get("custom_canvas_course_id", None),
+            "roles": request.session.get("ext_roles", None),
+            "title": request.session.get("context_title", None)
         }
-        
+
         if None in lti_params.values():
             return render(request, "lti_failure.html")
 
         self.initialize_group(
-            lti_params['course_id'],
-            lti_params['title'],
-            lti_params['roles'],
+            lti_params["course_id"],
+            lti_params["title"],
+            lti_params["roles"],
             request.user
         )
-        
+
         return super(LtiInitializerView, self).get(request, *args, **kwargs)
-        
+
     def post(self, request, *args, **kwargs):
         """ Handle the POST coming directly from Canvas """
-        
+
         lti_params = {
-            'course_id': request.POST.get("custom_canvas_course_id", None),
-            'roles': request.POST.get("ext_roles", None),
-            'title': request.POST.get("context_title", None)
+            "course_id": request.POST.get("custom_canvas_course_id", None),
+            "roles": request.POST.get("ext_roles", None),
+            "title": request.POST.get("context_title", None)
         }
-        
+
         if None in lti_params.values():
             return render(request, "lti_failure.html")
-        
+
         self.initialize_group(
-            lti_params['course_id'],
-            lti_params['title'],
-            lti_params['roles'],
+            lti_params["course_id"],
+            lti_params["title"],
+            lti_params["roles"],
             request.user
         )
-        
+
         return super(LtiInitializerView, self).post(request, *args, **kwargs)
-        
+
     def initialize_group(self, course_id, title, roles, user):
-        """ Make some sort of comment """
-        if course_id is not None:
-            group = self.get_or_create_group(course_id=int(course_id), title=title, user=user)
-        else:
-            return render(request, "lti_failure.html")
-        
+        """
+        Takes in (str)course_id (str)title (str)roles, and (obj)user.
+        Gets or creates group, and updates the user's role in that group.
+        The parameters cannot be None
+        Returns None
+        """
+        group = self.get_or_create_group(course_id=int(course_id), title=title, user=user)
         # Determine if the user is a Teacher or Student
         role = self.determine_role(roles)
         # Update the roles at each launch
         self.update_roles(user=user, group=group, role=role)
-        return None
-
-    def update_roles(self, user, group, role):
-        """
-        Takes a user, group, and roles list.
-        Will update group's teachers or students sets
-        Returns None
-        """
-        if role == "Teacher":
-            group.teachers.add(user)
-            if user in group.students.all():
-                group.students.remove(user)
-        else:
-            group.students.add(user)
-            if user in group.teachers.all():
-                group.teachers.remove(user)
         return None
 
     def determine_role(self, roles):
@@ -144,6 +129,22 @@ class LtiInitializerView(RedirectView):
                 created_by=user
             )
         return group
+
+    def update_roles(self, user, group, role):
+        """
+        Takes a user, group, and roles list.
+        Will update group's teachers or students sets
+        Returns None
+        """
+        if role == "Teacher":
+            group.teachers.add(user)
+            if user in group.students.all():
+                group.students.remove(user)
+        else:
+            group.students.add(user)
+            if user in group.teachers.all():
+                group.teachers.remove(user)
+        return None
 
 
 class LtiRegistrationView(FormView):
