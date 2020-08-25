@@ -1,6 +1,6 @@
 from django import forms
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 
 class LtiUsernameForm(forms.Form):
@@ -11,4 +11,4 @@ class LtiUsernameForm(forms.Form):
     )
 
     def unique_username(self, username):
-        return not User.objects.filter(username__iexact=username.strip()).exists()
+        return not get_user_model().objects.filter(username__iexact=username.strip()).exists()

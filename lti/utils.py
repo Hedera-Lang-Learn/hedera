@@ -1,5 +1,4 @@
-from django.contrib.auth import login
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model, login
 
 from account.models import EmailAddress
 
@@ -15,6 +14,6 @@ def login_existing_user(request):
     if lti_user_email is None:
         return False
     account_email = EmailAddress.objects.get(email=lti_user_email)
-    user = User.objects.get(username=account_email.user.username)
+    user = get_user_model().objects.get(username=account_email.user.username)
     login(request, user, backend="hedera.backends.UsernameAuthenticationBackend")
     return True

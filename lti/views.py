@@ -1,26 +1,23 @@
 import random
 import string
 
-from django.urls import reverse
-
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import RedirectView
 from django.views.generic.edit import FormView
-from django.http import HttpResponseRedirect
 
-from django.contrib.auth import login
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model, login
+
+from account.models import EmailAddress
+from lti_provider.lti import LTI
+from pylti.common import LTIException
 
 from groups.models import Group
 
-from account.models import EmailAddress
-
 from .forms import LtiUsernameForm
 from .utils import login_existing_user
-
-from lti_provider.lti import LTI
-from pylti.common import LTIException
 
 
 def get_random_alphanumeric_string(length):
@@ -35,7 +32,7 @@ class LtiInitializerView(RedirectView):
 
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
-        
+        """ Handle LTI verification and user authentication """
         lti = LTI(request_type='any', role_type='any')
         try:
             lti.verify(request)
@@ -56,7 +53,7 @@ class LtiInitializerView(RedirectView):
         return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
         
     def get(self, request, *args, **kwargs):
-        """ Make some sort of comment """
+        """ Handle the redirection coming from username registration """
         
         lti_params = {
             'course_id': request.session.get("custom_canvas_course_id", None),
@@ -77,7 +74,8 @@ class LtiInitializerView(RedirectView):
         return super(LtiInitializerView, self).get(request, *args, **kwargs)
         
     def post(self, request, *args, **kwargs):
-        """ Make some sort of comment """
+        """ Handle the POST coming directly from Canvas """
+        
         lti_params = {
             'course_id': request.POST.get("custom_canvas_course_id", None),
             'roles': request.POST.get("ext_roles", None),
@@ -172,7 +170,7 @@ class LtiRegistrationView(FormView):
         email = self.request.session["lti_email"]
         password = get_random_alphanumeric_string(10)
 
-        new_user = User.objects.create_user(username, email=email, password=password)
+        new_user = get_user_model().objects.create_user(username, email=email, password=password)
         login(self.request, new_user, backend="hedera.backends.UsernameAuthenticationBackend")
 
         return super().form_valid(form)
