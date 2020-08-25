@@ -20,6 +20,12 @@ from .forms import LtiUsernameForm
 from .utils import login_existing_user
 
 
+LTI_PROPERTY_COURSE_ID = "custom_canvas_course_id"
+LTI_PROPERTY_COURSE_TITLE = "context_title"
+LTI_PROPERTY_USER_EMAIL = "lis_person_contact_email_primary"
+LTI_PROPERTY_USER_ROLES = "ext_roles"
+
+
 def get_random_alphanumeric_string(length):
     letters_and_digits = string.ascii_letters + string.digits
     result_str = "".join((random.choice(letters_and_digits) for i in range(length)))
@@ -43,7 +49,7 @@ class LtiInitializerView(RedirectView):
             try:
                 lti_user = login_existing_user(request)
             except EmailAddress.DoesNotExist:
-                request.session["lti_email"] = request.POST.get("lis_person_contact_email_primary", None)
+                request.session["lti_email"] = request.POST.get(LTI_PROPERTY_USER_EMAIL, None)
                 if request.session["lti_email"] is None:
                     return render(request, "lti_failure.html")
                 return HttpResponseRedirect(reverse("lti_registration"))
@@ -56,9 +62,9 @@ class LtiInitializerView(RedirectView):
         """ Handle the redirection coming from username registration """
 
         lti_params = {
-            "course_id": request.session.get("custom_canvas_course_id", None),
-            "roles": request.session.get("ext_roles", None),
-            "title": request.session.get("context_title", None)
+            "course_id": request.session.get(LTI_PROPERTY_COURSE_ID, None),
+            "roles": request.session.get(LTI_PROPERTY_USER_ROLES, None),
+            "title": request.session.get(LTI_PROPERTY_COURSE_TITLE, None)
         }
 
         if None in lti_params.values():
@@ -77,9 +83,9 @@ class LtiInitializerView(RedirectView):
         """ Handle the POST coming directly from Canvas """
 
         lti_params = {
-            "course_id": request.POST.get("custom_canvas_course_id", None),
-            "roles": request.POST.get("ext_roles", None),
-            "title": request.POST.get("context_title", None)
+            "course_id": request.POST.get(LTI_PROPERTY_COURSE_ID, None),
+            "roles": request.POST.get(LTI_PROPERTY_USER_ROLES, None),
+            "title": request.POST.get(LTI_PROPERTY_COURSE_TITLE, None)
         }
 
         if None in lti_params.values():
