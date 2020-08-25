@@ -8,7 +8,7 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
-IS_LTI = bool(os.environ.get("IS_LTI"))
+IS_LTI = (os.environ.get("IS_LTI") == "1")
 
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
 if not IS_LTI:
@@ -232,9 +232,6 @@ INSTALLED_APPS = [
     "hedera",
 ]
 
-if DEBUG:
-    INSTALLED_APPS.append("sslserver")
-
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
 RQ_DATABASE = 1
 RQ_QUEUES = {
@@ -365,17 +362,13 @@ if IS_LTI:
         "hedera.backends.UsernameAuthenticationBackend",
         "lti_provider.auth.LTIBackend",
     ]
+    LOGIN_URL = "lti_initializer"
 else:
     AUTHENTICATION_BACKENDS = [
         "hedera.backends.UsernameAuthenticationBackend",
         # "account.auth_backends.UsernameAuthenticationBackend",
     ]
-
-
-if not IS_LTI:
     LOGIN_URL = "account_login"
-else:
-    LOGIN_URL = "lti_initializer"
 
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
