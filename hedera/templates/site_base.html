@@ -10,9 +10,7 @@
 {% load cms_tags %}
 
 {% block styles %}
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap&subset=greek,greek-ext,latin-ext,russian" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
-
+  <link href="{% static 'src/css/fonts.css' %}" rel="stylesheet" />
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{%  static 'src/favicons/apple-touch-icon-57x57.png' %}" />
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{%  static 'src/favicons/apple-touch-icon-114x114.png' %}" />
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{%  static 'src/favicons/apple-touch-icon-72x72.png' %}" />
