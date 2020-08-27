@@ -10,8 +10,15 @@
       <div class="col-4"></div>
     </div>
     <div class="vocab-list row">
-      <div class="col-8">
-          <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" :showIds="showIds" />
+       <div class="col-8">
+         <VocabListTable
+          @select-entry="onSelectEntry"
+          @delete-entry="onDeleteEntry"
+          @edit-entry="onEditEntry"
+          :entries="entries"
+          :selected-index="selectedIndex"
+          :showIds="showIds"
+        />
       </div>
       <div class="col-4">
           <div style="position: fixed;">
@@ -67,6 +74,27 @@
         api.vocabEntryLink(this.selectedEntry.id, node.pk, (data) => {
           this.entries.splice(this.selectedIndex, 1, data);
           this.selectNode(node.pk);
+        });
+      },
+      onDeleteEntry(entryData) {
+        const { entry, cb } = entryData;
+        return api.vocabEntryDelete(entry.id, () => {
+          const index = this.entries.findIndex((e) => e.id === entry.id);
+          this.entries.splice(index, 1);
+          cb();
+        });
+      },
+      onEditEntry(entryData) {
+        const {
+          entry,
+          headword,
+          gloss,
+          cb,
+        } = entryData;
+        return api.vocabEntryEdit(entry.id, headword, gloss, (data) => {
+          const index = this.entries.findIndex((e) => e.id === entry.id);
+          this.entries.splice(index, 1, data);
+          cb();
         });
       },
     },

@@ -4,13 +4,15 @@
         <col style="width:20%">
         <col style="width:80%">
     </colgroup>
-    <tr><th>Headword</th><th>Gloss</th><th v-if="showIds">Lemma Link</th></tr>
+    <tr><th>Headword</th><th>Gloss</th><th v-if="showIds">Lemma Link</th><th></th></tr>
     <VocabListEntryRow
       v-for="(entry, index) in entries" :key="`${index}-${entry.id}`"
       :selected="selectedIndex === index"
       :entry="entry"
       :showIds="showIds"
-      @selectEntry="entry => $emit('selectEntry', entry)"
+      @select-entry="entry => $emit('select-entry', entry)"
+      @edit-entry="(entryData) => $emit('edit-entry', entryData)"
+      @delete-entry="(entryData) => $emit('delete-entry', entryData)"
     />
   </table>
 </template>

@@ -311,9 +311,16 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
+
+def user_display(user):
+    return user.profile.display_name or user.email
+
+
+ACCOUNT_USER_DISPLAY = user_display
+
 AUTHENTICATION_BACKENDS = [
-    "hedera.backends.UsernameAuthenticationBackend",
-    # "account.auth_backends.UsernameAuthenticationBackend",
+    "account.auth_backends.EmailAuthenticationBackend",
+    "account.auth_backends.UsernameAuthenticationBackend",
 ]
 
 LOGIN_URL = "account_login"
