@@ -3,10 +3,8 @@ import uuid
 from django.http import Http404
 from django.shortcuts import render
 
-from account.views import (
-    SettingsView as AccountSettingsView,
-    SignupView as AccountSignupView,
-)
+from account.views import SettingsView as AccountSettingsView
+from account.views import SignupView as AccountSignupView
 
 from .forms import SettingsForm, SignupForm
 from .text_provider import get_text

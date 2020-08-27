@@ -1,9 +1,7 @@
 from django import forms
 
-from account.forms import (
-    SettingsForm as AccountSettingsForm,
-    SignupForm as AccountSignupForm,
-)
+from account.forms import SettingsForm as AccountSettingsForm
+from account.forms import SignupForm as AccountSignupForm
 
 
 class SettingsForm(AccountSettingsForm):
