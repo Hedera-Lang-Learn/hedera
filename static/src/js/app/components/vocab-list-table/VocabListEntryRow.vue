@@ -2,13 +2,13 @@
   <tr :class="{ 'selected-entry': selected }">
     <td @click="$emit('selectEntry', entry)">{{ entry.headword }}</td>
     <td>{{ entry.gloss }}</td>
-    <td>{{ entry.node }}</td>
+    <td v-if="showIds">{{ entry.node }}</td>
   </tr>
 </template>
 
 <script>
   export default {
-    props: ['entry', 'selected'],
+    props: ['entry', 'selected', 'showIds'],
   };
 </script>
 

@@ -1,8 +1,10 @@
 <template>
   <div class="lattice-tree">
     <h4>{{ selectedToken.word }}</h4>
-    <LatticeNode :node="selectedNode" @selected="onSelect" />
+    <LatticeNode :node="selectedNode" @selected="onSelect" :show-ids="showIds" />
     <AddLemma @addLemma="onAddLemma" />
+    <div class="text-right my-1"><small><a href @click.prevent="showIds = !showIds">Toggle Node IDs</a></small></div>
+
     <MarkResolved />
   </div>
 </template>
@@ -14,6 +16,11 @@
 
   export default {
     components: { AddLemma, LatticeNode, MarkResolved },
+    data() {
+      return {
+        showIds: false,
+      };
+    },
     computed: {
       textId() {
         return this.$store.state.textId;

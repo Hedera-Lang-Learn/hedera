@@ -2,16 +2,24 @@
   <div class="vocab-list" v-if="loading">
     <p class="lead">Loading...</p>
   </div>
-  <div class="vocab-list row" v-else>
-    <div class="col-8">
-        <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" />
+  <section v-else>
+    <div class="row">
+      <div class="col-8">
+        <div class="text-right mb-1"><small><a href @click.prevent="showIds = !showIds">Toggle Node IDs</a></small></div>
+      </div>
+      <div class="col-4"></div>
     </div>
-    <div class="col-4">
-        <div style="position: fixed;">
-          <LatticeNode :node="selectedNode" @selected="onSelectNode" />
-        </div>
+    <div class="vocab-list row">
+      <div class="col-8">
+          <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" :showIds="showIds" />
+      </div>
+      <div class="col-4">
+          <div style="position: fixed;">
+            <LatticeNode :node="selectedNode" @selected="onSelectNode" :showIds="showIds" />
+          </div>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,6 +37,7 @@
         selectedNode: null,
         entries: [],
         loading: false,
+        showIds: false,
       };
     },
     computed: {

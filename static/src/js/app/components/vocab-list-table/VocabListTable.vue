@@ -4,11 +4,12 @@
         <col style="width:20%">
         <col style="width:80%">
     </colgroup>
-    <tr><th>Headword</th><th>Gloss</th><th>Lemma Link</th></tr>
+    <tr><th>Headword</th><th>Gloss</th><th v-if="showIds">Lemma Link</th></tr>
     <VocabListEntryRow
       v-for="(entry, index) in entries" :key="`${index}-${entry.id}`"
       :selected="selectedIndex === index"
       :entry="entry"
+      :showIds="showIds"
       @selectEntry="entry => $emit('selectEntry', entry)"
     />
   </table>
@@ -39,7 +40,7 @@
   };
 
   export default {
-    props: ['entries', 'selectedIndex'],
+    props: ['entries', 'selectedIndex', 'showIds'],
     components: { VocabListEntryRow },
     shortcuts: {
       prevVocabEntry() {
