@@ -27,12 +27,14 @@ class SettingsView(AccountSettingsView):
         super().update_settings(form)
         profile = self.request.user.profile
         profile.display_name = form.cleaned_data["display_name"]
+        profile.show_node_ids = form.cleaned_data["show_node_ids"]
         profile.save()
 
     def get_initial(self):
         initial = super().get_initial()
         initial.update({
             "display_name": self.request.user.profile.display_name,
+            "show_node_ids": self.request.user.profile.show_node_ids,
         })
         return initial
 
