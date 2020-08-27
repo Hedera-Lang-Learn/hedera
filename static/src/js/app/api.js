@@ -56,4 +56,6 @@ export default {
     }).then((r) => cb(r.data));
   },
   vocabEntryLink: (id, node, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { node }).then((r) => cb(r.data)),
+  vocabEntryEdit: (id, headword, gloss, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, gloss }).then((r) => cb(r.data)),
+  vocabEntryDelete: (id, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/delete/`).then((r) => cb(r.data)),
 };

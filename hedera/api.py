@@ -172,13 +172,25 @@ class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
         entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+        action = kwargs.get("action")
 
-        data = json.loads(request.body)
-        node = get_object_or_404(LatticeNode, pk=data["node"])
-        entry.node = node
-        entry.save()
+        if action == "link":
+            data = json.loads(request.body)
+            node = get_object_or_404(LatticeNode, pk=data["node"])
+            entry.node = node
+            entry.save()
+            return_data = entry.data()
+        elif action == "delete":
+            entry.delete()
+            return_data = {}
+        elif action == "edit":
+            data = json.loads(request.body)
+            entry.headword = data["headword"]
+            entry.gloss = data["gloss"]
+            entry.save()
+            return_data = entry.data()
 
-        return JsonResponse(entry.data())
+        return JsonResponse(return_data)
 
 
 class PersonalVocabularyListAPI(APIView):
