@@ -34,7 +34,7 @@
   import api from './api';
 
   import TextRow from './components/TextRow.vue';
-import { FETCH_ME } from './constants';
+  import { FETCH_ME } from './constants';
 
   export default {
     components: {

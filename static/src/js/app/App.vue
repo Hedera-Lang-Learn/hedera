@@ -12,7 +12,12 @@
   </div>
 </template>
 <script>
-  import { FETCH_TOKENS, FETCH_VOCAB_LISTS, FETCH_TEXT, FETCH_ME } from './constants';
+  import {
+    FETCH_TOKENS,
+    FETCH_VOCAB_LISTS,
+    FETCH_TEXT,
+    FETCH_ME,
+  } from './constants';
 
   import LatticeTree from './modules/LatticeTree.vue';
   import LemmatizedText from './modules/LemmatizedText.vue';
