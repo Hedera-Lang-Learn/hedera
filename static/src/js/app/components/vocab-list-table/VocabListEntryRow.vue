@@ -3,7 +3,7 @@
     <tr :class="{ 'selected-entry': selected }">
       <td>{{ entry.headword }}</td>
       <td>{{ entry.gloss }}</td>
-      <td v-if="showIds>{{ entry.node }}</td>
+      <td v-if="showIds">{{ entry.node }}</td>
       <td>
       </td>
     </tr>
