@@ -34,6 +34,7 @@
   import api from './api';
 
   import TextRow from './components/TextRow.vue';
+  import { FETCH_ME } from './constants';
 
   export default {
     components: {
@@ -63,6 +64,7 @@
       },
     },
     created() {
+      this.$store.dispatch(FETCH_ME);
       api.fetchTexts((data) => {
         this.texts = data.data.map((datum) => ({
           ...datum.text,

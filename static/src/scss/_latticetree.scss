@@ -1,6 +1,9 @@
 .lattice-tree h4 {
   font-family: 'Noto Serif';
 }
+.lattice-tree > .lattice-node {
+    margin-left: 0;
+}
 .lattice-node {
   margin-left: 20px;
   cursor: pointer;

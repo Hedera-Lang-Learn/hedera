@@ -3,7 +3,7 @@
     <tr :class="{ 'selected-entry': selected }">
       <td>{{ entry.headword }}</td>
       <td>{{ entry.gloss }}</td>
-      <td>{{ entry.node }}</td>
+      <td v-if="showIds">{{ entry.node }}</td>
       <td>
       </td>
     </tr>
@@ -35,7 +35,7 @@
       <a href @click.prevent="$emit('select-entry', entry)">{{ entry.headword }}</a>
     </td>
     <td>{{ entry.gloss }}</td>
-    <td>{{ entry.node }}</td>
+    <td v-if="showIds">{{ entry.node }}</td>
     <td>
       <div class="btn-group">
         <a class="btn btn-light btn-sm delete-entry" href @click.prevent="onDelete"><icon name="trash" /></a>
@@ -47,7 +47,7 @@
 
 <script>
   export default {
-    props: ['entry', 'selected'],
+    props: ['entry', 'selected', 'showIds'],
     data() {
       return {
         saving: false,

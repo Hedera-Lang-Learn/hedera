@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY } from './constants';
+  import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY, FETCH_ME } from './constants';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
 
@@ -42,6 +42,9 @@
           this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
         },
       },
+    },
+    created() {
+      this.$store.dispatch(FETCH_ME);
     },
     methods: {
       onRatingChange(rating, entry) {

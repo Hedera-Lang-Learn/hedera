@@ -12,7 +12,12 @@
   </div>
 </template>
 <script>
-  import { FETCH_TOKENS, FETCH_VOCAB_LISTS, FETCH_TEXT } from './constants';
+  import {
+    FETCH_TOKENS,
+    FETCH_VOCAB_LISTS,
+    FETCH_TEXT,
+    FETCH_ME,
+  } from './constants';
 
   import LatticeTree from './modules/LatticeTree.vue';
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -21,6 +26,9 @@
   export default {
     props: ['textId'],
     components: { LatticeTree, LemmatizedText, VocabListSelect },
+    created() {
+      this.$store.dispatch(FETCH_ME);
+    },
     watch: {
       textId: {
         immediate: true,

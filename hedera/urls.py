@@ -28,6 +28,7 @@ urlpatterns = [
 
     path("classes/", include("groups.urls")),
 
+    path("api/v1/me/", api.MeAPI.as_view()),
     path("api/v1/lemmatized_texts/", api.LemmatizedTextListAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/status/", api.LemmatizedTextStatusAPI.as_view()),
