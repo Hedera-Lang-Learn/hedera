@@ -6,6 +6,7 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 const BASE_URL = '/api/v1/';
 
 export default {
+  fetchMe: (cb) => axios.get(`${BASE_URL}me/`).then(r => cb(r.data)),
   fetchTexts: (cb) => axios.get(`${BASE_URL}lemmatized_texts/`).then((r) => cb(r.data)),
   fetchText: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`).then((r) => cb(r.data)),
   fetchTextStatus: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`).then((r) => cb(r.data)),

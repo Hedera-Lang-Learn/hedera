@@ -3,7 +3,7 @@
     <h4>{{ selectedToken.word }}</h4>
     <LatticeNode :node="selectedNode" @selected="onSelect" :show-ids="showIds" />
     <AddLemma @addLemma="onAddLemma" />
-    <div class="text-right my-1"><small><a href @click.prevent="showIds = !showIds">Toggle Node IDs</a></small></div>
+    <div v-if="showToggle" class="text-right my-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
 
     <MarkResolved />
   </div>
@@ -18,10 +18,18 @@
     components: { AddLemma, LatticeNode, MarkResolved },
     data() {
       return {
-        showIds: false,
+        toggleShowIds: false,
       };
     },
     computed: {
+      showToggle() {
+        return this.$store.state.me.showNodeIds === 'toggle';
+      },
+      showIds() {
+        const { showNodeIds } = this.$store.state.me;
+        return showNodeIds === 'always'
+          || (showNodeIds === 'toggle' && this.toggleShowIds);
+      },
       textId() {
         return this.$store.state.textId;
       },

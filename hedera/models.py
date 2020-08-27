@@ -17,3 +17,10 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.display_name or self.user.email
+
+    def data(self):
+        return dict(
+            email=self.user.email,
+            displayName=self.display_name,
+            showNodeIds=self.show_node_ids,
+        )

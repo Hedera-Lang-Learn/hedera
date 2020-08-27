@@ -48,6 +48,12 @@ class APIView(AuthedView):
         return self.render_to_response()
 
 
+class MeAPI(APIView):
+
+    def get_data(self):
+        return self.request.user.profile.data()
+
+
 class LemmatizedTextListAPI(APIView):
 
     def get_data(self):

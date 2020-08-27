@@ -13,6 +13,7 @@ import {
   FETCH_PERSONAL_VOCAB_LIST,
   CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
+  FETCH_ME,
 } from '../constants';
 import api from '../api';
 
@@ -24,6 +25,7 @@ const logoutOnError = (commit) => (error) => {
 };
 
 export default {
+  [FETCH_ME]: ({ commit }) => api.fetchMe((data) => commit(FETCH_ME, data.data)),
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),

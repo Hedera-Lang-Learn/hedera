@@ -1,4 +1,5 @@
 export default {
+  me: {},
   textId: null,
   text: {},
   tokens: [],

@@ -3,9 +3,9 @@
     <p class="lead">Loading...</p>
   </div>
   <section v-else>
-    <div class="row">
+    <div class="row" v-if="showToggle">
       <div class="col-8">
-        <div class="text-right mb-1"><small><a href @click.prevent="showIds = !showIds">Toggle Node IDs</a></small></div>
+        <div class="text-right mb-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
       </div>
       <div class="col-4"></div>
     </div>
@@ -33,7 +33,7 @@
   import api from './api';
   import LatticeNode from './modules/LatticeNode.vue';
   import VocabListTable from './components/vocab-list-table';
-  import { FETCH_NODE } from './constants';
+  import { FETCH_NODE, FETCH_ME } from './constants';
 
   export default {
     props: ['vocabId'],
@@ -44,10 +44,21 @@
         selectedNode: null,
         entries: [],
         loading: false,
-        showIds: false,
+        toggleShowIds: false,
       };
     },
+    created() {
+      this.$store.dispatch(FETCH_ME);
+    },
     computed: {
+      showToggle() {
+        return this.$store.state.me.showNodeIds === 'toggle';
+      },
+      showIds() {
+        const { showNodeIds } = this.$store.state.me;
+        return showNodeIds === 'always'
+          || (showNodeIds === 'toggle' && this.toggleShowIds);
+      },
       selectedIndex() {
         return this.selectedEntry ? this.entries.findIndex((e) => e.id === this.selectedEntry.id) : null;
       },

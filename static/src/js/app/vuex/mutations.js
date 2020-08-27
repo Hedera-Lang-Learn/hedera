@@ -9,9 +9,13 @@ import {
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_TEXT,
   FETCH_PERSONAL_VOCAB_LIST,
+  FETCH_ME,
 } from '../constants';
 
 export default {
+  [FETCH_ME]: (state, data) => {
+    state.me = data;
+  },
   [FETCH_TEXT]: (state, data) => {
     state.text = data;
   },
