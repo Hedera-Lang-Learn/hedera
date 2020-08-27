@@ -4,6 +4,8 @@ from django.urls import include, path, re_path
 
 from django.contrib import admin
 
+from account.forms import LoginEmailForm
+from account.views import LoginView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 
@@ -13,7 +15,10 @@ from . import api, views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("django-rq/", include("django_rq.urls")),
-    re_path(r"^account/", include("account.urls")),
+    path("account/login/", LoginView.as_view(form_class=LoginEmailForm), name="account_login"),
+    path("account/signup/", views.SignupView.as_view(), name="account_signup"),
+    path("account/settings/", views.SettingsView.as_view(), name="account_settings"),
+    path("account/", include("account.urls")),
 
     path("read/<int:text_id>/", views.read, name="read"),
 

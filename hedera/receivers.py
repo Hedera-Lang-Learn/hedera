@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from account.signals import (
@@ -8,6 +10,14 @@ from account.signals import (
     user_signed_up
 )
 from pinax.eventlog.models import log
+
+from .models import Profile
+
+
+@receiver(post_save, sender=User)
+def handle_user_save(sender, created, instance, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user=instance)
 
 
 @receiver(user_logged_in)
