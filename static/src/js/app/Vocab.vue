@@ -2,23 +2,38 @@
   <div class="vocab-list" v-if="loading">
     <p class="lead">Loading...</p>
   </div>
-  <div class="vocab-list row" v-else>
-    <div class="col-8">
-        <VocabListTable @selectEntry="onSelectEntry" :entries="entries" :selected-index="selectedIndex" />
+  <section v-else>
+    <div class="row" v-if="showToggle">
+      <div class="col-8">
+        <div class="text-right mb-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
+      </div>
+      <div class="col-4"></div>
     </div>
-    <div class="col-4">
-        <div style="position: fixed;">
-          <LatticeNode :node="selectedNode" @selected="onSelectNode" />
-        </div>
+    <div class="vocab-list row">
+       <div class="col-8">
+         <VocabListTable
+          @select-entry="onSelectEntry"
+          @delete-entry="onDeleteEntry"
+          @edit-entry="onEditEntry"
+          :entries="entries"
+          :selected-index="selectedIndex"
+          :showIds="showIds"
+        />
+      </div>
+      <div class="col-4">
+          <div style="position: fixed;">
+            <LatticeNode :node="selectedNode" @selected="onSelectNode" :showIds="showIds" />
+          </div>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
   import api from './api';
   import LatticeNode from './modules/LatticeNode.vue';
   import VocabListTable from './components/vocab-list-table';
-  import { FETCH_NODE } from './constants';
+  import { FETCH_NODE, FETCH_ME } from './constants';
 
   export default {
     props: ['vocabId'],
@@ -29,9 +44,21 @@
         selectedNode: null,
         entries: [],
         loading: false,
+        toggleShowIds: false,
       };
     },
+    created() {
+      this.$store.dispatch(FETCH_ME);
+    },
     computed: {
+      showToggle() {
+        return this.$store.state.me.showNodeIds === 'toggle';
+      },
+      showIds() {
+        const { showNodeIds } = this.$store.state.me;
+        return showNodeIds === 'always'
+          || (showNodeIds === 'toggle' && this.toggleShowIds);
+      },
       selectedIndex() {
         return this.selectedEntry ? this.entries.findIndex((e) => e.id === this.selectedEntry.id) : null;
       },
@@ -58,6 +85,27 @@
         api.vocabEntryLink(this.selectedEntry.id, node.pk, (data) => {
           this.entries.splice(this.selectedIndex, 1, data);
           this.selectNode(node.pk);
+        });
+      },
+      onDeleteEntry(entryData) {
+        const { entry, cb } = entryData;
+        return api.vocabEntryDelete(entry.id, () => {
+          const index = this.entries.findIndex((e) => e.id === entry.id);
+          this.entries.splice(index, 1);
+          cb();
+        });
+      },
+      onEditEntry(entryData) {
+        const {
+          entry,
+          headword,
+          gloss,
+          cb,
+        } = entryData;
+        return api.vocabEntryEdit(entry.id, headword, gloss, (data) => {
+          const index = this.entries.findIndex((e) => e.id === entry.id);
+          this.entries.splice(index, 1, data);
+          cb();
         });
       },
     },

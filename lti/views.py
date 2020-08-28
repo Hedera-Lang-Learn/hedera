@@ -16,14 +16,15 @@ from pylti.common import LTIException
 
 from groups.models import Group
 
-from .forms import LtiUsernameForm
 from .utils import login_existing_user
+
 
 
 LTI_PROPERTY_COURSE_ID = "custom_canvas_course_id"
 LTI_PROPERTY_COURSE_TITLE = "context_title"
 LTI_PROPERTY_USER_EMAIL = "lis_person_contact_email_primary"
 LTI_PROPERTY_USER_ROLES = "ext_roles"
+
 
 
 def get_random_alphanumeric_string(length):
@@ -49,35 +50,18 @@ class LtiInitializerView(RedirectView):
             try:
                 lti_user = login_existing_user(request)
             except EmailAddress.DoesNotExist:
-                request.session["lti_email"] = request.POST.get(LTI_PROPERTY_USER_EMAIL, None)
-                if request.session["lti_email"] is None:
+                lti_email = request.POST.get(LTI_PROPERTY_USER_EMAIL, None)
+                if not lti_email:
                     return render(request, "lti_failure.html")
-                return HttpResponseRedirect(reverse("lti_registration"))
+                self.create_lti_user(lti_email)
+                try:
+                    lti_user = login_existing_user(request)
+                except EmailAddress.DoesNotExist:
+                    return render(request, "lti_failure.html")
             if lti_user is False:
                 return render(request, "lti_failure.html")
 
-        return super(LtiInitializerView, self).dispatch(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        """ Handle the redirection coming from username registration """
-
-        lti_params = {
-            "course_id": request.session.get(LTI_PROPERTY_COURSE_ID, None),
-            "roles": request.session.get(LTI_PROPERTY_USER_ROLES, None),
-            "title": request.session.get(LTI_PROPERTY_COURSE_TITLE, None)
-        }
-
-        if None in lti_params.values():
-            return render(request, "lti_failure.html")
-
-        self.initialize_group(
-            lti_params["course_id"],
-            lti_params["title"],
-            lti_params["roles"],
-            request.user
-        )
-
-        return super(LtiInitializerView, self).get(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         """ Handle the POST coming directly from Canvas """
@@ -87,7 +71,7 @@ class LtiInitializerView(RedirectView):
             "roles": request.POST.get(LTI_PROPERTY_USER_ROLES, None),
             "title": request.POST.get(LTI_PROPERTY_COURSE_TITLE, None)
         }
-
+        
         if None in lti_params.values():
             return render(request, "lti_failure.html")
 
@@ -98,7 +82,24 @@ class LtiInitializerView(RedirectView):
             request.user
         )
 
-        return super(LtiInitializerView, self).post(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
+        
+    def create_lti_user(self, email):
+        """
+        takes (str)email and creates a User, returns None.
+        Sets the user's profile display_name to the username portion of the lti email
+        """
+        display_name = email.split("@")[0]
+        password = get_random_alphanumeric_string(10)
+        new_user = get_user_model().objects.create_user(
+            username=email,
+            email=email,
+            password=password
+        )
+        profile = new_user.profile
+        profile.display_name = display_name
+        profile.save()
+        return None
 
     def initialize_group(self, course_id, title, roles, user):
         """
@@ -107,7 +108,13 @@ class LtiInitializerView(RedirectView):
         The parameters cannot be None
         Returns None
         """
-        group = self.get_or_create_group(course_id=int(course_id), title=title, user=user)
+        group, created = Group.objects.get_or_create(
+            class_key=int(course_id),
+            defaults=dict(
+                title=title,
+                created_by=user
+            )
+        )
         # Determine if the user is a Teacher or Student
         role = self.determine_role(roles)
         # Update the roles at each launch
@@ -118,23 +125,11 @@ class LtiInitializerView(RedirectView):
         """ Takes (list) roles or None, returns (str) role  """
         if roles:
             roles = [role.rsplit("/")[-1] for role in roles.split(",")]
-            if "Instructor" in roles:
+            if "Instructor" in roles or "TeachingAssistant" in roles:
                 return "Teacher"
         # If roles is None, then I am returning "Student", although it is actually
         # indicative on an LTI failure.
         return "Student"
-
-    def get_or_create_group(self, course_id=None, title="Empty", user=None):
-        """ takes (int) course_id, and (str) title and returns a Group"""
-        try:
-            group = Group.objects.get(class_key=course_id)
-        except Group.DoesNotExist:
-            group = Group.objects.create(
-                class_key=course_id,
-                title=title,
-                created_by=user
-            )
-        return group
 
     def update_roles(self, user, group, role):
         """
@@ -151,33 +146,3 @@ class LtiInitializerView(RedirectView):
             if user in group.teachers.all():
                 group.teachers.remove(user)
         return None
-
-
-class LtiRegistrationView(FormView):
-
-    template_name = "lti_registration.html"
-    form_class = LtiUsernameForm
-    success_url = "/lti/lti_initializer/"
-
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            request.session["lti_email"]
-        except KeyError:
-            return render(request, "lti_failure.html")
-        return super(LtiRegistrationView, self).dispatch(request, *args, **kwargs)
-
-    def form_valid(self, form):
-
-        username = form.cleaned_data["username"]
-        unique_username = form.unique_username(username)
-        if unique_username is False:
-            msg = "Sorry, that username is taken."
-            form.add_error("username", msg)
-            return super().form_invalid(form)
-        email = self.request.session["lti_email"]
-        password = get_random_alphanumeric_string(10)
-
-        new_user = get_user_model().objects.create_user(username, email=email, password=password)
-        login(self.request, new_user, backend="hedera.backends.UsernameAuthenticationBackend")
-
-        return super().form_valid(form)

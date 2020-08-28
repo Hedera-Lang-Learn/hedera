@@ -172,8 +172,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/\.well-known/",
     "^/$",
     r"/api/",
-    "lti/lti_initializer/",
-    "/lti/lti_registration"
+    "/lti/config.xml",
+    "/lti/lti_initializer/"
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -351,25 +351,33 @@ X_FRAME_OPTIONS = os.environ.get("X_FRAME_OPTIONS", "ALLOW-FROM https://canvas.h
 
 # This setting will add an LTI property to the session
 LTI_PROPERTY_LIST_EX = [
+    "context_title",
     "custom_canvas_course_id",
-    "lis_person_contact_email_primary",
     "ext_roles",
-    "context_title"
+    "lis_person_contact_email_primary"
 ]
+
 
 if IS_LTI:
     AUTHENTICATION_BACKENDS = [
-        "hedera.backends.UsernameAuthenticationBackend",
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
         "lti_provider.auth.LTIBackend",
     ]
     LOGIN_URL = "lti_initializer"
 else:
     AUTHENTICATION_BACKENDS = [
-        "hedera.backends.UsernameAuthenticationBackend",
-        # "account.auth_backends.UsernameAuthenticationBackend",
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
     ]
     LOGIN_URL = "account_login"
 
+    
+def user_display(user):
+    return user.profile.display_name or user.email
+
+
+ACCOUNT_USER_DISPLAY = user_display
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")

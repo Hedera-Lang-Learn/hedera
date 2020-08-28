@@ -1,18 +1,18 @@
-from django.test import RequestFactory, TestCase, override_settings
+from django.test import TestCase, override_settings
 
 from django.contrib.auth.models import AnonymousUser, User
 from django.contrib.sessions.middleware import SessionMiddleware
 
-from account.models import Account
+from account.models import Account, EmailAddress
 
 from groups.models import Group
 
-from .views import LtiInitializerView, LtiRegistrationView
+from .views import LtiInitializerView
 
 
 @override_settings(
     AUTHENTICATION_BACKENDS=[
-        "account.auth_backends.UsernameAuthenticationBackend"
+        "account.auth_backends.EmailAuthenticationBackend"
     ]
 )
 class LtiInitializerViewTests(TestCase):
@@ -26,7 +26,9 @@ class LtiInitializerViewTests(TestCase):
 
     def test_account_created(self):
         found_user = Account.objects.get(user=self.created_user)
+        found_email = EmailAddress.objects.get(user=self.created_user)
         self.assertEqual(self.created_user.pk, found_user.user.pk)
+        self.assertEqual(self.created_user.pk, found_email.user.pk)
 
     def test_login_existing_user_success(self):
         """Using the user1 which has already been created"""
@@ -48,18 +50,35 @@ class LtiInitializerViewTests(TestCase):
     #     self.assertEqual(response.status_code, 302)
     #     self.assertEqual(response.url, "/lti/lti_registration")
 
-    def test_get_or_create_group_doesnt_override_existing(self):
-        Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
+    # def test_get_or_create_group_doesnt_override_existing(self):
+    #     Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
+    #     existing_group = Group.objects.get(class_key=1)
+    #     lti_initializer = LtiInitializerView()
+    #     initializer_group = lti_initializer.get_or_create_group(course_id=1, title="Don't update")
+    #     self.assertEqual(initializer_group, existing_group)
+    # 
+    # def test_get_or_create_group_creates_new(self):
+    #     lti_initializer = LtiInitializerView()
+    #     lti_initializer.get_or_create_group(course_id=2, title="Newly created", user=self.created_user)
+    #     created_group = Group.objects.get(class_key=2)
+    #     self.assertEqual(created_group.title, "Newly created")
+    
+    def test_initialize_group_exists(self):
+        """ The group should title and stuff shouldn't be overwritten if it already exists """
+        Group.objects.create(class_key=1, title="Original title", created_by=self.created_user)
+        lti_initializer = LtiInitializerView()
+        teacher_role = "urn:something/something-else/Instructor,urn:something/something-else/Student"
+        lti_initializer.initialize_group("1", "A different title", teacher_role, self.created_user)
         existing_group = Group.objects.get(class_key=1)
+        self.assertEqual(existing_group.title, "Original title")
+        
+    def test_initialize_group_new(self):
+        """ Creates a new group where one does not yet exist """
         lti_initializer = LtiInitializerView()
-        initializer_group = lti_initializer.get_or_create_group(course_id=1, title="Don't update")
-        self.assertEqual(initializer_group, existing_group)
-
-    def test_get_or_create_group_creates_new(self):
-        lti_initializer = LtiInitializerView()
-        lti_initializer.get_or_create_group(course_id=2, title="Newly created", user=self.created_user)
-        created_group = Group.objects.get(class_key=2)
-        self.assertEqual(created_group.title, "Newly created")
+        teacher_role = "urn:something/something-else/Instructor,urn:something/something-else/Student"
+        lti_initializer.initialize_group("2", "A different title", teacher_role, self.created_user)
+        new_group = Group.objects.get(class_key=2)
+        self.assertEqual(new_group.title, "A different title")
 
     def test_role_is_added(self):
         lti_initializer = LtiInitializerView()
@@ -79,6 +98,14 @@ class LtiInitializerViewTests(TestCase):
         lti_initializer.update_roles(user=user, group=group, role="Teacher")
         self.assertFalse(user in group.students.all())
         self.assertTrue(user in group.teachers.all())
+        
+    def test_create_lti_user(self):
+        lti_initializer = LtiInitializerView()
+        email = "testMasterFlash@example.com"
+        lti_initializer.create_lti_user(email)
+        user = User.objects.get(email=email)
+        self.assertEqual(user.username, email)
+        self.assertEqual(user.profile.display_name, "testMasterFlash")
 
     def test_determine_role(self):
         lti_initializer = LtiInitializerView()
@@ -113,56 +140,3 @@ class LtiInitializerViewTests(TestCase):
     #     )
     #     self.assertEqual(response.status_code, 302)
     #     self.assertEqual(response.url, "/")
-
-
-class LtiRegistrationViewTests(TestCase):
-
-    def test_get(self):
-        rf = RequestFactory()
-        request = rf.get("/lti/lti_registration")
-        request.user = AnonymousUser()
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        request.session["lti_email"] = "user2@example.com"
-        request.session.save()
-        response = LtiRegistrationView.as_view()(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Choose a username")
-
-    def test_get_lti_failure(self):
-        """ If a user attempts to access registration without the session variables set """
-        response = self.client.get("/lti/lti_registration")
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(
-            response,
-            "Your session has expired. Please, relaunch the tool via your canvas course."
-        )
-
-    def test_post_success(self):
-        """ Test that successful form post redirects to LtiInitializerView """
-
-        # RequestFactory is required, because I am messing with the session
-        rf = RequestFactory()
-        request = rf.post("/lti/lti_registration", data={"username": "new_username"})
-        request.user = None
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        request.session["lti_email"] = "testEmail@test.org"
-        request.session.save()
-        response = LtiRegistrationView.as_view()(request)
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, "/lti/lti_initializer/")
-
-    def test_post_form_error(self):
-        """ Test that non-unique username does not redirect """
-        User.objects.create_user("taken_username", email="test@test.com", password="1f2dDfv!")
-        rf = RequestFactory()
-        request = rf.post("/lti/lti_registration", data={"username": "taken_username"})
-        request.user = AnonymousUser()
-        middleware = SessionMiddleware()
-        middleware.process_request(request)
-        request.session["lti_email"] = "user2@example.com"
-        request.session.save()
-        response = LtiRegistrationView.as_view()(request)
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Sorry, that username is taken.")
