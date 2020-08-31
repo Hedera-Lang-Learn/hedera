@@ -1,14 +1,11 @@
 import random
 import string
 
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import RedirectView
-from django.views.generic.edit import FormView
 
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model
 
 from account.models import EmailAddress
 from lti_provider.lti import LTI
@@ -19,12 +16,10 @@ from groups.models import Group
 from .utils import login_existing_user
 
 
-
 LTI_PROPERTY_COURSE_ID = "custom_canvas_course_id"
 LTI_PROPERTY_COURSE_TITLE = "context_title"
 LTI_PROPERTY_USER_EMAIL = "lis_person_contact_email_primary"
 LTI_PROPERTY_USER_ROLES = "ext_roles"
-
 
 
 def get_random_alphanumeric_string(length):
@@ -40,6 +35,8 @@ class LtiInitializerView(RedirectView):
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
         """ Handle LTI verification and user authentication """
+
+        # validate the request
         lti = LTI(request_type="any", role_type="any")
         try:
             lti.verify(request)
@@ -71,7 +68,7 @@ class LtiInitializerView(RedirectView):
             "roles": request.POST.get(LTI_PROPERTY_USER_ROLES, None),
             "title": request.POST.get(LTI_PROPERTY_COURSE_TITLE, None)
         }
-        
+
         if None in lti_params.values():
             return render(request, "lti_failure.html")
 
@@ -83,7 +80,7 @@ class LtiInitializerView(RedirectView):
         )
 
         return super().post(request, *args, **kwargs)
-        
+
     def create_lti_user(self, email):
         """
         takes (str)email and creates a User, returns None.

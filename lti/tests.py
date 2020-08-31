@@ -1,9 +1,11 @@
+from unittest.mock import patch
+
 from django.test import TestCase, override_settings
 
-from django.contrib.auth.models import AnonymousUser, User
-from django.contrib.sessions.middleware import SessionMiddleware
+from django.contrib.auth.models import User
 
 from account.models import Account, EmailAddress
+from pylti.common import LTIException
 
 from groups.models import Group
 
@@ -30,8 +32,10 @@ class LtiInitializerViewTests(TestCase):
         self.assertEqual(self.created_user.pk, found_user.user.pk)
         self.assertEqual(self.created_user.pk, found_email.user.pk)
 
-    def test_login_existing_user_success(self):
+    @patch("lti_provider.lti.LTI.verify")
+    def test_login_existing_user_success(self, mock_validate_request):
         """Using the user1 which has already been created"""
+        mock_validate_request.return_value = True
         self.client.post(
             "/lti/lti_initializer/",
             {
@@ -43,26 +47,6 @@ class LtiInitializerViewTests(TestCase):
         user = User.objects.get(username="user1")
         self.assertTrue(user.is_authenticated)
 
-    # until I can figure out how to mock a verified lti launch
-    # def test_login_existing_user_failure(self):
-    #     """If it fails to find an existing user, it should redirect to LTI signup"""
-    #     response = self.client.post("/lti/lti_initializer/", {"lis_person_contact_email_primary": "user2@example.com"})
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertEqual(response.url, "/lti/lti_registration")
-
-    # def test_get_or_create_group_doesnt_override_existing(self):
-    #     Group.objects.create(class_key=1, title="Test title", created_by=self.created_user)
-    #     existing_group = Group.objects.get(class_key=1)
-    #     lti_initializer = LtiInitializerView()
-    #     initializer_group = lti_initializer.get_or_create_group(course_id=1, title="Don't update")
-    #     self.assertEqual(initializer_group, existing_group)
-    # 
-    # def test_get_or_create_group_creates_new(self):
-    #     lti_initializer = LtiInitializerView()
-    #     lti_initializer.get_or_create_group(course_id=2, title="Newly created", user=self.created_user)
-    #     created_group = Group.objects.get(class_key=2)
-    #     self.assertEqual(created_group.title, "Newly created")
-    
     def test_initialize_group_exists(self):
         """ The group should title and stuff shouldn't be overwritten if it already exists """
         Group.objects.create(class_key=1, title="Original title", created_by=self.created_user)
@@ -71,7 +55,7 @@ class LtiInitializerViewTests(TestCase):
         lti_initializer.initialize_group("1", "A different title", teacher_role, self.created_user)
         existing_group = Group.objects.get(class_key=1)
         self.assertEqual(existing_group.title, "Original title")
-        
+
     def test_initialize_group_new(self):
         """ Creates a new group where one does not yet exist """
         lti_initializer = LtiInitializerView()
@@ -98,7 +82,7 @@ class LtiInitializerViewTests(TestCase):
         lti_initializer.update_roles(user=user, group=group, role="Teacher")
         self.assertFalse(user in group.students.all())
         self.assertTrue(user in group.teachers.all())
-        
+
     def test_create_lti_user(self):
         lti_initializer = LtiInitializerView()
         email = "testMasterFlash@example.com"
@@ -116,8 +100,10 @@ class LtiInitializerViewTests(TestCase):
         # roles of None will also return "Student"
         self.assertEqual(lti_initializer.determine_role(None), "Student")
 
-    def test_dispatch_advises_relaunch(self):
+    @patch("lti_provider.lti.LTI.verify")
+    def test_dispatch_advises_relaunch(self, mock_validate_request):
         """ Test missing POST parameters will advise user to relaunch """
+        mock_validate_request.return_value = True
         response = self.client.post(
             "/lti/lti_initializer/",
             {
@@ -126,17 +112,33 @@ class LtiInitializerViewTests(TestCase):
         )
         self.assertContains(response, "Your session has expired. Please, relaunch the tool via your canvas course.")
 
-    # Until I can figure out how to mock a verified LTI launch
-    # def test_dispatch(self):
-    #     """ Test successful dispatch redirects to home """
-    #     response = self.client.post(
-    #         "/lti/lti_initializer/",
-    #         {
-    #             "lis_person_contact_email_primary": "user1@example.com",
-    #             "custom_canvas_course_id": "327",
-    #             "context_title": "test title",
-    #             "ext_roles": "urn:something/something-else/Instructor,urn:something/something-else/Student"
-    #         }
-    #     )
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertEqual(response.url, "/")
+    @patch("lti_provider.lti.LTI.verify")
+    def test_dispatch(self, mock_validate_request):
+        """ Test successful dispatch redirects to home """
+        mock_validate_request.return_value = True
+        response = self.client.post(
+            "/lti/lti_initializer/",
+            {
+                "lis_person_contact_email_primary": "user1@example.com",
+                "custom_canvas_course_id": "327",
+                "context_title": "test title",
+                "ext_roles": "urn:something/something-else/Instructor,urn:something/something-else/Student"
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "/")
+
+    @patch("lti_provider.lti.LTI.verify")
+    def test_dispatch_lti_failure(self, mock_validate_request):
+        """ Test LTI verification failure """
+        mock_validate_request.side_effect = LTIException("Unknown request type")
+        response = self.client.post(
+            "/lti/lti_initializer/",
+            {
+                "lis_person_contact_email_primary": "user1@example.com",
+                "custom_canvas_course_id": "327",
+                "context_title": "test title",
+                "ext_roles": "urn:something/something-else/Instructor,urn:something/something-else/Student"
+            }
+        )
+        self.assertContains(response, "Your session has expired. Please, relaunch the tool via your canvas course.")

@@ -372,7 +372,7 @@ else:
     ]
     LOGIN_URL = "account_login"
 
-    
+
 def user_display(user):
     return user.profile.display_name or user.email
 
