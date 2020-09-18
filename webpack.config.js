@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -25,7 +24,7 @@ const styleRule = {
   use: [
     MiniCssExtractPlugin.loader,
     { loader: 'css-loader', options: { sourceMap: true } },
-    { loader: 'postcss-loader', options: { plugins: () => [autoprefixer()] } },
+    { loader: 'postcss-loader', options: { postcssOptions: { plugins: ['autoprefixer'] } } },
     'sass-loader',
   ],
 };
@@ -57,9 +56,11 @@ const plugins = [
   new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false }),
   new webpack.HotModuleReplacementPlugin(),
   new CleanWebpackPlugin(),
-  new CopyWebpackPlugin([
-    { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
-  ]),
+  new CopyWebpackPlugin({
+    patterns: [
+      { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
+    ],
+  }),
 ];
 
 if (devMode) {

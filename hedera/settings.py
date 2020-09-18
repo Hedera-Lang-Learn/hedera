@@ -17,7 +17,6 @@ sentry_sdk.init(
     # Enables tracing for sentry "Events V2"
     # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
     traces_sample_rate=1.0,
-    traceparent_v2=True,
 )
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -191,6 +190,7 @@ INSTALLED_APPS = [
 
     # external
     "account",
+    "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
 
