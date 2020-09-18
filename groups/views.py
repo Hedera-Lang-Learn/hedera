@@ -23,15 +23,19 @@ class GroupListView(LoginRequiredMixin, ListView):
     model = Group
     template_name = "groups/groups.html"
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
+    def get_context_data(self):
+        context = super().get_context_data()
+        queryset = self.get_queryset()
         queryset = queryset.filter(
             Q(teachers=self.request.user) | Q(students=self.request.user)
         )
-        for group in queryset:
+        groups = []
+        for group in queryset.distinct():
             group.is_teacher = group.teachers.filter(pk=self.request.user.pk).exists()
             group.is_student = group.students.filter(pk=self.request.user.pk).exists()
-        return queryset
+            groups.append(group)
+        context.update({"groups": groups})
+        return context
 
 
 class GroupDetailView(LoginRequiredMixin, DetailView):
