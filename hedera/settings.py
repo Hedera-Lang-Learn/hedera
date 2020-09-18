@@ -156,6 +156,10 @@ MIDDLEWARE = [
     "hedera.middleware.AuthenticatedMiddleware",
 ]
 
+QUERYCOUNT = {
+    "DISPLAY_DUPLICATES": 2,
+}
+
 AUTHENTICATED_EXEMPT_URLS = [
     "/favicon.ico",
     "/account/login/",
