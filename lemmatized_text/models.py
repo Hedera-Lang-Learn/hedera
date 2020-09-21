@@ -78,6 +78,7 @@ class LemmatizedText(models.Model):
         print("LEMMATIZXING", self.current_job, current_job.get_status())
 
     def lemmatization_job(self):
+        print("get job", self.current_job)
         try:
             return Job.fetch(self.current_job, get_connection())
         except NoSuchJobError:

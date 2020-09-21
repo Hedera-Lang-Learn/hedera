@@ -81,7 +81,8 @@ class LemmatizedTextStatusAPI(APIView):
             completed=new_text.completed,
             tokenCount=new_text.token_count() if new_text.completed == 100 else None,
             lemmatizationStatus=new_text.lemmatization_status(),
-            detailUrl=reverse("lemmatized_texts_detail", args=[new_text.id])
+            detailUrl=reverse("lemmatized_texts_detail", args=[new_text.id]),
+            textId=new_text.id
         )
 
     def post(self, request, *args, **kwargs):
