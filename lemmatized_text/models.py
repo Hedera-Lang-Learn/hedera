@@ -75,6 +75,7 @@ class LemmatizedText(models.Model):
         current_job = lemmatize_text_job.delay(self.original_text, self.lang, self.pk)
         self.current_job = current_job.id
         self.save()
+        print("LEMMATIZXING", self.current_job, current_job.get_status())
 
     def lemmatization_job(self):
         try:
@@ -99,7 +100,9 @@ class LemmatizedText(models.Model):
 
     def lemmatization_status(self):
         lemmatization_job = self.lemmatization_job()
+        print("JOB", lemmatization_job)
         if lemmatization_job:
+            print("JOB STATUS", lemmatization_job.get_status())
             return lemmatization_job.get_status()
 
     def can_cancel(self):
@@ -158,4 +161,5 @@ class LemmatizedText(models.Model):
             "cloneUrl": self.clone_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
+            "requireClone": self.classes.all().count() > 0
         }

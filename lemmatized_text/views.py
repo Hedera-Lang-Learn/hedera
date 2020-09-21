@@ -88,7 +88,7 @@ def learner_text(request, pk):
         Q(created_by=request.user) |
         Q(classes__students=request.user) |
         Q(classes__teachers=request.user)
-    )
+    ).distinct()
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/learner_text.html", {"text": text})
 
