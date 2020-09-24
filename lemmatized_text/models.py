@@ -75,10 +75,8 @@ class LemmatizedText(models.Model):
         current_job = lemmatize_text_job.delay(self.original_text, self.lang, self.pk)
         self.current_job = current_job.id
         self.save()
-        print("LEMMATIZXING", self.current_job, current_job.get_status())
 
     def lemmatization_job(self):
-        print("get job", self.current_job)
         try:
             return Job.fetch(self.current_job, get_connection())
         except NoSuchJobError:
@@ -101,9 +99,7 @@ class LemmatizedText(models.Model):
 
     def lemmatization_status(self):
         lemmatization_job = self.lemmatization_job()
-        print("JOB", lemmatization_job)
         if lemmatization_job:
-            print("JOB STATUS", lemmatization_job.get_status())
             return lemmatization_job.get_status()
 
     def can_cancel(self):
