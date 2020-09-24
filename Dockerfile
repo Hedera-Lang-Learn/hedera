@@ -1,4 +1,4 @@
-FROM circleci/python:3.7-rc-node
+FROM circleci/python:3.7-node
 USER root
 RUN mkdir -p /srv/code
 WORKDIR /srv/code
