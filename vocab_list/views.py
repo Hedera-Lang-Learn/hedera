@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView
@@ -11,11 +12,23 @@ class VocabularyListListView(ListView):
     template_name = "vocab_list/list.html"
     model = VocabularyList
 
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(
+            Q(owner__isnull=True) | Q(owner=self.request.user)
+        )
+        return queryset
+
 
 class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
+
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(
+            Q(owner__isnull=True) | Q(owner=self.request.user)
+        )
+        return queryset
 
 
 class VocabularyListDeleteView(DeleteView):
@@ -38,7 +51,9 @@ class VocabularyListCreateView(CreateView):
     form_class = VocabularyListForm
 
     def form_valid(self, form):
-        vl = form.save()
+        vl = form.save(commit=False)
+        vl.owner = self.request.user
+        vl.save()
         entries = vl.load_tab_delimited(form.cleaned_data["data"])
         for entry in entries:
             entry.link_job()
