@@ -153,12 +153,6 @@ class LemmatizationAPI(APIView):
             Q(classes__students=self.request.user) |
             Q(classes__teachers=self.request.user)
         ).distinct()
-
-        print("PK", self.kwargs.get("pk"), self.kwargs)
-        print(qs.filter(pk=self.kwargs.get("pk")))
-        print(qs.filter(pk=self.kwargs.get("pk")).get())
-        print(qs.get(pk=self.kwargs.get("pk")))
-
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
