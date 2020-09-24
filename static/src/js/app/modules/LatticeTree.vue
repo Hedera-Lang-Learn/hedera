@@ -1,9 +1,6 @@
 <template>
   <div class="lattice-tree cloning" v-if="cloning">
-    Cloning...
-    <div class="progress">
-      <div class="progress-bar" :class="{'bg-warning': completed < 100}" role="progressbar" :style="`width: ${completed}%`" :aria-valuenow="completed" aria-valuemin="0" aria-valuemax="100" />
-    </div>
+    <p>Cloning...</p>
     <small>You will be redirected to your clone when complete.</small>
   </div>
   <div class="lattice-tree clone-required" v-else-if="requireClone">
@@ -35,9 +32,6 @@
       return {
         toggleShowIds: false,
         cloning: false,
-        completed: 0,
-        tokenCount: 0,
-        lemmatizationStatus: null,
         clonedTextId: null,
       };
     },
@@ -83,27 +77,7 @@
       onCloneText() {
         this.cloning = true;
         api.cloneText(this.textId, (data) => {
-          this.completed = data.data.completed;
-          this.tokenCount = data.data.tokenCount;
-          this.lemmatizationStatus = data.data.lemmatizationStatus;
-          this.clonedTextId = data.data.textId;
-          if (this.completed < 100 && ['finished', 'failed'].indexOf(this.lemmatizationStatus) === -1) {
-            setTimeout(this.updateStatus, 1000);
-          } else {
-            window.location = data.data.detailUrl;
-          }
-        });
-      },
-      updateStatus() {
-        api.fetchTextStatus(this.clonedTextId, (data) => {
-          this.completed = data.data.completed;
-          this.tokenCount = data.data.tokenCount;
-          this.lemmatizationStatus = data.data.lemmatizationStatus;
-          if (this.completed < 100 && ['finished', 'failed'].indexOf(this.lemmatizationStatus) === -1) {
-            setTimeout(this.updateStatus, 1000);
-          } else {
-            window.location = data.data.detailUrl;
-          }
+          window.location = data.data.detailUrl;
         });
       },
     },

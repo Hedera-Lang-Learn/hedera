@@ -92,16 +92,7 @@ class LemmatizedTextStatusAPI(APIView):
             self.text.cancel_lemmatization()
         elif self.kwargs.get("action") == "clone":
             # @@@ self.text can only be fetched if public or you own it, probably need to expand for teachers
-            cloned = LemmatizedText.objects.create(
-                title=self.text.title,
-                lang=self.text.lang,
-                original_text=self.text.original_text,
-                cloned_from=self.text,
-                created_by=request.user,
-                data={},
-            )
-            cloned.lemmatize()
-            print("cloned", cloned.pk, cloned.id, cloned.completed)
+            cloned = self.text.clone(cloned_by=request.user)
         return JsonResponse(data=dict(data=self.get_data(cloned)))
 
 

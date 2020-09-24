@@ -142,6 +142,16 @@ class LemmatizedText(models.Model):
         url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
+    def clone(self, cloned_by=None):
+        return LemmatizedText.objects.create(
+            title=self.title,
+            lang=self.lang,
+            original_text=self.original_text,
+            cloned_from=self,
+            data=self.data,
+            created_by=cloned_by or self.created_by,
+        )
+
     def api_data(self):
         return {
             "id": self.pk,
