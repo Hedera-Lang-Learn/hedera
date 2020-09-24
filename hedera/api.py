@@ -187,13 +187,16 @@ class VocabularyListEntriesAPI(APIView):
 
     def get_data(self):
         vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
-        return [v.data() for v in vocab_list.entries.all().order_by("headword")]
+        return dict(
+            canEdit=vocab_list.owner == self.request.user,
+            entries=[v.data() for v in vocab_list.entries.all().order_by("headword")]
+        )
 
 
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
-        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
 
         if action == "link":
