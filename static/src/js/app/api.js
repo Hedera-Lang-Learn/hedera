@@ -10,6 +10,7 @@ export default {
   fetchTexts: (cb) => axios.get(`${BASE_URL}lemmatized_texts/`).then((r) => cb(r.data)),
   fetchText: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`).then((r) => cb(r.data)),
   fetchTextStatus: (id, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`).then((r) => cb(r.data)),
+  cloneText: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/clone/`).then((r) => cb(r.data)),
   textRetryLemmatization: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/retry/`).then((r) => cb(r.data)),
   textCancelLemmatization: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/cancel/`).then((r) => cb(r.data)),
   fetchPersonalVocabList: (lang, cb) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`).then((r) => cb(r.data)),

@@ -3,6 +3,7 @@ import json
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views import View
 
 from lattices.models import LatticeNode
@@ -73,11 +74,15 @@ class LemmatizedTextStatusAPI(APIView):
             self._text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return self._text
 
-    def get_data(self):
+    def get_data(self, new_text=None):
+        if new_text is None:
+            new_text = self.text
         return dict(
-            completed=self.text.completed,
-            tokenCount=self.text.token_count() if self.text.completed == 100 else None,
-            lemmatizationStatus=self.text.lemmatization_status(),
+            completed=new_text.completed,
+            tokenCount=new_text.token_count() if new_text.completed == 100 else None,
+            lemmatizationStatus=new_text.lemmatization_status(),
+            detailUrl=reverse("lemmatized_texts_detail", args=[new_text.id]),
+            textId=new_text.id
         )
 
     def post(self, request, *args, **kwargs):
@@ -85,8 +90,10 @@ class LemmatizedTextStatusAPI(APIView):
             self.text.retry_lemmatization()
         elif self.kwargs.get("action") == "cancel" and self.text.can_cancel():
             self.text.cancel_lemmatization()
-        self.text.refresh_from_db()
-        return JsonResponse(data=dict(data=self.get_data()))
+        elif self.kwargs.get("action") == "clone":
+            # @@@ self.text can only be fetched if public or you own it, probably need to expand for teachers
+            cloned = self.text.clone(cloned_by=request.user)
+        return JsonResponse(data=dict(data=self.get_data(cloned)))
 
 
 class LemmatizedTextDetailAPI(APIView):
@@ -97,7 +104,7 @@ class LemmatizedTextDetailAPI(APIView):
             Q(created_by=self.request.user) |
             Q(classes__students=self.request.user) |
             Q(classes__teachers=self.request.user)
-        )
+        ).distinct()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
 
@@ -145,7 +152,7 @@ class LemmatizationAPI(APIView):
             Q(created_by=self.request.user) |
             Q(classes__students=self.request.user) |
             Q(classes__teachers=self.request.user)
-        )
+        ).distinct()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
@@ -163,7 +170,7 @@ class LemmatizationAPI(APIView):
         text_data[token_index]["node"] = node_id
         text_data[token_index]["resolved"] = resolved
         text.data = text_data
-        text.save()
+        text.save()  # @@@ validate that it doesn't need cloning before this action
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
