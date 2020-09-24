@@ -26,6 +26,10 @@ class VocabularyListDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("vocab_list_list")
 
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(owner=self.request.user)
+        return queryset
+
 
 class VocabularyListCreateView(CreateView):
 
