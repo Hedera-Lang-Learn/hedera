@@ -180,7 +180,14 @@ class LemmatizationAPI(APIView):
 class VocabularyListAPI(APIView):
 
     def get_data(self):
-        return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]
+        return [
+            v.data()
+            for v in VocabularyList.objects.filter(
+                lang=self.request.GET.get("lang")
+            ).filter(
+                Q(owner__isnull=True) | Q(owner=self.request.user)
+            )
+        ]
 
 
 class VocabularyListEntriesAPI(APIView):
