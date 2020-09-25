@@ -118,8 +118,12 @@ class LemmatizationAPI(APIView):
             node.pk: node
             for node in nodes
         }
-        if self.request.GET.get("vocablist", None) is not None:
-            vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
+        vocablist_id = self.request.GET.get("vocablist", None)
+        if vocablist_id is not None:
+            if vocablist_id == "personal":
+                vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
+            else:
+                vl = get_object_or_404(VocabularyList, pk=vocablist_id)
             node_ids = vl.entries.values_list("node__pk", flat=True)
             related_node_cache = dict()
             for token in data:
@@ -180,20 +184,30 @@ class LemmatizationAPI(APIView):
 class VocabularyListAPI(APIView):
 
     def get_data(self):
-        return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]
+        return [
+            v.data()
+            for v in VocabularyList.objects.filter(
+                lang=self.request.GET.get("lang")
+            ).filter(
+                Q(owner__isnull=True) | Q(owner=self.request.user)
+            )
+        ]
 
 
 class VocabularyListEntriesAPI(APIView):
 
     def get_data(self):
         vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
-        return [v.data() for v in vocab_list.entries.all().order_by("headword")]
+        return dict(
+            canEdit=vocab_list.owner == self.request.user,
+            entries=[v.data() for v in vocab_list.entries.all().order_by("headword")]
+        )
 
 
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
-        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
 
         if action == "link":

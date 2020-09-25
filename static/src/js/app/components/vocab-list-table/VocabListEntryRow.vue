@@ -37,7 +37,7 @@
     <td>{{ entry.gloss }}</td>
     <td v-if="showIds">{{ entry.node }}</td>
     <td>
-      <div class="btn-group">
+      <div class="btn-group" v-if='canEdit'>
         <a class="btn btn-light btn-sm delete-entry" href @click.prevent="onDelete"><icon name="trash" /></a>
         <a class="btn btn-light btn-sm edit-entry" href @click.prevent="onEdit"><icon name="pen-fancy" /></a>
       </div>
@@ -47,7 +47,7 @@
 
 <script>
   export default {
-    props: ['entry', 'selected', 'showIds'],
+    props: ['entry', 'selected', 'showIds', 'canEdit'],
     data() {
       return {
         saving: false,

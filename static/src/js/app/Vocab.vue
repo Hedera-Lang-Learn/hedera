@@ -18,6 +18,7 @@
           :entries="entries"
           :selected-index="selectedIndex"
           :showIds="showIds"
+          :canEdit="canEdit"
         />
       </div>
       <div class="col-4">
@@ -43,6 +44,7 @@
         selectedEntry: null,
         selectedNode: null,
         entries: [],
+        canEdit: false,
         loading: false,
         toggleShowIds: false,
       };
@@ -82,10 +84,12 @@
         }
       },
       onSelectNode(node) {
-        api.vocabEntryLink(this.selectedEntry.id, node.pk, (data) => {
-          this.entries.splice(this.selectedIndex, 1, data);
-          this.selectNode(node.pk);
-        });
+        if (this.canEdit) {
+          api.vocabEntryLink(this.selectedEntry.id, node.pk, (data) => {
+            this.entries.splice(this.selectedIndex, 1, data);
+            this.selectNode(node.pk);
+          });
+        }
       },
       onDeleteEntry(entryData) {
         const { entry, cb } = entryData;
@@ -115,7 +119,8 @@
         handler() {
           this.loading = true;
           api.fetchVocabEntries(this.vocabId, (data) => {
-            this.entries = data.data;
+            this.entries = data.data.entries;
+            this.canEdit = data.data.canEdit;
             this.loading = false;
           });
         },

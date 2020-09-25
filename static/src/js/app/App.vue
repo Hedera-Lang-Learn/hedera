@@ -5,7 +5,7 @@
         <LemmatizedText />
       </div>
       <div class="col-4">
-        <VocabListSelect class="mb-5" :vocab-lists="vocabLists" />
+        <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
         <LatticeTree v-if="selectedToken" />
       </div>
     </div>
@@ -17,6 +17,7 @@
     FETCH_VOCAB_LISTS,
     FETCH_TEXT,
     FETCH_ME,
+    FETCH_PERSONAL_VOCAB_LIST,
   } from './constants';
 
   import LatticeTree from './modules/LatticeTree.vue';
@@ -33,22 +34,42 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_VOCAB_LISTS));
+          this.$store.dispatch(FETCH_TEXT, { id: this.textId })
+            .then(() => {
+              this.$store.dispatch(FETCH_VOCAB_LISTS);
+            });
         },
       },
       selectedVocabList: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabList });
+          if (this.selectedVocabListId === 'personal') {
+            this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.$store.state.text.lang });
+          }
+          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabListId });
         },
       },
     },
     computed: {
-      selectedVocabList() {
+      selectedVocabListId() {
         return this.$store.state.selectedVocabList;
       },
+      selectedVocabList() {
+        return this.vocabLists.reduce((map, l) => {
+          map[l.id] = l;
+          return map;
+        }, {})[this.selectedVocabListId];
+      },
       vocabLists() {
-        return this.$store.state.vocabLists;
+        return [
+          ...this.$store.state.vocabLists,
+          {
+            id: 'personal',
+            title: 'Personal',
+            description: 'Your personal vocabulary list.',
+            owner: this.$store.state.me.email,
+          },
+        ];
       },
       selectedToken() {
         return this.$store.state.selectedToken;

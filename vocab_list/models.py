@@ -102,6 +102,7 @@ class VocabularyList(models.Model):
             "title": self.title,
             "description": self.description,
             "link_status": self.link_status,
+            "owner": self.owner.email if self.owner else None,
         }
 
 
@@ -152,7 +153,7 @@ class VocabularyListEntry(models.Model):
             id=self.pk,
             headword=self.headword,
             gloss=self.gloss,
-            node=self.node.pk if self.node is not None else None,
+            node=self.node.pk if self.node is not None else None
         )
 
 

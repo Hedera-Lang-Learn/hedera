@@ -1,7 +1,8 @@
 <template>
   <div class="vocab-list-entry" :class="{ active }" @click.prevent="onSelect">
     <h4>{{ title }}</h4>
-    <p>{{ description }}</p>
+    <p v-if="description">{{ description }}</p>
+    <div class="text-right"><small>{{ owner || 'System' }}</small></div>
   </div>
 </template>
 
@@ -22,6 +23,9 @@
       },
       description() {
         return this.vocabList.description;
+      },
+      owner() {
+        return this.vocabList.owner;
       },
     },
   };
