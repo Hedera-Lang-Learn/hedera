@@ -118,8 +118,12 @@ class LemmatizationAPI(APIView):
             node.pk: node
             for node in nodes
         }
-        if self.request.GET.get("vocablist", None) is not None:
-            vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
+        vocablist_id = self.request.GET.get("vocablist", None)
+        if vocablist_id is not None:
+            if vocablist_id == "personal":
+                vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
+            else:
+                vl = get_object_or_404(VocabularyList, pk=vocablist_id)
             node_ids = vl.entries.values_list("node__pk", flat=True)
             related_node_cache = dict()
             for token in data:
