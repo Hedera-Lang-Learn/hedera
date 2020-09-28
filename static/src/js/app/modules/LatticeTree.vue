@@ -17,17 +17,21 @@
     <div v-if="showToggle" class="text-right my-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
 
     <MarkResolved />
+
+    <TokenHistory />
   </div>
 </template>
 <script>
   import AddLemma from './AddLemma.vue';
   import LatticeNode from './LatticeNode.vue';
   import MarkResolved from './MarkResolved.vue';
+  import TokenHistory from './TokenHistory.vue';
+
   import api from '../api';
   import { UPDATE_TOKEN, ADD_LEMMA, RESOLVED_MANUAL } from '../constants';
 
   export default {
-    components: { AddLemma, LatticeNode, MarkResolved },
+    components: { AddLemma, LatticeNode, MarkResolved, TokenHistory },
     data() {
       return {
         toggleShowIds: false,

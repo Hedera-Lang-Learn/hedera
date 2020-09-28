@@ -169,16 +169,22 @@ class LemmatizationAPI(APIView):
         node_id = data["nodeId"]
         resolved = data["resolved"]
 
-        text_data = text.data
-
-        text_data[token_index]["node"] = node_id
-        text_data[token_index]["resolved"] = resolved
-        text.data = text_data
-        text.save()  # @@@ validate that it doesn't need cloning before this action
+        text.update_token(self.request.user, token_index, node_id, resolved)
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
-        return JsonResponse({"data": data})
+        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+        return JsonResponse({"data": dict(tokens=data, tokenHistory=history)})
+
+
+class TokenHistoryAPI(APIView):
+
+    def get_data(self):
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        token_index = self.kwargs.get("token_index")
+        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+        return dict(tokenHistory=history)
 
 
 class VocabularyListAPI(APIView):
