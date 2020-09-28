@@ -169,6 +169,8 @@ class LemmatizationAPI(APIView):
         node_id = data["nodeId"]
         resolved = data["resolved"]
 
+        # @@@ handle if data["lemma"] is provided by adding the lemma
+
         text_data = text.data
 
         text_data[token_index]["node"] = node_id
