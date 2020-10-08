@@ -13,7 +13,7 @@
   <div class="lattice-tree" v-else>
     <h4>{{ selectedToken.word }}</h4>
     <LatticeNode :node="selectedNode" @selected="onSelect" :show-ids="showIds" />
-    <AddLemma @addLemma="onAddLemma" />
+    <AddLemma @addLemma="onAddLemma" v-if="false" />
     <div v-if="showToggle" class="text-right my-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
 
     <MarkResolved />
