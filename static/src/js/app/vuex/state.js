@@ -4,6 +4,7 @@ export default {
   text: {},
   tokens: [],
   selectedToken: null,
+  selectedTokenHistory: [],
   nodes: {},
   vocabLists: [],
   personalVocabList: null,

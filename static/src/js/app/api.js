@@ -41,6 +41,7 @@ export default {
     return axios.get(`${BASE_URL}lemmatized_texts/${id}/?${qs}`).then((r) => cb(r.data));
   },
   fetchNode: (id, cb) => axios.get(`/lattices/${id}.json`).then((r) => cb(r.data)),
+  fetchTokenHistory: (id, tokenIndex, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`).then((r) => cb(r.data)),
   updateToken: (id, tokenIndex, resolved, vocabList, nodeId = null, lemma = null, cb) => {
     if (vocabList === null) {
       return axios.post(`${BASE_URL}lemmatized_texts/${id}/`, {

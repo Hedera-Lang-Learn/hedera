@@ -31,8 +31,9 @@ export default {
   [FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },
-  [SELECT_TOKEN]: (state, { token }) => {
+  [SELECT_TOKEN]: (state, { token, data }) => {
     state.selectedToken = token;
+    state.selectedTokenHistory = data.data.tokenHistory;
   },
   [FETCH_NODE]: (state, data) => {
     state.nodes = {
@@ -41,7 +42,8 @@ export default {
     };
   },
   [UPDATE_TOKEN]: (state, data) => {
-    state.tokens = data;
+    state.tokens = data.tokens;
+    state.selectedTokenHistory = data.tokenHistory;
     if (state.selectedToken) {
       state.selectedToken = state.tokens[state.selectedToken.tokenIndex];
     }
