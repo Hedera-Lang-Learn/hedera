@@ -31,7 +31,12 @@
   import { UPDATE_TOKEN, ADD_LEMMA, RESOLVED_MANUAL } from '../constants';
 
   export default {
-    components: { AddLemma, LatticeNode, MarkResolved, TokenHistory },
+    components: {
+      AddLemma,
+      LatticeNode,
+      MarkResolved,
+      TokenHistory,
+    },
     data() {
       return {
         toggleShowIds: false,
