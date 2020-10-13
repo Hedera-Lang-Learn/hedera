@@ -1,0 +1,67 @@
+{% load webpack_static from webpack_loader %}
+{% load render_bundle from webpack_loader %}
+<html>
+  <head>
+    <title>{{ object.title }}</title>
+
+    {% render_bundle "vendor" "css" %}
+    {% render_bundle "main" "css" %}
+    <style>
+      body {
+        margin: 0.5in;
+        font-family: 'Noto Serif';
+      }
+      h1 {
+        font-family: 'Noto Sans', 'Helvetica';
+        font-size: 18pt;
+      }
+      .text {
+        margin-right: 0.125in;
+
+        font-size: 12pt;
+        font-weight: 400;
+        line-height: 18pt;
+      }
+      dl {
+        font-size: 8pt;
+
+        display: grid;
+        grid-template: auto / 5em 1fr;
+      }
+      .columns {
+        column-count: 4;
+        column-gap: 1em;
+      }
+      dt {
+        font-weight: 600;
+        font-family: 'Noto Sans', 'Helvetica';
+        grid-column: 1;
+      }
+      dd {
+        font-style: italic;
+        font-size: 8pt;
+        grid-column: 2;
+      }
+
+      dd, dt {
+        margin-bottom: 0.125in;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ object.title }}</h1>
+    <div class="content">
+      <div class="text">
+        {{ object.original_text|linebreaks }}
+      </div>
+      <div class="columns">
+        <dl>
+            {% for node in words %}
+            <dt>{{ node.label }}</dt>
+            <dd>{{ node.gloss }}</dd>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+  <body>
+</html>

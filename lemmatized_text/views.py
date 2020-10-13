@@ -4,7 +4,11 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
+from django.views.generic import DetailView
 
+from pdfservice.mixins import PDFResponseMixin
+
+from lattices.models import LatticeNode
 from . import models
 
 
@@ -98,3 +102,20 @@ def lemma_status(request, pk):
     status = lemma.completed
     length = lemma.token_count()
     return JsonResponse({"status": status, "len": length})
+
+
+class HandoutView(PDFResponseMixin, DetailView):
+    slug_field = "secret_id"
+    slug_url_kwarg = "uid"
+    template_name = "lemmatized_text/handout.html"
+    inline = True
+
+    def get_queryset(self):
+        return models.LemmatizedText.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        data = self.object.data
+        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data]).order_by("label")
+        context["words"] = nodes
+        return context

@@ -168,7 +168,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
-    r"/api/"
+    r"/api/",
+    r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -221,6 +222,7 @@ INSTALLED_APPS = [
     "lemmatized_text",
     "groups",
     "cms",
+    "pdfservice",
 
     # project
     "hedera",
@@ -349,3 +351,8 @@ SUPPORTED_LANGUAGES = [
 ]
 
 WAGTAIL_SITE_NAME = "Hedera"
+
+
+PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT", "https://pdf-service-a.us1.eldarioncloud.com/render/")
+PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_TOKEN", "")
+PDF_SERVICE_USER = os.environ.get("PDF_SERVICE_USER", "")

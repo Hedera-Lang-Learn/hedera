@@ -10,6 +10,15 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-  <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &raquo; <b>{{ text.title }}</b></nav>
+  <nav>
+    <a href="/lemmatized_text/">Lemmatized Texts</a>
+    &raquo;
+    <b>{{ text.title }}</b>
+    <div style="float: right;">
+      <a href="{% url 'lemmatized_texts_handout' text.secret_id %}" target="_blank">
+        <i class="fa fa-print"></i>
+      </a>
+    </div>
+  </nav>
   <div id="learner-app" text-id="{{ text.pk }}"></div>
 {% endblock %}
