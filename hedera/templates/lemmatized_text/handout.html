@@ -3,17 +3,27 @@
 <html>
   <head>
     <title>{{ object.title }}</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     {% render_bundle "vendor" "css" %}
     {% render_bundle "main" "css" %}
     <style>
-      body {
+      @page {
         margin: 0.5in;
+      }
+      body {
+        margin: 0;
         font-family: 'Noto Serif';
       }
       h1 {
         font-family: 'Noto Sans', 'Helvetica';
         font-size: 18pt;
+      }
+      p {
+        page-break-inside: avoid;
+      }
+      .content {
+        display: grid;
+
       }
       .text {
         margin-right: 0.125in;
@@ -21,13 +31,34 @@
         font-size: 12pt;
         font-weight: 400;
         line-height: 18pt;
+
+        grid-column: 1 / 3;
       }
+
+      .glossary {
+        grid-column: 3;
+      }
+      h4 {
+        margin-bottom: 0;
+      }
+      .word {
+        font-family: 'Noto Sans';
+        font-size: 8pt;
+      }
+      .label {
+        font-weight: 600;
+      }
+      .gloss {
+        font-style: italic;
+      }
+
+
       dl {
         font-size: 8pt;
 
         display: grid;
-        grid-template: auto / 5em 1fr;
       }
+
       .columns {
         column-count: 4;
         column-gap: 1em;
@@ -54,13 +85,14 @@
       <div class="text">
         {{ object.original_text|linebreaks }}
       </div>
-      <div class="columns">
-        <dl>
-            {% for node in words %}
-            <dt>{{ node.label }}</dt>
-            <dd>{{ node.gloss }}</dd>
-          {% endfor %}
-        </dl>
+      <div class="glossary">
+        <h4>Glossary</h4>
+        {% for node in words %}
+          <div class="word">
+            <span class="label">{{ node.label }}</span>
+            <span class="gloss">{{ node.gloss }}</span>
+          </div>
+        {% endfor %}
       </div>
     </div>
   <body>
