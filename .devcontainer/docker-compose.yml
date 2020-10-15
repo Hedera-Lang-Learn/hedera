@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+        - postgres-data:/var/lib/postgresql/data
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: hedera
+
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    network_mode: service:db
+
+  worker:
+    build:
+        context: ..
+        dockerfile: .devcontainer/Dockerfile.worker
+    volumes:
+        - ..:/workspace:cached
+    command: python manage.py rqworker ${RQ_QUEUES:-default}
+    network_mode: service:db
+    depends_on:
+        - db
+        - redis
+
+  webpack:
+    build:
+        context: ..
+        dockerfile: .devcontainer/Dockerfile.webpack
+    volumes:
+        - ..:/workspace:cached
+    command: npm start
+    network_mode: service:db
+
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile.web
+    volumes:
+      - ..:/workspace:cached
+    environment:
+        DATABASE_URL: postgres://postgres:postgres@db:5432/hedera
+    entrypoint: ./.devcontainer/entrypoint.sh
+    command: python manage.py runserver 0.0.0.0:8000
+    network_mode: service:db
+    depends_on:
+        - db
+        - redis
+        - webpack
+volumes:
+  postgres-data:
