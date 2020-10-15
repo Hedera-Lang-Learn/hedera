@@ -1,0 +1,7 @@
+# Pull base image
+FROM node:11.9.0
+
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
