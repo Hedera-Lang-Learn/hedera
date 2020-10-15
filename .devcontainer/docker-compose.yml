@@ -34,8 +34,8 @@ services:
         context: ..
         dockerfile: .devcontainer/Dockerfile.webpack
     volumes:
-        - ..:/workspace:cached
-        - webpack-stats:/webpack-stats
+        - ../static/src:/workspace/static/src:cached
+        - webpack-stats:/workspace/webpack-stats
     command: npm start
     ports:
       - 8080:8080
