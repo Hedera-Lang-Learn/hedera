@@ -14,16 +14,17 @@ services:
   redis:
     image: redis:latest
     restart: unless-stopped
-    network_mode: service:db
 
   worker:
     build:
         context: ..
         dockerfile: .devcontainer/Dockerfile.worker
+    environment:
+        DATABASE_URL: postgres://postgres:postgres@db:5432/hedera
+        REDIS_URL: redis://redis:6379/
     volumes:
         - ..:/workspace:cached
     command: python manage.py rqworker ${RQ_QUEUES:-default}
-    network_mode: service:db
     depends_on:
         - db
         - redis
@@ -35,7 +36,8 @@ services:
     volumes:
         - ..:/workspace:cached
     command: npm start
-    network_mode: service:db
+    ports:
+      - 8080:8080
 
   app:
     build:
@@ -45,9 +47,11 @@ services:
       - ..:/workspace:cached
     environment:
         DATABASE_URL: postgres://postgres:postgres@db:5432/hedera
+        REDIS_URL: redis://redis:6379/
     entrypoint: ./.devcontainer/entrypoint.sh
     command: python manage.py runserver 0.0.0.0:8000
-    network_mode: service:db
+    ports:
+      - 8000:8000
     depends_on:
         - db
         - redis
