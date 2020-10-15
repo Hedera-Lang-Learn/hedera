@@ -1,5 +1,5 @@
 {
-	"name": "Python 3 & PostgreSQL",
+	"name": "Hedera [VS Code docker-compose]",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
@@ -11,7 +11,7 @@
 			"previewLimit": 50,
 			"server": "localhost",
 			"port": 5432,
-			"database": "postgres",
+			"database": "hedera",
 			"username": "postgres",
 			"password": "postgres"
 		}],

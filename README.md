@@ -80,3 +80,29 @@ user = User.objects.get(pk=1)
 user.is_active = True
 user.save()
 ```
+
+## Docker Compose
+
+If using [Visual Studio Code Remote - Containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container), `docker-compose` commands should be ran as follows:
+
+```shell
+docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml <cmd>
+```
+
+e.g. for logs:
+
+```
+docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml logs -f
+```
+
+rebuilding containers
+
+```
+docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml build
+```
+
+restarting containers
+
+```
+docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml restart
+```
