@@ -18,7 +18,7 @@ services:
   worker:
     build:
         context: ..
-        dockerfile: .devcontainer/Dockerfile.worker
+        dockerfile: .devcontainer/Dockerfile.web
     environment:
         DATABASE_URL: postgres://postgres:postgres@db:5432/hedera
         REDIS_URL: redis://redis:6379/
