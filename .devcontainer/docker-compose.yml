@@ -35,6 +35,7 @@ services:
         dockerfile: .devcontainer/Dockerfile.webpack
     volumes:
         - ..:/workspace:cached
+        - webpack-stats:/webpack-stats
     command: npm start
     ports:
       - 8080:8080
@@ -45,6 +46,7 @@ services:
       dockerfile: .devcontainer/Dockerfile.web
     volumes:
       - ..:/workspace:cached
+      - webpack-stats:/workspace/webpack-stats
     environment:
         DATABASE_URL: postgres://postgres:postgres@db:5432/hedera
         REDIS_URL: redis://redis:6379/
@@ -58,3 +60,4 @@ services:
         - webpack
 volumes:
   postgres-data:
+  webpack-stats:
