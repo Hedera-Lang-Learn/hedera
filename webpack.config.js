@@ -47,7 +47,7 @@ const plugins = [
     jQuery: 'jquery',
     $: 'jquery',
   }),
-  new BundleTracker({ filename: './webpack-stats.json' }),
+  new BundleTracker({ filename: './webpack-stats/webpack-stats.json' }),
   new VueLoaderPlugin(),
   new MiniCssExtractPlugin({
     filename: devMode ? '[name].css' : '[name].[hash].css',
