@@ -8,16 +8,18 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
+IS_LTI = (os.environ.get("IS_LTI") == "1")
+
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
-sentry_sdk.init(
-    dsn=os.environ.get("SENTRY_DSN"),
-    debug=os.environ.get("SENTRY_DEBUG") == "1",
-    environment=os.environ.get("SENTRY_ENVIRONMENT"),
-    integrations=[DjangoIntegration(), RqIntegration()],
-    # Enables tracing for sentry "Events V2"
-    # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
-    traces_sample_rate=1.0,
-)
+if not IS_LTI:
+    sentry_sdk.init(
+        dsn=os.environ.get("SENTRY_DSN"),
+        debug=os.environ.get("SENTRY_DEBUG") == "1",
+        environment=os.environ.get("SENTRY_ENVIRONMENT"),
+        integrations=[DjangoIntegration(), RqIntegration()],
+        # Enables tracing for sentry "Events V2"
+        # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
+    )
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -28,9 +30,12 @@ try:
 except ValueError:
     DEBUG = False
 
+
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
 }
+
+CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -168,7 +173,9 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
-    r"/api/"
+    r"/api/",
+    "/lti/config.xml",
+    "/lti/lti_initializer/"
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -197,6 +204,7 @@ INSTALLED_APPS = [
     "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
+    "lti_provider",
 
     # wagtail
     "wagtail.contrib.forms",
@@ -221,6 +229,7 @@ INSTALLED_APPS = [
     "lemmatized_text",
     "groups",
     "cms",
+    "lti",
 
     # project
     "hedera",
@@ -315,19 +324,63 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
+# LTI configuration
+
+LTI_TOOL_CONFIGURATION = {
+    "title": "Hedera",
+    "description": "An LTI-compliant tool that enables users to interact with lemmatized texts.",
+    "launch_url": "lti/lti_initializer/",
+    "embed_url": "",
+    "embed_icon_url": "",
+    "embed_tool_id": "",
+    "course_navigation": {
+        "default": "disabled",
+        "enabled": "true",
+        "windowTarget": "_blank"
+    },
+    "course_aware": False
+}
+
+
+PYLTI_CONFIG = {
+    "consumers": {
+        os.environ.get("CONSUMER_KEY"): {
+            "secret": os.environ.get("LTI_SECRET")
+        }
+    }
+}
+
+X_FRAME_OPTIONS = os.environ.get("X_FRAME_OPTIONS", "ALLOW-FROM https://canvas.harvard.edu")
+
+# This setting will add an LTI property to the session
+LTI_PROPERTY_LIST_EX = [
+    "context_title",
+    "custom_canvas_course_id",
+    "ext_roles",
+    "lis_person_contact_email_primary"
+]
+
+
+if IS_LTI:
+    AUTHENTICATION_BACKENDS = [
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
+        "lti_provider.auth.LTIBackend",
+    ]
+    LOGIN_URL = "lti_initializer"
+else:
+    AUTHENTICATION_BACKENDS = [
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
+    ]
+    LOGIN_URL = "account_login"
+
 
 def user_display(user):
     return user.profile.display_name or user.email
 
 
 ACCOUNT_USER_DISPLAY = user_display
-
-AUTHENTICATION_BACKENDS = [
-    "account.auth_backends.EmailAuthenticationBackend",
-    "account.auth_backends.UsernameAuthenticationBackend",
-]
-
-LOGIN_URL = "account_login"
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
@@ -347,5 +400,9 @@ SUPPORTED_LANGUAGES = [
     ["lat", "Latin"],
     ["rus", "Russian"],
 ]
+
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_COOKIE_SAMESITE = None
 
 WAGTAIL_SITE_NAME = "Hedera"

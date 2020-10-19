@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 
 from account.forms import SettingsForm as AccountSettingsForm
 from account.forms import SignupForm as AccountSignupForm
@@ -17,6 +18,8 @@ class SettingsForm(AccountSettingsForm):
         super().__init__(*args, **kwargs)
         del self.fields["timezone"]
         del self.fields["language"]
+        if settings.IS_LTI:
+            del self.fields["email"]
 
 
 class SignupForm(AccountSignupForm):

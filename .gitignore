@@ -10,3 +10,5 @@ static/dist/
 .env*
 db_dumps/
 npm-debug.log
+cert.pem
+key.pem

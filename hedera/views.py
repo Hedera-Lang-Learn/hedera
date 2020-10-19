@@ -1,5 +1,6 @@
 import uuid
 
+from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
 
@@ -24,6 +25,8 @@ class SettingsView(AccountSettingsView):
     form_class = SettingsForm
 
     def update_settings(self, form):
+        if settings.IS_LTI:
+            form.cleaned_data["email"] = self.request.user.email
         super().update_settings(form)
         profile = self.request.user.profile
         profile.display_name = form.cleaned_data["display_name"]
