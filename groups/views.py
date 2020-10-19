@@ -23,15 +23,19 @@ class GroupListView(LoginRequiredMixin, ListView):
     model = Group
     template_name = "groups/groups.html"
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
+    def get_context_data(self):
+        context = super().get_context_data()
+        queryset = self.get_queryset()
         queryset = queryset.filter(
             Q(teachers=self.request.user) | Q(students=self.request.user)
         )
-        for group in queryset:
+        groups = []
+        for group in queryset.distinct():
             group.is_teacher = group.teachers.filter(pk=self.request.user.pk).exists()
             group.is_student = group.students.filter(pk=self.request.user.pk).exists()
-        return queryset
+            groups.append(group)
+        context.update({"groups": groups})
+        return context
 
 
 class GroupDetailView(LoginRequiredMixin, DetailView):
@@ -153,21 +157,8 @@ class GroupUpdateTextsView(GroupUpdateBaseView):
         self.object = self.get_object()
         remove_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-delete"))
         add_texts = LemmatizedText.objects.filter(pk__in=request.POST.getlist("text-add"))
-        cloned_texts = []
-        for add_text in add_texts:
-            lt = LemmatizedText.objects.create(
-                title=add_text.title,
-                lang=add_text.lang,
-                original_text=add_text.original_text,
-                cloned_from=add_text,
-                cloned_for=self.object,
-                created_by=request.user,
-                data={},
-            )
-            lt.lemmatize()
-            cloned_texts.append(lt)
         self.object.texts.remove(*remove_texts)
-        self.object.texts.add(*cloned_texts)
+        self.object.texts.add(*add_texts)
         return HttpResponseRedirect(self.object.get_absolute_url())
 
 

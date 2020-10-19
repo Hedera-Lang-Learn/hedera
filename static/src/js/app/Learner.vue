@@ -301,7 +301,6 @@
     }
   }
 
-
   .familiarity-rating {
     position: relative;
     .help-text {

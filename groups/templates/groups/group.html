@@ -64,12 +64,16 @@
           {% for text in group.texts.all %}
           <tr>
             <td>
+              {% url "lemmatized_texts_learner" text.id as learner_text_url %}
               {% if group.is_teacher %}
                 {% url "lemmatized_texts_detail" text.id as text_url %}
+                <a href="{{ text_url }}">Teacher</a> |
+                <a href="{{ learner_text_url }}">Learner</a> -
+
+                {{ text.title }}
               {% else %}
-                {% url "lemmatized_texts_learner" text.id as text_url %}
+                 <a href="{{ learner_text_url }}">{{ text.title }}</a>
               {% endif %}
-              <a href="{{ text_url }}">{{ text.title }}</a>
             </td>
             <td>{{ text.token_count }}</td>
           </tr>

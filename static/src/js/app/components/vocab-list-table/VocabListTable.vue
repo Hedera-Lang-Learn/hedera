@@ -10,6 +10,7 @@
       :selected="selectedIndex === index"
       :entry="entry"
       :showIds="showIds"
+      :canEdit="canEdit"
       @select-entry="entry => $emit('select-entry', entry)"
       @edit-entry="(entryData) => $emit('edit-entry', entryData)"
       @delete-entry="(entryData) => $emit('delete-entry', entryData)"
@@ -42,7 +43,7 @@
   };
 
   export default {
-    props: ['entries', 'selectedIndex', 'showIds'],
+    props: ['entries', 'selectedIndex', 'showIds', 'canEdit'],
     components: { VocabListEntryRow },
     shortcuts: {
       prevVocabEntry() {

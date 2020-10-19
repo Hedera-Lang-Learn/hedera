@@ -142,6 +142,16 @@ class LemmatizedText(models.Model):
         url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
+    def clone(self, cloned_by=None):
+        return LemmatizedText.objects.create(
+            title=self.title,
+            lang=self.lang,
+            original_text=self.original_text,
+            cloned_from=self,
+            data=self.data,
+            created_by=cloned_by or self.created_by,
+        )
+
     def api_data(self):
         return {
             "id": self.pk,
@@ -158,4 +168,43 @@ class LemmatizedText(models.Model):
             "cloneUrl": self.clone_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
+            "requireClone": self.classes.all().count() > 0
         }
+
+    def update_token(self, user, token_index, node_id, resolved):
+        self.data[token_index]["node"] = node_id
+        self.data[token_index]["resolved"] = resolved
+        self.save()
+        self.logs.create(
+            user=user,
+            token_index=token_index,
+            node_id=node_id,
+            resolved=resolved,
+        )
+
+
+class LemmatizationLog(models.Model):
+    # Who
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    # Changed What Attributes
+    token_index = models.IntegerField()
+    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
+    resolved = models.CharField(max_length=100)
+
+    # On What Text
+    text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE, related_name="logs")
+
+    # When
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def data(self):
+        return dict(
+            id=self.pk,
+            user=self.user.email,
+            tokenIndex=self.token_index,
+            node=self.node.pk,
+            resolves=self.resolved,
+            text=self.text.pk,
+            createdAt=self.created_at
+        )
