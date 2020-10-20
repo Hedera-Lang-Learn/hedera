@@ -8,7 +8,10 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
-IS_LTI = (os.environ.get("IS_LTI") == "1")
+try:
+    IS_LTI = bool(int(os.environ.get("IS_LTI", "0")))
+except ValueError:
+    IS_LTI = False
 
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
 if not IS_LTI:
