@@ -14,11 +14,13 @@
     <a href="/lemmatized_text/">Lemmatized Texts</a>
     &raquo;
     <b>{{ text.title }}</b>
+    {% if PDF_HANDOUT_ENABLED %}
     <div style="float: right;">
       <a href="{% url 'lemmatized_texts_handout' text.secret_id %}" target="_blank">
         <i class="fa fa-print"></i>
       </a>
     </div>
+    {% endif %}
   </nav>
   <div id="learner-app" text-id="{{ text.pk }}"></div>
 {% endblock %}

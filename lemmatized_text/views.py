@@ -1,5 +1,6 @@
 import logging
 
+from django.conf import settings
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -94,7 +95,7 @@ def learner_text(request, pk):
         Q(classes__teachers=request.user)
     ).distinct()
     text = get_object_or_404(qs, pk=pk)
-    return render(request, "lemmatized_text/learner_text.html", {"text": text})
+    return render(request, "lemmatized_text/learner_text.html", {"text": text, "PDF_HANDOUT_ENABLED": settings.PDF_SERVICE_ENDPOINT is not None})
 
 
 def lemma_status(request, pk):
