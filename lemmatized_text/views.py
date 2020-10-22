@@ -6,9 +6,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView
 
+from lattices.models import LatticeNode
 from pdfservice.mixins import PDFResponseMixin
 
-from lattices.models import LatticeNode
 from . import models
 
 
