@@ -80,3 +80,15 @@ user = User.objects.get(pk=1)
 user.is_active = True
 user.save()
 ```
+
+
+## PDF Service
+
+To enable the PDF export of a learner's text with gloss you need to run the PDF
+service that is packaged up as a docker container.
+
+For local development:
+
+```
+docker run --publish 9000:9000 --env X_API_KEY=test-secret eldarioninc/pdf-service
+```
