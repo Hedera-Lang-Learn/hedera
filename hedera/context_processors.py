@@ -25,6 +25,7 @@ def settings(request):
     ctx = {
         "ADMIN_URL": django_settings.ADMIN_URL,
         "CONTACT_EMAIL": django_settings.CONTACT_EMAIL,
+        "IS_LTI": django_settings.IS_LTI,
 
         "pinax_notifications_installed": "pinax.notifications" in django_settings.INSTALLED_APPS,
         "pinax_stripe_installed": "pinax.stripe" in django_settings.INSTALLED_APPS,
