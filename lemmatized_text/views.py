@@ -116,6 +116,6 @@ class HandoutView(PDFResponseMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         data = self.object.data
-        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data]).order_by("label")
+        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])  # .order_by("label")
         context["words"] = nodes
         return context

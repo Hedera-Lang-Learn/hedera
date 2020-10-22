@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>{{ object.title }}</title>
+    <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     {% render_bundle "vendor" "css" %}
     {% render_bundle "main" "css" %}
@@ -22,8 +23,7 @@
         page-break-inside: avoid;
       }
       .content {
-        display: grid;
-
+        display: flex;
       }
       .text {
         margin-right: 0.125in;
@@ -32,11 +32,11 @@
         font-weight: 400;
         line-height: 18pt;
 
-        grid-column: 1 / 3;
+        flex: 3;
       }
 
       .glossary {
-        grid-column: 3;
+        flex: 1;
       }
       h4 {
         margin-bottom: 0;

@@ -353,6 +353,5 @@ SUPPORTED_LANGUAGES = [
 WAGTAIL_SITE_NAME = "Hedera"
 
 
-PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT", "https://pdf-service-a.us1.eldarioncloud.com/render/")
-PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_TOKEN", "")
-PDF_SERVICE_USER = os.environ.get("PDF_SERVICE_USER", "")
+PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT", "http://127.0.0.1:9000/pdf")
+PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY", "test-secret")

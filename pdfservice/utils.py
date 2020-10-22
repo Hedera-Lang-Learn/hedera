@@ -39,8 +39,7 @@ def generate_pdf(template_name, context, params, request=None, fix_static_paths=
         },
         params=params,
         headers={
-            "x-api-token": settings.PDF_SERVICE_TOKEN,
-            "x-api-user": settings.PDF_SERVICE_USER
+            "x-api-key": settings.PDF_SERVICE_TOKEN,
         },
         stream=stream
     )
