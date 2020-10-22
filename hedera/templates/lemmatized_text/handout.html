@@ -10,6 +10,7 @@
     <style>
       @page {
         margin: 0.5in;
+        size: 8.5in 11in;
       }
       body {
         margin: 0;
@@ -18,6 +19,11 @@
       h1 {
         font-family: 'Noto Sans', 'Helvetica';
         font-size: 18pt;
+      }
+      .glossary h4 {
+        font-family: 'Noto Sans', 'Helvetica';
+        font-size: 14pt;
+        line-height: 24pt;
       }
       p {
         page-break-inside: avoid;
@@ -32,11 +38,11 @@
         font-weight: 400;
         line-height: 18pt;
 
-        flex: 3;
+        flex: 1;
       }
 
       .glossary {
-        flex: 1;
+        width: 35%;
       }
       h4 {
         margin-bottom: 0;
@@ -55,23 +61,16 @@
 
       dl {
         font-size: 8pt;
-
-        display: grid;
+        display: flex;
       }
 
-      .columns {
-        column-count: 4;
-        column-gap: 1em;
-      }
       dt {
         font-weight: 600;
         font-family: 'Noto Sans', 'Helvetica';
-        grid-column: 1;
       }
       dd {
         font-style: italic;
         font-size: 8pt;
-        grid-column: 2;
       }
 
       dd, dt {
@@ -80,9 +79,9 @@
     </style>
   </head>
   <body>
-    <h1>{{ object.title }}</h1>
     <div class="content">
       <div class="text">
+        <h1>{{ object.title }}</h1>
         {{ object.original_text|linebreaks }}
       </div>
       <div class="glossary">
