@@ -40,6 +40,7 @@ CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "0.0.0.0",
     "hederaproject.org",
     ".hederaproject.org",
     "hedera.fas.harvard.edu",
@@ -250,7 +251,7 @@ WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "/",
-        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats.json"),
+        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats", "webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
         "IGNORE": [r".*\.hot-update.js", r".+\.map"]
