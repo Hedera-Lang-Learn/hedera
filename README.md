@@ -8,7 +8,7 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ### With Docker
 
-```shell
+```
 docker-compose up
 ```
 
@@ -16,7 +16,7 @@ When are you are finished, simply hit `ctrl-c` and the containers will shutdown.
 
 On initial running, you might want do run the following in another terminal:
 
-```shell
+```
 docker-compose run django python manage.py create_cms
 ```
 
