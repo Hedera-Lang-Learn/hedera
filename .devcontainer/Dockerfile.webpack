@@ -1,8 +1,0 @@
-# Pull base image
-FROM node:11.9.0
-
-WORKDIR /workspace
-COPY package*.json ./
-RUN npm ci
-COPY webpack.config.js .babelrc ./
-EXPOSE 8080
