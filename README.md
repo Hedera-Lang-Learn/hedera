@@ -6,6 +6,29 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ## Getting Started
 
+### With Docker
+
+```shell
+docker-compose up
+```
+
+When are you are finished, simply hit `ctrl-c` and the containers will shutdown.
+
+On initial running, you might want do run the following in another terminal:
+
+```shell
+docker-compose run django python manage.py create_cms
+```
+
+To import lattice data:
+
+```
+docker-compose run django python manage.py shell -c "import load_ivy_lattice"
+docker-compose run django python manage.py shell -c "import logeion_load"
+```
+
+### Without Docker
+
 You'll need Redis running.  To get it going locally on the Mac, simply run:
 
 ```
@@ -81,28 +104,3 @@ user.is_active = True
 user.save()
 ```
 
-## Docker Compose
-
-If using [Visual Studio Code Remote - Containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-an-existing-folder-in-a-container), `docker-compose` commands should be ran as follows:
-
-```shell
-docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml <cmd>
-```
-
-e.g. for logs:
-
-```
-docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml logs -f
-```
-
-rebuilding containers
-
-```
-docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml build
-```
-
-restarting containers
-
-```
-docker-compose --project-name hedera_devcontainer -f `pwd`/.devcontainer/docker-compose.yml restart
-```
