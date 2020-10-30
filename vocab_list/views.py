@@ -94,6 +94,7 @@ class PersonalVocabularyListEntriesCreateView(CreateView):
 
     def form_valid(self, form):
         vl, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=form.cleaned_data["lang"])
-        vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
-        # @@@ kick off background tasks for linking the entries
+        entries = vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
+        for entry in entries:
+            entry.link_job()
         return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))
