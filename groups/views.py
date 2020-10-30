@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db.models import Q
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -50,6 +51,11 @@ class GroupDetailView(LoginRequiredMixin, DetailView):
         group.is_teacher = group.teachers.filter(pk=self.request.user.pk).exists()
         group.is_student = group.students.filter(pk=self.request.user.pk).exists()
         return group
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["IS_LTI"] = settings.IS_LTI
+        return context
 
     def post(self, request, *args, **kwargs):
         if request.POST.get("remove") == "student":

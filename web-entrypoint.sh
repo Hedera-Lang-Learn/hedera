@@ -24,5 +24,8 @@ sudo gunicorn hedera.wsgi:application \
     --env SENTRY_DSN="$SENTRY_DSN" \
     --env SENTRY_ENVIRONMENT=$SENTRY_ENVIRONMENT \
     --env DJANGO_DEBUG=$DJANGO_DEBUG \
+    --env CONSUMER_KEY=$CONSUMER_KEY \
+    --env LTI_SECRET=$LTI_SECRET \
+    --env IS_LTI=$IS_LTI \
     --bind :80 \
     --log-level debug
