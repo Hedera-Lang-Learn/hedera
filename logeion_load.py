@@ -37,10 +37,11 @@ def create_lemma_node(lemma, lattice_node, context):
 with open("import-data/logeion-latin.txt") as f:
     for row in f:
         logeion_lemma, short_def = row.strip().split("|")
-        if LemmaNode.objects.filter(lemma=logeion_lemma, context="morpheus").exists():
-            pass
+        existing = LemmaNode.objects.filter(lemma=logeion_lemma, context="morpheus")
+        if existing:
+            print("lemma node already exists", existing[0].pk, logeion_lemma, short_def)
         else:
             lattice_node, _ = LatticeNode.objects.get_or_create(label=logeion_lemma, gloss=short_def, canonical=False)
-            print("  created lattice_node", lattice_node.pk, logeion_lemma, short_def)
+            print("created lattice_node", lattice_node.pk, logeion_lemma, short_def)
             create_lemma_node(logeion_lemma, lattice_node, "morpheus")
-            print()
+        print()

@@ -29,6 +29,12 @@ def link_vl_node(pk):
     obj.link()
 
 
+@job("default", timeout=600)
+def link_pvl_node(pk):
+    obj = PersonalVocabularyListEntry.objects.get(pk=pk)
+    obj.link()
+
+
 class VocabularyList(models.Model):
 
     # a NULL owner means a system-provided vocabulary list
@@ -240,6 +246,10 @@ class PersonalVocabularyListEntry(models.Model):
 
     node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
 
+    link_job_id = models.CharField(max_length=250, blank=True)
+    link_job_started = models.DateTimeField(null=True)
+    link_job_ended = models.DateTimeField(null=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -249,11 +259,23 @@ class PersonalVocabularyListEntry(models.Model):
         order_with_respect_to = "vocabulary_list"
         unique_together = ("vocabulary_list", "headword")
 
-    def link_node(self):
-        pass
-        # if self.node is None:
-        #     self.node = make_lemma(self.headword)  # context?
-        #     self.save()
+    def link_job(self):
+        j = link_pvl_node.delay(self.pk)
+        self.link_job_id = j.id
+        self.link_job_started = timezone.now()
+        self.save()
+
+    def link(self):
+        first = strip_diacritics(self.headword.split()[0].strip(","))
+        lemma_node = LemmaNode.objects.filter(lemma=first).first()
+        if lemma_node is None:
+            for lemma_node in LemmaNode.objects.filter(lemma__istartswith=first):
+                if lemma_node.node.children.exists():
+                    break
+        if lemma_node:
+            self.node = lemma_node.node
+        self.link_job_ended = timezone.now()
+        self.save()
 
     def data(self):
         return dict(

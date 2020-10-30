@@ -43,6 +43,7 @@ CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "0.0.0.0",
     "hederaproject.org",
     ".hederaproject.org",
     "hedera.fas.harvard.edu",
@@ -177,6 +178,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/\.well-known/",
     "^/$",
     r"/api/",
+    r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
     "/lti/config.xml",
     "/lti/lti_initializer/"
 ]
@@ -232,6 +234,7 @@ INSTALLED_APPS = [
     "lemmatized_text",
     "groups",
     "cms",
+    "pdfservice",
     "lti",
 
     # project
@@ -253,7 +256,7 @@ WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "/",
-        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats.json"),
+        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats", "webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
         "IGNORE": [r".*\.hot-update.js", r".+\.map"]
@@ -410,6 +413,8 @@ SESSION_COOKIE_SAMESITE = None
 
 WAGTAIL_SITE_NAME = "Hedera"
 
+PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT")
+PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY")
 
 # SSL is terminated at the ELB so look for this header to know that we should be in ssl mode
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

@@ -1,4 +1,5 @@
 import logging
+import uuid
 
 from django.db import models
 from django.template.defaultfilters import floatformat
@@ -46,6 +47,8 @@ class LemmatizedText(models.Model):
     cloned_for = models.ForeignKey("groups.Group", null=True, on_delete=models.SET_NULL)
     original_text = models.TextField()
     completed = models.IntegerField(default=0)
+
+    secret_id = models.UUIDField(default=uuid.uuid4, editable=False)
 
     # created_by is nullable because you can have Anonymous System Texts
     # 1. Anonymous System Texts
@@ -168,7 +171,8 @@ class LemmatizedText(models.Model):
             "cloneUrl": self.clone_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
-            "requireClone": self.classes.all().count() > 0
+            "requireClone": self.classes.all().count() > 0,
+            "handoutUrl": reverse("lemmatized_texts_handout", args=[self.secret_id]),
         }
 
     def update_token(self, user, token_index, node_id, resolved):

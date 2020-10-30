@@ -1,0 +1,13 @@
+FROM python:3.7-slim
+ENV PYTHONFAULTHANDLER=1 \
+    PYTHONUNBUFFERED=1
+COPY ./Pipfile.lock ./Pipfile /
+RUN apt-get update && apt-get install -y netcat git && \
+    pip install pipenv && \
+    pipenv lock -r > requirements.txt && \
+    pip install --no-cache-dir -r requirements.txt && \
+    rm Pipfile.lock && \
+    rm Pipfile && \
+    rm -rf /var/lib/apt/lists/*
+EXPOSE 8000
+WORKDIR /app
