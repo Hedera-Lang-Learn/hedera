@@ -1,0 +1,98 @@
+{% load webpack_static from webpack_loader %}
+{% load render_bundle from webpack_loader %}
+<html>
+  <head>
+    <title>{{ object.title }}</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    {% render_bundle "vendor" "css" %}
+    {% render_bundle "main" "css" %}
+    <style>
+      @page {
+        margin: 0.5in;
+        size: 8.5in 11in;
+      }
+      body {
+        margin: 0;
+        font-family: 'Noto Serif';
+      }
+      h1 {
+        font-family: 'Noto Sans', 'Helvetica';
+        font-size: 18pt;
+      }
+      .glossary h4 {
+        font-family: 'Noto Sans', 'Helvetica';
+        font-size: 14pt;
+        line-height: 24pt;
+      }
+      p {
+        page-break-inside: avoid;
+      }
+      .content {
+        display: flex;
+      }
+      .text {
+        margin-right: 0.125in;
+
+        font-size: 12pt;
+        font-weight: 400;
+        line-height: 18pt;
+
+        flex: 1;
+      }
+
+      .glossary {
+        width: 35%;
+      }
+      h4 {
+        margin-bottom: 0;
+      }
+      .word {
+        font-family: 'Noto Sans';
+        font-size: 8pt;
+      }
+      .label {
+        font-weight: 600;
+      }
+      .gloss {
+        font-style: italic;
+      }
+
+
+      dl {
+        font-size: 8pt;
+        display: flex;
+      }
+
+      dt {
+        font-weight: 600;
+        font-family: 'Noto Sans', 'Helvetica';
+      }
+      dd {
+        font-style: italic;
+        font-size: 8pt;
+      }
+
+      dd, dt {
+        margin-bottom: 0.125in;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="text">
+        <h1>{{ object.title }}</h1>
+        {{ object.original_text|linebreaks }}
+      </div>
+      <div class="glossary">
+        <h4>Glossary</h4>
+        {% for node in words %}
+          <div class="word">
+            <span class="label">{{ node.label }}</span>
+            <span class="gloss">{{ node.gloss }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  <body>
+</html>

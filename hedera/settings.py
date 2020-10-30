@@ -175,6 +175,7 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"^/\.well-known/",
     "^/$",
     r"/api/",
+    r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
     "/lti/config.xml",
     "/lti/lti_initializer/"
 ]
@@ -230,6 +231,7 @@ INSTALLED_APPS = [
     "lemmatized_text",
     "groups",
     "cms",
+    "pdfservice",
     "lti",
 
     # project
@@ -407,3 +409,6 @@ SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = None
 
 WAGTAIL_SITE_NAME = "Hedera"
+
+PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT")
+PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY")
