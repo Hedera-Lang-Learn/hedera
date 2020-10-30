@@ -6,6 +6,29 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ## Getting Started
 
+### With Docker
+
+```
+docker-compose up
+```
+
+When are you are finished, simply hit `ctrl-c` and the containers will shutdown.
+
+On initial running, you might want do run the following in another terminal:
+
+```
+docker-compose run django python manage.py create_cms
+```
+
+To import lattice data:
+
+```
+docker-compose run django python manage.py shell -c "import load_ivy_lattice"
+docker-compose run django python manage.py shell -c "import logeion_load"
+```
+
+### Without Docker
+
 You'll need Redis running.  To get it going locally on the Mac, simply run:
 
 ```

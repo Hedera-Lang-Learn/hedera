@@ -47,7 +47,7 @@ const plugins = [
     jQuery: 'jquery',
     $: 'jquery',
   }),
-  new BundleTracker({ filename: './webpack-stats.json' }),
+  new BundleTracker({ filename: './webpack-stats/webpack-stats.json' }),
   new VueLoaderPlugin(),
   new MiniCssExtractPlugin({
     filename: devMode ? '[name].css' : '[name].[hash].css',
@@ -81,6 +81,7 @@ module.exports = {
   devServer: {
     hot: true,
     quiet: false,
+    host: devMode ? '0.0.0.0' : 'localhost',
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
   module: { rules: [vueRule, jsRule, styleRule, assetRule] },
