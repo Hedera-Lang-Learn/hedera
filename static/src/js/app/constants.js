@@ -1,3 +1,4 @@
+export const FETCH_ME = 'fetchMe';
 export const FETCH_VOCAB_LISTS = 'fetchVocabLists';
 export const FETCH_PERSONAL_VOCAB_LIST = 'fetchPersonalVocabList';
 export const FETCH_TOKENS = 'fetchTokens';

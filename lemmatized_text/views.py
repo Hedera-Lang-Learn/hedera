@@ -1,9 +1,14 @@
 import logging
 
+from django.conf import settings
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
+from django.views.generic import DetailView
+
+from lattices.models import LatticeNode
+from pdfservice.mixins import PDFResponseMixin
 
 from . import models
 
@@ -88,9 +93,9 @@ def learner_text(request, pk):
         Q(created_by=request.user) |
         Q(classes__students=request.user) |
         Q(classes__teachers=request.user)
-    )
+    ).distinct()
     text = get_object_or_404(qs, pk=pk)
-    return render(request, "lemmatized_text/learner_text.html", {"text": text})
+    return render(request, "lemmatized_text/learner_text.html", {"text": text, "PDF_HANDOUT_ENABLED": settings.PDF_SERVICE_ENDPOINT is not None})
 
 
 def lemma_status(request, pk):
@@ -98,3 +103,20 @@ def lemma_status(request, pk):
     status = lemma.completed
     length = lemma.token_count()
     return JsonResponse({"status": status, "len": length})
+
+
+class HandoutView(PDFResponseMixin, DetailView):
+    slug_field = "secret_id"
+    slug_url_kwarg = "uid"
+    template_name = "lemmatized_text/handout.html"
+    inline = True
+
+    def get_queryset(self):
+        return models.LemmatizedText.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        data = self.object.data
+        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])  # .order_by("label")
+        context["words"] = nodes
+        return context

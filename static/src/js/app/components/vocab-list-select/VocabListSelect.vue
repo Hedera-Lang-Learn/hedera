@@ -24,7 +24,7 @@
       VocabListEntry,
       VocabListSelectedEntry,
     },
-    props: ['vocabLists'],
+    props: ['vocabLists', 'selectedVocabList'],
     data() {
       return {
         open: false,
@@ -33,14 +33,6 @@
     methods: {
       onSelect(id) {
         this.$store.dispatch(SET_VOCAB_LIST, id).then(() => { this.open = false; });
-      },
-    },
-    computed: {
-      selectedVocabList() {
-        return this.$store.state.vocabLists.reduce((map, l) => {
-          map[l.id] = l;
-          return map;
-        }, {})[this.$store.state.selectedVocabList];
       },
     },
   };

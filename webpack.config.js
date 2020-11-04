@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -25,7 +24,7 @@ const styleRule = {
   use: [
     MiniCssExtractPlugin.loader,
     { loader: 'css-loader', options: { sourceMap: true } },
-    { loader: 'postcss-loader', options: { plugins: () => [autoprefixer()] } },
+    { loader: 'postcss-loader', options: { postcssOptions: { plugins: ['autoprefixer'] } } },
     'sass-loader',
   ],
 };
@@ -48,7 +47,7 @@ const plugins = [
     jQuery: 'jquery',
     $: 'jquery',
   }),
-  new BundleTracker({ filename: './webpack-stats.json' }),
+  new BundleTracker({ filename: './webpack-stats/webpack-stats.json' }),
   new VueLoaderPlugin(),
   new MiniCssExtractPlugin({
     filename: devMode ? '[name].css' : '[name].[hash].css',
@@ -57,9 +56,11 @@ const plugins = [
   new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false }),
   new webpack.HotModuleReplacementPlugin(),
   new CleanWebpackPlugin(),
-  new CopyWebpackPlugin([
-    { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
-  ]),
+  new CopyWebpackPlugin({
+    patterns: [
+      { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
+    ],
+  }),
 ];
 
 if (devMode) {
@@ -80,6 +81,7 @@ module.exports = {
   devServer: {
     hot: true,
     quiet: false,
+    host: devMode ? '0.0.0.0' : 'localhost',
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
   module: { rules: [vueRule, jsRule, styleRule, assetRule] },

@@ -1,5 +1,5 @@
 <template>
-  <svg class="gauge-chart">
+  <svg class="gauge-chart" preserveAspectRatio viewBox="0 0 300 150">
     <defs>
       <mask id="donut">
         <path d="M 0 150
@@ -54,7 +54,7 @@
 <style lang="scss">
   @import "../../../scss/config";
   .gauge-chart {
-    width: 300px;
+    width: 101%;
     height: 180px;
     margin: 20px auto;
 

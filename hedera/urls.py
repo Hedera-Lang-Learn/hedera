@@ -4,8 +4,12 @@ from django.urls import include, path, re_path
 
 from django.contrib import admin
 
+from account.forms import LoginEmailForm
+from account.views import LoginView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
+
+from lti.views import LtiInitializerView
 
 from . import api, views
 
@@ -13,7 +17,10 @@ from . import api, views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("django-rq/", include("django_rq.urls")),
-    re_path(r"^account/", include("account.urls")),
+    path("account/login/", LoginView.as_view(form_class=LoginEmailForm), name="account_login"),
+    path("account/signup/", views.SignupView.as_view(), name="account_signup"),
+    path("account/settings/", views.SettingsView.as_view(), name="account_settings"),
+    path("account/", include("account.urls")),
 
     path("read/<int:text_id>/", views.read, name="read"),
 
@@ -23,16 +30,21 @@ urlpatterns = [
 
     path("classes/", include("groups.urls")),
 
+    path("api/v1/me/", api.MeAPI.as_view()),
     path("api/v1/lemmatized_texts/", api.LemmatizedTextListAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/status/", api.LemmatizedTextStatusAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/<str:action>/", api.LemmatizedTextStatusAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
+    path("api/v1/lemmatized_texts/<int:pk>/tokens/<int:token_index>/history/", api.TokenHistoryAPI.as_view()),
     path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
     path("api/v1/vocab_lists/<int:pk>/entries/", api.VocabularyListEntriesAPI.as_view()),
-    path("api/v1/vocab_entries/<int:pk>/link/", api.VocabularyListEntryAPI.as_view()),
+    path("api/v1/vocab_entries/<int:pk>/<str:action>/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
+
+    path("lti/", include("lti_provider.urls")),
+    path("lti/lti_initializer/", LtiInitializerView.as_view(), name="lti_initializer"),
 
     path("cms/", include(wagtailadmin_urls)),
     re_path(r"", include(wagtail_urls)),

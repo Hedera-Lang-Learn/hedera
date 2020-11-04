@@ -64,12 +64,16 @@
           {% for text in group.texts.all %}
           <tr>
             <td>
+              {% url "lemmatized_texts_learner" text.id as learner_text_url %}
               {% if group.is_teacher %}
                 {% url "lemmatized_texts_detail" text.id as text_url %}
+                <a href="{{ text_url }}">Teacher</a> |
+                <a href="{{ learner_text_url }}">Learner</a> -
+
+                {{ text.title }}
               {% else %}
-                {% url "lemmatized_texts_learner" text.id as text_url %}
+                 <a href="{{ learner_text_url }}">{{ text.title }}</a>
               {% endif %}
-              <a href="{{ text_url }}">{{ text.title }}</a>
             </td>
             <td>{{ text.token_count }}</td>
           </tr>
@@ -93,6 +97,7 @@
       </div>
       {% if group.is_teacher %}
       <div class="tab-pane fade" id="teachers" role="tabpanel" aria-labelledby="teachers-tab">
+        {% if not IS_LTI %}
         <div class="card-body">
           <p>
             You can send this link to fellow teachers for them to join the class:<br />
@@ -104,16 +109,21 @@
             </div>
           </div>
         </div>
+        {% endif %}
         <table class="table">
-          <thead><tr><th>Teacher</th><th></th></tr></thead>
+          <thead><tr><th>Teacher</th>{% if not IS_LTI %}<th></th>{% endif %}</tr></thead>
           <tbody>
           {% for member in group.teachers.all %}
-          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
+          <tr>
+            <td>{{ member.email }}</td>
+            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td>{% endif %}
+          </tr>
           {% endfor %}
           </tbody>
         </table>
       </div>
       <div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+        {% if not IS_LTI %}
         <div class="card-body">
           <p>
             You can send this link to students for them to join the class:
@@ -125,11 +135,15 @@
             </div>
           </div>
         </div>
+        {% endif %}
         <table class="table">
-          <thead><tr><th>Student</th><th></th></tr></thead>
+          <thead><tr><th>Student</th>{% if not IS_LTI %}<th></th>{% endif %}</tr></thead>
           <tbody>
           {% for member in group.students.all %}
-          <tr><td>{{ member.email }}</td><td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td></tr>
+          <tr>
+            <td>{{ member.email }}</td>
+            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td>{% endif %}
+          </tr>
           {% endfor %}
           </tbody>
         </table>

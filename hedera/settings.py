@@ -8,17 +8,21 @@ from sentry_sdk.integrations.rq import RqIntegration
 from .aws import get_ecs_task_ips
 
 
+try:
+    IS_LTI = bool(int(os.environ.get("IS_LTI", "0")))
+except ValueError:
+    IS_LTI = False
+
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
-sentry_sdk.init(
-    dsn=os.environ.get("SENTRY_DSN"),
-    debug=os.environ.get("SENTRY_DEBUG") == "1",
-    environment=os.environ.get("SENTRY_ENVIRONMENT"),
-    integrations=[DjangoIntegration(), RqIntegration()],
-    # Enables tracing for sentry "Events V2"
-    # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
-    traces_sample_rate=1.0,
-    traceparent_v2=True,
-)
+if not IS_LTI:
+    sentry_sdk.init(
+        dsn=os.environ.get("SENTRY_DSN"),
+        debug=os.environ.get("SENTRY_DEBUG") == "1",
+        environment=os.environ.get("SENTRY_ENVIRONMENT"),
+        integrations=[DjangoIntegration(), RqIntegration()],
+        # Enables tracing for sentry "Events V2"
+        # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
+    )
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -29,13 +33,17 @@ try:
 except ValueError:
     DEBUG = False
 
+
 DATABASES = {
     "default": dj_database_url.config(default="postgres://localhost/hedera")
 }
 
+CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
+
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "0.0.0.0",
     "hederaproject.org",
     ".hederaproject.org",
     "hedera.fas.harvard.edu",
@@ -157,6 +165,10 @@ MIDDLEWARE = [
     "hedera.middleware.AuthenticatedMiddleware",
 ]
 
+QUERYCOUNT = {
+    "DISPLAY_DUPLICATES": 2,
+}
+
 AUTHENTICATED_EXEMPT_URLS = [
     "/favicon.ico",
     "/account/login/",
@@ -165,7 +177,10 @@ AUTHENTICATED_EXEMPT_URLS = [
     "/account/confirm_email/",
     r"^/\.well-known/",
     "^/$",
-    r"/api/"
+    r"/api/",
+    r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
+    "/lti/config.xml",
+    "/lti/lti_initializer/"
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -191,8 +206,10 @@ INSTALLED_APPS = [
 
     # external
     "account",
+    "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
+    "lti_provider",
 
     # wagtail
     "wagtail.contrib.forms",
@@ -217,6 +234,8 @@ INSTALLED_APPS = [
     "lemmatized_text",
     "groups",
     "cms",
+    "pdfservice",
+    "lti",
 
     # project
     "hedera",
@@ -237,7 +256,7 @@ WEBPACK_LOADER = {
     "DEFAULT": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "/",
-        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats.json"),
+        "STATS_FILE": os.path.join(PROJECT_ROOT, "webpack-stats", "webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
         "TIMEOUT": None,
         "IGNORE": [r".*\.hot-update.js", r".+\.map"]
@@ -311,12 +330,63 @@ ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
 
-AUTHENTICATION_BACKENDS = [
-    "hedera.backends.UsernameAuthenticationBackend",
-    # "account.auth_backends.UsernameAuthenticationBackend",
+# LTI configuration
+
+LTI_TOOL_CONFIGURATION = {
+    "title": "Hedera",
+    "description": "An LTI-compliant tool that enables users to interact with lemmatized texts.",
+    "launch_url": "lti/lti_initializer/",
+    "embed_url": "",
+    "embed_icon_url": "",
+    "embed_tool_id": "",
+    "course_navigation": {
+        "default": "disabled",
+        "enabled": "true",
+        "windowTarget": "_blank"
+    },
+    "course_aware": False
+}
+
+
+PYLTI_CONFIG = {
+    "consumers": {
+        os.environ.get("CONSUMER_KEY"): {
+            "secret": os.environ.get("LTI_SECRET")
+        }
+    }
+}
+
+X_FRAME_OPTIONS = os.environ.get("X_FRAME_OPTIONS", "ALLOW-FROM https://canvas.harvard.edu")
+
+# This setting will add an LTI property to the session
+LTI_PROPERTY_LIST_EX = [
+    "context_title",
+    "custom_canvas_course_id",
+    "ext_roles",
+    "lis_person_contact_email_primary"
 ]
 
-LOGIN_URL = "account_login"
+
+if IS_LTI:
+    AUTHENTICATION_BACKENDS = [
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
+        "lti_provider.auth.LTIBackend",
+    ]
+    LOGIN_URL = "lti_initializer"
+else:
+    AUTHENTICATION_BACKENDS = [
+        "account.auth_backends.EmailAuthenticationBackend",
+        "account.auth_backends.UsernameAuthenticationBackend",
+    ]
+    LOGIN_URL = "account_login"
+
+
+def user_display(user):
+    return user.profile.display_name or user.email
+
+
+ACCOUNT_USER_DISPLAY = user_display
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
@@ -337,4 +407,15 @@ SUPPORTED_LANGUAGES = [
     ["rus", "Russian"],
 ]
 
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+SESSION_COOKIE_SAMESITE = None
+
 WAGTAIL_SITE_NAME = "Hedera"
+
+PDF_SERVICE_ENDPOINT = os.environ.get("PDF_SERVICE_ENDPOINT")
+PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY")
+
+# SSL is terminated at the ELB so look for this header to know that we should be in ssl mode
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SESSION_COOKIE_SECURE = True

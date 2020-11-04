@@ -1,0 +1,73 @@
+version: '3'
+
+networks:
+    localdev:
+
+services:
+    postgres:
+        image: postgres:13-alpine
+        container_name: hedera-postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: hedera
+            POSTGRES_USER: hedera
+            POSTGRES_PASSWORD: hedera
+        volumes:
+            - ./.docker-data:/var/lib/postgresql/data/
+            - ./:/app
+        networks:
+            - localdev
+    redis:
+        image: redis:4.0.14-alpine
+        container_name: hedera-redis
+        restart: unless-stopped
+        networks:
+            - localdev
+    npm:
+        image: node:11.9.0-alpine
+        container_name: hedera-npm
+        volumes:
+            - ./:/app
+        working_dir: /app
+        networks:
+            - localdev
+        ports:
+            - "8080:8080"
+        command: /bin/sh -c 'npm i && npm start'
+    django:
+        image: postgres-django
+        build:
+            context: .
+            dockerfile: Dockerfile.django
+        container_name: hedera-django
+        working_dir: /app
+        volumes:
+            - ./:/app
+        ports:
+            - "8000:8000"
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            RQ_ASYNC: 1
+            DATABASE_URL: postgres://hedera:hedera@postgres/hedera
+            REDIS_URL: redis://redis:6379
+        networks:
+            - localdev
+        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & python manage.py runserver 0.0.0.0:8000'
+    worker:
+        image: postgres-django
+        container_name: hedera-worker
+        working_dir: /app
+        volumes:
+            - ./:/app
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            RQ_ASYNC: 1
+            DATABASE_URL: postgres://hedera:hedera@postgres/hedera
+            REDIS_URL: redis://redis:6379
+        networks:
+            - localdev
+        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; while ! nc -z redis 6379; do sleep 1; done; python manage.py rqworker ${RQ_QUEUES:-default}'

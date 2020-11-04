@@ -3,6 +3,7 @@ import json
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.views import View
 
 from lattices.models import LatticeNode
@@ -48,6 +49,12 @@ class APIView(AuthedView):
         return self.render_to_response()
 
 
+class MeAPI(APIView):
+
+    def get_data(self):
+        return self.request.user.profile.data()
+
+
 class LemmatizedTextListAPI(APIView):
 
     def get_data(self):
@@ -67,11 +74,15 @@ class LemmatizedTextStatusAPI(APIView):
             self._text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return self._text
 
-    def get_data(self):
+    def get_data(self, new_text=None):
+        if new_text is None:
+            new_text = self.text
         return dict(
-            completed=self.text.completed,
-            tokenCount=self.text.token_count() if self.text.completed == 100 else None,
-            lemmatizationStatus=self.text.lemmatization_status(),
+            completed=new_text.completed,
+            tokenCount=new_text.token_count() if new_text.completed == 100 else None,
+            lemmatizationStatus=new_text.lemmatization_status(),
+            detailUrl=reverse("lemmatized_texts_detail", args=[new_text.id]),
+            textId=new_text.id
         )
 
     def post(self, request, *args, **kwargs):
@@ -79,8 +90,10 @@ class LemmatizedTextStatusAPI(APIView):
             self.text.retry_lemmatization()
         elif self.kwargs.get("action") == "cancel" and self.text.can_cancel():
             self.text.cancel_lemmatization()
-        self.text.refresh_from_db()
-        return JsonResponse(data=dict(data=self.get_data()))
+        elif self.kwargs.get("action") == "clone":
+            # @@@ self.text can only be fetched if public or you own it, probably need to expand for teachers
+            cloned = self.text.clone(cloned_by=request.user)
+        return JsonResponse(data=dict(data=self.get_data(cloned)))
 
 
 class LemmatizedTextDetailAPI(APIView):
@@ -91,7 +104,7 @@ class LemmatizedTextDetailAPI(APIView):
             Q(created_by=self.request.user) |
             Q(classes__students=self.request.user) |
             Q(classes__teachers=self.request.user)
-        )
+        ).distinct()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
 
@@ -101,12 +114,25 @@ class LemmatizationAPI(APIView):
     def decorate_token_data(self, text):
         data = text.data
         nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
-        if self.request.GET.get("vocablist", None) is not None:
-            vl = get_object_or_404(VocabularyList, pk=self.request.GET.get("vocablist"))
+        nodes_cache = {
+            node.pk: node
+            for node in nodes
+        }
+        vocablist_id = self.request.GET.get("vocablist", None)
+        if vocablist_id is not None:
+            if vocablist_id == "personal":
+                vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
+            else:
+                vl = get_object_or_404(VocabularyList, pk=vocablist_id)
+            node_ids = vl.entries.values_list("node__pk", flat=True)
+            related_node_cache = dict()
             for token in data:
-                node = nodes.filter(pk=token["node"]).first()  # does doing this avoid a second trip to the database?
+                node = nodes_cache.get(token["node"])
                 if node is not None:
-                    token["inVocabList"] = token["resolved"] and vl.entries.filter(node__in=node.related_nodes()).exists()
+                    if related_node_cache.get(node.pk) is None:
+                        related_node_cache[node.pk] = [n.pk for n in node.related_nodes()]
+                    related_node_ids = related_node_cache[node.pk]
+                    token["inVocabList"] = token["resolved"] and any(item in related_node_ids for item in node_ids)
                 else:
                     token["inVocabList"] = False
 
@@ -118,7 +144,7 @@ class LemmatizationAPI(APIView):
 
         for index, token in enumerate(data):
             token["tokenIndex"] = index
-            node = nodes.filter(pk=token["node"]).first()
+            node = nodes_cache.get(token["node"])
             if node is not None:
                 token.update(node.gloss_data())
 
@@ -130,7 +156,7 @@ class LemmatizationAPI(APIView):
             Q(created_by=self.request.user) |
             Q(classes__students=self.request.user) |
             Q(classes__teachers=self.request.user)
-        )
+        ).distinct()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = self.decorate_token_data(text)
         return data
@@ -143,42 +169,70 @@ class LemmatizationAPI(APIView):
         node_id = data["nodeId"]
         resolved = data["resolved"]
 
-        text_data = text.data
-
-        text_data[token_index]["node"] = node_id
-        text_data[token_index]["resolved"] = resolved
-        text.data = text_data
-        text.save()
+        text.update_token(self.request.user, token_index, node_id, resolved)
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
-        return JsonResponse({"data": data})
+        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+        return JsonResponse({"data": dict(tokens=data, tokenHistory=history)})
+
+
+class TokenHistoryAPI(APIView):
+
+    def get_data(self):
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        token_index = self.kwargs.get("token_index")
+        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+        return dict(tokenHistory=history)
 
 
 class VocabularyListAPI(APIView):
 
     def get_data(self):
-        return [v.data() for v in VocabularyList.objects.filter(lang=self.request.GET.get("lang"))]
+        return [
+            v.data()
+            for v in VocabularyList.objects.filter(
+                lang=self.request.GET.get("lang")
+            ).filter(
+                Q(owner__isnull=True) | Q(owner=self.request.user)
+            )
+        ]
 
 
 class VocabularyListEntriesAPI(APIView):
 
     def get_data(self):
         vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
-        return [v.data() for v in vocab_list.entries.all().order_by("headword")]
+        return dict(
+            canEdit=vocab_list.owner == self.request.user,
+            entries=[v.data() for v in vocab_list.entries.all().order_by("headword")]
+        )
 
 
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
-        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"))
+        entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
+        action = kwargs.get("action")
 
-        data = json.loads(request.body)
-        node = get_object_or_404(LatticeNode, pk=data["node"])
-        entry.node = node
-        entry.save()
+        if action == "link":
+            data = json.loads(request.body)
+            node = get_object_or_404(LatticeNode, pk=data["node"])
+            entry.node = node
+            entry.save()
+            return_data = entry.data()
+        elif action == "delete":
+            entry.delete()
+            return_data = {}
+        elif action == "edit":
+            data = json.loads(request.body)
+            entry.headword = data["headword"]
+            entry.gloss = data["gloss"]
+            entry.save()
+            return_data = entry.data()
 
-        return JsonResponse(entry.data())
+        return JsonResponse(return_data)
 
 
 class PersonalVocabularyListAPI(APIView):

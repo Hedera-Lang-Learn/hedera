@@ -62,7 +62,7 @@
 </template>
 <script>
   import {
-    FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY,
+    FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY, FETCH_ME,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -79,6 +79,9 @@
       VocabularyEntries,
       TextFamiliarity,
       DownloadVocab,
+    },
+    created() {
+      this.$store.dispatch(FETCH_ME);
     },
     data() {
       return {
@@ -297,7 +300,6 @@
       font-size: 11pt;
     }
   }
-
 
   .familiarity-rating {
     position: relative;

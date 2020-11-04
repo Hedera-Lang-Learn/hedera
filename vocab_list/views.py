@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView
@@ -11,11 +12,23 @@ class VocabularyListListView(ListView):
     template_name = "vocab_list/list.html"
     model = VocabularyList
 
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(
+            Q(owner__isnull=True) | Q(owner=self.request.user)
+        )
+        return queryset
+
 
 class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
+
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(
+            Q(owner__isnull=True) | Q(owner=self.request.user)
+        )
+        return queryset
 
 
 class VocabularyListDeleteView(DeleteView):
@@ -26,6 +39,10 @@ class VocabularyListDeleteView(DeleteView):
     def get_success_url(self):
         return reverse("vocab_list_list")
 
+    def get_queryset(self):
+        queryset = super().get_queryset().filter(owner=self.request.user)
+        return queryset
+
 
 class VocabularyListCreateView(CreateView):
 
@@ -34,7 +51,9 @@ class VocabularyListCreateView(CreateView):
     form_class = VocabularyListForm
 
     def form_valid(self, form):
-        vl = form.save()
+        vl = form.save(commit=False)
+        vl.owner = self.request.user
+        vl.save()
         entries = vl.load_tab_delimited(form.cleaned_data["data"])
         for entry in entries:
             entry.link_job()
@@ -75,6 +94,7 @@ class PersonalVocabularyListEntriesCreateView(CreateView):
 
     def form_valid(self, form):
         vl, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=form.cleaned_data["lang"])
-        vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
-        # @@@ kick off background tasks for linking the entries
+        entries = vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
+        for entry in entries:
+            entry.link_job()
         return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))

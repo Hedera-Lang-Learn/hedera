@@ -1,8 +1,8 @@
 <template>
   <div class="lattice-node" v-if="node">
-    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="parent in parents" :key="parent.pk" :node="parent" @selected="n => $emit('selected', n)" :showIds="showIds" />
     <div class="lattice-node--heading" @click.prevent="onClick">
-      <div>
+      <div v-if="showIds">
         <span class="lattice-id">{{ node.pk }}.</span>
       </div>
       <div>
@@ -10,7 +10,7 @@
         <span class="lattice-gloss">{{ node.gloss }}</span>
       </div>
     </div>
-    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" />
+    <LatticeNode v-for="child in children" :key="child.pk" :node="child" @selected="n => $emit('selected', n)" :showIds="showIds"  />
   </div>
 </template>
 <script>
@@ -28,7 +28,7 @@
 
   export default {
     name: 'LatticeNode',
-    props: ['node'],
+    props: ['node', 'showIds'],
     methods: {
       onClick() {
         this.$emit('selected', this.node);

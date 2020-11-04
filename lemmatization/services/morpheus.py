@@ -1,4 +1,12 @@
+import unicodedata
+
 from .base import Service
+
+
+def strip_macrons(word):
+    return unicodedata.normalize("NFC", "".join(
+        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
+    ))
 
 
 class MorpheusService(Service):
@@ -19,6 +27,8 @@ class MorpheusService(Service):
     ENDPOINT = "http://services.perseids.org/bsp/morphologyservice/analysis/word"
 
     def _build_params(self, form):
+        if self.lang == "lat":
+            form = strip_macrons(form)
         return dict(word=form, lang=self.lang, engine=f"morpheus{self.lang}")
 
     def _response_to_lemmas(self, response):

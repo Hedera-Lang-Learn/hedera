@@ -13,6 +13,7 @@ import {
   FETCH_PERSONAL_VOCAB_LIST,
   CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
+  FETCH_ME,
 } from '../constants';
 import api from '../api';
 
@@ -24,6 +25,7 @@ const logoutOnError = (commit) => (error) => {
 };
 
 export default {
+  [FETCH_ME]: ({ commit }) => api.fetchMe((data) => commit(FETCH_ME, data.data)),
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
@@ -59,7 +61,11 @@ export default {
       .fetchTokens(id, vocabList, personalVocabList, cb)
       .catch(logoutOnError(commit));
   },
-  [SELECT_TOKEN]: ({ commit }, { token }) => commit(SELECT_TOKEN, { token }),
+  [SELECT_TOKEN]: ({ commit, state }, { token }) => api.fetchTokenHistory(
+    state.textId,
+    token.tokenIndex,
+    (data) => commit(SELECT_TOKEN, { token, data }),
+  ),
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
     api
@@ -73,7 +79,7 @@ export default {
   [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
     const mutate = (data) => commit(UPDATE_TOKEN, data.data);
     return api
-      .updateToken(id, tokenIndex, resolved, null, null, lemma, mutate)
+      .updateToken(id, tokenIndex, resolved, null, state.selectedToken.node, lemma, mutate)
       .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }))
       .catch(logoutOnError(commit));
   },
