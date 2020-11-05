@@ -180,7 +180,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"/api/",
     r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
     "/lti/config.xml",
-    "/lti/lti_initializer/"
+    "/lti/lti_initializer/",
+    "/robots.txt",
 ]
 
 ROOT_URLCONF = "hedera.urls"
