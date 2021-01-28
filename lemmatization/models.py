@@ -1,4 +1,12 @@
+import unicodedata
+
 from django.db import models
+
+
+def strip_macrons(word):
+    return unicodedata.normalize("NFC", "".join(
+        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
+    ))
 
 
 class FormToLemma(models.Model):
@@ -22,11 +30,17 @@ class FormToLemma(models.Model):
     def load_tab_delimited(fd, context, lang):
         for line in fd:
             form, lemma = line.strip().split("\t")
-            FormToLemma.objects.create(
+            FormToLemma.objects.get_or_create(
                 context=context,
                 lang=lang,
                 form=form,
                 lemma=lemma,
+            )
+            FormToLemma.objects.get_or_create(
+                context=context,
+                lang=lang,
+                form=strip_macrons(form),
+                lemma=strip_macrons(lemma),
             )
 
 
