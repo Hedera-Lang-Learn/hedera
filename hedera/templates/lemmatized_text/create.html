@@ -29,7 +29,7 @@
     {% endif %}
     <div class="form-group">
       <label>Text</label>
-      <textarea name="text" class="form-control" rows="10">{{ cloned_from.text }}</textarea>
+      <textarea name="text" class="form-control" rows="10">{{ cloned_from.original_text }}</textarea>
     </div>
     <button class="btn btn-primary">Submit</button>
     <a class="btn btn-default" href="{% url 'lemmatized_texts_list' %}">Cancel</a>

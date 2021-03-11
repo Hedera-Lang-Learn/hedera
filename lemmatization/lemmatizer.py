@@ -7,7 +7,7 @@ from lattices.models import LatticeNode, LemmaNode
 from .models import add_form, lookup_form
 from .services.clancy import ClancyService
 from .services.morpheus import MorpheusService
-from .tokenizer import RUSTokenizer, Tokenizer
+from .tokenizer import EncliticTokenizer, RUSTokenizer, Tokenizer
 
 
 logger = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ SERVICES = {
     "rus": ClancyService(lang="rus"),
 }
 TOKENIZERS = {
-    "lat": Tokenizer(lang="lat"),
+    "lat": EncliticTokenizer(lang="lat"),
     "grc": Tokenizer(lang="grc"),
     "rus": RUSTokenizer(lang="rus"),
 }
