@@ -63,7 +63,7 @@ And finally, to start Django,
 ./manage.py runserver
 ```
 
-By default, the there is a background worker that will work synchronously (won't need the worker running to process the lemmatization).  If you want to process asynchronously locally:
+By default, there is a background worker that will work synchronously (won't need the worker running to process the lemmatization).  If you want to process asynchronously locally:
 
 ```
 export RQ_ASYNC=1
