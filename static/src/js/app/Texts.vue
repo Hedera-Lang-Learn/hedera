@@ -11,7 +11,7 @@
           </li>
         </ul>
 
-        <a v-if="ownSelected" class="btn btn-primary btn-sm" href="/lemmatized_text/create/"><i class="fa fa-plus"></i> Create</a>
+        <a v-if="ownSelected" class="btn btn-primary btn-sm" href="/lemmatized_text/create/"><i class="fa fa-plus" aria-hidden="true"></i> Create</a>
       </div>
       <div class="tab-content">
         <div class="tab-pane fade show active">

@@ -17,13 +17,13 @@
       <span>
         {% if group.is_owner %}
         <a class="btn btn-sm btn-danger mt-auto" href="{% url 'groups_delete' group.class_key %}">
-          <i class="fa fa-fw fa-trash"></i>
+          <i class="fa fa-fw fa-trash" aria-hidden="true"></i>
           Delete
         </a>
         {% endif %}
         {% if group.is_teacher %}
         <a class="btn btn-sm btn-primary mt-auto" href="{% url 'groups_update' group.class_key %}">
-          <i class="fa fa-fw fa-edit"></i>
+          <i class="fa fa-fw fa-edit" aria-hidden="true"></i>
           Update
         </a>
         {% endif %}
@@ -105,7 +105,7 @@
           <div class="input-group">
             <input class="form-control" id="teacher-join-link" value="{{ group.teachers_join_link }}" />
             <div class="input-group-append">
-              <button class="btn btn-secondary btn-copy" data-clipboard-target="#teacher-join-link"><i class="fa fa-fw fa-copy"></i></button>
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#teacher-join-link"><i class="fa fa-fw fa-copy" aria-hidden="true" title="Copy link"></i><span class="sr-only">Copy link</span></button>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
           {% for member in group.teachers.all %}
           <tr>
             <td>{{ member.email }}</td>
-            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td>{% endif %}
+            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="teacher" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Remove</i></button></form></td>{% endif %}
           </tr>
           {% endfor %}
           </tbody>
@@ -131,7 +131,7 @@
           <div class="input-group">
             <input class="form-control" id="student-join-link" value="{{ group.students_join_link }}" />
             <div class="input-group-append">
-              <button class="btn btn-secondary btn-copy" data-clipboard-target="#student-join-link"><i class="fa fa-fw fa-copy"></i></button>
+              <button class="btn btn-secondary btn-copy" data-clipboard-target="#student-join-link"><i class="fa fa-fw fa-copy" aria-hidden="true" title="Copy link"></i><span class="sr-only">Copy link</span></button>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@
           {% for member in group.students.all %}
           <tr>
             <td>{{ member.email }}</td>
-            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash"></i> Remove</i></button></form></td>{% endif %}
+            {% if not IS_LTI %}<td><form action="." method="post">{% csrf_token %}<input type="hidden" name="member" value="{{ member.pk }}" /><button type="submit" name="remove" value="student" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-trash" aria-hidden="true"></i> Remove</i></button></form></td>{% endif %}
           </tr>
           {% endfor %}
           </tbody>

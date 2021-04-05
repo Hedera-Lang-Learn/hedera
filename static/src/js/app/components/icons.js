@@ -8,6 +8,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faPenFancy } from '@fortawesome/free-solid-svg-icons/faPenFancy';
 import { faBan } from '@fortawesome/free-solid-svg-icons/faBan';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 
 const iconMap = [
   faArrowRight,
@@ -20,6 +21,7 @@ const iconMap = [
   faPenFancy,
   faBan,
   faCheck,
+  faBars,
 ].reduce((map, obj) => {
   map[obj.iconName] = obj;
   return map;

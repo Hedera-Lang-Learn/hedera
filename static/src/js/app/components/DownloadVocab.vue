@@ -1,6 +1,6 @@
 <template>
   <a class="btn btn-sm btn-light" :href="glossesDownload" download="glosses.csv">
-    <icon name="download" /> Export
+    <i class="fa fa-fw fa-download" aria-hidden="true" /> Export
   </a>
 </template>
 

@@ -3,7 +3,7 @@
     <h4>
       {{ title }}
       <span @click="closeVocabList">
-        <icon name="times" />
+      <i class="fa fa-fw fa-times" aria-hidden="true" title="Close Vocab List" /><span class="sr-only">Close Vocab List</span>
       </span>
     </h4>
     <p>{{ description }}</p>
