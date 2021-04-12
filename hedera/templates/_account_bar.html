@@ -6,14 +6,14 @@
     {% if request.user.is_authenticated %}
         <li class="navbar-item">
             {% default_vocab_list request.user as vocab_list %}
-            <a class="nav-link" href="{% if vocab_list %}{% url "vocab_list_personal_detail" vocab_list.lang %}{% endif %}"><i class="fa fa-user"></i> {% user_display request.user %}</a>
+            <a class="nav-link" href="{% if vocab_list %}{% url "vocab_list_personal_detail" vocab_list.lang %}{% endif %}"><i class="fa fa-user" aria-hidden="true" title="User"></i><span class="sr-only">User:</span> {% user_display request.user %}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_settings' %}"><i class="fa fa-cog"></i> {% trans "Settings" %}</a>
+            <a class="nav-link" href="{% url 'account_settings' %}"><i class="fa fa-cog" aria-hidden="true"></i> {% trans "Settings" %}</a>
         </li>
         {% if not IS_LTI %}
             <li class="nav-item">
-                <a class="nav-link" id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off"></i> {% trans "Log out" %}</a>
+                <a class="nav-link" id="account_logout" href="{% url 'account_logout' %}"><i class="fa fa-power-off" aria-hidden="true"></i> {% trans "Log out" %}</a>
             </li>
         {% endif %}
     {% else %}

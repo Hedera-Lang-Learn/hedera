@@ -18,8 +18,8 @@
       </div>
     </td>
     <td v-if="teacherMode">
-      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" /> Delete</a>
-      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" /> Clone</a>
+      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" aria-hidden="true" /> Delete</a>
+      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" aria-hidden="true" /> Clone</a>
     </td>
     <td v-else>
       <div v-if="text.stats" class="text-familiarity mb-0">

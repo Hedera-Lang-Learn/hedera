@@ -17,7 +17,7 @@
     {% if PDF_HANDOUT_ENABLED %}
     <div style="float: right;">
       <a href="{% url 'lemmatized_texts_handout' text.secret_id %}" target="_blank">
-        <i class="fa fa-print"></i>
+        <i class="fa fa-print" aria-hidden="true" title="Print"></i><span class="sr-only">Print</span>
       </a>
     </div>
     {% endif %}

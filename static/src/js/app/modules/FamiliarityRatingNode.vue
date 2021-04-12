@@ -1,6 +1,6 @@
 <template>
   <span class="familiarity-rating-node" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" @click.prevent="onClick" :class="[`rating-${rating}`, { selected }]">
-    <icon name="circle" />
+    <i class="fa fa-fw fa-circle" aria-hidden="true" />
   </span>
 </template>
 
