@@ -10,7 +10,7 @@ python_version = "3.7"
 django-user-accounts = "==3.0.2"
 django-jsonfield-backport = ">=1.0.0,<2"
 pinax-eventlog = "==5.1.0"
-django = "==2.2.16"
+django = ">=2.2.20"
 django-webpack-loader = "==0.7.0"
 pinax-templates = "==2.0.6"
 requests = "*"
@@ -25,7 +25,7 @@ iso-639 = "*"
 cltk = "==0.1.117"
 sentry-sdk = "==0.17.6"
 rq = "==1.5.2"
-wagtail = "*"
+wagtail = ">=2.11.7"
 django-lti-provider = {git = "https://github.com/Harvard-ATG/django-lti-provider.git", editable = true, ref = "course-navigation"}
 
 [dev-packages]
