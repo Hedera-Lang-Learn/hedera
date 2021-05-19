@@ -31,7 +31,6 @@
   <meta name="msapplication-wide310x150logo" content="{%  webpack_static 'images/mstile-310x150.png' %}" />
   <meta name="msapplication-square310x310logo" content="{%  webpack_static 'images/mstile-310x310.png' %}" />
 
-  {% render_bundle "vendor" "css" %}
   {% render_bundle "main" "css" %}
 {% endblock %}
 
@@ -111,7 +110,6 @@
 {% block scripts %}
     {% if VUE_DEBUG %}<script src="http://localhost:8098"></script>{% endif %}
     <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
-    {% render_bundle "vendor" "js" %}
     {% render_bundle "main" "js" %}
 {% endblock %}
 
