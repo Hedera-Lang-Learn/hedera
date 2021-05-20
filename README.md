@@ -53,6 +53,7 @@ createdb hedera
 To import lattice data:
 
 ```
+./manage.py shell -c "import load_ivy_wonky_words"
 ./manage.py shell -c "import load_ivy_lattice"
 ./manage.py shell -c "import logeion_load"
 ```
