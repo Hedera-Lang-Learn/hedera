@@ -74,6 +74,7 @@ export RQ_ASYNC=1
 Then in another terminal:
 
 ```
+pipenv shell
 export RQ_ASYNC=1
 ./manage.py rqworker ${RQ_QUEUES:-default}
 ```
@@ -81,7 +82,6 @@ export RQ_ASYNC=1
 Leave the first two Terminal windows running. Open a third Terminal window and run:
 
 ```
-cd <path to hedera repo>
 npm start
 ```
 
