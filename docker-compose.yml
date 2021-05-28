@@ -17,6 +17,8 @@ services:
             - ./:/app
         networks:
             - localdev
+        ports:
+            - "5432:5432"
     redis:
         image: redis:4.0.14-alpine
         container_name: hedera-redis
