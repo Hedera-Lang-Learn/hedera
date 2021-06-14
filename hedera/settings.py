@@ -330,6 +330,7 @@ ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
+ACCOUNT_LOGIN_REDIRECT_URL = "/account/dashboard"
 
 # LTI configuration
 
@@ -381,6 +382,7 @@ else:
         "account.auth_backends.UsernameAuthenticationBackend",
     ]
     LOGIN_URL = "account_login"
+    # LOGIN_REDIRECT = "dashboard"
 
 
 def user_display(user):
