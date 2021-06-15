@@ -7,7 +7,7 @@ class DashboardViewTest(TestCase):
 
     def setUp(self):
         self.created_user = User.objects.create_user(username="test_user1", email="test_user1@test.com", password="password")
-    
+
     def test_dashboard_correct_template(self):
         self.client.login(username="test_user1", email="test_user1@test.com", password="password")
         dash_response = self.client.get("/account/dashboard/")
