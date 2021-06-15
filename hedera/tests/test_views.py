@@ -2,8 +2,8 @@ from django.test import TestCase
 
 from django.contrib.auth.models import User
 
-class DashboardViewTest(TestCase):
 
+class DashboardViewTest(TestCase):
 
     def setUp(self):
         self.created_user = User.objects.create_user(username="test_user1", email="test_user1@test.com", password="password")
