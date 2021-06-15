@@ -18,6 +18,7 @@ class DashboardViewTest(TestCase):
         self.assertEqual(dash_response.status_code, 200)
         self.assertContains(dash_response, "Dashboard")
         self.assertTemplateUsed(dash_response, "dashboard.html")
+        
     # docs for redirect_chain https://docs.djangoproject.com/en/3.2/topics/testing/tools/#making-requests
     def test_login_redirect_to_dashboard(self):
         dash_response = self.client.get('/account/dashboard/', follow=True)

@@ -382,7 +382,6 @@ else:
         "account.auth_backends.UsernameAuthenticationBackend",
     ]
     LOGIN_URL = "account_login"
-    # LOGIN_REDIRECT = "dashboard"
 
 
 def user_display(user):
