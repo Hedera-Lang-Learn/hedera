@@ -4,6 +4,7 @@ from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from account.views import SettingsView as AccountSettingsView
 from account.views import SignupView as AccountSignupView
@@ -57,5 +58,9 @@ class SignupView(AccountSignupView):
         profile.save()
 
 
-class DashboardView(TemplateView):
+# https://docs.djangoproject.com/en/3.2/topics/auth/default/#the-loginrequired-mixin
+class DashboardView(LoginRequiredMixin, TemplateView):
+
+    login_url = '/account/login/'
+    redirect_field_name = 'next'
     template_name = "dashboard.html"

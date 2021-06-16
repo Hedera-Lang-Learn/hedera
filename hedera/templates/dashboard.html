@@ -1,8 +1,6 @@
 {% extends "site_base.html" %}
 {% load i18n %}
 {% block head_title %}Dashboard{% endblock %}
-{% if request.user.is_authenticated %}
-  {% block body %}
-    <h1>TODO:Dashboard</h1>
-  {% endblock %}
-{% endif %}
+{% block body %}
+  <h1>TODO:Dashboard</h1>
+{% endblock %}

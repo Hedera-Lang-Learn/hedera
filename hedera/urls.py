@@ -22,9 +22,10 @@ urlpatterns = [
     path("django-rq/", include("django_rq.urls")),
     path("account/login/", LoginView.as_view(form_class=LoginEmailForm), name="account_login"),
     path("account/signup/", views.SignupView.as_view(), name="account_signup"),
-    path("account/dashboard/", views.DashboardView.as_view(), name="dashboard"),
     path("account/settings/", views.SettingsView.as_view(), name="account_settings"),
     path("account/", include("account.urls")),
+
+    path("dashboard/", views.DashboardView.as_view(), name="dashboard"),
 
     path("read/<int:text_id>/", views.read, name="read"),
 
