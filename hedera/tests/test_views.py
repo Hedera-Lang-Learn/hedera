@@ -10,7 +10,7 @@ class DashboardViewTest(TestCase):
 
     def test_dashboard_correct_template(self):
         self.client.login(username="test_user1", email="test_user1@test.com", password="password")
-        dash_response = self.client.get("/account/dashboard/")
+        dash_response = self.client.get("/dashboard/")
         self.assertEqual(dash_response.status_code, 200)
         self.assertContains(dash_response, "Dashboard")
         self.assertTemplateUsed(dash_response, "dashboard.html")
