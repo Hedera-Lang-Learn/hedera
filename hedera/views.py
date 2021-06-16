@@ -62,5 +62,4 @@ class SignupView(AccountSignupView):
 class DashboardView(LoginRequiredMixin, TemplateView):
 
     login_url = '/account/login/'
-    redirect_field_name = 'next'
     template_name = "dashboard.html"
