@@ -1,10 +1,10 @@
+import json
+
 from django.test import TestCase, override_settings
 
 from django.contrib.auth.models import User
 
 from .models import LemmatizedText
-
-import json
 
 
 @override_settings(
@@ -37,4 +37,3 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(LemmatizedText.objects.all().count(), 3)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user1).count(), 2)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user2).count(), 1)
-        

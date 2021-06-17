@@ -148,7 +148,7 @@ class LemmatizedText(models.Model):
     def clone(self, cloned_by=None):
         """Set a copy of this object's pk to None, set some relationships and save (cloning)"""
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#copying-model-instances
-        obj = LemmatizedText.objects.get(pk=self.pk) # declaring 'self' here results in a ValueError
+        obj = LemmatizedText.objects.get(pk=self.pk)  # declaring 'self' here results in a ValueError
         obj.pk = None
         obj.cloned_from = self
         obj.created_by = cloned_by or self.created_by
