@@ -18,11 +18,10 @@ def lemmatized_texts(request):
 
 
 def create(request):
-    cloned_from = None
     select_lang = ""
     # create the  selected language here, which is the lanaguage of the last submitted text
     try:
-        select_lang = models.LemmatizedText.objects.filter(Q(created_by=request.user)).order_by("-pk")[0].lang
+        select_lang = models.LemmatizedText.objects.filter(created_by=request.user).order_by("-pk")[0].lang
     except Exception as e:
         logging.exception(e)
 
@@ -31,14 +30,11 @@ def create(request):
         title = request.POST.get("title")
         lang = request.POST.get("lang")
         text = request.POST.get("text")
-        if request.POST.get("cloned_from"):
-            cloned_from = get_object_or_404(models.LemmatizedText, pk=request.POST.get("cloned_from"))
         lt = models.LemmatizedText.objects.create(
             title=title,
             lang=lang,
             data={},
             original_text=text,
-            cloned_from=cloned_from,
             created_by=request.user
         )
         lt.lemmatize()
@@ -46,13 +42,11 @@ def create(request):
 
     # the GET is for initial page or getting the cloned from object
     if request.GET.get("cloned_from"):
-        cloned_from = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
+        lemmatized_text = get_object_or_404(models.LemmatizedText, pk=request.GET.get("cloned_from"))
+        lemmatized_text.clone(cloned_by=request.user)
+        return redirect("lemmatized_texts_list")
 
-    # if the text is being cloned then make sure that language is the selected one
-    if cloned_from:
-        select_lang = cloned_from.lang
-
-    return render(request, "lemmatized_text/create.html", {"cloned_from": cloned_from, "select_lang": select_lang})
+    return render(request, "lemmatized_text/create.html", {"select_lang": select_lang})
 
 
 @require_POST
