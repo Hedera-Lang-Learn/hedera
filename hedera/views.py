@@ -3,6 +3,9 @@ import uuid
 from django.conf import settings
 from django.http import Http404
 from django.shortcuts import render
+from django.views.generic import TemplateView
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from account.views import SettingsView as AccountSettingsView
 from account.views import SignupView as AccountSignupView
@@ -54,3 +57,9 @@ class SignupView(AccountSignupView):
         profile = self.created_user.profile
         profile.display_name = form.cleaned_data["display_name"]
         profile.save()
+
+
+# https://docs.djangoproject.com/en/3.2/topics/auth/default/#the-loginrequired-mixin
+class DashboardView(LoginRequiredMixin, TemplateView):
+
+    template_name = "dashboard.html"
