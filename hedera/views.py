@@ -62,5 +62,4 @@ class SignupView(AccountSignupView):
 # https://docs.djangoproject.com/en/3.2/topics/auth/default/#the-loginrequired-mixin
 class DashboardView(LoginRequiredMixin, TemplateView):
 
-    login_url = "/account/login/"
     template_name = "dashboard.html"
