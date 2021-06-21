@@ -42,4 +42,3 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(lt.data, lt_clone.data)
         self.assertNotEqual(lt.secret_id, lt_clone.secret_id)
         self.assertNotEqual(lt.created_at, lt_clone.created_at)
-
