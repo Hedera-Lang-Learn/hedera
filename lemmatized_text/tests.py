@@ -23,17 +23,23 @@ class LemmatizedTextTests(TestCase):
         self.created_user2 = self.create_user("user2", "user2@example.com", "password2")
 
     def test_clone(self):
-        lemmatized_text = LemmatizedText.objects.create(
+        lt = LemmatizedText.objects.create(
             title="Test title",
             lang="lat",
             original_text="Femina somnia habet.",
             created_by=self.created_user1,
             data=json.dumps({"key": "test"})
         )
-        self.assertEqual(LemmatizedText.objects.all().count(), 1)
-        lemmatized_text.clone()
+        lt_clone = lt.clone()
         self.assertEqual(LemmatizedText.objects.all().count(), 2)
-        lemmatized_text.clone(cloned_by=self.created_user2)
+        lt.clone(cloned_by=self.created_user2)
         self.assertEqual(LemmatizedText.objects.all().count(), 3)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user1).count(), 2)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user2).count(), 1)
+        self.assertEqual(lt.title, lt_clone.title)
+        self.assertEqual(lt.lang, lt_clone.lang)
+        self.assertEqual(lt.original_text, lt_clone.original_text)
+        self.assertEqual(lt.data, lt_clone.data)
+        self.assertNotEqual(lt.secret_id, lt_clone.secret_id)
+        self.assertNotEqual(lt.created_at, lt_clone.created_at)
+

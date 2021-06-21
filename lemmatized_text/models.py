@@ -152,6 +152,8 @@ class LemmatizedText(models.Model):
         obj.pk = None
         obj.cloned_from = self
         obj.created_by = cloned_by or self.created_by
+        obj.secret_id = uuid.uuid4()
+        obj.created_at = timezone.now()
         obj.save()
         return obj
 
