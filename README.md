@@ -116,3 +116,32 @@ For local development:
 ```
 docker run --publish 9000:9000 --env X_API_KEY=test-secret eldarioninc/pdf-service
 ```
+
+## Contributing Guidelines
+
+### Linting
+
+This project uses `isort` for import sorting, `flake8` for Python linting, and various `eslint plugins` for Javascript linting.
+
+### Passing Builds via Github
+##### Python Linting
+- Install `isort` and `flake8` into either your local virtual environment terminal or directly into the Docker `hedera-postgres` container terminal
+    
+    ```bash
+    pip install isort flake8
+    ```
+    After installing you can now run the the `isort` command in the terminal to check import sorting
+    ```bash
+    isort -c **/*.py
+    ```
+    and then `flake8` command to lint python
+    ```bash
+    flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
+    ```
+
+##### Javascript Linting
+- The linting packages should be installed from the setup instructions as noted above. We can run the following command in either your local terminal or in the docker `hedera-npm
+` container terminal
+    ```bash
+    npm run lint
+    ```
