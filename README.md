@@ -134,7 +134,7 @@ This project uses `isort` for import sorting, `flake8` for Python linting, and v
     ```bash
     isort -c **/*.py
     ```
-    and then `flake8` command to lint python
+    and then run the following `flake8` command to lint python
     ```bash
     flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
     ```
