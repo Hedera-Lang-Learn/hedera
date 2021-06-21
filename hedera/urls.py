@@ -25,6 +25,8 @@ urlpatterns = [
     path("account/settings/", views.SettingsView.as_view(), name="account_settings"),
     path("account/", include("account.urls")),
 
+    path("dashboard/", views.DashboardView.as_view(), name="dashboard"),
+
     path("read/<int:text_id>/", views.read, name="read"),
 
     path("lemmatized_text/", include("lemmatized_text.urls")),
