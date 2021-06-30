@@ -146,14 +146,16 @@ class LemmatizedText(models.Model):
         return f"{url}?cloned_from={self.pk}"
 
     def clone(self, cloned_by=None):
-        return LemmatizedText.objects.create(
-            title=self.title,
-            lang=self.lang,
-            original_text=self.original_text,
-            cloned_from=self,
-            data=self.data,
-            created_by=cloned_by or self.created_by,
-        )
+        """Set a copy of this object's pk to None, set some relationships and save (cloning)"""
+        # https://docs.djangoproject.com/en/3.2/topics/db/queries/#copying-model-instances
+        obj = LemmatizedText.objects.get(pk=self.pk)  # declaring 'self' here results in a ValueError
+        obj.pk = None
+        obj.cloned_from = self
+        obj.created_by = cloned_by or self.created_by
+        obj.secret_id = uuid.uuid4()
+        obj.created_at = timezone.now()
+        obj.save()
+        return obj
 
     def api_data(self):
         return {
