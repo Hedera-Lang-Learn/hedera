@@ -6,6 +6,11 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
+from requests.api import head
+from sentry_sdk.api import flush
+
+from django.core import serializers
+
 from lattices.models import LatticeNode
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText
@@ -293,3 +298,31 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
+
+
+class PersonalVocabularyLangListAPI(APIView):
+
+    def get_data(self):
+        qs = PersonalVocabularyList.objects.filter(user=self.request.user)
+        data = serializers.serialize('json', qs)
+        json_data = json.loads(data)
+        lang_list = []
+        for lang_data in json_data:
+            lang_list.append({
+                "lang": lang_data["fields"]["lang"],
+                "id": lang_data["pk"]
+            })
+        return lang_list
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
+        return JsonResponse({"data": {"created": created}})
+
+class LatticeNodesAPI(APIView):
+    def get_data(self):
+        headword = self.request.GET.get("headword")
+        qs = LatticeNode.objects.filter(Q(label__startswith=f'{headword},') | Q(label__endswith=f', {headword}') | Q(label__contains=f', {headword},') | Q(label__exact=headword))
+        data = serializers.serialize('json', qs)
+        json_data = json.loads(data)
+        return json_data

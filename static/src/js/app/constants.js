@@ -12,6 +12,8 @@ export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
 export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
 export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
+export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
+export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
 
 export const RESOLVED_NA = 'na';
 export const RESOLVED_NO_LEMMA = 'no-lemma';
@@ -27,3 +29,8 @@ export const RATINGS = {
   4: 'I definitely know what this word means but could forget soon',
   5: 'I know this word so well, I am unlikely to ever forget it',
 };
+
+export const LANGUAGES = {
+  "lat": "Latin",
+  "grc": "Greek"
+}

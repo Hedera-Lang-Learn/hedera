@@ -9,6 +9,7 @@ import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
 import Vocab from './Vocab.vue';
 import Texts from './Texts.vue';
+import Dashboard from './Dashboard.vue';
 
 Vue.config.productionTip = false;
 
@@ -74,4 +75,5 @@ export default () => {
   load('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
   load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
   load('texts-app', Texts, null, () => {});
+  load('dashboard-app', Dashboard, null, () => {});
 };

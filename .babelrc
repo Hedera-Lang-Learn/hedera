@@ -18,6 +18,13 @@
     "dist/"
   ],
   "plugins": [
-    "@babel/plugin-proposal-object-rest-spread"
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": false,
+        "regenerator": true
+      }
+    ]
   ]
 }

@@ -14,6 +14,8 @@ import {
   CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
   FETCH_ME,
+  FETCH_PERSONAL_VOCAB_LANG_LIST,
+  CREATE_PERSONAL_VOCAB_ENTRY,
 } from '../constants';
 import api from '../api';
 
@@ -88,5 +90,17 @@ export default {
   },
   [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
     commit(TOGGLE_SHOW_IN_VOCAB_LIST);
+  },
+  [FETCH_PERSONAL_VOCAB_LANG_LIST]: ({ commit }) => {
+    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LANG_LIST, data.data);
+    api
+      .fetchPersonalVocabLangList(cb)
+      .catch(logoutOnError(commit));
+  },
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, {  headword, gloss, vocabulary_list_id, familiarity }) => {
+    const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
+    api
+      .createPersonalVocabEntry(  headword, gloss, vocabulary_list_id, familiarity, cb)
+      .catch(logoutOnError(commit));
   },
 };
