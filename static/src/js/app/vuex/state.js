@@ -11,4 +11,6 @@ export default {
   selectedVocabList: null,
   showInVocabList: true,
   personalVocabLangList: null,
+  // TODO add suggested node functionality
+  // latticeNodes: []
 };

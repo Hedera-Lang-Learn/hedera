@@ -10,7 +10,9 @@ import {
   FETCH_TEXT,
   FETCH_PERSONAL_VOCAB_LIST,
   FETCH_ME,
-  FETCH_PERSONAL_VOCAB_LANG_LIST
+  FETCH_PERSONAL_VOCAB_LANG_LIST,
+  // TODO add suggested node functionality
+  // FETCH_LATTICE_NODES
 } from '../constants';
 
 export default {
@@ -58,4 +60,8 @@ export default {
   [FETCH_PERSONAL_VOCAB_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
   },
+  // TODO add suggested node functionality
+  // [FETCH_LATTICE_NODES]: (state, data) => {
+  //   state.latticeNodes = data
+  // }
 };

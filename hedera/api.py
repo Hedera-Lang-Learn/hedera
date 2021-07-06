@@ -1,15 +1,12 @@
 import json
+import re
 
+from django.core import serializers
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
-
-from requests.api import head
-from sentry_sdk.api import flush
-
-from django.core import serializers
 
 from lattices.models import LatticeNode
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
@@ -319,10 +316,14 @@ class PersonalVocabularyLangListAPI(APIView):
         _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
         return JsonResponse({"data": {"created": created}})
 
-class LatticeNodesAPI(APIView):
-    def get_data(self):
-        headword = self.request.GET.get("headword")
-        qs = LatticeNode.objects.filter(Q(label__startswith=f'{headword},') | Q(label__endswith=f', {headword}') | Q(label__contains=f', {headword},') | Q(label__exact=headword))
-        data = serializers.serialize('json', qs)
-        json_data = json.loads(data)
-        return json_data
+# TODO add suggested node functionality
+# class LatticeNodesAPI(APIView):
+
+#     def get_data(self):
+#         headword = self.request.GET.get("headword")
+#         filtered_headword_iterable = filter(str.isalnum, headword)
+#         filtered_headword_string = "".join(filtered_headword_iterable)
+#         qs = LatticeNode.objects.filter(label__iregex=r"\y"+ re.escape(filtered_headword_string) + r"\y")
+#         data = serializers.serialize('json', qs)
+#         json_data = json.loads(data)
+#         return json_data

@@ -45,6 +45,7 @@
                     type="text"
                     placeholder="headword"
                     v-model="headword"
+                    v-on:input="getHeadword"
                   />
                   <input
                     class="form-control ml-2 mt-2"
@@ -65,6 +66,12 @@
                     />
                   </div>
                 </div>
+                    <div>
+                    <label class="mb-0" for="LatticeNode"
+                      >Suggested Definition</label
+                    >
+                    <LatticeNode :node="latticeNodes" :showIds="true" />
+                  </div>
                 <button type="submit" class="btn btn-primary mt-3">
                   Submit
                 </button>
@@ -81,10 +88,13 @@ import {
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   LANGUAGES,
   CREATE_PERSONAL_VOCAB_ENTRY,
+  FETCH_LATTICE_NODES,
 } from "../constants";
 import FamiliarityRating from "../modules/FamiliarityRating.vue";
+import LatticeNode from "../modules/LatticeNode.vue";
+
 export default {
-  components: { FamiliarityRating },
+  components: { FamiliarityRating, LatticeNode },
   // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
   async created() {
     await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
@@ -104,12 +114,6 @@ export default {
       this.familiarityRating = rating;
     },
     handleSubmit: function () {
-      console.log({
-        headword: this.headword,
-        gloss: this.gloss,
-        vocabulary_list_id: this.vocabularyListId,
-        familiarity: this.familiarityRating,
-      });
       this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
         // nodeId: this.selectedNode.pk,
         headword: this.headword,
@@ -117,8 +121,13 @@ export default {
         vocabulary_list_id: this.vocabularyListId,
         familiarity: this.familiarityRating,
       });
-      // TODO make API CALL TO CREATE WORD
     },
+    getHeadword: function () {
+      // TODO add suggested node functionality
+      // console.log(this.headword)
+      // this.$store.dispatch(FETCH_LATTICE_NODES,{headword: this.headword})
+    }
+    ,
     /**
      * when clicking on button in bootstrap
      * the modal style set to display and after that a show class add to modal
@@ -145,6 +154,10 @@ export default {
     personalVocabLangList() {
       return this.$store.state.personalVocabLangList;
     },
+    // TODO add suggested node functionality
+    // latticeNodes(){
+    //   return this.$store.state.latticeNodes[0]
+    // }
   },
 };
 </script>
