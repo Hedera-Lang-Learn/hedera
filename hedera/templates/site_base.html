@@ -65,6 +65,7 @@
                   {% endfor %}
 
                   {% if request.user.is_authenticated %}
+                    <li class="navbar-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
                     <li class="navbar-item"><a class="nav-link" href="{% url 'groups_list' %}">Classes</a></li>
                     <li class="navbar-item"><a class="nav-link" href="{% url 'lemmatized_texts_list' %}">Texts</a></li>
                     <li class="navbar-item"><a class="nav-link" href="{% url 'vocab_list_list' %}">Vocabulary</a></li>
