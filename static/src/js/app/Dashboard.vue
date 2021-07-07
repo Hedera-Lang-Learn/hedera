@@ -7,13 +7,14 @@
   </div>
 </template><script>
 
-import Modal from './components/QuickAddVocabModal.vue'
-export default {
-  components: { Modal },
-  methods: {
-    openModal() {
-      this.$refs.Modal.toggleModal()
-    }
-  }
-};
+  import Modal from './components/QuickAddVocabModal.vue';
+
+  export default {
+    components: { Modal },
+    methods: {
+      openModal() {
+        this.$refs.Modal.toggleModal();
+      },
+    },
+  };
 </script>

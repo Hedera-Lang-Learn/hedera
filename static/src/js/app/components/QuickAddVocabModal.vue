@@ -30,6 +30,7 @@
                   v-model="vocabularyListId"
                   class="form-control mb-2"
                   id="FormControlSelect"
+                  required
                 >
                   <option
                     v-for="langItem in personalVocabLangList"
@@ -45,13 +46,14 @@
                     type="text"
                     placeholder="headword"
                     v-model="headword"
-                    v-on:input="getHeadword"
+                    required
                   />
                   <input
                     class="form-control ml-2 mt-2"
                     type="text"
                     placeholder="gloss"
                     v-model="gloss"
+                    required
                   />
                   <div class="flex-column ml-2">
                     <label class="mb-0" for="FamilitarityRating"
@@ -66,16 +68,13 @@
                     />
                   </div>
                 </div>
-                    <div>
-                    <label class="mb-0" for="LatticeNode"
-                      >Suggested Definition</label
-                    >
-                    <LatticeNode :node="latticeNodes" :showIds="true" />
-                  </div>
                 <button type="submit" class="btn btn-primary mt-3">
                   Submit
                 </button>
               </form>
+              <div class="alert alert-success" role="alert" v-show="showSuccesAlert">
+                Successfully added Vocabulary Word!
+              </div>
             </div>
           </div>
         </div>
@@ -84,80 +83,86 @@
     <div v-if="active" class="modal-backdrop fade show"></div>
   </div>
 </template><script>
-import {
-  FETCH_PERSONAL_VOCAB_LANG_LIST,
-  LANGUAGES,
-  CREATE_PERSONAL_VOCAB_ENTRY,
-  FETCH_LATTICE_NODES,
-} from "../constants";
-import FamiliarityRating from "../modules/FamiliarityRating.vue";
-import LatticeNode from "../modules/LatticeNode.vue";
+  import {
+    FETCH_PERSONAL_VOCAB_LANG_LIST,
+    LANGUAGES,
+    CREATE_PERSONAL_VOCAB_ENTRY,
+    // FETCH_LATTICE_NODES,
+  } from '../constants';
+  import FamiliarityRating from '../modules/FamiliarityRating.vue';
 
-export default {
-  components: { FamiliarityRating, LatticeNode },
-  // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
-  async created() {
-    await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
-  },
-  data() {
-    return {
-      active: false,
-      show: false,
-      vocabularyListId: null,
-      headword: null,
-      gloss: null,
-      familiarityRating: 1,
-    };
-  },
-  methods: {
-    onRatingChange: function (rating) {
-      this.familiarityRating = rating;
+  export default {
+    components: { FamiliarityRating },
+    // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
+    async created() {
+      await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
     },
-    handleSubmit: function () {
-      this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
-        // nodeId: this.selectedNode.pk,
-        headword: this.headword,
-        gloss: this.gloss,
-        vocabulary_list_id: this.vocabularyListId,
-        familiarity: this.familiarityRating,
-      });
+    data() {
+      return {
+        active: false,
+        show: false,
+        vocabularyListId: null,
+        headword: null,
+        gloss: null,
+        familiarityRating: 1,
+        showSuccesAlert: false,
+        showUnsuccessfull: true,
+      };
     },
-    getHeadword: function () {
+    methods: {
+      onRatingChange(rating) {
+        this.familiarityRating = rating;
+      },
+      async handleSubmit() {
+        await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
+          headword: this.headword,
+          gloss: this.gloss,
+          vocabularyListId: this.vocabularyListId,
+          familiarity: this.familiarityRating,
+        });
+        if (this.$store.state.personalVocabAdded){
+          this.headword = null
+          this.gloss = null
+          this.vocabularyListId = null
+          this.showAlert = true
+        }
+      },
+      // getHeadword() {
       // TODO add suggested node functionality
-      // console.log(this.headword)
       // this.$store.dispatch(FETCH_LATTICE_NODES,{headword: this.headword})
-    }
-    ,
-    /**
-     * when clicking on button in bootstrap
-     * the modal style set to display and after that a show class add to modal
-     * so to do that we will show modal-backdrop and set modal display to block
-     * then after that we will add show class to the modal and we will use setTimeout
-     * to add show class because we want show class to add after the modal-backdrop show and modal display change
-     * to make modal animation work
-     **/
-    toggleModal: function () {
-      const body = document.querySelector("body");
-      this.active = !this.active;
-      this.active
-        ? body.classList.add("modal-open")
-        : body.classList.remove("modal-open");
-      // mainly for smooth animation as noted above
-      setTimeout(() => (this.show = !this.show), 10);
+      // },
+      /**
+       * when clicking on button in bootstrap
+       * the modal style set to display and after that a show class add to modal
+       * so to do that we will show modal-backdrop and set modal display to block
+       * then after that we will add show class to the modal and we will use setTimeout
+       * to add show class because we want show class to add after the modal-backdrop show and modal display change
+       * to make modal animation work
+       * */
+      toggleModal() {
+        const body = document.querySelector('body');
+        this.active = !this.active;
+        if (this.active) {
+          body.classList.add('modal-open');
+        } else {
+          body.classList.remove('modal-open');
+        }
+        // mainly for smooth animation as noted above
+        setTimeout(() => { this.show = !this.show; }, 10);
+      },
+      formatLang(lang) {
+        return LANGUAGES[lang];
+      },
     },
-    formatLang: function (lang) {
-      return LANGUAGES[lang];
-    },
-  },
-  computed: {
-    // gives access to the state store of personalVocabLangList
-    personalVocabLangList() {
-      return this.$store.state.personalVocabLangList;
-    },
+    computed: {
+      // gives access to the state store of personalVocabLangList
+      personalVocabLangList() {
+        return this.$store.state.personalVocabLangList;
+      },
     // TODO add suggested node functionality
     // latticeNodes(){
     //   return this.$store.state.latticeNodes[0]
     // }
-  },
-};
+    },
+  };
 </script>

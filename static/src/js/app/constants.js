@@ -33,6 +33,6 @@ export const RATINGS = {
 };
 
 export const LANGUAGES = {
-  "lat": "Latin",
-  "grc": "Greek"
-}
+  lat: 'Latin',
+  grc: 'Greek',
+};

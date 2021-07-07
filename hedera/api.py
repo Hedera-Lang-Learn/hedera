@@ -1,5 +1,4 @@
 import json
-import re
 
 from django.core import serializers
 from django.db.models import Q
@@ -18,6 +17,9 @@ from vocab_list.models import (
     VocabularyList,
     VocabularyListEntry
 )
+
+
+# import re
 
 
 class JsonResponseAuthError(JsonResponse):
