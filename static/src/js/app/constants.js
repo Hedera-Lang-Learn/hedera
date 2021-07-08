@@ -35,4 +35,5 @@ export const RATINGS = {
 export const LANGUAGES = {
   lat: 'Latin',
   grc: 'Greek',
+  rus: "Russian",
 };

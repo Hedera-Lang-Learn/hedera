@@ -61,8 +61,8 @@ export default {
   [FETCH_PERSONAL_VOCAB_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]:(state, data) => {
-    state.personalVocabAdded = data.created
+  [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+    state.personalVocabAdded = data.created;
   },
   // TODO add suggested node functionality
   // [FETCH_LATTICE_NODES]: (state, data) => {

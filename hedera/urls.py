@@ -47,8 +47,7 @@ urlpatterns = [
     path("api/v1/vocab_entries/<int:pk>/<str:action>/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
-    path("api/v1/personal_vocab_list/list_lang/", api.PersonalVocabularyLangListAPI.as_view()),
-    path("api/v1/personal_vocab_list/add/", api.PersonalVocabularyLangListAPI.as_view()),
+    path("api/v1/personal_vocab_list/quick_add/", api.PersonalVocabularyQuickAddAPI.as_view()),
     # path("api/v1/lattice_nodes/", api.LatticeNodesAPI.as_view()),
 
     path("lti/", include("lti_provider.urls")),

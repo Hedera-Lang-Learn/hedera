@@ -299,11 +299,11 @@ class PersonalVocabularyListAPI(APIView):
         return JsonResponse({"data": vl.data()})
 
 
-class PersonalVocabularyLangListAPI(APIView):
+class PersonalVocabularyQuickAddAPI(APIView):
 
     def get_data(self):
         qs = PersonalVocabularyList.objects.filter(user=self.request.user)
-        data = serializers.serialize('json', qs)
+        data = serializers.serialize("json", qs)
         json_data = json.loads(data)
         lang_list = []
         for lang_data in json_data:
