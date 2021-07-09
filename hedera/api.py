@@ -1,6 +1,5 @@
 import json
 
-from django.core import serializers
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -303,13 +302,11 @@ class PersonalVocabularyQuickAddAPI(APIView):
 
     def get_data(self):
         qs = PersonalVocabularyList.objects.filter(user=self.request.user)
-        data = serializers.serialize("json", qs)
-        json_data = json.loads(data)
         lang_list = []
-        for lang_data in json_data:
+        for lang_data in qs:
             lang_list.append({
-                "lang": lang_data["fields"]["lang"],
-                "id": lang_data["pk"]
+                "lang": lang_data.lang,
+                "id": lang_data.id
             })
         return lang_list
 
