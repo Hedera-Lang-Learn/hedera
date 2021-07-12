@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dashboard">
     <Modal
       ref="Modal"
       title="Add Word to Personal Vocabulary List"
