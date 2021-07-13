@@ -32,3 +32,4 @@ django-lti-provider = {git = "https://github.com/Harvard-ATG/django-lti-provider
 "flake8" = "*"
 isort = "*"
 "flake8-quotes" = "*"
+"pre-commit" = "*"
