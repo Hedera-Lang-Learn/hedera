@@ -236,7 +236,6 @@ class VocabularyListEntryAPI(APIView):
 
 
 class PersonalVocabularyListAPI(APIView):
-
     @property
     def text(self):
         if self.request.GET.get("text") is None:
