@@ -18,6 +18,9 @@ from vocab_list.models import (
 )
 
 
+# import re
+
+
 class JsonResponseAuthError(JsonResponse):
 
     status_code = 401
@@ -292,3 +295,33 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
+
+
+class PersonalVocabularyQuickAddAPI(APIView):
+
+    def get_data(self):
+        qs = PersonalVocabularyList.objects.filter(user=self.request.user)
+        lang_list = []
+        for lang_data in qs:
+            lang_list.append({
+                "lang": lang_data.lang,
+                "id": lang_data.id
+            })
+        return lang_list
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
+        return JsonResponse({"data": {"created": created}})
+
+# TODO add suggested node functionality
+# class LatticeNodesAPI(APIView):
+
+#     def get_data(self):
+#         headword = self.request.GET.get("headword")
+#         filtered_headword_iterable = filter(str.isalnum, headword)
+#         filtered_headword_string = "".join(filtered_headword_iterable)
+#         qs = LatticeNode.objects.filter(label__iregex=r"\y"+ re.escape(filtered_headword_string) + r"\y")
+#         data = serializers.serialize('json', qs)
+#         json_data = json.loads(data)
+#         return json_data
