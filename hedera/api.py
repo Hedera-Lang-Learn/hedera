@@ -314,6 +314,7 @@ class PersonalVocabularyQuickAddAPI(APIView):
         data = json.loads(request.body)
         _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
         return JsonResponse({"data": {"created": created}})
+
 # TODO add suggested node functionality
 # class LatticeNodesAPI(APIView):
 
