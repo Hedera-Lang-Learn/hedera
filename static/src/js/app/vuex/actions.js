@@ -14,6 +14,9 @@ import {
   CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
   FETCH_ME,
+  FETCH_PERSONAL_VOCAB_LANG_LIST,
+  CREATE_PERSONAL_VOCAB_ENTRY,
+  // FETCH_LATTICE_NODES,
 } from '../constants';
 import api from '../api';
 
@@ -89,4 +92,21 @@ export default {
   [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
     commit(TOGGLE_SHOW_IN_VOCAB_LIST);
   },
+  [FETCH_PERSONAL_VOCAB_LANG_LIST]: ({ commit }) => {
+    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LANG_LIST, data.data);
+    return api
+      .fetchPersonalVocabLangList(cb)
+      .catch(logoutOnError(commit));
+  },
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity }) => {
+    const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
+    return api
+      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, cb)
+      .catch(logoutOnError(commit));
+  },
+  // TODO add suggested node functionality
+  // [FETCH_LATTICE_NODES]: ({commit}, { headword }) => {
+  //   const cb = (data) => commit(FETCH_LATTICE_NODES, data.data);
+  //   return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
+  // }
 };
