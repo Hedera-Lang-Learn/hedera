@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 
 from lattices.models import LatticeNode
 from pdfservice.mixins import PDFResponseMixin
@@ -81,6 +81,12 @@ def text(request, pk):
     return render(request, "lemmatized_text/text.html", {"text": text})
 
 
+def edit(request, pk):
+    if request.method == "GET":
+        data = get_object_or_404(models.LemmatizedText, pk=pk).pk
+        return render(request, "lemmatized_text/edit.html", {"text_pk": data})
+    return render(request, "lemmatized_text/edit.html")
+
 def learner_text(request, pk):
     qs = models.LemmatizedText.objects.filter(
         Q(public=True) |
@@ -114,3 +120,18 @@ class HandoutView(PDFResponseMixin, DetailView):
         nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])  # .order_by("label")
         context["words"] = nodes
         return context
+
+
+# class EditLemmatizedTextView(TemplateView):
+
+#     template_name = 'lemmatized_text/edit.html'
+
+#     # def get_queryset(self):
+#     #     return models.LemmatizedText.get(pk=self)
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["data"] = get_object_or_404(models.LemmatizedText, pk=kwargs["pk"]).data
+#         return context
+
+

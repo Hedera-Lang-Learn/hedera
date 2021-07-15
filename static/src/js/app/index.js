@@ -5,6 +5,7 @@ import globalComponents from './components';
 import store from './store';
 
 import App from './App.vue';
+import Edit from './Edit.vue';
 import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
 import Vocab from './Vocab.vue';
@@ -74,4 +75,5 @@ export default () => {
   load('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
   load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
   load('texts-app', Texts, null, () => {});
+  load('edit-app', Edit, null, textAppProps);
 };

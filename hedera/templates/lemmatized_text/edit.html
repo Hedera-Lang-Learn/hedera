@@ -1,0 +1,19 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load lemmatized_text_tags %}
+
+{% block head_title %}Lemmatized Texts{% endblock %}
+
+{% block body_class %}lemmatized-text{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
+{% block body %}
+  <h1>Edit</h1>
+  {{ text_pk }}
+  
+  <div id="edit-app" text-id="{{ text_pk }}"></div>
+{% endblock %}
