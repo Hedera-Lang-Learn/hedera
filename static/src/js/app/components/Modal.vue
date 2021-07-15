@@ -65,3 +65,9 @@
     },
   };
 </script>
+
+<style lang="scss">
+.modal-content {
+    height: 600px
+}
+</style>

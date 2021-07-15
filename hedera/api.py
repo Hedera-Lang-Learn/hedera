@@ -1,4 +1,5 @@
 import json
+import re
 
 from django.db.models import Q
 from django.http import JsonResponse
@@ -16,9 +17,6 @@ from vocab_list.models import (
     VocabularyList,
     VocabularyListEntry
 )
-
-
-# import re
 
 
 class JsonResponseAuthError(JsonResponse):
@@ -315,14 +313,15 @@ class PersonalVocabularyQuickAddAPI(APIView):
         _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
         return JsonResponse({"data": {"created": created}})
 
-# TODO add suggested node functionality
-# class LatticeNodesAPI(APIView):
 
-#     def get_data(self):
-#         headword = self.request.GET.get("headword")
-#         filtered_headword_iterable = filter(str.isalnum, headword)
-#         filtered_headword_string = "".join(filtered_headword_iterable)
-#         qs = LatticeNode.objects.filter(label__iregex=r"\y"+ re.escape(filtered_headword_string) + r"\y")
-#         data = serializers.serialize('json', qs)
-#         json_data = json.loads(data)
-#         return json_data
+class LatticeNodesAPI(APIView):
+
+    def get_data(self):
+        headword = self.request.GET.get("headword")
+        filtered_headword_iterable = filter(str.isalnum, headword)
+        filtered_headword_string = "".join(filtered_headword_iterable)
+        qs = LatticeNode.objects.filter(label__iregex=r"\y" + re.escape(filtered_headword_string) + r"\y")
+        lattice_node_list = [qs[0].to_dict()]
+        for node in qs:
+            lattice_node_list.append(node.to_dict())
+        return lattice_node_list

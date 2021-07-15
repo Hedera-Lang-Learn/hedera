@@ -65,5 +65,5 @@ export default {
   createPersonalVocabEntry: (headword, gloss, vocabularyListId, familiarity, cb) => axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, {
     headword, gloss, familiarity, vocabulary_list_id: vocabularyListId,
   }).then((r) => cb(r.data)),
-  // fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
+  fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
 };

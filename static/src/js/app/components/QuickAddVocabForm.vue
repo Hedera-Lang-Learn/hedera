@@ -27,6 +27,7 @@
           placeholder="headword"
           aria-label="headword"
           v-model="headword"
+          v-on:input="getHeadword"
           required
         />
         <input
@@ -49,7 +50,16 @@
           />
         </div>
       </div>
-      <button type="submit" class="btn btn-primary mt-3" aria-label="Submit" >Submit</button>
+      <LatticeNode
+        :node="latticeNode"
+        @selected="onSelect"
+        :show-ids="true"
+        customClassHeading="custom-lattice-node-heading"
+        customClass="custom-lattice-node"
+      />
+      <button type="submit" class="btn btn-primary mt-3" aria-label="Submit">
+        Submit
+      </button>
     </form>
     <div
       class="alert custom-alert-success"
@@ -59,7 +69,7 @@
       Successfully added Vocabulary Word!
     </div>
     <div class="alert alert-info" role="alert" v-show="showUnsuccessfullAlert">
-     Word was previously added
+      Word was previously added
     </div>
   </div>
 </template>
@@ -69,11 +79,14 @@
     FETCH_PERSONAL_VOCAB_LANG_LIST,
     LANGUAGES,
     CREATE_PERSONAL_VOCAB_ENTRY,
+    FETCH_LATTICE_NODES_BY_HEADWORD,
+    RESET_LATTICE_NODES_BY_HEADWORD,
   } from '../constants';
   import FamiliarityRating from '../modules/FamiliarityRating.vue';
+  import LatticeNode from '../modules/LatticeNode.vue';
 
   export default {
-    components: { FamiliarityRating },
+    components: { FamiliarityRating, LatticeNode },
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
@@ -83,6 +96,7 @@
         vocabularyListId: null,
         headword: null,
         gloss: null,
+        latticeNodeId: null,
         familiarityRating: 1,
         showSuccesAlert: false,
         showUnsuccessfullAlert: false,
@@ -115,14 +129,26 @@
         return LANGUAGES[lang];
       },
       setFocus() {
-        this.$nextTick(() => { this.$refs.select.focus(); });
+        this.$nextTick(() => {
+          this.$refs.select.focus();
+        });
       },
+      // method function for parent components to reset the form when modal is closed
       resetForm() {
         this.headword = null;
         this.gloss = null;
         this.vocabularyListId = null;
         this.showSuccesAlert = false;
         this.showUnsuccessfullAlert = false;
+        this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
+      },
+      async getHeadword() {
+        await this.$store.dispatch(FETCH_LATTICE_NODES_BY_HEADWORD, {
+          headword: this.headword,
+        });
+      },
+      onSelect() {
+        this.gloss = this.$store.state.latticeNodes[0].gloss;
       },
     },
     computed: {
@@ -130,18 +156,33 @@
       personalVocabLangList() {
         return this.$store.state.personalVocabLangList;
       },
-    // TODO add suggested node functionality
-    // latticeNodes(){
-    //   return this.$store.state.latticeNodes[0]
-    // }
+      // filters lattice node to exclude parent data for simplier UI in LatticeNode component
+      latticeNode() {
+        const node = this.$store.state.latticeNodes[0];
+        if (node) {
+          const {
+            canonical, gloss, label, lemmas, pk,
+          } = node;
+          return {
+            canonical, gloss, label, lemmas, pk,
+          };
+        }
+        return null;
+      },
     },
   };
 </script>
 
 <style lang="scss">
 .custom-alert-success {
-    color: #155724;
-    background-color: #d4edda;
-    border-color: #c3e6cb;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.custom-lattice-node-heading {
+  display: flex;
+}
+.custom-lattice-node {
+  padding-left: none;
 }
 </style>

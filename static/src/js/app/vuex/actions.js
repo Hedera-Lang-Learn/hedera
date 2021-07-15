@@ -16,7 +16,8 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
-  // FETCH_LATTICE_NODES,
+  FETCH_LATTICE_NODES_BY_HEADWORD,
+  RESET_LATTICE_NODES_BY_HEADWORD,
 } from '../constants';
 import api from '../api';
 
@@ -104,9 +105,13 @@ export default {
       .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, cb)
       .catch(logoutOnError(commit));
   },
-  // TODO add suggested node functionality
-  // [FETCH_LATTICE_NODES]: ({commit}, { headword }) => {
-  //   const cb = (data) => commit(FETCH_LATTICE_NODES, data.data);
-  //   return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
-  // }
+  [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword }) => {
+    const cb = (data) => commit(FETCH_LATTICE_NODES_BY_HEADWORD, data.data);
+    return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
+  },
+  // TODO: might be a better way to reset this state but this works for now
+  [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => {
+    const cb = () => commit(RESET_LATTICE_NODES_BY_HEADWORD);
+    return cb();
+  },
 };
