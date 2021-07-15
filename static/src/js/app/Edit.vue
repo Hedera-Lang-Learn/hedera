@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8">
         <h1>Hey Ho</h1>
-        <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+        <!-- <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor> -->
         <!-- {{ this.transformedTokens }} -->
       </div>
     </div>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-  import CKEditor from '@ckeditor/ckeditor5-vue2';
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  import ConvertSpanAttributes from './editor/plugins';
-  import GeneralHtmlSupport from '@ckeditor/ckeditor5-html-support/src/generalhtmlsupport';
+  // import { CKEditor, ClassicEditor } from './editor/ckeditor';
+  // import ClassicEditor from './editor/ckeditor';
+  // import ConvertSpanAttributes from './editor/plugins';
+  // import GeneralHtmlSupport from '@ckeditor/ckeditor5-html-support/src/generalhtmlsupport';
   // import HederaEditor from './editor/hederaEditor';
   import {
     FETCH_ME,
@@ -41,12 +41,12 @@
     },
     data() {
       return {
-        editor: ClassicEditor,
+        // editor: ClassicEditor,
         editorData: '',
         editorConfig: {
           toolbar: 'Custom',
           toolbar_Custom: [],
-          plugins: [GeneralHtmlSupport],
+          // plugins: [GeneralHtmlSupport],
           htmlSupport: {
             allow: [
               {
@@ -55,7 +55,6 @@
                 attributes: true,
               },
             ],
-
           },
         },
       };
