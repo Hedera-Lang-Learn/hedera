@@ -310,8 +310,9 @@ class PersonalVocabularyQuickAddAPI(APIView):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
-        return JsonResponse({"data": {"created": created}})
+        data['node'] = get_object_or_404(LatticeNode, pk=data["node"])
+        new_entry = PersonalVocabularyListEntry.objects.create(**data)
+        return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
 
 
 class LatticeNodesAPI(APIView):

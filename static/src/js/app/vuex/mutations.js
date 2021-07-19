@@ -14,6 +14,7 @@ import {
   CREATE_PERSONAL_VOCAB_ENTRY,
   FETCH_LATTICE_NODES_BY_HEADWORD,
   RESET_LATTICE_NODES_BY_HEADWORD,
+  // SET_LANGUAGE_PREF
 } from '../constants';
 
 export default {
@@ -70,4 +71,8 @@ export default {
   [RESET_LATTICE_NODES_BY_HEADWORD]: (state) => {
     state.latticeNodes = [];
   },
+  // TODO add language preference
+  // [SET_LANGUAGE_PREF]: (state, id) => {
+  //   state.languagePref = id
+  // }
 };

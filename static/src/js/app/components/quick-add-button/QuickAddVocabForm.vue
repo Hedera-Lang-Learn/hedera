@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <form id="addvocab-form" @submit.prevent="handleSubmit">
+    <form id="addvocab-form" v-on:submit.prevent>
       <label for="FormControlSelect"
         >Select Langauge of Your Personal Vocabulary List</label
       >
@@ -10,6 +10,7 @@
         id="FormControlSelect"
         aria-label="language List"
         ref="select"
+        :onchange="onLangChange()"
         required
       >
         <option
@@ -37,6 +38,7 @@
           aria-label="gloss"
           v-model="gloss"
           required
+          @keyup.enter="handleSubmit"
         />
         <div class="flex-column ml-2">
           <label class="mb-0" for="FamiliarityRating">Familiarity</label>
@@ -50,14 +52,30 @@
           />
         </div>
       </div>
-      <LatticeNode
-        :node="latticeNode"
-        @selected="onSelect"
-        :show-ids="true"
-        customClassHeading="custom-lattice-node-heading"
-        customClass="custom-lattice-node"
-      />
-      <button type="submit" class="btn btn-primary mt-3" aria-label="Submit">
+      <button
+        class="lattice-node-button"
+        :style="showLatticeNodeButton"
+        aria-label="suggestion"
+        @click="onSelect"
+      >
+        <div class="lattice-node-container">
+          <label for="LatticeNode">Suggested Gloss</label>
+          <LatticeNode
+            :node="latticeNode"
+            @selected="onSelect"
+            :show-ids="true"
+            customClassHeading="custom-lattice-node-heading"
+            customClass="custom-lattice-node"
+          />
+        </div>
+      </button>
+      <button
+        type="submit"
+        :disabled="submitting"
+        class="btn btn-primary mt-3"
+        aria-label="Submit"
+        @click="handleSubmit"
+      >
         Submit
       </button>
     </form>
@@ -81,9 +99,10 @@
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
-  } from '../constants';
-  import FamiliarityRating from '../modules/FamiliarityRating.vue';
-  import LatticeNode from '../modules/LatticeNode.vue';
+  // SET_LANGUAGE_PREF
+  } from '../../constants';
+  import FamiliarityRating from '../../modules/FamiliarityRating.vue';
+  import LatticeNode from '../../modules/LatticeNode.vue';
 
   export default {
     components: { FamiliarityRating, LatticeNode },
@@ -100,6 +119,7 @@
         familiarityRating: 1,
         showSuccesAlert: false,
         showUnsuccessfullAlert: false,
+        submitting: false,
       };
     },
     methods: {
@@ -109,21 +129,31 @@
       async handleSubmit() {
         this.showUnsuccessfullAlert = false;
         this.showSuccesAlert = false;
+        this.submitting = true;
+
+        const { headword, gloss, vocabularyListId } = this;
+        if (!headword || !gloss || !vocabularyListId) {
+          this.submitting = false;
+          return;
+        }
 
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
-          headword: this.headword,
-          gloss: this.gloss,
-          vocabularyListId: this.vocabularyListId,
+          headword,
+          gloss,
+          vocabularyListId,
           familiarity: this.familiarityRating,
+          node: this.latticeNodeId,
         });
         if (this.$store.state.personalVocabAdded) {
           this.headword = null;
           this.gloss = null;
           this.vocabularyListId = null;
           this.showSuccesAlert = true;
+          this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
         } else {
           this.showUnsuccessfullAlert = true;
         }
+        this.submitting = false;
       },
       formatLang(lang) {
         return LANGUAGES[lang];
@@ -148,7 +178,12 @@
         });
       },
       onSelect() {
-        this.gloss = this.$store.state.latticeNodes[0].gloss;
+        const { gloss, pk } = this.$store.state.latticeNodes[0];
+        this.gloss = gloss;
+        this.latticeNodeId = pk;
+      },
+      onLangChange() {
+      // this.$store.dispatch(SET_LANGUAGE_PREF, this.vocabularyListId)
       },
     },
     computed: {
@@ -164,10 +199,20 @@
             canonical, gloss, label, lemmas, pk,
           } = node;
           return {
-            canonical, gloss, label, lemmas, pk,
+            canonical,
+            gloss,
+            label,
+            lemmas,
+            pk,
           };
         }
         return null;
+      },
+      showLatticeNodeButton() {
+        if (!this.latticeNode) {
+          return { display: 'none' };
+        }
+        return {};
       },
     },
   };
@@ -181,8 +226,18 @@
 }
 .custom-lattice-node-heading {
   display: flex;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid #578e57;
+  }
 }
 .custom-lattice-node {
   padding-left: none;
+}
+.lattice-node-button {
+  display: flex;
+  background-color: white;
+  color: black;
+  margin-top: 10px;
 }
 </style>

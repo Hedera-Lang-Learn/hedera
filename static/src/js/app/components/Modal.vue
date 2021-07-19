@@ -5,7 +5,7 @@
       :class="{ show, 'd-block': active }"
       tabindex="-1"
       role="dialog"
-      @keyup.esc.stop="toggleModal"
+      @keyup.esc="toggleModal"
     >
       <div class="modal-dialog" role="document" :aria-labelledby="title" :aria-describedby="description">
         <div class="modal-content">

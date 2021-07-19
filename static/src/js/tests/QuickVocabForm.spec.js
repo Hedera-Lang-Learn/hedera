@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import QuickVocabAddForm from '../app/components/QuickAddVocabForm.vue';
+import QuickVocabAddForm from '../app/components/quick-add-button/QuickAddButton.vue';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);

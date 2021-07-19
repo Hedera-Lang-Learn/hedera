@@ -18,6 +18,8 @@ import {
   CREATE_PERSONAL_VOCAB_ENTRY,
   FETCH_LATTICE_NODES_BY_HEADWORD,
   RESET_LATTICE_NODES_BY_HEADWORD,
+  // TODO add language preference
+  // SET_LANGUAGE_PREF,
 } from '../constants';
 import api from '../api';
 
@@ -99,10 +101,10 @@ export default {
       .fetchPersonalVocabLangList(cb)
       .catch(logoutOnError(commit));
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity }) => {
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity, node }) => {
     const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
     return api
-      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, cb)
+      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, node, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword }) => {
@@ -111,7 +113,10 @@ export default {
   },
   // TODO: might be a better way to reset this state but this works for now
   [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => {
-    const cb = () => commit(RESET_LATTICE_NODES_BY_HEADWORD);
-    return cb();
+    commit(RESET_LATTICE_NODES_BY_HEADWORD);
   },
+  // TODO add language preference
+  // [SET_LANGUAGE_PREF]: ({commit}, {id}) => {
+  //   commit(SET_LANGUAGE_PREF, id)
+  // }
 };
