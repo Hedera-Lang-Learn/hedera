@@ -10,12 +10,12 @@
   </div>
 </template>
 
+// <script src="./editor/ckeditor.js"></script>
 <script>
-  // import { CKEditor, ClassicEditor } from './editor/ckeditor';
-  // import ClassicEditor from './editor/ckeditor';
-  // import ConvertSpanAttributes from './editor/plugins';
+  // import Vue from 'vue';
+  // import CKEditor from '@ckeditor/ckeditor5-vue2';
+  // import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
   // import GeneralHtmlSupport from '@ckeditor/ckeditor5-html-support/src/generalhtmlsupport';
-  // import HederaEditor from './editor/hederaEditor';
   import {
     FETCH_ME,
     FETCH_TEXT,
@@ -23,9 +23,15 @@
     FETCH_TOKENS,
   } from './constants';
 
+  // Vue.use(CKEditor)
+
+  // const ClassicEditor = import('./editor/ckeditor');
+  // import ClassicEditor from './editor/ckeditor';
+  // import GeneralHtmlSupport from '@ckeditor/ckeditor5-html-support/src/generalhtmlsupport';
+  // import HederaEditor from './editor/hederaEditor';
   // const hederaEditor = ClassicEditor
   //   .create(document.querySelector('#editor'), {
-  //     extraPlugins: [ConvertSpanAttributes],
+  //     // extraPlugins: [ConvertSpanAttributes],
   //   })
   //   .then((editor) => {
   //     console.log('Editor was initialized', editor);
