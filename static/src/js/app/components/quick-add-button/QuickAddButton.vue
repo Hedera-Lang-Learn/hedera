@@ -1,5 +1,5 @@
 <template>
-  <div class="quick-add" :style="{float: 'right', margin: '50px'}">
+  <div class="quick-add">
     <Modal
       ref="Modal"
       title="Add Word to Personal Vocabulary List"

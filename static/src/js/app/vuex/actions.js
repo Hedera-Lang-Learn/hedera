@@ -18,8 +18,7 @@ import {
   CREATE_PERSONAL_VOCAB_ENTRY,
   FETCH_LATTICE_NODES_BY_HEADWORD,
   RESET_LATTICE_NODES_BY_HEADWORD,
-  // TODO add language preference
-  // SET_LANGUAGE_PREF,
+  SET_LANGUAGE_PREF,
 } from '../constants';
 import api from '../api';
 
@@ -112,11 +111,9 @@ export default {
     return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
   },
   // TODO: might be a better way to reset this state but this works for now
-  [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => {
-    commit(RESET_LATTICE_NODES_BY_HEADWORD);
+  [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => commit(RESET_LATTICE_NODES_BY_HEADWORD),
+  [SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
+    const cb = commit(SET_LANGUAGE_PREF, lang);
+    return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
   },
-  // TODO add language preference
-  // [SET_LANGUAGE_PREF]: ({commit}, {id}) => {
-  //   commit(SET_LANGUAGE_PREF, id)
-  // }
 };

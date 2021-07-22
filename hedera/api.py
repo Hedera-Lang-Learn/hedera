@@ -18,6 +18,8 @@ from vocab_list.models import (
     VocabularyListEntry
 )
 
+from .models import Profile
+
 
 class JsonResponseAuthError(JsonResponse):
 
@@ -54,6 +56,13 @@ class MeAPI(APIView):
 
     def get_data(self):
         return self.request.user.profile.data()
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        profile = Profile.objects.get(user=request.user)
+        profile.lang = data["lang"]
+        profile.save()
+        return JsonResponse({"data": profile.data()})
 
 
 class LemmatizedTextListAPI(APIView):
@@ -322,7 +331,7 @@ class LatticeNodesAPI(APIView):
         filtered_headword_iterable = filter(str.isalnum, headword)
         filtered_headword_string = "".join(filtered_headword_iterable)
         qs = LatticeNode.objects.filter(label__iregex=r"\y" + re.escape(filtered_headword_string) + r"\y")
-        lattice_node_list = [qs[0].to_dict()]
+        lattice_node_list = []
         for node in qs:
             lattice_node_list.append(node.to_dict())
         return lattice_node_list

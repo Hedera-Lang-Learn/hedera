@@ -52,32 +52,33 @@
           />
         </div>
       </div>
-      <button
-        class="lattice-node-button"
-        :style="showLatticeNodeButton"
-        aria-label="suggestion"
-        @click="onSelect"
-      >
-        <div class="lattice-node-container">
-          <label for="LatticeNode">Suggested Gloss</label>
-          <LatticeNode
-            :node="latticeNode"
-            @selected="onSelect"
-            :show-ids="true"
-            customClassHeading="custom-lattice-node-heading"
-            customClass="custom-lattice-node"
-          />
-        </div>
-      </button>
-      <button
-        type="submit"
-        :disabled="submitting"
-        class="btn btn-primary mt-3"
-        aria-label="Submit"
-        @click="handleSubmit"
-      >
-        Submit
-      </button>
+      <div class="lattice-node-container">
+        <label for="LatticeNode">Suggested Gloss</label>
+        <li v-for="node in latticeNode" :key="node.pk">
+          <button
+            class="lattice-node-button"
+            :style="showLatticeNodeButton"
+            aria-label="suggestion"
+          >
+            <LatticeNode
+              :node="node"
+              @selected="onSelect"
+              :show-ids="false"
+              customClassHeading="custom-lattice-node-heading"
+              customClass="custom-lattice-node"
+            />
+          </button>
+        </li>
+        <button
+          type="submit"
+          :disabled="submitting"
+          class="btn btn-primary mt-3"
+          aria-label="Submit"
+          @click="handleSubmit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
     <div
       class="alert custom-alert-success"
@@ -99,7 +100,7 @@
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
-  // SET_LANGUAGE_PREF
+    // SET_LANGUAGE_PREF,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
   import LatticeNode from '../../modules/LatticeNode.vue';
@@ -120,6 +121,7 @@
         showSuccesAlert: false,
         showUnsuccessfullAlert: false,
         submitting: false,
+        count: 1,
       };
     },
     methods: {
@@ -177,13 +179,16 @@
           headword: this.headword,
         });
       },
-      onSelect() {
-        const { gloss, pk } = this.$store.state.latticeNodes[0];
-        this.gloss = gloss;
-        this.latticeNodeId = pk;
+      onSelect(node) {
+        const { gloss, pk } = node;
+        if (pk) {
+          this.gloss = gloss;
+          this.latticeNodeId = pk;
+        }
       },
       onLangChange() {
       // this.$store.dispatch(SET_LANGUAGE_PREF, this.vocabularyListId)
+      // console.log(event);
       },
     },
     computed: {
@@ -193,18 +198,21 @@
       },
       // filters lattice node to exclude parent data for simplier UI in LatticeNode component
       latticeNode() {
-        const node = this.$store.state.latticeNodes[0];
-        if (node) {
-          const {
-            canonical, gloss, label, lemmas, pk,
-          } = node;
-          return {
-            canonical,
-            gloss,
-            label,
-            lemmas,
-            pk,
-          };
+        const nodes = this.$store.state.latticeNodes;
+        if (nodes.length) {
+          const formatedNodes = nodes.map((node) => {
+            const {
+              canonical, gloss, label, lemmas, pk,
+            } = node;
+            return {
+              canonical,
+              gloss,
+              label,
+              lemmas,
+              pk,
+            };
+          });
+          return formatedNodes;
         }
         return null;
       },
@@ -235,7 +243,6 @@
   padding-left: none;
 }
 .lattice-node-button {
-  display: flex;
   background-color: white;
   color: black;
   margin-top: 10px;
