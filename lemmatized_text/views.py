@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 
 from django.conf import settings
 from django.db.models import Q
@@ -83,11 +84,18 @@ def text(request, pk):
 
 
 def edit(request, pk):
-    if request.method == "GET":
-        data = get_object_or_404(models.LemmatizedText, pk=pk).data
-        form = LemmatizedTextEditForm(text_data=data)
-        return render(request, "lemmatized_text/edit.html", {"form": form})
-    return render(request, "lemmatized_text/edit.html")
+    lemmatized_text = get_object_or_404(models.LemmatizedText, pk=pk, created_by=request.user)
+
+    if request.method == "POST":
+        form = LemmatizedTextEditForm(request.POST)
+        if form.is_valid():
+            # pass to a "lemmatized text method" to handle changes
+            lemmatized_text.handle_edited_data(request.POST.get("text"))
+            return redirect("lemmatized_texts_list")
+    
+    form = LemmatizedTextEditForm(initial={"text":lemmatized_text.transform_data_to_html()})
+    return render(request, "lemmatized_text/edit.html", {"form": form})
+
 
 def learner_text(request, pk):
     qs = models.LemmatizedText.objects.filter(
@@ -122,6 +130,7 @@ class HandoutView(PDFResponseMixin, DetailView):
         nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])  # .order_by("label")
         context["words"] = nodes
         return context
+
 
 
 # class EditLemmatizedTextView(TemplateView):

@@ -1,5 +1,7 @@
+import json
 import logging
 import uuid
+from collections import defaultdict
 
 from django.db import models
 from django.template.defaultfilters import floatformat
@@ -145,6 +147,10 @@ class LemmatizedText(models.Model):
         url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
+    @property
+    def edit_url(self):
+        return reverse("lemmatized_text_edit", args=[self.pk])
+
     def clone(self, cloned_by=None):
         """Set a copy of this object's pk to None, set some relationships and save (cloning)"""
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#copying-model-instances
@@ -171,6 +177,7 @@ class LemmatizedText(models.Model):
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
             "cloneUrl": self.clone_url,
+            "editUrl": self.edit_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
             "requireClone": self.classes.all().count() > 0,
@@ -187,6 +194,40 @@ class LemmatizedText(models.Model):
             node_id=node_id,
             resolved=resolved,
         )
+
+    def handle_edited_data(self, edits):
+        # we need to strip 'edits' of all html and set it to original_text
+        # get the original token -> node dictionary with self.token_node_dict
+        print("This method is not yet implemented")
+        # print(edits)
+        # print(self.token_node_dict())
+        # HTMLParsing Needs
+        # 1) Create a dictionary of nodes and word tokens
+        # 2) Reverse any followers parsing
+        # 3) Tokenize/lemmatize the following chunks:
+        #    a) spans with content but no attributes
+        #    b) content outside of spans
+        #    c) spans where contents don't match dictionary value
+        #    d) spans where contents do not have dictionary entry
+
+    def token_node_dict(self):
+        lemma_dict = defaultdict(list)
+        for token in json.loads(self.data):
+            lemma_dict[token["word"]].append(token["node"])
+        return dict(lemma_dict)
+
+    def transform_data_to_html(self):
+        return "".join([
+            (
+                f"<span node={token['node']} resolved={token['resolved']}>"
+                f"{token['word']}</span><span follower='true'>"
+                f"{self.parse_following(token['following'])}</span>" 
+            )
+            for token in json.loads(self.data)
+        ])
+
+    def parse_following(self, follower):
+        return follower.replace("\n", "<br/>")
 
 
 class LemmatizationLog(models.Model):

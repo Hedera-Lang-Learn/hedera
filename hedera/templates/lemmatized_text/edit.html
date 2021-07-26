@@ -13,15 +13,8 @@
 
 {% block body %}
   <h1>Edit</h1>
-  <!-- {{ text_pk }}
-  
-  <div id="edit-app" text-id="{{ text_pk }}"></div> -->
-  <!-- <form action="/your-name/" method="post">
+  <form method="post" action=".">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-  </form> -->
-  <form>
     {{ form.media }}
     {{ form.as_p }}
     <input type="submit" value="Submit Edits"/>
