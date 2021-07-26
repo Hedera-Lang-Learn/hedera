@@ -28,7 +28,6 @@ sentry-sdk = "==0.17.6"
 rq = "==1.5.2"
 wagtail = ">=2.11.7"
 django-lti-provider = {git = "https://github.com/Harvard-ATG/django-lti-provider.git", editable = true, ref = "course-navigation"}
-django-tinymce = "*"
 
 [dev-packages]
 "flake8" = "*"
