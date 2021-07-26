@@ -1,1 +1,0 @@
-!function(n){const i=n.ca=n.ca||{};i.dictionary=Object.assign(i.dictionary||{},{"Show more items":""}),i.getPluralForm=function(n){return 1!=n}}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));

@@ -1,1 +1,0 @@
-!function(n){const o=n.bg=n.bg||{};o.dictionary=Object.assign(o.dictionary||{},{Redo:"Повтори","Show more items":"",Undo:"Отмени"}),o.getPluralForm=function(n){return 1!=n}}(window.CKEDITOR_TRANSLATIONS||(window.CKEDITOR_TRANSLATIONS={}));
