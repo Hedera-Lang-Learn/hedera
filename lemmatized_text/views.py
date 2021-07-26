@@ -1,12 +1,11 @@
 import logging
-from collections import defaultdict
 
 from django.conf import settings
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import DetailView
 
 from lattices.models import LatticeNode
 from pdfservice.mixins import PDFResponseMixin
@@ -92,8 +91,8 @@ def edit(request, pk):
             # pass to a "lemmatized text method" to handle changes
             lemmatized_text.handle_edited_data(request.POST.get("text"))
             return redirect("lemmatized_texts_list")
-    
-    form = LemmatizedTextEditForm(initial={"text":lemmatized_text.transform_data_to_html()})
+
+    form = LemmatizedTextEditForm(initial={"text": lemmatized_text.transform_data_to_html()})
     return render(request, "lemmatized_text/edit.html", {"form": form})
 
 
@@ -130,19 +129,3 @@ class HandoutView(PDFResponseMixin, DetailView):
         nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])  # .order_by("label")
         context["words"] = nodes
         return context
-
-
-
-# class EditLemmatizedTextView(TemplateView):
-
-#     template_name = 'lemmatized_text/edit.html'
-
-#     # def get_queryset(self):
-#     #     return models.LemmatizedText.get(pk=self)
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["data"] = get_object_or_404(models.LemmatizedText, pk=kwargs["pk"]).data
-#         return context
-
-

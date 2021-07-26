@@ -221,7 +221,7 @@ class LemmatizedText(models.Model):
             (
                 f"<span node={token['node']} resolved={token['resolved']}>"
                 f"{token['word']}</span><span follower='true'>"
-                f"{self.parse_following(token['following'])}</span>" 
+                f"{self.parse_following(token['following'])}</span>"
             )
             for token in json.loads(self.data)
         ])
