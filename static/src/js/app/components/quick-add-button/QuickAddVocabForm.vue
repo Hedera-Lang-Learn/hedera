@@ -38,7 +38,6 @@
           aria-label="gloss"
           v-model="gloss"
           required
-          @keyup.enter="handleSubmit"
         />
         <div class="flex-column ml-2">
           <label class="mb-0" for="FamiliarityRating">Familiarity</label>
@@ -48,37 +47,40 @@
             customClass="d-flex"
             :value="familiarityRating"
             @input="(rating) => onRatingChange(rating)"
-            aria-label="familiarityRating"
+            aria-label="familiarity"
           />
         </div>
       </div>
-      <div class="lattice-node-container">
+      <div class="lattice-node-container"  :style="showLatticeNodeList">
         <label for="LatticeNode">Suggested Gloss</label>
-        <li v-for="node in latticeNode" :key="node.pk">
-          <button
-            class="lattice-node-button"
-            :style="showLatticeNodeButton"
-            aria-label="suggestion"
-          >
-            <LatticeNode
-              :node="node"
-              @selected="onSelect"
-              :show-ids="false"
-              customClassHeading="custom-lattice-node-heading"
-              customClass="custom-lattice-node"
-            />
-          </button>
-        </li>
-        <button
-          type="submit"
-          :disabled="submitting"
-          class="btn btn-primary mt-3"
-          aria-label="Submit"
-          @click="handleSubmit"
-        >
-          Submit
-        </button>
+        <ul class="lattice-node-list">
+          <li v-for="node in latticeNode" :key="node.pk">
+            <button
+              class="lattice-node-button"
+              aria-label="suggestion"
+              @keyup.enter="onSelect"
+            >
+              <LatticeNode
+                :node="node"
+                @selected="onSelect"
+                :show-ids="false"
+                customClassHeading="custom-lattice-node-heading"
+                customClass="custom-lattice-node"
+              />
+            </button>
+          </li>
+        </ul>
       </div>
+      <button
+        type="submit"
+        :disabled="submitting"
+        class="btn btn-primary mt-3"
+        aria-label="Submit"
+        @click="handleSubmit"
+        @keyup.enter="handleSubmit"
+      >
+        Submit
+      </button>
     </form>
     <div
       class="alert custom-alert-success"
@@ -100,7 +102,7 @@
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
-    // SET_LANGUAGE_PREF,
+  // SET_LANGUAGE_PREF,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
   import LatticeNode from '../../modules/LatticeNode.vue';
@@ -186,6 +188,7 @@
           this.latticeNodeId = pk;
         }
       },
+      // TODO: pref language
       onLangChange() {
       // this.$store.dispatch(SET_LANGUAGE_PREF, this.vocabularyListId)
       // console.log(event);
@@ -216,7 +219,7 @@
         }
         return null;
       },
-      showLatticeNodeButton() {
+      showLatticeNodeList() {
         if (!this.latticeNode) {
           return { display: 'none' };
         }
@@ -246,5 +249,15 @@
   background-color: white;
   color: black;
   margin-top: 10px;
+}
+.lattice-node-list {
+  height: 200px;
+  overflow: auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+.lattice-node-container {
+  padding-top: 10px;
+  font-weight: bold;
 }
 </style>
