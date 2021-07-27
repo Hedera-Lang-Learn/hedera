@@ -5,6 +5,6 @@ describe('LatticeNode', () => {
   it('loads in LatticeNode', () => {
     const wrapper = shallowMount(LatticeNode);
     // TODO ADD BETTER TEST
-    expect(wrapper).toEqual(wrapper);
+    expect(wrapper).toBe(wrapper);
   });
 });

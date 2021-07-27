@@ -31,19 +31,25 @@ describe('QuickVocabForm', () => {
     expect(wrapper.find('#addvocab-form').isVisible()).toBe(true);
   });
 
-  // it('loads latticeNodes when data exist', () => {
-  //   store.state.latticeNodes = {
-  //     pk: 1,
-  //     label: 'sum, esse, fuī',
-  //     gloss: 'to be, exist',
-  //     canonical: true,
-  //     forms: [],
-  //     lemmas: [{ lemma: 'sum', context: 'morpheus' }],
-  //     vocabulary_entries: [],
-  //     children: []
-  //   };
-  //   const wrapper = mount(QuickVocabAddForm, { store, localVue });
-  // });
+  it('loads latticeNodes when data exist', () => {
+    store.state.latticeNodes = [{
+      pk: 1,
+      label: 'sum, esse, fuī',
+      gloss: 'to be, exist',
+      canonical: true,
+      forms: [],
+      lemmas: [{ lemma: 'sum', context: 'morpheus' }],
+      vocabulary_entries: [],
+      children: [],
+    }];
+    const wrapper = mount(QuickVocabAddForm, { store, localVue });
+    expect(wrapper.findAll('li')).toHaveLength(1);
+  });
+
+  it('should not load latticeNodes when data not exist', () => {
+    const wrapper = mount(QuickVocabAddForm, { store, localVue });
+    expect(wrapper.findAll('li')).toHaveLength(0);
+  });
 
   it('fails to calls store createPersonalVocabEntry "submit" when button is clicked', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
