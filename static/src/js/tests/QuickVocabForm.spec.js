@@ -15,12 +15,22 @@ describe('QuickVocabForm', () => {
       fetchLatticeNodesByHeadword: jest.fn(),
       resetLatticeNodesByHeadword: jest.fn(),
       fetchMe: jest.fn(),
+      setLanguagePref: jest.fn(),
     };
 
     store = new Vuex.Store({
       state: {
-        personalVocabLangList: [],
+        personalVocabLangList: [
+          { lang: 'lat', id: 1 },
+          { lang: 'grc', id: 36 },
+        ],
         latticeNodes: [],
+        me: {
+          email: 'testing@test.com',
+          displayName: 'vez-test',
+          showNodeIds: 'toggle',
+          lang: 'lat',
+        },
       },
       actions,
     });
@@ -32,16 +42,18 @@ describe('QuickVocabForm', () => {
   });
 
   it('loads latticeNodes when data exist', () => {
-    store.state.latticeNodes = [{
-      pk: 1,
-      label: 'sum, esse, fuī',
-      gloss: 'to be, exist',
-      canonical: true,
-      forms: [],
-      lemmas: [{ lemma: 'sum', context: 'morpheus' }],
-      vocabulary_entries: [],
-      children: [],
-    }];
+    store.state.latticeNodes = [
+      {
+        pk: 1,
+        label: 'sum, esse, fuī',
+        gloss: 'to be, exist',
+        canonical: true,
+        forms: [],
+        lemmas: [{ lemma: 'sum', context: 'morpheus' }],
+        vocabulary_entries: [],
+        children: [],
+      },
+    ];
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
     expect(wrapper.findAll('li')).toHaveLength(1);
   });

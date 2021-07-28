@@ -204,7 +204,6 @@
           this.latticeNodeId = pk;
         }
       },
-    // pref language
     },
     computed: {
       // gives access to the state store of personalVocabLangList
