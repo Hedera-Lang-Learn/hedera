@@ -1,4 +1,3 @@
-import json
 import logging
 import uuid
 from collections import defaultdict
@@ -212,7 +211,7 @@ class LemmatizedText(models.Model):
 
     def token_node_dict(self):
         lemma_dict = defaultdict(list)
-        for token in json.loads(self.data):
+        for token in self.data:
             lemma_dict[token["word"]].append(token["node"])
         return dict(lemma_dict)
 
@@ -223,7 +222,7 @@ class LemmatizedText(models.Model):
                 f"{token['word']}</span><span follower='true'>"
                 f"{self.parse_following(token['following'])}</span>"
             )
-            for token in json.loads(self.data)
+            for token in self.data
         ])
 
     def parse_following(self, follower):
