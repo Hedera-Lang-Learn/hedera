@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 from rest_framework.test import APITestCase
 
+from lattices.models import LatticeNode
 from vocab_list.models import PersonalVocabularyList
 
 
@@ -35,11 +36,25 @@ class LatticeNodesAPITest(APITestCase):
 
     def setUp(self):
         self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
+        LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
 
     def test_get_related_lattice_nodes(self):
         self.client.force_login(user=self.created_user)
         response = self.client.get("/api/v1/lattice_nodes/?headword=sum")
-        self.assertEqual(response.status_code, 200)
+        success_response = [
+            {
+                "pk": 1,
+                "label": "sum, esse, fuī",
+                "gloss": "to be, exist",
+                "canonical": True,
+                "forms": [],
+                "lemmas": [],
+                "vocabulary_entries": [],
+                "children": [],
+                "parents": []
+            }
+        ]
+        self.assertEqual(response.json()["data"], success_response)
 
 
 class MeAPITest(APITestCase):

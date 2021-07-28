@@ -13,6 +13,4 @@ export default {
   personalVocabLangList: null,
   personalVocabAdded: false,
   latticeNodes: [],
-  // TODO add language preference
-  // languagePref: null
 };

@@ -66,5 +66,5 @@ export default {
     headword, gloss, familiarity, vocabulary_list_id: vocabularyListId, node,
   }).then((r) => cb(r.data)),
   fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
-  updateMeLang: (lang, cb) => axios.post(`${BASE_URL}me/`, lang).then((r) => cb(r.data)),
+  updateMeLang: (lang, cb) => axios.post(`${BASE_URL}me/`, { lang }).then((r) => cb(r.data)),
 };

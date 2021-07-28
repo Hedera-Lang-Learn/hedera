@@ -10,7 +10,6 @@
         id="FormControlSelect"
         aria-label="language List"
         ref="select"
-        :onchange="onLangChange()"
         required
       >
         <option
@@ -51,7 +50,7 @@
           />
         </div>
       </div>
-      <div class="lattice-node-container"  :style="showLatticeNodeList">
+      <div class="lattice-node-container" :style="showLatticeNodeList">
         <label for="LatticeNode">Suggested Gloss</label>
         <ul class="lattice-node-list">
           <li v-for="node in latticeNode" :key="node.pk">
@@ -102,7 +101,8 @@
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
-  // SET_LANGUAGE_PREF,
+    FETCH_ME,
+    SET_LANGUAGE_PREF,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
   import LatticeNode from '../../modules/LatticeNode.vue';
@@ -112,6 +112,14 @@
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
+      await this.$store.dispatch(FETCH_ME);
+      // set pref language
+      if (this.$store.state.me && this.$store.state.me.lang) {
+        const foundLangListID = this.$store.state.personalVocabLangList.find(
+          (ele) => ele.lang === this.$store.state.me.lang,
+        );
+        this.vocabularyListId = foundLangListID.id || null;
+      }
     },
     data() {
       return {
@@ -123,7 +131,6 @@
         showSuccesAlert: false,
         showUnsuccessfullAlert: false,
         submitting: false,
-        count: 1,
       };
     },
     methods: {
@@ -151,11 +158,21 @@
         if (this.$store.state.personalVocabAdded) {
           this.headword = null;
           this.gloss = null;
-          this.vocabularyListId = null;
           this.showSuccesAlert = true;
           this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
         } else {
           this.showUnsuccessfullAlert = true;
+        }
+        // updates pref language on form submit
+        if (this.vocabularyListId) {
+          const prefLang = this.$store.state.personalVocabLangList.find(
+            (ele) => ele.id === this.vocabularyListId,
+          );
+          if (prefLang.lang !== this.$store.state.me.lang) {
+            await this.$store.dispatch(SET_LANGUAGE_PREF, {
+              lang: prefLang.lang,
+            });
+          }
         }
         this.submitting = false;
       },
@@ -171,7 +188,6 @@
       resetForm() {
         this.headword = null;
         this.gloss = null;
-        this.vocabularyListId = null;
         this.showSuccesAlert = false;
         this.showUnsuccessfullAlert = false;
         this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
@@ -188,11 +204,7 @@
           this.latticeNodeId = pk;
         }
       },
-      // TODO: pref language
-      onLangChange() {
-      // this.$store.dispatch(SET_LANGUAGE_PREF, this.vocabularyListId)
-      // console.log(event);
-      },
+    // pref language
     },
     computed: {
       // gives access to the state store of personalVocabLangList
