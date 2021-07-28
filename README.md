@@ -6,7 +6,15 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ## Getting Started
 
-### With Docker
+### With Docker (compose)
+
+Before running for the first time:
+
+```
+docker-compose build
+```
+
+To run the app:
 
 ```
 docker-compose up
@@ -25,6 +33,14 @@ To import lattice data:
 ```
 docker-compose run django python manage.py shell -c "import load_ivy_lattice"
 docker-compose run django python manage.py shell -c "import logeion_load"
+```
+
+#### Good to know's and Gotcha's
+
+When installing a new python package within the container:
+
+```
+docker-compose run django pipenv install --system --deploy <package>
 ```
 
 ### Without Docker
