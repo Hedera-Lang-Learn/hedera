@@ -36,6 +36,7 @@
           placeholder="gloss"
           aria-label="gloss"
           v-model="gloss"
+          v-on:input="resetLatticeNodeId"
           required
         />
         <div class="flex-column ml-2">
@@ -52,23 +53,34 @@
       </div>
       <div class="lattice-node-container" :style="showLatticeNodeList">
         <label for="LatticeNode">Suggested Gloss</label>
-        <ul class="lattice-node-list">
-          <li v-for="node in latticeNode" :key="node.pk">
-            <button
-              class="lattice-node-button"
-              aria-label="suggestion"
-              role="button"
-            >
-              <LatticeNode
-                :node="node"
-                @selected="onSelect"
-                :show-ids="false"
-                customClassHeading="custom-lattice-node-heading"
-                customClass="custom-lattice-node"
-              />
-            </button>
-          </li>
-        </ul>
+        <select
+          id="lattice-node-select"
+          v-model="latticeNodeId"
+          @change="onSelect"
+          aria-label="Suggested Gloss List"
+        >
+          <option
+            id="lattice-node-options"
+            v-for="node in latticeNode"
+            :key="node.pk"
+            :value="node.pk"
+          >
+            <div>
+              <span
+                class="lattice-label"
+                :value="node.label"
+                aria-label="headword"
+                >{{ node.label }} -
+              </span>
+              <span
+                class="lattice-gloss"
+                :value="node.gloss"
+                aria-label="gloss"
+                >{{ node.gloss }}</span
+              >
+            </div>
+          </option>
+        </select>
       </div>
       <button
         type="submit"
@@ -105,14 +117,14 @@
     SET_LANGUAGE_PREF,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
-  import LatticeNode from '../../modules/LatticeNode.vue';
 
   export default {
-    components: { FamiliarityRating, LatticeNode },
+    components: { FamiliarityRating },
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
       await this.$store.dispatch(FETCH_ME);
+      window.addEventListener('keyup', this.onKey);
       // set pref language
       if (this.$store.state.me && this.$store.state.me.lang) {
         const foundLangListID = this.$store.state.personalVocabLangList.find(
@@ -133,12 +145,12 @@
         submitting: false,
       };
     },
-    mounted() {
-      document.addEventListener('keyup', this.latticeNodeId);
-    },
     methods: {
       onRatingChange(rating) {
         this.familiarityRating = rating;
+      },
+      resetLatticeNodeId() {
+        this.latticeNodeId = null;
       },
       async handleSubmit() {
         this.showUnsuccessfullAlert = false;
@@ -199,8 +211,14 @@
         await this.$store.dispatch(FETCH_LATTICE_NODES_BY_HEADWORD, {
           headword: this.headword,
         });
+        // sets first latticenode as the default in select options
+        if (this.latticeNode) {
+          this.latticeNodeId = this.latticeNode[0].pk;
+        }
       },
-      onSelect(node) {
+      onSelect(event) {
+        // note: '+' changes the string to a number
+        const node = this.latticeNode.find((ele) => +ele.pk === +event.target.value);
         const { gloss, pk } = node;
         if (pk) {
           this.gloss = gloss;
@@ -249,27 +267,7 @@
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
-.custom-lattice-node-heading {
-  display: flex;
-  border: 1px solid transparent;
-  &:hover {
-    border: 1px solid #578e57;
-  }
-}
-.custom-lattice-node {
-  padding-left: none;
-}
-.lattice-node-button {
-  background-color: white;
-  color: black;
-  margin-top: 10px;
-}
-.lattice-node-list {
-  height: 200px;
-  overflow: auto;
-  list-style-type: none;
-  padding-left: 0;
-}
+
 .lattice-node-container {
   padding-top: 10px;
   font-weight: bold;

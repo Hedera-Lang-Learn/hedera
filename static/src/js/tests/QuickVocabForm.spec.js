@@ -55,12 +55,12 @@ describe('QuickVocabForm', () => {
       },
     ];
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
-    expect(wrapper.findAll('li')).toHaveLength(1);
+    expect(wrapper.findAll('#lattice-node-options')).toHaveLength(1);
   });
 
   it('should not load latticeNodes when data not exist', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
-    expect(wrapper.findAll('li')).toHaveLength(0);
+    expect(wrapper.findAll('#lattice-node-options')).toHaveLength(0);
   });
 
   it('fails to calls store createPersonalVocabEntry "submit" when button is clicked', () => {
@@ -81,7 +81,7 @@ describe('QuickVocabForm', () => {
       },
     ];
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
-    const options = wrapper.find('select').findAll('option');
+    const options = wrapper.find('#FormControlSelect').findAll('option');
     options.at(1).setSelected();
     wrapper.find('input[type=text][placeholder=headword]').setValue('sum');
     expect(actions.fetchLatticeNodesByHeadword).toHaveBeenCalled();
