@@ -43,6 +43,14 @@ When installing a new python package within the container:
 docker-compose run django pipenv install --system --deploy <package>
 ```
 
+If you'd like to remove all existing images and start fresh:
+
+```
+docker-compose down --rmi all
+docker-compose build
+docker-compose up
+```
+
 ### Without Docker
 
 You'll need Redis running.  To get it going locally on the Mac, simply run:
