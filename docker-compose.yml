@@ -26,7 +26,10 @@ services:
         networks:
             - localdev
     npm:
-        image: node:11.9.0-alpine
+        image: postgres-django
+        build:
+            context: .
+            dockerfile: Dockerfile
         container_name: hedera-npm
         volumes:
             - ./:/app
@@ -40,7 +43,7 @@ services:
         image: postgres-django
         build:
             context: .
-            dockerfile: Dockerfile.django
+            dockerfile: Dockerfile
         container_name: hedera-django
         working_dir: /app
         volumes:
@@ -54,6 +57,8 @@ services:
             RQ_ASYNC: 1
             DATABASE_URL: postgres://hedera:hedera@postgres/hedera
             REDIS_URL: redis://redis:6379
+            PYTHONFAULTHANDLER: 1
+            PYTHONUNBUFFERED: 1
         networks:
             - localdev
         command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & python manage.py runserver 0.0.0.0:8000'
