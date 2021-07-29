@@ -57,7 +57,7 @@
             <button
               class="lattice-node-button"
               aria-label="suggestion"
-              @keyup.enter="onSelect"
+              role="button"
             >
               <LatticeNode
                 :node="node"
@@ -132,6 +132,9 @@
         showUnsuccessfullAlert: false,
         submitting: false,
       };
+    },
+    mounted() {
+      document.addEventListener('keyup', this.latticeNodeId);
     },
     methods: {
       onRatingChange(rating) {
