@@ -1,8 +1,9 @@
 import json
 import re
 
+from django.conf import settings
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import HttpResponseBadRequest, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
@@ -60,9 +61,11 @@ class MeAPI(APIView):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         profile = Profile.objects.get(user=request.user)
-        profile.lang = data["lang"]
-        profile.save()
-        return JsonResponse({"data": profile.data()})
+        if(data["lang"] in (x[0] for x in settings.SUPPORTED_LANGUAGES)):
+            profile.lang = data["lang"]
+            profile.save()
+            return JsonResponse({"data": profile.data()})
+        return HttpResponseBadRequest("language not supported")
 
 
 class LemmatizedTextListAPI(APIView):
@@ -317,9 +320,19 @@ class PersonalVocabularyQuickAddAPI(APIView):
             })
         return lang_list
 
+    def check_data(self, data):
+        keys = ["familiarity", "headword", "gloss", "vocabulary_list_id"]
+        for key in keys:
+            if key not in data:
+                return False
+        return True
+
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        if data["node"]:
+        checked_data = self.check_data(data)
+        if checked_data is not True:
+            return HttpResponseBadRequest("Missing required fields")
+        if "node" in data:
             data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
         new_entry = PersonalVocabularyListEntry.objects.create(**data)
         return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
@@ -332,7 +345,4 @@ class LatticeNodesAPI(APIView):
         filtered_headword_iterable = filter(str.isalnum, headword)
         filtered_headword_string = "".join(filtered_headword_iterable)
         qs = LatticeNode.objects.filter(label__iregex=r"\y" + re.escape(filtered_headword_string) + r"\y")
-        lattice_node_list = []
-        for node in qs:
-            lattice_node_list.append(node.to_dict())
-        return lattice_node_list
+        return [node.to_dict() for node in qs]
