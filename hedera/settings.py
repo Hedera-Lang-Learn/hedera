@@ -237,7 +237,6 @@ INSTALLED_APPS = [
     "cms",
     "pdfservice",
     "lti",
-    "reading_list",
 
     # project
     "hedera",

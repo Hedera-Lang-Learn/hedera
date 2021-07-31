@@ -61,11 +61,11 @@ class MeAPI(APIView):
 class BookmarksListAPI(APIView):
     def get_data(self):
         qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user)).order_by("created_at")
-        return [dict(bookmark=bookmark.api_data()) for bookmark in qs]
+        return [bookmark.api_data() for bookmark in qs]
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        textId = int(data['textId'])
+        textId = int(data["textId"])
 
         # ensure user has access to the text
         qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
@@ -75,20 +75,22 @@ class BookmarksListAPI(APIView):
             user=self.request.user,
             text=text
         )
-        return_data = dict(bookmark=bookmark.api_data())
-        return JsonResponse(dict(data=return_data))
+        return JsonResponse(dict(data=bookmark.api_data()))
 
 
 class BookmarksDetailAPI(APIView):
     def get_data(self):
-        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user))
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
         bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        return dict(bookmark=bookmark.api_data())
+        return bookmark.api_data()
 
     def delete(self, request, *args, **kwargs):
-        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user))
-        bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        bookmark.delete()
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        try:
+            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+            bookmark.delete()
+        except LemmatizedTextBookmark.DoesNotExist:
+            pass
         return JsonResponse({})
 
 

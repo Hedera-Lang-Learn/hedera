@@ -9,14 +9,16 @@
     <button type="button" class="btn btn-primary" @click="openModal">
       Quick Add Vocab
     </button>
+    <BookmarkList></BookmarkList>
   </div>
 </template>
 <script>
   import Modal from './components/Modal.vue';
   import QuickAddVocabForm from './components/QuickAddVocabForm.vue';
+  import BookmarkList from './modules/BookmarkList.vue';
 
   export default {
-    components: { Modal, QuickAddVocabForm },
+    components: { Modal, QuickAddVocabForm, BookmarkList },
     methods: {
       openModal() {
         this.$refs.Modal.toggleModal();

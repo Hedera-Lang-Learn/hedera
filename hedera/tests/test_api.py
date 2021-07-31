@@ -57,7 +57,7 @@ class BookmarksListAPITest(APITestCase):
         self.assertEqual(response.headers["Content-Type"], "application/json")
 
         content = json.loads(response.content)
-        self.assertEqual(new_text.pk, content["data"]["bookmark"]["text"]["id"])
+        self.assertEqual(new_text.pk, content["data"]["text"]["id"])
 
     def tearDown(self):
         self.user.delete()
@@ -86,13 +86,12 @@ class BookmarksDetailAPITest(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers["Content-Type"], "application/json")
 
-        expected = dict(data=dict(bookmark=self.bookmark.api_data()))
+        expected = dict(data=dict(self.bookmark.api_data()))
         actual = json.loads(response.content)
-
-        self.assertEqual(expected["data"]["bookmark"].keys(), actual["data"]["bookmark"].keys())
-        self.assertEqual(expected["data"]["bookmark"]["userId"], actual["data"]["bookmark"]["userId"])
-        self.assertEqual(expected["data"]["bookmark"]["text"].keys(), actual["data"]["bookmark"]["text"].keys())
-        self.assertEqual(expected["data"]["bookmark"]["text"]["id"], actual["data"]["bookmark"]["text"]["id"])
+        self.assertEqual(expected["data"].keys(), actual["data"].keys())
+        self.assertEqual(expected["data"]["userId"], actual["data"]["userId"])
+        self.assertEqual(expected["data"]["text"].keys(), actual["data"]["text"].keys())
+        self.assertEqual(expected["data"]["text"]["id"], actual["data"]["text"]["id"])
 
     def test_delete_bookmark(self):
         response = self.client.delete(f"/api/v1/bookmarks/{self.bookmark.pk}/", content_type="application/json")
