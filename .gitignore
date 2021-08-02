@@ -13,3 +13,4 @@ npm-debug.log
 cert.pem
 key.pem
 .docker-data
+coverage

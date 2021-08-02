@@ -6,7 +6,15 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ## Getting Started
 
-### With Docker
+### With Docker (compose)
+
+Before running for the first time:
+
+```
+docker-compose build
+```
+
+To run the app:
 
 ```
 docker-compose up
@@ -25,6 +33,22 @@ To import lattice data:
 ```
 docker-compose run django python manage.py shell -c "import load_ivy_lattice"
 docker-compose run django python manage.py shell -c "import logeion_load"
+```
+
+#### Good to know's and Gotcha's
+
+When installing a new python package within the container:
+
+```
+docker-compose run django pipenv install --system --deploy <package>
+```
+
+If you'd like to remove all existing images and start fresh:
+
+```
+docker-compose down --rmi all
+docker-compose build
+docker-compose up
 ```
 
 ### Without Docker
@@ -124,24 +148,15 @@ docker run --publish 9000:9000 --env X_API_KEY=test-secret eldarioninc/pdf-servi
 This project uses `isort` for import sorting, `flake8` for Python linting, and various `eslint plugins` for Javascript linting.
 
 ### Passing Builds via Github
-##### Python Linting
-- Install `isort` and `flake8` into either your local virtual environment terminal or directly into the Docker `hedera-postgres` container terminal
-    
-    ```bash
-    pip install isort flake8
-    ```
-    After installing you can now run the the `isort` command in the terminal to check import sorting
-    ```bash
-    isort -c **/*.py
-    ```
-    and then run the following `flake8` command to lint python
-    ```bash
-    flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
-    ```
 
-##### Javascript Linting
-- The linting packages should be installed from the setup instructions as noted above. We can run the following command in either your local terminal or in the docker `hedera-npm
-` container terminal
-    ```bash
-    npm run lint
-    ```
+#### Pre-commit
+
+To make developement more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript
+- Install [Pre-commit](https://pre-commit.com/)
+Note: the installation guide covers different install methods
+- you will then need to run the following command in the root of the project 
+```
+pre-commit install
+```
+You're all set! Now when you commit code upstream the commit will trigger the different linters and flag the required changes
+Notes: you can quickly fix javascript eslint errors with `npm run lint:fix` 

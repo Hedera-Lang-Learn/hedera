@@ -1,6 +1,6 @@
 <template>
   <div class="familiarity-rating">
-    <div class="likert-group">
+    <div :class="'likert-group '+ customClass">
         <FamiliarityRatingNode :rating="1" :value="this.value" @selected="onSelected" @active="onActive" @inactive="onInactive" />
         <FamiliarityRatingNode :rating="2" :value="this.value" @selected="onSelected" @active="onActive" @inactive="onInactive" />
         <FamiliarityRatingNode :rating="3" :value="this.value" @selected="onSelected" @active="onActive" @inactive="onInactive" />
@@ -16,7 +16,7 @@
   import { RATINGS } from '../constants';
 
   export default {
-    props: ['value'],
+    props: ['value', 'customClass'],
     components: { FamiliarityRatingNode },
     data() {
       return {
