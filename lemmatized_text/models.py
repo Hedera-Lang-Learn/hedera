@@ -238,7 +238,7 @@ class LemmatizedTextBookmark(models.Model):
         verbose_name = "lemmatized text bookmark"
         verbose_name_plural = "lemmatized text bookmarks"
         constraints = [
-            models.UniqueConstraint(fields=['user', 'text'], name='unique_lemmatized_text_bookmark')
+            models.UniqueConstraint(fields=["user", "text"], name="unique_lemmatized_text_bookmark")
         ]
 
     def api_data(self):
