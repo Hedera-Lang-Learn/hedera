@@ -8,7 +8,7 @@ For the full Scaife Viewer running the Perseus Digital Library in production, se
 
 ### With Docker (compose)
 
-Before running for the first time:
+Before running for the first time (or any time for that matter):
 
 ```
 docker-compose build
@@ -37,11 +37,12 @@ docker-compose run django python manage.py shell -c "import logeion_load"
 
 #### Good to know's and Gotcha's
 
-When installing a new python package within the container:
+Steps to add a new python package:
 
-```
-docker-compose run django pipenv install --system --deploy <package>
-```
+1. Add package to `Pipfile`
+2. Run `docker-compose run django pipenv lock`. This will save/update the `Pipfile.lock` file.
+3. Note that the django container must be running before executing the next command. 
+4. Run `docker-compose exec django pipenv install --system`.
 
 If you'd like to remove all existing images and start fresh:
 
