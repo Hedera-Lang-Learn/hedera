@@ -2,15 +2,16 @@
   <table class="table personal-vocab">
     <thead>
       <tr>
-        <th colspan="3" class="text-right">
+        <th colspan="4" class="text-right">
           <DownloadVocab :glosses="glosses" :with-familiarity="true" />
         </th>
       </tr>
     </thead>
     <colgroup>
-        <col style="width:20%">
+        <col style="width:10%">
         <col style="width:40%">
         <col style="width:40%">
+        <col style="width:10%">
     </colgroup>
     <tr>
         <th>Headword</th>
@@ -23,12 +24,19 @@
         <td nowrap>
             <FamiliarityRating :value="entry.familiarity" @input="rating => onRatingChange(rating, entry)" />
         </td>
+        <td >
+          <button type="button" @click="deleteVocab(entry.id)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
     </tr>
   </table>
 </template>
 
 <script>
-  import { FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY, FETCH_ME } from './constants';
+  import {
+    FETCH_PERSONAL_VOCAB_LIST, UPDATE_VOCAB_ENTRY, FETCH_ME, DELETE_PERSONAL_VOCAB_ENTRY,
+  } from './constants';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
 
@@ -63,6 +71,9 @@
           gloss,
           lang: this.lang,
         });
+      },
+      deleteVocab(id) {
+        this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
       },
     },
     computed: {

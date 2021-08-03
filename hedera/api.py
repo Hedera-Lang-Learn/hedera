@@ -1,7 +1,11 @@
 import json
 
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import (
+    HttpResponseBadRequest,
+    HttpResponseNotFound,
+    JsonResponse
+)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
@@ -296,6 +300,15 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
+
+    def delete(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        if "id" in data:
+            count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
+            if(count != 0):
+                return JsonResponse({"data": True, "id": data["id"]})
+            return HttpResponseNotFound(f"could not find vocab with id={data['id']}")
+        return HttpResponseBadRequest(f"missing 'id'")
 
 
 class PersonalVocabularyQuickAddAPI(APIView):
