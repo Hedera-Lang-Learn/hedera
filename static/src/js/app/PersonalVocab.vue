@@ -25,7 +25,7 @@
           :value="entry.familiarity"
           @input="(rating) => onRatingChange(rating, entry)"
         />
-        <button id="td-button" type="button" @click="deleteVocab(entry.id)">
+        <button id="td-delete-button" type="button" @click="deleteVocab(entry.id)" aria-label="delete">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </td>
@@ -128,7 +128,7 @@
 }
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
-  #td-button {
+  #td-delete-button {
     padding-left:0;
   }
   #td-no-padding-left-right {
@@ -145,7 +145,7 @@
 }
 // other views
 @media only screen and (min-device-width: 813px) {
-  #td-button {
+  #td-delete-button {
     padding-top: 0;
     padding-left: 6rem;
   }
