@@ -1,11 +1,11 @@
 <template>
   <div class="bookmark-list-wrapper">
-    <h2>Bookmarked Texts</h2>
-    <ul class="list-group bookmark-list" v-if="bookmarks">
+    <h2>My Bookmarks</h2>
+    <ul class="list-group bookmark-list" v-if="hasBookmarks">
       <BookmarkItem v-for="(bookmark, index) in bookmarks" :key="index" :bookmark="bookmark" />
     </ul>
     <div v-else>
-      No bookmarks saved.
+      You haven't bookmarked any texts yet.
     </div>
   </div>
 </template>
@@ -22,6 +22,9 @@
     computed: {
       bookmarks() {
         return this.$store.state.bookmarks;
+      },
+      hasBookmarks() {
+        return this.bookmarks.length > 0;
       },
     },
   };
