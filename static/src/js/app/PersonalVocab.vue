@@ -2,7 +2,7 @@
   <table class="table personal-vocab">
     <thead>
       <tr>
-        <th colspan="4" class="text-right">
+        <th colspan="3" class="text-right">
           <DownloadVocab :glosses="glosses" :with-familiarity="true" />
         </th>
       </tr>
