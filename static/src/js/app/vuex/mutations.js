@@ -12,8 +12,9 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
-  // TODO add suggested node functionality
-  // FETCH_LATTICE_NODES
+  FETCH_LATTICE_NODES_BY_HEADWORD,
+  RESET_LATTICE_NODES_BY_HEADWORD,
+  SET_LANGUAGE_PREF,
 } from '../constants';
 
 export default {
@@ -64,8 +65,13 @@ export default {
   [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
     state.personalVocabAdded = data.created;
   },
-  // TODO add suggested node functionality
-  // [FETCH_LATTICE_NODES]: (state, data) => {
-  //   state.latticeNodes = data
-  // }
+  [FETCH_LATTICE_NODES_BY_HEADWORD]: (state, data) => {
+    state.latticeNodes = data;
+  },
+  [RESET_LATTICE_NODES_BY_HEADWORD]: (state) => {
+    state.latticeNodes = [];
+  },
+  [SET_LANGUAGE_PREF]: (state, data) => {
+    state.me = data;
+  },
 };

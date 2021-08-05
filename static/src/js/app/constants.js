@@ -14,8 +14,10 @@ export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
 export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
 export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
-// TODO add suggested node functionality
-// export const FETCH_LATTICE_NODES = 'fetchLatticeNodes'
+export const FETCH_LATTICE_NODES_BY_HEADWORD = 'fetchLatticeNodesByHeadword';
+export const RESET_LATTICE_NODES_BY_HEADWORD = 'resetLatticeNodesByHeadword';
+// TODO add language preference
+export const SET_LANGUAGE_PREF = 'setLanguagePref';
 
 export const RESOLVED_NA = 'na';
 export const RESOLVED_NO_LEMMA = 'no-lemma';

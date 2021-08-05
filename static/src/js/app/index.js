@@ -10,6 +10,7 @@ import PersonalVocab from './PersonalVocab.vue';
 import Vocab from './Vocab.vue';
 import Texts from './Texts.vue';
 import Dashboard from './Dashboard.vue';
+import QuickAddButton from './components/quick-add-button';
 
 Vue.config.productionTip = false;
 
@@ -76,4 +77,5 @@ export default () => {
   load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
+  load('quick-add', QuickAddButton, null, () => {});
 };
