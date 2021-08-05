@@ -59,11 +59,6 @@ class BookmarksListAPITest(APITestCase):
         content = json.loads(response.content)
         self.assertEqual(new_text.pk, content["data"]["text"]["id"])
 
-    def tearDown(self):
-        self.user.delete()
-        for text in self.texts:
-            text.delete()
-
 
 class BookmarksDetailAPITest(APITestCase):
 
@@ -71,15 +66,7 @@ class BookmarksDetailAPITest(APITestCase):
         self.user = utils.create_user()
         self.client.force_login(user=self.user)
         self.text = utils.create_lemmatized_text()
-        self.bookmark = LemmatizedTextBookmark.objects.create(
-            user=self.user,
-            text=self.text,
-        )
-
-    def tearDown(self):
-        self.user.delete()
-        self.text.delete()
-        self.bookmark.delete()
+        self.bookmark = utils.create_bookmark(user=self.user, text=self.text)
 
     def test_get_bookmark(self):
         response = self.client.get(f"/api/v1/bookmarks/{self.bookmark.pk}/", content_type="application/json")
@@ -92,6 +79,20 @@ class BookmarksDetailAPITest(APITestCase):
         self.assertEqual(expected["data"]["userId"], actual["data"]["userId"])
         self.assertEqual(expected["data"]["text"].keys(), actual["data"]["text"].keys())
         self.assertEqual(expected["data"]["text"]["id"], actual["data"]["text"]["id"])
+
+    def test_get_bookmark_not_found_because_does_not_exist(self):
+        self.bookmark.delete()
+        response = self.client.get(f"/api/v1/bookmarks/{self.bookmark.pk}/", content_type="application/json")
+        self.assertEqual(response.status_code, 404)
+
+    def test_get_bookmark_not_found_because_not_authorized(self):
+        # change ownership of bookmark so it's not the same as the logged-in user
+        self.bookmark.user = utils.create_user()
+        self.bookmark.save()
+        self.assertNotEqual(self.bookmark.user.pk, self.user.pk)
+
+        response = self.client.get(f"/api/v1/bookmarks/{self.bookmark.pk}/", content_type="application/json")
+        self.assertEqual(response.status_code, 404)
 
     def test_delete_bookmark(self):
         response = self.client.delete(f"/api/v1/bookmarks/{self.bookmark.pk}/", content_type="application/json")
