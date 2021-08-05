@@ -34,7 +34,7 @@
         return Boolean(this.bookmark);
       },
       buttonText() {
-        return this.isBookmarked ? 'Remove Bookmark' : 'Bookmark';
+        return this.isBookmarked ? 'Remove Bookmark' : 'Add Bookmark';
       },
     },
   };

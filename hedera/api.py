@@ -60,7 +60,7 @@ class MeAPI(APIView):
 
 class BookmarksListAPI(APIView):
     def get_data(self):
-        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user)).order_by("created_at")
+        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user)).order_by("-created_at")
         return [bookmark.api_data() for bookmark in qs]
 
     def post(self, request, *args, **kwargs):

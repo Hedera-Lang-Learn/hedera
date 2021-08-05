@@ -237,6 +237,7 @@ class LemmatizedTextBookmark(models.Model):
     class Meta:
         verbose_name = "lemmatized text bookmark"
         verbose_name_plural = "lemmatized text bookmarks"
+        ordering = ["-created_at"]
         constraints = [
             models.UniqueConstraint(fields=["user", "text"], name="unique_lemmatized_text_bookmark")
         ]
