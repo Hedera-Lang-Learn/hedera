@@ -113,7 +113,6 @@
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
-    FETCH_ME,
     SET_LANGUAGE_PREF,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
@@ -123,8 +122,6 @@
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
-      await this.$store.dispatch(FETCH_ME);
-      window.addEventListener('keyup', this.onKey);
       // set pref language
       if (this.$store.state.me && this.$store.state.me.lang) {
         const foundLangListID = this.$store.state.personalVocabLangList.find(
@@ -217,8 +214,8 @@
         }
       },
       onSelect(event) {
-        // note: '+' changes the string to a number
-        const node = this.latticeNode.find((ele) => +ele.pk === +event.target.value);
+        // Radix must be provided to parseInt
+        const node = this.latticeNode.find((ele) => parseInt(ele.pk, 10) === parseInt(event.target.value, 10));
         const { gloss, pk } = node;
         if (pk) {
           this.gloss = gloss;

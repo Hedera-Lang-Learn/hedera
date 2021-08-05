@@ -14,13 +14,9 @@
 <script>
   import Modal from '../Modal.vue';
   import QuickAddVocabForm from './QuickAddVocabForm.vue';
-  import { FETCH_ME } from '../../constants';
 
   export default {
     components: { Modal, QuickAddVocabForm },
-    async created() {
-      await this.$store.dispatch(FETCH_ME);
-    },
     methods: {
       openModal() {
         this.$refs.Modal.toggleModal();

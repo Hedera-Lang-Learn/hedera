@@ -331,7 +331,7 @@ class PersonalVocabularyQuickAddAPI(APIView):
         data = json.loads(request.body)
         checked_data = self.check_data(data)
         if checked_data is not True:
-            return HttpResponseBadRequest("Missing required fields")
+            return JsonResponseBadRequest(data={"error": "Missing required fields"})
         if "node" in data:
             data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
         new_entry = PersonalVocabularyListEntry.objects.create(**data)
@@ -346,3 +346,7 @@ class LatticeNodesAPI(APIView):
         filtered_headword_string = "".join(filtered_headword_iterable)
         qs = LatticeNode.objects.filter(label__iregex=r"\y" + re.escape(filtered_headword_string) + r"\y")
         return [node.to_dict() for node in qs]
+
+
+class JsonResponseBadRequest(JsonResponse):
+    status_code = 400
