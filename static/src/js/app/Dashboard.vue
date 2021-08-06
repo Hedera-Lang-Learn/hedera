@@ -9,7 +9,7 @@
     <button type="button" class="btn btn-primary" @click="openModal">
       Quick Add Vocab
     </button>
-    <BookmarkList></BookmarkList>
+    <BookmarkList/>
   </div>
 </template>
 <script>
