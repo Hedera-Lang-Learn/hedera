@@ -5,7 +5,7 @@
         <th colspan="3" class="text-right">
           <div class="d-flex float-right">
             <DownloadVocab :glosses="glosses" :with-familiarity="true"/>
-            <QuickAddVocabForm  class="ml-2" />
+            <QuickAddVocabForm  class="ml-2 text-left" />
           </div>
         </th>
       </tr>
