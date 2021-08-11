@@ -1,6 +1,7 @@
 import logging
 import uuid
 
+from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import floatformat
 from django.urls import reverse
@@ -137,6 +138,14 @@ class LemmatizedText(models.Model):
             }
 
     @property
+    def learner_url(self):
+        return reverse("lemmatized_texts_learner", args=[self.pk])
+
+    @property
+    def handout_url(self):
+        return reverse("lemmatized_texts_handout", args=[self.secret_id])
+
+    @property
     def delete_url(self):
         return reverse("lemmatized_texts_delete", args=[self.pk])
 
@@ -174,7 +183,8 @@ class LemmatizedText(models.Model):
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
             "requireClone": self.classes.all().count() > 0,
-            "handoutUrl": reverse("lemmatized_texts_handout", args=[self.secret_id]),
+            "handoutUrl": self.handout_url,
+            "learnerUrl": self.learner_url,
         }
 
     def update_token(self, user, token_index, node_id, resolved):
@@ -214,3 +224,31 @@ class LemmatizationLog(models.Model):
             text=self.text.pk,
             createdAt=self.created_at
         )
+
+
+class LemmatizedTextBookmark(models.Model):
+    user = models.ForeignKey(
+        getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+        on_delete=models.CASCADE
+    )
+    text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "lemmatized text bookmark"
+        verbose_name_plural = "lemmatized text bookmarks"
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(fields=["user", "text"], name="unique_lemmatized_text_bookmark")
+        ]
+
+    def api_data(self):
+        return dict(
+            id=self.pk,
+            userId=self.user.pk,
+            createdAt=self.created_at,
+            text=self.text.api_data(),
+        )
+
+    def __str__(self):
+        return f"{self.user} lemmatized text bookmark: {self.text}"

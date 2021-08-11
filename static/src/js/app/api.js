@@ -65,5 +65,8 @@ export default {
   createPersonalVocabEntry: (headword, gloss, vocabularyListId, familiarity, cb) => axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, {
     headword, gloss, familiarity, vocabulary_list_id: vocabularyListId,
   }).then((r) => cb(r.data)),
+  fetchBookmarks: (cb) => axios.get(`${BASE_URL}bookmarks/`).then((r) => cb(r.data)),
+  addBookmark: (textId) => axios.post(`${BASE_URL}bookmarks/`, { textId }),
+  removeBookmark: (bookmarkId) => axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
   // fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
 };

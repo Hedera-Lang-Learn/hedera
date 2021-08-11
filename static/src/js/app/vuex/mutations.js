@@ -12,6 +12,7 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
   // TODO add suggested node functionality
   // FETCH_LATTICE_NODES
 } from '../constants';
@@ -63,6 +64,9 @@ export default {
   },
   [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
     state.personalVocabAdded = data.created;
+  },
+  [FETCH_BOOKMARKS]: (state, data) => {
+    state.bookmarks = data;
   },
   // TODO add suggested node functionality
   // [FETCH_LATTICE_NODES]: (state, data) => {
