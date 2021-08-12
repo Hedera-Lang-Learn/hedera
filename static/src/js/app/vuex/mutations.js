@@ -15,6 +15,10 @@ import {
   FETCH_LATTICE_NODES_BY_HEADWORD,
   RESET_LATTICE_NODES_BY_HEADWORD,
   SET_LANGUAGE_PREF,
+  DELETE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
+  // TODO add suggested node functionality
+  // FETCH_LATTICE_NODES
 } from '../constants';
 
 export default {
@@ -74,4 +78,15 @@ export default {
   [SET_LANGUAGE_PREF]: (state, data) => {
     state.me = data;
   },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+  },
+  [FETCH_BOOKMARKS]: (state, data) => {
+    state.bookmarks = data;
+  },
+  // TODO add suggested node functionality
+  // [FETCH_LATTICE_NODES]: (state, data) => {
+  //   state.latticeNodes = data
+  // }
 };

@@ -48,4 +48,42 @@ describe('Mutations', () => {
       expect(state.me).toEqual(data);
     });
   });
+  describe('deletePersonalVocabEntry', () => {
+    it('successfully updates the state', () => {
+      const state = {
+        personalVocabList: {
+          entries: [
+            {
+              id: 1,
+              headword: 'amplus -a -um',
+              gloss: 'large, spacious',
+              familiarity: 1,
+              node: 515,
+            },
+          ],
+        },
+      };
+      const data = { data: true, id: 1 };
+      mutations.deletePersonalVocabEntry(state, data);
+      expect(state.personalVocabList.entries.length).toBe(0);
+    });
+    it('unsuccessfully updates the state', () => {
+      const state = {
+        personalVocabList: {
+          entries: [
+            {
+              id: 1,
+              headword: 'amplus -a -um',
+              gloss: 'large, spacious',
+              familiarity: 1,
+              node: 515,
+            },
+          ],
+        },
+      };
+      const data = { data: true, id: 11 };
+      mutations.deletePersonalVocabEntry(state, data);
+      expect(state.personalVocabList.entries.length).toBe(1);
+    });
+  });
 });

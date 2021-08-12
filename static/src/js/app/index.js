@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueKeybindings from 'vue-keybindings';
+import VueFilterDateFormat from '@vuejs-community/vue-filter-date-format';
 
 import globalComponents from './components';
 import store from './store';
@@ -27,6 +28,8 @@ const load = (appId, appComponent, keyBindingsConfig, appProps) => {
     if (keyBindingsConfig !== null) {
       Vue.use(VueKeybindings, keyBindingsConfig);
     }
+
+    Vue.use(VueFilterDateFormat);
 
     /* eslint-disable no-new */
     new Vue({

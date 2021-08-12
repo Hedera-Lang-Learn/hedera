@@ -7,6 +7,7 @@ static/dist/
 .DS_Store
 .vscode
 .idea
+.python-version
 .env*
 db_dumps/
 npm-debug.log

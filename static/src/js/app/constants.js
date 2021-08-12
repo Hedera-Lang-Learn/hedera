@@ -18,6 +18,12 @@ export const FETCH_LATTICE_NODES_BY_HEADWORD = 'fetchLatticeNodesByHeadword';
 export const RESET_LATTICE_NODES_BY_HEADWORD = 'resetLatticeNodesByHeadword';
 // TODO add language preference
 export const SET_LANGUAGE_PREF = 'setLanguagePref';
+export const DELETE_PERSONAL_VOCAB_ENTRY = 'deletePersonalVocabEntry';
+export const FETCH_BOOKMARKS = 'fetchBookmarks';
+export const ADD_BOOKMARK = 'addBookmark';
+export const REMOVE_BOOKMARK = 'removeBookmark';
+// TODO add suggested node functionality
+// export const FETCH_LATTICE_NODES = 'fetchLatticeNodes'
 
 export const RESOLVED_NA = 'na';
 export const RESOLVED_NO_LEMMA = 'no-lemma';

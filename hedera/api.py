@@ -3,14 +3,18 @@ import re
 
 from django.conf import settings
 from django.db.models import Q
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import (
+    HttpResponseBadRequest,
+    HttpResponseNotFound,
+    JsonResponse
+)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
 from lattices.models import LatticeNode
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
-from lemmatized_text.models import LemmatizedText
+from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
@@ -66,6 +70,42 @@ class MeAPI(APIView):
             profile.save()
             return JsonResponse({"data": profile.data()})
         return HttpResponseBadRequest("language not supported")
+
+
+class BookmarksListAPI(APIView):
+    def get_data(self):
+        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user)).order_by("-created_at")
+        return [bookmark.api_data() for bookmark in qs]
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        textId = int(data["textId"])
+
+        # ensure user has access to the text
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=textId)
+
+        bookmark, _ = LemmatizedTextBookmark.objects.get_or_create(
+            user=self.request.user,
+            text=text
+        )
+        return JsonResponse(dict(data=bookmark.api_data()))
+
+
+class BookmarksDetailAPI(APIView):
+    def get_data(self):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        return bookmark.api_data()
+
+    def delete(self, request, *args, **kwargs):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        try:
+            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+            bookmark.delete()
+        except LemmatizedTextBookmark.DoesNotExist:
+            pass
+        return JsonResponse({})
 
 
 class LemmatizedTextListAPI(APIView):
@@ -306,6 +346,15 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
+
+    def delete(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        if "id" in data:
+            count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
+            if(count != 0):
+                return JsonResponse({"data": True, "id": data["id"]})
+            return HttpResponseNotFound(f"could not find vocab with id={data['id']}")
+        return HttpResponseBadRequest(f"missing 'id'")
 
 
 class PersonalVocabularyQuickAddAPI(APIView):

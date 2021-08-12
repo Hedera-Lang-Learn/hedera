@@ -19,6 +19,11 @@ import {
   FETCH_LATTICE_NODES_BY_HEADWORD,
   RESET_LATTICE_NODES_BY_HEADWORD,
   SET_LANGUAGE_PREF,
+  DELETE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
+  ADD_BOOKMARK,
+  REMOVE_BOOKMARK,
+  // FETCH_LATTICE_NODES,
 } from '../constants';
 import api from '../api';
 
@@ -116,4 +121,31 @@ export default {
     const cb = commit(SET_LANGUAGE_PREF, lang);
     return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
   },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
+    const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
+    return api.deletePersonalVocabEntry(id, cb)
+      .catch(logoutOnError(commit));
+  },
+  [FETCH_BOOKMARKS]: ({ commit }) => (
+    api
+      .fetchBookmarks((data) => commit(FETCH_BOOKMARKS, data.data))
+      .catch(logoutOnError(commit))
+  ),
+  [ADD_BOOKMARK]: ({ dispatch, commit }, { textId }) => (
+    api
+      .addBookmark(textId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+  [REMOVE_BOOKMARK]: ({ dispatch, commit }, { bookmarkId }) => (
+    api
+      .removeBookmark(bookmarkId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+  // TODO add suggested node functionality
+  // [FETCH_LATTICE_NODES]: ({commit}, { headword }) => {
+  //   const cb = (data) => commit(FETCH_LATTICE_NODES, data.data);
+  //   return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
+  // }
 };

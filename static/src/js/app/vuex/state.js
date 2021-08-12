@@ -13,4 +13,7 @@ export default {
   personalVocabLangList: null,
   personalVocabAdded: false,
   latticeNodes: [],
+  bookmarks: [],
+  // TODO add suggested node functionality
+  // latticeNodes: []
 };
