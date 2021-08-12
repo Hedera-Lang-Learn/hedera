@@ -15,6 +15,9 @@ export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
 export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
 export const DELETE_PERSONAL_VOCAB_ENTRY = 'deletePersonalVocabEntry';
+export const FETCH_BOOKMARKS = 'fetchBookmarks';
+export const ADD_BOOKMARK = 'addBookmark';
+export const REMOVE_BOOKMARK = 'removeBookmark';
 // TODO add suggested node functionality
 // export const FETCH_LATTICE_NODES = 'fetchLatticeNodes'
 

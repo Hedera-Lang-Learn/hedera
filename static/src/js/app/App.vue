@@ -5,6 +5,7 @@
         <LemmatizedText />
       </div>
       <div class="col-4">
+        <BookmarkTextButton :text-id="textId"></BookmarkTextButton>
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
         <LatticeTree v-if="selectedToken" />
       </div>
@@ -17,18 +18,25 @@
     FETCH_VOCAB_LISTS,
     FETCH_TEXT,
     FETCH_ME,
-    FETCH_PERSONAL_VOCAB_LIST,
+    FETCH_PERSONAL_VOCAB_LIST, FETCH_BOOKMARKS,
   } from './constants';
 
   import LatticeTree from './modules/LatticeTree.vue';
   import LemmatizedText from './modules/LemmatizedText.vue';
   import VocabListSelect from './components/vocab-list-select';
+  import BookmarkTextButton from './modules/BookmarkTextButton.vue';
 
   export default {
     props: ['textId'],
-    components: { LatticeTree, LemmatizedText, VocabListSelect },
+    components: {
+      LatticeTree,
+      LemmatizedText,
+      VocabListSelect,
+      BookmarkTextButton,
+    },
     created() {
       this.$store.dispatch(FETCH_ME);
+      this.$store.dispatch(FETCH_BOOKMARKS);
     },
     watch: {
       textId: {

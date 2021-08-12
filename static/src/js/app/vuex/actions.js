@@ -17,6 +17,9 @@ import {
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
   DELETE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
+  ADD_BOOKMARK,
+  REMOVE_BOOKMARK,
   // FETCH_LATTICE_NODES,
 } from '../constants';
 import api from '../api';
@@ -110,6 +113,23 @@ export default {
     return api.deletePersonalVocabEntry(id, cb)
       .catch(logoutOnError(commit));
   },
+  [FETCH_BOOKMARKS]: ({ commit }) => (
+    api
+      .fetchBookmarks((data) => commit(FETCH_BOOKMARKS, data.data))
+      .catch(logoutOnError(commit))
+  ),
+  [ADD_BOOKMARK]: ({ dispatch, commit }, { textId }) => (
+    api
+      .addBookmark(textId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+  [REMOVE_BOOKMARK]: ({ dispatch, commit }, { bookmarkId }) => (
+    api
+      .removeBookmark(bookmarkId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
   // TODO add suggested node functionality
   // [FETCH_LATTICE_NODES]: ({commit}, { headword }) => {
   //   const cb = (data) => commit(FETCH_LATTICE_NODES, data.data);

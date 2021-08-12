@@ -13,6 +13,7 @@ import {
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
   DELETE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
   // TODO add suggested node functionality
   // FETCH_LATTICE_NODES
 } from '../constants';
@@ -68,6 +69,9 @@ export default {
   [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
     const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
     if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+  },
+  [FETCH_BOOKMARKS]: (state, data) => {
+    state.bookmarks = data;
   },
   // TODO add suggested node functionality
   // [FETCH_LATTICE_NODES]: (state, data) => {

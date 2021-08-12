@@ -9,6 +9,7 @@
         />
       </div>
       <div class="col-4">
+        <BookmarkTextButton :text-id="textId"></BookmarkTextButton>
         <div>
           <div class="nav nav-tabs mb-3">
             <li class="nav-item"><a href class="nav-link" :class="{active: !readMode}" @click.prevent="readMode = false">Familiarity</a></li>
@@ -62,7 +63,7 @@
 </template>
 <script>
   import {
-    FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY, FETCH_ME,
+    FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY, FETCH_ME, FETCH_BOOKMARKS,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -70,6 +71,7 @@
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import TextFamiliarity from './modules/TextFamiliarity.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
+  import BookmarkTextButton from './modules/BookmarkTextButton.vue';
 
   export default {
     props: ['textId'],
@@ -79,9 +81,11 @@
       VocabularyEntries,
       TextFamiliarity,
       DownloadVocab,
+      BookmarkTextButton,
     },
     created() {
       this.$store.dispatch(FETCH_ME);
+      this.$store.dispatch(FETCH_BOOKMARKS);
     },
     data() {
       return {
