@@ -16,6 +16,7 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
+  DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
@@ -105,6 +106,11 @@ export default {
     const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
     return api
       .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, cb)
+      .catch(logoutOnError(commit));
+  },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
+    const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
+    return api.deletePersonalVocabEntry(id, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_BOOKMARKS]: ({ commit }) => (

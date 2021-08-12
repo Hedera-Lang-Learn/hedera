@@ -12,6 +12,7 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
+  DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   // TODO add suggested node functionality
   // FETCH_LATTICE_NODES
@@ -64,6 +65,10 @@ export default {
   },
   [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
     state.personalVocabAdded = data.created;
+  },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
   },
   [FETCH_BOOKMARKS]: (state, data) => {
     state.bookmarks = data;
