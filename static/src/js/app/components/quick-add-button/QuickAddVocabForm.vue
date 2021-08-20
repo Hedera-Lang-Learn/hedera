@@ -36,7 +36,6 @@
           placeholder="gloss"
           aria-label="gloss"
           v-model="gloss"
-          v-on:input="resetLatticeNodeId"
           required
         />
         <div class="flex-column ml-2">
@@ -70,7 +69,7 @@
                 class="lattice-label"
                 :value="node.label"
                 aria-label="headword"
-                >{{ node.label }} -
+                >{{ node.label.replace(/[0-9]/g, '') }} -
               </span>
               <span
                 class="lattice-gloss"
@@ -159,6 +158,14 @@
           this.submitting = false;
           return;
         }
+        if (this.latticeNodeId) {
+          const node = this.latticeNode.find(
+            (ele) => parseInt(ele.pk, 10) === parseInt(this.latticeNodeId, 10),
+          );
+          if (node.gloss !== this.gloss) {
+            this.latticeNodeId = null;
+          }
+        }
 
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
           headword,
@@ -210,12 +217,16 @@
         });
         // sets first latticenode as the default in select options
         if (this.latticeNode) {
-          this.latticeNodeId = this.latticeNode[0].pk;
+          const { gloss, pk } = this.latticeNode[0];
+          this.latticeNodeId = pk;
+          this.gloss = gloss;
         }
       },
       onSelect(event) {
         // Radix must be provided to parseInt
-        const node = this.latticeNode.find((ele) => parseInt(ele.pk, 10) === parseInt(event.target.value, 10));
+        const node = this.latticeNode.find(
+          (ele) => parseInt(ele.pk, 10) === parseInt(event.target.value, 10),
+        );
         const { gloss, pk } = node;
         if (pk) {
           this.gloss = gloss;

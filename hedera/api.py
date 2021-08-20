@@ -381,7 +381,7 @@ class PersonalVocabularyQuickAddAPI(APIView):
         checked_data = self.check_data(data)
         if checked_data is not True:
             return JsonResponseBadRequest(data={"error": "Missing required fields"})
-        if "node" in data:
+        if "node" in data and data["node"] is not None:
             data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
         new_entry = PersonalVocabularyListEntry.objects.create(**data)
         return JsonResponse({"data": {"created": True, "data": new_entry.data()}})

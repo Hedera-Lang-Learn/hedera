@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework.test import APITestCase
 
 from hedera.tests import utils
-from lattices.models import LatticeNode
+from lattices.models import LatticeNode, LemmaNode
 from lemmatized_text.models import LemmatizedTextBookmark
 from vocab_list.models import PersonalVocabularyList
 
@@ -108,27 +108,34 @@ class LatticeNodesAPITest(APITestCase):
 
     def setUp(self):
         self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
-        LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
+        self.lattice_node = LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
+        LemmaNode.objects.create(context="morpheus", lemma="sum", node_id=self.lattice_node.pk)
         self.client.force_login(user=self.created_user)
 
     def test_get_related_lattice_nodes(self):
         response = self.client.get("/api/v1/lattice_nodes/?headword=sum")
         success_response = [
             {
+                "pk": self.lattice_node.pk,
                 "label": "sum, esse, fuī",
                 "gloss": "to be, exist",
                 "canonical": True,
                 "forms": [],
-                "lemmas": [],
+                "lemmas": [
+                    {
+                        "lemma": "sum",
+                        "context": "morpheus"
+                    }
+                ],
                 "vocabulary_entries": [],
                 "children": [],
                 "parents": []
             }
         ]
         json_response = response.json()["data"]
-        # delete pk because it is not constant
-        del json_response[0]["pk"]
-        self.assertEqual(json_response, success_response)
+        self.assertEqual(json_response[0]["pk"], success_response[0]["pk"])
+        self.assertEqual(json_response[0]["label"], success_response[0]["label"])
+        self.assertEqual(json_response[0]["lemmas"], success_response[0]["lemmas"])
 
     def test_fail_to_get_related_lattice_nodes(self):
         response = self.client.get("/api/v1/lattice_nodes/?headword=ssss")
