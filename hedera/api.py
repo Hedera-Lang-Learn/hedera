@@ -12,7 +12,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
-from lattices.models import LatticeNode
+from lattices.models import LatticeNode, LemmaNode
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
@@ -393,8 +393,34 @@ class LatticeNodesAPI(APIView):
         headword = self.request.GET.get("headword")
         filtered_headword_iterable = filter(str.isalnum, headword)
         filtered_headword_string = "".join(filtered_headword_iterable)
-        qs = LatticeNode.objects.filter(label__iregex=r"\y" + re.escape(filtered_headword_string) + r"\y")
-        return [node.to_dict() for node in qs]
+        # [0-9]* includes headword matches with trailing numbers 0 - 9 eg 20 or 2
+        lemmas = LemmaNode.objects.filter(lemma__iregex=rf"\y{re.escape(filtered_headword_string)}[0-9]*\y")
+        lattice_nodes = [lemma.to_dict()["node"] for lemma in lemmas]
+        return self.filter_lattice_nodes(lattice_nodes, filtered_headword_string)
+
+    def filter_lattice_nodes(self, lattice_nodes, headword):
+        lattice_node_list = []
+        for node in lattice_nodes:
+            gloss = node["gloss"]
+            if gloss != "from morpheus" and gloss != "morpheus ambiguity":
+                lattice_node_list.append(node)
+            elif len(node["children"]):
+                # checks child nodes with matching label and appends them to the result
+                for child_node in node["children"]:
+                    valid_lemma = bool(re.search(rf"\b{headword}[0-9]*\b", child_node["label"]))
+                    if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity" and valid_lemma is not False:
+                        lattice_node_list.append(child_node)
+        # checks for duplicates lattice nodes
+        seen = set()
+        filtered_results = []
+        for dic in lattice_node_list:
+            key = (dic["pk"])
+            if key in seen:
+                continue
+            filtered_results.append(dic)
+            seen.add(key)
+
+        return filtered_results
 
 
 class JsonResponseBadRequest(JsonResponse):
