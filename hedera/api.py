@@ -1,5 +1,7 @@
 import json
+import re
 
+from django.conf import settings
 from django.db.models import Q
 from django.http import (
     HttpResponseBadRequest,
@@ -10,7 +12,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
-from lattices.models import LatticeNode
+from lattices.models import LatticeNode, LemmaNode
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
@@ -21,8 +23,7 @@ from vocab_list.models import (
     VocabularyListEntry
 )
 
-
-# import re
+from .models import Profile
 
 
 class JsonResponseAuthError(JsonResponse):
@@ -60,6 +61,15 @@ class MeAPI(APIView):
 
     def get_data(self):
         return self.request.user.profile.data()
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        profile = Profile.objects.get(user=request.user)
+        if(data["lang"] in (x[0] for x in settings.SUPPORTED_LANGUAGES)):
+            profile.lang = data["lang"]
+            profile.save()
+            return JsonResponse({"data": profile.data()})
+        return HttpResponseBadRequest("language not supported")
 
 
 class BookmarksListAPI(APIView):
@@ -359,19 +369,58 @@ class PersonalVocabularyQuickAddAPI(APIView):
             })
         return lang_list
 
+    def check_data(self, data):
+        keys = ["familiarity", "headword", "gloss", "vocabulary_list_id"]
+        for key in keys:
+            if key not in data:
+                return False
+        return True
+
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
-        _, created = PersonalVocabularyListEntry.objects.get_or_create(**data)
-        return JsonResponse({"data": {"created": created}})
+        checked_data = self.check_data(data)
+        if checked_data is not True:
+            return JsonResponseBadRequest(data={"error": "Missing required fields"})
+        if "node" in data and data["node"] is not None:
+            data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
+        new_entry = PersonalVocabularyListEntry.objects.create(**data)
+        return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
 
-# TODO add suggested node functionality
-# class LatticeNodesAPI(APIView):
 
-#     def get_data(self):
-#         headword = self.request.GET.get("headword")
-#         filtered_headword_iterable = filter(str.isalnum, headword)
-#         filtered_headword_string = "".join(filtered_headword_iterable)
-#         qs = LatticeNode.objects.filter(label__iregex=r"\y"+ re.escape(filtered_headword_string) + r"\y")
-#         data = serializers.serialize('json', qs)
-#         json_data = json.loads(data)
-#         return json_data
+class LatticeNodesAPI(APIView):
+
+    def get_data(self):
+        headword = self.request.GET.get("headword")
+        filtered_headword_iterable = filter(str.isalnum, headword)
+        filtered_headword_string = "".join(filtered_headword_iterable)
+        # [0-9]* includes headword matches with trailing numbers 0 - 9 eg 20 or 2
+        lemmas = LemmaNode.objects.filter(lemma__iregex=rf"\y{re.escape(filtered_headword_string)}[0-9]*\y")
+        lattice_nodes = [lemma.to_dict()["node"] for lemma in lemmas]
+        return self.filter_lattice_nodes(lattice_nodes, filtered_headword_string)
+
+    def filter_lattice_nodes(self, lattice_nodes, headword):
+        lattice_node_list = []
+        for node in lattice_nodes:
+            gloss = node["gloss"]
+            if gloss != "from morpheus" and gloss != "morpheus ambiguity":
+                lattice_node_list.append(node)
+            elif len(node["children"]):
+                # checks child nodes appends them to the result
+                for child_node in node["children"]:
+                    if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity":
+                        lattice_node_list.append(child_node)
+        # checks for duplicates lattice nodes
+        seen = set()
+        filtered_results = []
+        for dic in lattice_node_list:
+            key = (dic["pk"])
+            if key in seen:
+                continue
+            filtered_results.append(dic)
+            seen.add(key)
+
+        return filtered_results
+
+
+class JsonResponseBadRequest(JsonResponse):
+    status_code = 400

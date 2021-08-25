@@ -67,6 +67,16 @@ describe('Actions', () => {
     });
   });
 
+  describe('SET_LANGUAGE_PREF', () => {
+    it('successfully calls setLanguagePref', async () => {
+      const commit = jest.fn();
+      const payload = {
+        lang: 'lat',
+      };
+      await actions.setLanguagePref({ commit }, payload);
+      expect(commit).toHaveBeenCalledWith('setLanguagePref', 'lat');
+    });
+  });
   describe('DELETE_PERSONAL_VOCAB_ENTRY', () => {
     it('successfully calls deletePersonalVocabEntry', async () => {
       const commit = jest.fn();

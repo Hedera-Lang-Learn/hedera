@@ -116,3 +116,16 @@ class LemmaNode(models.Model):
 
     def __str__(self):
         return self.lemma + " [" + self.context + "]"
+
+    def to_dict(self):
+        """
+        serialises the node with its form/lemma strings and descendants
+        """
+        d = {
+            "pk": self.pk,
+            "lemma": self.lemma,
+            "context": self.context,
+            "node": self.node.to_dict(),
+        }
+
+        return d

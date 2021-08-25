@@ -16,6 +16,9 @@ import {
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
+  FETCH_LATTICE_NODES_BY_HEADWORD,
+  RESET_LATTICE_NODES_BY_HEADWORD,
+  SET_LANGUAGE_PREF,
   DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   ADD_BOOKMARK,
@@ -102,11 +105,21 @@ export default {
       .fetchPersonalVocabLangList(cb)
       .catch(logoutOnError(commit));
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity }) => {
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity, node }) => {
     const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
     return api
-      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, cb)
+      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, node, cb)
       .catch(logoutOnError(commit));
+  },
+  [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword }) => {
+    const cb = (data) => commit(FETCH_LATTICE_NODES_BY_HEADWORD, data.data);
+    return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
+  },
+  // TODO: might be a better way to reset this state but this works for now
+  [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => commit(RESET_LATTICE_NODES_BY_HEADWORD),
+  [SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
+    const cb = commit(SET_LANGUAGE_PREF, lang);
+    return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
   },
   [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
     const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
