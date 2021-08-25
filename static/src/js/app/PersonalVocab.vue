@@ -3,7 +3,10 @@
     <thead>
       <tr>
         <th colspan="3" class="text-right">
-          <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+          <div class="d-flex float-right">
+            <DownloadVocab :glosses="glosses" :with-familiarity="true"/>
+            <QuickAddVocabForm  class="ml-2 text-left" />
+          </div>
         </th>
       </tr>
     </thead>
@@ -42,10 +45,11 @@
   } from './constants';
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
+  import QuickAddVocabForm from './components/quick-add-button';
 
   export default {
     props: ['lang'],
-    components: { FamiliarityRating, DownloadVocab },
+    components: { FamiliarityRating, DownloadVocab, QuickAddVocabForm },
     watch: {
       lang: {
         immediate: true,
