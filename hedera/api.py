@@ -407,8 +407,7 @@ class LatticeNodesAPI(APIView):
             elif len(node["children"]):
                 # checks child nodes with matching label and appends them to the result
                 for child_node in node["children"]:
-                    valid_lemma = bool(re.search(rf"\b{headword}[0-9]*\b", child_node["label"]))
-                    if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity" and valid_lemma is not False:
+                    if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity":
                         lattice_node_list.append(child_node)
         # checks for duplicates lattice nodes
         seen = set()
