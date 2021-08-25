@@ -405,7 +405,7 @@ class LatticeNodesAPI(APIView):
             if gloss != "from morpheus" and gloss != "morpheus ambiguity":
                 lattice_node_list.append(node)
             elif len(node["children"]):
-                # checks child nodes with matching label and appends them to the result
+                # checks child nodes appends them to the result
                 for child_node in node["children"]:
                     if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity":
                         lattice_node_list.append(child_node)
