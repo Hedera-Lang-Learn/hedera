@@ -15,6 +15,7 @@ from iso639 import languages
 from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
+from .parsers import EditedTextHtmlParser, TagStripper
 
 
 def to_percent(val):
@@ -195,19 +196,20 @@ class LemmatizedText(models.Model):
         )
 
     def handle_edited_data(self, edits):
-        # we need to strip 'edits' of all html and set it to original_text
-        # get the original token -> node dictionary with self.token_node_dict
-        print("This method is not yet implemented")
-        # print(edits)
-        # print(self.token_node_dict())
-        # HTMLParsing Needs
-        # 1) Create a dictionary of nodes and word tokens
-        # 2) Reverse any followers parsing
-        # 3) Tokenize/lemmatize the following chunks:
-        #    a) spans with content but no attributes
-        #    b) content outside of spans
-        #    c) spans where contents don't match dictionary value
-        #    d) spans where contents do not have dictionary entry
+        edits1 = edits.replace("<p>", "")
+        edits2 = edits1.replace("</p>", "<br/>")
+        edits3 = edits2.replace("<br/>", "\n")
+        edit_parser = EditedTextHtmlParser(
+            token_node_dict=self.token_node_dict(),
+            lang=self.lang
+            )
+        edit_parser.feed(edits3)
+        self.data = edit_parser.lemmatized_text_data
+
+        strip_parser = TagStripper()
+        strip_parser.feed(edits3)
+        self.original_text = strip_parser.get_data()
+        self.save()
 
     def token_node_dict(self):
         lemma_dict = defaultdict(list)
@@ -218,7 +220,7 @@ class LemmatizedText(models.Model):
     def transform_data_to_html(self):
         return "".join([
             (
-                f"<span node={token['node']} resolved={token['resolved']}>"
+                f"<span {self.format_token_key_value_pairs(token)}>"
                 f"{token['word']}</span><span follower='true'>"
                 f"{self.parse_following(token['following'])}</span>"
             )
@@ -227,6 +229,9 @@ class LemmatizedText(models.Model):
 
     def parse_following(self, follower):
         return follower.replace("\n", "<br/>")
+
+    def format_token_key_value_pairs(self, token):
+        return " ".join([ f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following") ])
 
 
 class LemmatizationLog(models.Model):

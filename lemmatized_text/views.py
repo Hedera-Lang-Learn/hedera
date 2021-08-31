@@ -91,7 +91,6 @@ def edit(request, pk):
             # pass to a "lemmatized text method" to handle changes
             lemmatized_text.handle_edited_data(request.POST.get("text"))
             return redirect("lemmatized_texts_list")
-
     form = LemmatizedTextEditForm(initial={"text": lemmatized_text.transform_data_to_html()})
     return render(request, "lemmatized_text/edit.html", {"form": form})
 
