@@ -15,6 +15,7 @@ from iso639 import languages
 from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
+
 from .parsers import EditedTextHtmlParser, TagStripper
 
 
@@ -202,7 +203,7 @@ class LemmatizedText(models.Model):
         edit_parser = EditedTextHtmlParser(
             token_node_dict=self.token_node_dict(),
             lang=self.lang
-            )
+        )
         edit_parser.feed(edits3)
         self.data = edit_parser.lemmatized_text_data
 
@@ -231,7 +232,7 @@ class LemmatizedText(models.Model):
         return follower.replace("\n", "<br/>")
 
     def format_token_key_value_pairs(self, token):
-        return " ".join([ f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following") ])
+        return " ".join([f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")])
 
 
 class LemmatizationLog(models.Model):
