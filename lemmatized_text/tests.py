@@ -7,6 +7,13 @@ from django.contrib.auth.models import User
 
 from .models import LemmatizedText
 
+from .parsers import EditedTextHtmlParser
+
+
+def create_user(username, email, password):
+    user = User.objects.create_user(username, email=email, password=password)
+    return user
+
 
 @override_settings(
     AUTHENTICATION_BACKENDS=[
@@ -15,13 +22,9 @@ from .models import LemmatizedText
 )
 class LemmatizedTextTests(TestCase):
 
-    def create_user(self, username, email, password):
-        user = User.objects.create_user(username, email=email, password=password)
-        return user
-
     def setUp(self):
-        self.created_user1 = self.create_user("user1", "user1@example.com", "password")
-        self.created_user2 = self.create_user("user2", "user2@example.com", "password2")
+        self.created_user1 = create_user("user1", "user1@example.com", "password")
+        self.created_user2 = create_user("user2", "user2@example.com", "password2")
 
     def test_clone(self):
         lt = LemmatizedText.objects.create(
@@ -29,7 +32,7 @@ class LemmatizedTextTests(TestCase):
             lang="lat",
             original_text="Femina somnia habet.",
             created_by=self.created_user1,
-            data=json.dumps({"key": "test"})
+            data={"key": "test"}
         )
         lt_clone = lt.clone()
         self.assertEqual(LemmatizedText.objects.all().count(), 2)
@@ -59,7 +62,7 @@ class LemmatizedTextTests(TestCase):
             lang="lat",
             original_text="Femina somnia habet.",
             created_by=self.created_user1,
-            data=json.dumps(data)
+            data=data
         )
         expected = {
             "mis": [3, 22],
@@ -84,21 +87,42 @@ class LemmatizedTextTests(TestCase):
             lang="lat",
             original_text="Femina somnia habet.",
             created_by=self.created_user1,
-            data=json.dumps(data)
+            data=data
         )
-        expected = "<span node=3 resolved=True>mis</span><span follower='true'> </span><span node=55 resolved=True>sim</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
+        
+        expected = "<span node='3' resolved='True'>mis</span><span follower='true'> </span><span node='55' resolved='True'>sim</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'>.<br/></span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='None' resolved='False'>ism</span><span follower='true'> </span><span node='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(lt.transform_data_to_html(), expected)
+
+    def test_handle_edited_data(self):
+        data = [
+            {"word": "Femina", "node": 3, "resolved": True, "following": " ", "word_normalized": "Femina"},
+            {"word": "somnia", "node": 55, "resolved": False, "following": " ", "word_normalized": "somina"},
+            {"word": "habet", "node": 60, "resolved": True, "following": ".", "word_normalized": "habet"},
+        ]
+        example_text = LemmatizedText.objects.create(
+            title="Test title",
+            lang="lat",
+            original_text="Femina somnia habet.",
+            created_by=self.created_user1,
+            data=data
+        )
+        self.assertEqual(example_text.token_count(), 3)
+        self.assertEqual(example_text.original_text, "Femina somnia habet.")
+
+        edited_text = "<span follower='true'> </span><span node='55' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
+        example_text.handle_edited_data(edited_text)
+        expected_edited_text = "<span node='None' resolved='True' word_normalized=''></span><span follower='true'> </span><span word_normalized='somnia' node='1' resolved='no-ambiguity'>somnia</span><span follower='true'> </span><span word_normalized='something' node='None' resolved='no-lemma'>something</span><span follower='true'> </span><span word_normalized='else' node='None' resolved='no-lemma'>else</span><span follower='true'>  </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span word_normalized='And' node='None' resolved='no-lemma'>And</span><span follower='true'> </span><span word_normalized='more' node='2' resolved='no-ambiguity'>more</span><span follower='true'>!</span><span word_normalized='' node='None' resolved='na'></span><span follower='true'> </span>"
+
+        self.assertEqual(example_text.transform_data_to_html(), expected_edited_text)
+        self.assertEqual(example_text.token_count(), 8)
+        self.assertEqual(example_text.original_text, " somnia something else habet. And more!")
 
 
 class LemmatizedTextViewsTests(TestCase):
 
-    def create_user(self, username, email, password):
-        user = User.objects.create_user(username, email=email, password=password)
-        return user
-
     def setUp(self):
-        self.created_user1 = self.create_user("user1", "user1@example.com", "password")
-        self.created_user2 = self.create_user("user2", "user2@example.com", "password2")
+        self.created_user1 = create_user("user1", "user1@example.com", "password")
+        self.created_user2 = create_user("user2", "user2@example.com", "password2")
 
         data = [
             {"word": "mis", "node": 3, "resolved": True, "following": " "},
@@ -114,14 +138,14 @@ class LemmatizedTextViewsTests(TestCase):
             lang="lat",
             original_text="mis sim i.\ni i ism mis.",
             created_by=self.created_user1,
-            data=json.dumps(data)
+            data=data
         )
         self.lt2 = LemmatizedText.objects.create(
             title="Test title",
             lang="lat",
             original_text="mis sim i.\ni i ism mis.",
             created_by=self.created_user2,
-            data=json.dumps(data)
+            data=data
         )
 
     def test_redirect_if_not_logged_in(self):
@@ -149,12 +173,12 @@ class LemmatizedTextViewsTests(TestCase):
         self.client.login(username="user1", password="password")
         response = self.client.get(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}))
         self.assertEqual(response.status_code, 200)
-        expected_initial_text = "<span node=3 resolved=True>mis</span><span follower='true'> </span><span node=55 resolved=True>sim</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
+        expected_initial_text = "<span node='3' resolved='True'>mis</span><span follower='true'> </span><span node='55' resolved='True'>sim</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'>.<br/></span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='None' resolved='False'>ism</span><span follower='true'> </span><span node='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(response.context["form"].initial["text"], expected_initial_text)
 
     def test_redirects_to_texts_list_on_success(self):
         self.client.login(username="user1", password="password")
-        post_text = "<span node=3 resolved=True></span><span follower='true'> </span><span node=55 resolved=True>sim something else</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
+        post_text = "<span node=3 resolved=True></span><span follower='true'> </span><span node=55 resolved=True>sim</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
         response = self.client.post(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}), {"text": post_text})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(response.url.startswith("/lemmatized_text/"))

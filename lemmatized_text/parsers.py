@@ -54,6 +54,13 @@ class EditedTextHtmlParser(HTMLParser):
                 self.lemmatize_chunk(data)
 
     def separate_true_followers(self, follower):
+        """
+        Takes the contents of a span where 'follower' is true.
+        Splits any 'follower' characters from alpha numeric characters.
+        Sets the 'following' attr on the previous data point with true followers
+        and sends new alpha numeric string to be lemmatized.
+        Returns None
+        """
         followers = []
         text = []
         for idx, ch in enumerate(follower):
@@ -61,18 +68,39 @@ class EditedTextHtmlParser(HTMLParser):
                 text = follower[idx:]
                 break
             followers.append(ch)
-        # this is problem if it starts with a follower
-        self.lemmatized_text_data[-1]["following"] += "".join(followers)
+
+        if len(self.lemmatized_text_data) > 0:
+            self.lemmatized_text_data[-1]["following"] += "".join(followers)
+        else:
+            # this will only occur if the text begins with a "follower"
+            self.lemmatized_text_data.append(
+                {
+                    "word": "",
+                    "node": None,
+                    "resolved": True,
+                    "word_normalized": "",
+                    "following": "".join(followers)
+                }
+            )
         if(len(text) > 0):
             self.lemmatize_chunk("".join(text))
 
     def parse_node_value(self):
+        """
+        Parses the string node value in the current attrs to an integer.
+        Returns int, or None if there is an error
+        """
         try:
             return int(self.current_attrs["node"])
         except (KeyError, ValueError):
             return None
 
     def lemmatize_chunk(self, chunk):
+        """
+        Takes an unrecognized chunk of text.
+        Sends 'chunk' to be lemmatized, then extends the data with the returned content.
+        Returns None
+        """
         self.current_data = None
         new_data = self.lemmatizer.lemmatize(chunk)
         self.lemmatized_text_data.extend(new_data)
