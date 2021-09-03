@@ -1,13 +1,9 @@
-import json
-
 from django.test import TestCase, override_settings
 from django.urls import reverse
 
 from django.contrib.auth.models import User
 
 from .models import LemmatizedText
-
-from .parsers import EditedTextHtmlParser
 
 
 def create_user(username, email, password):
@@ -89,7 +85,7 @@ class LemmatizedTextTests(TestCase):
             created_by=self.created_user1,
             data=data
         )
-        
+
         expected = "<span node='3' resolved='True'>mis</span><span follower='true'> </span><span node='55' resolved='True'>sim</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'>.<br/></span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='None' resolved='False'>ism</span><span follower='true'> </span><span node='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(lt.transform_data_to_html(), expected)
 
@@ -110,11 +106,11 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(example_text.original_text, "Femina somnia habet.")
 
         edited_text = "<span follower='true'> </span><span node='55' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
-        example_text.handle_edited_data(edited_text)
-        expected_edited_text = "<span node='None' resolved='True' word_normalized=''></span><span follower='true'> </span><span word_normalized='somnia' node='1' resolved='no-ambiguity'>somnia</span><span follower='true'> </span><span word_normalized='something' node='None' resolved='no-lemma'>something</span><span follower='true'> </span><span word_normalized='else' node='None' resolved='no-lemma'>else</span><span follower='true'>  </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span word_normalized='And' node='None' resolved='no-lemma'>And</span><span follower='true'> </span><span word_normalized='more' node='2' resolved='no-ambiguity'>more</span><span follower='true'>!</span><span word_normalized='' node='None' resolved='na'></span><span follower='true'> </span>"
+        example_text.handle_edited_data("New title", edited_text)
+        expected_edited_text = "<span node='None' resolved='True' word_normalized=''></span><span follower='true'> </span><span word_normalized='somnia' node='1' resolved='no-ambiguity'>somnia</span><span follower='true'> </span><span word_normalized='something' node='None' resolved='no-lemma'>something</span><span follower='true'> </span><span word_normalized='else' node='None' resolved='no-lemma'>else</span><span follower='true'>  </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span word_normalized='And' node='None' resolved='no-lemma'>And</span><span follower='true'> </span><span word_normalized='more' node='2' resolved='no-ambiguity'>more</span><span follower='true'>!</span>"
 
         self.assertEqual(example_text.transform_data_to_html(), expected_edited_text)
-        self.assertEqual(example_text.token_count(), 8)
+        self.assertEqual(example_text.token_count(), 7)
         self.assertEqual(example_text.original_text, " somnia something else habet. And more!")
 
 
@@ -179,6 +175,6 @@ class LemmatizedTextViewsTests(TestCase):
     def test_redirects_to_texts_list_on_success(self):
         self.client.login(username="user1", password="password")
         post_text = "<span node=3 resolved=True></span><span follower='true'> </span><span node=55 resolved=True>sim</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
-        response = self.client.post(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}), {"text": post_text})
+        response = self.client.post(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}), {"title": "Test title", "text": post_text})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(response.url.startswith("/lemmatized_text/"))

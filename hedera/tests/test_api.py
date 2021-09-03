@@ -1,7 +1,10 @@
-from vocab_list.models import PersonalVocabularyList
-from django.contrib.auth.models import User
-from rest_framework.test import APITestCase
 import json
+
+from django.contrib.auth.models import User
+
+from rest_framework.test import APITestCase
+
+from vocab_list.models import PersonalVocabularyList
 
 
 class PersonalVocabularyQuickAddAPITest(APITestCase):

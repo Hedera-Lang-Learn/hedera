@@ -161,6 +161,7 @@ class LemmatizedText(models.Model):
         obj.created_by = cloned_by or self.created_by
         obj.secret_id = uuid.uuid4()
         obj.created_at = timezone.now()
+        obj.title += " (clone)"
         obj.save()
         return obj
 
@@ -173,7 +174,7 @@ class LemmatizedText(models.Model):
             "completed": self.completed,
             "tokenCount": self.token_count(),
             "lemmatizationStatus": self.lemmatization_status(),
-            "createdAt": self.created_at,
+            "createdAt": self.created_at.strftime("%b %d %Y, %I:%M%P"),
             "canRetry": self.can_retry(),
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
@@ -196,7 +197,9 @@ class LemmatizedText(models.Model):
             resolved=resolved,
         )
 
-    def handle_edited_data(self, edits):
+    def handle_edited_data(self, title, edits):
+        self.title = title
+
         edits1 = edits.replace("<p>", "")
         edits2 = edits1.replace("</p>", "<br/>")
         edits3 = edits2.replace("<br/>", "\n")
@@ -205,6 +208,12 @@ class LemmatizedText(models.Model):
             lang=self.lang
         )
         edit_parser.feed(edits3)
+
+        # Trimming junk tokens that get appended to the end of the list
+        for token in reversed(edit_parser.lemmatized_text_data):
+            if token["word"] != "":
+                break
+            edit_parser.lemmatized_text_data.remove(token)
         self.data = edit_parser.lemmatized_text_data
 
         strip_parser = TagStripper()

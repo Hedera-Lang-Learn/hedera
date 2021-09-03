@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load static %}
 {% load lemmatized_text_tags %}
+{% load bootstrap %}
 
 {% block head_title %}Lemmatized Texts{% endblock %}
 
@@ -11,12 +12,16 @@
 {% block site_brand %}{% endblock %}
 {% block navbar-toggler %}{% endblock %}
 
+
+
 {% block body %}
-  <h1>Edit</h1>
-  <form method="post" action=".">
-    {% csrf_token %}
-    {{ form.media }}
-    {{ form.as_p }}
-    <input type="submit" value="Submit Edits"/>
-  </form>
+  <h1>Lemmatized Text to Edit</h1>
+  <div style="width:75%;">
+      <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form|bootstrap }}
+        <input type="submit" value="Submit Edits"/>
+      </form>
+  </div>
 {% endblock %}
