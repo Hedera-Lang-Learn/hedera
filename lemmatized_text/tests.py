@@ -36,7 +36,7 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(LemmatizedText.objects.all().count(), 3)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user1).count(), 2)
         self.assertEqual(LemmatizedText.objects.filter(created_by=self.created_user2).count(), 1)
-        self.assertEqual(lt.title, lt_clone.title)
+        self.assertEqual(lt_clone.title, f"{lt.title} (clone)")
         self.assertEqual(lt.lang, lt_clone.lang)
         self.assertEqual(lt.original_text, lt_clone.original_text)
         self.assertEqual(lt.data, lt_clone.data)
@@ -107,7 +107,7 @@ class LemmatizedTextTests(TestCase):
 
         edited_text = "<span follower='true'> </span><span node='55' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
         example_text.handle_edited_data("New title", edited_text)
-        expected_edited_text = "<span node='None' resolved='True' word_normalized=''></span><span follower='true'> </span><span word_normalized='somnia' node='1' resolved='no-ambiguity'>somnia</span><span follower='true'> </span><span word_normalized='something' node='None' resolved='no-lemma'>something</span><span follower='true'> </span><span word_normalized='else' node='None' resolved='no-lemma'>else</span><span follower='true'>  </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span word_normalized='And' node='None' resolved='no-lemma'>And</span><span follower='true'> </span><span word_normalized='more' node='2' resolved='no-ambiguity'>more</span><span follower='true'>!</span>"
+        expected_edited_text = "<span node='None' resolved='True' word_normalized=''></span><span follower='true'> </span><span word_normalized='somnia' node='3' resolved='no-ambiguity'>somnia</span><span follower='true'> </span><span word_normalized='something' node='None' resolved='no-lemma'>something</span><span follower='true'> </span><span word_normalized='else' node='None' resolved='no-lemma'>else</span><span follower='true'>  </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span word_normalized='And' node='None' resolved='no-lemma'>And</span><span follower='true'> </span><span word_normalized='more' node='4' resolved='no-ambiguity'>more</span><span follower='true'>!</span>"
 
         self.assertEqual(example_text.transform_data_to_html(), expected_edited_text)
         self.assertEqual(example_text.token_count(), 7)

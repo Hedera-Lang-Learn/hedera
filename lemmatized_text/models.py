@@ -210,14 +210,12 @@ class LemmatizedText(models.Model):
     def handle_edited_data(self, title, edits):
         self.title = title
 
-        edits1 = edits.replace("<p>", "")
-        edits2 = edits1.replace("</p>", "<br/>")
-        edits3 = edits2.replace("<br/>", "\n")
+        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
         edit_parser = EditedTextHtmlParser(
             token_node_dict=self.token_node_dict(),
             lang=self.lang
         )
-        edit_parser.feed(edits3)
+        edit_parser.feed(cleaned_edits)
 
         # Trimming junk tokens that get appended to the end of the list
         for token in reversed(edit_parser.lemmatized_text_data):
@@ -227,7 +225,7 @@ class LemmatizedText(models.Model):
         self.data = edit_parser.lemmatized_text_data
 
         strip_parser = TagStripper()
-        strip_parser.feed(edits3)
+        strip_parser.feed(cleaned_edits)
         self.original_text = strip_parser.get_data()
         self.save()
 
