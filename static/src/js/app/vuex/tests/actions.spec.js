@@ -13,6 +13,11 @@ jest.mock('axios', () => ({
     url = _url;
     resolve(true);
   }),
+  delete: (_url, _body) => new Promise((resolve) => {
+    url = _url;
+    body = _body;
+    resolve(_body);
+  }),
   defaults: { withCredentials: true },
 }));
 describe('Actions', () => {
@@ -59,6 +64,26 @@ describe('Actions', () => {
         vocabulary_list_id: 1,
         familiarity: 1,
       });
+    });
+  });
+
+  describe('SET_LANGUAGE_PREF', () => {
+    it('successfully calls setLanguagePref', async () => {
+      const commit = jest.fn();
+      const payload = {
+        lang: 'lat',
+      };
+      await actions.setLanguagePref({ commit }, payload);
+      expect(commit).toHaveBeenCalledWith('setLanguagePref', 'lat');
+    });
+  });
+  describe('DELETE_PERSONAL_VOCAB_ENTRY', () => {
+    it('successfully calls deletePersonalVocabEntry', async () => {
+      const commit = jest.fn();
+      const payload = { id: 1 };
+      await actions.deletePersonalVocabEntry({ commit }, payload);
+      expect(commit).toHaveBeenCalledWith('deletePersonalVocabEntry', payload);
+      expect(body.data).toEqual(payload);
     });
   });
 });

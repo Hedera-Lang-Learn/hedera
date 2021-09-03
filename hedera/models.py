@@ -14,6 +14,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=250, blank=True)
     show_node_ids = models.CharField(max_length=10, choices=SHOW_NODE_CHOICES, default="never")
+    lang = models.CharField(max_length=3, null=True)  # ISO 639.2
 
     def __str__(self):
         return self.display_name or self.user.email
@@ -23,4 +24,5 @@ class Profile(models.Model):
             email=self.user.email,
             displayName=self.display_name,
             showNodeIds=self.show_node_ids,
+            lang=self.lang,
         )
