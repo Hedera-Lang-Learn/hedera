@@ -8,7 +8,10 @@ from rest_framework.test import APITestCase
 from hedera.tests import utils
 from lattices.models import LatticeNode, LemmaNode
 from lemmatized_text.models import LemmatizedTextBookmark
-from vocab_list.models import PersonalVocabularyList
+from vocab_list.models import (
+    PersonalVocabularyList,
+    PersonalVocabularyListEntry
+)
 
 
 class PersonalVocabularyQuickAddAPITest(APITestCase):
@@ -17,6 +20,13 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
         self.client.force_login(user=self.created_user)
         self.personal_vocab_list = PersonalVocabularyList.objects.create(user=self.created_user, lang="lat")
+        data = {
+            "familiarity": 1,
+            "headword": "testers",
+            "gloss": "therefore",
+            "vocabulary_list_id": self.personal_vocab_list.id
+        }
+        self.personal_vocab_list_entry = PersonalVocabularyListEntry.objects.create(**data)
 
     def test_fail_get_personal_vocabulary_quick_add_api(self):
         self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
@@ -73,6 +83,27 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 400)
+# Delete Test
+
+    def test_successful_delete_personal_vocab_entry(self):
+        payload = {
+            "id": self.personal_vocab_list_entry.id
+        }
+        response = self.client.delete("/api/v1/personal_vocab_list/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+    def test_unsuccessful_delete_personal_vocab_entry_empty_request_body(self):
+        response = self.client.delete("/api/v1/personal_vocab_list/", json.dumps({}), content_type="application/json")
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["error"], "missing 'id'")
+
+    def test_unsuccessful_delete_personal_vocab_entry_id_does_not_exist(self):
+        payload = {
+            "id": 9999
+        }
+        response = self.client.delete("/api/v1/personal_vocab_list/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.json()["error"], "could not find vocab with id=9999")
 
 
 class BookmarksListAPITest(APITestCase):
@@ -140,6 +171,14 @@ class LatticeNodesAPITest(APITestCase):
     def test_fail_to_get_related_lattice_nodes(self):
         response = self.client.get("/api/v1/lattice_nodes/?headword=ssss")
         self.assertEqual(len(response.json()["data"]), 0)
+
+    def test_fail_headword_not_provided(self):
+        response = self.client.get("/api/v1/lattice_nodes/?headword=")
+        self.assertEqual(len(response.json()["data"]), 0)
+
+    def test_fail_headword_query_key_not_provided(self):
+        response = self.client.get("/api/v1/lattice_nodes/")
+        self.assertEqual(response.json()["error"], "Missing headword")
 
 
 class MeAPITest(APITestCase):
