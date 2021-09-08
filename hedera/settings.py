@@ -207,7 +207,6 @@ INSTALLED_APPS = [
 
     # external
     "account",
-    "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
     "lti_provider",
