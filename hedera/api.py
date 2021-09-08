@@ -3,7 +3,7 @@ import re
 
 from django.conf import settings
 from django.db.models import Q
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
@@ -65,7 +65,7 @@ class MeAPI(APIView):
             profile.lang = data["lang"]
             profile.save()
             return JsonResponse({"data": profile.data()})
-        return HttpResponseBadRequest("language not supported")
+        return JsonResponseBadRequest({"error": "language not supported"})
 
 
 class BookmarksListAPI(APIView):

@@ -195,6 +195,7 @@ class MeAPITest(APITestCase):
         # if language is not supported
         response = self.client.post("/api/v1/me/", json.dumps({"lang": "abc"}), content_type="application/json")
         self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["error"], "language not supported")
 
 
 class BookmarksDetailAPITest(APITestCase):
