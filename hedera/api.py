@@ -312,8 +312,13 @@ class PersonalVocabularyListAPI(APIView):
         return vl
 
     def get_data(self):
-        page_number = self.request.GET.get("page") or 1
+        page_number = self.request.GET.get("page")
         vl = self.get_object()
+        if page_number is None:
+            return dict(
+                personalVocabList=vl.data(),
+                unknownGlosses=None
+            )
         vl_data_copy = vl.data()
         paginator = Paginator(vl_data_copy["entries"], 100)
         page_obj = paginator.get_page(page_number)
