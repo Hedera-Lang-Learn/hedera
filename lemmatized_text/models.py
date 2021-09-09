@@ -1,5 +1,6 @@
 import logging
 import uuid
+from collections import defaultdict
 
 from django.conf import settings
 from django.db import models
@@ -15,9 +16,19 @@ from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
 
+from .parsers import EditedTextHtmlParser, TagStripper
+
 
 def to_percent(val):
     return floatformat(val * 100, 2) + "%"
+
+
+def parse_following(follower):
+    return follower.replace("\n", "<br/>")
+
+
+def format_token_key_value_pairs(token):
+    return " ".join([f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")])
 
 
 @job("default", timeout=600)
@@ -153,6 +164,10 @@ class LemmatizedText(models.Model):
         url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
+    @property
+    def edit_url(self):
+        return reverse("lemmatized_text_edit", args=[self.pk])
+
     def clone(self, cloned_by=None):
         """Set a copy of this object's pk to None, set some relationships and save (cloning)"""
         # https://docs.djangoproject.com/en/3.2/topics/db/queries/#copying-model-instances
@@ -162,6 +177,7 @@ class LemmatizedText(models.Model):
         obj.created_by = cloned_by or self.created_by
         obj.secret_id = uuid.uuid4()
         obj.created_at = timezone.now()
+        obj.title += " (clone)"
         obj.save()
         return obj
 
@@ -179,6 +195,7 @@ class LemmatizedText(models.Model):
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
             "cloneUrl": self.clone_url,
+            "editUrl": self.edit_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
             "requireClone": self.classes.all().count() > 0,
@@ -196,6 +213,44 @@ class LemmatizedText(models.Model):
             node_id=node_id,
             resolved=resolved,
         )
+
+    def handle_edited_data(self, title, edits):
+        self.title = title
+
+        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
+        edit_parser = EditedTextHtmlParser(
+            token_node_dict=self.token_node_dict(),
+            lang=self.lang
+        )
+        edit_parser.feed(cleaned_edits)
+
+        # Trimming junk tokens that get appended to the end of the list
+        for token in reversed(edit_parser.lemmatized_text_data):
+            if token["word"] != "":
+                break
+            edit_parser.lemmatized_text_data.remove(token)
+        self.data = edit_parser.lemmatized_text_data
+
+        strip_parser = TagStripper()
+        strip_parser.feed(cleaned_edits)
+        self.original_text = strip_parser.get_data()
+        self.save()
+
+    def token_node_dict(self):
+        lemma_dict = defaultdict(list)
+        for token in self.data:
+            lemma_dict[token["word"]].append(token["node"])
+        return dict(lemma_dict)
+
+    def transform_data_to_html(self):
+        return "".join([
+            (
+                f"<span {format_token_key_value_pairs(token)}>"
+                f"{token['word']}</span><span follower='true'>"
+                f"{parse_following(token['following'])}</span>"
+            )
+            for token in self.data
+        ])
 
 
 class LemmatizationLog(models.Model):

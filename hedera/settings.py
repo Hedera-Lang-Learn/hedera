@@ -239,6 +239,7 @@ INSTALLED_APPS = [
 
     # project
     "hedera",
+    "ckeditor",
 ]
 
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
@@ -424,3 +425,13 @@ SESSION_COOKIE_SECURE = bool(int(os.environ.get("SESSION_COOKIE_SECURE", "0")))
 
 # Default primary key field type (for django 3.2+)
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# CKEDITOR SETTINGS
+CKEDITOR_CONFIGS = {
+    "hedera_ckeditor": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [],
+        "removePlugins": "stylesheetparser",
+        "allowedContent": "span[*]",
+    },
+}
