@@ -12,6 +12,7 @@ urlpatterns = [
     path("<int:pk>/retry/", views.retry_lemmatization, name="lemmatized_texts_retry_lemmatization"),
     path("<int:pk>/cancel/", views.cancel_lemmatization, name="lemmatized_texts_cancel_lemmatization"),
     path("<int:pk>/status/", views.lemma_status, name="lemmatized_text_status"),
+    path("<int:pk>/edit/", views.edit, name="lemmatized_text_edit"),
     path("create/", views.create, name="lemmatized_texts_create"),
     path("<str:uid>/handout/", views.HandoutView.as_view(), name="lemmatized_texts_handout"),
 ]
