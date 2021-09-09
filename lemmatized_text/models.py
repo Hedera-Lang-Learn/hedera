@@ -24,6 +24,14 @@ def to_percent(val):
     return floatformat(val * 100, 2) + "%"
 
 
+def parse_following(follower):
+    return follower.replace("\n", "<br/>")
+
+
+def format_token_key_value_pairs(token):
+    return " ".join([f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")])
+
+
 @job("default", timeout=600)
 def lemmatize_text_job(text, lang, pk):
     try:
@@ -183,7 +191,7 @@ class LemmatizedText(models.Model):
             "completed": self.completed,
             "tokenCount": self.token_count(),
             "lemmatizationStatus": self.lemmatization_status(),
-            "createdAt": self.created_at.strftime("%b %d %Y, %I:%M%P"),
+            "createdAt": self.created_at,
             "canRetry": self.can_retry(),
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
@@ -238,18 +246,12 @@ class LemmatizedText(models.Model):
     def transform_data_to_html(self):
         return "".join([
             (
-                f"<span {self.format_token_key_value_pairs(token)}>"
+                f"<span {format_token_key_value_pairs(token)}>"
                 f"{token['word']}</span><span follower='true'>"
-                f"{self.parse_following(token['following'])}</span>"
+                f"{parse_following(token['following'])}</span>"
             )
             for token in self.data
         ])
-
-    def parse_following(self, follower):
-        return follower.replace("\n", "<br/>")
-
-    def format_token_key_value_pairs(self, token):
-        return " ".join([f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")])
 
 
 class LemmatizationLog(models.Model):
