@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueKeybindings from 'vue-keybindings';
+import VueFilterDateFormat from '@vuejs-community/vue-filter-date-format';
 
 import globalComponents from './components';
 import store from './store';
@@ -10,6 +11,7 @@ import PersonalVocab from './PersonalVocab.vue';
 import Vocab from './Vocab.vue';
 import Texts from './Texts.vue';
 import Dashboard from './Dashboard.vue';
+import QuickAddButton from './components/quick-add-button';
 
 Vue.config.productionTip = false;
 
@@ -26,6 +28,8 @@ const load = (appId, appComponent, keyBindingsConfig, appProps) => {
     if (keyBindingsConfig !== null) {
       Vue.use(VueKeybindings, keyBindingsConfig);
     }
+
+    Vue.use(VueFilterDateFormat);
 
     /* eslint-disable no-new */
     new Vue({
@@ -76,4 +80,5 @@ export default () => {
   load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
+  load('quick-add', QuickAddButton, null, () => {});
 };

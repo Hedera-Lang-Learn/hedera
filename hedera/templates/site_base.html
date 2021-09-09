@@ -30,7 +30,6 @@
   <meta name="msapplication-square150x150logo" content="{%  webpack_static 'images/mstile-150x150.png' %}" />
   <meta name="msapplication-wide310x150logo" content="{%  webpack_static 'images/mstile-310x150.png' %}" />
   <meta name="msapplication-square310x310logo" content="{%  webpack_static 'images/mstile-310x310.png' %}" />
-
   {% render_bundle "main" "css" %}
 {% endblock %}
 
@@ -106,7 +105,8 @@
 </main>
 {% endblock %}
 
-{% block footer %}{% endblock %}
+{% block footer %}
+{% endblock %}
 
 {% block scripts %}
     {% if VUE_DEBUG %}<script src="http://localhost:8098"></script>{% endif %}
