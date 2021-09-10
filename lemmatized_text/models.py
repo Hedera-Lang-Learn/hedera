@@ -9,7 +9,6 @@ from django.urls import reverse
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-from django.contrib.postgres.fields import JSONField
 
 from django_rq import get_connection, job
 from iso639 import languages
@@ -81,7 +80,7 @@ class LemmatizedText(models.Model):
     # ]
     # where node is the pk of the LatticeNode
 
-    data = JSONField()
+    data = models.JSONField()
 
     def display_name(self):
         return languages.get(part3=self.lang).name
