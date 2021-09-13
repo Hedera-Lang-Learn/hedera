@@ -207,7 +207,6 @@ INSTALLED_APPS = [
 
     # external
     "account",
-    "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
     "lti_provider",
@@ -240,6 +239,7 @@ INSTALLED_APPS = [
 
     # project
     "hedera",
+    "ckeditor",
 ]
 
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
@@ -422,3 +422,16 @@ PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY")
 # SSL is terminated at the ELB so look for this header to know that we should be in ssl mode
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = bool(int(os.environ.get("SESSION_COOKIE_SECURE", "0")))
+
+# Default primary key field type (for django 3.2+)
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# CKEDITOR SETTINGS
+CKEDITOR_CONFIGS = {
+    "hedera_ckeditor": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [],
+        "removePlugins": "stylesheetparser",
+        "allowedContent": "span[*]",
+    },
+}

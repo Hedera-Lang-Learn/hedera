@@ -3,11 +3,7 @@ import re
 
 from django.conf import settings
 from django.db.models import Q
-from django.http import (
-    HttpResponseBadRequest,
-    HttpResponseNotFound,
-    JsonResponse
-)
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
@@ -69,7 +65,7 @@ class MeAPI(APIView):
             profile.lang = data["lang"]
             profile.save()
             return JsonResponse({"data": profile.data()})
-        return HttpResponseBadRequest("language not supported")
+        return JsonResponseBadRequest({"error": "language not supported"})
 
 
 class BookmarksListAPI(APIView):
@@ -353,8 +349,8 @@ class PersonalVocabularyListAPI(APIView):
             count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
             if(count != 0):
                 return JsonResponse({"data": True, "id": data["id"]})
-            return HttpResponseNotFound(f"could not find vocab with id={data['id']}")
-        return HttpResponseBadRequest(f"missing 'id'")
+            return JsonResponseBadRequest({"error": f"could not find vocab with id={data['id']}"}, status=404)
+        return JsonResponseBadRequest({"error": f"missing 'id'"})
 
 
 class PersonalVocabularyQuickAddAPI(APIView):
@@ -389,16 +385,21 @@ class PersonalVocabularyQuickAddAPI(APIView):
 
 class LatticeNodesAPI(APIView):
 
-    def get_data(self):
-        headword = self.request.GET.get("headword")
-        filtered_headword_iterable = filter(str.isalnum, headword)
-        filtered_headword_string = "".join(filtered_headword_iterable)
-        # [0-9]* includes headword matches with trailing numbers 0 - 9 eg 20 or 2
-        lemmas = LemmaNode.objects.filter(lemma__iregex=rf"\y{re.escape(filtered_headword_string)}[0-9]*\y")
-        lattice_nodes = [lemma.to_dict()["node"] for lemma in lemmas]
-        return self.filter_lattice_nodes(lattice_nodes, filtered_headword_string)
+    def get(self, request):
+        try:
+            headword = self.request.GET.get("headword")
+            if len(headword) == 0:
+                return JsonResponse({"data": []})
+            filtered_headword_iterable = filter(str.isalnum, headword)
+            filtered_headword_string = "".join(filtered_headword_iterable)
+            # [0-9]* includes headword matches with trailing numbers 0 - 9 eg 20 or 2
+            lemmas = LemmaNode.objects.filter(lemma__iregex=rf"\y{re.escape(filtered_headword_string)}[0-9]*\y")
+            lattice_nodes = [lemma.to_dict()["node"] for lemma in lemmas]
+            return JsonResponse({"data": self.filter_lattice_nodes(lattice_nodes)})
+        except TypeError:
+            return JsonResponseBadRequest({"error": "Missing headword"})
 
-    def filter_lattice_nodes(self, lattice_nodes, headword):
+    def filter_lattice_nodes(self, lattice_nodes):
         lattice_node_list = []
         for node in lattice_nodes:
             gloss = node["gloss"]

@@ -11,6 +11,7 @@ from lattices.models import LatticeNode
 from pdfservice.mixins import PDFResponseMixin
 
 from . import models
+from .forms import LemmatizedTextEditForm
 
 
 def lemmatized_texts(request):
@@ -79,6 +80,24 @@ def text(request, pk):
     )
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/text.html", {"text": text})
+
+
+def edit(request, pk):
+    lemmatized_text = get_object_or_404(models.LemmatizedText, pk=pk, created_by=request.user)
+
+    if request.method == "POST":
+        form = LemmatizedTextEditForm(request.POST)
+        if form.is_valid():
+            # pass to a "lemmatized text method" to handle changes
+            lemmatized_text.handle_edited_data(request.POST.get("title"), request.POST.get("text"))
+            return redirect("lemmatized_texts_list")
+    form = LemmatizedTextEditForm(
+        initial={
+            "text": lemmatized_text.transform_data_to_html(),
+            "title": lemmatized_text.title
+        }
+    )
+    return render(request, "lemmatized_text/edit.html", {"form": form})
 
 
 def learner_text(request, pk):
