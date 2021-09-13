@@ -2,7 +2,6 @@ import json
 import re
 
 from django.conf import settings
-from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import (
     HttpResponseBadRequest,
@@ -312,21 +311,9 @@ class PersonalVocabularyListAPI(APIView):
         return vl
 
     def get_data(self):
-        page_number = self.request.GET.get("page")
         vl = self.get_object()
-        if page_number is None:
-            return dict(
-                personalVocabList=vl.data(),
-                unknownGlosses=None
-            )
-        vl_data_copy = vl.data()
-        paginator = Paginator(vl_data_copy["entries"], 100)
-        page_obj = paginator.get_page(page_number)
-        vl_data_copy["entries"] = page_obj.object_list
-        vl_data_copy["pageNumber"] = page_number
-        vl_data_copy["totalPages"] = paginator.num_pages
         return dict(
-            personalVocabList=vl_data_copy,
+            personalVocabList=vl.data(),
             unknownGlosses=None
         )
 

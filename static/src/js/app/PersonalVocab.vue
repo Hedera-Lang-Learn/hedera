@@ -1,59 +1,44 @@
 <template>
-  <div>
-    <table class="table personal-vocab">
-      <thead>
-        <tr>
-          <th colspan="3" class="text-right">
-            <div class="d-flex float-right">
-              <DownloadVocab :glosses="glosses" :with-familiarity="true" />
-              <QuickAddVocabForm class="ml-2 text-left" />
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <colgroup>
-        <col style="width: 20%" />
-        <col style="width: 40%" />
-        <col style="width: 40%" />
-      </colgroup>
+  <table class="table personal-vocab">
+    <thead>
       <tr>
-        <th>Headword</th>
-        <th id="td-no-padding-left">Gloss</th>
-        <th id="td-no-padding-left-right">Familiarity</th>
+        <th colspan="3" class="text-right">
+          <div class="d-flex float-right">
+            <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+            <QuickAddVocabForm class="ml-2 text-left" />
+          </div>
+        </th>
       </tr>
-      <tr v-for="entry in personalVocabEntries" :key="entry.id">
-        <td>{{ entry.headword }}</td>
-        <td id="td-no-padding-left">{{ entry.gloss }}</td>
-        <td nowrap id="td-familiarity-rating">
-          <FamiliarityRating
-            :value="entry.familiarity"
-            @input="(rating) => onRatingChange(rating, entry)"
-          />
-          <button
-            id="td-delete-button"
-            type="button"
-            @click="deleteVocab(entry.id)"
-            aria-label="delete"
-          >
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </td>
-      </tr>
-    </table>
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li
-          v-for="page in personalVocabList.totalPages"
-          :key="page"
-          class="page-item"
+    </thead>
+    <colgroup>
+      <col style="width: 20%" />
+      <col style="width: 40%" />
+      <col style="width: 40%" />
+    </colgroup>
+    <tr>
+      <th>Headword</th>
+      <th id="td-no-padding-left">Gloss</th>
+      <th id="td-no-padding-left-right">Familiarity</th>
+    </tr>
+    <tr v-for="entry in personalVocabEntries" :key="entry.id">
+      <td>{{ entry.headword }}</td>
+      <td id="td-no-padding-left">{{ entry.gloss }}</td>
+      <td nowrap id="td-familiarity-rating">
+        <FamiliarityRating
+          :value="entry.familiarity"
+          @input="(rating) => onRatingChange(rating, entry)"
+        />
+        <button
+          id="td-delete-button"
+          type="button"
+          @click="deleteVocab(entry.id)"
+          aria-label="delete"
         >
-          <a class="page-link" :href="'?page'+page">{{ page }}</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>
-  </div>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </td>
+    </tr>
+  </table>
 </template>
 
 <script>
