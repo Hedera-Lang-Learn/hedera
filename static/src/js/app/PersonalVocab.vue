@@ -1,4 +1,5 @@
 <template>
+  <!--
   <table class="table personal-vocab">
     <thead>
       <tr>
@@ -39,22 +40,54 @@
       </td>
     </tr>
   </table>
+  -->
+  <div>
+     <div class="d-flex justify-content-between mb-2">
+       <QuickAddVocabForm class="mr-2 text-left" />
+       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+     </div>
+     <vue-good-table
+       :columns="columns"
+       :rows="personalVocabEntries"
+       :pagination-options="{enabled:true}"
+     >
+      <template slot="table-row" slot-scope="props">
+        <div v-if="props.column.field == 'familiarity'" class="d-flex">
+          <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
+          <button type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div v-else>
+          {{props.formattedRow[props.column.field]}}
+        </div>
+      </template>
+     </vue-good-table>
+  </div>
 </template>
 
 <script>
+  import { VueGoodTable } from 'vue-good-table';
+
   import {
     FETCH_PERSONAL_VOCAB_LIST,
     UPDATE_VOCAB_ENTRY,
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
   } from './constants';
+
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
   import QuickAddVocabForm from './components/quick-add-button';
 
   export default {
     props: ['lang'],
-    components: { FamiliarityRating, DownloadVocab, QuickAddVocabForm },
+    components: {
+      FamiliarityRating,
+      DownloadVocab,
+      QuickAddVocabForm,
+      VueGoodTable,
+    },
     watch: {
       lang: {
         immediate: true,
@@ -62,6 +95,15 @@
           this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
         },
       },
+    },
+    data() {
+      return {
+        columns: [
+          { label: 'Headword', field: 'headword' },
+          { label: 'Gloss', field: 'gloss' },
+          { label: 'Familiarity', field: 'familiarity' },
+        ],
+      };
     },
     created() {
       this.$store.dispatch(FETCH_ME);
