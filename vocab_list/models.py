@@ -283,7 +283,7 @@ class PersonalVocabularyListEntry(models.Model):
             headword=self.headword,
             gloss=self.gloss,
             familiarity=self.familiarity,
-            node=self.node.pk if self.node is not None else None,
+            node=self.node_id if self.node_id is not None else None,
         )
 
     def familiarity_range(self):

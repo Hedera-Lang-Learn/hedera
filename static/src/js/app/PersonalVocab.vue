@@ -4,8 +4,8 @@
       <tr>
         <th colspan="3" class="text-right">
           <div class="d-flex float-right">
-            <DownloadVocab :glosses="glosses" :with-familiarity="true"/>
-            <QuickAddVocabForm  class="ml-2 text-left" />
+            <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+            <QuickAddVocabForm class="ml-2 text-left" />
           </div>
         </th>
       </tr>
@@ -28,7 +28,12 @@
           :value="entry.familiarity"
           @input="(rating) => onRatingChange(rating, entry)"
         />
-        <button id="td-delete-button" type="button" @click="deleteVocab(entry.id)" aria-label="delete">
+        <button
+          id="td-delete-button"
+          type="button"
+          @click="deleteVocab(entry.id)"
+          aria-label="delete"
+        >
           <i class="fa fa-trash" aria-hidden="true"></i>
         </button>
       </td>
@@ -133,7 +138,7 @@
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
   #td-delete-button {
-    padding-left:0;
+    padding-left: 0;
   }
   #td-no-padding-left-right {
     padding-right: 0;
