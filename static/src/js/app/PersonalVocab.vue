@@ -1,46 +1,4 @@
 <template>
-  <!--
-  <table class="table personal-vocab">
-    <thead>
-      <tr>
-        <th colspan="3" class="text-right">
-          <div class="d-flex float-right">
-            <DownloadVocab :glosses="glosses" :with-familiarity="true" />
-            <QuickAddVocabForm class="ml-2 text-left" />
-          </div>
-        </th>
-      </tr>
-    </thead>
-    <colgroup>
-      <col style="width: 20%" />
-      <col style="width: 40%" />
-      <col style="width: 40%" />
-    </colgroup>
-    <tr>
-      <th>Headword</th>
-      <th id="td-no-padding-left">Gloss</th>
-      <th id="td-no-padding-left-right">Familiarity</th>
-    </tr>
-    <tr v-for="entry in personalVocabEntries" :key="entry.id">
-      <td>{{ entry.headword }}</td>
-      <td id="td-no-padding-left">{{ entry.gloss }}</td>
-      <td nowrap id="td-familiarity-rating">
-        <FamiliarityRating
-          :value="entry.familiarity"
-          @input="(rating) => onRatingChange(rating, entry)"
-        />
-        <button
-          id="td-delete-button"
-          type="button"
-          @click="deleteVocab(entry.id)"
-          aria-label="delete"
-        >
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
-      </td>
-    </tr>
-  </table>
-  -->
   <div>
      <div class="d-flex justify-content-between mb-2">
        <QuickAddVocabForm class="mr-2 text-left" />
@@ -49,7 +7,8 @@
      <vue-good-table
        :columns="columns"
        :rows="personalVocabEntries"
-       :pagination-options="{enabled:true}"
+       :pagination-options="paginationOptions"
+       :search-options="searchOptions"
      >
       <template slot="table-row" slot-scope="props">
         <div v-if="props.column.field == 'familiarity'" class="d-flex">
@@ -98,6 +57,16 @@
     },
     data() {
       return {
+        searchOptions: {
+          enabled: true,
+        },
+        paginationOptions: {
+          enabled: true,
+          perPage: 25,
+          perPageDropdown: [10, 25, 50, 100],
+          dropdownAllowAll: false,
+          mode: 'records',
+        },
         columns: [
           { label: 'Headword', field: 'headword' },
           { label: 'Gloss', field: 'gloss' },
