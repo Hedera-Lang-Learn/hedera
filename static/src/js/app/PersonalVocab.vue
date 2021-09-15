@@ -4,24 +4,26 @@
        <QuickAddVocabForm class="mr-2 text-left" />
        <DownloadVocab :glosses="glosses" :with-familiarity="true" />
      </div>
-     <vue-good-table
+    <div v-if="personalVocabEntries">
+      <vue-good-table
        :columns="columns"
        :rows="personalVocabEntries"
        :pagination-options="paginationOptions"
        :search-options="searchOptions"
-     >
-      <template slot="table-row" slot-scope="props">
-        <div v-if="props.column.field == 'familiarity'" class="d-flex">
-          <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
-          <button type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </div>
-        <div v-else>
-          {{props.formattedRow[props.column.field]}}
-        </div>
-      </template>
-     </vue-good-table>
+      >
+        <template slot="table-row" slot-scope="props">
+          <div v-if="props.column.field == 'familiarity'" class="d-flex">
+            <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
+            <button type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div v-else>
+            {{props.formattedRow[props.column.field]}}
+          </div>
+        </template>
+      </vue-good-table>
+    </div>
   </div>
 </template>
 
@@ -64,7 +66,7 @@
           enabled: true,
           perPage: 25,
           perPageDropdown: [10, 25, 50, 100],
-          dropdownAllowAll: false,
+          dropdownAllowAll: true,
           mode: 'records',
         },
         columns: [
