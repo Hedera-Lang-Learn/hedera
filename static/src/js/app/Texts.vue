@@ -16,7 +16,7 @@
       <div class="tab-content">
         <div class="tab-pane fade show active">
           <table class="table">
-            <tr><th>Text</th><th>Language</th><th>Length</th><th v-if="ownSelected" /><th v-else>Familiarity</th></tr>
+            <tr><th>Text</th><th>Language</th><th>Length</th><th>Created At</th><th v-if="ownSelected" /><th v-else>Familiarity</th></tr>
             <TextRow
               v-for="text in activeTexts"
               :key="text.id"

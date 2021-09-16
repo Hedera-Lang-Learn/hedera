@@ -1,55 +1,54 @@
 <template>
-  <table class="table personal-vocab">
-    <thead>
-      <tr>
-        <th colspan="3" class="text-right">
-          <div class="d-flex float-right">
-            <DownloadVocab :glosses="glosses" :with-familiarity="true"/>
-            <QuickAddVocabForm  class="ml-2 text-left" />
+  <div>
+     <div class="d-flex justify-content-between mb-2">
+       <QuickAddVocabForm class="mr-2 text-left" />
+       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
+     </div>
+    <div v-if="personalVocabEntries">
+      <vue-good-table
+       :columns="columns"
+       :rows="personalVocabEntries"
+       :pagination-options="paginationOptions"
+       :search-options="searchOptions"
+      >
+        <template slot="table-row" slot-scope="props">
+          <div v-if="props.column.field == 'familiarity'" class="d-flex">
+            <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
+            <button type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
           </div>
-        </th>
-      </tr>
-    </thead>
-    <colgroup>
-      <col style="width: 20%" />
-      <col style="width: 40%" />
-      <col style="width: 40%" />
-    </colgroup>
-    <tr>
-      <th>Headword</th>
-      <th id="td-no-padding-left">Gloss</th>
-      <th id="td-no-padding-left-right">Familiarity</th>
-    </tr>
-    <tr v-for="entry in personalVocabEntries" :key="entry.id">
-      <td>{{ entry.headword }}</td>
-      <td id="td-no-padding-left">{{ entry.gloss }}</td>
-      <td nowrap id="td-familiarity-rating">
-        <FamiliarityRating
-          :value="entry.familiarity"
-          @input="(rating) => onRatingChange(rating, entry)"
-        />
-        <button id="td-delete-button" type="button" @click="deleteVocab(entry.id)" aria-label="delete">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </button>
-      </td>
-    </tr>
-  </table>
+          <div v-else>
+            {{props.formattedRow[props.column.field]}}
+          </div>
+        </template>
+      </vue-good-table>
+    </div>
+  </div>
 </template>
 
 <script>
+  import { VueGoodTable } from 'vue-good-table';
+
   import {
     FETCH_PERSONAL_VOCAB_LIST,
     UPDATE_VOCAB_ENTRY,
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
   } from './constants';
+
   import FamiliarityRating from './modules/FamiliarityRating.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
   import QuickAddVocabForm from './components/quick-add-button';
 
   export default {
     props: ['lang'],
-    components: { FamiliarityRating, DownloadVocab, QuickAddVocabForm },
+    components: {
+      FamiliarityRating,
+      DownloadVocab,
+      QuickAddVocabForm,
+      VueGoodTable,
+    },
     watch: {
       lang: {
         immediate: true,
@@ -57,6 +56,25 @@
           this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
         },
       },
+    },
+    data() {
+      return {
+        searchOptions: {
+          enabled: true,
+        },
+        paginationOptions: {
+          enabled: true,
+          perPage: 25,
+          perPageDropdown: [10, 25, 50, 100],
+          dropdownAllowAll: true,
+          mode: 'records',
+        },
+        columns: [
+          { label: 'Headword', field: 'headword' },
+          { label: 'Gloss', field: 'gloss' },
+          { label: 'Familiarity', field: 'familiarity' },
+        ],
+      };
     },
     created() {
       this.$store.dispatch(FETCH_ME);
@@ -133,7 +151,7 @@
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
   #td-delete-button {
-    padding-left:0;
+    padding-left: 0;
   }
   #td-no-padding-left-right {
     padding-right: 0;
