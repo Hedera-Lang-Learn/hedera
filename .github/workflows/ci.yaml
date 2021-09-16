@@ -28,13 +28,10 @@ jobs:
 
         - name: Install Python Dependences
           if: steps.pip-cache.outputs.cache-hit == false
-          run: pipenv install --dev
-
-        - name: Check Python Import Sorting
-          run: pipenv run isort -c **/*.py
-
-        - name: Lint Python
-          run: pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
+          run: |
+            pipenv install --dev
+            pipenv run isort -c **/*.py
+            pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti 
           
         - name: Install Static Dependences
           run: npm i --dev
