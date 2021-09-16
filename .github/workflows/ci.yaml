@@ -16,7 +16,7 @@ jobs:
         - name: Install python 3.7 with pyenv
           uses: gabrielfalcao/pyenv-action@v5
           with:
-            default: 3.7.12
+            default: 3.7.5
 
         - name: Setup Pipenv
           uses: dschep/install-pipenv-action@v1
