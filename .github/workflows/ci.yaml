@@ -13,11 +13,6 @@ jobs:
           with:
             python-version: 3.7
 
-        # - name: Install python 3.7 with pyenv
-        #   uses: gabrielfalcao/pyenv-action@v5
-        #   with:
-        #     default: 3.7.5
-
         - name: Setup Pipenv
           uses: dschep/install-pipenv-action@v1
 
@@ -32,18 +27,11 @@ jobs:
           uses: rbialon/flake8-annotations@v1
 
         - name: Install Python Dependences, run linting and import sorting
-          # if: steps.pip-cache.outputs.cache-hit == false
           run: |
             pipenv --python 3.7 install --dev
             pipenv run isort -c **/*.py
             pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
 
-        # - name: Check Python Import Sorting
-        #   run: 
-
-        # - name: Lint Python
-        #   run: 
-          
         - name: Install Static Dependences
           run: npm i --dev
 
