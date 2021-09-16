@@ -32,7 +32,7 @@ jobs:
           uses: rbialon/flake8-annotations@v1
 
         - name: Install Python Dependences, run linting and import sorting
-          if: steps.pip-cache.outputs.cache-hit == false
+          # if: steps.pip-cache.outputs.cache-hit == false
           run: |
             pipenv --python 3.7 install --dev
             pipenv run isort -c **/*.py
