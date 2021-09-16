@@ -31,15 +31,18 @@ jobs:
         - name: Setup flake8 annotations
           uses: rbialon/flake8-annotations@v1
 
-        - name: Install Python Dependences
+        - name: Install Python Dependences, run linting and import sorting
           if: steps.pip-cache.outputs.cache-hit == false
-          run: pipenv --python 3.7 install --dev
+          run: |
+            pipenv --python 3.7 install --dev
+            pipenv run isort -c **/*.py
+            pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
 
-        - name: Check Python Import Sorting
-          run: pipenv --python 3.7 run isort -c **/*.py
+        # - name: Check Python Import Sorting
+        #   run: 
 
-        - name: Lint Python
-          run: pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
+        # - name: Lint Python
+        #   run: 
           
         - name: Install Static Dependences
           run: npm i --dev
