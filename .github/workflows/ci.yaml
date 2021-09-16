@@ -8,15 +8,15 @@ jobs:
     steps:
         - uses: actions/checkout@v2
 
-        # - name: Setup Python
-        #   uses: actions/setup-python@v2
-        #   with:
-        #     python-version: 3.7
-
-        - name: Install python 3.7 with pyenv
-          uses: gabrielfalcao/pyenv-action@v5
+        - name: Setup Python
+          uses: actions/setup-python@v2
           with:
-            default: 3.7.5
+            python-version: 3.7
+
+        # - name: Install python 3.7 with pyenv
+        #   uses: gabrielfalcao/pyenv-action@v5
+        #   with:
+        #     default: 3.7.5
 
         - name: Setup Pipenv
           uses: dschep/install-pipenv-action@v1
@@ -33,7 +33,7 @@ jobs:
 
         - name: Install Python Dependences
           if: steps.pip-cache.outputs.cache-hit == false
-          run: pipenv install --dev
+          run: pipenv --python 3.7 install --dev
 
         - name: Check Python Import Sorting
           run: pipenv run isort -c **/*.py

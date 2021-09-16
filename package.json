@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.vue .",
     "lint:fix": "eslint --ext .js,.vue --fix .",
     "build": "NODE_ENV=production webpack --mode production",
-    "test:unit": "jest static/src/js/app/vuex/tests/mutations.spec.js"
+    "test:unit": "jest"
   },
   "private": true,
   "browserslist": "last 2 versions",
