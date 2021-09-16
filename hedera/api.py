@@ -425,3 +425,9 @@ class LatticeNodesAPI(APIView):
 
 class JsonResponseBadRequest(JsonResponse):
     status_code = 400
+
+
+class SupportedLanguagesAPI(APIView):
+
+    def get_data(self):
+        return settings.SUPPORTED_LANGUAGES
