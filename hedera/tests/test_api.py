@@ -1,6 +1,8 @@
 import json
 from random import randrange
 
+from django.conf import settings
+
 from django.contrib.auth.models import User
 
 from rest_framework.test import APITestCase
@@ -240,3 +242,15 @@ class BookmarksDetailAPITest(APITestCase):
 
         with self.assertRaises(LemmatizedTextBookmark.DoesNotExist):
             LemmatizedTextBookmark.objects.get(pk=self.bookmark.pk)
+
+
+class SupportedLanguagesAPITest(APITestCase):
+
+    def setUp(self):
+        self.user = utils.create_user()
+        self.client.force_login(user=self.user)
+
+    def test_get_supported_language_list(self):
+        response = self.client.get(f"/api/v1/supported_languages/", content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["data"], settings.SUPPORTED_LANGUAGES)
