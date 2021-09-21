@@ -7,7 +7,7 @@ export default {
   selectedTokenHistory: [],
   nodes: {},
   vocabLists: [],
-  personalVocabList: null,
+  personalVocabList: {},
   selectedVocabList: null,
   showInVocabList: true,
   personalVocabLangList: null,

@@ -1,11 +1,9 @@
 import mutations from '../mutations';
+import state from '../state';
 
 describe('Mutations', () => {
   describe('fetchPersonalVocabLangList', () => {
     it('successfully updates state', () => {
-      const state = {
-        personalVocabLangList: null,
-      };
       const data = [
         {
           lang: 'lat',
@@ -23,21 +21,49 @@ describe('Mutations', () => {
   });
 
   describe('createPersonalVocab', () => {
-    it('successfully updates the state', () => {
-      const state = {
-        personalVocabAdded: false,
-      };
-      const data = { created: true };
+    const vocabData = {
+      id: 19,
+      headword: 'foo',
+      gloss: 'bar',
+      familiarity: 1,
+      node: null,
+    };
+    const data = {
+      created: true,
+      data: vocabData,
+    };
+
+    it('successfully updates the state without entries fetched', () => {
       mutations.createPersonalVocabEntry(state, data);
       expect(state.personalVocabAdded).toBe(true);
+      expect(state.personalVocabList.entries).toBe(undefined);
+    });
+
+    it('successfully updates the state with entries fetched', () => {
+      const updatedState = {
+        ...state,
+        personalVocabList: {
+          ...state.personalVocabList,
+          entries: [
+            {
+              id: 1,
+              headword: 'test',
+              gloss: 'tes',
+              familiarity: 1,
+              node: null,
+            },
+          ],
+        },
+      };
+
+      mutations.createPersonalVocabEntry(updatedState, data);
+      expect(updatedState.personalVocabAdded).toBe(true);
+      expect(updatedState.personalVocabList.entries.length).toBe(2);
     });
   });
 
   describe('setLanguagePref', () => {
     it('successfully updates the state', () => {
-      const state = {
-        me: {},
-      };
       const data = {
         email: 'testing@test.com',
         displayName: 'vez-test',
@@ -50,8 +76,10 @@ describe('Mutations', () => {
   });
   describe('deletePersonalVocabEntry', () => {
     it('successfully updates the state', () => {
-      const state = {
+      const modifiedState = {
+        ...state,
         personalVocabList: {
+          ...state.personalVocabList,
           entries: [
             {
               id: 1,
@@ -64,12 +92,14 @@ describe('Mutations', () => {
         },
       };
       const data = { data: true, id: 1 };
-      mutations.deletePersonalVocabEntry(state, data);
-      expect(state.personalVocabList.entries.length).toBe(0);
+      mutations.deletePersonalVocabEntry(modifiedState, data);
+      expect(modifiedState.personalVocabList.entries.length).toBe(0);
     });
     it('unsuccessfully updates the state', () => {
-      const state = {
+      const modifiedState = {
+        ...state,
         personalVocabList: {
+          ...state.personalVocabList,
           entries: [
             {
               id: 1,
@@ -82,8 +112,8 @@ describe('Mutations', () => {
         },
       };
       const data = { data: true, id: 11 };
-      mutations.deletePersonalVocabEntry(state, data);
-      expect(state.personalVocabList.entries.length).toBe(1);
+      mutations.deletePersonalVocabEntry(modifiedState, data);
+      expect(modifiedState.personalVocabList.entries.length).toBe(1);
     });
   });
 });

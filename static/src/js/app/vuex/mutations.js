@@ -68,6 +68,9 @@ export default {
   },
   [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
     state.personalVocabAdded = data.created;
+    if (state.personalVocabList.entries) {
+      state.personalVocabList.entries = [data.data, ...state.personalVocabList.entries];
+    }
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: (state, data) => {
     state.latticeNodes = data;
