@@ -1,8 +1,6 @@
 import uuid
 
 from django.conf import settings
-from django.http import Http404
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
