@@ -31,7 +31,7 @@ MODELS = [
 
 
 def delete_all_objects(model):
-    num_deleted, _ = model.objects.all().delete()[0]
+    num_deleted, _ = model.objects.all().delete()
     return num_deleted
 
 
