@@ -19,6 +19,7 @@
     <div class="form-group">
       <label>Language</label>
       <select name="lang" class="form-control">
+        <option value="zho" {% if select_lang == "zho" %}selected{% endif %}>Chinese</option>
         <option value="grc" {% if select_lang == "grc" %}selected{% endif %}>Greek</option>
         <option value="lat" {% if select_lang == "lat" %}selected{% endif %}>Latin</option>
         <option value="rus" {% if select_lang == "rus" %}selected{% endif %}>Russian</option>
