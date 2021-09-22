@@ -253,4 +253,4 @@ class SupportedLanguagesAPITest(APITestCase):
     def test_get_supported_language_list(self):
         response = self.client.get(f"/api/v1/supported_languages/", content_type="application/json")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["data"], settings.SUPPORTED_LANGUAGES)
+        self.assertEqual(response.json()["data"], settings.SUPPORTED_LANGUAGES)
