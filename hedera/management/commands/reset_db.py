@@ -30,11 +30,6 @@ MODELS = [
 ]
 
 
-def delete_all_objects(model):
-    num_deleted, _ = model.objects.all().delete()
-    return num_deleted
-
-
 class Command(BaseCommand):
     help = "Deletes all data from lattices, lemmatized_text, and vocab_list"
 
@@ -61,5 +56,5 @@ class Command(BaseCommand):
                 self.exectute_deletion(model)
 
     def exectute_deletion(self, model):
-        task_result = delete_all_objects(model)
-        self.stdout.write(self.style.SUCCESS(f"Successfully deleted {task_result} {model} objects"))
+        num_deleted, _ = model.objects.all().delete()
+        self.stdout.write(self.style.SUCCESS(f"Successfully deleted {num_deleted} {model} objects"))
