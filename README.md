@@ -177,4 +177,5 @@ $ docker-compose exec django python manage.py reset_db --no_input
 $ docker-compose exec django python manage.py shell -c "import load_ivy_wonky_words"
 $ docker-compose exec django python manage.py shell -c "import load_ivy_lattice"
 $ docker-compose exec django python manage.py shell -c "import logeion_load"
+$ docker-compose exec django python manage.py shell -c "import load_clancy_lattice"
 ```
