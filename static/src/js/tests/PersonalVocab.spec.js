@@ -50,6 +50,7 @@ describe('PersonalVocab', () => {
     expect(wrapper.find('#td-delete-button').exists()).toBe(false);
   });
   it('should successfully delete a vocab from the list', () => {
+    // https://vue-test-utils.vuejs.org/api/options.html#stubs
     const wrapper = mount(PersonalVocab, {
       store,
       localVue,
