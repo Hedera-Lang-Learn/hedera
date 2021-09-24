@@ -74,6 +74,12 @@
                         <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
                           Personal Vocabulary
                         </a>
+                        {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="{% url 'vocab_list_personal_create' %}">
+                            Personal Vocabulary
+                          </a>
+                        </li>
                         {% endif %}
                     </li>
                   {% endif %}

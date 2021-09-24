@@ -14,7 +14,7 @@
         <template slot="table-row" slot-scope="props">
           <div v-if="props.column.field == 'familiarity'" class="d-flex">
             <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
-            <button type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
+            <button id="td-delete-button" type="button" aria-label="delete" @click="deleteVocab(props.row.id)" style="padding-top: 0;">
               <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
           </div>

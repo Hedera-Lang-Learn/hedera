@@ -40,7 +40,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         response = self.client.get("/api/v1/personal_vocab_list/quick_add/")
         self.assertEqual(response.status_code, 200)
 
-    def test_post_personal_vocabulary_quick_add_api(self):
+    def test_post_personal_vocabulary_quick_add_api_with_id(self):
         payload = {
             "familiarity": 1,
             "gloss": "something",
@@ -49,6 +49,28 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 200)
+
+    def test_post_personal_vocabulary_quick_add_api_no_id(self):
+        payload = {
+            "familiarity": 1,
+            "gloss": "something",
+            "headword": "sum",
+            "vocabulary_list_id": None,
+            "lang": "lat"
+        }
+        response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+    def test_fail_post_personal_vocabulary_quick_add_api_no_id_no_lang(self):
+        payload = {
+            "familiarity": 1,
+            "gloss": "something",
+            "headword": "sum",
+            "vocabulary_list_id": None
+        }
+        response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()["error"], "'lang field not provided'")
 
     def test_fail_post_personal_vocabulary_quick_add_api_missing_vocab_list_id(self):
         payload = {
@@ -253,4 +275,4 @@ class SupportedLanguagesAPITest(APITestCase):
     def test_get_supported_language_list(self):
         response = self.client.get(f"/api/v1/supported_languages/", content_type="application/json")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response["data"], settings.SUPPORTED_LANGUAGES)
+        self.assertEqual(response.json()["data"], settings.SUPPORTED_LANGUAGES)

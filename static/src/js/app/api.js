@@ -62,8 +62,8 @@ export default {
   vocabEntryEdit: (id, headword, gloss, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, gloss }).then((r) => cb(r.data)),
   vocabEntryDelete: (id, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/delete/`).then((r) => cb(r.data)),
   fetchPersonalVocabLangList: (cb) => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`).then((r) => cb(r.data)),
-  createPersonalVocabEntry: (headword, gloss, vocabularyListId, familiarity, node, cb) => axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, {
-    headword, gloss, familiarity, vocabulary_list_id: vocabularyListId, node,
+  createPersonalVocabEntry: (headword, gloss, vocabularyListId, familiarity, node, lang, cb) => axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, {
+    headword, gloss, familiarity, vocabulary_list_id: vocabularyListId, node, lang,
   }).then((r) => cb(r.data)),
   fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
   updateMeLang: (lang, cb) => axios.post(`${BASE_URL}me/`, { lang }).then((r) => cb(r.data)),
@@ -71,5 +71,5 @@ export default {
   fetchBookmarks: (cb) => axios.get(`${BASE_URL}bookmarks/`).then((r) => cb(r.data)),
   addBookmark: (textId) => axios.post(`${BASE_URL}bookmarks/`, { textId }),
   removeBookmark: (bookmarkId) => axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
-  // fetchLatticeNodes: (headword, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}`).then((r) => cb(r.data)),
+  fetchSupportedLangList: (cb) => axios.get(`${BASE_URL}supported_languages/`).then((r) => cb(r.data)),
 };

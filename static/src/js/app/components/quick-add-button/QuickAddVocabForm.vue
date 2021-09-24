@@ -5,17 +5,18 @@
         >Select Langauge of Your Personal Vocabulary List</label
       >
       <select
-        v-model="vocabularyListId"
+        v-model="vocabularyListItem"
         class="form-control mb-2"
         id="FormControlSelect"
         aria-label="language List"
         ref="select"
         required
+        @change="resetLatticeNodeId()"
       >
         <option
           v-for="langItem in personalVocabLangList"
           :key="langItem.id"
-          :value="langItem.id"
+          :value="langItem"
         >
           {{ formatLang(langItem.lang) }}
         </option>
@@ -36,6 +37,7 @@
           placeholder="gloss"
           aria-label="gloss"
           v-model="gloss"
+          @change="resetLatticeNodeId()"
           required
         />
         <div class="flex-column ml-2">
@@ -69,7 +71,7 @@
                 class="lattice-label"
                 :value="node.label"
                 aria-label="headword"
-                >{{ node.label.replace(/[0-9]/g, '') }} -
+                >{{ node.label.replace(/[0-9]/g, "") }} -
               </span>
               <span
                 class="lattice-gloss"
@@ -113,6 +115,8 @@
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
     SET_LANGUAGE_PREF,
+    FETCH_SUPPORTED_LANG_LIST,
+    FETCH_ME,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
 
@@ -121,17 +125,27 @@
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
+      /**
+      need to fetch supported languages and profile due to django templates causing vuex state to not persistant
+      ex: navigation and personal vocab templates
+     * */
+      await this.$store.dispatch(FETCH_ME);
+      await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
       // set pref language
       if (this.$store.state.me && this.$store.state.me.lang) {
-        const foundLangListID = this.$store.state.personalVocabLangList.find(
+        const foundLangListItem = this.personalVocabLangList.find(
           (ele) => ele.lang === this.$store.state.me.lang,
         );
-        this.vocabularyListId = foundLangListID.id || null;
+        this.vocabularyListItem = foundLangListItem || this.personalVocabLangList[0];
+      } else {
+        const [langItem] = this.personalVocabLangList;
+        this.vocabularyListItem = langItem;
       }
+    // await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
     },
     data() {
       return {
-        vocabularyListId: null,
+        vocabularyListItem: null,
         headword: null,
         gloss: null,
         latticeNodeId: null,
@@ -139,6 +153,7 @@
         showSuccesAlert: false,
         showUnsuccessfullAlert: false,
         submitting: false,
+        suppLangKey: null,
       };
     },
     methods: {
@@ -153,12 +168,12 @@
         this.showSuccesAlert = false;
         this.submitting = true;
 
-        const { headword, gloss, vocabularyListId } = this;
-        if (!headword || !gloss || !vocabularyListId) {
+        const { headword, gloss, vocabularyListItem } = this;
+        if (!headword || !gloss) {
           this.submitting = false;
           return;
         }
-        if (this.latticeNodeId) {
+        if (this.latticeNodeId !== null) {
           const node = this.latticeNode.find(
             (ele) => parseInt(ele.pk, 10) === parseInt(this.latticeNodeId, 10),
           );
@@ -170,9 +185,10 @@
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
           headword,
           gloss,
-          vocabularyListId,
+          vocabularyListId: vocabularyListItem.id,
           familiarity: this.familiarityRating,
           node: this.latticeNodeId,
+          lang: vocabularyListItem.lang,
         });
         if (this.$store.state.personalVocabAdded) {
           this.headword = null;
@@ -183,11 +199,11 @@
           this.showUnsuccessfullAlert = true;
         }
         // updates pref language on form submit
-        if (this.vocabularyListId) {
+        if (vocabularyListItem) {
           const prefLang = this.$store.state.personalVocabLangList.find(
-            (ele) => ele.id === this.vocabularyListId,
+            (ele) => ele.lang === vocabularyListItem.lang,
           );
-          if (prefLang.lang !== this.$store.state.me.lang) {
+          if (prefLang && prefLang.lang !== this.$store.state.me.lang) {
             await this.$store.dispatch(SET_LANGUAGE_PREF, {
               lang: prefLang.lang,
             });
@@ -196,6 +212,7 @@
         this.submitting = false;
       },
       formatLang(lang) {
+        // TODO update to supported languages endpoint
         return LANGUAGES[lang];
       },
       setFocus() {
@@ -212,6 +229,11 @@
         this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
       },
       async getHeadword() {
+        /**
+         * TODO add more languages
+         * conditional to only get headword for Latin for now
+         * */
+        if (this.vocabularyListItem && this.vocabularyListItem.lang !== 'lat') return;
         await this.$store.dispatch(FETCH_LATTICE_NODES_BY_HEADWORD, {
           headword: this.headword,
         });
@@ -237,27 +259,44 @@
     computed: {
       // gives access to the state store of personalVocabLangList
       personalVocabLangList() {
-        return this.$store.state.personalVocabLangList;
+        const { personalVocabLangList, supportedLanguages } = this.$store.state;
+        const formattedPersonalVocabList = supportedLanguages.map((lang) => {
+          const found = personalVocabLangList.find(
+            (item) => item.lang === lang[0],
+          );
+          if (!found) {
+            return {
+              lang: lang[0],
+              id: null,
+            };
+          }
+          return found;
+        });
+        return formattedPersonalVocabList;
       },
       // filters lattice node to exclude parent data for simplier UI in LatticeNode component
       latticeNode() {
-        const nodes = this.$store.state.latticeNodes;
-        if (nodes.length) {
-          const formatedNodes = nodes.map((node) => {
-            const {
-              canonical, gloss, label, lemmas, pk,
-            } = node;
-            return {
-              canonical,
-              gloss,
-              label,
-              lemmas,
-              pk,
-            };
-          });
-          return formatedNodes;
-        }
-        return null;
+        /**
+         * TODO add more languages
+         * conditional to only get headword for Latin for now
+         * */
+        const { vocabularyListItem } = this;
+        if (vocabularyListItem && vocabularyListItem.lang !== 'lat') return null;
+        const nodes = this.$store.state.latticeNodes || [];
+        if (!nodes.length) return null;
+        const formatedNodes = nodes.map((node) => {
+          const {
+            canonical, gloss, label, lemmas, pk,
+          } = node;
+          return {
+            canonical,
+            gloss,
+            label,
+            lemmas,
+            pk,
+          };
+        });
+        return formatedNodes;
       },
       showLatticeNodeList() {
         if (!this.latticeNode) {

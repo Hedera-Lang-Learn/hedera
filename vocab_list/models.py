@@ -222,6 +222,7 @@ class PersonalVocabularyList(models.Model):
         return {
             "entries": [w.data() for w in self.entries.all().order_by("headword")],
             "statsByText": stats,
+            "id": self.pk
         }
 
 
