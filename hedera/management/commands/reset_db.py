@@ -49,12 +49,12 @@ class Command(BaseCommand):
             if not no_input:
                 confirmation = input(f"Delete all objects from {model}? y/n ")
                 if confirmation == "y":
-                    self.exectute_deletion(model)
+                    self.execute_deletion(model)
                 else:
                     self.stdout.write(f"Skipping {model} data deletion")
             else:
-                self.exectute_deletion(model)
+                self.execute_deletion(model)
 
-    def exectute_deletion(self, model):
+    def execute_deletion(self, model):
         num_deleted, _ = model.objects.all().delete()
         self.stdout.write(self.style.SUCCESS(f"Successfully deleted {num_deleted} {model} objects"))
