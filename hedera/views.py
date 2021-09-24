@@ -1,8 +1,6 @@
 import uuid
 
 from django.conf import settings
-from django.http import Http404
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,16 +9,6 @@ from account.views import SettingsView as AccountSettingsView
 from account.views import SignupView as AccountSignupView
 
 from .forms import SettingsForm, SignupForm
-from .text_provider import get_text
-
-
-def read(request, text_id):
-    text = get_text(text_id)
-    if text is None:
-        raise Http404("Text does not exist")
-    return render(request, "read.html", {
-        "text": text
-    })
 
 
 class SettingsView(AccountSettingsView):

@@ -227,7 +227,6 @@ INSTALLED_APPS = [
     "taggit",
 
     # local apps
-    "databasetext",
     "vocab_list",
     "lattices",
     "lemmatization",
@@ -399,9 +398,6 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 EMAIL_USE_TLS = True
 
-TEXT_PROVIDER_BACKENDS = [
-    "databasetext.backends.TextProviderBackend",
-]
 
 # ISO 639.2 CODES
 SUPPORTED_LANGUAGES = [
