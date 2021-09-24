@@ -161,3 +161,21 @@ pre-commit install
 ```
 You're all set! Now when you commit code upstream the commit will trigger the different linters and flag the required changes
 Notes: you can quickly fix javascript eslint errors with `npm run lint:fix` 
+
+
+## Resetting the Database
+
+Every so often, it may be requested that the dev DB be "reset." Meaning, tables from the lattices, lemmatized_text, and vocab_list be truncated, and the data for lattices will be reloaded. User account information should be preserved. You can do that with the following set of commands. Note that these commands are for executing against a running docker container. If you are running the project in another way, adjust the incantations accordingly.
+
+```sh
+# Run the custom management command to delete all of the relevant data.
+# The --no_input flag answers 'yes' to all prompts asking if you'd like to delete data.
+# Run without --no_input if you'd like to step through the process interatctively.
+$ docker-compose exec django python manage.py reset_db --no_input
+
+# Run commands to reload the data
+$ docker-compose exec django python manage.py shell -c "import load_ivy_wonky_words"
+$ docker-compose exec django python manage.py shell -c "import load_ivy_lattice"
+$ docker-compose exec django python manage.py shell -c "import logeion_load"
+$ docker-compose exec django python manage.py shell -c "import load_clancy_lattice"
+```

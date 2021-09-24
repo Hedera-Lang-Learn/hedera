@@ -12,8 +12,7 @@ class EditedTextHtmlParser(HTMLParser):
         self.current_data = ""
         self.lemmatized_text_data = []
         self.token_node_dict = token_node_dict
-        self.lang = lang
-        self.lemmatizer = Lemmatizer(self.lang)
+        self.lemmatizer = Lemmatizer(lang)
         return super().__init__()
 
     def handle_starttag(self, tag, attrs):

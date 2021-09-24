@@ -27,8 +27,6 @@ urlpatterns = [
 
     path("dashboard/", views.DashboardView.as_view(), name="dashboard"),
 
-    path("read/<int:text_id>/", views.read, name="read"),
-
     path("lemmatized_text/", include("lemmatized_text.urls")),
     path("lattices/", include("lattices.urls")),
     path("vocab/", include("vocab_list.urls")),
