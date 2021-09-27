@@ -1,10 +1,6 @@
 from django.test import SimpleTestCase
 
-from ..services.chinese import (
-    LACChineseTokenizer,
-    get_triples,
-    normalize_chinese,
-)
+from ..services.chinese import LACChineseTokenizer
 
 
 class LACChineseTokenizerTests(SimpleTestCase):
@@ -98,7 +94,7 @@ class LACChineseTokenizerTests(SimpleTestCase):
             "。",  # (Following)
             "”",  # (Following)
         ]
-        triples = list(get_triples(tokenized_input))
+        triples = list(LACChineseTokenizer(lang="zho").get_triples(tokenized_input))
         self.assertEqual(
             triples,
             [
@@ -130,7 +126,7 @@ class LACChineseTokenizerTests(SimpleTestCase):
             "哈",  # continuation of previous token
             "！",  # (following)
         ]
-        triples = list(get_triples(tokenized_input))
+        triples = list(LACChineseTokenizer(lang="zho").get_triples(tokenized_input))
         self.assertEqual(
             triples,
             [
@@ -183,17 +179,18 @@ class LACChineseTokenizerTests(SimpleTestCase):
         normalize_chinese() normalizes full-width pipe and underscore characters,
         and performs some CJK character normalization
         """
+        lac_tokenizer = LACChineseTokenizer(lang="zho")
         # the first character is an alternate form of the second character, but they should not be transformed by NFC
         text_input_no_change = "⺼!=月 / ，!=, / 。!=."
         self.assertEqual(
-            normalize_chinese(text_input_no_change),
+            lac_tokenizer.normalize_chinese(text_input_no_change),
             text_input_no_change,
         )
 
         # the first character in each pair is the full-width version, the second is the half-width (ASCII) version
         text_input_full_width_punctuation_should_change = "\uFF5C==| / \uFF3F==_"
         self.assertEqual(
-            normalize_chinese(text_input_full_width_punctuation_should_change),
+            lac_tokenizer.normalize_chinese(text_input_full_width_punctuation_should_change),
             # this is the same string, only with full-width converted to half-width
             "|==| / _==_",
         )
@@ -201,7 +198,7 @@ class LACChineseTokenizerTests(SimpleTestCase):
         # the first character is the CJK Compatibility Ideograph \uF9D1, the second is the canonical Unified Ideograph \u516D
         text_input_compatibility_change = "六==六"
         self.assertEqual(
-            normalize_chinese(text_input_compatibility_change),
+            lac_tokenizer.normalize_chinese(text_input_compatibility_change),
             # this is the same string, only with compatibility chars transformed to canonical
             "六==六",
         )
