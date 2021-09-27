@@ -52,7 +52,7 @@ def node_exists(lemma: str) -> bool:
 row_grouping_re = re.compile(r"^(?P<lemma>\S+) (?P<altform>\S+) (?P<defn>.*)$")
 
 ROW_COUNT_FOR_UPDATE = 100
-ROW_TO_START_FROM = 98500
+ROW_TO_START_FROM = 1  # set this higher e.g. to resume from a previous point
 current_row = 0
 start_time = time.time()
 block_start_time = start_time
