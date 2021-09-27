@@ -30,7 +30,7 @@ jobs:
           run: |
             pipenv --python 3.7 install --dev
             pipenv run isort -c **/*.py
-            pipenv run flake8 --show-source databasetext hedera lattices lemmatization lemmatized_text vocab_list lti
+            pipenv run flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
         - name: Install Static Dependences
           run: npm i --dev
