@@ -110,7 +110,6 @@
 <script>
   import {
     FETCH_PERSONAL_VOCAB_LANG_LIST,
-    LANGUAGES,
     CREATE_PERSONAL_VOCAB_ENTRY,
     FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
@@ -212,8 +211,9 @@
         this.submitting = false;
       },
       formatLang(lang) {
-        // TODO update to supported languages endpoint
-        return LANGUAGES[lang];
+        const { supportedLanguages } = this.$store.state;
+        const found = supportedLanguages.find((ele) => ele[0] === lang);
+        return found[1];
       },
       setFocus() {
         this.$nextTick(() => {
@@ -230,7 +230,7 @@
       },
       async getHeadword() {
         /**
-         * TODO add more languages
+         * TODO add more languages for searches
          * conditional to only get headword for Latin for now
          * */
         if (this.vocabularyListItem && this.vocabularyListItem.lang !== 'lat') return;

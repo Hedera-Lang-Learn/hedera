@@ -90,8 +90,4 @@ export default {
   [FETCH_SUPPORTED_LANG_LIST]: (state, data) => {
     state.supportedLanguages = data;
   },
-  // TODO add suggested node functionality
-  // [FETCH_LATTICE_NODES]: (state, data) => {
-  //   state.latticeNodes = data
-  // }
 };

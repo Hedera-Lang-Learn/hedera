@@ -38,9 +38,3 @@ export const RATINGS = {
   4: 'I definitely know what this word means but could forget soon',
   5: 'I know this word so well, I am unlikely to ever forget it',
 };
-
-export const LANGUAGES = {
-  lat: 'Latin',
-  grc: 'Greek',
-  rus: 'Russian',
-};
