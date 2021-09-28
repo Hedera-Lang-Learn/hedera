@@ -47,7 +47,13 @@ def create(request):
         lemmatized_text.clone(cloned_by=request.user)
         return redirect("lemmatized_texts_list")
 
-    return render(request, "lemmatized_text/create.html", {"select_lang": select_lang})
+    lang_dict = []
+    for lang in settings.SUPPORTED_LANGUAGES:
+        lang_dict.append({
+            "id": lang[0], "name": lang[1]
+        })
+
+    return render(request, "lemmatized_text/create.html", {"select_lang": select_lang, "supported_lang": lang_dict})
 
 
 @require_POST
