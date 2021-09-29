@@ -404,8 +404,8 @@ SUPPORTED_LANGUAGES = [
     ["grc", "Ancient Greek"],
     ["lat", "Latin"],
     ["rus", "Russian"],
+    ["zho", "Chinese"],
 ]
-
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = None

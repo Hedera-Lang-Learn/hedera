@@ -1,0 +1,18 @@
+# cedict_ts_sampled_for_testing.u8
+# Source: CC-CEDICT (subset of ./cedict_ts.u8)
+#
+# here's an example sentence that will show some of these glosses once parsed:
+#   你好我是個｜人
+#
+#! version=1
+#! subversion=0
+#! format=ts
+#! charset=UTF-8
+#! date=2021-09-14T06:11:30Z
+#! time=1631599890
+你好 你好 [ni3 hao3] /hello/hi/
+我 我 [wo3] /I/me/my/
+是 是 [shi4] /is/are/am/yes/to be/
+個 个 [ge4] /individual/this/that/size/classifier for people or objects in general/
+個人 个人 [ge4 ren2] /individual/personal/oneself/
+人 人 [ren2] /person/people/CL:個|个[ge4],位[wei4]/

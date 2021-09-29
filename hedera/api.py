@@ -135,6 +135,7 @@ class LemmatizedTextStatusAPI(APIView):
         )
 
     def post(self, request, *args, **kwargs):
+        cloned = None
         if self.kwargs.get("action") == "retry" and self.text.can_retry():
             self.text.retry_lemmatization()
         elif self.kwargs.get("action") == "cancel" and self.text.can_cancel():
@@ -142,7 +143,7 @@ class LemmatizedTextStatusAPI(APIView):
         elif self.kwargs.get("action") == "clone":
             # @@@ self.text can only be fetched if public or you own it, probably need to expand for teachers
             cloned = self.text.clone(cloned_by=request.user)
-        return JsonResponse(data=dict(data=self.get_data(cloned)))
+        return JsonResponse(data=dict(data=self.get_data(new_text=cloned)))
 
 
 class LemmatizedTextDetailAPI(APIView):

@@ -1,8 +1,11 @@
 # Hedera
 
-This is a minimalistic project that just has basic account features and a simple, static reader [or will—this is a work in progress].
-
-For the full Scaife Viewer running the Perseus Digital Library in production, see <https://github.com/scaife-viewer/scaife-viewer>.
+Hedera is an application for viewing texts in different languages such that:
+- pedagogical aids such as glosses can assist the reader;
+- the reader can track personal vocabulary lists;
+- the reader can refer to shared vocabulary lists;
+- texts can be organized into classes;
+- and a reader can see how much of a text should already be familiar.
 
 ## Getting Started
 
@@ -35,14 +38,26 @@ docker-compose run django python manage.py shell -c "import load_ivy_lattice"
 docker-compose run django python manage.py shell -c "import logeion_load"
 ```
 
+(Optional) Chinese lattice data:
+
+**Caution**: _This can take more than one hour._
+
+```sh
+docker-compose run django python manage.py shell -c "import load_chinese_lattice"
+```
+
 #### Good to know's and Gotcha's
 
 Steps to add a new python package:
 
 1. Add package to `Pipfile`
 2. Run `docker-compose run django pipenv lock`. This will save/update the `Pipfile.lock` file.
-3. Note that the django container must be running before executing the next command. 
-4. Run `docker-compose exec django pipenv install --system`.
+3. Note that the django container must be running before executing the next command.
+4. Run:
+    ```
+    docker-compose exec django pipenv install --system
+    docker-compose exec worker pipenv install --system
+    ```
 
 If you'd like to remove all existing images and start fresh:
 
@@ -50,6 +65,12 @@ If you'd like to remove all existing images and start fresh:
 docker-compose down --rmi all
 docker-compose build
 docker-compose up
+```
+
+If you've run a lot of containers and you'd like to clean them up so that your `docker compose` command output isn't endless:
+
+```
+docker ps --filter status=exited --filter name=hedera_django_run -q | xargs docker rm
 ```
 
 ### Without Docker
@@ -81,6 +102,8 @@ To import lattice data:
 ./manage.py shell -c "import load_ivy_wonky_words"
 ./manage.py shell -c "import load_ivy_lattice"
 ./manage.py shell -c "import logeion_load"
+# optional (this can take more than an hour)
+# ./manage.py shell -c "import load_chinese_lattice"
 ```
 
 And finally, to start Django,
@@ -155,12 +178,12 @@ This project uses `isort` for import sorting, `flake8` for Python linting, and v
 To make developement more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript
 - Install [Pre-commit](https://pre-commit.com/)
 Note: the installation guide covers different install methods
-- you will then need to run the following command in the root of the project 
+- you will then need to run the following command in the root of the project
 ```
 pre-commit install
 ```
 You're all set! Now when you commit code upstream the commit will trigger the different linters and flag the required changes
-Notes: you can quickly fix javascript eslint errors with `npm run lint:fix` 
+Notes: you can quickly fix javascript eslint errors with `npm run lint:fix`
 
 
 ## Resetting the Database
