@@ -16,6 +16,7 @@ describe('QuickVocabForm', () => {
       resetLatticeNodesByHeadword: jest.fn(),
       fetchMe: jest.fn(),
       setLanguagePref: jest.fn(),
+      fetchSupportedLangList: jest.fn(),
     };
 
     store = new Vuex.Store({
@@ -31,6 +32,11 @@ describe('QuickVocabForm', () => {
           showNodeIds: 'toggle',
           lang: 'lat',
         },
+        supportedLanguages: [
+          ['grc', 'Ancient Greek'],
+          ['lat', 'Latin'],
+          ['rus', 'Russian'],
+        ],
       },
       actions,
     });
@@ -54,7 +60,10 @@ describe('QuickVocabForm', () => {
         children: [],
       },
     ];
-    const wrapper = mount(QuickVocabAddForm, { store, localVue });
+    const wrapper = mount(QuickVocabAddForm, {
+      store,
+      localVue,
+    });
     expect(wrapper.findAll('#lattice-node-options')).toHaveLength(1);
   });
 
@@ -70,17 +79,10 @@ describe('QuickVocabForm', () => {
   });
 
   it('successfully calls store createPersonalVocabEntry "submit" when button is clicked', () => {
-    store.state.personalVocabLangList = [
-      {
-        lang: 'lat',
-        id: 1,
-      },
-      {
-        lang: 'grc',
-        id: 36,
-      },
-    ];
-    const wrapper = mount(QuickVocabAddForm, { store, localVue });
+    const wrapper = mount(QuickVocabAddForm, {
+      store,
+      localVue,
+    });
     const options = wrapper.find('#FormControlSelect').findAll('option');
     options.at(1).setSelected();
     wrapper.find('input[type=text][placeholder=headword]').setValue('sum');

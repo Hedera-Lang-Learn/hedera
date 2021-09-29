@@ -10,10 +10,9 @@ export default {
   personalVocabList: {},
   selectedVocabList: null,
   showInVocabList: true,
-  personalVocabLangList: null,
+  personalVocabLangList: [],
   personalVocabAdded: false,
   latticeNodes: [],
   bookmarks: [],
-  // TODO add suggested node functionality
-  // latticeNodes: []
+  supportedLanguages: [],
 };

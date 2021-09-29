@@ -13,6 +13,7 @@ describe('PersonalVocab', () => {
       fetchMe: jest.fn(),
       fetchPersonalVocabList: jest.fn(),
       deletePersonalVocabEntry: jest.fn(),
+      fetchSupportedLangList: jest.fn(),
     };
 
     store = new Vuex.Store({
@@ -28,12 +29,13 @@ describe('PersonalVocab', () => {
             },
           ],
         },
+        supportedLanguages: [],
       },
       actions,
     });
   });
   it('loads in delete button PersonalVocab', () => {
-    const wrapper = shallowMount(PersonalVocab, { store, localVue });
+    const wrapper = mount(PersonalVocab, { store, localVue });
     expect(wrapper.find('#td-delete-button').exists()).toBe(true);
   });
 
@@ -48,7 +50,14 @@ describe('PersonalVocab', () => {
     expect(wrapper.find('#td-delete-button').exists()).toBe(false);
   });
   it('should successfully delete a vocab from the list', () => {
-    const wrapper = mount(PersonalVocab, { store, localVue });
+    // https://vue-test-utils.vuejs.org/api/options.html#stubs
+    const wrapper = mount(PersonalVocab, {
+      store,
+      localVue,
+      stubs: {
+        QuickAddVocabForm: false,
+      },
+    });
     wrapper.find('#td-delete-button').trigger('click');
     expect(actions.deletePersonalVocabEntry).toHaveBeenCalled();
   });

@@ -23,7 +23,7 @@ import {
   FETCH_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
-  // FETCH_LATTICE_NODES,
+  FETCH_SUPPORTED_LANG_LIST,
 } from '../constants';
 import api from '../api';
 
@@ -105,10 +105,10 @@ export default {
       .fetchPersonalVocabLangList(cb)
       .catch(logoutOnError(commit));
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity, node }) => {
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, gloss, vocabularyListId, familiarity, node, lang }) => {
     const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
     return api
-      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, node, cb)
+      .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, node, lang, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword }) => {
@@ -141,6 +141,10 @@ export default {
     api
       .removeBookmark(bookmarkId)
       .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+  [FETCH_SUPPORTED_LANG_LIST]: ({ commit }) => (
+    api.fetchSupportedLangList((data) => commit(FETCH_SUPPORTED_LANG_LIST, data.data))
       .catch(logoutOnError(commit))
   ),
   // TODO add suggested node functionality

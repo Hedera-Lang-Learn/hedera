@@ -380,8 +380,21 @@ class PersonalVocabularyQuickAddAPI(APIView):
             return JsonResponseBadRequest({"error": "Missing required fields"})
         if "node" in data and data["node"] is not None:
             data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
-        new_entry = PersonalVocabularyListEntry.objects.create(**data)
-        return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
+        try:
+            # to handle new quick add when list doesnt exist create using lang if
+            if data["vocabulary_list_id"] is None:
+                if "lang" not in data:
+                    raise KeyError("lang field not provided")
+                new_vocab_list, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=data["lang"])
+                data["vocabulary_list_id"] = new_vocab_list.data()["id"]
+            # removes lang key before creating the entry
+            if "lang" in data:
+                del data["lang"]
+            new_entry = PersonalVocabularyListEntry.objects.create(**data)
+            return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
+
+        except Exception as e:
+            return JsonResponseBadRequest(data={"error": f"{e}"})
 
 
 class LatticeNodesAPI(APIView):

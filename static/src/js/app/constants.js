@@ -16,14 +16,13 @@ export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
 export const FETCH_LATTICE_NODES_BY_HEADWORD = 'fetchLatticeNodesByHeadword';
 export const RESET_LATTICE_NODES_BY_HEADWORD = 'resetLatticeNodesByHeadword';
+export const FETCH_SUPPORTED_LANG_LIST = 'fetchSupportedLangList';
 // TODO add language preference
 export const SET_LANGUAGE_PREF = 'setLanguagePref';
 export const DELETE_PERSONAL_VOCAB_ENTRY = 'deletePersonalVocabEntry';
 export const FETCH_BOOKMARKS = 'fetchBookmarks';
 export const ADD_BOOKMARK = 'addBookmark';
 export const REMOVE_BOOKMARK = 'removeBookmark';
-// TODO add suggested node functionality
-// export const FETCH_LATTICE_NODES = 'fetchLatticeNodes'
 
 export const RESOLVED_NA = 'na';
 export const RESOLVED_NO_LEMMA = 'no-lemma';
@@ -38,11 +37,4 @@ export const RATINGS = {
   3: 'I think I know what this word means',
   4: 'I definitely know what this word means but could forget soon',
   5: 'I know this word so well, I am unlikely to ever forget it',
-};
-
-export const LANGUAGES = {
-  lat: 'Latin',
-  grc: 'Greek',
-  rus: 'Russian',
-  zho: 'Chinese',
 };

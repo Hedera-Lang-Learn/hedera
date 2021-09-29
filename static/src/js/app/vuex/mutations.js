@@ -17,8 +17,7 @@ import {
   SET_LANGUAGE_PREF,
   DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
-  // TODO add suggested node functionality
-  // FETCH_LATTICE_NODES
+  FETCH_SUPPORTED_LANG_LIST,
 } from '../constants';
 
 export default {
@@ -88,8 +87,7 @@ export default {
   [FETCH_BOOKMARKS]: (state, data) => {
     state.bookmarks = data;
   },
-  // TODO add suggested node functionality
-  // [FETCH_LATTICE_NODES]: (state, data) => {
-  //   state.latticeNodes = data
-  // }
+  [FETCH_SUPPORTED_LANG_LIST]: (state, data) => {
+    state.supportedLanguages = data;
+  },
 };
