@@ -19,8 +19,8 @@
     <div class="form-group">
       <label>Language</label>
       <select name="lang" class="form-control">
-        {% for ele in supported_lang %}
-          <option value="{{ ele.id }}" {% if select_lang == ele.id %}selected{% endif %} >{{ ele.name }}</option>
+        {% for lang in supported_lang %}
+          <option value="{{ lang.0 }}" {% if select_lang == lang.0 %}selected{% endif %} >{{ lang.1 }}</option>
         {% endfor %}
       </select>
     </div>
