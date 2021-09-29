@@ -1,5 +1,5 @@
 <template>
-  <div class="lemmatized-text" :class="highlightClass">
+  <div class="lemmatized-text" :class="[highlightClass, languageClass]">
     <template v-for="token in tokens">
       <Token
         :key="token.tokenIndex"
@@ -122,6 +122,9 @@
     computed: {
       unresolvedTokens() {
         return this.tokens.filter((t) => !t.resolved || t === this.selectedToken);
+      },
+      languageClass() {
+        return `text-lang-${this.$store.state.text.lang ?? 'unknown'}`;
       },
       highlightClass() {
         if (this.$store.state.selectedVocabList === null) {
