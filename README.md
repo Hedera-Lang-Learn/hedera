@@ -206,3 +206,4 @@ $ docker-compose exec django python manage.py shell -c "import load_chinese_latt
 
 ## Adding a new language
 
+In order to add a new language, you will need to add an entry to `SUPPORTED_LANGUAGES` in `hedera.supported_languages.py`. Every language requires a "code", "verbose_name", "service", and "tokenizer." Language specific services are defined in `lemmatization.services`. Please, review the existing services and tokenizers, and add your language's module.
