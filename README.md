@@ -201,4 +201,8 @@ $ docker-compose exec django python manage.py shell -c "import load_ivy_wonky_wo
 $ docker-compose exec django python manage.py shell -c "import load_ivy_lattice"
 $ docker-compose exec django python manage.py shell -c "import logeion_load"
 $ docker-compose exec django python manage.py shell -c "import load_clancy_lattice"
+$ docker-compose exec django python manage.py shell -c "import load_chinese_lattice"
 ```
+
+## Adding a new language
+

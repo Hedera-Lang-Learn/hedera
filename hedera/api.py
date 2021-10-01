@@ -22,7 +22,7 @@ from .models import Profile
 from .supported_languages import SUPPORTED_LANGUAGES
 
 
-LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES]
+LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
 
 
 class JsonResponseAuthError(JsonResponse):

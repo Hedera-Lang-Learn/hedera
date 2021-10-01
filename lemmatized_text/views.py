@@ -42,7 +42,7 @@ def create(request):
         return redirect("lemmatized_texts_list")
 
     select_lang = ""
-    languages = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES]
+    languages = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
     # create the  selected language here, which is the lanaguage of the last submitted text
     try:
         select_lang = models.LemmatizedText.objects.filter(created_by=request.user).order_by("-pk")[0].lang
