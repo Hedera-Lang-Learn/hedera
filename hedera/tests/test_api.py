@@ -1,12 +1,11 @@
 import json
 from random import randrange
 
-from django.conf import settings
-
 from django.contrib.auth.models import User
 
 from rest_framework.test import APITestCase
 
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 from hedera.tests import utils
 from lattices.models import LatticeNode, LemmaNode
 from lemmatized_text.models import LemmatizedTextBookmark
@@ -273,6 +272,7 @@ class SupportedLanguagesAPITest(APITestCase):
         self.client.force_login(user=self.user)
 
     def test_get_supported_language_list(self):
+        languages = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES]
         response = self.client.get(f"/api/v1/supported_languages/", content_type="application/json")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()["data"], settings.SUPPORTED_LANGUAGES)
+        self.assertEqual(response.json()["data"], languages)

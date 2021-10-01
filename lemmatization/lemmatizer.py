@@ -1,29 +1,13 @@
 import logging
 
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 from lattices.models import LatticeNode, LemmaNode
 
 from .models import add_form, lookup_form
-from .services.chinese import ChineseService, LACChineseTokenizer
-from .services.clancy import ClancyService
-from .services.morpheus import MorpheusService
-from .tokenizer import EncliticTokenizer, RUSTokenizer, Tokenizer
 
 
 logger = logging.getLogger(__name__)
 
-
-SERVICES = {
-    "grc": MorpheusService(lang="grc"),
-    "lat": MorpheusService(lang="lat"),
-    "rus": ClancyService(lang="rus"),
-    "zho": ChineseService(lang="zho"),
-}
-TOKENIZERS = {
-    "grc": Tokenizer(lang="grc"),
-    "lat": EncliticTokenizer(lang="lat"),
-    "rus": RUSTokenizer(lang="rus"),
-    "zho": LACChineseTokenizer(lang="zho"),
-}
 
 RESOLVED_NA = "na"
 RESOLVED_NO_LEMMA = "no-lemma"
@@ -39,8 +23,8 @@ class Lemmatizer(object):
         self.lang = lang
         self.cb = cb
         self.force_refresh = force_refresh
-        self._service = SERVICES[lang]
-        self._tokenizer = TOKENIZERS[lang]
+        self._service = SUPPORTED_LANGUAGES[lang].service
+        self._tokenizer = SUPPORTED_LANGUAGES[lang].tokenizer
         if self._service is None:
             raise ValueError(f"Lemmatization not supported for language '{lang}''")
         if self._tokenizer is None:

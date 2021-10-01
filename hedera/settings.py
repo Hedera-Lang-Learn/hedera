@@ -399,14 +399,6 @@ DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 EMAIL_USE_TLS = True
 
 
-# ISO 639.2 CODES
-SUPPORTED_LANGUAGES = [
-    ["grc", "Ancient Greek"],
-    ["lat", "Latin"],
-    ["rus", "Russian"],
-    ["zho", "Chinese"],
-]
-
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = None
 

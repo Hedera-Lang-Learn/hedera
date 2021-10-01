@@ -1,7 +1,6 @@
 import json
 import re
 
-from django.conf import settings
 from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -20,6 +19,10 @@ from vocab_list.models import (
 )
 
 from .models import Profile
+from .supported_languages import SUPPORTED_LANGUAGES
+
+
+LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES]
 
 
 class JsonResponseAuthError(JsonResponse):
@@ -61,7 +64,7 @@ class MeAPI(APIView):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         profile = Profile.objects.get(user=request.user)
-        if(data["lang"] in (x[0] for x in settings.SUPPORTED_LANGUAGES)):
+        if(data["lang"] in (x[0] for x in LANGUAGES)):
             profile.lang = data["lang"]
             profile.save()
             return JsonResponse({"data": profile.data()})
@@ -444,4 +447,4 @@ class JsonResponseBadRequest(JsonResponse):
 class SupportedLanguagesAPI(APIView):
 
     def get_data(self):
-        return settings.SUPPORTED_LANGUAGES
+        return LANGUAGES

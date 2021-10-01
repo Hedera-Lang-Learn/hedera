@@ -1,6 +1,31 @@
 import requests
 
 
+def pairwise(iterable):
+    """s -> (s0, s1), (s2, s3), (s4, s5), ..."""
+    a = iter(iterable)
+    return zip(a, a)
+
+
+def eveniter(iterable, last=" "):
+    """ Generates an even number of values. """
+    even = True
+    for value in iterable:
+        even = not even
+        yield value
+    if not even:
+        yield last
+
+
+def triples(tokens, normalize=None):
+    pairs = pairwise(eveniter(tokens))
+    for token, following in pairs:
+        if normalize is None:
+            yield token, token, following
+        else:
+            yield token, normalize(token), following
+
+
 class Service(object):
 
     SID = None
@@ -32,3 +57,26 @@ class Service(object):
         Returns list of lemmas for the given form: [lemma1, lemma2, ...]
         """
         return self._call_service(form)
+
+
+class Tokenizer(object):
+    """
+    Tokenizer for breaking text into a list of tokens.
+
+    Subclasses should override the tokenize() method to provide
+    language-specific tokenization.
+    """
+
+    def __init__(self, lang):
+        self.lang = lang
+
+    def tokenize(self, text):
+        """
+        Returns an iterable of triples: (word, word_normalized, following)
+
+        The first item returned will have an empty string for `word` if the
+        text starts with a non-word.
+
+        This method must be overridden.
+        """
+        raise NotImplementedError

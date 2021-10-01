@@ -1,11 +1,15 @@
 import re
-from typing import Iterable, List, Tuple  # can use `list` and `tuple` in python 3.9
 import unicodedata
+from typing import (  # can use `list` and `tuple` in python 3.9
+    Iterable,
+    List,
+    Tuple
+)
 
 from LAC import LAC
 
-from .base import Service
-from ..tokenizer import Tokenizer
+from .base import Service, Tokenizer
+
 
 TripleIterable = Iterable[Tuple[str, str, str]]
 
