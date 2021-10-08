@@ -49,10 +49,13 @@ class VocabularyListAndEntryTests(TestCase):
         }
         self.assertEqual(self.vocab_list.data(), expected_data)
 
+    def test_display_name(self):
+        self.assertEqual(self.vocab_list.display_name(), "Latin")
+
     def test_entry_data(self):
         entry = VocabularyListEntry.objects.filter(vocabulary_list=self.vocab_list).first()
         expected_data = {
-            "id": 5,
+            "id": 9,
             "headword": "melon",
             "gloss": "armor",
             "node": None
@@ -111,10 +114,13 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         }
         self.assertEqual(self.vocab_list.data(), expected_data)
 
+    def test_display_name(self):
+        self.assertEqual(self.vocab_list.display_name(), "Latin")
+
     def test_entry_data(self):
         entry = PersonalVocabularyListEntry.objects.filter(vocabulary_list=self.vocab_list).first()
         expected_data = {
-            "id": 5,
+            "id": 9,
             "headword": "melon",
             "gloss": "armor",
             "familiarity": 2,
