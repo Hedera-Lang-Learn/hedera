@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView
 
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 from lattices.models import LatticeNode
 from pdfservice.mixins import PDFResponseMixin
 
@@ -19,13 +20,6 @@ def lemmatized_texts(request):
 
 
 def create(request):
-    select_lang = ""
-    # create the  selected language here, which is the lanaguage of the last submitted text
-    try:
-        select_lang = models.LemmatizedText.objects.filter(created_by=request.user).order_by("-pk")[0].lang
-    except Exception as e:
-        logging.exception(e)
-
     # the POST is after form is submitted
     if request.method == "POST":
         title = request.POST.get("title")
@@ -47,7 +41,15 @@ def create(request):
         lemmatized_text.clone(cloned_by=request.user)
         return redirect("lemmatized_texts_list")
 
-    return render(request, "lemmatized_text/create.html", {"select_lang": select_lang, "supported_lang": settings.SUPPORTED_LANGUAGES})
+    select_lang = ""
+    languages = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
+    # create the  selected language here, which is the lanaguage of the last submitted text
+    try:
+        select_lang = models.LemmatizedText.objects.filter(created_by=request.user).order_by("-pk")[0].lang
+    except Exception as e:
+        logging.exception(e)
+
+    return render(request, "lemmatized_text/create.html", {"select_lang": select_lang, "supported_lang": languages})
 
 
 @require_POST

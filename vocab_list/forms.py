@@ -1,19 +1,11 @@
 from django import forms
-from django.conf import settings
+
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 
 from .models import VocabularyList
 
 
-class VocabularyListForm(forms.ModelForm):
-
-    lang = forms.ChoiceField(label="Language", choices=settings.SUPPORTED_LANGUAGES)
-    data = forms.FileField(label="Vocabulary Entries", help_text="Expects a TAB delimited file as exported from Excel or Google Sheets")
-
-    class Meta:
-        model = VocabularyList
-        fields = ["title", "description", "lang", "data"]
-
-
+LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
 RATINGS = [
     (1, "I don't recognize these words"),
     (2, "I recognize these words but don't know what they mean"),
@@ -23,9 +15,19 @@ RATINGS = [
 ]
 
 
+class VocabularyListForm(forms.ModelForm):
+
+    lang = forms.ChoiceField(label="Language", choices=LANGUAGES)
+    data = forms.FileField(label="Vocabulary Entries", help_text="Expects a TAB delimited file as exported from Excel or Google Sheets")
+
+    class Meta:
+        model = VocabularyList
+        fields = ["title", "description", "lang", "data"]
+
+
 class PersonalVocabularyListForm(forms.ModelForm):
 
-    lang = forms.ChoiceField(label="Language", choices=settings.SUPPORTED_LANGUAGES)
+    lang = forms.ChoiceField(label="Language", choices=LANGUAGES)
     data = forms.FileField(label="Vocabulary Entries", help_text="Expects a TAB delimited file as exported from Excel or Google Sheets")
     rating = forms.ChoiceField(label="Familiarity", choices=RATINGS)
 
