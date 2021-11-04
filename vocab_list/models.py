@@ -42,10 +42,6 @@ def parse_line(idx, line):
     return clean(*columns)
 
 
-def filter_lines(lines, already_exist):
-    return list(filter(lambda x: x[0] != "" and x[0] not in already_exist, lines))
-
-
 class AbstractVocabList(models.Model):
     lang = models.CharField(max_length=3)  # ISO 639.2
     created = models.DateTimeField(auto_now_add=True)
@@ -60,52 +56,27 @@ class AbstractVocabList(models.Model):
         """
         return languages.get(part3=self.lang).name
 
-    def _list_entry_already_exists(self, model, lines):
+    def _create_entires(self, new_headwords, entry_model, extra_attrs):
         """
-        Parameters: model (class), lines (list)
-        Returns: list of headwords that already exist (list)
-        """
-        return (model.objects.filter(vocabulary_list=self, headword__in=lines)
-                .values_list("headword", flat=True))
-
-    def _create_entry(self, model, index, **kwargs):
-        """
-        Parameters: model (class), index (int), kwargs (dict)
-        Returns: entry object of the provided model, with attributes spread from kwargs.
-        """
-        return model(
-            **kwargs,
-            vocabulary_list=self,
-            _order=index
-        )
-
-    def _create_entires(self, filtered_lines, familiarity=None, personal=False):
-        """
-        Parameters: filtered_lines (list), familiartiy (int), personal (bool)
+        Parameters: new_headwords (list), entry_model (class), extra_attrs (dict)
         Returns: list of vocab list entry objects
         """
-        entries = []
-        model = VocabularyListEntry if not personal else PersonalVocabularyListEntry
-        for idx, line in enumerate(filtered_lines):
-            kwargs = {
-                "headword": line[0],
-                "gloss": line[1],
-            }
-            if personal:
-                kwargs["familiarity"] = familiarity
-            entries.append(self._create_entry(model, idx, **kwargs))
-        return entries
+        return [
+            entry_model(vocabulary_list=self, _order=idx, headword=line[0], gloss=line[1], **extra_attrs)
+            for idx, line in enumerate(new_headwords)
+        ]
 
-    def load_tab_delimited(self, fd, model, familiarity=None, personal=False):
+    def load_tab_delimited(self, fd, entry_model, extra_attrs={}):
         """
         Method to load vocab lists from tsv upload.
-        Parameters: fd (iterable), model (class), familiarity (int), personal (bool)
+        Parameters: fd (iterable), entry_model (class), extra_attrs (dict)
         Returns: bulk create query of vocab list entries
         """
         lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
-        already_exist = self._list_entry_already_exists(model, lines)
-        entries = self._create_entires(filter_lines(lines, already_exist), familiarity=familiarity, personal=personal)
-        return model.objects.bulk_create(entries)
+        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", flat=True)
+        new_headwords = filter(lambda x: x[0] != "" and x[0] not in existing_headwords, lines)
+        entries = self._create_entires(new_headwords, entry_model, extra_attrs)
+        return entry_model.objects.bulk_create(entries)
 
 
 class VocabularyList(AbstractVocabList):
@@ -165,7 +136,7 @@ class PersonalVocabularyList(AbstractVocabList):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, familiarity=familiarity, personal=True)
+        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, extra_attrs={"familiarity": familiarity})
 
     def data(self):
         stats = {}
