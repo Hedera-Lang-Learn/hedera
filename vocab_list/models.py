@@ -119,7 +119,7 @@ class VocabularyList(AbstractVocabList):
 
 
 class PersonalVocabularyList(AbstractVocabList):
-
+    # TODO: this could be refacted to the abstract class, but VocabularyList defines it as "owner"
     user = models.ForeignKey(
         getattr(settings, "AUTH_USER_MODEL", "auth.User"),
         on_delete=models.CASCADE
@@ -211,6 +211,11 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
     vocabulary_list = models.ForeignKey(
         PersonalVocabularyList, related_name="entries", on_delete=models.CASCADE)
     familiarity = models.IntegerField(null=True)
+    # 1. I don't recognise this word
+    # 2. I recognise this word but don't know what it means
+    # 3. I think I know what this word means
+    # 4. I definitely know what this word means but could forget soon
+    # 5. I know this word so well, I am unlikely to ever forget it
     node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
