@@ -41,7 +41,7 @@ jobs:
 
         - name: Install Python Dependences, run linting and import sorting
           run: |
-            pip install ./hedera/requirements/dev.txt
+            pip install **/hedera/requirements/dev.txt
             isort -c **/*.py
             flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
