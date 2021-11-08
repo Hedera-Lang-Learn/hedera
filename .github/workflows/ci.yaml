@@ -25,7 +25,7 @@ jobs:
 
         - name: Setup Pip
           run: |
-            python get-pip.py
+            python3 -m pip install --upgrade pip
 
         - name: Setup Cache
           id: cache
