@@ -34,7 +34,6 @@ jobs:
             isort -c **/*.py
             flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
-
         - name: Install Static Dependences
           run: npm i --dev
 

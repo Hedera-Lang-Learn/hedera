@@ -14,10 +14,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
-# COPY ./Pipfile.lock ./Pipfile /app/
-# RUN pip install pipenv && \
-#     pipenv install --system --deploy && \
-#     rm Pipfile.lock Pipfile
 COPY ./hedera/requirements/local.txt ./hedera/requirements/base.txt /app/
 RUN pip install -r local.txt && \
     rm local.txt base.txt
