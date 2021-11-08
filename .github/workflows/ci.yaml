@@ -28,7 +28,9 @@ jobs:
           uses: actions/cache@v2
           with:
             path: ~/.cache/pip
-            key: ${{ runner.os }}-${{ hashFiles('**/hedera/requirements/dev.txt' )}}
+            key: ${{ runner.os }}-pip-${{ hashFiles('**/**/requirements/dev.txt' ) }}
+            restore-keys: |
+              ${{ runner.os }}-pip-  
 
         - name: Setup flake8 annotations
           uses: rbialon/flake8-annotations@v1
