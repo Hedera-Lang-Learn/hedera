@@ -41,9 +41,13 @@ jobs:
         #     pipenv run isort -c **/*.py
         #     pipenv run flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
-        - name: Install Python Dependences, run linting and import sorting
+        - name: Install Python Dependences
           run: |
             pip install -r hedera/requirements/dev.txt
+            
+        
+        - name: Run linting and import sorting
+          run: |
             isort -c **/*.py
             flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
