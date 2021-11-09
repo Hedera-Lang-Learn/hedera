@@ -3,6 +3,9 @@ FROM python:3.7
 # FIXME: switch to non-root user
 USER root
 
+# Upgrade pip 
+RUN pip install --upgrade pip
+
 # Create app working directory
 RUN mkdir -p /app
 WORKDIR /app
