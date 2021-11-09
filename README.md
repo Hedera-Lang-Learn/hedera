@@ -94,7 +94,7 @@ and either
 or `redis-server /usr/local/etc/redis.conf` to run it one time.
 
 1. Install node dependencies run `npm install`
-2. use pyenv virtualenv to create a virtual environment with python 3.7 or higher ([pyenv virtual install instructions here](https://github.com/pyenv/pyenv-virtualenv#installing-with-homebrew-for-macos-users))
+2. use pyenv virtualenv to create a virtual environment with python 3.7 or higher ([pyenv virtual install instructions here](https://github.com/pyenv/pyenv-virtualenv#installing-with-homebrew-for-macos-users)). Activate the virtual environment and run the following commands:
 ```
 pip install -r hedera/requirements/local.txt
 createdb hedera
@@ -102,7 +102,6 @@ createdb hedera
 ./manage.py loaddata sites
 ./manage.py create_cms
 ```
-
 3. To import lattice data:
 
 ```
@@ -112,8 +111,7 @@ createdb hedera
 # optional (this can take more than an hour)
 # ./manage.py shell -c "import load_chinese_lattice"
 ```
-4. In another terminal start up a redis server with the commands `redis-server`
-5. And finally, to start Django,
+4. And finally, to start Django,
 
 ```
 ./manage.py runserver
