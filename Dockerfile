@@ -1,8 +1,5 @@
 FROM python:3.7
 
-# FIXME: switch to non-root user
-USER root
-
 # Upgrade pip 
 RUN pip install --upgrade pip
 
@@ -17,9 +14,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
-COPY ./hedera/requirements/local.txt ./hedera/requirements/base.txt /app/
-RUN pip install -r local.txt && \
-    rm local.txt base.txt
+COPY ./hedera/requirements/base.txt /app/
+RUN pip install -r base.txt && \
+    rm base.txt
 
 # Install node dependencies
 COPY ./package-lock.json ./package.json /app/
