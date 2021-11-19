@@ -13,24 +13,26 @@ jobs:
           with:
             python-version: 3.7
 
-        - name: Setup Pipenv
-          uses: dschep/install-pipenv-action@v1
-
         - name: Setup Cache
-          id: pip-cache
-          uses: actions/cache@v1
+          id: cache
+          uses: actions/cache@v2
           with:
-            path: ~/.local
-            key: v1-${{ runner.os }}-${{ hashFiles('**/Pipfile.lock' )}}
+            path: ~/.cache/pip
+            key: ${{ runner.os }}-pip-${{ hashFiles('**/**/requirements/dev.txt' ) }}
+            restore-keys: |
+              ${{ runner.os }}-pip-
 
         - name: Setup flake8 annotations
           uses: rbialon/flake8-annotations@v1
 
-        - name: Install Python Dependences, run linting and import sorting
+        - name: Install Python Dependences
           run: |
-            pipenv --python 3.7 install --dev
-            pipenv run isort -c **/*.py
-            pipenv run flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
+            pip install -r hedera/requirements/dev.txt
+
+        - name: Run linting and import sorting
+          run: |
+            isort -c **/*.py
+            flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
         - name: Install Static Dependences
           run: npm i --dev

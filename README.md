@@ -49,15 +49,24 @@ docker-compose run django python manage.py shell -c "import load_chinese_lattice
 #### Good to know's and Gotcha's
 
 Steps to add a new python package:
-
-1. Add package to `Pipfile`
-2. Run `docker-compose run django pipenv lock`. This will save/update the `Pipfile.lock` file.
-3. Note that the django container must be running before executing the next command.
-4. Run:
+Prequisite - Install pip-compile into your virtual env via this command `python -m pip install pip-tools`. [Documentation here](https://github.com/jazzband/pip-tools)
+1. Add package to `base.in`
+2. Note that the django container must be running before executing the next command.
+3. Run:
     ```
-    docker-compose exec django pipenv install --system
-    docker-compose exec worker pipenv install --system
+    pip-compile base.in --output-file=- > hedera/requirements/base.txt
+    docker-compose exec django pip install <package>
+    docker-compose exec worker pip install <package>
     ```
+    Note: Alternatively we could also rebuild the image for django and worker after running `pip-compile base.in --output-file=- > hedera/requirements/base.txt` via these commands:
+    ```
+    docker-compose build django
+    docker-compose build worker
+    ```
+Note/TODO: We will have to update how we run the exec commands with root in favor of a designated user. Running the above exec commands will cause the following warning flag:
+```diff
+- Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager.
+```
 
 If you'd like to remove all existing images and start fresh:
 
@@ -85,18 +94,16 @@ and either
 `brew services start redis` to always start redis
 or `redis-server /usr/local/etc/redis.conf` to run it one time.
 
-
+1. Install node dependencies run `npm install`
+2. use pyenv virtualenv to create a virtual environment with python 3.7 or higher ([pyenv virtual install instructions here](https://github.com/pyenv/pyenv-virtualenv#installing-with-homebrew-for-macos-users)). Activate the virtual environment and run the following commands:
 ```
-npm install
-pipenv install
-pipenv shell
+pip install -r hedera/requirements/base.txt
 createdb hedera
 ./manage.py migrate
 ./manage.py loaddata sites
 ./manage.py create_cms
 ```
-
-To import lattice data:
+3. To import lattice data:
 
 ```
 ./manage.py shell -c "import load_ivy_wonky_words"
@@ -105,8 +112,7 @@ To import lattice data:
 # optional (this can take more than an hour)
 # ./manage.py shell -c "import load_chinese_lattice"
 ```
-
-And finally, to start Django,
+4. And finally, to start Django,
 
 ```
 ./manage.py runserver
@@ -119,10 +125,9 @@ export RQ_ASYNC=1
 ./manage.py runserver
 ```
 
-Then in another terminal:
+Then in another terminal(activate the virtual environment via pyenv):
 
 ```
-pipenv shell
 export RQ_ASYNC=1
 ./manage.py rqworker ${RQ_QUEUES:-default}
 ```
