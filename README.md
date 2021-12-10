@@ -50,15 +50,15 @@ docker-compose run django python manage.py shell -c "import load_chinese_lattice
 
 Steps to add a new python package:
 Prequisite - Install pip-compile into your virtual env via this command `python -m pip install pip-tools`. [Documentation here](https://github.com/jazzband/pip-tools)
-1. Add package to `base.in`
+1. Add package to `hedera/requirements/base.in`
 2. Note that the django container must be running before executing the next command.
 3. Run:
     ```
-    pip-compile base.in --output-file=- > hedera/requirements/base.txt
+    pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt
     docker-compose exec django pip install <package>
     docker-compose exec worker pip install <package>
     ```
-    Note: Alternatively we could also rebuild the image for django and worker after running `pip-compile base.in --output-file=- > hedera/requirements/base.txt` via these commands:
+    Note: Alternatively we could also rebuild the image for django and worker after running `pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt` via these commands:
     ```
     docker-compose build django
     docker-compose build worker
