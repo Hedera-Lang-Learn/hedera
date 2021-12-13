@@ -12,6 +12,10 @@ jobs:
           uses: actions/setup-python@v2
           with:
             python-version: 3.7
+        
+        - uses: actions/setup-node@v2
+          with:
+            node-version: '14'
 
         - name: Setup Cache
           id: cache
@@ -35,7 +39,7 @@ jobs:
             flake8 --show-source hedera lattices lemmatization lemmatized_text vocab_list lti
 
         - name: Install Static Dependences
-          run: npm i --dev
+          run: npm i --include=dev
 
         - name: Lint JavaScript
           run: npm run lint

@@ -5,7 +5,10 @@
         <LemmatizedText />
       </div>
       <div class="col-4">
-        <BookmarkTextButton :text-id="textId"></BookmarkTextButton>
+        <BookmarkTextButton :text-id="textId" />
+        <a class="btn btn-block btn-outline-info mb-3" :href="this.$store.state.text.editUrl">
+          <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
+        </a>
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
         <LatticeTree v-if="selectedToken" />
       </div>
