@@ -1,0 +1,6 @@
+FROM hedera-django:latest
+
+# Install python dev dependencies
+COPY ./hedera/requirements/dev.txt /app/
+RUN pip install -r dev.txt && \
+    rm dev.txt

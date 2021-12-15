@@ -13,14 +13,19 @@ Hedera is an application for viewing texts in different languages such that:
 
 Before running for the first time (or any time for that matter):
 
+```sh
+# first, build the prod django image
+docker compose build npm
+# next, build the dev images
+docker compose build
 ```
-docker-compose build
-```
+
+* **Details:** Local development uses two images, one built with the `Dockerfile` (this is the production image), and a derivative image built with the `Dockerfile.dev` (this is the development image; it simply adds dev dependencies as an extra layer to the prod image). The `npm` docker compose service uses the production image, and the `django` and `worker` services use the development image.
 
 To run the app:
 
 ```
-docker-compose up
+docker compose up
 ```
 
 When are you are finished, simply hit `ctrl-c` and the containers will shutdown.
@@ -28,14 +33,14 @@ When are you are finished, simply hit `ctrl-c` and the containers will shutdown.
 On initial running, you might want do run the following in another terminal:
 
 ```
-docker-compose run django python manage.py create_cms
+docker compose run --rm django python manage.py create_cms
 ```
 
 To import lattice data:
 
 ```
-docker-compose run django python manage.py shell -c "import load_ivy_lattice"
-docker-compose run django python manage.py shell -c "import logeion_load"
+docker compose run --rm django python manage.py shell -c "import load_ivy_lattice"
+docker compose run --rm django python manage.py shell -c "import logeion_load"
 ```
 
 (Optional) Chinese lattice data:
@@ -43,10 +48,10 @@ docker-compose run django python manage.py shell -c "import logeion_load"
 **Caution**: _This can take more than one hour._
 
 ```sh
-docker-compose run django python manage.py shell -c "import load_chinese_lattice"
+docker compose run --rm django python manage.py shell -c "import load_chinese_lattice"
 ```
 
-#### Good to know's and Gotcha's
+#### **Good to know's and Gotcha's**
 
 Steps to add a new python package:
 Prequisite - Install pip-compile into your virtual env via this command `python -m pip install pip-tools`. [Documentation here](https://github.com/jazzband/pip-tools)
@@ -55,13 +60,16 @@ Prequisite - Install pip-compile into your virtual env via this command `python 
 3. Run:
     ```
     pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt
-    docker-compose exec django pip install <package>
-    docker-compose exec worker pip install <package>
+    docker compose exec django pip install <package>
+    docker compose exec worker pip install <package>
     ```
-    Note: Alternatively we could also rebuild the image for django and worker after running `pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt` via these commands:
-    ```
-    docker-compose build django
-    docker-compose build worker
+    Note: Alternatively we could also rebuild the images for npm, django and worker after running `pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt` via these commands:
+    ```sh
+    # rebuild the base/prod image
+    docker compose build npm
+    # rebuild the dev images
+    docker compose build django
+    docker compose build worker
     ```
 Note/TODO: We will have to update how we run the exec commands with root in favor of a designated user. Running the above exec commands will cause the following warning flag:
 ```diff
@@ -70,10 +78,13 @@ Note/TODO: We will have to update how we run the exec commands with root in favo
 
 If you'd like to remove all existing images and start fresh:
 
-```
-docker-compose down --rmi all
-docker-compose build
-docker-compose up
+```sh
+docker compose down --rmi all
+# first, build the prod django image
+docker compose build npm
+# next, build the dev images
+docker compose build
+docker compose up
 ```
 
 If you've run a lot of containers and you'd like to clean them up so that your `docker compose` command output isn't endless:
@@ -180,7 +191,7 @@ This project uses `isort` for import sorting, `flake8` for Python linting, and v
 
 #### Pre-commit
 
-To make developement more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript
+To make developement more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript.
 - Install [Pre-commit](https://pre-commit.com/)
 Note: the installation guide covers different install methods
 - you will then need to run the following command in the root of the project
@@ -199,14 +210,14 @@ Every so often, it may be requested that the dev DB be "reset." Meaning, tables 
 # Run the custom management command to delete all of the relevant data.
 # The --no_input flag answers 'yes' to all prompts asking if you'd like to delete data.
 # Run without --no_input if you'd like to step through the process interatctively.
-$ docker-compose exec django python manage.py reset_db --no_input
+$ docker compose exec django python manage.py reset_db --no_input
 
 # Run commands to reload the data
-$ docker-compose exec django python manage.py shell -c "import load_ivy_wonky_words"
-$ docker-compose exec django python manage.py shell -c "import load_ivy_lattice"
-$ docker-compose exec django python manage.py shell -c "import logeion_load"
-$ docker-compose exec django python manage.py shell -c "import load_clancy_lattice"
-$ docker-compose exec django python manage.py shell -c "import load_chinese_lattice"
+$ docker compose exec django python manage.py shell -c "import load_ivy_wonky_words"
+$ docker compose exec django python manage.py shell -c "import load_ivy_lattice"
+$ docker compose exec django python manage.py shell -c "import logeion_load"
+$ docker compose exec django python manage.py shell -c "import load_clancy_lattice"
+$ docker compose exec django python manage.py shell -c "import load_chinese_lattice"
 ```
 
 ## Adding a new language

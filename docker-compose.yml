@@ -26,7 +26,7 @@ services:
         networks:
             - localdev
     npm:
-        image: postgres-django
+        image: hedera-django
         build:
             context: .
             dockerfile: Dockerfile
@@ -40,10 +40,10 @@ services:
             - "8080:8080"
         command: /bin/sh -c 'npm i && npm start'
     django:
-        image: postgres-django
+        image: hedera-django-dev
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
         container_name: hedera-django
         working_dir: /app
         volumes:
@@ -66,7 +66,7 @@ services:
         command: /bin/sh -c 'trap - SIGINT; while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
         stop_signal: SIGINT
     worker:
-        image: postgres-django
+        image: hedera-django-dev
         container_name: hedera-worker
         working_dir: /app
         ports:
