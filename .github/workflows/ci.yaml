@@ -67,7 +67,9 @@ jobs:
 
         - name: Install Python Dependences
           run: |
-            pip install -r hedera/requirements/base.txt && pip install -r hedera/requirements/dev.txt
+            pip install wheel && \
+            pip install -r hedera/requirements/base.txt && \
+            pip install -r hedera/requirements/dev.txt
 
         - name: Run tests
           run: |
