@@ -1,2 +1,7 @@
 .docker-data
+.editorconfig
+.eslintignore
+.nvmrc
+.pre-commit-config.yaml
+.venv
 node_modules

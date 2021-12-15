@@ -49,7 +49,7 @@ services:
         volumes:
             - ./:/app
         ports:
-            - "5678:5678"  # default for debugpy
+            - "5678:5678"  # 5678 is default port for debugpy
             - "8000:8000"
         depends_on:
             - postgres
@@ -63,14 +63,14 @@ services:
             PYTHONDONTWRITEBYTECODE: 1
         networks:
             - localdev
-        command: /bin/sh -c 'trap - SIGINT; while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
+        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
         stop_signal: SIGINT
     worker:
         image: postgres-django
         container_name: hedera-worker
         working_dir: /app
         ports:
-            - "5679:5678"
+            - "5679:5678"  # 5678 is default port for debugpy
         volumes:
             - ./:/app
         depends_on:

@@ -9,6 +9,7 @@ static/dist/
 .idea
 .python-version
 .env*
+.venv
 db_dumps/
 npm-debug.log
 cert.pem
