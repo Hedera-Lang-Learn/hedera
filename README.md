@@ -174,6 +174,16 @@ docker run --publish 9000:9000 --env X_API_KEY=test-secret eldarioninc/pdf-servi
 
 ### Tests
 
+#### Frontend / Javascript
+
+There are some tests for the Vue frontend code:
+
+```
+npm run test:unit
+```
+
+#### Backend / Python
+
 Unit tests depend on:
 * a connection to a postgres DB; this is due to limitations in the `django-lti-provider` package; see `test_settings.py`), and
 * a connection to redis (`django-rq` requires a redis connection, with no simply way to mock it for tests).
