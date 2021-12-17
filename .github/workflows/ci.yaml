@@ -100,5 +100,6 @@ jobs:
             pip install -r hedera/requirements/dev.txt
 
         - name: Run tests
-          run: |
-            DATABASE_URL=postgres://hedera:hedera@localhost/hedera python manage.py test
+          env:
+            DJANGO_SETTINGS_MODULE: hedera.test_settings
+          run: python manage.py test

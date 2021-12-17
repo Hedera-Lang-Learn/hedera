@@ -25,6 +25,9 @@ services:
         restart: unless-stopped
         networks:
             - localdev
+        ports:
+            - "6379:6379"
+
     npm:
         image: postgres-django
         build:

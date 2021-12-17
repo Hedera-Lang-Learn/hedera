@@ -172,11 +172,35 @@ docker run --publish 9000:9000 --env X_API_KEY=test-secret eldarioninc/pdf-servi
 
 ## Contributing Guidelines
 
+### Tests
+
+Unit tests depend on:
+* a connection to a postgres DB; this is due to limitations in the `django-lti-provider` package; see `test_settings.py`), and
+* a connection to redis (`django-rq` requires a redis connection, with no simply way to mock it for tests).
+
+Here's one way to run them, using the containerized app, which is already configured to look for the required support services on the docker container network:
+
+```
+docker compose up -d postgres redis
+# make sure postgres and redis are available, then run:
+docker compose run --rm --no-deps -e DJANGO_SETTINGS_MODULE=hedera.test_settings django python manage.py test
+```
+
+You can also run them locally (i.e. not in a container) if you have the appropriate python environment configured. For instance:
+
+```
+docker compose up -d postgres redis
+# make sure postgres and redis are available, then run:
+DJANGO_SETTINGS_MODULE=hedera.test_settings python manage.py test
+```
+
 ### Linting
 
 This project uses `isort` for import sorting, `flake8` for Python linting, and various `eslint plugins` for Javascript linting.
 
 ### Passing Builds via Github
+
+The GitHub Actions workflow .github/workflows/ci.yaml runs the unit tests and various code quality checks.
 
 #### Pre-commit
 
