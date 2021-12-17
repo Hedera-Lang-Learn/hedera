@@ -1,2 +1,17 @@
+__pycache__
 .docker-data
+.dockerignore
+.editorconfig
+.eslintignore
+.git
+.github
+.gitignore
+.pre-commit-config.yaml
+.nvmrc
+.venv
+.vscode
+Dockerfile
 node_modules
+setup.cfg
+webpack-stats
+ux

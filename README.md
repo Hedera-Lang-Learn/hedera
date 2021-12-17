@@ -14,13 +14,10 @@ Hedera is an application for viewing texts in different languages such that:
 Before running for the first time (or any time for that matter):
 
 ```sh
-# first, build the prod django image
-docker compose build npm
-# next, build the dev images
 docker compose build
 ```
 
-* **Details:** Local development uses two images, one built with the `Dockerfile` (this is the production image), and a derivative image built with the `Dockerfile.dev` (this is the development image; it simply adds dev dependencies as an extra layer to the prod image). The `npm` docker compose service uses the production image, and the `django` and `worker` services use the development image.
+* **Details:** Local development uses the `dev` stage of the `Dockerfile`, which adds development dependencies to the `prod` stage. The `npm` docker compose service uses the `prod` stage, and the `django` and `worker` services use the `dev` stage.
 
 To run the app:
 
@@ -63,11 +60,8 @@ Prequisite - Install pip-compile into your virtual env via this command `python 
     docker compose exec django pip install <package>
     docker compose exec worker pip install <package>
     ```
-    Note: Alternatively we could also rebuild the images for npm, django and worker after running `pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt` via these commands:
+    Note: Alternatively we could also rebuild the images for the `django` and `worker` services after running `pip-compile hedera/requirements/base.in --output-file=- > hedera/requirements/base.txt` via these commands:
     ```sh
-    # rebuild the base/prod image
-    docker compose build npm
-    # rebuild the dev images
     docker compose build django
     docker compose build worker
     ```
@@ -80,9 +74,6 @@ If you'd like to remove all existing images and start fresh:
 
 ```sh
 docker compose down --rmi all
-# first, build the prod django image
-docker compose build npm
-# next, build the dev images
 docker compose build
 docker compose up
 ```
@@ -191,7 +182,7 @@ This project uses `isort` for import sorting, `flake8` for Python linting, and v
 
 #### Pre-commit
 
-To make developement more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript.
+To make development more streamlined we have implemented a pre-commit package manager to manage pre-commit hooks for python and javascript.
 - Install [Pre-commit](https://pre-commit.com/)
 Note: the installation guide covers different install methods
 - you will then need to run the following command in the root of the project

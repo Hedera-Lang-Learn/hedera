@@ -30,9 +30,8 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+            target: prod
         container_name: hedera-npm
-        volumes:
-            - ./:/app
         working_dir: /app
         networks:
             - localdev
@@ -43,11 +42,24 @@ services:
         image: hedera-django-dev
         build:
             context: .
-            dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
+            target: dev
         container_name: hedera-django
         working_dir: /app
         volumes:
-            - ./:/app
+            - ./cms/:/app/cms
+            - ./fixtures/:/app/fixtures
+            - ./groups/:/app/groups
+            - ./hedera/:/app/hedera
+            - ./import-data/:/app/import-data
+            - ./lattices/:/app/lattices
+            - ./lemmatization/:/app/lemmatization
+            - ./lemmatized_text/:/app/lemmatized_text
+            - ./lti/:/app/lti
+            - ./pdfservice/:/app/pdfservice
+            - ./static/src/:/app/static/src
+            - ./vocab_list/:/app/vocab_list
+            - ./manage.py/:/app/manage.py
         ports:
             - "5678:5678"  # default for debugpy
             - "8000:8000"
@@ -67,12 +79,28 @@ services:
         stop_signal: SIGINT
     worker:
         image: hedera-django-dev
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: dev
         container_name: hedera-worker
         working_dir: /app
         ports:
             - "5679:5678"
         volumes:
-            - ./:/app
+            - ./cms/:/app/cms
+            - ./fixtures/:/app/fixtures
+            - ./groups/:/app/groups
+            - ./hedera/:/app/hedera
+            - ./import-data/:/app/import-data
+            - ./lattices/:/app/lattices
+            - ./lemmatization/:/app/lemmatization
+            - ./lemmatized_text/:/app/lemmatized_text
+            - ./lti/:/app/lti
+            - ./pdfservice/:/app/pdfservice
+            - ./static/src/:/app/static/src
+            - ./vocab_list/:/app/vocab_list
+            - ./manage.py/:/app/manage.py
         depends_on:
             - postgres
             - redis
