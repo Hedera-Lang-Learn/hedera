@@ -12,7 +12,7 @@ jobs:
           uses: actions/setup-python@v2
           with:
             python-version: 3.7
-        
+
         - uses: actions/setup-node@v2
           with:
             node-version: '14'
@@ -43,3 +43,63 @@ jobs:
 
         - name: Lint JavaScript
           run: npm run lint
+
+  tests:
+    name: Running unit tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: hedera
+          POSTGRES_USER: hedera
+          POSTGRES_PASSWORD: hedera
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+      redis:
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps port 6379 on service container to the host
+          - 6379:6379
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: Setup Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.7
+
+        - name: Setup Cache
+          id: cache
+          uses: actions/cache@v2
+          with:
+            path: ~/.cache/pip
+            key: ${{ runner.os }}-pip-${{ hashFiles('**/**/requirements/dev.txt' ) }}
+            restore-keys: |
+              ${{ runner.os }}-pip-
+
+        - name: Install Python Dependences
+          run: |
+            pip install wheel && \
+            pip install -r hedera/requirements/base.txt && \
+            pip install -r hedera/requirements/dev.txt
+
+        - name: Run tests
+          env:
+            DJANGO_SETTINGS_MODULE: hedera.test_settings
+          run: python manage.py test

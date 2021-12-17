@@ -1,5 +1,5 @@
 import json
-from random import randrange
+from uuid import uuid4
 
 from django.contrib.auth.models import User
 
@@ -18,7 +18,8 @@ from vocab_list.models import (
 class PersonalVocabularyQuickAddAPITest(APITestCase):
 
     def setUp(self):
-        self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
+        test_username = f"test_user_{uuid4()}"
+        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
         self.client.force_login(user=self.created_user)
         self.personal_vocab_list = PersonalVocabularyList.objects.create(user=self.created_user, lang="lat")
         data = {
@@ -30,7 +31,8 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         self.personal_vocab_list_entry = PersonalVocabularyListEntry.objects.create(**data)
 
     def test_fail_get_personal_vocabulary_quick_add_api(self):
-        self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
+        test_username = f"test_user_{uuid4()}"
+        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
         self.client.force_login(user=self.created_user)
         response = self.client.get("/api/v1/personal_vocab_list/quick_add/")
         self.assertEqual(len(response.json()["data"]), 0)
@@ -161,7 +163,8 @@ class BookmarksListAPITest(APITestCase):
 class LatticeNodesAPITest(APITestCase):
 
     def setUp(self):
-        self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
+        test_username = f"test_user_{uuid4()}"
+        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
         self.lattice_node = LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
         LemmaNode.objects.create(context="morpheus", lemma="sum", node_id=self.lattice_node.pk)
         self.client.force_login(user=self.created_user)
@@ -206,7 +209,8 @@ class LatticeNodesAPITest(APITestCase):
 
 class MeAPITest(APITestCase):
     def setUp(self):
-        self.created_user = User.objects.create_user(username=f"test_user{randrange(100)}", email=f"test_user{randrange(100)}@test.com", password="password")
+        test_username = f"test_user_{uuid4()}"
+        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
         self.client.force_login(user=self.created_user)
 
     def test_successful_post_me_profile_with_lang_field(self):
