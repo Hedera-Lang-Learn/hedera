@@ -133,21 +133,7 @@
 
 <style lang="scss">
 @import "../../scss/config";
-.personal-vocab .familiarity-rating {
-  position: relative;
-  .help-text {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    color: $gray-700;
-    background: #fff;
-    padding: 2px 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    z-index: 9999;
-  }
-}
+
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
   #td-delete-button {
