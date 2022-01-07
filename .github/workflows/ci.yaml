@@ -2,7 +2,7 @@ name: Code Checks
 on: [push]
 jobs:
   qa:
-    name: Checking Code
+    name: Check builds and code quality
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
           with:
             node-version: '14'
 
-        - name: Setup Cache
+        - name: Cache Python dependencies
           id: cache
           uses: actions/cache@v2
           with:
@@ -25,6 +25,14 @@ jobs:
             key: ${{ runner.os }}-pip-${{ hashFiles('**/**/requirements/dev.txt' ) }}
             restore-keys: |
               ${{ runner.os }}-pip-
+
+        - name: Cache node modules
+          uses: actions/cache@v2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
 
         - name: Setup flake8 annotations
           uses: rbialon/flake8-annotations@v1
@@ -44,8 +52,8 @@ jobs:
         - name: Lint JavaScript
           run: npm run lint
 
-  tests:
-    name: Running unit tests
+  python_tests:
+    name: Running python unit tests
     runs-on: ubuntu-latest
 
     services:
@@ -103,3 +111,28 @@ jobs:
           env:
             DJANGO_SETTINGS_MODULE: hedera.test_settings
           run: python manage.py test
+
+  js_tests:
+    name: Running javascript unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - uses: actions/setup-node@v2
+          with:
+            node-version: '14'
+
+        - name: Cache node modules
+          uses: actions/cache@v2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
+
+        - name: Install Static Dependences
+          run: npm i --include=dev
+
+        - name: Run unit tests
+          run: npm run test:unit
