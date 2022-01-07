@@ -79,7 +79,7 @@ def text(request, pk):
         Q(public=True) |
         Q(created_by=request.user) |
         Q(classes__teachers=request.user)
-    )
+    ).distinct()
     text = get_object_or_404(qs, pk=pk)
     return render(request, "lemmatized_text/text.html", {"text": text})
 
