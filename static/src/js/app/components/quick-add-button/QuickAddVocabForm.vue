@@ -2,7 +2,7 @@
   <div class="form-group">
     <form id="addvocab-form" v-on:submit.prevent>
       <label for="FormControlSelect"
-        >Select Langauge of Your Personal Vocabulary List</label
+        >Select Language of Your Personal Vocabulary List</label
       >
       <select
         v-model="vocabularyListItem"
