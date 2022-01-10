@@ -309,7 +309,7 @@
     position: relative;
     .help-text {
       position: absolute;
-      top: 30px;
+      top: 50px;
       left: 0;
       color: $gray-700;
       background: #FFF;

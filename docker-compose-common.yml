@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+    django:
+        image: hedera-django-dev
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: dev
+        working_dir: /app
+        volumes:
+            # explicitly mount local directories and files that have
+            # source code which could change; we _don't_ want to mount
+            # the whole project directory, because that would include
+            # node_modules, which may have different bindings on the
+            # host vs container
+            - ./cms/:/app/cms
+            - ./fixtures/:/app/fixtures
+            - ./groups/:/app/groups
+            - ./hedera/:/app/hedera
+            - ./import-data/:/app/import-data
+            - ./lattices/:/app/lattices
+            - ./lemmatization/:/app/lemmatization
+            - ./lemmatized_text/:/app/lemmatized_text
+            - ./lti/:/app/lti
+            - ./pdfservice/:/app/pdfservice
+            - ./static/src/:/app/static/src
+            - ./vocab_list/:/app/vocab_list
+            - ./manage.py/:/app/manage.py
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            RQ_ASYNC: 1
+            DATABASE_URL: postgres://hedera:hedera@postgres/hedera
+            REDIS_URL: redis://redis:6379
+            PYTHONFAULTHANDLER: 1
+            PYTHONUNBUFFERED: 1
+            PYTHONDONTWRITEBYTECODE: 1
+        networks:
+            - localdev
+        stop_signal: SIGINT

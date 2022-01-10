@@ -35,7 +35,7 @@ except ValueError:
 
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgres://localhost/hedera")
+    "default": dj_database_url.config(default="postgres://hedera:hedera@localhost/hedera")
 }
 
 CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]

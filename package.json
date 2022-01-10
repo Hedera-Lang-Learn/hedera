@@ -147,8 +147,10 @@
     },
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,vue}",
-      "!**/node_modules/**"
+      "**/*.{js,vue}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
     ]
   }
 }
