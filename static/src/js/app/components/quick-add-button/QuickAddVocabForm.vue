@@ -121,6 +121,7 @@
 
   export default {
     components: { FamiliarityRating },
+    props: ['currentLangTab'],
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
       await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
@@ -139,6 +140,13 @@
       } else {
         const [langItem] = this.personalVocabLangList;
         this.vocabularyListItem = langItem;
+      }
+      // change language option to what the currently selected tab on PersonalVocab.vue
+      if (this.currentLangTab) {
+        const foundLangListItem = this.personalVocabLangList.find(
+          (ele) => ele.lang === this.currentLangTab,
+        );
+        this.vocabularyListItem = foundLangListItem;
       }
     // await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
     },

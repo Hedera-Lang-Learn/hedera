@@ -1,7 +1,7 @@
 <template>
   <div>
      <div class="d-flex justify-content-between mb-2">
-       <QuickAddVocabForm class="mr-2 text-left" />
+       <QuickAddVocabForm class="mr-2 text-left" :current-lang-tab="lang"/>
        <DownloadVocab :glosses="glosses" :with-familiarity="true" />
      </div>
     <div v-if="personalVocabEntries">
