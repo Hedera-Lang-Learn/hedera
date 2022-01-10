@@ -47,9 +47,9 @@ services:
             service: django
         container_name: hedera-django
         ports:
-            - "5678:5678"  # default for debugpy
+            - "5678:5678"  # 5678 is default port for debugpy
             - "8000:8000"
-        command: /bin/sh -c 'trap - SIGINT; while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
+        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
     worker:
         image: hedera-django-dev
         extends:
@@ -57,5 +57,6 @@ services:
             service: django
         container_name: hedera-worker
         ports:
-            - "5679:5678"
+            - "5679:5678"  # 5678 is default port for debugpy
+
         command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; while ! nc -z redis 6379; do sleep 1; done; exec python manage.py rqworker ${RQ_QUEUES:-default}'

@@ -202,3 +202,19 @@ class LACChineseTokenizerTests(SimpleTestCase):
             # this is the same string, only with compatibility chars transformed to canonical
             "六==六",
         )
+
+        # the first character is the non-breaking space character in 4-digit unicode representation
+        text_input_compatibility_change = "\u00a0=> "
+        self.assertEqual(
+            lac_tokenizer.normalize_chinese(text_input_compatibility_change),
+            # non-breaking space is removed by normalization
+            " => ",
+        )
+
+        # the first character is the non-breaking space character in hex representation
+        text_input_compatibility_change = "\xa0=> "
+        self.assertEqual(
+            lac_tokenizer.normalize_chinese(text_input_compatibility_change),
+            # non-breaking space is removed by normalization
+            " => ",
+        )

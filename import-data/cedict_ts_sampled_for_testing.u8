@@ -3,6 +3,8 @@
 #
 # here's an example sentence that will show some of these glosses once parsed:
 #   你好我是個｜人
+# here's a sentence that should show multiple glosses and require disambiguation:
+#   长脚
 #
 #! version=1
 #! subversion=0
@@ -16,3 +18,7 @@
 個 个 [ge4] /individual/this/that/size/classifier for people or objects in general/
 個人 个人 [ge4 ren2] /individual/personal/oneself/
 人 人 [ren2] /person/people/CL:個|个[ge4],位[wei4]/
+長 长 [chang2] /length/long/forever/always/constantly/
+長 长 [zhang3] /chief/head/elder/to grow/to develop/to increase/to enhance/
+腳 脚 [jiao3] /foot/leg (of an animal or an object)/base (of an object)/CL:雙|双[shuang1],隻|只[zhi1]/classifier for kicks/
+腳 脚 [jue2] /variant of 角[jue2]/role/

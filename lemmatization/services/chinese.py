@@ -69,19 +69,27 @@ class ChineseTokenizer(Tokenizer):
     def normalize_chinese(self, text: str) -> str:
         """
         Performs Unicode normalization on text. cf Unicode Standard section 2.12.
-        Uses NFC (Normalization Form C). Also selectively converts full-width
-        pipe (｜ \uFF5C) and underscore (＿ \uFF3F) to half-width (ASCII) | \u007C
-        and _ \u005F (so they can be used to give token boundary hints).
+        Uses NFC (Normalization Form C).
 
-        >>> normalize_chinese("1｜2＿3")
-        "1|2_3"
+        Also:
+        - selectively converts full-width pipe (｜ \uFF5C) and underscore (＿ \uFF3F)
+        to half-width (ASCII) | \u007C and _ \u005F (so they can be used to give token
+        boundary hints).
+        - converts non-breaking spaces (which are sometimes present after editing an
+        existing text, due to the UI component employed) into regular spaces (\u00a0
+        to \u0020); the typesetting information is lost, but we don't need it for our
+        purposes, and it can complicate tokenization.
 
-        There are some issues with using NFKC, e.g.:
+        >>> # note that the bar and underscore character in the following line are full-width:
+        >>> normalize_chinese("1｜2＿3\u00a04\xa05")
+        "1|2_3 4 5"
+
+        Note that we use NFC because there are some issues with using NFKC, e.g.:
         - common full-width forms like Chinese commas are transformed into half-width using NFKC
         (and other full-width forms like the pipe/vertical bar are not transformed).
         """
         normalized_text = unicodedata.normalize("NFC", text)  # normalize
-        return normalized_text.replace("\uFF5C", "|").replace("\uFF3F", "_")
+        return normalized_text.replace("\uFF5C", "|").replace("\uFF3F", "_").replace("\u00a0", " ")
 
     def prepare_for_segmentation(self, text: str) -> str:
         """ Override this method """
@@ -204,16 +212,16 @@ class LACChineseTokenizer(ChineseTokenizer):
         ["a", "b", "c", "\n", "d"]
         """
         for token in tokens:
-            # collect all characters in the token but split on the pipe character and newlines
+            # collect all characters in the token but split on the pipe character, spaces, and newlines
             subtoken = ""
             for char in token:
-                # consider pipes and newlines to be token breaks; in practice, LAC doesn't always do this
-                if char in ("|", "\n"):
+                # consider pipes, spaces, and newlines to be token breaks; in practice, LAC doesn't always do this
+                if char in ("|", " ", "\n"):
                     if subtoken:
                         yield subtoken
                         subtoken = ""
-                    # if it is a newline, emit it as a separate token; if a pipe, do not emit it
-                    if char == "\n":
+                    # if it is a space or newline, emit it as a separate token; if a pipe, do not emit it
+                    if char != "|":
                         yield char
                 else:
                     subtoken += char

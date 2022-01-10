@@ -41,12 +41,12 @@ def create_lemma_node(lemma, lattice_node, context=DEFAULT_LEMMA_NODE_CONTEXT):
             existing_lattice_node.save()
 
 
-def get_or_create_lattice_node(label: str, gloss) -> Tuple[Optional[LemmaNode], bool]:
+def get_or_create_lattice_node(label: str, gloss: str) -> Tuple[Optional[LemmaNode], bool]:
     return LatticeNode.objects.get_or_create(label=label, gloss=gloss, canonical=False)
 
 
-def node_exists(lemma: str) -> bool:
-    return LemmaNode.objects.filter(lemma=lemma, context=DEFAULT_LEMMA_NODE_CONTEXT).exists()
+def lattice_node_exists(label: str, gloss: str) -> bool:
+    return LatticeNode.objects.filter(label=label, gloss=gloss).exists()
 
 
 row_grouping_re = re.compile(r"^(?P<lemma>\S+) (?P<altform>\S+) (?P<defn>.*)$")
@@ -92,14 +92,14 @@ for row in rows:
     # although redundant to check for existence before running get_or_create,
     # checking for existence is much faster so leads to speed-ups when records
     # already exist in the DB
-    if not node_exists(dictionary_lemma):
+    if not lattice_node_exists(dictionary_lemma, full_def):
         lattice_node, created = get_or_create_lattice_node(dictionary_lemma, full_def)
         create_lemma_node(dictionary_lemma, lattice_node)
 
     # we also want to ensure that a headword with a different alternate form (i.e.
     # for which the simplified form is different from the traditional form) can be
     # found for glosses also
-    if dictionary_lemma != alternate_form and not node_exists(alternate_form):
+    if dictionary_lemma != alternate_form and not lattice_node_exists(alternate_form, full_def):
         lattice_node, created = get_or_create_lattice_node(alternate_form, full_def)
         create_lemma_node(alternate_form, lattice_node)
 
