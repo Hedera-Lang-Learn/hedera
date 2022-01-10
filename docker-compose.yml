@@ -29,13 +29,12 @@ services:
             - "6379:6379"
 
     npm:
-        image: postgres-django
+        image: hedera-django
         build:
             context: .
             dockerfile: Dockerfile
+            target: prod
         container_name: hedera-npm
-        volumes:
-            - ./:/app
         working_dir: /app
         networks:
             - localdev
@@ -43,49 +42,20 @@ services:
             - "8080:8080"
         command: /bin/sh -c 'npm i && npm start'
     django:
-        image: postgres-django
-        build:
-            context: .
-            dockerfile: Dockerfile
+        extends:
+            file: docker-compose-common.yml
+            service: django
         container_name: hedera-django
-        working_dir: /app
-        volumes:
-            - ./:/app
         ports:
             - "5678:5678"  # default for debugpy
             - "8000:8000"
-        depends_on:
-            - postgres
-            - redis
-        environment:
-            RQ_ASYNC: 1
-            DATABASE_URL: postgres://hedera:hedera@postgres/hedera
-            REDIS_URL: redis://redis:6379
-            PYTHONFAULTHANDLER: 1
-            PYTHONUNBUFFERED: 1
-            PYTHONDONTWRITEBYTECODE: 1
-        networks:
-            - localdev
         command: /bin/sh -c 'trap - SIGINT; while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
-        stop_signal: SIGINT
     worker:
-        image: postgres-django
+        image: hedera-django-dev
+        extends:
+            file: docker-compose-common.yml
+            service: django
         container_name: hedera-worker
-        working_dir: /app
         ports:
             - "5679:5678"
-        volumes:
-            - ./:/app
-        depends_on:
-            - postgres
-            - redis
-        environment:
-            RQ_ASYNC: 1
-            DATABASE_URL: postgres://hedera:hedera@postgres/hedera
-            REDIS_URL: redis://redis:6379
-            PYTHONDONTWRITEBYTECODE: 1
-            PYTHONUNBUFFERED: 1
-        networks:
-            - localdev
         command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; while ! nc -z redis 6379; do sleep 1; done; exec python manage.py rqworker ${RQ_QUEUES:-default}'
-        stop_signal: SIGINT

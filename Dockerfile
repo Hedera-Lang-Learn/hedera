@@ -1,6 +1,6 @@
-FROM python:3.7
+FROM python:3.7 AS prod
 
-# Upgrade pip 
+# Upgrade pip
 RUN pip install --upgrade pip
 
 # Create app working directory
@@ -27,8 +27,15 @@ RUN npm i && \
 # Copy app files
 COPY . /app
 
-# Build webpack assets 
+# Build webpack assets
 RUN npm run build
 
 # Use port 8000 for django server or 8080 for webpack dev server
 EXPOSE 8000 8080
+
+FROM prod AS dev
+
+# Install python dev dependencies
+COPY ./hedera/requirements/dev.txt /app/
+RUN pip install -r dev.txt && \
+    rm dev.txt
