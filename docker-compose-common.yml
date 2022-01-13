@@ -25,6 +25,7 @@ services:
             - ./lti/:/app/lti
             - ./pdfservice/:/app/pdfservice
             - ./static/src/:/app/static/src
+            - ./webpack-stats/:/app/webpack-stats
             - ./vocab_list/:/app/vocab_list
             - ./manage.py/:/app/manage.py
         depends_on:

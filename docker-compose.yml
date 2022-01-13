@@ -36,6 +36,9 @@ services:
             target: prod
         container_name: hedera-npm
         working_dir: /app
+        volumes:
+            - ./static/src/:/app/static/src
+            - ./webpack-stats/:/app/webpack-stats
         networks:
             - localdev
         ports:
