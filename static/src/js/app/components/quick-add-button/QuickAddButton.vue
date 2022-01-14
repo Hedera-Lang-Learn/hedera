@@ -4,8 +4,9 @@
       ref="Modal"
       title="Add Word to Personal Vocabulary List"
       description="Modal to quick add vocab"
-      ><QuickAddVocabForm ref="QuickAddVocabForm"
-    /></Modal>
+      >
+        <QuickAddVocabForm ref="QuickAddVocabForm" :current-lang-tab="currentLangTab"/>
+      </Modal>
     <button type="button" class="btn btn-primary" @click="openModal">
       Quick Add Vocab
     </button>
@@ -17,6 +18,7 @@
 
   export default {
     components: { Modal, QuickAddVocabForm },
+    props: ['currentLangTab'],
     methods: {
       openModal() {
         this.$refs.Modal.toggleModal();
