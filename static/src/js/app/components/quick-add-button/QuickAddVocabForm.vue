@@ -237,13 +237,9 @@
         this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
       },
       async getHeadword() {
-        /**
-         * TODO add more languages for searches
-         * conditional to only get headword for Latin for now
-         * */
-        if (this.vocabularyListItem && this.vocabularyListItem.lang !== 'lat') return;
         await this.$store.dispatch(FETCH_LATTICE_NODES_BY_HEADWORD, {
           headword: this.headword,
+          lang: this.vocabularyListItem.lang,
         });
         // sets first latticenode as the default in select options
         if (this.latticeNode) {
@@ -284,12 +280,6 @@
       },
       // filters lattice node to exclude parent data for simplier UI in LatticeNode component
       latticeNode() {
-        /**
-         * TODO add more languages
-         * conditional to only get headword for Latin for now
-         * */
-        const { vocabularyListItem } = this;
-        if (vocabularyListItem && vocabularyListItem.lang !== 'lat') return null;
         const nodes = this.$store.state.latticeNodes || [];
         if (!nodes.length) return null;
         const formatedNodes = nodes.map((node) => {

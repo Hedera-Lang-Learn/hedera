@@ -111,9 +111,9 @@ export default {
       .createPersonalVocabEntry(headword, gloss, vocabularyListId, familiarity, node, lang, cb)
       .catch(logoutOnError(commit));
   },
-  [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword }) => {
+  [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword, lang }) => {
     const cb = (data) => commit(FETCH_LATTICE_NODES_BY_HEADWORD, data.data);
-    return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
+    return api.fetchLatticeNodes(headword, lang, cb).catch(logoutOnError(commit));
   },
   // TODO: might be a better way to reset this state but this works for now
   [RESET_LATTICE_NODES_BY_HEADWORD]: ({ commit }) => commit(RESET_LATTICE_NODES_BY_HEADWORD),
