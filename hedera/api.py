@@ -233,11 +233,13 @@ class LemmatizationAPI(APIView):
 class TokenHistoryAPI(APIView):
 
     def get_data(self):
-        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.all()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        token_index = self.kwargs.get("token_index")
-        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
-        return dict(tokenHistory=history)
+        is_valid_user = text.is_valid_user(self.request.user)
+        if is_valid_user:
+            token_index = self.kwargs.get("token_index")
+            history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+            return dict(tokenHistory=history)
 
 
 class VocabularyListAPI(APIView):
