@@ -258,18 +258,15 @@ class LemmatizedText(models.Model):
     def is_valid_user(self, user):
         groups = self.classes.all()
         filtered_groups = groups.filter(texts__in=[self.pk])
-        user_queryset = User.objects.get(id=user.id)
-        enrolled_classes = user_queryset.enrolled_classes.all()
-        taught_classes = user_queryset.taught_classes.all()
+        enrolled_classes = user.enrolled_classes.all()
+        taught_classes = user.taught_classes.all()
         is_student = False
         is_teacher = False
         is_public = self.public
         is_created_by = self.created_by
         for fg in filtered_groups:
-            if enrolled_classes and enrolled_classes.get(pk=fg.pk):
-                is_student = True
-            if taught_classes and taught_classes.get(pk=fg.pk):
-                is_teacher = True
+            is_student = enrolled_classes.filter(pk=fg.pk).exists()
+            is_teacher = taught_classes.filter(pk=fg.pk).exists()
         return any([is_student, is_teacher, is_public, is_created_by.pk == user.pk]) is True
 
 

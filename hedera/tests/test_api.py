@@ -280,3 +280,44 @@ class SupportedLanguagesAPITest(APITestCase):
         response = self.client.get(f"/api/v1/supported_languages/", content_type="application/json")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["data"], languages)
+
+
+class TokenHistoryAPITest(APITestCase):
+    def setUp(self):
+        self.is_teacher = utils.create_user()
+        self.is_student = utils.create_user()
+        self.is_invalid_user = utils.create_user()
+        self.text = utils.create_lemmatized_text(data=[{"node": None, "word": "Lorem", "resolved": "no-lemma", "following": " ", "word_normalized": "Lorem"}], created_by=self.is_teacher)
+        self.create_class = utils.create_group(teacher=self.is_teacher, student=self.is_student, text=self.text)
+        self.public_text = utils.create_lemmatized_text(data=[{"node": None, "word": "Lorem", "resolved": "no-lemma", "following": " ", "word_normalized": "Lorem"}], created_by=self.is_teacher, public=True)
+
+    def test_successful_get_public_lemmatized_tokens(self):
+        self.client.force_login(user=self.is_invalid_user)
+        response = self.client.get(f"/api/v1/lemmatized_texts/{self.public_text.pk}/tokens/0/history/")
+        self.client.logout()
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"], "application/json")
+
+    def test_successful_get_lemmatized_tokens_is_student(self):
+        self.client.force_login(user=self.is_student)
+        response = self.client.get(f"/api/v1/lemmatized_texts/{self.text.pk}/tokens/0/history/")
+        self.client.logout()
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"], "application/json")
+
+    def test_successful_get_lemmatized_tokens_is_teacher(self):
+        self.client.force_login(user=self.is_teacher)
+        response = self.client.get(f"/api/v1/lemmatized_texts/{self.text.pk}/tokens/0/history/")
+        self.client.logout()
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"], "application/json")
+
+    def test_unsuccessful_get_lemmatized_tokens(self):
+        self.client.force_login(user=self.is_invalid_user)
+        response = self.client.get(f"/api/v1/lemmatized_texts/{self.text.pk}/tokens/0/history/")
+        self.client.logout()
+        self.assertEqual(response.status_code, 404)
+
+    def test_unsuccessful_get_lemmatized_tokens_no_account(self):
+        response = self.client.get(f"/api/v1/lemmatized_texts/{self.text.pk}/tokens/0/history/")
+        self.assertEqual(response.status_code, 401)

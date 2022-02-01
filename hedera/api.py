@@ -2,7 +2,7 @@ import json
 import re
 
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
@@ -240,6 +240,7 @@ class TokenHistoryAPI(APIView):
             token_index = self.kwargs.get("token_index")
             history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
             return dict(tokenHistory=history)
+        raise Http404()
 
 
 class VocabularyListAPI(APIView):
