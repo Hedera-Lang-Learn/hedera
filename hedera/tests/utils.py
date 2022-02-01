@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 
+from groups.models import Group
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 
 
@@ -45,3 +46,20 @@ def create_bookmark(**kwargs):
         kwargs["text"] = create_lemmatized_text()
 
     return LemmatizedTextBookmark.objects.create(**kwargs)
+
+
+def create_group(**kwargs):
+    count = Group.objects.all().count()
+    if "title" not in kwargs:
+        kwargs["title"] = f"classes_{count}"
+    if "description" not in kwargs:
+        kwargs["description"] = "testing"
+    teacher = kwargs["teacher"] if "teacher" in kwargs else create_user(username="teacher")
+    group_instance = Group.objects.create(title=kwargs["title"], description=kwargs["description"], created_by=teacher)
+    #Note: We use set() method because django does not allow passing many-to-many relationships directly in kwargs when creating the group
+    student = kwargs["student"] if "student" in kwargs else create_user(username="student")
+    text = kwargs["text"] if "text" in kwargs else create_lemmatized_text()
+    group_instance.teachers.set([teacher])
+    group_instance.students.set([student])
+    group_instance.texts.set([text])
+    return group_instance

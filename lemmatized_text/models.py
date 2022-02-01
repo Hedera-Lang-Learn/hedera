@@ -251,6 +251,23 @@ class LemmatizedText(models.Model):
             )
             for token in self.data
         ])
+    """
+    check if user has the filtered_group ids in ther enrolled classes or taught classes
+    Note: only checks if user is related to at least one class with the same text/group id
+    """
+    def is_valid_user(self, user):
+        groups = self.classes.all()
+        filtered_groups = groups.filter(texts__in=[self.pk])
+        enrolled_classes = user.enrolled_classes.all()
+        taught_classes = user.taught_classes.all()
+        is_student = False
+        is_teacher = False
+        is_public = self.public
+        is_created_by = self.created_by
+        for fg in filtered_groups:
+            is_student = enrolled_classes.filter(pk=fg.pk).exists()
+            is_teacher = taught_classes.filter(pk=fg.pk).exists()
+        return any([is_student, is_teacher, is_public, is_created_by.pk == user.pk]) is True
 
 
 class LemmatizationLog(models.Model):
