@@ -37,7 +37,7 @@ To import lattice data:
 
 ```
 docker compose run --rm django python manage.py shell -c "import load_ivy_lattice"
-docker compose run --rm django python manage.py shell -c "import logeion_load"
+docker compose run --rm django python manage.py shell -c "import load_logeion"
 ```
 
 (Optional) Chinese lattice data:
@@ -110,7 +110,7 @@ createdb hedera
 ```
 ./manage.py shell -c "import load_ivy_wonky_words"
 ./manage.py shell -c "import load_ivy_lattice"
-./manage.py shell -c "import logeion_load"
+./manage.py shell -c "import load_logeion"
 # optional (this can take more than an hour)
 # ./manage.py shell -c "import load_chinese_lattice"
 ```
@@ -240,7 +240,7 @@ $ docker compose exec django python manage.py reset_db --no_input
 # Run commands to reload the data
 $ docker compose exec django python manage.py shell -c "import load_ivy_wonky_words"
 $ docker compose exec django python manage.py shell -c "import load_ivy_lattice"
-$ docker compose exec django python manage.py shell -c "import logeion_load"
+$ docker compose exec django python manage.py shell -c "import load_logeion"
 $ docker compose exec django python manage.py shell -c "import load_clancy_lattice"
 $ docker compose exec django python manage.py shell -c "import load_chinese_lattice"
 ```

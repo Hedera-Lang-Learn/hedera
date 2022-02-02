@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# NOTE: this script is based on logeion_load.py to do a basic import of russian
+# NOTE: this script is based on load_logeion_lattice.py to do a basic import of russian
 
 
 from lattices.models import LatticeNode, LemmaNode
@@ -33,6 +33,7 @@ def create_lemma_node(lemma, lattice_node, context):
             existing_lattice_node.children.add(lattice_node)
             print("  lattice node", lattice_node.pk, lattice_node.label, "put under", existing_lattice_node.pk, existing_lattice_node.label)
             existing_lattice_node.save()
+
 
 with open("import-data/clancy-russian.tsv") as f:
     for row in f:
