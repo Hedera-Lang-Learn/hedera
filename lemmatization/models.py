@@ -44,6 +44,22 @@ class FormToLemma(models.Model):
             )
 
 
+class LatinLexicon(models.Model):
+    """
+    This model contains a copy of the data from LatinMorph16.db
+    and is intended to replace the external Perseids Morphology Service
+    for the purpose of headword/lemma retrieval.
+    """
+    token = models.CharField(max_length=255)
+    lemma = models.CharField(max_length=255)
+    frequency = models.IntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["token", "lemma"], name="unique_token_lemma")
+        ]
+
+
 def lookup_form(form, lang=None, contexts=None, annotated=False):
     entries = FormToLemma.objects.filter(form=form)
     if lang:
