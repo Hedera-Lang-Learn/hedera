@@ -1,8 +1,7 @@
 import re
 import unicodedata
 
-from .base import Tokenizer, triples
-from .morpheus import MorpheusService
+from .base import MorpheusService, Tokenizer, triples
 
 
 class GreekService(MorpheusService):

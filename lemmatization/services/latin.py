@@ -1,8 +1,10 @@
 import re
 import unicodedata
+from typing import List
 
-from .base import Tokenizer, triples
-from .morpheus import MorpheusService
+from lemmatization.models import LatinLexicon
+
+from .base import BaseService, Tokenizer, triples
 
 
 LATIN_COPULA = [
@@ -34,8 +36,30 @@ def re_tokenize_clitics(tokens):
             yield token
 
 
-class LatinService(MorpheusService):
-    lang = "lat"
+class LatinService(BaseService):
+    """
+    Latin headword/lemma retrieval
+
+    >>> lat_service = LatinService(lang="lat")
+    >>> lat_service.lemmatize("est")
+    ['edo', 'sum']
+    """
+
+    SID = "morpheus"
+    LANGUAGES = ["lat"]
+
+    def lemmatize(self, form: str) -> List[str]:
+        """
+        Retrieves matching lemmas (headwords) for a word by querying our local database of
+        latin tokens and lemmas. This was previously a remote call to the remote
+        Perseids Morphology Service (e.g. MorpheusService).
+
+        Results are returned in order of highest frequency first, or simply
+        alphabetical by lemma if there is no frequency data.
+        """
+        results_qs = LatinLexicon.objects.filter(token=form)
+        lemmas = list(results_qs.values_list("lemma", flat=True).order_by("-frequency", "lemma"))
+        return lemmas
 
 
 class EncliticTokenizer(Tokenizer):

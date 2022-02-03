@@ -1,12 +1,6 @@
-import unicodedata
-
 from django.db import models
 
-
-def strip_macrons(word):
-    return unicodedata.normalize("NFC", "".join(
-        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
-    ))
+from .utils import strip_macrons
 
 
 class FormToLemma(models.Model):

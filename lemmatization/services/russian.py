@@ -1,7 +1,7 @@
 import re
 import unicodedata
 
-from .base import Service, Tokenizer, triples
+from .base import HttpService, Tokenizer, triples
 
 
 def maketrans_remove(accents=("COMBINING ACUTE ACCENT", "COMBINING GRAVE ACCENT")):
@@ -9,7 +9,7 @@ def maketrans_remove(accents=("COMBINING ACUTE ACCENT", "COMBINING GRAVE ACCENT"
     return str.maketrans("", "", "".join([unicodedata.lookup(a) for a in accents]))
 
 
-class ClancyService(Service):
+class ClancyService(HttpService):
     """
     headword/lemma retrieval from Steven Clancy's russian database.
 

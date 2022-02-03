@@ -8,13 +8,13 @@ from typing import (  # can use `list` and `tuple` in python 3.9
 
 from LAC import LAC
 
-from .base import Service, Tokenizer
+from .base import BaseService, Tokenizer
 
 
 TripleIterable = Iterable[Tuple[str, str, str]]
 
 
-class ChineseService(Service):
+class ChineseService(BaseService):
     """
     Lemmatizer Service for Chinese (zho) text, both simplified and traditional forms.
     """
