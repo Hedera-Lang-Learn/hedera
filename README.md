@@ -33,11 +33,12 @@ On initial running, you might want do run the following in another terminal:
 docker compose run --rm django python manage.py create_cms
 ```
 
-To import lattice data:
+To import latin data:
 
 ```
+docker compose run --rm django python manage.py shell -c "import load_latin_lexicon"
 docker compose run --rm django python manage.py shell -c "import load_ivy_lattice"
-docker compose run --rm django python manage.py shell -c "import load_logeion"
+docker compose run --rm django python manage.py shell -c "import load_logeion_lattice"
 ```
 
 (Optional) Chinese lattice data:
@@ -110,7 +111,7 @@ createdb hedera
 ```
 ./manage.py shell -c "import load_ivy_wonky_words"
 ./manage.py shell -c "import load_ivy_lattice"
-./manage.py shell -c "import load_logeion"
+./manage.py shell -c "import load_logeion_lattice"
 # optional (this can take more than an hour)
 # ./manage.py shell -c "import load_chinese_lattice"
 ```
@@ -238,9 +239,10 @@ Every so often, it may be requested that the dev DB be "reset." Meaning, tables 
 $ docker compose exec django python manage.py reset_db --no_input
 
 # Run commands to reload the data
+$ docker compose exec django python manage.py shell -c "import load_latin_lexicon"
 $ docker compose exec django python manage.py shell -c "import load_ivy_wonky_words"
 $ docker compose exec django python manage.py shell -c "import load_ivy_lattice"
-$ docker compose exec django python manage.py shell -c "import load_logeion"
+$ docker compose exec django python manage.py shell -c "import load_logeion_lattice"
 $ docker compose exec django python manage.py shell -c "import load_clancy_lattice"
 $ docker compose exec django python manage.py shell -c "import load_chinese_lattice"
 ```
