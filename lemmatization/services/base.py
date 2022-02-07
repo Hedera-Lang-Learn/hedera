@@ -1,7 +1,5 @@
 import requests
 
-from lemmatization.utils import strip_macrons
-
 
 def pairwise(iterable):
     """s -> (s0, s1), (s2, s3), (s4, s5), ..."""
@@ -67,42 +65,6 @@ class HttpService(BaseService):
         Returns list of lemmas for the given form: [lemma1, lemma2, ...]
         """
         return self._call_service(form)
-
-
-class MorpheusService(HttpService):
-    """
-    headword/lemma retrieval from the Perseids Morphology Service
-
-    >>> morpheus_grc = MorpheusService(lang="grc")
-    >>> morpheus_grc.lemmatize("λόγος")
-    ['λόγος']
-
-    >>> morpheus_lat = MorpheusService(lang="lat")
-    >>> morpheus_lat.lemmatize("est")
-    ['edo1', 'sum1']
-    """
-
-    SID = "morpheus"
-    LANGUAGES = ["grc", "lat"]
-    ENDPOINT = "http://services.perseids.org/bsp/morphologyservice/analysis/word"
-
-    def _build_params(self, form):
-        if self.lang == "lat":
-            form = strip_macrons(form)
-        return dict(word=form, lang=self.lang, engine=f"morpheus{self.lang}")
-
-    def _response_to_lemmas(self, response):
-        if response.ok:
-            body = response.json().get("RDF", {}).get("Annotation", {}).get("Body", [])
-            if not isinstance(body, list):
-                body = [body]
-        else:
-            body = []
-
-        lemmas = []
-        for item in body:
-            lemmas.append(item["rest"]["entry"]["dict"]["hdwd"]["$"])
-        return lemmas
 
 
 class Tokenizer(object):
