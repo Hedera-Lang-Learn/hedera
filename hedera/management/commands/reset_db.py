@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from lattices.models import FormNode, LatticeNode, LemmaNode
+from lemmatization.models import FormToLemma, LatinLexicon
 from lemmatized_text.models import (
     LemmatizationLog,
     LemmatizedText,
@@ -16,6 +17,8 @@ from vocab_list.models import (
 
 
 MODELS = [
+    LatinLexicon,
+    FormToLemma,
     LemmatizedText,
     LatticeNode,
     VocabularyList,
@@ -31,7 +34,7 @@ MODELS = [
 
 
 class Command(BaseCommand):
-    help = "Deletes all data from lattices, lemmatized_text, and vocab_list"
+    help = "Deletes all data from lattices, lemmatization, lemmatized_text, and vocab_list"
 
     def add_arguments(self, parser):
         parser.add_argument("--no_input", action="store_true", help="Automatic 'yes' to all prompts")

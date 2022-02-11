@@ -26,25 +26,33 @@ def triples(tokens, normalize=None):
             yield token, normalize(token), following
 
 
-class Service(object):
-
+class BaseService(object):
     SID = None
     LANGUAGES = []
-    ENDPOINT = ""
 
     def __init__(self, lang):
         if lang not in self.LANGUAGES:
             raise ValueError(f"lang must be one of {self.LANGUAGES}")
         self.lang = lang
 
+    def lemmatize(self, form):
+        """
+        Returns list of lemmas for the given form: [lemma1, lemma2, ...]
+        """
+        raise NotImplementedError("Must provide implementation on a per service basis.")
+
+
+class HttpService(BaseService):
+    ENDPOINT = ""
+
     def _headers(self):
         return dict(Accept="application/json")
 
     def _build_params(self, form):
-        raise Exception("Must provide implementation on a per service basis.")
+        raise NotImplementedError("Must provide implementation on a per service basis.")
 
     def _response_to_lemmas(self, response):
-        raise Exception("Must provide implementation on a per service basis.")
+        raise NotImplementedError("Must provide implementation on a per service basis.")
 
     def _call_service(self, form):
         params = self._build_params(form)
@@ -79,4 +87,4 @@ class Tokenizer(object):
 
         This method must be overridden.
         """
-        raise NotImplementedError
+        raise NotImplementedError("Must provide implementation on a per tokenizer basis.")

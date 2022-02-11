@@ -1,12 +1,6 @@
-import unicodedata
-
 from django.db import models
 
-
-def strip_macrons(word):
-    return unicodedata.normalize("NFC", "".join(
-        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
-    ))
+from .utils import strip_macrons
 
 
 class FormToLemma(models.Model):
@@ -42,6 +36,22 @@ class FormToLemma(models.Model):
                 form=strip_macrons(form),
                 lemma=strip_macrons(lemma),
             )
+
+
+class LatinLexicon(models.Model):
+    """
+    This model contains a copy of the data from LatinMorph16.db
+    and is intended to replace the external Perseids Morphology Service
+    for the purpose of headword/lemma retrieval.
+    """
+    token = models.CharField(max_length=255)
+    lemma = models.CharField(max_length=255)
+    frequency = models.IntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["token", "lemma"], name="unique_token_lemma")
+        ]
 
 
 def lookup_form(form, lang=None, contexts=None, annotated=False):

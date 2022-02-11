@@ -1,5 +1,5 @@
 # dev.in
--c hedera/requirements/base.txt
+-c base.txt
 
 debugpy~=1.4.3
 flake8~=3.9.2

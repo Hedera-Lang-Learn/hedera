@@ -35,7 +35,8 @@ except ValueError:
 
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgres://hedera:hedera@localhost/hedera")
+    "default": dj_database_url.config(default="postgres://hedera:hedera@localhost/hedera"),
+    "test": dj_database_url.config(default="postgres://hedera:hedera@localhost/test_hedera"),
 }
 
 CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
@@ -214,6 +215,7 @@ INSTALLED_APPS = [
     # wagtail
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.search_promotions",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",

@@ -43,7 +43,7 @@ services:
             - localdev
         ports:
             - "8080:8080"
-        command: /bin/sh -c 'npm i && npm start'
+        command: /bin/sh -c 'npm i && exec npm start'
     django:
         extends:
             file: docker-compose-common.yml
@@ -52,7 +52,7 @@ services:
         ports:
             - "5678:5678"  # 5678 is default port for debugpy
             - "8000:8000"
-        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate & python manage.py loaddata sites & exec python manage.py runserver 0.0.0.0:8000'
+        command: /bin/sh -c 'while ! nc -z postgres 5432; do sleep 1; done; python manage.py migrate && python manage.py loaddata sites && exec python manage.py runserver 0.0.0.0:8000'
     worker:
         image: hedera-django-dev
         extends:
