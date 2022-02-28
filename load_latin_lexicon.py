@@ -7,7 +7,7 @@ from lemmatization.models import LatinLexicon
 
 # Note that latin_lexicon.csv is a SQLite dump:
 #   sqlite3 -header -csv LatinMorph16.db "select distinct token, lemma from Lexicon order by token;"
-file_path = "import-data/latin_lexicon.csv"
+file_path = "import-data/latin_lexicon_frequencies.csv"
 total_lines = sum(1 for i in open(file_path, "r"))
 
 # Bulk import the rows
@@ -16,7 +16,14 @@ with open(file_path) as f:
     batch_size = 5000
     batch = []
     for row in csv.DictReader(f, delimiter=","):
-        batch.append(LatinLexicon(token=row["token"], lemma=row["lemma"]))
+        latin_lexicon = LatinLexicon(
+            token=row["token"],
+            lemma=row["lemma"],
+            rank=row["rank"] or None,
+            count=row["count"] or None,
+            rate=row["rate"] or None
+        )
+        batch.append(latin_lexicon)
         if len(batch) == batch_size:
             LatinLexicon.objects.bulk_create(batch, batch_size)
             batch = []
