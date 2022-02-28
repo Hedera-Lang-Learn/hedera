@@ -19,3 +19,4 @@ wagtail~=2.14.1
 django-lti-provider~=0.4.7
 lac~=2.1.2
 pip-tools~=6.4.0
+tqdm~=4.63.0

@@ -4,15 +4,13 @@
 #
 #    pip-compile dev.in
 #
-backports-entry-points-selectable==1.1.1
-    # via virtualenv
 cfgv==3.3.1
     # via pre-commit
 debugpy==1.4.3
     # via -r dev.in
-distlib==0.3.3
+distlib==0.3.4
     # via virtualenv
-filelock==3.3.2
+filelock==3.6.0
     # via virtualenv
 flake8==3.9.2
     # via
@@ -20,9 +18,9 @@ flake8==3.9.2
     #   flake8-quotes
 flake8-quotes==3.3.1
     # via -r dev.in
-identify==2.3.5
+identify==2.4.11
     # via pre-commit
-importlib-metadata==4.8.2
+importlib-metadata==4.11.2
     # via
     #   -c base.txt
     #   flake8
@@ -34,7 +32,7 @@ mccabe==0.6.1
     # via flake8
 nodeenv==1.6.0
     # via pre-commit
-platformdirs==2.4.0
+platformdirs==2.5.1
     # via virtualenv
 pre-commit==2.15.0
     # via -r dev.in
@@ -50,13 +48,13 @@ six==1.16.0
     #   virtualenv
 toml==0.10.2
     # via pre-commit
-typing-extensions==3.10.0.2
+typing-extensions==4.1.1
     # via
     #   -c base.txt
     #   importlib-metadata
-virtualenv==20.10.0
+virtualenv==20.13.2
     # via pre-commit
-zipp==3.6.0
+zipp==3.7.0
     # via
     #   -c base.txt
     #   importlib-metadata
