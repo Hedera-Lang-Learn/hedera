@@ -46,11 +46,7 @@ class LatinLexicon(models.Model):
     """
     token = models.CharField(max_length=255)
     lemma = models.CharField(max_length=255)
-
-    # Use arbitrary large number instad of NULL when rank is not known
     rank = models.IntegerField(default=999999)
-
-    # User zero for count / frequency when unknown
     count = models.IntegerField(default=0)
     rate = models.FloatField(default=0)
 
