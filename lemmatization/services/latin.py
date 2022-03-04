@@ -54,11 +54,11 @@ class LatinService(BaseService):
         latin tokens and lemmas. This was previously a remote call to the remote
         Perseids Morphology Service (e.g. MorpheusService).
 
-        Results are returned in order of highest frequency first, or simply
+        Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
         """
         results_qs = LatinLexicon.objects.filter(token=form)
-        lemmas = list(results_qs.values_list("lemma", flat=True).order_by("-frequency", "lemma"))
+        lemmas = list(results_qs.values_list("lemma", flat=True).order_by("-rate", "lemma"))
         return lemmas
 
 

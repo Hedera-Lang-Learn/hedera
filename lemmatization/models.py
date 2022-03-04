@@ -46,7 +46,9 @@ class LatinLexicon(models.Model):
     """
     token = models.CharField(max_length=255)
     lemma = models.CharField(max_length=255)
-    frequency = models.IntegerField(default=0)
+    rank = models.IntegerField(default=999999)
+    count = models.IntegerField(default=0)
+    rate = models.FloatField(default=0)
 
     class Meta:
         constraints = [
