@@ -73,8 +73,9 @@ class AbstractVocabList(models.Model):
         Returns: bulk create query of vocab list entries
         """
         lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
+        filter_repeats_lines = list(set(lines))
         existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", flat=True)
-        new_headwords = filter(lambda x: x[0] != "" and x[0] not in existing_headwords, lines)
+        new_headwords = filter(lambda x: x[0] != "" and x[0] not in existing_headwords, filter_repeats_lines)
         entries = self._create_entires(new_headwords, entry_model, extra_attrs)
         return entry_model.objects.bulk_create(entries)
 
