@@ -73,9 +73,12 @@ class AbstractVocabList(models.Model):
         Returns: bulk create query of vocab list entries
         """
         lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
+        # filter out duplicates in the files
+        # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
         filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", flat=True)
-        new_headwords = filter(lambda x: x[0] != "" and x[0] not in existing_headwords, filter_repeats_lines)
+        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "gloss")
+        # Must do check for matching headword + definition
+        new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
         entries = self._create_entires(new_headwords, entry_model, extra_attrs)
         return entry_model.objects.bulk_create(entries)
 
@@ -199,7 +202,12 @@ class VocabularyListEntry(AbstractVocabListEntry):
         verbose_name = "vocabulary list entry"
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
-        unique_together = ("vocabulary_list", "headword")
+        # commented out due to failing uploads with same headword but different definitions
+        # Example:
+        # quam - as possible as
+        # quam - how
+        # quam - than
+        # unique_together = ("vocabulary_list", "headword")
 
     def link_job(self):
         return super().link_job(VocabularyListEntry)
@@ -223,7 +231,8 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         verbose_name = "personal vocabulary list entry"
         verbose_name_plural = "personal vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
-        unique_together = ("vocabulary_list", "headword")
+        # see comment for VocabularyListEntry
+        # unique_together = ("vocabulary_list", "headword")
 
     def link_job(self):
         return super().link_job(PersonalVocabularyListEntry)
