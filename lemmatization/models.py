@@ -56,16 +56,9 @@ class LatinLexicon(models.Model):
         ]
 
 
-def lookup_form(form, lang=None, contexts=None, annotated=False):
-    entries = FormToLemma.objects.filter(form=form)
-    if lang:
-        entries = entries.filter(lang=lang)
-    if contexts:
-        entries = entries.filter(context__in=contexts)
-    if annotated:
-        return entries.values("lemma", "lang", "context")
-    else:
-        return set(entries.values_list("lemma", flat=True))
+def lookup_form(form, lang):
+    entries = FormToLemma.objects.filter(form=form, lang=lang)
+    return set(entries.values_list("lemma", flat=True))
 
 
 def add_form(context, lang, form, lemmas):

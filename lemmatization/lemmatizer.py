@@ -34,7 +34,7 @@ class Lemmatizer(object):
         return self._tokenizer.tokenize(text)
 
     def _lemmatize_token(self, token):
-        s = lookup_form(token)
+        s = lookup_form(token, self.lang)
         if not s or self.force_refresh:
             lemmas = self._service.lemmatize(token)
             s |= add_form(
