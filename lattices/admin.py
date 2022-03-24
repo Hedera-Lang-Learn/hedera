@@ -8,5 +8,4 @@ class LatticeNodeAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.LatticeNode, LatticeNodeAdmin)
-admin.site.register(models.FormNode)
 admin.site.register(models.LemmaNode)
