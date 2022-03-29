@@ -38,12 +38,6 @@ class LatticeNode(models.Model):
             "label": self.label,
             "gloss": self.gloss,
             "canonical": self.canonical,
-            "forms": [
-                {
-                    "form": form_node.form,
-                    "context": form_node.context,
-                } for form_node in self.form_strings.all()
-            ],
             "lemmas": [
                 {
                     "lemma": lemma_node.lemma,
