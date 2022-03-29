@@ -79,7 +79,7 @@ class VocabularyListAndEntryTests(TestCase):
             "node": None
         }
         found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "gloss", "node")))
-        self.assertGreaterEqual(len(found), 1)
+        self.assertEqual(len(found), 1)
 
     def test_duplicate_headword_and_gloss_tsv(self):
         dup_headword_vocab_list = VocabularyList(
@@ -92,7 +92,7 @@ class VocabularyListAndEntryTests(TestCase):
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
-        self.assertGreaterEqual(bool(found_match), True)
+        self.assertEqual(len(found_match), 1)
 
     def test_duplicate_headword_diff_gloss_tsv(self):
         dup_headword_vocab_list = VocabularyList(
@@ -105,7 +105,7 @@ class VocabularyListAndEntryTests(TestCase):
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
-        self.assertGreaterEqual(len(found_match), 2)
+        self.assertEqual(len(found_match), 3)
 
 
 class PersonalVocabularyListAndEntryTests(TestCase):
@@ -159,7 +159,7 @@ class PersonalVocabularyListAndEntryTests(TestCase):
             "node": None
         }
         found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "gloss", "familiarity", "node")))
-        self.assertGreaterEqual(len(found), 1)
+        self.assertEqual(len(found), 1)
 
     def test_duplicate_headword_and_gloss_tsv(self):
         user = create_user("donkeykong", "donkeykong@fake.com", "password")
@@ -172,7 +172,7 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
-        self.assertGreaterEqual(len(found_match), 1)
+        self.assertEqual(len(found_match), 1)
 
     def test_duplicate_headword_diff_gloss_tsv(self):
         user = create_user("diddykong", "diddykong@fake.com", "password")
@@ -184,5 +184,4 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
-
-        self.assertGreaterEqual(len(found_match), 2)
+        self.assertEqual(len(found_match), 3)
