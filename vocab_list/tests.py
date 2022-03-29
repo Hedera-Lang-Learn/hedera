@@ -18,12 +18,13 @@ bin\tbash
 hello\tworld"""
 
 dupe_vocab_list_tsv_content = b"""\
-car\tarmor
-car\tarmor"""
+quam\thow
+quam\thow"""
 
 dupe_headword_list_tsv_content = b"""\
-nintendo\tmario
-nintendo\tmario2"""
+quam\tas possible as
+quam\thow
+quam\tthan"""
 
 EXAMPLE_VOCAB_LIST_TSV = SimpleUploadedFile("test.tsv", vocab_list_tsv_content)
 DUPLICATE_VOCAB_LIST_TSV = SimpleUploadedFile("dupe_test.tsv", dupe_vocab_list_tsv_content)
@@ -89,7 +90,7 @@ class VocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "car", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
         self.assertGreaterEqual(bool(found_match), True)
 
@@ -102,7 +103,7 @@ class VocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "nintendo", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
         self.assertGreaterEqual(len(found_match), 2)
 
@@ -169,7 +170,7 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "car", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
         self.assertGreaterEqual(len(found_match), 1)
 
@@ -182,6 +183,6 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "nintendo", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
 
         self.assertGreaterEqual(len(found_match), 2)

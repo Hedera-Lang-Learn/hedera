@@ -43,6 +43,19 @@ def parse_line(idx, line):
 
 
 class AbstractVocabList(models.Model):
+    """
+    An abstract vocabulary list entry class.
+
+    Entries should have a **headword** and **gloss** (definition), and are expected
+    to be linked into the lattice.
+
+    Note that a headword may be repeated in a list if it has different definitions. For example,
+    the latin word quam may be included three times:
+
+        quam - as possible as
+        quam - how
+        quam - than
+    """
     lang = models.CharField(max_length=3)  # ISO 639.2
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -202,12 +215,6 @@ class VocabularyListEntry(AbstractVocabListEntry):
         verbose_name = "vocabulary list entry"
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
-        # commented out due to failing uploads with same headword but different definitions
-        # Example:
-        # quam - as possible as
-        # quam - how
-        # quam - than
-        # unique_together = ("vocabulary_list", "headword")
 
     def link_job(self):
         return super().link_job(VocabularyListEntry)
@@ -231,8 +238,6 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         verbose_name = "personal vocabulary list entry"
         verbose_name_plural = "personal vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
-        # see comment for VocabularyListEntry
-        # unique_together = ("vocabulary_list", "headword")
 
     def link_job(self):
         return super().link_job(PersonalVocabularyListEntry)
