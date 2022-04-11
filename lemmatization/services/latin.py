@@ -2,7 +2,7 @@ import re
 import unicodedata
 from typing import List
 
-from lemmatization.models import LatinLexicon
+from django.db import models
 
 from .base import BaseService, Tokenizer, triples
 
@@ -34,6 +34,24 @@ def re_tokenize_clitics(tokens):
             yield ""
         else:
             yield token
+
+
+class LatinLexicon(models.Model):
+    """
+    This model contains a copy of the data from LatinMorph16.db
+    and is intended to replace the external Perseids Morphology Service
+    for the purpose of headword/lemma retrieval.
+    """
+    token = models.CharField(max_length=255)
+    lemma = models.CharField(max_length=255)
+    rank = models.IntegerField(default=999999)
+    count = models.IntegerField(default=0)
+    rate = models.FloatField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["token", "lemma"], name="unique_token_lemma")
+        ]
 
 
 class LatinService(BaseService):

@@ -1,8 +1,7 @@
 from django.test import SimpleTestCase, TransactionTestCase
 
-from ..models import LatinLexicon
 from ..services.chinese import ChineseService
-from ..services.latin import LatinService
+from ..services.latin import LatinLexicon, LatinService
 
 
 class ChineseServiceTests(SimpleTestCase):

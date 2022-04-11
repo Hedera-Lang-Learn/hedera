@@ -38,12 +38,6 @@ class LatticeNode(models.Model):
             "label": self.label,
             "gloss": self.gloss,
             "canonical": self.canonical,
-            "forms": [
-                {
-                    "form": form_node.form,
-                    "context": form_node.context,
-                } for form_node in self.form_strings.all()
-            ],
             "lemmas": [
                 {
                     "lemma": lemma_node.lemma,
@@ -71,27 +65,6 @@ class LatticeNode(models.Model):
             })
 
         return d
-
-
-class FormNode(models.Model):
-    """
-    mapping from form string to lattice node (in a given context)
-
-    This effectively defines a node in a lattice as "meaning" this form.
-    Note that not all forms should be mapped in this way, only those that have
-    their own node in the lattice (for example, because they're ambiguous).  If
-    the form string is ambiguous, the referenced node can have a child for each
-    possibility.
-
-    The "context" is just an optional label to clarify interpretation if a
-    form coming from one place should be treated differently from one coming
-    from another place.
-    """
-    context = models.CharField(max_length=255, blank=True)
-    form = models.CharField(max_length=255)
-    node = models.ForeignKey(
-        LatticeNode,
-        related_name="form_strings", on_delete=models.CASCADE)
 
 
 class LemmaNode(models.Model):
