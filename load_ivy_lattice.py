@@ -12,6 +12,8 @@ def create_lemma_node(lemma, lattice_node, context):
             "node": lattice_node,
         }
     )
+    lemma_node.lang = "lat"
+    lemma_node.save()
     if created:
         print("  created", context, "lemma node", lemma_node.pk, lemma)
     else:

@@ -12,6 +12,8 @@ def create_lemma_node(lemma, lattice_node, context):
             "node": lattice_node,
         }
     )
+    lemma_node.lang = "lat"
+    lemma_node.save()
     if created:
         print("  created", context, "lemma node", lemma_node.pk, lemma)
     else:
@@ -39,6 +41,8 @@ with open("import-data/logeion-latin.txt") as f:
         logeion_lemma, short_def = row.strip().split("|")
         existing = LemmaNode.objects.filter(lemma=logeion_lemma, context="morpheus")
         if existing:
+            if not existing[0].lang:
+                existing.update(lang="lat")
             print("lemma node already exists", existing[0].pk, logeion_lemma, short_def)
         else:
             lattice_node, _ = LatticeNode.objects.get_or_create(label=logeion_lemma, gloss=short_def, canonical=False)

@@ -30,7 +30,7 @@
 </template>
 <script>
   const formFilter = (node, selectedWord) => {
-    if (node.forms.length > 0) {
+    if (node.forms && node.forms.length > 0) {
       /* remove trailing punctuation */
       const strippedToken = selectedWord.replace(/[,.?:;·—]+$/, '');
       if (node.forms[0].form === strippedToken) {
