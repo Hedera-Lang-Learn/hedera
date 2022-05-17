@@ -28,9 +28,6 @@ services:
             - ./webpack-stats/:/app/webpack-stats
             - ./vocab_list/:/app/vocab_list
             - ./manage.py/:/app/manage.py
-        depends_on:
-            - postgres
-            - redis
         environment:
             RQ_ASYNC: 1
             DATABASE_URL: postgres://hedera:hedera@postgres/hedera
