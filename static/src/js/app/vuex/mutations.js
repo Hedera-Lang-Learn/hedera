@@ -2,6 +2,7 @@ import {
   FETCH_TOKENS,
   SELECT_TOKEN,
   FETCH_NODE,
+  FETCH_LEMMA,
   UPDATE_TOKEN,
   SET_TEXT_ID,
   FETCH_VOCAB_LISTS,
@@ -46,6 +47,12 @@ export default {
   [FETCH_NODE]: (state, data) => {
     state.nodes = {
       ...state.nodes,
+      [data.pk]: data,
+    };
+  },
+  [FETCH_LEMMA]: (state, data) => {
+    state.lemmas = {
+      ...state.lemmas,
       [data.pk]: data,
     };
   },

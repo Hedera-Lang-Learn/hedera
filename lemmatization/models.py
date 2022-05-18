@@ -17,6 +17,33 @@ class Lemma(models.Model):
     count = models.IntegerField(default=0)  # Higher count = more frequent
     rate = models.FloatField(default=0)  # Higher rate = more frequent.
 
+    def to_dict(self, up=True, down=True):
+        """
+        serialises the lemma
+        """
+        d = {
+            "pk": self.pk,
+            "lemma": self.lemma,
+            "alt_lemma": self.alt_lemma,
+            "label": self.label,
+            "rank": self.rank,
+            "glosses": [gloss.to_dict() for gloss in self.glosses.all()],
+            # "vocabulary_entries": [  # @@@ temporarily here
+            #     {
+            #         "headword": entry.headword,
+            #         "gloss": entry.gloss,
+            #     } for entry in self.vocabulary_entries.all()
+            # ],
+        }
+        return d
+
+    def gloss_data(self):
+        return dict(
+            pk=self.pk,
+            label=self.label,
+            glosses=[gloss.to_dict() for gloss in self.glosses.all()],
+        )
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["lemma", "lang"], name="unique_lemma_lang")
@@ -66,6 +93,12 @@ class Gloss(models.Model):
     #
     lemma = models.ForeignKey("Lemma", blank=False, on_delete=models.CASCADE, related_name="glosses")
     gloss = models.TextField(max_length=1024)
+
+    def to_dict(self):
+        return dict(
+            pk=self.pk,
+            gloss=self.gloss,
+        )
 
 
 def lookup_form(form, lang) -> List[str]:

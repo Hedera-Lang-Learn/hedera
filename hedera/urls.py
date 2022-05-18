@@ -29,6 +29,7 @@ urlpatterns = [
 
     path("lemmatized_text/", include("lemmatized_text.urls")),
     path("lattices/", include("lattices.urls")),
+    path("lemmatization/", include("lemmatization.urls")),
     path("vocab/", include("vocab_list.urls")),
 
     path("classes/", include("groups.urls")),
