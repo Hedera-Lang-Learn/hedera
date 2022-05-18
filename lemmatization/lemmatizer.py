@@ -56,18 +56,25 @@ class Lemmatizer(object):
             lemma_id = None
             gloss_id = None
             if word_normalized:
-                lemmas = self._lemmatize_token(word_normalized)
-                lemma_entries = Lemma.objects.filter(lemma__in=lemmas).order_by("rank")
+                lemma_names = self._lemmatize_token(word_normalized)
+                lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
 
-                # TODO: do we still need resolution states?
+                # TODO: do we still need "resolved" states?
+                # TODO: how should we handle multiple glosses for a given lemma?
                 if len(lemma_entries) == 0:
                     resolved = RESOLVED_NO_LEMMA
-                if len(lemma_entries) == 1:
+                    lemma_id = None
+                    gloss_id = None
+                elif len(lemma_entries) == 1:
                     resolved = RESOLVED_NO_AMBIGUITY
                     lemma_id = lemma_entries[0].pk
-                elif len(lemma_entries) > 1:
+                    glosses = lemma_entries[0].glosses.all()
+                    gloss_id = glosses[0].pk if len(glosses) == 1 else None
+                else:
                     resolved = RESOLVED_AUTOMATIC
                     lemma_id = lemma_entries[0].pk
+                    glosses = lemma_entries[0].glosses.all()
+                    gloss_id = glosses[0].pk if len(glosses) == 1 else None
 
             result.append(dict(
                 word=word,
