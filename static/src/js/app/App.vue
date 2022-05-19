@@ -10,7 +10,7 @@
           <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
         </a>
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
-        <LatticeTree v-if="selectedToken" />
+        <FormDisambiguation v-if="selectedToken" />
       </div>
     </div>
   </div>
@@ -24,15 +24,15 @@
     FETCH_PERSONAL_VOCAB_LIST, FETCH_BOOKMARKS,
   } from './constants';
 
-  import LatticeTree from './modules/LatticeTree.vue';
   import LemmatizedText from './modules/LemmatizedText.vue';
   import VocabListSelect from './components/vocab-list-select';
   import BookmarkTextButton from './modules/BookmarkTextButton.vue';
+  import FormDisambiguation from './modules/FormDisambiguation.vue';
 
   export default {
     props: ['textId'],
     components: {
-      LatticeTree,
+      FormDisambiguation,
       LemmatizedText,
       VocabListSelect,
       BookmarkTextButton,

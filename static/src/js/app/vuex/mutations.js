@@ -59,9 +59,10 @@ export default {
     };
   },
   [FETCH_LEMMAS_BY_FORM]: (state, data) => {
+    const form = data.data;
     state.forms = {
       ...state.forms,
-      [data.form]: data,
+      [form.form]: form,
     };
   },
   [UPDATE_TOKEN]: (state, data) => {
