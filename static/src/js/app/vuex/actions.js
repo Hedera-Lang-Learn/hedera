@@ -5,6 +5,7 @@ import {
   SELECT_TOKEN,
   FETCH_NODE,
   FETCH_LEMMA,
+  FETCH_LEMMAS_BY_FORM,
   UPDATE_TOKEN,
   SET_TEXT_ID,
   ADD_LEMMA,
@@ -79,6 +80,7 @@ export default {
   ),
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
+  [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
     api
       .fetchNode(nodeId, (data) => commit(FETCH_NODE, data))

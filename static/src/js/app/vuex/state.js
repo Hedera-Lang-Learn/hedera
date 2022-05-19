@@ -7,6 +7,7 @@ export default {
   selectedTokenHistory: [],
   nodes: {},
   lemmas: {},
+  forms: {},
   vocabLists: [],
   personalVocabList: {},
   selectedVocabList: null,

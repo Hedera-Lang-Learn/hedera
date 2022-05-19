@@ -3,6 +3,7 @@ import {
   SELECT_TOKEN,
   FETCH_NODE,
   FETCH_LEMMA,
+  FETCH_LEMMAS_BY_FORM,
   UPDATE_TOKEN,
   SET_TEXT_ID,
   FETCH_VOCAB_LISTS,
@@ -51,9 +52,16 @@ export default {
     };
   },
   [FETCH_LEMMA]: (state, data) => {
+    const lemma = data.data;
     state.lemmas = {
       ...state.lemmas,
-      [data.pk]: data,
+      [lemma.pk]: lemma,
+    };
+  },
+  [FETCH_LEMMAS_BY_FORM]: (state, data) => {
+    state.forms = {
+      ...state.forms,
+      [data.form]: data,
     };
   },
   [UPDATE_TOKEN]: (state, data) => {

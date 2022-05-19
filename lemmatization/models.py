@@ -78,6 +78,16 @@ class FormToLemma(models.Model):
                 lemma=strip_macrons(lemma),
             )
 
+    def get_lemma(self):
+        return self.lemma.to_dict()
+
+    def to_dict(self):
+        return dict(
+            pk=self.pk,
+            form=self.form,
+            lemma_id=self.lemma_id,
+        )
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["lang", "form", "lemma"], name="unique_lang_form_lemma")

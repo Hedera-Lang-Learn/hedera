@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views import View
 
 from lattices.models import LatticeNode, LemmaNode
-from lemmatization.models import Lemma
+from lemmatization.models import FormToLemma, Lemma
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
@@ -161,6 +161,26 @@ class LemmatizedTextDetailAPI(APIView):
         ).distinct()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         return text.api_data()
+
+
+class LemmatizationLemmaAPI(APIView):
+    def get_data(self):
+        lemma_id = self.kwargs.get("lemma_id")
+        lemma = get_object_or_404(Lemma, pk=lemma_id)
+        return lemma.to_dict()
+
+
+class LemmatizationFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+        forms = FormToLemma.objects.filter(lang=lang, form=form)
+        data = {
+            "lang": lang,
+            "form": form,
+            "lemmas": [form.get_lemma() for form in forms]
+        }
+        return data
 
 
 class LemmatizationAPI(APIView):

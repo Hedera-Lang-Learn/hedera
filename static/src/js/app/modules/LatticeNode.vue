@@ -1,31 +1,17 @@
 <template>
-  <div :class="customClass ? customClass : 'lattice-node'" v-if="node">
-    <LatticeNode
-      v-for="parent in parents"
-      :key="parent.pk"
-      :node="parent"
-      @selected="(n) => $emit('selected', n)"
-      :showIds="showIds"
-    />
+  <div :class="customClass ? customClass : 'lattice-node'" v-if="lemma">
     <div
       :class="customClassHeading ? customClassHeading : 'lattice-node--heading'"
       @click.prevent="onClick"
     >
       <div v-if="showIds">
-        <span class="lattice-id">{{ node.pk }}.</span>
+        <span class="lattice-id">{{ lemma.pk }}.</span>
       </div>
       <div>
-        <span class="lattice-label">{{ node.label }}</span>
-        <span class="lattice-gloss">{{ node.gloss }}</span>
+        <span class="lattice-label">{{ lemma.label }}</span>
+        <span v-for="gloss in lemma.glosses" :key="gloss.pk" class="lattice-gloss">{{ gloss.gloss }}</span>
       </div>
     </div>
-    <LatticeNode
-      v-for="child in children"
-      :key="child.pk"
-      :node="child"
-      @selected="(n) => $emit('selected', n)"
-      :showIds="showIds"
-    />
   </div>
 </template>
 <script>
@@ -43,10 +29,10 @@
 
   export default {
     name: 'LatticeNode',
-    props: ['node', 'showIds', 'customClass', 'customClassHeading'],
+    props: ['lemma', 'showIds', 'customClass', 'customClassHeading'],
     methods: {
       onClick() {
-        this.$emit('selected', this.node);
+        this.$emit('selected', this.lemma);
       },
     },
     computed: {

@@ -1,7 +1,7 @@
 <template>
   <div class="lattice-tree">
     <h4>{{ selectedToken.word }}</h4>
-    <LatticeNode :node="selectedNode" @selected="onSelect" :show-ids="showIds" />
+    <LatticeNode :lemma="selectedLemma" @selected="onSelect" :show-ids="showIds" />
     <AddLemma @addLemma="onAddLemma" v-if="false" />
     <div v-if="showToggle" class="text-right my-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
 
@@ -45,8 +45,8 @@
       textId() {
         return this.$store.state.textId;
       },
-      selectedNode() {
-        return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+      selectedLemma() {
+        return this.selectedToken && this.$store.state.lemmas[this.selectedToken.lemma_id];
       },
       selectedToken() {
         return this.$store.state.selectedToken;
