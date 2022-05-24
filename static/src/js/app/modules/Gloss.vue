@@ -1,7 +1,7 @@
 <template>
     <div v-if="gloss">
         <div @click.prevent="onClick">
-            {{gloss.gloss}}
+            &bull; {{gloss.gloss}}
         </div>
     </div>
 </template>
