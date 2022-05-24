@@ -1,0 +1,45 @@
+.form-disambiguation {
+  font-family: 'Noto Serif';
+}
+.form-disambiguation > .lemma {
+  margin-left: 0;
+}
+.lemma-label {
+  cursor: pointer;
+  font-size: 13pt;
+  &:hover {
+    border: 1px solid #999;
+  }
+}
+
+.lemma-gloss {
+  cursor: pointer;
+  text-indent: 2em;
+  font-style: italic;
+  color: $gray-600;
+  font-size: 11pt;
+  padding: 4px;
+  &:hover {
+    border: 1px solid #999;
+  }
+}
+
+.lemma--highlighted {
+  padding: 8px;
+  background-color: #F0F0F0;
+}
+.lemma-gloss--highlighted {
+  border: 1px solid #cacaca;
+  background-color: #fff;
+}
+
+.mark-resolved {
+  margin-top: 20px;
+}
+
+.form-disambiguation > .lemma-gloss> .lemma-gloss-heading {
+  background-color: #F0F0F0;
+  .lemma-id {
+    color: red;
+  }
+}

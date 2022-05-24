@@ -1,7 +1,12 @@
 <template>
-  <div v-if="selectedForm">
+  <div class="form-disambiguation" v-if="selectedForm">
+    <h4>{{ selectedForm.form }}</h4>
     <div v-for="form_lemma in selectedForm.lemmas" :key="form_lemma.pk">
-      <Lemma :lemma="form_lemma" @selected="onSelect" />
+      <Lemma
+        :lemma="form_lemma"
+        :highlighted="isLemmaHighlighted(form_lemma)"
+        :highlightedGlosses="gloss_ids"
+        @selected="onSelectLemmaGloss" />
     </div>
   </div>
 </template>
@@ -21,18 +26,39 @@
   // };
 
   export default {
-    name: 'LatticeNode',
+    name: 'FormDisambiguation',
     components: { Lemma },
     props: ['lemma', 'showIds', 'customClass', 'customClassHeading'],
+    data() {
+      return {
+        lemma_id: this.$store.state.selectedToken.lemma_id,
+        gloss_ids: [this.$store.state.selectedToken.gloss_id],
+      };
+    },
+
     methods: {
-      onSelect(gloss) {
-        console.log('disabmg', gloss);
-      // this.$store.dispatch(UPDATE_TOKEN, {
-      //   id: this.textId,
-      //   tokenIndex: this.selectedToken.tokenIndex,
-      //   nodeId: node.pk,
-      //   resolved: RESOLVED_MANUAL,
-      // });
+
+      onSelectLemmaGloss({ lemma, gloss }) {
+        console.log('selectedLemmaGloss', lemma, gloss);
+        if (this.lemma_id !== lemma.pk) {
+          this.gloss_ids = [];
+        }
+        this.lemma_id = lemma.pk;
+        if (gloss) {
+          this.gloss_ids.push(gloss.pk);
+        }
+        console.log('after selectedLemmaGloss', this.lemma_id, this.gloss_ids);
+      },
+      updateToken() {
+        // this.$store.dispatch(UPDATE_TOKEN, {
+        //   id: this.textId,
+        //   tokenIndex: this.selectedToken.tokenIndex,
+        //   nodeId: node.pk,
+        //   resolved: RESOLVED_MANUAL,
+        // });
+      },
+      isLemmaHighlighted(lemma) {
+        return lemma.pk === this.lemma_id;
       },
     },
     computed: {

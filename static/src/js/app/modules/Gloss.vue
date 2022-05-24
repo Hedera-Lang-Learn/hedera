@@ -1,5 +1,5 @@
 <template>
-    <div v-if="gloss">
+    <div v-if="gloss" class="lemma-gloss" :class="highlighted ? 'lemma-gloss--highlighted' : ''">
         <div @click.prevent="onClick">
             &bull; {{gloss.gloss}}
         </div>
@@ -9,14 +9,11 @@
 
   export default {
     name: 'Gloss',
-    props: ['gloss'],
+    props: ['gloss', 'highlighted'],
     methods: {
       onClick() {
-        console.log(this.gloss.pk);
         this.$emit('selected', this.gloss);
       },
-    },
-    computed: {
     },
   };
 </script>

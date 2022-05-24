@@ -1,13 +1,11 @@
 <template>
-  <div v-if="lemma" class="lemma-label">
-    {{ lemma.label }}
-    <div
-      @click.prevent="onClickLemma"
-      v-for="gloss in lemma.glosses"
-      :key="gloss.pk"
-      class="lemma-gloss"
-    >
-      <Gloss :gloss="gloss" @selected="onSelectGloss" class="lemma-gloss" />
+  <div v-if="lemma" class="lemma" :class="highlighted ? 'lemma--highlighted' : ''">
+    <span @click.prevent="onClickLemma" class="lemma-label">{{ lemma.label }}</span>
+    <div v-for="gloss in lemma.glosses" :key="gloss.pk">
+      <Gloss
+        :gloss="gloss"
+        :highlighted="isGlossHighlighted(gloss)"
+        @selected="onSelectGloss" />
     </div>
   </div>
 </template>
@@ -17,20 +15,18 @@
   export default {
     components: { Gloss },
     name: 'Lemma',
-    props: ['lemma'],
+    props: ['lemma', 'highlighted', 'highlightedGlosses'],
     methods: {
       onSelectGloss(gloss) {
-        // update token in lemmatized text with the gloss id
-        console.log('selected gloss=', gloss);
-      // this.$store.dispatch(UPDATE_TOKEN, {
-      //   id: this.textId,
-      //   tokenIndex: this.selectedToken.tokenIndex,
-      //   nodeId: node.pk,
-      //   resolved: RESOLVED_MANUAL,
-      // });
+        console.log('selected gloss', gloss.pk, gloss.gloss);
+        this.$emit('selected', { lemma: this.lemma, gloss });
       },
       onClickLemma() {
-      // update token in lemmatized text with the lemma id
+        console.log('clicked lemma', this.lemma.pk, this.lemma.label);
+        this.$emit('selected', { lemma: this.lemma });
+      },
+      isGlossHighlighted(gloss) {
+        return this.highlightedGlosses.includes(gloss.pk);
       },
     },
     computed: {},
@@ -39,22 +35,5 @@
 
 <style lang="scss">
 @import '../../../scss/config';
-.lemma-gloss {
-  text-indent: 2em;
-  font-family: 'Noto Serif';
-  font-style: italic;
-  color: $gray-600;
-  font-size: 11pt;
-  &:hover {
-    border: 1px solid red;
-  }
-}
 
-.lemma-label {
-  font-family: 'Noto Serif';
-  font-size: 13pt;
-  &:hover {
-    border: 1px solid #999;
-  }
-}
 </style>
