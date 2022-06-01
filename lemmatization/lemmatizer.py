@@ -54,34 +54,26 @@ class Lemmatizer(object):
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
             lemma_id = None
-            gloss_id = None
             if word_normalized:
                 lemma_names = self._lemmatize_token(word_normalized)
                 lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
-
-                # TODO: do we still need "resolved" states?
-                # TODO: how should we handle multiple glosses for a given lemma?
                 if len(lemma_entries) == 0:
                     resolved = RESOLVED_NO_LEMMA
                     lemma_id = None
-                    gloss_id = None
                 elif len(lemma_entries) == 1:
                     resolved = RESOLVED_NO_AMBIGUITY
                     lemma_id = lemma_entries[0].pk
-                    glosses = lemma_entries[0].glosses.all()
-                    gloss_id = glosses[0].pk if len(glosses) == 1 else None
                 else:
                     resolved = RESOLVED_AUTOMATIC
-                    lemma_id = lemma_entries[0].pk
-                    glosses = lemma_entries[0].glosses.all()
-                    gloss_id = glosses[0].pk if len(glosses) == 1 else None
+                    lemma_id = lemma_entries[0].pk  # should be highest frequency lemma
 
             result.append(dict(
                 word=word,
                 word_normalized=word_normalized,
                 following=following,
                 lemma_id=lemma_id,
-                gloss_id=gloss_id,
+                glossed=False,  # when True, use specific glosses selected by the teacher
+                gloss_ids=[],
                 resolved=resolved
             ))
             self._report_progress(index, total_count)

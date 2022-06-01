@@ -1,6 +1,8 @@
 <template>
   <div v-if="lemma" class="lemma" :class="highlighted ? 'lemma--highlighted' : ''">
-    <span @click.prevent="onClickLemma" class="lemma-label">{{ lemma.label }}</span>
+    <div @click.prevent="onClickLemma" class="lemma-label">
+      {{ lemma.label }}
+    </div>
     <div v-for="gloss in lemma.glosses" :key="gloss.pk">
       <Gloss
         :gloss="gloss"
@@ -35,5 +37,20 @@
 
 <style lang="scss">
 @import '../../../scss/config';
+
+.lemma {
+  margin-left: 0;
+}
+.lemma-label {
+  cursor: pointer;
+  font-size: 13pt;
+  padding: 4px;
+  &:hover {
+    background-color: $highlight-color;
+  }
+}
+.lemma--highlighted {
+  background-color: #F0F0F0;
+}
 
 </style>
