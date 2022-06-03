@@ -1,8 +1,8 @@
 <template>
     <div v-if="gloss" class="gloss" :class="highlighted ? 'gloss--highlighted' : ''">
       <label :for="checkbox_id" class="gloss__label">
-        <input :id="checkbox_id" type="checkbox" :checked="highlighted" @click="onClickCheckBox">
-        <span class="checkbox"></span>
+        <input :id="checkbox_id" class="input_checkbox" type="checkbox" :checked="highlighted" @click="onClickCheckBox">
+        <span id="checked" class="checkbox"></span>
       </label>
       <p>{{gloss.gloss}}</p>
     </div>
@@ -49,7 +49,7 @@
   height: 30px;
   cursor: pointer;
 }
-input {
+.input_checkbox {
   position: absolute;
   transform: scale(0);
 }
