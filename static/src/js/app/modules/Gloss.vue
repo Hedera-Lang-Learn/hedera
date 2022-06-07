@@ -1,7 +1,7 @@
 <template>
-    <div v-if="gloss" class="gloss" :class="{'gloss--active': this.checked}">
+    <div v-if="gloss" :class="active ? 'gloss gloss--active' : 'gloss'">
       <label :for="labelIdentifier" class="gloss__label">
-        <input :id="labelIdentifier" type="checkbox" :checked="checked" @change="onChange">
+        <input :id="labelIdentifier" type="checkbox" :checked="active" @change="onChange">
         <span class="checkbox"></span>
         <p>{{gloss.gloss}}</p>
       </label>
@@ -15,14 +15,12 @@
     data() {
       console.log('Gloss data', this.gloss.pk, 'active', this.active);
       return {
-        checked: !!this.active,
         labelIdentifier: `gloss-${this.gloss.pk}`,
       };
     },
     methods: {
       onChange(e) {
-        this.checked = e.target.checked;
-        this.$emit('change', this.gloss, this.checked);
+        this.$emit('change', this.gloss, e.target.checked);
       },
     },
   };

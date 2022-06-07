@@ -44,15 +44,23 @@
         console.log('onLemmaChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
       },
       onGlossChange({ lemma, gloss, active }) {
-        this.updateLemma(lemma);
+        if (this.lemma_id !== lemma.pk) {
+          this.lemma_id = lemma.pk;
+          this.gloss_ids = [];
+        }
+
         this.updateGloss(gloss, active);
         console.log('onGlossChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
       },
       updateLemma(lemma) {
         if (this.lemma_id !== lemma.pk) {
-          this.gloss_ids = [];
+          this.lemma_id = lemma.pk;
+          const { lemmas } = this.$store.state.forms[this.selectedToken.word_normalized];
+          const matchingLemmas = lemmas.filter((x) => x.pk === lemma.pk);
+          const { glosses } = matchingLemmas[0];
+          this.gloss_ids = glosses.map((gloss) => gloss.pk);
+          console.log('selected glosses', this.gloss_ids, glosses, matchingLemmas);
         }
-        this.lemma_id = lemma.pk;
       },
       updateGloss(gloss, active) {
         if (active) {
