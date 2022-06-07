@@ -15,6 +15,10 @@ RESOLVED_NO_AMBIGUITY = "no-ambiguity"
 RESOLVED_AUTOMATIC = "resolved-automatic"
 RESOLVED_MANUAL = "resolved-manual"
 
+GLOSSED_NA = "na"
+GLOSSED_AUTOMATIC = "glossed-automatic"
+GLOSSED_MANUAL = "glossed-manual"
+
 
 class Lemmatizer(object):
 
@@ -54,9 +58,15 @@ class Lemmatizer(object):
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
             lemma_id = None
+            gloss_ids = []
+            glossed = GLOSSED_NA
+            resolved = RESOLVED_NA
             if word_normalized:
                 lemma_names = self._lemmatize_token(word_normalized)
                 lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
+
+                # automatically select the highest frequency lemma
+                # assumes that the lemma entries are ranked in frequency order, highest frequency first
                 if len(lemma_entries) == 0:
                     resolved = RESOLVED_NO_LEMMA
                     lemma_id = None
@@ -65,15 +75,21 @@ class Lemmatizer(object):
                     lemma_id = lemma_entries[0].pk
                 else:
                     resolved = RESOLVED_AUTOMATIC
-                    lemma_id = lemma_entries[0].pk  # should be highest frequency lemma
+                    lemma_id = lemma_entries[0].pk
+
+                # automatically select all glosses for the lemma
+                # this can be changed later by manually selecting glosses if desired
+                if lemma_id:
+                    gloss_ids = [gloss.pk for gloss in lemma_entries[0].glosses.all()]
+                    glossed = GLOSSED_AUTOMATIC
 
             result.append(dict(
                 word=word,
                 word_normalized=word_normalized,
                 following=following,
                 lemma_id=lemma_id,
-                glossed=False,  # when True, use specific glosses selected by the teacher
-                gloss_ids=[],
+                gloss_ids=gloss_ids,
+                glossed=glossed,
                 resolved=resolved
             ))
             self._report_progress(index, total_count)

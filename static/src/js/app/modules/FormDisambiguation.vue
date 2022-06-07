@@ -4,9 +4,11 @@
     <div v-for="form_lemma in selectedForm.lemmas" :key="form_lemma.pk">
       <Lemma
         :lemma="form_lemma"
-        :highlighted="isLemmaHighlighted(form_lemma)"
-        :highlightedGlosses="gloss_ids"
-        @selected="onSelectLemmaGloss" />
+        :active="isActive(form_lemma)"
+        :activeGlosses="activeGlosses"
+        @glossChange="onGlossChange"
+        @lemmaChange="onLemmaChange"
+      />
     </div>
   </div>
 </template>
@@ -32,22 +34,35 @@
     data() {
       return {
         lemma_id: this.$store.state.selectedToken.lemma_id,
-        gloss_ids: [this.$store.state.selectedToken.gloss_id],
+        gloss_ids: [...this.$store.state.selectedToken.gloss_ids],
       };
     },
 
     methods: {
-
-      onSelectLemmaGloss({ lemma, gloss }) {
-        console.log('selectedLemmaGloss', lemma, gloss);
+      onLemmaChange(lemma) {
+        this.updateLemma(lemma);
+        console.log('onLemmaChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
+      },
+      onGlossChange({ lemma, gloss, active }) {
+        this.updateLemma(lemma);
+        this.updateGloss(gloss, active);
+        console.log('onGlossChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
+      },
+      updateLemma(lemma) {
         if (this.lemma_id !== lemma.pk) {
           this.gloss_ids = [];
         }
         this.lemma_id = lemma.pk;
-        if (gloss) {
+      },
+      updateGloss(gloss, active) {
+        if (active) {
           this.gloss_ids.push(gloss.pk);
+        } else {
+          const index = this.gloss_ids.indexOf(gloss.pk);
+          if (index >= 0) {
+            this.gloss_ids.splice(index, 1);
+          }
         }
-        console.log('after selectedLemmaGloss', this.lemma_id, this.gloss_ids);
       },
       updateToken() {
         // this.$store.dispatch(UPDATE_TOKEN, {
@@ -57,7 +72,7 @@
         //   resolved: RESOLVED_MANUAL,
         // });
       },
-      isLemmaHighlighted(lemma) {
+      isActive(lemma) {
         return lemma.pk === this.lemma_id;
       },
     },
@@ -79,6 +94,9 @@
           this.selectedToken
           && this.$store.state.forms[this.selectedToken.word_normalized]
         );
+      },
+      activeGlosses() {
+        return this.gloss_ids;
       },
     },
   };

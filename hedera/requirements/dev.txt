@@ -10,7 +10,7 @@ debugpy==1.4.3
     # via -r dev.in
 distlib==0.3.4
     # via virtualenv
-filelock==3.6.0
+filelock==3.7.1
     # via virtualenv
 flake8==3.9.2
     # via
@@ -18,9 +18,9 @@ flake8==3.9.2
     #   flake8-quotes
 flake8-quotes==3.3.1
     # via -r dev.in
-identify==2.4.11
+identify==2.5.1
     # via pre-commit
-importlib-metadata==4.11.2
+importlib-metadata==4.11.4
     # via
     #   -c base.txt
     #   flake8
@@ -32,7 +32,7 @@ mccabe==0.6.1
     # via flake8
 nodeenv==1.6.0
     # via pre-commit
-platformdirs==2.5.1
+platformdirs==2.5.2
     # via virtualenv
 pre-commit==2.15.0
     # via -r dev.in
@@ -48,13 +48,13 @@ six==1.16.0
     #   virtualenv
 toml==0.10.2
     # via pre-commit
-typing-extensions==4.1.1
+typing-extensions==4.2.0
     # via
     #   -c base.txt
     #   importlib-metadata
-virtualenv==20.13.2
+virtualenv==20.14.1
     # via pre-commit
-zipp==3.7.0
+zipp==3.8.0
     # via
     #   -c base.txt
     #   importlib-metadata

@@ -4,13 +4,13 @@
 
 <ul class="navbar-nav">
     {% if request.user.is_authenticated %}
-   
+
         <li class="dropdown">
                 <button class="dropbtn" id="dropdown-btn">
                 <i class="fa fa-user" aria-hidden="true" title="User"></i><span class="sr-only">User:</span> {% user_display request.user %}
                 </button>
                 <ul class="dropdown-content">
-                    <li id="quick-add" />
+                    <li id="quick-add"></li>
                     <li class="nav-item">
                         <a href="{% url 'account_settings' %}"><i class="fa fa-cog" aria-hidden="true"></i> {% trans "Settings" %}</a>
                     </li>
@@ -20,7 +20,7 @@
                         </li>
                     {% endif %}
                 </ul>
-              
+
         </li>
     {% else %}
         {% if not IS_LTI %}

@@ -1,13 +1,13 @@
 <template>
-  <div v-if="lemma" class="lemma" :class="highlighted ? 'lemma--highlighted' : ''">
+  <div v-if="lemma" class="lemma" :class="active ? 'lemma--active' : ''">
     <div @click.prevent="onClickLemma" class="lemma-label">
       {{ lemma.label }}
     </div>
     <div v-for="gloss in lemma.glosses" :key="gloss.pk">
       <Gloss
         :gloss="gloss"
-        :highlighted="isGlossHighlighted(gloss)"
-        @selected="onSelectGloss" />
+        :active="isGlossActive(gloss)"
+        @change="onGlossChange" />
     </div>
   </div>
 </template>
@@ -17,18 +17,20 @@
   export default {
     components: { Gloss },
     name: 'Lemma',
-    props: ['lemma', 'highlighted', 'highlightedGlosses'],
+    props: ['lemma', 'active', 'activeGlosses'],
     methods: {
-      onSelectGloss(gloss) {
-        console.log('selected gloss', gloss.pk, gloss.gloss);
-        this.$emit('selected', { lemma: this.lemma, gloss });
+      onGlossChange(gloss, isChecked) {
+        const eventData = { lemma: this.lemma, gloss, active: isChecked };
+        console.log('glossChange', eventData);
+        this.$emit('glossChange', eventData);
       },
       onClickLemma() {
-        console.log('clicked lemma', this.lemma.pk, this.lemma.label);
-        this.$emit('selected', { lemma: this.lemma });
+        console.log('lemmaChange', this.lemma.pk, this.lemma.label);
+        this.$emit('lemmaChange', this.lemma);
       },
-      isGlossHighlighted(gloss) {
-        return this.highlightedGlosses.includes(gloss.pk);
+      isGlossActive(gloss) {
+        console.log('isGlossActive?', gloss.pk, gloss.gloss, this.activeGlosses.includes(gloss.pk));
+        return this.activeGlosses.includes(gloss.pk);
       },
     },
     computed: {},
@@ -43,14 +45,16 @@
 }
 .lemma-label {
   cursor: pointer;
-  font-size: 13pt;
+  font-size: 16pt;
   padding: 4px;
   &:hover {
-    background-color: $highlight-color;
+    background-color: #80b180;
   }
 }
-.lemma--highlighted {
+.lemma--active {
   background-color: #F0F0F0;
+  border: 2px solid #80b180;
+  border-radius: 4px;
 }
 
 </style>

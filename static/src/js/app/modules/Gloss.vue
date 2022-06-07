@@ -1,31 +1,29 @@
 <template>
-    <div v-if="gloss" class="gloss" :class="highlighted ? 'gloss--highlighted' : ''">
-      <label :for="checkbox_id" class="gloss__label">
-        <input :id="checkbox_id" type="checkbox" :checked="highlighted" @click="onClickCheckBox">
+    <div v-if="gloss" class="gloss" :class="{'gloss--active': this.checked}">
+      <label :for="labelIdentifier" class="gloss__label">
+        <input :id="labelIdentifier" type="checkbox" :checked="checked" @change="onChange">
         <span class="checkbox"></span>
+        <p>{{gloss.gloss}}</p>
       </label>
-      <p>{{gloss.gloss}}</p>
+
     </div>
 </template>
 <script>
 
   export default {
     name: 'Gloss',
-    props: ['gloss', 'highlighted'],
+    props: ['gloss', 'active'],
     data() {
-      console.log('gloss', this.gloss, this.highlighted);
+      console.log('Gloss data', this.gloss.pk, 'active', this.active);
       return {
-        checkbox_id: `gloss-${this.gloss.pk}`,
+        checked: !!this.active,
+        labelIdentifier: `gloss-${this.gloss.pk}`,
       };
     },
     methods: {
-      onClick(e) {
-        console.log(e);
-        this.$emit('selected', this.gloss);
-      },
-      onClickCheckBox(e) {
-        console.log('clicked checkbox', e);
-        this.highlighted = !this.highlighted;
+      onChange(e) {
+        this.checked = e.target.checked;
+        this.$emit('change', this.gloss, this.checked);
       },
     },
   };
@@ -34,53 +32,52 @@
 <style lang="scss">
 @import "../../../scss/config";
 .gloss {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 16px;
+  margin: 0;
+  padding-left: 32px;
+  padding-top: 4px;
+  &:hover {
+    background-color: #d3d3d3;
+  }
+  p {
+    margin-left: 16px;
+    flex-grow: 1;
+    width: 100%;
+  }
+  input {
+    position: absolute;
+    transform: scale(0);
+  }
+  input:checked ~ .checkbox {
+    transform: rotate(45deg);
+    width: 20px;
+    margin: -5px 7px 0 8px;
+    border-color: #fff;
+    border-width: 4px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-radius: 0;
+  }
+  .checkbox {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #999;
+    border-radius: 4px;
+    transition: all 0.2s cubic-bezier(0, 0.01, 0.23, 0.8);
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  input:checked + .checkbox + p {
+    color: #fff;
+  }
 }
-.gloss--highlighted {
-  background-color: $highlight-color;
+.gloss--active {
+  background-color: #80b180;
 }
 .gloss__label {
   display: flex;
   margin: 0;
-  width: 30px;
-  height: 30px;
+  padding: 0;
   cursor: pointer;
 }
-input {
-  position: absolute;
-  transform: scale(0);
-}
-input:checked ~ .checkbox {
-  transform: rotate(45deg);
-  width: 20px;
-  margin: -5px 7px 0 8px;
-  border-color: $hedera-green;
-  border-width: 4px;
-  border-top-color: transparent;
-  border-left-color: transparent;
-  border-radius: 0;
-}
-.checkbox {
-  display: block;
-  width: inherit;
-  height: inherit;
-  border: 2px solid #999;
-  border-radius: 4px;
-  transition: all 0.2s cubic-bezier(0, 0.01, 0.23, 0.8);
-}
-
-//.gloss {
-//  cursor: pointer;
-//  text-indent: 2em;
-//  font-style: italic;
-//  color: $gray-600;
-//  font-size: 11pt;
-//  padding: 4px;
-//  &:hover {
-//    background-color: $highlight-color;
-//  }
-//}
 </style>
