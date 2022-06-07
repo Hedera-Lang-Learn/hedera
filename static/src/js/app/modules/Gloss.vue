@@ -5,7 +5,6 @@
         <span class="checkbox"></span>
         <p>{{gloss.gloss}}</p>
       </label>
-
     </div>
 </template>
 <script>
