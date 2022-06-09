@@ -203,14 +203,14 @@ class LemmatizedText(models.Model):
             "learnerUrl": self.learner_url,
         }
 
-    def update_token(self, user, token_index, node_id, resolved):
-        self.data[token_index]["node"] = node_id
+    def update_token(self, user, token_index, lemma_id, resolved):
+        self.data[token_index]["lemma_id"] = lemma_id
         self.data[token_index]["resolved"] = resolved
         self.save()
         self.logs.create(
             user=user,
             token_index=token_index,
-            node_id=node_id,
+            lemma_id=lemma_id,
             resolved=resolved,
         )
 
@@ -219,7 +219,7 @@ class LemmatizedText(models.Model):
 
         cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
         edit_parser = EditedTextHtmlParser(
-            token_node_dict=self.token_node_dict(),
+            token_lemma_dict=self.token_lemma_dict(),
             lang=self.lang
         )
         edit_parser.feed(cleaned_edits)
@@ -236,10 +236,10 @@ class LemmatizedText(models.Model):
         self.original_text = strip_parser.get_data()
         self.save()
 
-    def token_node_dict(self):
+    def token_lemma_dict(self):
         lemma_dict = defaultdict(list)
         for token in self.data:
-            lemma_dict[token["word"]].append(token["node"])
+            lemma_dict[token["word"]].append(token["lemma_id"])
         return dict(lemma_dict)
 
     def transform_data_to_html(self):
@@ -276,7 +276,10 @@ class LemmatizationLog(models.Model):
 
     # Changed What Attributes
     token_index = models.IntegerField()
-    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
+
+## This requires some more thought ####
+#    lemma = models.ForeignKey("Lemmatization.Lemma")
+#    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
     resolved = models.CharField(max_length=100)
 
     # On What Text
@@ -290,7 +293,7 @@ class LemmatizationLog(models.Model):
             id=self.pk,
             user=self.user.email,
             tokenIndex=self.token_index,
-            node=self.node.pk,
+            lemma_id=self.lemma_id,
             resolves=self.resolved,
             text=self.text.pk,
             createdAt=self.created_at
