@@ -262,7 +262,7 @@
   .lemmatized-text .token.rating-5 {
     color: inherit;
   }
-  .sameNode {
+  .sameLemma {
     border: none;
   }
 }
