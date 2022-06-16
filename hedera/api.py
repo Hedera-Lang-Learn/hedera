@@ -249,10 +249,12 @@ class LemmatizationAPI(APIView):
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
-        node_id = data["nodeId"]
+        lemma_id = data["lemmaId"]
         resolved = data["resolved"]
+        # list of gloss ids
+        gloss_ids = data["glossIds"]
 
-        text.update_token(self.request.user, token_index, node_id, resolved)
+        text.update_token(self.request.user, token_index, lemma_id, gloss_ids, resolved)
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
