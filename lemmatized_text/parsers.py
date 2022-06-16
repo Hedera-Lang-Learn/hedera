@@ -6,12 +6,12 @@ from lemmatization.lemmatizer import Lemmatizer
 
 class EditedTextHtmlParser(HTMLParser):
 
-    def __init__(self, token_node_dict=None, lang=None):
+    def __init__(self, token_lemma_dict=None, lang=None):
         self.current_tag = None
         self.current_attrs = {}
         self.current_data = ""
         self.lemmatized_text_data = []
-        self.token_node_dict = token_node_dict
+        self.token_lemma_dict = token_lemma_dict
         self.lemmatizer = Lemmatizer(lang)
         return super().__init__()
 
@@ -44,7 +44,7 @@ class EditedTextHtmlParser(HTMLParser):
                 if(
                     (self.current_tag is None) or
                     (self.current_tag == "span" and self.current_attrs == {}) or
-                    (self.parse_node_value() not in self.token_node_dict[data])
+                    (self.parse_node_value() not in self.token_lemma_dict[data])
                 ):
                     self.lemmatize_chunk(data)
                 else:

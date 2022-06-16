@@ -128,7 +128,7 @@
             map[obj.node] = obj.familiarity;
             return map;
           }, {});
-          className = entries[token.node] !== undefined ? `rating-${entries[token.node]}` : '';
+          className = entries[token.lemma_id] !== undefined ? `rating-${entries[token.lemma_id]}` : '';
         }
         return className;
       },

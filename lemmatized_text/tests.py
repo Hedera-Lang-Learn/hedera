@@ -43,15 +43,15 @@ class LemmatizedTextTests(TestCase):
         self.assertNotEqual(lt.secret_id, lt_clone.secret_id)
         self.assertNotEqual(lt.created_at, lt_clone.created_at)
 
-    def test_token_node_dict(self):
+    def test_token_lemma_dict(self):
         data = [
-            {"word": "mis", "node": 3},
-            {"word": "sim", "node": 55},
-            {"word": "i", "node": 60},
-            {"word": "i", "node": 60},
-            {"word": "i", "node": 60},
-            {"word": "ism", "node": None},
-            {"word": "mis", "node": 22}
+            {"word": "mis", "lemma_id": 3},
+            {"word": "sim", "lemma_id": 55},
+            {"word": "i", "lemma_id": 60},
+            {"word": "i", "lemma_id": 60},
+            {"word": "i", "lemma_id": 60},
+            {"word": "ism", "lemma_id": None},
+            {"word": "mis", "lemma_id": 22}
         ]
         lt = LemmatizedText.objects.create(
             title="Test title",
@@ -66,17 +66,17 @@ class LemmatizedTextTests(TestCase):
             "i": [60, 60, 60],
             "ism": [None]
         }
-        self.assertEqual(lt.token_node_dict(), expected)
+        self.assertEqual(lt.self.token_lemma_dict(), expected)
 
     def test_transform_data_to_html(self):
         data = [
-            {"word": "mis", "node": 3, "resolved": True, "following": " "},
-            {"word": "sim", "node": 55, "resolved": True, "following": " "},
-            {"word": "i", "node": 60, "resolved": True, "following": ".\n"},
-            {"word": "i", "node": 60, "resolved": True, "following": " "},
-            {"word": "i", "node": 60, "resolved": True, "following": " "},
-            {"word": "ism", "node": None, "resolved": False, "following": " "},
-            {"word": "mis", "node": 22, "resolved": True, "following": "."}
+            {"word": "mis", "lemma_id": 3, "resolved": True, "gloss_ids": [], "glossed": "na", "following": " "},
+            {"word": "sim", "lemma_id": 55, "resolved": True, "gloss_ids": [], "glossed": "na", "following": " "},
+            {"word": "i", "lemma_id": 60, "resolved": True, "gloss_ids": [], "glossed": "na", "following": ".\n"},
+            {"word": "i", "lemma_id": 60, "resolved": True, "gloss_ids": [], "glossed": "na", "following": " "},
+            {"word": "i", "lemma_id": 60, "resolved": True, "gloss_ids": [], "glossed": "na", "following": " "},
+            {"word": "ism", "lemma_id": None, "resolved": False, "gloss_ids": [], "glossed": "na", "following": " "},
+            {"word": "mis", "lemma_id": 22, "resolved": True, "gloss_ids": [], "glossed": "na", "following": "."}
         ]
         lt = LemmatizedText.objects.create(
             title="Test title",
@@ -86,14 +86,14 @@ class LemmatizedTextTests(TestCase):
             data=data
         )
 
-        expected = "<span node='3' resolved='True'>mis</span><span follower='true'> </span><span node='55' resolved='True'>sim</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'>.<br/></span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='None' resolved='False'>ism</span><span follower='true'> </span><span node='22' resolved='True'>mis</span><span follower='true'>.</span>"
+        expected = "<span lemma_id='3' resolved='True'>mis</span><span follower='true'> </span><span lemma_id='55' resolved='True'>sim</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'>.<br/></span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='None' resolved='False'>ism</span><span follower='true'> </span><span lemma_id='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(lt.transform_data_to_html(), expected)
 
     def test_handle_edited_data(self):
         data = [
-            {"word": "Femina", "node": 3, "resolved": True, "following": " ", "word_normalized": "Femina"},
-            {"word": "somnia", "node": 55, "resolved": False, "following": " ", "word_normalized": "somina"},
-            {"word": "habet", "node": 60, "resolved": True, "following": ".", "word_normalized": "habet"},
+            {"word": "Femina", "lemma_id": 3, "resolved": True, "following": " ", "gloss_ids": [], "glossed": "na", "word_normalized": "Femina"},
+            {"word": "somnia", "lemma_id": 55, "resolved": False, "following": " ", "gloss_ids": [], "glossed": "na", "word_normalized": "somina"},
+            {"word": "habet", "lemma_id": 60, "resolved": True, "following": ".", "gloss_ids": [], "glossed": "na", "word_normalized": "habet"},
         ]
         example_text = LemmatizedText.objects.create(
             title="Test title",
@@ -105,11 +105,11 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(example_text.token_count(), 3)
         self.assertEqual(example_text.original_text, "Femina somnia habet.")
 
-        edited_text = "<span follower='true'> </span><span node='55' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
+        edited_text = "<span follower='true'> </span><span lemma_id='55' gloss_ids='[]' glossed='na' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span lemma_id='60' gloss_ids='[]' glossed='na' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
         example_text.handle_edited_data("New title", edited_text)
         transformed_data_to_html = example_text.transform_data_to_html()
-        section_one = "<span word_normalized='something' node='None' resolved='no-lemma'>something</span>"
-        section_two = "<span node='60' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span>"
+        section_one = "<span word_normalized='something' lemma_id='None' gloss_ids='[]' glossed='na' resolved='no-lemma'>something</span>"
+        section_two = "<span lemma_id='60' resolved='True' gloss_ids='[]' glossed='na' word_normalized='habet'>habet</span><span follower='true'>. </span>"
         self.assertIn(section_one, transformed_data_to_html)
         self.assertIn(section_two, transformed_data_to_html)
         self.assertEqual(example_text.token_count(), 7)
@@ -123,13 +123,13 @@ class LemmatizedTextViewsTests(TestCase):
         self.created_user2 = create_user("user2", "user2@example.com", "password2")
 
         data = [
-            {"word": "mis", "node": 3, "resolved": True, "following": " "},
-            {"word": "sim", "node": 55, "resolved": True, "following": " "},
-            {"word": "i", "node": 60, "resolved": True, "following": ".\n"},
-            {"word": "i", "node": 60, "resolved": True, "following": " "},
-            {"word": "i", "node": 60, "resolved": True, "following": " "},
-            {"word": "ism", "node": None, "resolved": False, "following": " "},
-            {"word": "mis", "node": 22, "resolved": True, "following": "."}
+            {"word": "mis", "lemma_id": 3, "resolved": True, "following": " "},
+            {"word": "sim", "lemma_id": 55, "resolved": True, "following": " "},
+            {"word": "i", "lemma_id": 60, "resolved": True, "following": ".\n"},
+            {"word": "i", "lemma_id": 60, "resolved": True, "following": " "},
+            {"word": "i", "lemma_id": 60, "resolved": True, "following": " "},
+            {"word": "ism", "lemma_id": None, "resolved": False, "following": " "},
+            {"word": "mis", "lemma_id": 22, "resolved": True, "following": "."}
         ]
         self.lt = LemmatizedText.objects.create(
             title="Test title",
@@ -171,12 +171,12 @@ class LemmatizedTextViewsTests(TestCase):
         self.client.login(username="user1", password="password")
         response = self.client.get(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}))
         self.assertEqual(response.status_code, 200)
-        expected_initial_text = "<span node='3' resolved='True'>mis</span><span follower='true'> </span><span node='55' resolved='True'>sim</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'>.<br/></span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='60' resolved='True'>i</span><span follower='true'> </span><span node='None' resolved='False'>ism</span><span follower='true'> </span><span node='22' resolved='True'>mis</span><span follower='true'>.</span>"
+        expected_initial_text = "<span lemma_id='3' resolved='True'>mis</span><span follower='true'> </span><span lemma_id='55' resolved='True'>sim</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'>.<br/></span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='None' resolved='False'>ism</span><span follower='true'> </span><span lemma_id='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(response.context["form"].initial["text"], expected_initial_text)
 
     def test_redirects_to_texts_list_on_success(self):
         self.client.login(username="user1", password="password")
-        post_text = "<span node=3 resolved=True></span><span follower='true'> </span><span node=55 resolved=True>sim</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'>.<br/></span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=60 resolved=True>i</span><span follower='true'> </span><span node=None resolved=False>ism</span><span follower='true'> </span><span node=22 resolved=True>mis</span><span follower='true'>.</span>"
+        post_text = "<span lemma_id=3 resolved=True></span><span follower='true'> </span><span lemma_id=55 resolved=True>sim</span><span follower='true'> </span><span lemma_id=60 resolved=True>i</span><span follower='true'>.<br/></span><span lemma_id=60 resolved=True>i</span><span follower='true'> </span><span lemma_id=60 resolved=True>i</span><span follower='true'> </span><span lemma_id=None resolved=False>ism</span><span follower='true'> </span><span lemma_id=22 resolved=True>mis</span><span follower='true'>.</span>"
         response = self.client.post(reverse("lemmatized_text_edit", kwargs={"pk": self.lt.pk}), {"title": "Test title", "text": post_text})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(response.url.startswith("/lemmatized_text/"))
