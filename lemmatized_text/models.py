@@ -203,14 +203,16 @@ class LemmatizedText(models.Model):
             "learnerUrl": self.learner_url,
         }
 
-    def update_token(self, user, token_index, node_id, resolved):
-        self.data[token_index]["node"] = node_id
+    def update_token(self, user, token_index, lemma_id, gloss_ids, resolved):
+        self.data[token_index]["lemma_id"] = lemma_id
+        self.data[token_index]["gloss_ids"] = gloss_ids
         self.data[token_index]["resolved"] = resolved
         self.save()
         self.logs.create(
             user=user,
             token_index=token_index,
-            node_id=node_id,
+            lemma_id=lemma_id,
+            gloss_ids=gloss_ids,
             resolved=resolved,
         )
 
