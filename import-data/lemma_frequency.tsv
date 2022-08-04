@@ -1,0 +1,1214 @@
+lemma	alt_lemma	label	short_def	rank	count	rate
+sum	sum1	sum, esse, fuī	to be, exist, live	1.0	145573.0	327.682
+et	et	et	and	2.0	121492.0	273.476
+qui	qui1	quī, quae, quod	who, which, what	3.0	92676.0	208.612
+in	in1	in	in, on (+ abl.)	4.0	85688.0	192.882
+is	is	is, ea, id	he, she, it; this, that	5.0	60656.0	136.536
+hic	hic1	hic, haec, hoc	this	6.0	54183.0	121.965
+hic2	hic2	hīc	in this place, here			
+non	non1	nōn	not, by no means, not at all	7.0	53320.0	120.022
+ego	ego	ego, meī, mihi, mē, mē	he, she, it; this, that	8.0	46366.0	104.369
+ut	ut1	ut	as; how	9.0	44171.0	99.428
+tu	tu	tū, tuī, tibi, tē, tē	you	10.0	36856.0	82.962
+ad	ad	ad	to, toward (+ acc.)	11.0	34240.0	77.074
+ille	ille	ille, illa, illud	that	12.0	32051.0	72.146
+quod	qui	quod	because	13.0	30549.0	68.765
+si	si1	sī	if, when, inasmuch as, since	14.0	29146.0	65.607
+ab	ab	ā	by (+abl.)	15.0	28824.0	64.882
+atque	atque	ac	and, and in addition, and even	16.0	27527.0	61.963
+sed	sed	sed	but, on the contrary, but also, but even, but in fact	17.0	27185.0	61.193
+neque	neque	nec	and not, also not, nor	18.0	26610.0	59.899
+ex	ex	ē	out of, from within (+ abl.)	19.0	25088.0	56.473
+omnis	omnis	omnis, omne	all, every	20.0	24656.0	55.5
+dico2	dico2	dīcō, dīcere, dīxī, dictum	to say, speak, utter, tell, mention, relate, affirm, declare, state, assert	21.0	23717.0	53.387
+quam	quam1	quam	as … as possible 	22.0	22675.0	51.041
+res	res	rēs, reī, f.	thing, object, matter, affair, business, event, fact, circumstance, occurrence, deed, condition, case 	23.0	22408.0	50.44
+possum	possum	possum, posse, potuī	to be able, have power, can	24.0	21928.0	49.36
+cum2	cum2	cum	when, at the time when	25.0	21537.0	48.479
+sui	sui	sui, sibi, sē, sē / sēsē	himself, herself, itself, themselves	26.0	21279.0	47.899
+quis	quis1	quis, quid	who? which?	27.0	20711.0	46.62
+ipse	ipse	ipse, ipsa, ipsum	self, selves	28.0	20369.0	45.85
+facio	facio	faciō, facere, fēcī, factum	to make, construct, fashion, frame, build, erect, produce, compose, do	29.0	19352.0	43.561
+de2	de2	dē	concerning (+ abl.)	30.0	19281.0	43.401
+video	video	videō, vidēre, vīdī, vīsum	to see, discern, perceive	31.0	18435.0	41.497
+aut	aut	aut	or	32.0	18140.0	40.833
+suus	suus	suus, sua, suum	of oneself, belonging to oneself, his own, her own, his, her, its, their	33.0	17832.0	40.14
+magnus	magnus1	māgnus, māgna, māgnum	large, great, big, high, tall, long, broad, extensive, spacious	34.0	17113.0	38.521
+multus	multus	multō	by much, much, a great deal, far, by far	35.0	16645.0	37.468
+cum	cum1	cum	with, together with, in the company of, in connection with, along with, together, and (+ abl.)	36.0	15498.0	34.886
+etiam	etiam	etiam	now too, yet, as yet, even yet, still, even now	37.0	14736.0	33.17
+habeo	habeo	habeō, habēre, habuī, habitum	to have, hold, support, carry, wear	38.0	14583.0	32.826
+enim	enim	enim	for, for instance, namely, that is to say, I mean, in fact	39.0	13783.0	31.025
+alius	alius2	alius, alia, aliud	another, other, different	40.0	13636.0	30.694
+per	per1	per	through, across, through the midst of, from side to side of, traversing	41.0	12606.0	28.376
+do	do1	dō, dare, dedī, datum	to hand over, deliver, give up, render, furnish, pay, surrender	42.0	12471.0	28.072
+iam	jam	iam	at the moment, at the present moment, now, at this time, just now, at present	43.0	12188.0	27.435
+ita	ita	ita	in this manner, in this wise, in such a way, so, thus, accordingly, as has been said	44.0	11896.0	26.778
+idem	idem	īdem, eadem, idem	the same	45.0	11700.0	26.336
+meus	meus	meus, mea, meum	of me, my, mine, belonging to me, my own	46.0	11563.0	26.028
+ne	ne1	nē	not, that not, so that not	47.0	11500.0	25.886
+tuus	tuus	tuus, tua, tuum	thy, thine, your, yours	48.0	11282.0	25.396
+tamen	tamen	tamen	notwithstanding, nevertheless, for all that, however, yet, still	49.0	10413.0	23.439
+homo	homo	homō, hominis, m.	a human being, man, person	50.0	10171.0	22.895
+bonus	bonus	bonus, bona, bonum	good	51.0	10150.0	22.847
+nihil	nihil	nihil	not at all, by no means, not	52.0	9865.0	22.206
+nam	nam	nam	for	53.0	9756.0	21.961
+autem	autem	autem	but, on the other hand, on the contrary, however	54.0	9690.0	21.812
+quidem	quidem	quidem	assuredly, certainly, in fact, indeed	55.0	9390.0	21.137
+primus	primus	prīmus, prīma, prīmum	the first, first	56.0	9149.0	20.594
+tantus	tantus	tantus, tanta, tantum	of such size, of such a measure, so great, such	57.0	9031.0	20.329
+pars	pars	pars, partis, f.	a part, piece, portion, share, division, section	58.0	8694.0	19.57
+volo	volo1	volō, velle, voluī	to will, wish, want, purpose, be minded, determine	59.0	8574.0	19.3
+animus	animus	animus, animī, m.	the rational soul	60.0	8480.0	19.088
+unus	unus1	ūnus, ūna, ūnum	one, a single	61.0	8302.0	18.688
+causa	causa	causā	on account of, for the sake of	62.0	8291.0	18.663
+noster	noster	noster, nostra, nostrum	our, our own, ours, of us	63.0	8157.0	18.361
+vel	uel1	vel	choose, take your choice, or if you will, or as you prefer, or at least, or what is the same thing, or else, or	64.0	8013.0	18.037
+quoque	quoque1	quoque	also, too	65.0	7990.0	17.985
+quidam	quidam	quīdam, quaedam, quoddam	a certain, a certain one, somebody, one, something	66.0	7916.0	17.819
+nullus	nullus	nūllus, nūlla, nūllum	not any, none, no	67.0	7882.0	17.742
+iste	iste	iste, ista, istud	this, that, he, she	68.0	7856.0	17.684
+locus	locus	locus, locī, m.	a place, spot	69.0	7851.0	17.672
+verus	verus	vērus, vēra, vērum	true, real, actual, genuine	70.0	7828.0	17.621
+ago	ago	agō, agere, ēgī, āctum	to put in motion, move, lead, drive, tend, conduct	71.0	7661.0	17.245
+nunc	nunc	nunc	now, at present, at this time	72.0	7636.0	17.188
+parvus	parvus	parvus, parva, parvum	little, small	73.0	7548.0	16.99
+deus	deus	deus, deī, m.	god, deity	74.0	7542.0	16.977
+dies 	dies 	diēs, diēī m./f.	day, civil day			
+venio	venio	veniō, venīre, vēnī, ventum	to come	76.0	7333.0	16.506
+modo	modo	modo	by a measure, with a limit; just now; at all; only	77.0	7308.0	16.45
+fero	fero	ferō, ferre, tulī, lātum	to bear, carry, support, lift, hold, take up; to report, tell	78.0	7291.0	16.412
+aliquis	aliquis	aliquis, aliquid	some one, any one, anybody, one or another, something, anything	79.0	7229.0	16.272
+tempus	tempus1	tempus, temporis, n.	time, period, season, interval	80.0	6816.0	15.343
+tum	tum	tum	then, at that time, in those times	81.0	6751.0	15.196
+inter	inter1	inter	between, betwixt	82.0	6720.0	15.127
+sic	sic	sīc	thus, in this way, as I do, as you see	83.0	6646.0	14.96
+pater	pater1	pater, patris, m.	father, sire	84.0	6411.0	14.431
+vis	vis	vīs, vīs, f.	strength, force, vigor, power, energy, virtue	85.0	6357.0	14.309
+fio	fio	fīō, fierī, factus sum	to happen, be done; become	86.0	6294.0	14.168
+vir	uir	vir, virī m.	male person, adult male, man	87.0	6258.0	14.087
+genus	genus1	genus, generis, n.	race, stock, family, birth, descent, origin	88.0	6180.0	13.911
+nisi	nisi	nisi	if not, unless	89.0	6070.0	13.663
+pro	pro1	prō	in front of, before, on behalf of, in return for, for the sake of	90.0	5907.0	13.297
+bellum	bellum	bellum, bellī n.	war	91.0	5837.0	13.139
+super	super1	super, supera, superum	that is above, upper, higher			
+superus	superus	superus, supera, superum	that is above, upper, higher	92.0	5832.0	13.128
+corpus	corpus	corpus, corporis, n.	body	93.0	5781.0	13.013
+totus	totus1	tōtus, tōta, tōtum	all, all the, all at once, the whole, entire, total	94.0	5736.0	12.912
+puto	puto	putō, putāre, putāvī, putātum	to believe, reckon; to clean, cleanse, trim, prune	95.0	5662.0	12.745
+eo	eo1	eō, īre, iī or īvī, itum	to go, walk, ride, sail, fly, move, pass	96.0	5646.0	12.709
+publicus	publicus	pūblicus, pūblica, pūblicum	of the people, of the state, done for the state, public, common	97.0	5492.0	12.362
+manus	manus1	manus, manūs, f.	an armed force	98.0	5479.0	12.333
+nomen	nomen	nōmen, nōminis, n.	name, appellation	99.0	5386.0	12.124
+populus	populus1	populus, populī, m.	people, nation	100.0	5353.0	12.05
+tam	tam1	tam	in such a degree, as much, so, so much	101.0	5327.0	11.991
+ubi	ubi	ubi	when	101.0	5327.0	11.991
+inquam	inquam	inquam, inquis, inquit, inquiunt	to say	103.0	5229.0	11.77
+an	an1	an	or	104.0	5223.0	11.757
+ante	ante	ante	before, in front of	105.0	5169.0	11.635
+verbum	verbum	verbum, verbī, n.	word	106.0	5157.0	11.608
+rex	rex1	rēx, rēgis, m.	an arbitrary ruler, absolute monarch, king	107.0	5131.0	11.55
+sine	sine	sine	without (+ abl.)	108.0	5086.0	11.448
+at	at	at	but	110.0	5020.0	11.3
+quia	quia	quia	because	111.0	4815.0	10.838
+alter	alter	alter, altera, alterum	one, another, the one, the other	112.0	4797.0	10.798
+urbs	urbs	urbs, urbis, f.	a walled town, city	113.0	4772.0	10.742
+solus	solus1	sōlus, sōla, sōlum	alone, only, single, sole	114.0	4770.0	10.737
+debeo	debeo	dēbeō, dēbēre, dēbuī, dēbitum	to withhold, keep back; owe; ought	115.0	4761.0	10.717
+scio	scio	sciō, scīre, scīvī / sciī, scītum	to know, understand, perceive, have knowledge of, be skilled in	116.0	4731.0	10.649
+ratio	ratio	ratiō, ratiōnis, f.	a reckoning, numbering, casting up, account, calculation, computation	117.0	4694.0	10.566
+terra	terra	terra, terrae, f.	earth	118.0	4645.0	10.456
+scribo	scribo	scrībō, scrībere, scrīpsī, scrīptum	to write, write down; to scratch, grave, engrave, draw	119.0	4611.0	10.379
+ceterus	ceterum2	cēterum	for the rest, in other respects, else, otherwise	120.0	4540.0	10.219
+quaero	quaero	quaerō, quaerere, quaesīvī, quaesītum	to seek, look for	121.0	4512.0	10.156
+vita	uita	vīta, vītae, f.	life	122.0	4462.0	10.044
+natura	natura	nātūra, nātūrae, f.	Nature, natural constitution, property, quality	123.0	4431.0	9.974
+magis	magis1	magis	more, in a higher degree, more completely	124.0	4423.0	9.956
+domus	domus	domus, domūs, f.	house, dwelling-house, building, mansion, palace	125.0	4421.0	9.952
+longus	longus	longus, longa, longum	long, extended	126.0	4417.0	9.943
+credo	credo	crēdō, crēdere, crēdidī, crēditum	to trust, to believe, to lend	127.0	4391.0	9.884
+audio	audio	audiō, audīre, audīvī / audiī, audītum	to hear	128.0	4385.0	9.871
+hostis	hostis	hostis, hostis m./f.	stranger, foreigner, enemy	129.0	4295.0	9.668
+certus	certus	certē	really, surely, assuredly, actually, certainly, as a fact	130.0	4287.0	9.65
+peto	peto	petō, petere, petīvī, petītum	to strive for, seek, aim at, repair to, make for, travel to	131.0	4274.0	9.621
+voco	voco	vocō, vocāre, vocāvī, vocātum	to call, summon, invoke, call together, convoke	132.0	4273.0	9.618
+mitto	mitto	mittō, mittere, mīsī, missum	to cause to go, let go, send, send off, despatch	133.0	4267.0	9.605
+apud 	apud 	apud	near, at, with (a person)			
+malus	malus1	malus, mala, malum	bad, not good	135.0	4152.0	9.346
+post	post1	post	behind, after (+ acc.)	136.0	4139.0	9.317
+accipio	accipio	accipiō, accipere, accēpī, acceptum	to take without effort, receive, get, accept	137.0	4132.0	9.301
+dum	dum1	dum	while, whilst, at the time that, during the time in which, where	138.0	4122.0	9.279
+annus 	annus 	annus, annī, m.	year			
+iubeo	jubeo	iubeō, iubēre, iussī, iussum	to order, give an order, bid, tell, command	140.0	4072.0	9.166
+lex	lex	lēx, lēgis f.	(a formal proposition for a) law, motion	141.0	3980.0	8.959
+deinde 	deinde	dein	then, next, thereafter, thence			
+virtus	virtus	virtūs, virtūtis, f.	manliness, manhood, strength, vigor, bravery, courage, excellence	143.0	3946.0	8.882
+duo 	duo1	duo, duae, duo	two			
+igitur	igitur	igitur	then, therefore, thereupon, accordingly, consequently	144.0	3931.0	8.849
+sequor	sequor	sequor, sequī, secūtus sum	to follow, come after, follow after, attend, accompany	146.0	3902.0	8.783
+contra	contra	contrā	in opposition to, opposite (+acc.)	147.0	3868.0	8.707
+capio	capio1	capiō, capere, cēpī, captum	to take in hand, take hold of, lay hold of, take, seize, grasp	148.0	3793.0	8.538
+quisque	quisque	quisque, quaeque, quidque	whoever it be, whatever, each, each one, every, everybody, every one, everything (of more than two)	149.0	3764.0	8.473
+consul	consul	cōnsul, cōnsulis, m.	consul 	150.0	3738.0	8.414
+qua	qua1	quā	on which side, at which place, in what direction, where, by what way	151.0	3727.0	8.389
+saepe	saepe	saepe	often, oft, oftentimes, many times, frequently	152.0	3705.0	8.34
+arma	arma	arma, armōrum, n. pl.	weapons; implements, outfit, instruments, tools	153.0	3704.0	8.338
+quantus	quantus1	quantus, quanta, quantum		155.0	3654.0	8.225
+novus	novus	novus, nova, novum	new, not old, young, fresh, recent	156.0	3634.0	8.18
+satis	satis1	satis	enough, sufficient, satisfactory, ample, adequate	157.0	3616.0	8.14
+ius2	jus2	iūs, iūris, n.	right, justice, authority, law	158.0	3610.0	8.126
+teneo	teneo	teneō, tenēre, tenuī, tentum	to hold, keep, have, grasp, hold fast	159.0	3591.0	8.083
+senatus	senatus1	senātus, senātūs, m.	the council of the elders, council of state, Senate, body of senators	160.0	3548.0	7.986
+duco 	duco 	dūcō, dūcere, dūxī, ductum	to lead, conduct, guide, direct, draw, bring, fetch, escort			
+miles	miles	mīles, mīlitis, m.	soldier	162.0	3404.0	7.662
+consilium	consilium	cōnsilium, cōnsiliī, n.	conclusion made with consideration, a determination, resolution, measure, plan, purpose, intention	163.0	3396.0	7.644
+opus	opus1	opus, operis, n.	work, labor, toil	164.0	3394.0	7.64
+mors	mors	mors, mortis, f.	death	165.0	3372.0	7.59
+semper	semper	semper	ever, always, at all times, continually, perpetually, forever	166.0	3339.0	7.516
+quis2	quis2	quis, quid (aliquis, aliquid)	any one, anybody, anything, some one, somebody, something	167.0	3320.0	7.473
+pono	pono	pōnō, pōnere, posuī, positum	to put down, set down, put, place, set, fix, lay, deposit	168.0	3285.0	7.394
+ergo	ergo	ergō	in consequence of, on account of, because of, for the sake of (old)	169.0	3283.0	7.39
+utor	utor	ūtor, ūtī, ūsus sum	to use, make use of, employ, profit by, take advantage of, enjoy, serve oneself with	170.0	3280.0	7.383
+littera	littera	littera, litterae f.	letter, alphabetical sign, written sign of a sound	171.0	3255.0	7.327
+relinquo	relinquo	relinquō, relinquere, relīquī, relictum	to leave behind, not take along, not stay with, leave, move away from, quit, abandon	172.0	3213.0	7.232
+quo	quo2	quō		173.0	3198.0	7.199
+quo2	quo2	quō	[see quominus]			
+quo3	quo3	quō	in what manner, in what way? how?			
+quisquam	quisquam	quisquam, quicquam / quidquam	whoever it be, whatever, each, each one, every, everybody, every one, everything (of more than two)	174.0	3189.0	7.178
+similis	similis	similis, simile	like, resembling, similar	175.0	3181.0	7.16
+aqua	aqua	aqua, aqae, f.	water	176.0	3170.0	7.136
+medius	medius1	medius, media, medium	in the middle, in the midst, mid, mean, middle	177.0	3169.0	7.133
+gravis	gravis	gravis, grave	heavy, weighty, ponderous, burdensome, loaded, laden, burdened	178.0	3163.0	7.12
+modus	modus	modus, modī, m.	a measure, extent, quantity; way, manner	179.0	3134.0	7.055
+fides	fides1	fidēs, fideī, f.	trust, faith, confidence, reliance, credence, belief	180.0	3103.0	6.985
+fortuna	fortuna	fortūna, fortūnae, f.	chance, hap, luck, fate, fortune	181.0	3091.0	6.958
+oculus	oculus	oculus, oculī, m.	eye	182.0	3084.0	6.942
+soleo	soleo	soleō, solēre, soluī, solitum	to use, be wont, be accustomed	183.0	3070.0	6.911
+refero	refero	referō, referre, rettulī, relātum	to bear back, bring back; report, answer, refer (to the senate)	184.0	3067.0	6.904
+ullus	ullus	ūllus, ūlla, ūllum	any, any one	185.0	3046.0	6.856
+filius	filius	fīlius, fīliī, m.	son	186.0	3044.0	6.852
+prior	prior	prior, prius	former, previous, prior, first	187.0	3026.0	6.811
+sub	sub	sub	under, below, beneath, underneath, behind (+ abl. or acc.)	188.0	3018.0	6.793
+moveo	moveo	moveō, movēre, mōvī, mōtum	to move, stir, set in motion, shake, disturb, remove	189.0	3009.0	6.773
+nemo	nemo	nēmō	no man, no one, nobody	190.0	3003.0	6.76
+civitas	civitas	cīvitās, cīvitātis, f.	the condition of a citizen, citizenship; the body politic, the state	191.0	3001.0	6.755
+caput	caput	caput, capitis, n.	head	192.0	2992.0	6.735
+dolor	dolor	dolor, dolōris, m.	pain, smart, ache, suffering, anguish	193.0	2985.0	6.719
+facilis	facilis	facilis, facile		194.0	2973.0	6.692
+licet	licet	licet	although	195.0	2966.0	6.676
+vinco	vinco	vincō, vincere, vīcī, victum	to conquer, overcome, get the better of, defeat, subdue, vanquish, be victorious	196.0	2942.0	6.622
+uterque	uter3	uterque, utraque, utrumque	each, either, each one, one and the other, one as well as the other, both (of two regarded severally)	197.0	2940.0	6.618
+os	os1	ōs, ōris, n.	the mouth; face, countenance; boldness; opening, orifice; speech	198.0	2931.0	6.598
+vox	vox	vōx, vōcis, f.	voice, sound, tone, utterance, cry, call	199.0	2915.0	6.562
+nox	nox	nox, noctis, f.	night	200.0	2912.0	6.555
+vivo	vivo	vīvō, vīvere, vīxī, vīctum	to live, be alive, have life	201.0	2879.0	6.481
+sive	sive	sīve	or if 	202.0	2870.0	6.46
+gero	gero1	gerō, gerere, gessī, gestum	to bear about, bear, carry, wear, have, hold, sustain; (pass.) be done, happen	203.0	2837.0	6.386
+appello2	appello2	appellō, appellāre, appellāvī, appellātum	to address, speak to, apply to, accost, to name, call by name	204.0	2825.0	6.359
+invenio	invenio	inveniō, invenīre, invēnī, inventum	to come upon, find, meet with, light upon	205.0	2811.0	6.328
+quasi	quasi	quasi	as if, just as if, as though	206.0	2802.0	6.307
+mare	mare	mare, maris, n.	sea	207.0	2763.0	6.219
+salus	salus	salūs, salūtis f.	soundness, health, good health, vigor	208.0	2756.0	6.204
+gens	gens	gēns, gentis, f.	race, clan, house	209.0	2741.0	6.17
+valeo	valeo	valē (sg.), valēte (pl.)	farewell	210.0	2740.0	6.168
+sententia	sententia	sententia, sententiae f.	way of thinking, opinion, judgment, sentiment, thought, notion, purpose, determination, decision, will, desire	211.0	2730.0	6.145
+mens	mens	mēns, mentis, f.	mind, disposition, feeling, character, heart, soul	212.0	2705.0	6.089
+iudicium	judicium	iūdicium, iūdiciī, n.	judgment, judicial investigation, trial, legal process, sentence	213.0	2694.0	6.064
+frater	frater	frāter, frātris, m.	brother	214.0	2688.0	6.051
+oratio	oratio	ōrātiō, orātiōnis, f.	speaking, speech, discourse, language, faculty of speech, use of language	215.0	2677.0	6.026
+o	o2	o	O! oh!	216.0	2672.0	6.015
+intellego	intellego	intellegō, intellegere, intelllēxī, intellēctum	to come to know, see into, perceive, understand, discern, comprehend, gather	217.0	2661.0	5.99
+sentio	sentio	sentiō, sentīre, sēnsī, sēnsum	to discern by sense, feel, hear, see, perceive, be sensible of	218.0	2660.0	5.988
+quoniam	quoniam	quoniam	since now, since then, since, seeing that, as, because, whereas	219.0	2617.0	5.891
+vester	uester	vester, vestra, vestrum	your, yours, of you	219.0	2617.0	5.891
+numquam	numquam	numquam	at no time, never	221.0	2599.0	5.85
+mos	mos	mōs, mōris, m.	will, way, habit, manner, fashion, caprice, humor	222.0	2589.0	5.828
+reddo	reddo	reddō, reddere, reddidī, redditum	to give back, return, restore; to render, report, deliver, appoint	223.0	2588.0	5.826
+loquor	loquor	loquor, loquī, locūtus sum	to speak, talk, say, tell, mention, utter	224.0	2583.0	5.814
+iudex	judex	iūdex, iūdicis, m.	judge, juror	225.0	2560.0	5.763
+talis	talis	tālis, tāle	such, of such a kind, such like, the like	226.0	2554.0	5.749
+ars 	ars 	ars, artis, f.	practical skill			
+gratia	gratia	grātiā	in favor of, on account of, for the sake of	228.0	2541.0	5.72
+miser	miser	miser, misera, miserum	wretched, unfortunate, miserable, pitiable, lamentable, in distress	229.0	2528.0	5.69
+sanguis		sanguen, sanguinis, n.	blood	230.0	2521.0	5.675
+cura	cura	cūra, cūrae, f.	trouble, care, attention, pains, industry, diligence, exertion	231.0	2504.0	5.636
+simul	simul	simul	at the same time, together, at once, simultaneously	232.0	2501.0	5.63
+aio	aio	āiō	to say yes, assent, affirm; say	233.0	2487.0	5.598
+honor	honor	honor, honōris, m.	honor, (public honor) office, (mark of honor) gift, reward	234.0	2482.0	5.587
+nego	nego	negō, negāre, negāvī, negātum	to say no, deny, refuse	235.0	2480.0	5.582
+amicus2	amicus2	amīcus, amīcī, m.	loved one, loving one, friend	236.0	2475.0	5.571
+castrum	castra2	castra, castrōrum, n. pl.	military camp, encampment (regularly a square surrounded by a trench, and a wall with four gates)	237.0	2473.0	5.567
+inde	inde	inde	from that place, thence	239.0	2461.0	5.54
+exercitus2	exercitus2	exercitus, exercitūs, m.	disciplined body of men, army	240.0	2454.0	5.524
+caelum2	caelum2	caelum, caelī, n.	the sky, heaven, heavens, vault of heaven	241.0	2449.0	5.513
+sto	sto	stō, stāre, stetī, statum	to stand, stand still, remain standing, be upright, be erect	242.0	2433.0	5.477
+a	a2	ā	ah!			
+imperium	imperium	imperium, imperiī, n.	command, order, direction, injunction	245.0	2376.0	5.348
+spes	spes	spēs, speī, f.	hope	246.0	2375.0	5.346
+item	item	item	likewise, besides, also, further, moreover, too, as well	247.0	2361.0	5.315
+periculum	periculum	perīculum, perīculī, n.	danger; a trial, experiment, attempt, test, proof, essay	248.0	2343.0	5.274
+potis	potis	potis, pote	able, capable	249.0	2326.0	5.236
+roma	Roma	Rōma, Rōmae, f.	Rome, the mother city	249.0	2326.0	5.236
+trado	trado	trādō, trādere, trādidī , trāditum	to give up, hand over, deliver, transmit, surrender, consign	251.0	2325.0	5.234
+cognosco	cognosco	cōgnōscō, cōgnōscere, cōgnōvī, cōgnitum	to become acquainted with, acquire knowledge of, ascertain, learn, perceive, understand; perf., to know	252.0	2324.0	5.231
+mater	mater1	māter, mātris, f.	mother	253.0	2319.0	5.22
+verum3	verus	vērum	but, yet (in truth); (more rarely:) truly, certainly	254.0	2310.0	5.2
+placeo	placeo	placeō, placēre, placuī, placitum	to please, give pleasure, be approved, be pleasing, be agreeable, be acceptable, suit, satisfy	255.0	2290.0	5.155
+nascor	nascor	nāscor, nāscī, nātus sum	to be born, begin life, be produced, proceed, be begotten	256.0	2273.0	5.116
+altus	altus1	altus, alta, altum	high, lofty, tall; deep	257.0	2272.0	5.114
+nosco	nosco	nōscō nōscere nōvī nōtum	to get knowledge of, become acquainted with, come to know, learn, discern	258.0	2266.0	5.101
+quisquis	quisquis	quisquis, quidquid / quicquid	whoever, whosoever, whatever, whatsoever, every one who, everything which	259.0	2244.0	5.051
+malum	malum3	malum, malī, n.	evil, mischief	260.0	2237.0	5.035
+signum	signum	sīgnum, sīgnī, n.	mark, token, sign, indication, proof	261.0	2224.0	5.006
+amor	amor	amor, amōris, m.	love, affection, strong friendly feeling	262.0	2222.0	5.002
+doceo	doceo	doceō, docēre, docuī, doctum	to cause to know, make aware, teach, instruct, inform, show, prove, convince, tell	263.0	2212.0	4.979
+quin	quin	quīn	why not? wherefore not?	264.0	2211.0	4.977
+vetus	vetus	vetus, veteris	old, aged, advanced in years	265.0	2201.0	4.954
+ignis	ignis	ignis, ignis, m.	fire	266.0	2196.0	4.943
+vitium	uitium	vitium, vitiī, n.	fault, defect, blemish, imperfection, vice	267.0	2193.0	4.936
+civis	civis	cīvis, cīvis, m./f.	citizen	268.0	2187.0	4.923
+puer	puer	puer, puerī, m.	male child, boy, lad, young man	269.0	2181.0	4.909
+aequus	aeque	aequē	equally, in like manner, just as, in an equal degree, to the same extent	270.0	2180.0	4.907
+pes	pes	pēs, pedis, m.	foot	271.0	2179.0	4.905
+princeps	princeps1	prīnceps, principis	first in order, foremost	272.0	2174.0	4.894
+sol	sol	sōl, sōlis, m.	sun; Sol, the sun god	273.0	2171.0	4.887
+studium	studium	studium, studiī, n.	application, assiduity, zeal, eagerness, fondness, inclination, desire, exertion, endeavor, study	274.0	2170.0	4.885
+hinc	hinc	hinc	from this place, hence	275.0	2168.0	4.88
+aetas	aetas	aetās, aetātis, f.	the life of man, age, lifetime, years	276.0	2163.0	4.869
+propter	propter1	propter	on account of, by reason of, from, for, because of (+acc.)	277.0	2160.0	4.862
+reliquus	reliquus	reliquus, reliqua, reliquumum	left, left over, remaining	277.0	2160.0	4.862
+redeo	redeo	redeō, redīre, rediī, reditum	to go back, turn back, return, turn around	279.0	2155.0	4.851
+ob	ob	ob	on account of, for, because of, by reason of (+ acc.)	280.0	2149.0	4.837
+amo	amo	amō, amāre, amāvī, amātum	to love	281.0	2118.0	4.768
+tollo	tollo	tollō, tollere, sustulī, sublātum	to lift, take up, raise, elevate, exalt	282.0	2112.0	4.754
+ager	ager	ager, agrī, m.	productive land, a field, farm, estate, arable land, pasture	283.0	2111.0	4.752
+haud	haud	haud	not, not at all, by no means	284.0	2097.0	4.72
+ordo	ordo	ōrdō, ōrdinis, m.	row, line, series, order, rank	285.0	2087.0	4.698
+cogo	cogo	cōgō, cōgere, coēgī, coāctum	to drive together, collect, crowd, bring together, summon, congregate, convene	286.0	2086.0	4.696
+dux	dux	dux, ducis, m./f.	leader, conductor, guide	287.0	2071.0	4.662
+tunc	tunc	tunc	then, at that time, just then, on that occasion	288.0	2062.0	4.642
+provincia	provincia	prōvincia, prōvinciae, f.	office, duty, pursuit, charge, business, province	289.0	2061.0	4.639
+labor2	labor2	labor, labōris, m.	labor, toil, exertion	290.0	2054.0	4.624
+dominus	dominus	dominus, dominī, m.	master, possessor, ruler, lord, proprietor, owner	292.0	2042.0	4.597
+singulus	singulus	singulī, singulae, singula	one at a time, single, separate, several, individual			
+timeo	timeo	timeō, timēre, timuī	to fear, be afraid, be fearful, be apprehensive, be afraid of, dread, apprehend	294.0	2037.0	4.585
+diu	diu	diū	by day, all day	295.0	2025.0	4.558
+patior	patior	patior, patī, passus sum	to bear, support, undergo, suffer, endure	296.0	2021.0	4.549
+ibi	ibi	ibi	in that place, there	297.0	2018.0	4.542
+adsum	adsum	adsum, adesse, adfuī, adfūtūrus	to be at, be present, be at hand	298.0	2012.0	4.529
+coepi	coepio	coepī, coepisse, coeptum	to begin	299.0	1992.0	4.484
+numerus	numerus	numerus, numerī, m.	number	300.0	1991.0	4.482
+cur 	cur	cūr	why? wherefore? for what reason?			
+paucus	paucus	paucī, paucae, pauca	few, little	302.0	1986.0	4.47
+unde	unde	unde	from which place, whence	304.0	1978.0	4.452
+finis	finis	fīnēs, fīnium, m. pl.	borders, territory, land, country 	305.0	1974.0	4.443
+regnum 	regnum	rēgnum, rēgnī, n.	kingly government, royal authority, kingship, royalty			
+fugio	fugio	fugiō, fugere, fūgī, fugitum	to flee, fly, take flight, run away, make off	307.0	1963.0	4.419
+pecunia	pecunia	pecūnia, pecūniae, f.	property, riches, wealth	308.0	1953.0	4.396
+pectus 	pectus	pectus, pectoris, n.	breast, breast-bone			
+liber	liber1	līber, lībera, līberum	free	310.0	1939.0	4.365
+proximus	proximus	proximus, proxima, proximus	the nearest, next	311.0	1938.0	4.362
+bene	bene1	bene	well	312.0	1932.0	4.349
+qualis	qualis	quālis, quāle	how constituted, of what sort, of what nature, what kind of a	313.0	1918.0	4.317
+metus 	metus 	metus, metūs, m.	fear, dread, apprehension, anxiety			
+existimo	existimo	exīstimō, exīstimāre, exīstimāvī, exīstimatum	to value, estimate, reckon	315.0	1902.0	4.281
+servo	servo	servō, servāre, servāvī, servātum	to make safe, save, keep unharmed, preserve, guard, keep, protect, deliver, rescue	315.0	1902.0	4.281
+levis 	levis1	levis, leve	light, not heavy			
+levis2	levis2	lēvis, lēve	smooth, smoothed, not rough			
+addo	addo	addō, addere, addīdī, addītum	to put to, place upon, lay on, join, attach	318.0	1884.0	4.241
+tres 	tres	trēs, tria	three			
+efficio 	efficio 	efficiō, efficere, effēcī, effectum	to make out, work out, bring to pass, bring about, effect, cause, produce, make, form, execute, finish, complete, accomplish			
+consto	consto	cōnstat, cōnstare, cōnstitit	it is settled, established, undisputed, certain, well known	321.0	1877.0	4.225
+dignus	dignus	dīgnus, dīgna, dīgnum	worthy, deserving, meritorious, deserved, suitable, fitting, becoming, proper	322.0	1859.0	4.185
+auctor	auctor	auctor, auctōris, m.		323.0	1858.0	4.182
+mille	mille	mīlle, (pl.) mīlia	a thousand, ten hundred	324.0	1855.0	4.176
+via	via	via, viae, f.	way, highway, road, path, street	325.0	1844.0	4.151
+ingenium	ingenium	ingenium, ingeniī, n.	innate quality, nature, temperament, constitution	326.0	1838.0	4.137
+audeo	audeo	audeō, audēre, ausus sum	to venture, dare, be bold, dare to do, risk	327.0	1832.0	4.124
+ira 	ira	īra, īrae, f.	anger, wrath, rage, ire, passion, indignation			
+adverto	adverto	advertō, advertere, advertī, adversum	to turn to, turn towards, direct	329.0	1823.0	4.104
+copia	copia1	cōpia, cōpiae, f.	abundance, ample supply, plenty; (usu. pl.) troops, forces	330.0	1822.0	4.101
+pereo 	pereo	pereō, perīre, periī, peritum	to pass away, come to nothing, vanish, disappear, be lost			
+oportet	oportet	oportet, oportēre, oportuit	it is necessary, is proper, is becoming, behooves	332.0	1809.0	4.072
+usque 	usque1	ūsque	all the way, right on, without interruption, continuously, even			
+affero	affero	afferō, afferre, attulī, allātum	to bring, fetch, carry, convey, take, deliver	334.0	1801.0	4.054
+lego2	lego2	legō, legere, lēgī, lēctum	to bring together, gather, collect; to read	334.0	1801.0	4.054
+respondeo	respondeo	respondeō, respondēre, respondī, respōnsum	to answer, reply, respond, make answer	336.0	1790.0	4.029
+recipio 	recipio 	recipiō, recipere, recēpī, receptum	to take back, bring back, carry back, retake, get back, regain, recover			
+iter	iter	iter, itineris, n.	(a going, walk, way;) journey, march, road	338.0	1776.0	3.998
+vinum	vinum	vīnum, vīnī, n.	wine	338.0	1776.0	3.998
+sermo 	sermo	sermō, sermōnis, m.	continued speech, talk, conversation, discourse			
+quamquam 	quamquam 	quamquam	though, although, albeit, notwithstanding that			
+fortis	fortis	fortis, forte	strong, powerful, mighty	342.0	1770.0	3.984
+cunctus	cunctus	cūnctus, cūncta, cūnctum	all in a body, all together, the whole, all, entire	343.0	1769.0	3.982
+nescio	nescio	nesciō, nescīre, nescīvī / nesciī, nescītum	not to know, to be ignorant	344.0	1764.0	3.971
+voluptas	voluptas	voluptās, voluptātis, f.	satisfaction, enjoyment, pleasure, delight	346.0	1763.0	3.968
+vulnus	vulnus	vulnus, vulneris, n.	wound	347.0	1762.0	3.966
+cado	cado	cadō, cadere, cecidī, cāsum	to fall, fall down, descend	348.0	1761.0	3.964
+absum	absum	absum, abesse, āfuī / abfuī, āfutūrus / abfutūrus	to be away from, be absent	349.0	1760.0	3.962
+mons	mons	mōns, montis, m.	mountain, mount, range of mountains	350.0	1758.0	3.957
+alienus	alienus1	aliēnus, aliēna, aliēnum	of another, belonging to another, not one’s own, foreign, alien, strange	351.0	1752.0	3.944
+iudico	judico	iūdicō, iūdicāre, iūdicāvī, iūdicātum	to examine judicially, judge, be a judge, pass judgment, decide	352.0	1749.0	3.937
+par	par	pār, paris	equal; suitable	352.0	1749.0	3.937
+super2	super2	super	over, above, upon, on	354.0	1746.0	3.93
+tamquam	tamquam	tamquam	as much as, so as, just as, like as, as if, so to speak	356.0	1728.0	3.89
+tertius	tertius1	tertius, tertia, tertium	third	357.0	1720.0	3.872
+oppidum	oppidum	oppidum, oppidī, n.	town, city, collection of dwellings	358.0	1719.0	3.869
+rogo	rogo	rogō, rogāre, rogāvī, rogātum	to ask, question, interrogate	359.0	1716.0	3.863
+scelus	scelus	scelus, sceleris, n.	wicked deed, heinous act, crime, sin, enormity, wickedness	360.0	1708.0	3.845
+defendo	defendo	dēfendō, dēfendere, dēfendī, dēfēnsum	 to ward off, repel, avert, keep off	361.0	1706.0	3.84
+morior	morior	morior, morī, mortuus sum	to die, expire	362.0	1701.0	3.829
+eques	eques	eques, equitis, m.	horseman, rider	363.0	1698.0	3.822
+paro	paro1	parō, parāre, parāvī, parātum	to make ready, prepare, furnish, provide, arrange, order, contrive, design	364.0	1695.0	3.815
+adhuc	adhuc	adhūc	until now, heretofore, hitherto, as yet	365.0	1694.0	3.813
+laus	laus1	laus, laudis f.	praise, commendation, glory, fame, renown, esteem	365.0	1694.0	3.813
+nolo	nolo	nōlō, nōlle, nōluī	to wish . . . not, will . . . not, not to wish, to be unwilling	367.0	1693.0	3.811
+pax	pax1	pāx, pācis, f.	compact, agreement, treaty, peace, treaty of peace, reconciliation	369.0	1686.0	3.795
+probo	probo	probō, probāre, probāvī, probātum	to make good, esteem good, approve, esteem, commend	370.0	1673.0	3.766
+plebs	plebs	plēbs, plēbis, f.	the common people, commons, commonalty, plebeians, folk	371.0	1669.0	3.757
+gloria	gloria	glōria, glōria, f.	glory, fame, renown, praise, honor	372.0	1664.0	3.746
+maneo	maneo	maneō, manēre, mānsī, mānsum	to stay, remain, abide, tarry	373.0	1662.0	3.741
+sicut	sicut	sīcut	so as, just as, as	374.0	1661.0	3.739
+sumo	sumo	sūmō, sūmere, sūmpsī, sūmptum	to take, take up, take in hand, lay hold of, assume	375.0	1653.0	3.721
+fors	fors	fors, fortis, f.	chance, hap, luck, hazard, accident	376.0	1649.0	3.712
+forte	fors	fortē	by chance, by accident, casually, accidentally			
+beneficium	beneficium	beneficium, beneficiī, n.	favor, benefit, service, kindness	377.0	1647.0	3.707
+velut	velut	velut	even as, just as, like as, like	378.0	1646.0	3.705
+rapio	rapio	rapiō, rapere, rapuī, raptum	to seize and carry off, snatch, tear, pluck, drag, hurry away	379.0	1640.0	3.692
+equus	equus1	equus, equī, m.	horse, steed, charger	380.0	1639.0	3.689
+parens2	parens2	parēns, parentis, m./f.	procreator, father, mother, parent	381.0	1637.0	3.685
+accedo	accedo	accēdō, accēdere, accessī, accessum	to go to, come to, come near, draw near, approach, enter	382.0	1633.0	3.676
+fama	fama	fāma, fāmae, f.	report, rumor, saying, talk, tradition	382.0	1633.0	3.676
+officium	officium	officium, officiī, n.	service, kindness, favor, courtesy	384.0	1630.0	3.669
+umquam	umquam	umquam	at any time, ever	386.0	1629.0	3.667
+opera	opera	opera, operae, f.	service, pains, exertion, effort, work, labor	387.0	1628.0	3.665
+patria	patria	patria, patriae, f.	fatherland, native land, own country, native place	388.0	1620.0	3.647
+ostendo	ostendo	ostendō, ostendere, ostendī, ostentum	to stretch out, spread before, expose to view, show, point out, exhibit, display	389.0	1609.0	3.622
+paulus	paulus1	paulus, paula, paulum	little, small	389.0	1609.0	3.622
+fatum	fatum	fātum, fātī n.	utterance, prophetic declaration, oracle, prediction; death	391.0	1605.0	3.613
+brevis	brevis	brevis, breve	short	392.0	1600.0	3.602
+laudo	laudo	laudō, laudāre, laudāvī, laudātum	to praise, laud, commend, honor, extol, eulogize, approve	392.0	1600.0	3.602
+legio	legio	legiō, legiōnis, f.	body of soldiers, legion	396.0	1592.0	3.584
+traho	traho	trahō, trahere, trāxī, trāctum	to draw, drag, haul, train along, draw off, pull forth, drag away	397.0	1586.0	3.57
+praeter	praeter1	praeter	beyond	398.0	1584.0	3.566
+praeter2	praeter2	praeter	past, by, before, in front of, along			
+arbitror	arbitror	arbitror, arbitrārī, arbitrātus sum	to testify on information and belief, depose to one’s best knowledge	399.0	1582.0	3.561
+communis	communis	commūnis, commūne	common, general, universal, public	399.0	1582.0	3.561
+ingens	ingens	ingēns, ingentis	not natural, immoderate, vast, huge, prodigious, enormous, great, remarkable	401.0	1580.0	3.557
+potestas	potestas	potestās, potestātis, f.	ability, power, capacity, force	402.0	1573.0	3.541
+tot	tot	tot	so many, such a number of	403.0	1567.0	3.527
+telum	telum	tēlum, tēlī, n.	missile weapon, missile, dart, spear, shaft, javelin	404.0	1564.0	3.521
+tribunus	tribunus	tribūnus, tribūnī, m.	head of a tribe	405.0	1562.0	3.516
+proelium	proelium	proelium, proeliī, n.	battle, combat	406.0	1560.0	3.512
+auctoritas	auctoritas	auctōritās, auctōritātis, f.	origination, production 	407.0	1558.0	3.507
+crimen	crimen	crīmen, crīminis, n.	judgment, charge, accusation, reproach	407.0	1558.0	3.507
+cedo	cedo1	cēdō, cēdere, cessī, cessum	to go, to go from, to yield, withdraw, depart, retire, yield	409.0	1557.0	3.505
+denique	denique	dēnique	and thenceforward, and thereafter, at last, at length, finally, lastly, only, not until	410.0	1553.0	3.496
+vultus	vultus	vultus, vultūs, m.	facial expression, face	411.0	1550.0	3.489
+aurum	aurum	aurum, aurī, n.	gold	412.0	1548.0	3.485
+convenio	convenio	conveniō, convenīre, convēnī, conventum	to come together, meet, assemble, gather, come in a body	413.0	1544.0	3.476
+exemplum	exemplum	exemplum, exemplī, n.	sample, specimen; a copy, transcript	414.0	1543.0	3.473
+clarus	clarus	clārus, clāra, clārum	clear, bright, shining, brilliant	415.0	1540.0	3.467
+iniuria	injuria	iniūria, iniūriae, f.	injustice, wrong, outrage, injury, insult	416.0	1539.0	3.464
+postea	postea	posteā	after this, after that, hereafter, thereafter, afterwards, later	417.0	1535.0	3.455
+casus	casus1	cāsus, cāsūs, m.	falling, falling down, fall; misfortune	418.0	1531.0	3.446
+amplus	amplus	amplus, ampla, amplum	of large extent, great, ample, spacious, roomy	419.0	1524.0	3.43
+mox	mox	mox	soon, anon, directly, presently, by and by	420.0	1520.0	3.421
+iuvenis	juvenis	iuvenis, iuvene	young, youthful	421.0	1512.0	3.403
+tueor	tueor	tueor, tuērī, —, tūtus/tuitus	to look at, gaze upon, behold, watch, view, regard, consider, examine	422.0	1509.0	3.397
+acies	acies	aciēs, aciēī, f.	a sharp edge, point, cutting part; battle line	423.0	1507.0	3.392
+poena	poena	poena, poenae, f.	indemnification, compensation, recompense, retribution, satisfaction, expiation, punishment, penalty, price	424.0	1506.0	3.39
+constituo	constituo	cōnstituō, cōnstituere, cōnstituī, cōnstitūtum	to put, place, set, station	425.0	1504.0	3.385
+honestus	honestus	honestus, honesta, honestum	regarded with honor, respected, honored, of high birth, distinguished, honorable, respectable, noble	426.0	1503.0	3.383
+solvo	solvo	solvō, solvere, solvī, solūtum	to loosen, unbind, unfasten, unfetter, untie, release	427.0	1502.0	3.381
+vix	uix	vix	with difficulty, with much ado, hardly, scarcely, barely	428.0	1499.0	3.374
+orbis	orbis	orbis, orbis, m.	ring, circle, circular path, hoop, orbit; the world	429.0	1495.0	3.365
+ops	ops	opēs, opum, f.	(usu. plural) money	430.0	1493.0	3.361
+contineo	contineo	contineō, continēre, continuī, contentum	to hold together, bound, limit, comprise, enclose, surround, environ	431.0	1481.0	3.334
+imperator	imperator	imperātor, imperātōris, m.	commander-in-chief, general	431.0	1481.0	3.334
+rectus	rectus	rēctus, rēcta, rēctum	in a straight line, straight, upright, direct, undeviating	433.0	1469.0	3.307
+exspecto	exspecto	exspectō, exspectāre, exspectāvī, exspectātum	to look out for, await, wait for	434.0	1464.0	3.295
+reperio	reperio	reperiō, reperīre, repperī, repertum	to find again, find, meet with, find out, discover	435.0	1460.0	3.286
+socius	socius1	socius, socia, socium	sharing, joining in, partaking, united, associated, kindred, allied, fellow, common	435.0	1460.0	3.286
+specto	specto	spectō, spectāre, spectāvī, spectātum	to look on, look at, behold, gaze at, watch, observe, inspect, attend	437.0	1455.0	3.275
+ferrum	ferrum	ferrum, ferrī, n.	iron	438.0	1449.0	3.262
+memoria	memoria	memoria, memoriae, f.	memory, remembrance	438.0	1449.0	3.262
+cibus	cibus	cibus, cibī, m.	food, victuals, nutriment, fodder	440.0	1447.0	3.257
+necesse	necesse	necesse (indecl. adj.)	unavoidable, inevitable, indispensable, necessary	441.0	1446.0	3.255
+munus	munus	mūnus, mūneris, n.	service, office, post, employment, function, duty	442.0	1444.0	3.25
+muto	muto1	mūtō, mūtāre, mūtāvī, mūtātum	to move, move away, remove; change	443.0	1435.0	3.23
+usus2	usus2	ūsus, ūsūs, m.	use, practice, employment, exercise, enjoyment	444.0	1432.0	3.223
+humanus	humanus	hūmānus, hūmāna, hūmānum	of man, human	445.0	1430.0	3.219
+utilis	utilis	ūtilis, ūtile	useful, serviceable, beneficial, profitable, advantageous, expedient, to good purpose	446.0	1424.0	3.205
+misceo	misceo	misceō, miscēre, miscuī, mixtum	to mix, mingle, intermingle, blend	447.0	1416.0	3.187
+color	color	color, colōris, m.	color, hue, tint	448.0	1415.0	3.185
+ideo	ideo	ideō	for that reason, on that account, therefore	448.0	1415.0	3.185
+species	species	speciēs, speciēī, f.	sight, look, view, appearance, aspect, mien	450.0	1407.0	3.167
+supra	supra	suprā	on the upper side, on the top, above	451.0	1402.0	3.156
+liber2	liberi	līberī, līberōrum, m. pl.	children	452.0	1401.0	3.154
+uxor	uxor	uxor, uxōris, f.	wife, spouse, consort	452.0	1401.0	3.154
+abeo	abeo	abeō, abīre, abīvī / abiī, abitum	to go from, go away, go off, go forth, go, depart	454.0	1396.0	3.142
+gratus	gratus	grātus, grāta, grātum	beloved, dear, acceptable, pleasing, agreeable	454.0	1396.0	3.142
+legatus	legatus	lēgātus, lēgātī, m.	ambassador, legate	456.0	1394.0	3.138
+quicumque	quicumque	quīcumque, quaecumque, quodcumque	whoever, whatever, whosoever, whatsoever, every one who, everything that, all that	457.0	1392.0	3.133
+censeo	censeo1	cēnseō, cēnsēre, cēnsuī cēnsum	to tax, assess; be of the opinion, judge, propose	458.0	1390.0	3.129
+flumen	flumen	flūmen, flūminis, n.	flowing, flood, stream, running water	459.0	1385.0	3.118
+prope	prope	prope	near	460.0	1379.0	3.104
+iaceo	jaceo	iaceō, iacēre, iacuī	to lie, be recumbent, be prostrate, lie at rest	461.0	1378.0	3.102
+morbus	morbus	morbus, morbī, m.	sickness, disease, disorder, distemper, ailment, illness, malady	462.0	1374.0	3.093
+cupio	cupio	cupiō, cupere, cupīvī, cupītum	to long for, desire, wish	463.0	1371.0	3.086
+auris	auris	auris, auris, f.	ear	464.0	1370.0	3.084
+natus	natus	nātus, nātī, m.	son, child	465.0	1364.0	3.07
+dignitas	dignitas	dīgnitās, dīgnitātis, f.	worth, merit, desert, character	466.0	1363.0	3.068
+cogito	cogito	cōgitō, cōgitāre, cōgitāvī, cōgitātum	to consider thoroughly, ponder, weigh, reflect upon, think	467.0	1357.0	3.055
+desum	desum	dēsum, dēesse, dēfuī	to be away, be absent, fail, be wanting, be missing	468.0	1343.0	3.023
+miror	miror	mīror, mīrārī, mīrātus sum	to wonder, marvel, be astonished, be amazed, admire	469.0	1342.0	3.021
+pervenio	pervenio	perveniō, pervenīre, pervēnī, perventum	to come up, arrive	470.0	1340.0	3.016
+sanus	sanus	sānus, sāna, sānum	sound, whole, healthy, well	471.0	1337.0	3.01
+durus	durus	dūrus, dūra, dūrum	hard (to the touch)	472.0	1334.0	3.003
+senex	senex	senex, senis	old, aged, advanced in years	473.0	1325.0	2.983
+membrum	membrum	membrum, membrī, n.	limb, member	474.0	1324.0	2.98
+navis	navis	nāvis, nāvis, f.	ship	475.0	1322.0	2.976
+extremus	extremus	extrēmus, extrēma, extrēmum	outermost, utmost, extreme, farthest, last	476.0	1314.0	2.958
+transeo	transeo	trānseō , trānsīre, trānsiī, trānsitum	to go over, go across, cross over, pass over, pass by, pass	476.0	1314.0	2.958
+fere	fere	ferē	approximately, closely, quite, entirely, fully, altogether, just	478.0	1313.0	2.956
+curo	curo	cūrō, cūrāre, cūrāvī, cūrātum	to care for, take pains with, be solicitous for, look to, attend to, regard	479.0	1310.0	2.949
+unda	unda	unda, undae, f.	wave, billow	480.0	1309.0	2.947
+confero	confero	cōnferō, cōnferre, contulī, collātum	to bring together, collect, gather, unite, join	481.0	1303.0	2.933
+forma	forma	fōrma, fōrmae, f.	form, contour, figure, shape, appearance, looks	481.0	1303.0	2.933
+litus3	litus3	lītus, lītoris, n.	sea-shore, seaside, beach	483.0	1297.0	2.92
+prosum	prosum	prōsum, prodesse, profuī	to be useful, be of use, do good, benefit, profit, serve	483.0	1297.0	2.92
+varius	varius1	varius, varia, varium	variegated, party-colored, mottled, diverse, various	485.0	1295.0	2.915
+dubito	dubito	dubitō, dubitāre, dubitāvī, dubitātus	to waver in opinion, be uncertain, be in doubt, be perplexed, doubt, question	486.0	1293.0	2.911
+tandem	tandem	tandem	at length, at last, in the end, finally	486.0	1293.0	2.911
+folium	folium	folium, foliī, n.	leaf	488.0	1292.0	2.908
+huc	huc	hūc	to this place, hither	489.0	1282.0	2.886
+orator	orator	ōrātor, ōrātōris, m.	orator	490.0	1281.0	2.884
+voluntas	voluntas	voluntās, voluntātis, f.	will, free-will, wish, choice, desire, inclination	491.0	1279.0	2.879
+liber4	liber4	liber, librī, m.	book; bark	492.0	1277.0	2.875
+mulier	mulier	mulier, mulieris, f.	woman, female	493.0	1274.0	2.868
+statim	statim	statim	steadily, regularly	494.0	1272.0	2.863
+premo	premo	premō, premere, pressī, pressum	to press	495.0	1264.0	2.845
+circa		circā	around	496.0	1257.0	2.829
+lux	lux	lūx, lūcis, f.	light, brightness	497.0	1253.0	2.82
+plenus	plenus	plēnus, plēna, plēnum	full, filled	498.0	1252.0	2.818
+templum	templum	templum, templī, n.	temple: an open place for observation, place marked off by the augur’s staff	499.0	1249.0	2.811
+dexter	dexter	dexter, dextra, dextrum	to the right, on the right side, right (opp. laevus, sinister)	500.0	1247.0	2.807
+rursus	rursus	rūrsum	(turned back, back, backwards); again, anew	501.0	1246.0	2.805
+campus	campus1	campus, campī, m.	plain, field, open country, level place	502.0	1245.0	2.802
+proprius	proprius	proprius, propria, proprium	not common with others, own special, several, individual, peculiar, particular, proper	503.0	1236.0	2.782
+quamvis	quamvis	quamvīs	as you will, as much as you will, however much, as much as possible, very much, extremely, exceedingly	503.0	1236.0	2.782
+agmen	agmen	āgmen, agminis, n.	that which is driven, line of march	505.0	1231.0	2.771
+libet	libet	libet, libēre, libuit / libitum est	 it pleases, is pleasing, is agreeable	505.0	1231.0	2.771
+excipio	excipio	excipiō, excipere, excēpī, exceptum	to take out, withdraw	507.0	1230.0	2.769
+iustus	justus	iūstus, iūsta, iūstum	just, upright, righteous	507.0	1230.0	2.769
+perdo	perdo	perdō, perdere, perdidī, perditum	to make away with, destroy, ruin, squander, dissipate, throw away, waste, lose	507.0	1230.0	2.769
+negotium	negotium	negōtium, negōtiī, n.	business, employment, occupation, affair	510.0	1222.0	2.751
+arbor	arbor1	arbor, arboris, f.	tree	511.0	1221.0	2.748
+occido2	occido2	occidō, occidere, occīdī, occāsus	to fall down, fall	511.0	1221.0	2.748
+postquam	postquam	postquam	after that, after, as soon as, when	514.0	1217.0	2.739
+quando	quando	quandō	when (interrog., relative, conj.); sometime ( = aliquando	514.0	1217.0	2.739
+adeo2	adeo2	adeō	to this, thus far, so far, as far	516.0	1211.0	2.726
+malo	malo	mālō, mālle, māluī	to choose rather, prefer	516.0	1211.0	2.726
+pario2	pario2	pariō, parere, peperī, partum or paritum	to bring forth, bear, give birth, drop, lay, spawn, produce	518.0	1210.0	2.724
+sino	sino	sinō, sinere, sīvī, situm	to let down, set, fix	519.0	1208.0	2.719
+lumen	lumen	lūmen, lūminis, n.	light; pl. (poet.) eyes	520.0	1207.0	2.717
+tristis	tristis	trīstis, trīste	sad, sorrowful, mournful, dejected, melancholy, gloomy, downcast, disconsolate	521.0	1199.0	2.699
+pugna	pugna	pūgna, pūgnae, f.	hand-to-hand fight, fight at close quarters, battle, combat, action, engagement	522.0	1198.0	2.697
+libertas	libertas	lībertās, lībertātis, f.	freedom, liberty, absence of restraint, permission	523.0	1193.0	2.685
+radix	radix	rādīx, rādīcīs, f.	root	524.0	1191.0	2.681
+nobilis	nobilis	nōbilis, nōbile	that is known, well-known, famous, noted, celebrated, renowned	525.0	1190.0	2.679
+dubius	dubius	dubius, dubia, dubium	moving two ways, fluctuating; uncertain, doubtful	526.0	1188.0	2.674
+saevus	saevus	saevus, saeva, saevum	raging, mad, furious, fell, fierce, savage, ferocious	526.0	1188.0	2.674
+colo	colo1	colō, colere, coluī, cultum	to till, tend, care for, cultivate	528.0	1187.0	2.672
+spatium	spatium	spatium, spatiī, n.	space, room, extent	528.0	1187.0	2.672
+aufero	aufero	auferō, auferre, abstulī, ablātum	to take away, bear off, carry off, withdraw, remove	530.0	1183.0	2.663
+semen	semen	sēmen, sēminis, n.	seed	530.0	1183.0	2.663
+spero	spero	spērō, spērāre, spērāvī, spērātum	to hope, look for, trust, expect, promise oneself	532.0	1181.0	2.658
+augeo	augeo	augeō, augēre, auxī, auctum	to increase, augment, enlarge, spread, extend	533.0	1180.0	2.656
+gaudeo	gaudeo	gaudeō, gaudēre, gāvīsus sum	to rejoice, be glad, be joyful, take pleasure, be pleased, delight	533.0	1180.0	2.656
+orior	orior	orior, orīrī, ortus sum	to arise, rise, stir, get up	533.0	1180.0	2.656
+umbra	umbra	umbra, umbrae, f.	shade, shadow	536.0	1179.0	2.654
+regio	regio	regiō, regiōnis, f.	direction, line; district, region	537.0	1178.0	2.652
+praeterea	praeterea	praetereā	in addition, beyond this, further, besides, moreover	538.0	1177.0	2.649
+forum	forum	forum, forī, n.	open space, public place, court, market-place	539.0	1175.0	2.645
+taceo	taceo	taceō, tacēre, tacuī, tacitum	to be silent, not speak, say nothing, hold one’s peace	540.0	1171.0	2.636
+victor	victor1	victor, victōris, m.	conqueror, vanquisher, victor	541.0	1168.0	2.629
+quintus	Quintus2	Quīntus, Quīntī, m.	Quintus [Roman praenomen]	542.0	1165.0	2.622
+concedo	concedo	concēdō, concēdere, concessī, concessum	to go away, pass, give way, depart, retire, withdraw, remove	543.0	1164.0	2.62
+fundo	fundo1	fundō, fundere, fūdī, fūsum	 to pour, pour out, shed	544.0	1159.0	2.609
+disco	disco	discō, discere, didicī	to learn, learn to know, acquire, become acquainted with	545.0	1158.0	2.607
+pertineo	pertineo	pertineō, pertinēre, pertinuī	to stretch out, reach, extend; pertain to, concern	546.0	1156.0	2.602
+epistula	epistula	epistula, epistulae, f.	written communication, letter, epistle	547.0	1152.0	2.593
+mundus2	mundus2	mundus, mundī, m.	 toilet ornament, decoration, dress; cosmos, universe	548.0	1151.0	2.591
+sacer	sacer	sacer, sacra, sacrum	dedicated, consecrated, devoted, sacred	549.0	1147.0	2.582
+omnino	omnino	omnīnō	altogether, wholly, entirely, utterly, at all	550.0	1142.0	2.571
+auxilium	auxilium	auxilium, auxiliī, n.	help, aid, assistance, support, succor	551.0	1140.0	2.566
+caedes	caedes	caedēs, caedis, f.	(cutting-down); slaughter, murder	552.0	1139.0	2.564
+frango	frango	frangō, frangere, frēgī, frāctum	to break in pieces, dash to pieces, shiver, shatter, fracture	552.0	1139.0	2.564
+inimicus	inimicus	inimīcus, inimīca, inimīcum	unfriendly, hostile, inimical	554.0	1136.0	2.557
+cerno	cerno	cernō, cernere, crēvī, crētum	to separate, sift; distinguish, decide, comprehend	555.0	1130.0	2.544
+validus	validus	validus, valida, validum	strong, stout, able, powerful, robust, vigorous	555.0	1130.0	2.544
+verto	verto	vertō, vertere, vertī, versum	to turn, turn up, turn back, direct	555.0	1130.0	2.544
+facies	facies	faciēs, faciēī, f.	appearance, form, figure, shape, build	558.0	1126.0	2.535
+diversus	diverto	dīversus, dīversa, dīversum	(turned different ways,) opposite, contrary, different, diverse, separate	559.0	1124.0	2.53
+suscipio	suscipio	suscipiō, suscipere, suscēpī, susceptum	to take, catch, take up, receive; defend; undertake	560.0	1119.0	2.519
+impetus	impetus	impetus, impetūs, m.	attack, assault, onset	561.0	1118.0	2.517
+turpis	turpis	turpis, turpe	ugly, unsightly, unseemly, repulsive, foul, filthy	562.0	1117.0	2.514
+lacrima	lacrima	lacrima, lacrimae, f.	tear	563.0	1113.0	2.505
+magnitudo	magnitudo	māgnitūdō, māgnitūdinis, f.	greatness, size, bulk, magnitude	563.0	1113.0	2.505
+procul	procul	procul	in the distance, at a distance, away, apart, far, afar off, from afar	565.0	1112.0	2.503
+vehemens	vehemens	vehemēns, vehementis	Of living beings, eager, violent, furious, impetuous, ardent, vehement	565.0	1112.0	2.503
+mirus	mirus	mīrus, mīra, mīrum	wonderful, marvellous, astonishing, extraordinary, amazing	567.0	1111.0	2.501
+fuga	fuga	fuga, fugae, f.	fleeing, flight, running away	568.0	1103.0	2.483
+praetor	praetor	praetor, praetōris, m.	leader, head, chief, president, chief magistrate, chief executive, commander	569.0	1102.0	2.481
+rego	rego	regō, regere, rēxī, rēctum	to keep straight, lead aright, guide, conduct, direct, control	570.0	1101.0	2.478
+praecipuus	praecipuus	praecipuus, praecipua, praecipuum	taken before others, particular, peculiar, especial	571.0	1100.0	2.476
+multitudo	multitudo	multitūdō, multitūdinis, f.	great number, multitude, crowd, throng	572.0	1099.0	2.474
+praesidium	praesidium	praesidium, praesidiī, n.	defence, protection, guardianship, help, aid, assistance	573.0	1098.0	2.472
+acer2	acer2	ācer, ācris, ācre	sharp, piercing, penetrating, cutting, irritating, pungent	574.0	1097.0	2.469
+plerusque	plerus	plērusque, plēraque, plērumque	very great part, the majority, most	575.0	1095.0	2.465
+femina	femina	fēmina, fēminae, f.	female, woman	576.0	1092.0	2.458
+virgo	virgo	virgō, virginis, f.	maid, maiden, virgin	577.0	1089.0	2.451
+falsus	falsus	falsus, falsa, falsum	deceptive, feigned, spurious, deceitful, false, pretended, delusive, unfounded	578.0	1088.0	2.449
+necessarius	necessarius	necessārius, necessāria, necessārium	unavoidable, inevitable, indispensable, pressing, needful, requisite, necessary, compulsory	579.0	1087.0	2.447
+postulo	postulo	postulō, postulāre, postulāvī, postulātum	to ask, demand, claim, require, request, desire	580.0	1084.0	2.44
+decerno	decerno	dēcernō, dēcernere, dēcrēvī , dēcrētum	to decide, determine, pronounce a decision, judge, decree, resolve, vote	581.0	1083.0	2.438
+saxum	saxum	saxum, saxī, n.	large stone, rough stone, broken rock, boulder, rock	582.0	1080.0	2.431
+metuo	metuo	metuō, metuere, metuī	to fear, be afraid, stand in fear, be apprehensive	583.0	1079.0	2.429
+ulterior	ulterior	ulterior, ulterius	farther, on the farther side, that is beyond, more remote			
+amicitia	amicitia	amīcitia, amicitiae, f.	friendship	585.0	1074.0	2.418
+orno	orno	ornō, ornāre, ornāvī, ornātus	to fit out, furnish, provide, supply, equip, get ready, prepare	586.0	1071.0	2.411
+sapio	sapio	sapiō, sapere, sapīvī or sapiī	to taste of, smack of, savor of, have a flavor of	586.0	1071.0	2.411
+sedes	sedes	sēdēs, sēdis, f.	seat, bench, chair, throne	586.0	1071.0	2.411
+coniunx	conjunx	coniunx, coniugis m./f.	a married person, consort, spouse, husband, wife	589.0	1069.0	2.406
+laetus	laetus1	laetus, laeta, laetum	joyful, cheerful, glad, gay, joyous, rejoicing, happy, pleased, delighted, full of joy	590.0	1067.0	2.402
+latus	latus1	lātus, lāta, lātum	broad, wide, extensive	591.0	1066.0	2.4
+victoria	victoria	victōria, victōriae, f.	victoria	592.0	1065.0	2.397
+quippe	quippe	quīppe	of course, as you see, obviously, as one might expect, naturally, by all means	594.0	1064.0	2.395
+memini	memini	meminī, meminisse	remember, recollect, think of, am mindful of, bear in mind	595.0	1063.0	2.393
+noceo	noceo	noceō, nocēre, nocuī	to do harm, inflict injury, hurt	595.0	1063.0	2.393
+amitto	amitto	āmittō, āmittere, āmīsī, āmissum	to send away, dismiss, part with	597.0	1062.0	2.391
+consulo	consulo	cōnsulō, cōnsulere, cōnsuluī, cōnsultum	to meet and consider, reflect, deliberate, take counsel, consult, take care, have regard, look out, be mindful	598.0	1061.0	2.388
+amnis	amnis	amnis, amnis, m.	river	599.0	1060.0	2.386
+carmen	carmen1	carmen, carminis, n.	song, poem, verse, oracular response, prophecy, form of incantation, tune, air, lay, strain, note, sound	599.0	1060.0	2.386
+latus2	latus2	latus, lateris, n.	side, flank	599.0	1060.0	2.386
+adeo	adeo1	adeō, adīre, adiī / adīvī, aditum	to go to, approach; address, consult, undertake, submit	605.0	1050.0	2.364
+incipio	incipio	incipiō, incipere, incēpī, inceptum	to take hold, take in hand, begin	602.0	1057.0	2.379
+praesens	praesens	praesēns, praesentis	at hand, in sight, present, in person	603.0	1054.0	2.373
+quaestio	quaestio	quaestiō, quaestiōnis, f.	questioning, examination, inquiry, investigation	604.0	1051.0	2.366
+sero	sero1	serō, serere, sēvī, satus	to sow, plant; (poet.) beget	606.0	1049.0	2.361
+exeo	exeo	exeō, exīre, exīvī / exiī, exitum	to go out, go forth, go away, depart, withdraw, retire	607.0	1047.0	2.357
+contingo	contingo1	contingō, contingere, contigī, contactum	to touch, reach, take hold of, seize	608.0	1046.0	2.355
+contingo2		contingō, contingere, —, —	to wet, moisten			
+lingua	lingua	lingua, linguae, f.	tongue	609.0	1044.0	2.35
+pondus	pondus	pondus, ponderis, n.	weight	610.0	1042.0	2.346
+subeo	subeo	subeō, subīre, subīvī / subiī, subitum		611.0	1039.0	2.339
+pateo	pateo	pateō, patēre, patuī	to stand open, lie open, be open	612.0	1037.0	2.334
+occupo	occupo	occupō, occupāre, occupāvī, occupātum		613.0	1036.0	2.332
+ventus	uentus	ventus, ventī, m.	wind	614.0	1033.0	2.325
+turba	turba	turba, turbae, f.		615.0	1032.0	2.323
+proficiscor	proficiscor	proficīscor, proficīscī, profectus sum	to set forward, set out, start, go, march, depart	616.0	1030.0	2.319
+aedes	aedes	aedēs, aedis, f.	building; house; temple	617.0	1029.0	2.316
+planus	planus1	plānus, plāna, plānum	even, level, flat, plane	617.0	1029.0	2.316
+anima	anima	anima, animae, f.	air, breath, life, soul	619.0	1028.0	2.314
+damno	damno	damnō, damnāre, damnāvī, damnātum		619.0	1028.0	2.314
+fallo	fallo	fallō, fallere, fefellī, falsum		621.0	1024.0	2.305
+tenuis				622.0	1023.0	2.303
+iungo	jungo	iungō, iungere, iūnxī, iūnctum		623.0	1020.0	2.296
+verum2	verus	vērum, vērī, n. 	the truth	623.0	1020.0	2.296
+mereo	mereo	mereō, merēre, meruī, meritum	to deserve, merit, be entitled to, be worthy of	625.0	1018.0	2.291
+posterus	posterus	posterus, postera, posterum		625.0	1018.0	2.291
+divido	divido	dīvidō, dīvidere, dīvīsī, dīvīsum		627.0	1017.0	2.289
+pulcher	pulcher1	pulcher, pulchra, pulchrum		628.0	1009.0	2.271
+somnus	somnus	somnus, somnī, m.		629.0	1008.0	2.269
+caveo	caveo	caveō, cavēre, cāvī, cautum		630.0	1006.0	2.264
+antiquus	antiquus	antīquus, antīqua, antīquum		631.0	1005.0	2.262
+niger	niger1	niger, nigra, nigrum		631.0	1005.0	2.262
+eripio	eripio	ēripiō, ēripere, ēripuī, ēreptum		633.0	1004.0	2.26
+opto	opto	optō, optāre, optāvī, optātum		633.0	1004.0	2.26
+secundus	secundus1	secundus, secunda, secundum		633.0	1004.0	2.26
+silva	silva	silva, silvae, f.	wood, forest, woodland	636.0	1003.0	2.258
+flamma	flamma1	flamma, flammae, f.	blazing fire, blaze, flame	637.0	1002.0	2.255
+aliquando	aliquando	aliquandō	at some time / other, once; at any time, ever	638.0	1000.0	2.251
+murus	murus	mūrus, mūrī, m.		639.0	997.0	2.244
+pugno	pugno	pūgnō, pūgnāre, pūgnāvī, pūgnātum		639.0	997.0	2.244
+conficio	conficio	cōnficiō, cōnficere, cōnfēcī, cōnfectum		641.0	996.0	2.242
+argentum 	argentum 	argentum, argentī, n.	silver			
+gigno	gigno	gīgnō, gīgnere, genuī, genitum		643.0	991.0	2.231
+impero	impero	imperō, imperāre, imperāvī, imperātum		644.0	990.0	2.228
+reus	reus	reus, reī, m.		644.0	990.0	2.228
+queror	queror	queror, querī, questus sum		646.0	989.0	2.226
+appareo 	appareo 	appāreō, appārēre, appāruī, appāritus	to appear, to be clear, to be evident			
+nondum	nondum	nōndum		647.0	988.0	2.224
+praeda	praeda	praeda, praedae, f.	property taken in war, booty, spoil, plunder, pillage	649.0	985.0	2.217
+soror	soror	soror, sorōris, f.		650.0	983.0	2.213
+statuo	statuo	statuō, statuere, statuī, statūtum		652.0	980.0	2.206
+vulgus	uulgus	vulgus, vulgī, n. (or m.)		652.0	980.0	2.206
+iuvo	juvo	iuvō, iuvāre, iūvī, iūtum		654.0	978.0	2.201
+odium	odium1	odium, odiī, n.		654.0	978.0	2.201
+defero	defero	dēferō, dēferre, dētulī, dēlātum		656.0	977.0	2.199
+retineo	retineo	retineō, retinēre, retinuī, retentum		656.0	977.0	2.199
+bibo	bibo1	bibō, bibere, bibī	to drink	658.0	976.0	2.197
+propono	propono	prōpōnō, prōpōnere, prōposuī, prōpositum		659.0	975.0	2.195
+quantum	quantum	quantum	as much as, so much as, to as great an extent	660.0	973.0	2.19
+mora	mora1	mora, morae, f.		661.0	972.0	2.188
+difficilis	difficilis	difficilis, difficile		662.0	970.0	2.183
+parum	parum	parum	too little, not enough, insufficiently	662.0	970.0	2.183
+mollis	mollis	mollis, molle		664.0	969.0	2.181
+condo	condo	condō, conndere, condidī, conditum		665.0	968.0	2.179
+oro	oro	ōrō, ōrāre, ōrāvī, ōrātum		666.0	967.0	2.177
+diligo	diligo	dīligō, dīligere, dīlēxī, dīlēctum		667.0	961.0	2.163
+insula	insula1	īnsula, īnsulae, f.		668.0	958.0	2.156
+sustineo	sustineo	sustineō, sustinēre, sustinuī, sustentum		669.0	953.0	2.145
+aliter	aliter	aliter	in another manner, otherwise, in any other way, differently	670.0	951.0	2.141
+fīlia	fīlia	fīlia, fīliae, f.	daughter			
+interim	interim	interim		670.0	951.0	2.141
+imago	imago	imāgō, imāginis, f.		673.0	949.0	2.136
+indico	indico1	indicō, indicāre, indicāvī, indicātum		673.0	949.0	2.136
+exigo	exigo	exigō, exigere, exēgī, exāctum	to drive out, push forth, thrust out, take out, expel	675.0	948.0	2.134
+etsi	etsi	etsī	though, although, albeit	676.0	947.0	2.132
+religio	religio	religiō, religiōnis, f.	conscientiousness, sense of right, moral obligation, duty	676.0	947.0	2.132
+civilis	civilis1	cīvīlis, cīvīle	of citizens, civil, civic			
+discedo	discedo	discēdō, discēdere, discessī, discessum	to go apart, part asunder, divide, separate, disperse, scatter	679.0	943.0	2.123
+servus	servus2	servus, servī, m.		679.0	943.0	2.123
+promitto	promitto	prōmittō, prōmittere, prōmīsī , prōmissum		681.0	941.0	2.118
+intersum	intersum	intersum, interesse, interfuī		682.0	940.0	2.116
+committo	committo	committō, committere, commīsī, commissum		683.0	939.0	2.114
+familiaris	familiaris	familiāris, familiāre	of a house, of a household, belonging to a family, household, domestic, private	683.0	939.0	2.114
+perficio	perficio	perficiō, perficere, perfēcī, perfectum	to achieve, execute, carry out, accomplish, perform, despatch, bring about, bring to an end, finish, complete	683.0	939.0	2.114
+tego	tego	tegō, tegere, tēxī, tēctum		686.0	938.0	2.111
+num	num1	num		687.0	935.0	2.105
+edo2	edo2	ēdō, ēdere, ēdidī, ēditum		688.0	934.0	2.102
+spiritus	spiritus	spīritus, spīritūs, m.		688.0	934.0	2.102
+tergum	tergum	tergum, tergī, n.		688.0	934.0	2.102
+prohibeo	prohibeo	prohibeō, prohibēre, prohibuī, prohibitum		691.0	930.0	2.093
+sidus	sidus	sīdus, sīderis, n.		692.0	928.0	2.089
+magistratus	magistratus	magistrātus, magistrātūs, m.	the office of master, magisterial office, civil office, magistracy	693.0	925.0	2.082
+aeger	aeger	aeger, aegra, aegrum	unwell, ill, sick, diseased, suffering, feeble	694.0	923.0	2.078
+diligens	diligens			694.0	923.0	2.078
+alo	alo	alō, alere, aluī, alitum	to feed, nourish, support, sustain, maintain	696.0	922.0	2.075
+posco	posco	pōscō, pōscere, popōscī		696.0	922.0	2.075
+vestis	uestis	vestis, vestis, f.		696.0	922.0	2.075
+numen	numen	nūmen, nūminis, n.		699.0	921.0	2.073
+materia	materia	māteria, māteriae, f.		700.0	920.0	2.071
+adhibeo	adhibeo	adhibeō, adhibēre, adhibuī, adhibitum	to hold toward, turn to, apply, add to	702.0	912.0	2.053
+invidia	invidia	invidia, invidiae, f.	envy, grudge, jealousy, ill-will, prejudice	702.0	912.0	2.053
+paene	paene	paene		702.0	912.0	2.053
+fateor	fateor	fateor, fatērī, fassus sum		705.0	911.0	2.051
+reverto	reverto	revertō, revertere, revertī	to turn back, turn about; to come back, return	705.0	911.0	2.051
+fingo	fingo	fingō, fingere, fīnxī, fīctum	to form, fashion, make; to touch (rare)	707.0	909.0	2.046
+maiores	magnus1	māiōrēs, māiōrum, m. pl.	forefathers	708.0	907.0	2.042
+recens	recens1	recēns, recentis		708.0	907.0	2.042
+careo	careo	careō, carēre, caruī		710.0	906.0	2.039
+vereor	vereor	vereor, verērī, veritus sum	to fear; to reverence, revere, respect, stand in awe	710.0	906.0	2.039
+consequor	consequor	cōnsequor, consequī, consecūtus sum		712.0	903.0	2.033
+aspicio	aspicio	aspiciō, aspicere, aspēxī aspectum		714.0	902.0	2.03
+argumentum	argumentum	argūmentum, argūmentī, n.	argument, evidence, ground, support, proof	715.0	897.0	2.019
+intra		intrā		715.0	897.0	2.019
+donec	donec	dōnec		717.0	894.0	2.012
+initium	initium	initium, initiī, n.		719.0	892.0	2.008
+cresco	cresco	crēscō, crēscere, crēvī, crētum		721.0	889.0	2.001
+fons	fons	fōns, fontis, m.		722.0	881.0	1.983
+sedeo	sedeo	sedeō, sedēre, sēdī, sessum		722.0	881.0	1.983
+compono	compono	compōnō, compōnere, composuī, compositum		724.0	880.0	1.981
+curro	curro	currō, currere, cucurrī, cursum		725.0	878.0	1.976
+felix	felix1	fēlīx, fēlīcis	fruitful, productive	727.0	876.0	1.972
+nomino	nomino	nōminō, nōmināre, nōmināvi, nōminātum	to call by name, name, give a name to	727.0	876.0	1.972
+moenia	moenia1	moenia, moenium, n. pl.	defensive walls, ramparts, bulwarks, city walls	729.0	874.0	1.967
+repeto	repeto	repetō, repetere, repetīvī, repetītum		729.0	874.0	1.967
+desidero	desidero	dēsīderō, dēsīderāre, dēsīderāvī, dēsīderātum		731.0	872.0	1.963
+cano	cano	canō, canere, cecinī, cantum		732.0	870.0	1.958
+pretium	pretium	pretium, pretiī, n.	price, money value, value in exchange	734.0	867.0	1.952
+rarus	rarus	rārus, rāra, rārum		735.0	866.0	1.949
+notus	notus1	nōtus, nōta, nōtum		736.0	865.0	1.947
+oleum	oleum	oleum, oleī, n.	oil, olive-oil	738.0	863.0	1.943
+opinio	opinio	opīniō, opīniōnis, f.	opinion, supposition, conjecture, fancy, belief, expectation	738.0	863.0	1.943
+certamen	certamen	certāmen, certāminis, n.		740.0	862.0	1.94
+aptus	aptus	aptus, apta, aptum		741.0	861.0	1.938
+clamor	clamor	clāmor, clāmōris, m.		742.0	860.0	1.936
+claudo	claudo1	claudō, claudere, clausī, clausum		742.0	860.0	1.936
+cor	cor	cor, cordis, n.		745.0	859.0	1.934
+praemium	praemium	praemium, praemiī, n.	prize, reward, an advantage, prerogative, favor, license, privilege	745.0	859.0	1.934
+quare	quare	quārē		747.0	858.0	1.931
+accuso	accuso	accūsō, accūsāre, accūsāvī, accūsātum	to call to account, make complaint against, reproach, blame, accuse	748.0	857.0	1.929
+adulescens	adulescens	adulescens, adulescentis	growing, near maturity, young, youthful	749.0	856.0	1.927
+cohors	cohors	cohors, cohortis, f.		750.0	855.0	1.925
+desero2	desero2	dēserō, dēserere dēseruī dēsertum		751.0	854.0	1.922
+aes		aes, aeris, n.	crude metal, base metal, copper	752.0	853.0	1.92
+contemno	contemno	contemnō, contemnere, contempsī, contemptum		753.0	851.0	1.916
+ecce	ecce	ecce	lo! see! behold! there! look!	753.0	851.0	1.916
+afficio	afficio	afficiō, afficere, affēcī, affectum	to do to, treat, use, manage, handle	755.0	848.0	1.909
+ardeo	ardeo	ārdeō, ārdēre, ārsī, ārsum		755.0	848.0	1.909
+apertus	apertus	apertus, apertus, apertum		757.0	845.0	1.902
+sinus	sinus1	sinus, sinūs, m.		757.0	845.0	1.902
+instituo	instituo	īnstituō, instituere, instituī, institūtum		759.0	841.0	1.893
+pudor	pudor	pudor, pudōris, m.		759.0	841.0	1.893
+puella	puella	puella, puellae, f.	female child, girl, maiden, lass	761.0	839.0	1.889
+erro	erro1	errō, errāre, errāvī, errātum		762.0	838.0	1.886
+integer	integer	integer, integra, integrum		762.0	838.0	1.886
+infero	infero	īnferō, īnferre, intulī, illātum		765.0	837.0	1.884
+classis	classis	classis, classis, f.		766.0	836.0	1.882
+tellus	tellus	tellus, tellūris, f.	earth, globe	766.0	836.0	1.882
+quondam	quondam	quondam		769.0	835.0	1.88
+pello	pello	pellō, pellere, pepulī, pulsum		770.0	834.0	1.877
+dimitto	dimitto	dīmittō, dīmittere, dīmīsī, dīmissum		771.0	832.0	1.873
+ferus	ferus	ferus, fera, ferum	wild, untamed, uncultivated	771.0	832.0	1.873
+magister	magister	magister, magistrī, m.		771.0	832.0	1.873
+iterum	iterum	iterum		774.0	831.0	1.871
+narro	narro	narrō, narrāre, narrāvī, narrātum		775.0	830.0	1.868
+protinus	protinus	prōtinus		775.0	830.0	1.868
+hodie	hodie	hodiē	to-day	777.0	828.0	1.864
+hora	hora1	hōra, hōrae, f.	hour (one twelfth of the day between sunrise and sunset)	778.0	827.0	1.862
+timor	timor	timor, timōris, m.		778.0	827.0	1.862
+permitto	permitto	permittō, permittere, permīsī, permissum		780.0	826.0	1.859
+pariter	pariter			781.0	825.0	1.857
+consuetudo	consuetudo	cōnsuētūdo, cōnsuetūdinis, f.		782.0	824.0	1.855
+metior	metior	mētior, mētī, mēnsus sum	to measure, mete	782.0	824.0	1.855
+aequor	aequor	aequor, aequoris, n.	even surface, level; (surface of the) sea	784.0	823.0	1.853
+converto	converto	convertō, convertere, convertī, conversum		785.0	819.0	1.844
+fortasse	fortasse	fortasse		787.0	816.0	1.837
+perpetuus	perpetuus	perpetuus, perpetua, perpetuum		789.0	815.0	1.835
+praecipio	praecipio	praecipiō, praecipere, praecēpī, praeceptum		789.0	815.0	1.835
+mando				791.0	814.0	1.832
+offero	offero	offerō, offerre, obtulī, oblātum		792.0	813.0	1.83
+turbo	turbo1	turbō, turbāre, turbāvī, turbātum		792.0	813.0	1.83
+cursus	cursus	cursus, cursūs, m.		795.0	812.0	1.828
+mel	mel			795.0	812.0	1.828
+dono	dono	dōnō, dōnāre, dōnāvī, dōnātum		798.0	811.0	1.826
+familia	familia	familia, familiae, f.		798.0	811.0	1.826
+mortalis	mortalis	mortālis, mortāle		800.0	810.0	1.823
+tectum	tectum	tēctum, tēctī, n.		802.0	808.0	1.819
+impono	impono	impōnō impōnere, imposuī, impositum		803.0	807.0	1.817
+libido	libido	libīdō, libīdinis, f.		803.0	807.0	1.817
+contrarius	contrarius	contrārius, contrāria, contrārium	lying over against, opposite	805.0	806.0	1.814
+adduco	adduco	addūcō, addūcere, addūxī, adductum	to lead to, bring to, bring along	806.0	804.0	1.81
+illic2	illic2	illīc	in that place, yonder, there	806.0	804.0	1.81
+asper	asper	asper, aspera, asperum		808.0	803.0	1.808
+moneo	moneo	moneō, monēre, monuī, monitum		809.0	802.0	1.805
+ora	ora1	ōra, ōrae, f.	extremity, border, brim, edge, rim, margin, end, boundary, limit	811.0	801.0	1.803
+tendo	tendo	tendō, tendere, tetendī, tentum		812.0	799.0	1.799
+porta	porta	porta, portae, f.	city-gate, gate	815.0	796.0	1.792
+interficio	interficio	interficiō, interficere, interēcī, interfectum		816.0	790.0	1.778
+desino	desino	dēsinō, dēsinere, dēsiī, dēsitum		817.0	789.0	1.776
+divus	divus1	dīvus, dīva, dīvum	divine	817.0	789.0	1.776
+differo	differo	differō, differre, distulī, dīlātum		819.0	788.0	1.774
+dives	dives	dīves, dīvitis		820.0	787.0	1.772
+animal	animal	animal, animālis, n.	living being, animal	821.0	786.0	1.769
+deduco	deduco	dēdūcō, dēdūcere, dēdūxī, dēductum		821.0	786.0	1.769
+cupiditas	cupiditas	cupiditās, cupiditātis, f.		823.0	785.0	1.767
+reor	reor1	reor, rērī, rātus sum		824.0	784.0	1.765
+dulcis	dulcis	dulcis, dulce		825.0	782.0	1.76
+praebeo	praebeo	praebeō, praebēre, praebuī, praebitum		826.0	781.0	1.758
+adicio	adicio	adiciō, adicere, adiēcī, adiectum	to throw to, cast to, fling at, put, put to, set near	827.0	778.0	1.751
+foedus	foedus1	foedus, foeda, foedum	foul, filthy, loathsome, repulsive, ugly, unseemly, detestable, abominable, horrible	828.0	777.0	1.749
+spargo	spargo1	spargō, spargere, sparsī, sparsum		829.0	775.0	1.745
+utrum	utrum	ūtrum	(introducing alternate question)	831.0	772.0	1.738
+decet	decet	decet, decēre, decuīt		834.0	769.0	1.731
+principium	principium	prīncipium, principiī, n.	beginning, commencement, origin	834.0	769.0	1.731
+cinis	cinis	cinis, cineris, m./f.		839.0	765.0	1.722
+doleo	doleo	doleō, dolēre, doluī		839.0	765.0	1.722
+omitto	omitto	omittō, omittere, omīsī, omissum	to let go, let loose, let fall	842.0	762.0	1.715
+disciplina	disciplina	disciplīna, disciplīnae, f.		844.0	761.0	1.713
+conor	conor	cōnor, cōnārī, cōnātus sum		845.0	760.0	1.711
+votum	votum	vōtum, vōtī, n.	promise to a god, pledge, religious engagement, vow, wish	845.0	760.0	1.711
+gradus	gradus	gradus, gradūs, m.		848.0	758.0	1.706
+ni	ni	nī		848.0	758.0	1.706
+undique	undique	undique		848.0	758.0	1.706
+incido2	incido1	incidō, incidere, incidī		851.0	756.0	1.702
+furor2	furor2	furor, fruōris, m.		852.0	755.0	1.699
+moror	moror1	moror, morārī, morātus sum		852.0	755.0	1.699
+armo	armo	armō, armāre, armāvī, armātum	to furnish with weapons, arm, equip	856.0	751.0	1.69
+necessitas	necessitas	necessitās, necessitātis, f.		858.0	750.0	1.688
+revoco	revoco	revocō, revocāre, revocāvī, revocātum		859.0	749.0	1.686
+rumpo	rumpo	rumpō, rumpere, rūpī, ruptum		860.0	748.0	1.684
+donum	donum	dōnum, dōnī, n.		861.0	747.0	1.681
+iugum	jugum	iugum, iugī, n.		861.0	747.0	1.681
+nimis	nimis	nimis		861.0	747.0	1.681
+laboro	laboro	labōrō, labōrāre, labōrāvī, labōrātum		865.0	746.0	1.679
+privatus	privatus	prīvātus, prīvāta, prīvātum	apart from the State, peculiar, personal, individual, private	865.0	746.0	1.679
+subito	subito	subitō	suddenly, immediately, unexpectedly, at once, off-hand	868.0	745.0	1.677
+tango	tango	tangō, tangere, tetigī, tāctum		868.0	745.0	1.677
+ultra	ultra1	ultrā		870.0	744.0	1.675
+culpa	culpa	culpa, culpae, f.	fault, error, blame, guilt, failure, defect	874.0	742.0	1.67
+otium	otium	ōtium, ōtiī, n.	leisure, vacant time, freedom from business	874.0	742.0	1.67
+servio	servio	serviō, servīre	to be a servant, be enslaved, serve, be in service	874.0	742.0	1.67
+laedo	laedo	laedō, laedere, laesī, laesum		878.0	741.0	1.668
+caedo	caedo	caedō, caedere, cecīdī, caesum		881.0	737.0	1.659
+cornu	cornu	cornu, cornūs, n.		881.0	737.0	1.659
+lapis	lapis	lapis, lapidis, m.		881.0	737.0	1.659
+testis	testis1	testis, testis, m.		886.0	735.0	1.654
+experior	experior	experior, experīrī, expertus sum		888.0	733.0	1.65
+fleo	fleo	fleō, flēre, flēvī, flētum	to weep, cry, shed tears, lament, wail	888.0	733.0	1.65
+exerceo	exerceo	exerceō, exercēre, exercuī, exercitum		891.0	728.0	1.639
+carus	carus1	cārus, cāra, cārum	dear, precious, valued, esteemed, beloved	893.0	727.0	1.636
+condicio	condicio	condīciō, condiciōnis, f.		893.0	727.0	1.636
+occurro	occurro	occurrō, occurrere, occucurrī, occursum		895.0	726.0	1.634
+prex	prex	prex, precis, f.		895.0	726.0	1.634
+supero	supero	superō, superāre, superāvī, superātum		898.0	725.0	1.632
+nuntio	nuntio	nūntiō, nūntiāre, nūntiāvī, nūntiātum	to announce, declare, report, relate, narrate, make known, inform, give intelligence of	900.0	721.0	1.623
+veto	veto	vetō, vetāre, vetuī, vetītum		901.0	720.0	1.621
+scilicet	scilicet	scīlicet		903.0	719.0	1.618
+procedo	procedo	prōcēdō, prōcēdere, prōcessī, prōcessum		905.0	717.0	1.614
+vestigium	vestigium	vestīgium, vestīgiī, n.		907.0	715.0	1.609
+supersum	supersum	supersum, superesse, superfuī		909.0	714.0	1.607
+colligo	colligo1	colligō, colligere, collēgī, collēctum		911.0	713.0	1.605
+frequens	frequens	frequēns, frequentis		911.0	713.0	1.605
+error	error	error, errōris, m.		913.0	711.0	1.6
+motus2	motus2	mōtus, mōtūs, m.	moving, motion; uprising, rebellion	916.0	709.0	1.596
+olim	olim	ōlim		916.0	709.0	1.596
+saeculum	saeculum	saeculum, saeculī, n.		916.0	709.0	1.596
+comes	comes1	comes, comitis, m./f.		921.0	708.0	1.594
+actio	actio	actiō, actiōnis, f.	a putting in motion, doing, performing, acting, action, act	922.0	707.0	1.591
+quotiens	quotiens	quotiēns		923.0	706.0	1.589
+supplicium	supplicium	supplicium, suppliciī, n.		923.0	706.0	1.589
+aura	aura	aura, aurae, f.		925.0	705.0	1.587
+nudus	nudus	nūdus, nūda, nūdum		926.0	704.0	1.585
+pareo	pareo	pāreō, pārēre, pāruī	to appear (rare); to obey	928.0	703.0	1.582
+tempestas	tempestas	tempestas, tempestātis, f.		930.0	701.0	1.578
+pontus	pontus1	pontus, pontī, m.	sea	932.0	698.0	1.571
+lateo	lateo	lateō, latēre, latuī		934.0	696.0	1.567
+antea	antea			935.0	694.0	1.562
+consulatus	consulatus	cōnsulātus, cōnsulātūs, m.		935.0	694.0	1.562
+sors	sors	sors, sortis, f.		935.0	694.0	1.562
+creo	creo1	creō, creāre, creāvī, creātus		938.0	691.0	1.555
+parco	parco	parcō, parcere, pepercī, parsum		938.0	691.0	1.555
+maritus	maritus1	marītus, marītī, m.		941.0	690.0	1.553
+tyrannus		tyrannus, tyrannī, m.	monarch, ruler, sovereign, king; despot, tyrant	941.0	690.0	1.553
+		gaudium, gaudiī, n.	inward joy, joy, gladness, delight			
+semel	semel	semel		945.0	688.0	1.549
+dea	dea	dea, deae, f.	goddess	947.0	685.0	1.542
+beo	beo	beō, beāre, beāvī, beātus		948.0	684.0	1.54
+effundo	effundo	effundō, effundere, effūdī, effūsum		948.0	684.0	1.54
+facinus	facinus	facinus, facinoris, n.		948.0	684.0	1.54
+contio	contio	contiō, contiōnis, f.	meeting, assembly, convocation, gathering, audience	952.0	682.0	1.535
+aeternus	aeternus	aeternus, aeterna, aeternum	of an age, lasting, enduring, permanent, endless	954.0	680.0	1.531
+arx 	arx 	arx, arcis, f.				
+pecco	pecco	peccō, peccāre, peccāvī, peccātum		957.0	678.0	1.526
+sapiens	sapiens	sapiēns, sapientis		959.0	676.0	1.522
+canis	canis1	canis, canis, m./f.	dog	961.0	673.0	1.515
+ludus	ludus			962.0	672.0	1.513
+avis	avis	avis, avis, f.		964.0	670.0	1.508
+eligo	eligo	ēligō, ēligere, ēlēgī, ēlēctum		964.0	670.0	1.508
+intro2	intro2	intrō, intrāre, intrāvī, intrātum	to go into, enter	968.0	667.0	1.501
+candidus	candidus	candidus, candida, candidum		969.0	666.0	1.499
+citus	cieo	citus, cita, citum		970.0	665.0	1.497
+comparo	comparo1	comparō, comparāre, comparāvī, comparātum		972.0	663.0	1.492
+fructus2	fructus2	frūctus, frūctūs, m.		972.0	663.0	1.492
+impleo	impleo	impleō, implēre, implplēvī, implplētum		974.0	662.0	1.49
+obtineo	obtineo			974.0	662.0	1.49
+surgo	surgo	surgō, surgere, surrēxī, surrēctum		974.0	662.0	1.49
+adiuvo	adjuvo	adiuvō, adiuvāre, adiūvī, adiūtum	to help, assist, aid, support, further, sustain	978.0	658.0	1.481
+contendo	contendo	contendō,contendere, contendī, contentus	to stretch, bend, draw tight, strain	978.0	658.0	1.481
+opprimo	opprimo			978.0	658.0	1.481
+pietas	pietas1	pietās, pietātis, f.		978.0	658.0	1.481
+medicus	medicus	medicus, medicī, m.	medical man, physician, surgeon	982.0	657.0	1.479
+pius	pius	pius, pia, pium		985.0	655.0	1.474
+agito	agito	agitō, agitāre, agitāvī, agitātum	to set in motion, move, excite, assail; to consider, ponder, deliberate	986.0	654.0	1.472
+occido1	occido1	occīdō, occīdere, occīdī, occīsum				
+quattuor	quattuor	quattuor		989.0	652.0	1.468
+sapientia	sapientia	sapientia, sapientiae, f.	good taste, good sense, discernment, discretion, prudence, intelligence, forethought	989.0	652.0	1.468
+os2	os2	os, ossis, n.		993.0	651.0	1.465
+funus	funus	fūnus, fūneris, n.		995.0	650.0	1.463
+irascor	irascor	īrāscor, īrāscī, īrātus sum	to be angry, be in a rage	995.0	650.0	1.463
+gladius	gladius	gladius, gladiī, m.	sword	995.0	650.0	1.463
+barbarus	barbarus	barbarus, barbara, barbarum		998.0	649.0	1.461
+serus	serus	sērus, sēra, sērum	late time, late hour	998.0	649.0	1.461
+deficio	deficio	dēficiō, dēficere, dēfēcī, dēfectum		1000.0	648.0	1.459
+tutus	tueor	tūtus, tūta, tūtum	guarded, safe, secure, out of danger	1000.0	648.0	1.459
+luna	luna	lūna, lūnae, f.		1005.0	644.0	1.45
+nimium	nimium	nimium		1005.0	644.0	1.45
+fluctus	fluctus	fluctus, fluctūs, m		1010.0	641.0	1.443
+ara	ara	āra, ārae, f.		1011.0	640.0	1.441
+fluo	fluo	fluō, fluere, fluxī, fluxum	to flow, stream	1011.0	640.0	1.441
+poeta	poeta	poēta, poētae, m.		1017.0	635.0	1.429
+tardus	tardus	tardus, tarda, tardum		1024.0	631.0	1.42
+rus	rus	rūs, rūris, n.		1027.0	628.0	1.414
+confiteor	confiteor	cōnfiteor, cōnfitērī, cōnfessus sum		1034.0	624.0	1.405
+accido2	accido2	accīdō, accīdere, accīdī, accīsus	to cut, cut at, cut into, cut down, fell	1035.0	621.0	1.398
+aperio	aperio	aperiō, aperīre, aperuī, apertum		1039.0	620.0	1.396
+hiems	hiems	hiems, hiemis, f.	winter, winter time, rainy season	1040.0	619.0	1.393
+intendo	intendo	intendō, intendere, intendī, intentum		1044.0	618.0	1.391
+frustra	frustra	frūstrā	(in deception, in error); in vain	1045.0	617.0	1.389
+decus	decus1	decus, decoris, n.		1048.0	614.0	1.382
+prodo	prodo	prōdō, prōdere, prōdidī, prōditum		1048.0	614.0	1.382
+absolvo	absolvo			1053.0	613.0	1.38
+sono	sono	sonō, sonāre, sonuī, sonitum		1062.0	608.0	1.369
+alvus	alvus			1065.0	605.0	1.362
+ripa	ripa	rīpa, rīpae, f.		1065.0	605.0	1.362
+averto	averto			1068.0	604.0	1.36
+tenebrae	tenebrae	tenebrae, tenebrārum, f. pl.		1068.0	604.0	1.36
+consumo	consumo	cōnsūmō, cōnsūmere, cōnsūmpsī, cōnsūmptum		1071.0	601.0	1.353
+frumentum	frumentum	frūmentum, frūmentī, n.		1074.0	600.0	1.351
+securus	securus	sēcūrus, sēcūra, sēcūrum		1074.0	600.0	1.351
+superbus	superbus	superbus, superba, superbum		1076.0	599.0	1.348
+vito	vito	vītō, vītāre, vītāvī, vītātum	to shun, seek to escape, avoid, evade	1076.0	599.0	1.348
+aureus	aureus	aureus, aurea, aureum		1081.0	595.0	1.339
+aestimo	aestimo			1083.0	594.0	1.337
+rideo	rideo	rīdeō, rīdēre, rīsī, rīsum		1087.0	591.0	1.33
+propero	propero	properō, properāre, properāvī, properātum		1090.0	589.0	1.326
+egredior	egredior	ēgredior, ēgredī, ēgressus sum		1092.0	587.0	1.321
+descendo	descendo	dēscendō, dēscendere, dēscendī, dēscēnsum		1095.0	585.0	1.317
+egregius	egregius	ēgregius, ēgregia, ēgregium		1097.0	584.0	1.315
+quiesco	quiesco	quiēscō, quiēscere, quiēvī, quiētum	to rest, repose, keep quiet, be inactive, be at peace	1099.0	583.0	1.312
+quietus	quietus	quiētus, quiēta, quiētum	at rest, free from exertion, inactive, in repose			
+respicio	respicio	respicio, respicere, respēxī, respectum		1104.0	581.0	1.308
+celebro	celebro	celebrō, celebrāre, celebrāvī, celebrātum		1106.0	580.0	1.306
+celer	celer1	celer, celeris, celere		1106.0	580.0	1.306
+pergo	pergo	pergō, pergere, perrēxī, perrēctum		1106.0	580.0	1.306
+aevum	aevum	aevum, aevī, n.	neverending time, eternity	1109.0	579.0	1.303
+corrumpo	corrumpo	corrumpō, corrumpere, corrūpī, corruptum		1115.0	577.0	1.299
+scientia	scientia	scientia, scientiae, f.	knowing, knowledge, intelligence, science	1118.0	576.0	1.297
+ingredior	ingredior	ingredior, ingredī, ingressus sum		1119.0	573.0	1.29
+inferus	inferus	īnferus, īnfera, īnferum		1129.0	565.0	1.272
+nuntius	nuntius	nūntius, nūntiī, m.	messenger, message	1131.0	564.0	1.27
+fames	fames	famēs, famis, f.		1140.0	561.0	1.263
+flos	flos	flōs, flōris, m.	blossom, flower	1140.0	561.0	1.263
+iuro	juro	iūrō, iūrāre, iūrāvī, iūrātum		1140.0	561.0	1.263
+vinculum	vinculum	vinculum, vinculī, n.		1140.0	561.0	1.263
+currus	currus	currus, currūs, m.		1144.0	560.0	1.261
+advenio	advenio	adveniō, advenīre, advēnī, adventum		1149.0	559.0	1.258
+terreo	terreo	terreō, terrēre, terruī, territum		1149.0	559.0	1.258
+plerumque		plērumque	for the most part, mostly, commonly, generally	1151.0	558.0	1.256
+acetum		acētum, acētī, n.	vinegar	1155.0	556.0	1.252
+sacerdos	sacerdos1	sacerdōs, sacerdōtis, m./f.		1157.0	555.0	1.249
+adventus	adventus			1161.0	554.0	1.247
+animadverto	animadverto			1164.0	553.0	1.245
+praeceptum	praeceptum	praeceptum, praeceptī, n.		1164.0	553.0	1.245
+frons2	frons2	frōns, frontis, f.		1167.0	551.0	1.24
+limen	limen	līmen, līminis, n.		1170.0	550.0	1.238
+quemadmodum	quemadmodum	quemadmodum		1170.0	550.0	1.238
+recedo	recedo	recēdō, recēdere, recessī, recessum	to go back, fall back, give ground, retire, withdraw, recede	1175.0	548.0	1.234
+hospes	hospes	hospes, hospitis, m.		1185.0	540.0	1.216
+ingratus	ingratus	ingrātus, ingrāta, ingrātum		1185.0	540.0	1.216
+vicinus	vicinus	vīcīnus, vīcīna, vīcīnum	of the neighborhood, near, neighboring	1185.0	540.0	1.216
+fera	fera	fera, ferae, f.	wild beast, wild animal	1196.0	534.0	1.202
+ambo	ambo			1199.0	533.0	1.2
+beatus	beatus	beātus, beāta, beātum		1203.0	529.0	1.191
+accendo2	accendo2	accendō, accendere, accendī, accēnsus		1205.0	528.0	1.189
+accido	accido1	accidō, accidere, accidī	to fall upon, fall to, reach by falling; happen	1205.0	528.0	1.189
+admoneo	admoneo	admoneō, admonēre, admonuī, admonitus		1205.0	528.0	1.189
+interrogo	interrogo	interrogō, interrogāre, interrogāvī, interrogātum		1205.0	528.0	1.189
+admoveo	admoveo	admoveō, admovēre, admōvī, admōtus		1209.0	527.0	1.186
+fax	fax	fax, facis, f.		1209.0	527.0	1.186
+odi	odi	ōdī, ōdisse		1209.0	527.0	1.186
+quomodo	quomodo	quōmodō	in what way, manner? how?;  in the same manner as; just as; as	1209.0	527.0	1.186
+certo2	certo2	certō, certāre, certāvī, certātum		1214.0	526.0	1.184
+vaco	vaco	vacō, vacāre, vacāvī, vacātum		1217.0	525.0	1.182
+nimius	nimius	nimius, nimia, nimium	beyond measure, excessive, too great, too much	1218.0	524.0	1.18
+attingo	attingo	attingō, attingere, attigī, attāctus		1219.0	523.0	1.177
+sensus2	sensus2	sēnsus, sēnsūs, m.		1219.0	523.0	1.177
+privo	privo	prīvō, prīvāre, prīvāvī, prīvātum	to bereave, deprive, rob, strip	1225.0	521.0	1.173
+maestus	maestus	maestus, maesta, maestum		1226.0	520.0	1.171
+nemus	nemus	nemus, nemoris, n.		1232.0	514.0	1.157
+adversarius	adversarius	adversārius, adversāria, adversārium		1235.0	512.0	1.153
+divitiae	divitia	dīvitia, dīvitiae, f.		1239.0	510.0	1.148
+nefas	nefas	nefās		1241.0	509.0	1.146
+vacuus	vacuus	vacuus, vacua, vacuum		1242.0	508.0	1.143
+avidus	avidus	avidus, avida, avidum		1251.0	506.0	1.139
+onus	onus	onus, oneris, n.		1251.0	506.0	1.139
+tener	tener	tener, tenera, tenerum		1254.0	505.0	1.137
+artus2	artus2	artus, artūs, m.		1259.0	503.0	1.132
+ater	ater	āter, ātra, ātrum		1259.0	503.0	1.132
+humus	humus	humus, humī, f.		1259.0	503.0	1.132
+superi	superi	superī, superōrum, m. pl.	they who are above; the living; the gods	1266.0	500.0	1.125
+convivium	convivium	convīvium, convīviī, n.		1273.0	497.0	1.119
+for	for	for, fārī, fātus sum		1273.0	497.0	1.119
+custos	custos	custōs custōdis m.		1277.0	496.0	1.116
+acerbus	acerbus	acerbus, acerba, acerbum		1287.0	493.0	1.11
+aer	aer	āēr, āeris, m.	air, atmosphere, sky, esp. the lower air	1294.0	490.0	1.103
+caelestis	caelestis	caelestis, caeleste		1297.0	488.0	1.098
+veho	veho	vehō, vehere, vēxī, vectum		1297.0	488.0	1.098
+pecus	pecus1	pecus, pecoris, n.		1301.0	487.0	1.096
+decem	1-Dec	decem		1305.0	486.0	1.094
+caecus	caecus	caecus, caeca, caecum		1309.0	485.0	1.092
+altitudo	altitudo			1322.0	479.0	1.078
+volucris	volucris	volucris, volucris, f./m.	bird	1322.0	479.0	1.078
+admitto	admitto			1332.0	475.0	1.069
+damnum	damnum	damnum, damnī, n.		1344.0	471.0	1.06
+factum	factum	factum, factī, n.	deed, act, exploit, achievement	1352.0	466.0	1.049
+arvum	arvum	arvum, arvī, n.		1356.0	465.0	1.047
+vates	vates	vātēs, vātis, m.	foreteller, seer, soothsayer, prophet, diviner	1360.0	463.0	1.042
+ictus2	ictus2	īctus, īctūs, m.		1370.0	459.0	1.033
+iacio	jacio	iaciō, iacere, iēcī, iactum		1374.0	458.0	1.031
+fruor	fruor	fruor, fruī, frūctus sum		1378.0	457.0	1.029
+aggredior	aggredior			1380.0	456.0	1.026
+centum	centum	centum		1385.0	455.0	1.024
+ala	ala			1397.0	452.0	1.017
+fabula	fabula1	fābula, fābulae, f.		1397.0	452.0	1.017
+potens	potens	potēns, potentis		1397.0	452.0	1.017
+porto	porto	portō, portāre, portāvī, portātum		1402.0	451.0	1.015
+dextera	dextera	dextera, dexterae, f.	right hand	1410.0	447.0	1.006
+vanus	vanus	vanus, vana, vanum		1413.0	446.0	1.004
+audax	audax	audāx, audācis		1425.0	443.0	0.997
+abicio	abicio	abiciō, abicere, abiēc¯		1430.0	440.0	0.99
+bos	bos	bōs, bovis, m.		1430.0	440.0	0.99
+pendo	pendo	pendō, pendere, pependī, pēnsum		1449.0	435.0	0.979
+aestus	aestus			1452.0	434.0	0.977
+adiicio	adjicio	adjiciō, adjicere, adjēcī, adjectum	to throw to, cast to, fling at, put, put to, set near	1469.0	428.0	0.963
+vagus	vagus	vagus, vaga, vagum		1475.0	427.0	0.961
+consisto	consisto	cōnsistō, cōnsistere, cōnstitī		1479.0	425.0	0.957
+astrum	astrum	astrum, astrī, n.		1493.0	420.0	0.945
+fidelis	fidelis	fidēlis, fidēle	trusty, trustworthy, faithful, sincere, true	1493.0	420.0	0.945
+adiungo	adjungo	adiungō, adiungere, adiunxī, adiunctus		1502.0	418.0	0.941
+agnosco	agnosco	āgnōscō, āgnōscere, āgnōvī, āgnōtus		1517.0	413.0	0.93
+rogus	rogus	rogus, rogī, m.	funeral pile	1525.0	411.0	0.925
+exsilium	exsilium	exsilium, exsiliī, n.		1531.0	410.0	0.923
+dolus	dolus	dolus, dolī, m.		1537.0	409.0	0.921
+admodum	admodum	admodum		1540.0	408.0	0.918
+arduus	arduus	arduus, ardua, arduum		1540.0	408.0	0.918
+volo2	volo2	volō, volāre, volavī, volātum	to fly	1540.0	408.0	0.918
+assiduus	assiduus	assiduus, assidua, assiduum		1548.0	406.0	0.914
+angustus	angustus	angustus, angusta, angustum		1552.0	405.0	0.912
+pauper	pauper	pauper, pauperis	poor, not wealthy, of small means	1558.0	403.0	0.907
+clamo	clamo	clāmō, clāmāre, clāmāvī, clāmātum	to call, cry out, shout aloud, complain aloud	1562.0	402.0	0.905
+cupido	cupido	cupīdō, cupīdinis, f.				
+adimo	adimo	adimo, adimere, adēmī		1574.0	397.0	0.894
+atqui	atqui	atqui		1577.0	396.0	0.891
+cingo		cingō, cingere, cīnxī, cīnctum		1586.0	394.0	0.887
+nata	nata	nāta, nātae, f.	daughter	1588.0	393.0	0.885
+arbitrium	arbitrium	arbītrium, arbītriī, n.		1590.0	392.0	0.882
+assumo	assumo	assūmō, assūmere, assumpsī, assumptus		1590.0	392.0	0.882
+aestas	aestas	aestās, aestātis, f.		1594.0	391.0	0.88
+precor	precor	precor, precārī, precātus est		1597.0	390.0	0.878
+amicus	amicus1	amīcus, amīca, amīcum	loving, friendly, kind, favorable	1600.0	389.0	0.876
+affirmo				1608.0	385.0	0.867
+abduco				1610.0	384.0	0.864
+domina	domina	domina, dominae, f.	mistress, dame, lady, she who rules	1616.0	383.0	0.862
+aether	aether	aethēr, aetheris, n.	upper air, sky, firmament	1618.0	382.0	0.86
+educo	educo1	ēdūcō, ēdūcere, ēdūxī, ēductum		1618.0	382.0	0.86
+illuc	illic2	illūc	to that place, thither			
+aditus2				1631.0	379.0	0.853
+stella		stella, stellae, f.	star	1631.0	379.0	0.853
+amplector				1638.0	378.0	0.851
+avaritia				1645.0	376.0	0.846
+abstineo				1648.0	374.0	0.842
+ardor				1652.0	373.0	0.84
+aequalis				1656.0	372.0	0.837
+cupidus				1662.0	371.0	0.835
+arcesso				1664.0	370.0	0.833
+artifex				1667.0	369.0	0.831
+no	no	nō, nāre, nāvī		1671.0	368.0	0.828
+arcus				1690.0	363.0	0.817
+que		que	and	1692.0	362.0	0.815
+alioqui				1697.0	361.0	0.813
+adipiscor				1701.0	360.0	0.81
+supplex	supplex	supplex, supplicis	kneeling in entreaty, begging, entreating, humble, submissive, beseeching, suppliant, supplicant	1704.0	359.0	0.808
+sepulcrum		sepulcrum, sepulcrī, n.		1709.0	358.0	0.806
+arceo				1732.0	351.0	0.79
+paratus	paro1	parātus, parāta, parātum	prepared, ready	1732.0	351.0	0.79
+ambitus2				1743.0	349.0	0.786
+affligo				1746.0	348.0	0.783
+mensa		mēnsa, mēnsae, f.		1753.0	346.0	0.779
+abdico				1754.0	345.0	0.777
+aequo	aequo	aequō, aequāre, aequāvī, aequātum	to make equal, equalize	1757.0	344.0	0.774
+aliquantus				1763.0	343.0	0.772
+sanctus		sānctus, sāncta, sānctum		1785.0	336.0	0.756
+arguo				1803.0	333.0	0.75
+quivis	quivis	quīvīs, quaevīs, quodvīs / quidvīs		1809.0	332.0	0.747
+avus				1818.0	329.0	0.741
+aridus				1821.0	328.0	0.738
+adolesco				1830.0	326.0	0.734
+admiror				1846.0	324.0	0.729
+lego1	lego1	lēgo, lēgāre, lēgāvi, lēgātum	to send with a commission, send as ambassador, depute, commission, despatch			
+fugo	fugo	fugō, fugāre, fugāvī, fugātum	to cause to flee, put to flight, drive off, chase away, rout, discomfit	1854.0	322.0	0.725
+assentior				1866.0	320.0	0.72
+attineo				1870.0	319.0	0.718
+regius		rēgius, rēgia, rēgium	of a king, kingly, royal, regal	1870.0	319.0	0.718
+voveo	voveo	voveō, vovēre, vōvī, vōtum	to vow, promise solemnly, engage religiously, pledge, devote, dedicate, consecrate	1870.0	319.0	0.718
+attollo				1886.0	317.0	0.714
+celeritas		celeriter		1886.0	317.0	0.714
+studeo		studeō, studēre, studuī		1897.0	315.0	0.709
+assuesco				1903.0	314.0	0.707
+animalis				1907.0	313.0	0.705
+agger				1915.0	310.0	0.698
+dormio		dormiō, dormīre, dormīvī, dormītum		1919.0	309.0	0.696
+attono				1930.0	307.0	0.691
+albus	albus	albus, alba, album	white	1939.0	305.0	0.687
+appeto				1947.0	304.0	0.684
+antequam		antequam		1956.0	303.0	0.682
+hortor		hortor, hortārī, hortātus sum	to urge, press, incite, instigate, encourage, cheer, exhort	1956.0	303.0	0.682
+atrox				1965.0	302.0	0.68
+antrum				1990.0	297.0	0.669
+properus	properus	properus, propera, properum	quick, speedy, hastening	1990.0	297.0	0.669
+armatus				1995.0	296.0	0.666
+appono				1998.0	295.0	0.664
+castus	castus1	castus, casta, castum		1999.0	294.0	0.662
+parcus	parcus	parcus, parca, parcum	sparing, frugal, thrifty, economical, stingy, penurious, parsimonious	2117.0	271.0	0.61
+sonus2	sonus2	sōnus, sōna, sōnum	resounding	2191.0	259.0	0.583
+alias	alias	aliās	at another time, some other time, at other times	2303.0	243.0	0.547
+libo	libo	libō, libāre, libāvī, libātum	to take out as a sample, take a little of	2327.0	239.0	0.538
+istic2	istic2	istīc	there, in that place, where you are			
+pellis	pellis	pellis, pellis, f.	hide, skin, leather	2565.0	210.0	0.473
+coma	coma	coma, comae, f.	the hair of the head, hair	2672.0	199.0	0.448
+illinc	illinc	illinc	from that place, thence, from yonder	2704.0	196.0	0.441
+sonus	sonus1	sonus, sonī, m.	noise, sound	2811.0	185.0	0.416
+vestio	vestio	vestiō, vestīre, vestīvī / vestiī, vestītum	to cover with a garment, provide with clothing, dress, clothe, vest	2811.0	185.0	0.416
+amans	amo	amāns, amantis, m./f.	lover	2828.0	183.0	0.412
+fessus	fessus	fessus, fessa, fessum	wearied, tired, fatigued, exhausted, worn out, weak, feeble, infirm	2890.0	178.0	0.401
+nescius	nescius	nescius, nescia, nescium	unknowing, ignorant, unaware	2959.0	172.0	0.387
+amica	amica	amīca, amīcae, f. 	female friend	3024.0	166.0	0.374
+acer	acer1	acer, aceris, n.	maple-tree	3090.0	161.0	0.362
+natus2	natus2	nātū		3307.0	146.0	0.329
+rogum	rogus	rogum, rogī, n.	funeral pile	3415.0	139.0	0.313
+iratus	irascor	īrātus, īrāta, īrātum	angered, enraged, angry, violent, furious	3622.0	127.0	0.286
+mundus	mundus1	mundus, munda, mundum	clean, neat, elegant	3636.0	126.0	0.284
+laetus2	laetus2	laetus, laetī, m.	foreign bondman who received a piece of land to cultivate	3879.0	115.0	0.259
+lacrimo	lacrimo	lacrimō, lacrimāre, lacrimāvī, lacrimātum	to shed tears, weep	3946.0	111.0	0.25
+pugnus	pugnus	pugnus, pugnī, m.	fist	4000.0	108.0	0.243
+culpo	culpo	culpō, culpāre, culpāvī, culpātus	to reproach, blame, censure, reprove, disapprove, condemn	4131.0	103.0	0.232
+mereor	mereor	mereor, merērī, meritus	to deserve, merit, be entitled to	4343.0	94.0	0.212
+navus	navus	nāvus, nāva, navum	busy, diligent, assiduous, active	4450.0	90.0	0.203
+cadus	cadus	cadus, cadī, m.	large vessel for liquids, wine-jar, jug	4769.0	80.0	0.18
+cornus	cornus	cornus , cornī, f	cornel cherry-tree	4799.0	79.0	0.178
+paro2	paro2	parō, parāre, parāvī, parātum	to make equal	5408.0	65.0	0.146
+comiter	comiter	cōmiter	courteously, affably, kindly	5535.0	62.0	0.14
+istinc	istinc	istinc	from there, thence, from where you are	6091.0	52.0	0.117
+aedis	aedis	aedis, aedis, f.	dwelling of the gods, temple, sanctuary			
+altus2	altus2	altus, altūs, m.	nourishing, support			
+aucto	aucto	auctō, auctāre, auctāvī, auctātus	to increase much, prosper			
+caelum	caelum1	caelum, caelī, n.	the chisel or burin of the sculptor or engraver, a graver			
+caelus	caelus	caelus, caelī, m.	the sky, heaven, heavens, vault of heaven	6229.0	50.0	0.113
+campus2	campus2	campus, campī, m.	sea animal			
+careum	careum	cāreum, cāreī, n.	cumin; caraway			
+comis	comis	cōmis, cōme	courteous, affable, kind, obliging, friendly, loving			
+discus	discus1	discus, discī, m.	quoit			
+diva	diva	dīva, dīvae, f.	goddess	3376.0	142.0	0.32
+dividus	dividus	dīvidus, dīvida, dīvidum	separated			
+divum	divus1	dīvum, dīvī, n.	sky			
+erro2	erro2	errō, errōnis, m.	wanderer, vagabond			
+fides2	fides2	fidēs, fidis, f.	chord, string (of a musical instrument)			
+fidius	Fidius	mediusfidius	heaven help me	5590.0	61.0	0.137
+istuc	istuc	istūc	thither, to you, to where you are, in that direction			
+itaque	ita	itaque	and so, and thus, and accordingly			
+litus2	litus2	litus, litūs, m,	smearing, annointing	6091.0	52.0	0.117
+longe		longē	a long way off, far, far off, at a distance 			
+luno	luno					
+male	malus1	male	badly, ill, wrongly, wickedly; for parum, or nōn, not, un-			
+medica	medica2	medica, medicae, f. 	female physician	5744.0	58.0	0.131
+medius2	medius2	medius	by Zeus			
+miro	miro	mīrō, mīrāre, mīrāvī, mīrātum	to wonder			
+nōs	nōs	nōs, nostrum / nostrī, nōbīs, nōs, nōbis	we, us			
+ornus	ornus	ornus, ornī, f.	wild mountain-ash			
+parens	parens1	pārens, pārentis	obedient			
+pario	pario1	pariō, pariāre, pariāvī, pariātum	to make equal			
+parito	parito	paritō, paritāre, paritāvī, paritātum	to prepare, get ready, be about			
+paulo	paulum	paulō	by a little, a little			
+paulum	paulum	paulum	a little, somewhat			
+planus2	planus2	planus, planī, m.	juggler, imposter, cheat			
+portus	portus	portus, portūs, m.	harbor, haven, port	916.0	709.0	1.596
+praes	praes	praes, praedis, m.	surety, bondsman			
+praesto2	praesto2	praestō, praestāre, praestitī, praestitum		384.0	1630.0	3.669
+primum	primus	prīmum	at first, first, in the first place, in the beginning, before all else			
+privus	privus	prīvus, a, um	each, every individual, one each			
+proficisco	proficisco	proficiscō, proficiscere	to set forward, set out, start, go, march, depart			
+quominus	quo2	quōminus	that not, from (after verbs of hindering, preventing, etc.)			
+sero2	sero2	serō, serere, seruī, sertus	to bind together, interweave, entwine			
+sero3	sero3	sērō	late, at a late hour			
+solum2	solus1	sōlum	alone, only, merely, barely			
+tantum	tantus	tantum	so much, so greatly, to such a degree, so far, so long, so			
+tantum2	tantus	tantum	only, merely			
+tantummodo	tantus	tantummodo				
+terreus	terreus	terreus, terrea, terreum	of earth, earthen			
+tertius2	tertius2	tertius, tertia, tertium	thirteenth			
+vero	verus	vērō	in truth, in fact, certainly, truly, to be sure, surely, assuredly			

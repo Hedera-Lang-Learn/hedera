@@ -2,7 +2,8 @@ from typing import List
 
 from django.db import models
 
-from .utils import strip_macrons
+
+# from .utils import strip_macrons
 
 
 class Lemma(models.Model):
@@ -71,12 +72,12 @@ class FormToLemma(models.Model):
                 form=form,
                 lemma=lemma,
             )
-            FormToLemma.objects.get_or_create(
-                context=context,
-                lang=lang,
-                form=strip_macrons(form),
-                lemma=strip_macrons(lemma),
-            )
+            # FormToLemma.objects.get_or_create(
+            #     context=context,
+            #     lang=lang,
+            #     form=strip_macrons(form),
+            #     lemma=strip_macrons(lemma),
+            # )
 
     def get_lemma(self):
         return self.lemma.to_dict()
