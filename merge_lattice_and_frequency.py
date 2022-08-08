@@ -17,8 +17,8 @@ df4 = pd.merge(df1, df2, on="lemma", how="outer")
 
 df5 = pd.merge(df4, df3, on="lemma", how="outer")
 df5.set_index("lemma", inplace=True)
-# Replaces the zeros with blanks in the def column
-df5["def"].where(df5["def"] == 0, "", inplace=True)
+# Replaces the zeros with blanks in the def column - note does not work atm
+# df5["def"].where(df5["def"] == 0, "", inplace=True)
 
 # Combines like rows
 g = df5.groupby(by="lemma").agg({"def": "sum", "rank": "first", "count": "first", "rate": "first"})
