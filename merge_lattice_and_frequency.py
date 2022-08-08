@@ -2,25 +2,27 @@ import pandas as pd
 
 
 """
-Performs 2 outer joins using distinct_lemmas.csv as the base to match against shortdefs.csv and frequencies.csv
-Outputs the merged tables into a tsv to migrate into the lemmas table
+Performs 3 outer joins using distinct_lemmas.csv as the base to match against shortdefs.csv, frequencies.csv, and ive_lattice_new
+The script will then output the merged tables into a tsv to migrate into the lemmas table
 """
-df1 = pd.read_csv("import-data/distinct_lemmas.csv")
-df2 = pd.read_csv("import-data/shortdefs.csv")
+distinct_lemmas = pd.read_csv("import-data/distinct_lemmas.csv")
+short_defs = pd.read_csv("import-data/shortdefs.csv")
 
 # omitted lookupform
-df3 = pd.read_csv("import-data/frequencies.csv", usecols=["lemma", "rank", "count", "rate"])
+lemma_frequencies = pd.read_csv("import-data/frequencies.csv", usecols=["lemma", "rank", "count", "rate"])
+ivy_lattice = pd.read_csv("import-data/ivy_lattice_new.csv", usecols=["lemma", "alt_lemma", "label"])
 
-df1["lemma"] = df1["lemma"].str.lower()
-df2["lemma"] = df2["lemma"].str.lower()
-df4 = pd.merge(df1, df2, on="lemma", how="outer")
+distinct_lemmas["lemma"] = distinct_lemmas["lemma"].str.lower()
+short_defs["lemma"] = short_defs["lemma"].str.lower()
+merge_distinct_lemmas_short_defs = pd.merge(distinct_lemmas, short_defs, on="lemma", how="outer")
 
-df5 = pd.merge(df4, df3, on="lemma", how="outer")
-df5.set_index("lemma", inplace=True)
-# Replaces the zeros with blanks in the def column - note does not work atm
-# df5["def"].where(df5["def"] == 0, "", inplace=True)
+merge_lemmas_short_defs_frequencies = pd.merge(merge_distinct_lemmas_short_defs, lemma_frequencies, on="lemma", how="outer")
+merge_lemmas_short_defs_frequencies.set_index("lemma", inplace=True)
 
-# Combines like rows
-g = df5.groupby(by="lemma").agg({"def": "sum", "rank": "first", "count": "first", "rate": "first"})
+final_aggregated_lemmas = pd.merge(merge_lemmas_short_defs_frequencies, ivy_lattice, on="lemma", how="outer")
+final_aggregated_lemmas[["def"]] = final_aggregated_lemmas[["def"]].fillna("")
 
-g.to_csv("distinct_lemma_short_defs_frequencies.tsv", sep="\t")
+# Combines entries with same lemma into single row
+grouped_by_lemmas = final_aggregated_lemmas.groupby(by="lemma").agg({"def": "sum", "alt_lemma": "first", "label": "first", "rank": "first", "count": "first", "rate": "first"})
+
+grouped_by_lemmas.to_csv("distinct_lemma_short_defs_frequencies.tsv", sep="\t")
