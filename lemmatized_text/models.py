@@ -203,7 +203,6 @@ class LemmatizedText(models.Model):
             "learnerUrl": self.learner_url,
         }
 
-
     def update_token(self, user, token_index, lemma_id, gloss_ids, resolved):
         self.data[token_index]["lemma_id"] = lemma_id
         self.data[token_index]["gloss_ids"] = gloss_ids
@@ -280,7 +279,7 @@ class LemmatizationLog(models.Model):
     # Changed What Attributes
     token_index = models.IntegerField()
 
-## This requires some more thought ####
+#   ***This requires some more thought***
 #    lemma = models.ForeignKey("Lemmatization.Lemma")
 #    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
     resolved = models.CharField(max_length=100)
