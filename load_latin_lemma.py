@@ -11,14 +11,13 @@ print(f"Begin latin lemma import (size: {total_lines})")
 
 with open(file_path) as f:
     csv_reader = csv.DictReader(f, delimiter="\t")
-
-    count_1 = 0
-    batch_size = 2
+    count = 0
+    batch_size = 5000
     batch = []
     all_lemmas_qs = Lemma.objects.values()
     lemmas_data = {q["lemma"]: q for q in all_lemmas_qs}
     for row in tqdm(csv_reader, total=total_lines):
-        count_1 += 1
+        count += 1
         val = list(row.values())
         lemma, alt_lemma, label, short_def, rank, count, rate = val
         data = dict(lang="lat", lemma=lemma.lower())
@@ -45,13 +44,13 @@ with open(file_path) as f:
             data["rate"] = 0.000
         if not label:
             data["label"] = lemma.lower()
-
+        # only adds to the batch lemma does not already exist in the database
         if not lemma_exist and lemma:
             batch.append(Lemma(**data))
 
         if len(batch) == batch_size:
             Lemma.objects.bulk_create(batch, batch_size)
             batch = []
-            count_1 = batch_size
+            count = batch_size
     if len(batch) > 0:
         Lemma.objects.bulk_create(batch, batch_size)
