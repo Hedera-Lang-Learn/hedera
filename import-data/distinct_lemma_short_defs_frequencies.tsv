@@ -1,588 +1,4 @@
 lemma	def	alt_lemma	label	rank	count	rate
-Academia				4196.0	100.0	0.225
-Academicus				4614.0	85.0	0.191
-Achaia				4244.0	98.0	0.221
-Achillas				5535.0	62.0	0.14
-Achilles				2849.0	182.0	0.41
-Achivus				5408.0	65.0	0.146
-Aeacides				5109.0	71.0	0.16
-Aebutius				5896.0	55.0	0.124
-Aedui				3259.0	149.0	0.335
-Aegaeus				6161.0	51.0	0.115
-Aegyptius				2774.0	188.0	0.423
-Aegyptus				2751.0	191.0	0.43
-Aelius				4838.0	78.0	0.176
-Aemilianus				4315.0	95.0	0.214
-Aemilius				3011.0	167.0	0.376
-Aeneades				6161.0	51.0	0.115
-Aeneas				1809.0	332.0	0.747
-Aeschines				5206.0	69.0	0.155
-Aesopus				5896.0	55.0	0.124
-Aetne				4988.0	74.0	0.167
-Afranius				4315.0	95.0	0.214
-Africa				1631.0	379.0	0.853
-Africanus				2050.0	284.0	0.639
-Agamemnon				5801.0	57.0	0.128
-Agrippa				3494.0	134.0	0.302
-Agrippina				3050.0	164.0	0.369
-Aiax				4364.0	93.0	0.209
-Albani				4422.0	91.0	0.205
-Albanus				4450.0	90.0	0.203
-Alcides				2733.0	193.0	0.434
-Alemannus				6091.0	52.0	0.117
-Alexander				1173.0	549.0	1.236
-Alexandrea				3393.0	141.0	0.317
-Allobroges				5351.0	66.0	0.149
-Alpis				2517.0	216.0	0.486
-Amphitruo				5641.0	60.0	0.135
-Amyntas				5842.0	56.0	0.126
-Anchises				5488.0	63.0	0.142
-Angli				2487.0	219.0	0.493
-Annius				5351.0	66.0	0.149
-Antigonus				5963.0	54.0	0.122
-Antiochea				5488.0	63.0	0.142
-Antiochus				3595.0	128.0	0.288
-Antipater				5167.0	70.0	0.158
-Antonius				513.0	1218.0	2.742
-Aonius				6161.0	51.0	0.115
-Apollinaris				4838.0	78.0	0.176
-Apollo				1813.0	331.0	0.745
-Appius				2026.0	289.0	0.651
-Appulia				5744.0	58.0	0.131
-Aprilis				3038.0	165.0	0.371
-Apronius				3050.0	164.0	0.369
-Argivus				5688.0	59.0	0.133
-Argolicus				4268.0	97.0	0.218
-Argus				2828.0	183.0	0.412
-Aristo				5590.0	61.0	0.137
-Aristoteles				2487.0	219.0	0.493
-Armenia				4077.0	105.0	0.236
-Armenius				3808.0	118.0	0.266
-Arpinas				5443.0	64.0	0.144
-Ascanius				6023.0	53.0	0.119
-Asia				884.0	736.0	1.657
-Asiaticus				4799.0	79.0	0.178
-Asinius				3832.0	117.0	0.263
-Astura				5298.0	67.0	0.151
-Athenae				1512.0	415.0	0.934
-Atheniensis				1866.0	320.0	0.72
-Atilius				5245.0	68.0	0.153
-Atrides				5688.0	59.0	0.133
-Attice				3961.0	110.0	0.248
-Attici				3860.0	116.0	0.261
-Atticus				962.0	672.0	1.513
-Attius				3677.0	124.0	0.279
-Augustinus				3595.0	128.0	0.288
-Augustus				1045.0	617.0	1.389
-Aulus				1768.0	342.0	0.77
-Aurelius				5896.0	55.0	0.124
-Ausonia				4343.0	94.0	0.212
-Ausonius				3909.0	113.0	0.254
-Aventinus				5744.0	58.0	0.131
-Avernus				5060.0	72.0	0.162
-B				3024.0	166.0	0.374
-Bacchius				5801.0	57.0	0.128
-Bacchus				2756.0	190.0	0.428
-Baiae				5744.0	58.0	0.131
-Balbus				3259.0	149.0	0.335
-Bassus				4196.0	100.0	0.225
-Batavus				4710.0	82.0	0.185
-Bellona				6229.0	50.0	0.113
-Bessus				5206.0	69.0	0.155
-Bibulus				4614.0	85.0	0.191
-Britanni				5206.0	69.0	0.155
-Britannia				1830.0	326.0	0.734
-Britannicus				5167.0	70.0	0.158
-Brundisium				2474.0	220.0	0.495
-Brutus				854.0	753.0	1.695
-Cadmus				5488.0	63.0	0.142
-Caecilius				2914.0	176.0	0.396
-Caecina				2721.0	194.0	0.437
-Caelius				2517.0	216.0	0.486
-Caepio				4951.0	75.0	0.169
-Caesar				154.0	3657.0	8.232
-Campani				5167.0	70.0	0.158
-Campania				5109.0	71.0	0.16
-Campanus				5022.0	73.0	0.164
-Capitolinus				4153.0	102.0	0.23
-Capitolium				1656.0	372.0	0.837
-Cappadocia				5298.0	67.0	0.151
-Capua				2606.0	206.0	0.464
-Carneades				4387.0	92.0	0.207
-Carthaginiensis				4216.0	99.0	0.223
-Carthago				2010.0	291.0	0.655
-Cassius				1912.0	312.0	0.702
-Castor				5245.0	68.0	0.153
-Casus		Casus2	Cāsus, Casī, m.			
-Catilina				1927.0	308.0	0.693
-Cato				786.0	818.0	1.841
-Catullus				4492.0	89.0	0.2
-Catulus				2577.0	209.0	0.47
-Celsus				4988.0	74.0	0.167
-Cerealis				4578.0	86.0	0.194
-Ceres				4526.0	88.0	0.198
-Cethegus				5590.0	61.0	0.137
-Chaldaei				5590.0	61.0	0.137
-Chaos				5963.0	54.0	0.122
-Charybdis				6229.0	50.0	0.113
-Chremes				4557.0	87.0	0.196
-Christianus				1914.0	311.0	0.7
-Christus				856.0	751.0	1.69
-Chrysippus				3024.0	166.0	0.374
-Chrysogonus				5744.0	58.0	0.131
-Cicero				291.0	2049.0	4.612
-Cilicia				4102.0	104.0	0.234
-Cinna				4614.0	85.0	0.191
-Circensis				5408.0	65.0	0.146
-Claudius				1021.0	632.0	1.423
-Cleanthes				6229.0	50.0	0.113
-Cluentius				4686.0	83.0	0.187
-Colchus				4268.0	97.0	0.218
-Constantinopolis				6161.0	51.0	0.115
-Constantinus				4883.0	77.0	0.173
-Corbulo				4951.0	75.0	0.169
-Corinthius				5842.0	56.0	0.126
-Corinthus				4838.0	78.0	0.176
-Cornelius				1391.0	454.0	1.022
-Cos				6229.0	50.0	0.113
-Cotta				2665.0	200.0	0.45
-Crassus				1015.0	636.0	1.432
-Cumanum				6229.0	50.0	0.113
-Curius				3078.0	162.0	0.365
-Cynthia				5842.0	56.0	0.126
-Cyrus				4578.0	86.0	0.194
-D				1099.0	583.0	1.312
-Daemon				5896.0	55.0	0.124
-Danaus				2959.0	172.0	0.387
-Dardanius				5641.0	60.0	0.135
-Dardanus				5688.0	59.0	0.133
-Dareus				2327.0	239.0	0.538
-Davus				5896.0	55.0	0.124
-December				5298.0	67.0	0.151
-Decimus				1247.0	507.0	1.141
-Decius				3339.0	144.0	0.324
-Deiotarus				4883.0	77.0	0.173
-Delius				5351.0	66.0	0.149
-Delphi				6023.0	53.0	0.119
-Demetrius				4951.0	75.0	0.169
-Democritus				3776.0	119.0	0.268
-Demosthenes				2914.0	176.0	0.396
-Diana				2626.0	204.0	0.459
-Dido				5641.0	60.0	0.135
-Diodorus				6091.0	52.0	0.117
-Diogenes				4658.0	84.0	0.189
-Dionysius				3339.0	144.0	0.324
-Dis				6091.0	52.0	0.117
-Dolabella				1907.0	313.0	0.705
-Domitianus				4364.0	93.0	0.209
-Domitius				4131.0	103.0	0.232
-Drusus				2251.0	251.0	0.565
-Dyrrachium				6229.0	50.0	0.113
-Ennius				2419.0	226.0	0.509
-Eous				3879.0	115.0	0.259
-Ephesus				4838.0	78.0	0.176
-Epicurus				1638.0	378.0	0.851
-Epirus				4291.0	96.0	0.216
-Erebus				6161.0	51.0	0.115
-Erinys				5842.0	56.0	0.126
-Etruria				2898.0	177.0	0.398
-Etruscus				2327.0	239.0	0.538
-Eumolpus				5060.0	72.0	0.162
-Euphrates				3776.0	119.0	0.268
-Euripides				5688.0	59.0	0.133
-Europe				3808.0	118.0	0.266
-Fabius				1182.0	542.0	1.22
-Fabricius				3677.0	124.0	0.279
-Falernum				5443.0	64.0	0.144
-Fannius				3721.0	122.0	0.275
-Faunus				6023.0	53.0	0.119
-Favorinus				4450.0	90.0	0.203
-Fidius		Fidius	mediusfidius	5590.0	61.0	0.137
-Flaccus				2369.0	233.0	0.524
-Flaminius				5060.0	72.0	0.162
-Flavius				4799.0	79.0	0.178
-Fonteius				5351.0	66.0	0.149
-Formianum				4838.0	78.0	0.176
-Fufius				5590.0	61.0	0.137
-Fulvius				6091.0	52.0	0.117
-Furius				3403.0	140.0	0.315
-Gabinius				3776.0	119.0	0.268
-Gaius				238.0	2472.0	5.564
-Galba				2145.0	267.0	0.601
-Galla				5488.0	63.0	0.142
-Gallia				955.0	679.0	1.528
-Gallicus				3121.0	158.0	0.356
-Gallius				3755.0	120.0	0.27
-Gallus				1013.0	639.0	1.438
-Gallus4				4951.0	75.0	0.169
-Gellius				5206.0	69.0	0.155
-Germani				1897.0	315.0	0.709
-Germania				3243.0	150.0	0.338
-Germanicus				1866.0	320.0	0.72
-Getes				3808.0	118.0	0.266
-Geticus				6229.0	50.0	0.113
-Giton				5408.0	65.0	0.146
-Gnaeus				874.0	742.0	1.67
-Gorgias				6161.0	51.0	0.115
-Gothi				5744.0	58.0	0.131
-Gracchus				2055.0	283.0	0.637
-Gradivus				5408.0	65.0	0.146
-Graece				2859.0	181.0	0.407
-Graecia				1562.0	402.0	0.905
-Graecus				368.0	1688.0	3.8
-Graii				2055.0	283.0	0.637
-Haemonius				5896.0	55.0	0.124
-Hannibal				2084.0	278.0	0.626
-Hector				3307.0	146.0	0.329
-Helvetii				4988.0	74.0	0.167
-Heraclius				6161.0	51.0	0.115
-Hercules				344.0	1764.0	3.971
-Herculeus				3078.0	162.0	0.365
-Hernicus				4364.0	93.0	0.209
-Hesperie				5488.0	63.0	0.142
-Hesperius				5408.0	65.0	0.146
-Hiberus				3121.0	158.0	0.356
-Hippolytus				5590.0	61.0	0.137
-Hirtius				4951.0	75.0	0.169
-Hispania				2010.0	291.0	0.655
-Hispanus				4838.0	78.0	0.176
-Hister				5963.0	54.0	0.122
-Homerus				2388.0	231.0	0.52
-Horatius				3832.0	117.0	0.263
-Hortensius				2898.0	177.0	0.398
-Hymen				5535.0	62.0	0.14
-III				5535.0	62.0	0.14
-IIII				3537.0	131.0	0.295
-Ianuarius				3755.0	120.0	0.27
-Ianus				5245.0	68.0	0.153
-Iason				5245.0	68.0	0.153
-Idaeus				4557.0	87.0	0.196
-Ide				5408.0	65.0	0.146
-Idus				1927.0	308.0	0.693
-Iesus				5896.0	55.0	0.124
-Iius				4526.0	88.0	0.198
-Iliacus				4910.0	76.0	0.171
-Illyricus				3899.0	114.0	0.257
-India				5060.0	72.0	0.162
-Indus				3721.0	122.0	0.275
-Isocrates				5896.0	55.0	0.124
-Italia				651.0	982.0	2.21
-Italicus				5488.0	63.0	0.142
-Italus				3448.0	137.0	0.308
-Iudaei				5022.0	73.0	0.164
-Iugurtha				2811.0	185.0	0.416
-Iulianus				2428.0	225.0	0.506
-Iulius				1235.0	512.0	1.153
-Iunius				2577.0	209.0	0.47
-Iuno				1638.0	378.0	0.851
-Iuppiter				394.0	1597.0	3.595
-Kalendae				1177.0	544.0	1.225
-Labienus				3480.0	135.0	0.304
-Lacedaemonius				2350.0	235.0	0.529
-Laelius				2379.0	232.0	0.522
-Laodicea				5744.0	58.0	0.131
-Lares				2474.0	220.0	0.495
-Latinus				880.0	738.0	1.661
-Latinus2				2534.0	214.0	0.482
-Latium				4291.0	96.0	0.216
-Latius				2756.0	190.0	0.428
-Laurens				6161.0	51.0	0.115
-Laus		Laus2	Laus, Laudis, f.			
-Lentulus				1785.0	336.0	0.756
-Lepidus				2890.0	178.0	0.401
-Liber				4740.0	81.0	0.182
-Libya				3207.0	152.0	0.342
-Libycus				3927.0	112.0	0.252
-Libys				6091.0	52.0	0.117
-Licinius				3289.0	147.0	0.331
-Ligarius				5022.0	73.0	0.164
-Livia				5351.0	66.0	0.149
-Livius				4614.0	85.0	0.191
-Lucanus				4686.0	83.0	0.187
-Lucilius				1814.0	330.0	0.743
-Lucius				355.0	1742.0	3.921
-Lucretius				4044.0	106.0	0.239
-Lucullus				3038.0	165.0	0.371
-Lyaeus				5688.0	59.0	0.133
-Lycius				5842.0	56.0	0.126
-Lycurgus				5245.0	68.0	0.153
-Macedones				2534.0	214.0	0.482
-Macedonia				2879.0	179.0	0.403
-Maecenas				4838.0	78.0	0.176
-Magnus				2419.0	226.0	0.509
-Maius				3307.0	146.0	0.329
-Mamertinus				4988.0	74.0	0.167
-Manilius				6229.0	50.0	0.113
-Manlius				2586.0	208.0	0.468
-Marcellus				1870.0	319.0	0.718
-Marcius				3276.0	148.0	0.333
-Marcus				244.0	2402.0	5.407
-Marius				2225.0	254.0	0.572
-Mars				1934.0	306.0	0.689
-Marsus				4910.0	76.0	0.171
-Martius				1796.0	334.0	0.752
-Massilia				5963.0	54.0	0.122
-Massiliensis				6023.0	53.0	0.119
-Maurus				4216.0	99.0	0.223
-Medea				4492.0	89.0	0.2
-Medus				5535.0	62.0	0.14
-Memmius				4686.0	83.0	0.187
-Mercurius				4244.0	98.0	0.221
-Messalla				3403.0	140.0	0.315
-Metellus				1446.0	436.0	0.981
-Milo				2308.0	242.0	0.545
-Miltiades				5963.0	54.0	0.122
-Minerva				2565.0	210.0	0.473
-Minucius				5167.0	70.0	0.158
-Mithridates				4268.0	97.0	0.218
-Mucianus				4883.0	77.0	0.173
-Murena				6091.0	52.0	0.117
-Musa				2534.0	214.0	0.482
-Mutina				5842.0	56.0	0.126
-Mutius				4315.0	95.0	0.214
-Naevius				3961.0	110.0	0.248
-Neapolis				5963.0	54.0	0.122
-Neptunus				3168.0	155.0	0.349
-Nero				1378.0	457.0	1.029
-Neronius				5488.0	63.0	0.142
-Nigidius				6161.0	51.0	0.115
-Nilus				4169.0	101.0	0.227
-Nonae				3415.0	139.0	0.313
-Numa				3961.0	110.0	0.248
-Numida				3739.0	121.0	0.272
-Oceanus				1970.0	301.0	0.678
-Octavia				5744.0	58.0	0.131
-Octavius				3927.0	112.0	0.252
-Olympius				5060.0	72.0	0.162
-Olympus				4450.0	90.0	0.203
-Oppianicus				2959.0	172.0	0.387
-Oppius				4557.0	87.0	0.196
-Orcus				5408.0	65.0	0.146
-Orestes				4838.0	78.0	0.176
-Orpheus				5022.0	73.0	0.164
-Otho				2440.0	224.0	0.504
-Pacuvius				6023.0	53.0	0.119
-Paean				5590.0	61.0	0.137
-Paetus				5443.0	64.0	0.144
-Palatinus				6023.0	53.0	0.119
-Palladius				4988.0	74.0	0.167
-Pallas				3231.0	151.0	0.34
-Pallas2				5963.0	54.0	0.122
-Pamphilus				3739.0	121.0	0.272
-Panaetius				5206.0	69.0	0.155
-Pansa				3985.0	109.0	0.245
-Papirius				3698.0	123.0	0.277
-Parca				5408.0	65.0	0.146
-Parmenio				4910.0	76.0	0.171
-Parmeno				5245.0	68.0	0.153
-Parrhasius				5842.0	56.0	0.126
-Parthicus				6091.0	52.0	0.117
-Parthus				2084.0	278.0	0.626
-Paulinus				4387.0	92.0	0.207
-Paulus		Paulus2	Paulus, Paulī, m.	2785.0	187.0	0.421
-Pax		Pax2	Pax, Pācis, m.			
-Pelasgus				6091.0	52.0	0.117
-Pelops				6091.0	52.0	0.117
-Penates				1893.0	316.0	0.711
-Perdiccas				5351.0	66.0	0.149
-Pergamum				5351.0	66.0	0.149
-Peripateticus				3432.0	138.0	0.311
-Persa				2313.0	241.0	0.542
-Perses				3721.0	122.0	0.275
-Persicus				5963.0	54.0	0.122
-Phaedrias				5488.0	63.0	0.142
-Pharius				5535.0	62.0	0.14
-Phasis				5641.0	60.0	0.135
-Philippus				2005.0	292.0	0.657
-Philotimus				6161.0	51.0	0.115
-Phoebe				5641.0	60.0	0.135
-Phoebus				1316.0	482.0	1.085
-Phryges				4988.0	74.0	0.167
-Phrygia				4244.0	98.0	0.221
-Phrygius				3808.0	118.0	0.266
-Piso				2296.0	245.0	0.551
-Plancius				5022.0	73.0	0.164
-Plato				1416.0	445.0	1.002
-Plautius				5167.0	70.0	0.158
-Plautus				4102.0	104.0	0.234
-Plinius				1545.0	407.0	0.916
-Poenus				1850.0	323.0	0.727
-Pollio				3636.0	126.0	0.284
-Pollux				6091.0	52.0	0.117
-Pompeianus				3808.0	118.0	0.266
-Pompeius				395.0	1595.0	3.59
-Pomponius				4044.0	106.0	0.239
-Pomptinus				5896.0	55.0	0.124
-Ponticus				5488.0	63.0	0.142
-Popilius				4153.0	102.0	0.23
-Posidonius				6161.0	51.0	0.115
-Postumius				4000.0	108.0	0.243
-Praeterita				6161.0	51.0	0.115
-Priamus				3194.0	153.0	0.344
-Priscus				4799.0	79.0	0.178
-Prometheus				6023.0	53.0	0.119
-Proserpina				5896.0	55.0	0.124
-Psyche				4883.0	77.0	0.173
-Ptolemaeus				5590.0	61.0	0.137
-Ptolomaeus				5443.0	64.0	0.144
-Publilius				5896.0	55.0	0.124
-Publius				303.0	1984.0	4.466
-Punicus				2986.0	170.0	0.383
-Pyrrhus				3755.0	120.0	0.27
-Pythagoras				3808.0	118.0	0.266
-Quintius				2251.0	251.0	0.565
-Quintus		Quintus2	Quīntus, Quīntī, m.	542.0	1165.0	2.622
-Quirinus				4710.0	82.0	0.185
-Quiris				2055.0	283.0	0.637
-Rabirius				6023.0	53.0	0.119
-Ravenna				6091.0	52.0	0.117
-Remi				5443.0	64.0	0.144
-Rhenus				2241.0	252.0	0.567
-Rhodanus				5744.0	58.0	0.131
-Rhodii				4883.0	77.0	0.173
-Rhodos				4526.0	88.0	0.198
-Roma		Roma	Rōma, Rōmae, f.	249.0	2326.0	5.236
-Romanus				109.0	5027.0	11.316
-Romulus				2398.0	229.0	0.515
-Roscius				2327.0	239.0	0.538
-Rufus				5688.0	59.0	0.133
-Rufus2				5963.0	54.0	0.122
-Rullus				6161.0	51.0	0.115
-Rutilius				4614.0	85.0	0.191
-Rutulus				3721.0	122.0	0.275
-Sabinus				1809.0	332.0	0.747
-Sallustius				3519.0	132.0	0.297
-Samius				6229.0	50.0	0.113
-Samnites				1727.0	353.0	0.795
-Samnium				4387.0	92.0	0.207
-Sardinia				5535.0	62.0	0.14
-Sarmatae				5963.0	54.0	0.122
-Saturnia				4838.0	78.0	0.176
-Saturninus				4364.0	93.0	0.209
-Saturnus				4799.0	79.0	0.178
-Saxo				5443.0	64.0	0.144
-Scaevola				3090.0	161.0	0.362
-Scapula				4883.0	77.0	0.173
-Scaurus				3739.0	121.0	0.272
-Scipio				2175.0	262.0	0.59
-Scylla				5443.0	64.0	0.144
-Scythes				4291.0	96.0	0.216
-Scythia				5963.0	54.0	0.122
-Scythicus				5167.0	70.0	0.158
-Secundus				5744.0	58.0	0.131
-Seianus				3860.0	116.0	0.261
-Sempronius				4740.0	81.0	0.182
-Seneca				3776.0	119.0	0.268
-Sergius				6229.0	50.0	0.113
-Servilius				3289.0	147.0	0.331
-Servius				2391.0	230.0	0.518
-Sestius				3322.0	145.0	0.326
-Severus				5535.0	62.0	0.14
-Sextilis				5896.0	55.0	0.124
-Sibylla				5896.0	55.0	0.124
-Sicilia				1449.0	435.0	0.979
-Siculus				1763.0	343.0	0.772
-Sidonius				2280.0	247.0	0.556
-Silanus				4686.0	83.0	0.187
-Silius				4492.0	89.0	0.2
-Silvanus				5590.0	61.0	0.137
-Socrates				1999.0	294.0	0.662
-Sosia				5298.0	67.0	0.151
-Sparte				6229.0	50.0	0.113
-Spurius				3776.0	119.0	0.268
-Staienus				5963.0	54.0	0.122
-Sthenius				5298.0	67.0	0.151
-Stoicus				1469.0	428.0	0.963
-Stygius				2654.0	201.0	0.452
-Styx				5688.0	59.0	0.133
-Sulla				1435.0	439.0	0.988
-Sullanus				5688.0	59.0	0.133
-Sulpicius				2073.0	281.0	0.633
-Syracusae				3207.0	152.0	0.342
-Syracusani				5641.0	60.0	0.135
-Syracusanus				5488.0	63.0	0.142
-Syrie				1985.0	298.0	0.671
-Syrtis				4838.0	78.0	0.176
-Syrus				3698.0	123.0	0.277
-Tantalus				5896.0	55.0	0.124
-Tarentus				5488.0	63.0	0.142
-Tarpeius				5896.0	55.0	0.124
-Tarquinius				2616.0	205.0	0.461
-Tartareus				6023.0	53.0	0.119
-Tartarus				3832.0	117.0	0.263
-Terentia				5109.0	71.0	0.16
-Teucer				2828.0	183.0	0.412
-Thais				5245.0	68.0	0.153
-Thebae				2684.0	198.0	0.446
-Themistocles				5688.0	59.0	0.133
-Theodorus				4216.0	99.0	0.223
-Theophrastus				4315.0	95.0	0.214
-Theseus				3698.0	123.0	0.277
-Thessalia				4492.0	89.0	0.2
-Thessalicus				5245.0	68.0	0.153
-Thessalus				4658.0	84.0	0.189
-Thracia				4838.0	78.0	0.176
-Thracius				6023.0	53.0	0.119
-Thracus				6161.0	51.0	0.115
-Tiberis				3636.0	126.0	0.284
-Tiberius				1209.0	527.0	1.186
-Tirynthius				5206.0	69.0	0.155
-Titan				4658.0	84.0	0.189
-Titius				5641.0	60.0	0.135
-Titus				1282.0	494.0	1.112
-Torquatus				3231.0	151.0	0.34
-Traianus				3721.0	122.0	0.275
-Trebatius				5590.0	61.0	0.137
-Trebonius				4769.0	80.0	0.18
-Treveri				5963.0	54.0	0.122
-Trimalchio				4364.0	93.0	0.209
-Troia				1979.0	299.0	0.673
-Troianus				3879.0	115.0	0.259
-Tros				5744.0	58.0	0.131
-Tubero				4000.0	108.0	0.243
-Tullia				5535.0	62.0	0.14
-Tullius				1720.0	355.0	0.799
-Tullus				5109.0	71.0	0.16
-Turnus				2785.0	187.0	0.421
-Tusculanum				3259.0	149.0	0.335
-Tusculanus				3207.0	152.0	0.342
-Tuscus				3571.0	129.0	0.29
-Tyrius				2181.0	261.0	0.588
-Tyrrhenus				4000.0	108.0	0.243
-Ulixes				2822.0	184.0	0.414
-V				712.0	903.0	2.033
-VI				3480.0	135.0	0.304
-VII				4951.0	75.0	0.169
-VIII				3108.0	159.0	0.358
-Valerius				1903.0	314.0	0.707
-Varro				1410.0	447.0	1.006
-Vatinius				5109.0	71.0	0.16
-Veiens				3307.0	146.0	0.329
-Veii				3961.0	110.0	0.248
-Venereus				5842.0	56.0	0.126
-Venus				836.0	767.0	1.727
-Vergilius				2181.0	261.0	0.588
-Verres				2785.0	187.0	0.421
-Vespasianus				2713.0	195.0	0.439
-Vesta				4614.0	85.0	0.191
-Vestalis				5443.0	64.0	0.144
-Vettius				5963.0	54.0	0.122
-Vitellius				1631.0	379.0	0.853
-Volcanus				4799.0	79.0	0.178
-Volsci				2946.0	173.0	0.389
-Volscus				4044.0	106.0	0.239
-Volumnius				6023.0	53.0	0.119
-X				2460.0	221.0	0.497
-XII				2041.0	286.0	0.644
-XIIII				5022.0	73.0	0.164
-XL				5842.0	56.0	0.126
-XV				3985.0	109.0	0.245
-XVI				5109.0	71.0	0.16
-XVIII				6091.0	52.0	0.117
-XX				4077.0	105.0	0.236
-XXX				2403.0	228.0	0.513
-Zeno				2688.0	197.0	0.443
-Zephyrus				4364.0	93.0	0.209
 a		a2	ā			
 a2	ah! abbrev.: ante, anno: ante diem, anno urbis conditae			243.0	2415.0	5.436
 aaceo						
@@ -917,9 +333,9 @@ abydus
 abyla						
 abyssus						
 acacia						
-academia	 the gymnasium near Athens, where Plato taught.					
+academia	 the gymnasium near Athens, where Plato taught.			4196.0	100.0	0.225
 academica	 the title of Cicero’s treatise on the Academic philosophy.					
-academicus	 of the Academy, Academic:					
+academicus	 of the Academy, Academic:			4614.0	85.0	0.191
 academicus2	 an Academic philosopher;					
 academus						
 acado						
@@ -1120,7 +536,7 @@ achaemenis
 achaemenius	Persian, Parthian					
 achaetus						
 achaeus						
-achaia						
+achaia				4244.0	98.0	0.221
 achaias	 a Greek woman					
 achaicus	 Achaean, Grecian:					
 achais	 Grecian:					
@@ -1147,14 +563,14 @@ acherusia
 acherusis						
 acherusius	 of the Acheron in Bruttium:					
 acheta						
-achillas						
+achillas				5535.0	62.0	0.14
 achillea						
 achilleis						
 achilleos						
-achilles	 a Grecian hero.					
+achilles	 a Grecian hero.			2849.0	182.0	0.41
 achilleus	 of Achilles					
 achillides						
-achivus	 Achaean, Grecian, O.					
+achivus	 Achaean, Grecian, O.			5408.0	65.0	0.146
 achlis						
 acholla						
 achor						
@@ -1946,7 +1362,7 @@ adzelor
 ae-s---mg-						
 aea						
 aeacideius						
-aeacides						
+aeacides				5109.0	71.0	0.16
 aeacidinus						
 aeacius						
 aeacus						
@@ -1954,7 +1370,7 @@ aeaea
 aeaeus						
 aeas						
 aebura						
-aebutius						
+aebutius				5896.0	55.0	0.124
 aecae						
 aeculani						
 aeculanum						
@@ -1984,7 +1400,7 @@ aedituus	a custodian of a temple, sacristan
 aedo						
 aedon						
 aedonius						
-aedui						
+aedui				3259.0	149.0	0.335
 aeetaeus						
 aeetes						
 aeetine						
@@ -1992,7 +1408,7 @@ aeetius
 aefficio						
 aefulanus						
 aegae						
-aegaeus	 Aegean:					
+aegaeus	 Aegean:			6161.0	51.0	0.115
 aegates						
 aegeo						
 aeger	 unwell, ill, sick, diseased, suffering, feeble: unwell, ill, sick, diseased, suffering, feeble:	aeger	aeger, aegra, aegrum	694.0	923.0	2.078
@@ -2041,8 +1457,8 @@ aegrum				5408.0	65.0	0.146
 aegypta						
 aegyptiacus						
 aegyptilla						
-aegyptius	 Egyptian					
-aegyptus						
+aegyptius	 Egyptian			2774.0	188.0	0.423
+aegyptus				2751.0	191.0	0.43
 aegyptus2						
 aelia						
 aelianus						
@@ -2050,11 +1466,11 @@ aelido
 aelimo						
 aelinos	 a dirge, O.					
 aeliquo						
-aelius						
+aelius				4838.0	78.0	0.176
 aello						
 aelurus						
-aemilianus						
-aemilius						
+aemilianus				4315.0	95.0	0.214
+aemilius				3011.0	167.0	0.376
 aemo						
 aemulanter						
 aemulatio	rivalry, emulation, competition			4169.0	101.0	0.227
@@ -2066,8 +1482,8 @@ aemulor	to rival, vie with, emulate, strive to excel			4364.0	93.0	0.209
 aemulus	striving earnestly after, emulating, rivalling, vying with, emulous			2636.0	203.0	0.457
 aenaria						
 aenea						
-aeneades						
-aeneas						
+aeneades				6161.0	51.0	0.115
+aeneas				1809.0	332.0	0.747
 aeneates						
 aeneaticus						
 aeneator						
@@ -2193,7 +1609,7 @@ aesalon
 aesar						
 aesareus						
 aescendo						
-aeschines						
+aeschines				5206.0	69.0	0.155
 aeschrio						
 aeschrodora						
 aeschrologia						
@@ -2217,7 +1633,7 @@ aesonides
 aesonius						
 aesopicus						
 aesopius	Aesopian					
-aesopus						
+aesopus				5896.0	55.0	0.124
 aestas	 summer:	aestas	aestās, aestātis, f.	1594.0	391.0	0.88
 aestifer	 heat-bringing, causing heat:					
 aestii						
@@ -2269,7 +1685,7 @@ aetites
 aetitis						
 aetnaei						
 aetnaeus						
-aetne						
+aetne				4988.0	74.0	0.167
 aetnenses						
 aetnensis						
 aetoli						
@@ -2362,16 +1778,16 @@ aforio
 aforo						
 afraniani						
 afranianus						
-afranius						
-africa	Libya, the Carthaginian territory					
+afranius				4315.0	95.0	0.214
+africa	Libya, the Carthaginian territory			1631.0	379.0	0.853
 africanae						
-africanus	of Africa, African					
+africanus	of Africa, African			2050.0	284.0	0.639
 africo				4131.0	103.0	0.232
 africus	African (poet. for Africanus); the south-west wind					
 afrio						
 agaga						
 agamedes						
-agamemnon						
+agamemnon				5801.0	57.0	0.128
 agamemnonides						
 agamemnonius						
 agamus						
@@ -2512,8 +1928,8 @@ agrimensor
 agrimonia						
 agriophyllon						
 agripeta	a colonist, one who seeks land to cultivate					
-agrippa						
-agrippina						
+agrippa				3494.0	134.0	0.302
+agrippina				3050.0	164.0	0.369
 agrius						
 agrostis						
 agrosus						
@@ -2533,7 +1949,7 @@ ahenobarbus
 ahio						
 ahorto						
 ai	interj, alas, only O. (once). 					
-aiax						
+aiax				4364.0	93.0	0.209
 aientia						
 aiento						
 aincurro						
@@ -2581,9 +1997,9 @@ alazon
 alba				3415.0	139.0	0.313
 albamentum						
 albana						
-albani						
+albani				4422.0	91.0	0.205
 albania						
-albanus						
+albanus				4450.0	90.0	0.203
 albaris						
 albarius						
 albatus	white - robed, clothed in white					
@@ -2644,7 +2060,7 @@ alceste
 alcestis						
 alcibiades						
 alcibiadeus						
-alcides	 a descendant of Alceus; esp. his grandson Hercules					
+alcides	 a descendant of Alceus; esp. his grandson Hercules			2733.0	193.0	0.434
 alcimachus						
 alcimede						
 alcimedon						
@@ -2675,7 +2091,7 @@ aledius
 aleius						
 alemannia						
 alemannicus						
-alemannus						
+alemannus				6091.0	52.0	0.117
 alemon						
 alemona						
 alemonides						
@@ -2695,8 +2111,8 @@ aleus
 alevo						
 alexa						
 alexamenus						
-alexander						
-alexandrea						
+alexander				1173.0	549.0	1.236
+alexandrea				3393.0	141.0	0.317
 alexandrini						
 alexandrinus						
 alexia						
@@ -2841,7 +2257,7 @@ allino
 allisio						
 allium						
 allivescit						
-allobroges						
+allobroges				5351.0	66.0	0.149
 allobrogicus						
 allobrox	 one of the Allobroges, a warlike people of Gaul.					
 allocutio						
@@ -2884,7 +2300,7 @@ alpheus
 alphus						
 alpicus						
 alpinus	of the Alps, Alpine					
-alpis						
+alpis				2517.0	216.0	0.486
 alsiensis						
 alsine						
 alsiosus						
@@ -3253,7 +2669,7 @@ amphitheatralis
 amphitheatricus						
 amphitheatrum	an amphitheatre, oval building for public spectacles, Ta. 					
 amphitrite						
-amphitruo						
+amphitruo				5641.0	60.0	0.135
 amphitryo						
 amphitryoniades	male descendant of Amphitryo , i. e. Hercules					
 amphora	 a large oblong vessel for liquids, with a handle on each side, flask, jar, flagon, pitcher:			5590.0	61.0	0.137
@@ -3323,7 +2739,7 @@ amylo
 amylum						
 amymone						
 amymonius						
-amyntas						
+amyntas				5842.0	56.0	0.126
 amyntiades						
 amyntor						
 amyntorides						
@@ -3409,7 +2825,7 @@ anceps	(that has two heads, two-headed); wavering, doubtful, uncertain, hazardou
 ancharianus						
 ancharius						
 anchialus						
-anchises	 father of Aeneas, V., O. 					
+anchises	 father of Aeneas, V., O. 			5488.0	63.0	0.142
 anchiseus	of Anchises					
 anchisiades	patr., son of Anchises Aeneas, V.					
 anchora						
@@ -3492,7 +2908,7 @@ angina				5842.0	56.0	0.126
 angiportum						
 angiportus						
 angitia						
-angli						
+angli				2487.0	219.0	0.493
 anglicanus						
 anglicus						
 ango	to draw close, press tight, squeeze, compress, throttle, choke			3141.0	157.0	0.353
@@ -3604,7 +3020,7 @@ anniculus	of a year, yearling
 annihilo						
 annisus						
 annitor	 to lean against, lean upon:			5351.0	66.0	0.149
-annius						
+annius				5351.0	66.0	0.149
 anniversarius	returning every year, annual, yearly					
 anno						
 annodo						
@@ -3808,23 +3224,23 @@ antigerio
 antignotus						
 antigona						
 antigonea						
-antigonus						
+antigonus				5963.0	54.0	0.122
 antilibanus						
 antilochus						
 antimachus						
 antimetabole						
 antinomia						
-antiochea						
+antiochea				5488.0	63.0	0.142
 antiochenses						
 antiochensis						
 antiochenus						
 antiocheus						
 antiochinus						
 antiochius						
-antiochus						
+antiochus				3595.0	128.0	0.288
 antiopa						
 antipas						
-antipater						
+antipater				5167.0	70.0	0.158
 antipathes						
 antipathia						
 antiphates						
@@ -3875,7 +3291,7 @@ antoniaster	 a servile imitator of the orator Antonius.
 antoninianus						
 antoninus						
 antoniopolitae						
-antonius	nomen gentile; Antonius, Antony					
+antonius	nomen gentile; Antonius, Antony			513.0	1218.0	2.742
 antonomasia						
 antonomasivus						
 antores						
@@ -3903,7 +3319,7 @@ aones
 aonia						
 aonides						
 aonis						
-aonius	of Aonia (i.e. Boeotia)					
+aonius	of Aonia (i.e. Boeotia)			6161.0	51.0	0.115
 aordior						
 aorno						
 aornos						
@@ -4020,9 +3436,9 @@ apolectus
 apolio						
 apollinar						
 apollinaria						
-apollinaris	of Apollo, sacred to Apollo					
+apollinaris	of Apollo, sacred to Apollo			4838.0	78.0	0.176
 apollineus	of or belonging to Apollo					
-apollo	Apollo					
+apollo	Apollo			1813.0	331.0	0.745
 apollodorus						
 apollonia						
 apolloniates						
@@ -4129,7 +3545,7 @@ appianus
 appias						
 appietas						
 appingo	to paint upon (very rare):					
-appius	 the Appian Way, from Rome to Capua.					
+appius	 the Appian Way, from Rome to Capua.			2026.0	289.0	0.651
 applaudo	to strike upon, beat, clap:					
 applausor						
 applex						
@@ -4172,7 +3588,7 @@ approprio
 approximo						
 appugno	to fight against, attack, assault:					
 appuleius						
-appulia						
+appulia				5744.0	58.0	0.131
 appulicus						
 appulsus						
 appulsus2	a landing, bringing to land, approach					
@@ -4186,12 +3602,12 @@ apricor	to sun oneself, bask in the sun
 apriculus						
 apricum						
 apricus	 exposed to the sun, warmed by sunshine, sunny:					
-aprilis	(month) of April					
+aprilis	(month) of April			3038.0	165.0	0.371
 aprineus						
 aprinus						
 apronia						
 apronianus						
-apronius						
+apronius				3050.0	164.0	0.369
 aprono						
 aproxis						
 aprugna						
@@ -4535,9 +3951,9 @@ arginusae
 argiphontes						
 argithea						
 argitis	 a vine with white grapes, V.					
-argivus						
+argivus				5688.0	59.0	0.133
 argo						
-argolicus						
+argolicus				4268.0	97.0	0.218
 argolis						
 argonautae						
 argonautica						
@@ -4553,7 +3969,7 @@ argumentor	to adduce proof
 argumentosus						
 argumentum	an argument, evidence, ground, support, proof	argumentum	argūmentum, argūmentī, n.	715.0	897.0	2.019
 arguo	to make known, show, prove, manifest, disclose, declare, betray			1803.0	333.0	0.75
-argus	(proper name) Argus, the hundred-eyed keeper of Io; (adj) Argive					
+argus	(proper name) Argus, the hundred-eyed keeper of Io; (adj) Argive			2828.0	183.0	0.412
 argutatio	a creaking					
 argutator						
 argutatrix						
@@ -4631,7 +4047,7 @@ aristifer
 aristippeus						
 aristippus						
 aristius						
-aristo						
+aristo				5590.0	61.0	0.137
 aristocritus						
 aristodamus						
 aristodemus						
@@ -4643,7 +4059,7 @@ aristophanes
 aristophaneus						
 aristophanicus						
 aristosus						
-aristoteles						
+aristoteles				2487.0	219.0	0.493
 aristoteleus						
 aristotelius						
 aristoxenus						
@@ -4662,10 +4078,10 @@ armarium	a closet, chest, safe
 armatura	armor, equipment					
 armatus	armed, equipped, in arms			1995.0	296.0	0.666
 armatus2	armor, equipment					
-armenia						
+armenia				4077.0	105.0	0.236
 armeniacus						
 armenium						
-armenius						
+armenius				3808.0	118.0	0.266
 armenta						
 armentalis	of a herd, one of a herd					
 armentarius	a herdsman, neatherd					
@@ -4714,7 +4130,7 @@ aroto
 arpani						
 arpanus						
 arpi						
-arpinas						
+arpinas				5443.0	64.0	0.144
 arpinates						
 arpini						
 arpinum						
@@ -4855,7 +4271,7 @@ ascalo
 ascalonius						
 ascalpo						
 ascania						
-ascanius						
+ascanius				6023.0	53.0	0.119
 ascanius2						
 ascaules						
 ascea	 an axe.					
@@ -4909,10 +4325,10 @@ asellus	a little ass, ass’s colt			5535.0	62.0	0.14
 asemus						
 aser						
 asero						
-asia						
+asia				884.0	736.0	1.657
 asiani						
 asianus						
-asiaticus						
+asiaticus				4799.0	79.0	0.178
 asicianus						
 asicius						
 asido						
@@ -4927,7 +4343,7 @@ asinarius
 asine						
 asinianus						
 asininus						
-asinius						
+asinius				3832.0	117.0	0.263
 asino						
 asinus	 an ass, C., L. --Fig., an ass, blockhead, dolt:			2733.0	193.0	0.434
 asinusca						
@@ -5169,7 +4585,7 @@ astrum	a heavenly body, star, constellation:	astrum	astrum, astrī, n.	1493.0	42
 astruo	to build in addition, add to					
 astupeo	to be amazed at:					
 astur						
-astura						
+astura				5298.0	67.0	0.151
 asturco						
 asturia						
 asturica						
@@ -5247,13 +4663,13 @@ athanagia
 athanasius						
 athanatus						
 athena						
-athenae	 the city of Athens					
+athenae	 the city of Athens			1512.0	415.0	0.934
 athenaeopolitae						
 athenaeum						
 athenaeus						
 athenagoras						
 athenais						
-atheniensis						
+atheniensis				1866.0	320.0	0.72
 athenio						
 athenodorus						
 atheos						
@@ -5271,7 +4687,7 @@ athos
 atia						
 atidius						
 atilianus						
-atilius						
+atilius				5245.0	68.0	0.153
 atimeo						
 atina						
 atinas						
@@ -5314,7 +4730,7 @@ atreus
 atriarius						
 atricapilla						
 atricapillus						
-atrides	 patr., son of Atreus.					
+atrides	 patr., son of Atreus.			5688.0	59.0	0.133
 atriensis	a steward, chief servant					
 atriolum	a small hall, antechamber					
 atriplexum						
@@ -5371,11 +4787,11 @@ attexo	to weave to, join closely
 atthis						
 attianus						
 attica						
-attice	in the Attic style					
-attici						
+attice	in the Attic style			3961.0	110.0	0.248
+attici				3860.0	116.0	0.261
 atticisso						
 atticula						
-atticus	 Athenian, Attic.					
+atticus	 Athenian, Attic.			962.0	672.0	1.513
 attigo						
 attiguus						
 attilus						
@@ -5383,7 +4799,7 @@ attinae
 attineo				1870.0	319.0	0.718
 attingo	to touch, come in contact with	attingo	attingō, attingere, attigī, attāctus	1219.0	523.0	1.177
 attis						
-attius						
+attius				3677.0	124.0	0.279
 attolero						
 attollo	to lift up, raise up, raise, elevate			1886.0	317.0	0.714
 attondeo	to shave, shear					
@@ -5522,7 +4938,7 @@ augustatus
 auguste	reverently					
 augusteum						
 augusteus						
-augustinus						
+augustinus				3595.0	128.0	0.288
 augusto						
 augustodunum						
 augustus	consecrated, sacred, reverend			2428.0	225.0	0.506
@@ -5556,7 +4972,7 @@ aurea				4000.0	108.0	0.243
 aureatus						
 aurelianensis						
 aurelianus						
-aurelius						
+aurelius				5896.0	55.0	0.124
 aureolus	golden					
 auresco						
 aureus	of gold, golden; (noun) gold coin	aureus	aureus, aurea, aureum	1081.0	595.0	1.339
@@ -5611,10 +5027,10 @@ ausetanus
 auson						
 ausona						
 ausones						
-ausonia						
+ausonia				4343.0	94.0	0.212
 ausonidae						
 ausonis						
-ausonius						
+ausonius				3909.0	113.0	0.254
 auspex	an interpreter of omens given by birds, diviner, augur, soothsayer					
 auspicabilis						
 auspicalis						
@@ -5698,12 +5114,12 @@ aveniensis
 avenio						
 aventer						
 aventinum						
-aventinus						
+aventinus				5744.0	58.0	0.131
 aveo	to wish for, long after, desire earnestly, crave			5590.0	61.0	0.137
 averna						
 avernalis	of Lake Avernus					
 averno						
-avernus						
+avernus				5060.0	72.0	0.162
 avero						
 averro	to sweep away					
 averrunco	to avert:					
@@ -5772,7 +5188,7 @@ azorus
 azotus						
 azyma						
 azymus						
-b						
+b				3024.0	166.0	0.374
 baal						
 babae						
 babaeculus						
@@ -5814,9 +5230,9 @@ bacchiadae
 bacchicus						
 bacchis						
 bacchisonus						
-bacchius						
+bacchius				5801.0	57.0	0.128
 bacchor	to celebrate the festival of Bacchus, rave like Bacchae, revel					
-bacchus	 the son of Jupiter and Semele, the god of wine, of intoxication and inspiration.					
+bacchus	 the son of Jupiter and Semele, the god of wine, of intoxication and inspiration.			2756.0	190.0	0.428
 bacchylides						
 bacchylidius						
 bacciballum						
@@ -5859,7 +5275,7 @@ bagaudae
 bagoas						
 bagrada						
 baia	palm branch (Copt.)					
-baiae	 a watering-place in Campania					
+baiae	 a watering-place in Campania			5744.0	58.0	0.131
 baianum						
 baianus						
 baiulatio						
@@ -5881,7 +5297,7 @@ balatro	 a babbler, jester, buffoon, H.
 balatus	a bleating					
 balaustium						
 balbillus						
-balbus	stammering, stuttering					
+balbus	stammering, stuttering			3259.0	149.0	0.335
 balbutio	to stammer, stutter, speak childishly					
 balcia						
 baliares						
@@ -6046,7 +5462,7 @@ bassanitae
 bassareus						
 bassaricus						
 bassaris						
-bassus						
+bassus				4196.0	100.0	0.225
 bastaga						
 bastagarius						
 bastarnae						
@@ -6060,7 +5476,7 @@ bat
 batalaria						
 batavia						
 batavodurum						
-batavus						
+batavus				4710.0	82.0	0.185
 bateni						
 batha						
 bathyllus						
@@ -6155,7 +5571,7 @@ bellitudo
 bellius						
 bello	to wage war, carry on war, war					
 bellocassi						
-bellona	the goddess of war, sister of Mars					
+bellona	the goddess of war, sister of Mars			6229.0	50.0	0.113
 bellonaria						
 bellonarii						
 bellor	 to war, fight (rare for bello):			3078.0	162.0	0.365
@@ -6258,7 +5674,7 @@ besidiae
 bessalis						
 bessi						
 bessicus						
-bessus						
+bessus				5206.0	69.0	0.155
 bestia	a beast, animal			2149.0	266.0	0.599
 bestialis						
 bestiarius	one who fights with wild beasts					
@@ -6730,10 +6146,10 @@ brinta
 brisa						
 brisaeus						
 briseis	 a daughter of Brises, i. e. Hippodamia, H.					
-britanni						
-britannia						
+britanni				5206.0	69.0	0.155
+britannia				1830.0	326.0	0.734
 britannicianus						
-britannicus	 the British Channel:					
+britannicus	 the British Channel:			5167.0	70.0	0.158
 britannis						
 britannus	 of Britain:					
 britomartis						
@@ -6769,7 +6185,7 @@ bruma	the shortest day			3024.0	166.0	0.374
 brumalis	of the winter solstice			6023.0	53.0	0.119
 brumaria						
 brundisini						
-brundisium						
+brundisium				2474.0	220.0	0.495
 bruscum						
 brutesco						
 brutidius						
@@ -7023,7 +6439,7 @@ cadmeius
 cadmeus	 of Cadmus, Cadmean, Theban:					
 cadmia						
 cadmitis						
-cadmus						
+cadmus				5488.0	63.0	0.142
 cado	to fall, fall down, descend	cado	cadō, cadere, cecidī, cāsum	348.0	1761.0	3.964
 caducarius						
 caduceator	a bearer of a caduceus, herald, messenger of truce					
@@ -7046,8 +6462,8 @@ caecias
 caecigenus						
 caecilia						
 caecilianus						
-caecilius						
-caecina						
+caecilius				2914.0	176.0	0.396
+caecina				2721.0	194.0	0.437
 caecinianus						
 caecitas	blindness			6091.0	52.0	0.117
 caecitudo						
@@ -7086,7 +6502,7 @@ caelina
 caeliolus						
 caelispex						
 caelitus						
-caelius						
+caelius				2517.0	216.0	0.486
 caelo	to engrave in relief, make raised work, carve, engrave			3927.0	112.0	0.252
 caelum		caelum1	caelum, caelī, n.			
 caelum2	the sky, heaven, heavens, vault of heaventhe sky, heaven, heavens, vault of heaven	caelum2	caelum, caelī, n.	241.0	2449.0	5.513
@@ -7111,7 +6527,7 @@ caeparius
 caepasius						
 caepe	 an onion, H., Iu.					
 caepina						
-caepio						
+caepio				4951.0	75.0	0.169
 caepuila						
 caere						
 caeres	of Caere					
@@ -7133,7 +6549,7 @@ caeruleus	like the sky, azure, blue, dark blue, dark green			3571.0	129.0	0.29
 caerulus	azure, blue, dark blue, cerulian			4387.0	92.0	0.207
 caesa				5245.0	68.0	0.153
 caesapon						
-caesar						
+caesar				154.0	3657.0	8.232
 caesaraugusta						
 caesarea						
 caesareus						
@@ -7443,10 +6859,10 @@ cammarus	 a lobster, Iu.
 campagus						
 campana						
 campaneus				4883.0	77.0	0.173
-campani						
-campania						
+campani				5167.0	70.0	0.158
+campania				5109.0	71.0	0.16
 campanicus						
-campanus						
+campanus				5022.0	73.0	0.164
 campe						
 campester	of a level field, even, flat, level					
 campestratus						
@@ -7672,8 +7088,8 @@ capitilavium
 capitinus						
 capitium						
 capito	one that has a large head, big-headed			5060.0	72.0	0.162
-capitolinus	of the Capitol, Capitoline					
-capitolium	the Capitol, temple of Jupiter, at Rome					
+capitolinus	of the Capitol, Capitoline			4153.0	102.0	0.23
+capitolium	the Capitol, temple of Jupiter, at Rome			1656.0	372.0	0.837
 capitulare						
 capitularii						
 capitularium						
@@ -7686,7 +7102,7 @@ capnias
 capnitis						
 capnos						
 capo						
-cappadocia						
+cappadocia				5298.0	67.0	0.151
 cappadocius						
 cappadocus						
 cappadox						
@@ -7748,7 +7164,7 @@ captrix
 captura						
 captus	a prisoner, captive			4526.0	88.0	0.198
 captus2	comprehension, capacity					
-capua						
+capua				2606.0	206.0	0.464
 capularis						
 capulo						
 capulum						
@@ -7865,7 +7281,7 @@ carnarium
 carnarius						
 carnatio						
 carnatus						
-carneades						
+carneades				4387.0	92.0	0.207
 carneadeus						
 carneus						
 carni						
@@ -7934,8 +7350,8 @@ carteia
 carteiensis						
 carteius						
 carthaea						
-carthaginiensis	Carthaginian, of Carthage					
-carthago						
+carthaginiensis	Carthaginian, of Carthage			4216.0	99.0	0.223
+carthago				2010.0	291.0	0.655
 cartheus						
 cartibulum						
 cartilagineus						
@@ -8008,7 +7424,7 @@ cassita
 cassiterides						
 cassiterinus						
 cassiterum						
-cassius						
+cassius				1912.0	312.0	0.702
 cassivellaunus						
 casso						
 cassus	empty, void, hollow			3322.0	145.0	0.326
@@ -8159,7 +7575,7 @@ catia
 catianus						
 catiena						
 catienus						
-catilina						
+catilina				1927.0	308.0	0.693
 catilinarius						
 catilius						
 catillamen						
@@ -8175,7 +7591,7 @@ catinus	 a deep vessel of earthenware, bowl, H. --A pot, H., Iu.
 catius						
 cativolcus						
 catlaster						
-cato						
+cato				786.0	818.0	1.841
 catoblepas						
 catocha						
 catochitis						
@@ -8191,7 +7607,7 @@ catulinus
 catulio						
 catulitio						
 catullianus						
-catullus						
+catullus				4492.0	89.0	0.2
 catuloticus						
 catulus	a young animal, whelpCatulus; cognomen in the gens Lutatia			4422.0	91.0	0.205
 caturiges						
@@ -8555,7 +7971,7 @@ ceratum
 ceratura						
 ceratus	covered with wax, waxed					
 ceraula						
-ceraunius	Ceraunian; (neut. pl.) a mountain ridge on Epirus, Κεραύνια ὄρηpertaining to thunder or lightning; (noun) gemma, a precious stone					
+ceraunius	pertaining to thunder or lightning; (noun) gemma, a precious stoneCeraunian; (neut. pl.) a mountain ridge on Epirus, Κεραύνια ὄρη					
 ceraunobolia						
 ceraunus						
 cerbereus						
@@ -8576,7 +7992,7 @@ cercyoneus
 cerdiciates						
 cerdo	a workman of the lowest class					
 cerealia						
-cerealis	of Ceres					
+cerealis	of Ceres			4578.0	86.0	0.194
 cerealitas						
 cerebellare						
 cerebellum						
@@ -8585,7 +8001,7 @@ cerebrum	the brain			2890.0	178.0	0.401
 cerellia						
 cereolus						
 cereroqui	for the rest, in other respects, otherwise					
-ceres	 the daughter of Saturn, goddess of agriculture, V., H., O.:					
+ceres	 the daughter of Saturn, goddess of agriculture, V., H., O.:			4526.0	88.0	0.198
 cereus	waxen, of wax					
 cereus2	a wax-light, taper					
 ceria						
@@ -8679,7 +8095,7 @@ cetera	for the rest, otherwise, in all else
 ceteroqui						
 ceterum2	for the rest, in other respects, else, otherwise					
 ceterus	the other, remainder, restthe other, remainder, rest	ceterum2	cēterum	120.0	4540.0	10.219
-cethegus						
+cethegus				5590.0	61.0	0.137
 ceto						
 cetos	 a sea-monster, plur.:					
 cetosus						
@@ -8724,7 +8140,7 @@ chalcitis
 chalcophonos						
 chalcosmaragdos						
 chalcus						
-chaldaei						
+chaldaei				5590.0	61.0	0.137
 chaldaeus	 Chaldaean:					
 chaldaicus						
 chalo						
@@ -8764,7 +8180,7 @@ chaones
 chaonia						
 chaonis						
 chaonius						
-chaos	 the unformed world, void, empty space:					
+chaos	 the unformed world, void, empty space:			5963.0	54.0	0.122
 chara	 a wild cabbage, Cs.					
 characatus						
 characias						
@@ -8799,7 +8215,7 @@ chartopola
 chartula	a little paper, memorandum					
 chartularius						
 chartus						
-charybdis	 a whirlpool between Italy and Sicily, personified as a female monster, Iu.:					
+charybdis	 a whirlpool between Italy and Sicily, personified as a female monster, Iu.:			6229.0	50.0	0.113
 chasma						
 chasmatias						
 chasuarii						
@@ -8919,7 +8335,7 @@ chorographia
 chorographus						
 chortinus						
 chorus	 a dance in a ring, choral dance, dance:			2412.0	227.0	0.511
-chremes						
+chremes				4557.0	87.0	0.196
 chrestologus						
 chreston						
 chrestus						
@@ -8928,9 +8344,9 @@ chrisma
 christianismus						
 christianitas						
 christianizo						
-christianus						
+christianus				1914.0	311.0	0.7
 christicola						
-christus						
+christus				856.0	751.0	1.69
 chroma						
 chromatice						
 chromaticus						
@@ -8954,7 +8370,7 @@ chryses
 chryseus						
 chrysippea						
 chrysippeus						
-chrysippus						
+chrysippus				3024.0	166.0	0.374
 chrysis						
 chrysites						
 chrysitis						
@@ -8965,7 +8381,7 @@ chrysocanthos
 chrysocephalos						
 chrysococcus						
 chrysocolla						
-chrysogonus						
+chrysogonus				5744.0	58.0	0.131
 chrysographatus						
 chrysolachanum						
 chrysolampis						
@@ -9017,7 +8433,7 @@ cicer	 the chickpea, H.
 cicera						
 cicercula						
 cicerculum						
-cicero						
+cicero				291.0	2049.0	4.612
 ciceronianus						
 cichoreum	chiccory, endive, H.					
 cichorium				4614.0	85.0	0.191
@@ -9039,7 +8455,7 @@ cieo	to cause to go, move, stir, drive			1435.0	439.0	0.988
 cignus						
 cilibantum						
 cilices						
-cilicia						
+cilicia				4102.0	104.0	0.234
 ciliciarius						
 ciliciensis						
 cilicinus						
@@ -9114,7 +8530,7 @@ cinis	 ashes, H.  Esp., of a corpse, the ashes:	cinis	cinis, cineris, m./f.	839.
 cinisculus						
 cinithii						
 cinium						
-cinna						
+cinna				4614.0	85.0	0.191
 cinnabaris						
 cinnameus						
 cinnamolgos						
@@ -9147,7 +8563,7 @@ circeiensis
 circeii						
 circellus						
 circenses						
-circensis	 of the Circus:					
+circensis	 of the Circus:			5408.0	65.0	0.146
 circeus						
 circinatio						
 circino	to make round, round					
@@ -9585,7 +9001,7 @@ claudico	to limp, halt, be lame
 claudigo						
 claudiopolitani						
 clauditas						
-claudius						
+claudius				1021.0	632.0	1.423
 claudo	to shut, close, shut up	claudo1	claudō, claudere, clausī, clausum	742.0	860.0	1.936
 claudo2	to limp					
 claudus	limping, halting, lame			2359.0	234.0	0.527
@@ -9616,7 +9032,7 @@ clazomenae
 clazomenii						
 clazomenius						
 cleander						
-cleanthes						
+cleanthes				6229.0	50.0	0.113
 cleantheus						
 clearchus						
 clema						
@@ -9705,7 +9121,7 @@ clostellum
 clotho	the spinner, one of the three Parcae, O., Iu.					
 cluacina						
 cluentianus						
-cluentius						
+cluentius				4686.0	83.0	0.187
 clueo	to hear, be spoken of, be said			5842.0	56.0	0.126
 cluilius						
 clumae						
@@ -10038,7 +9454,7 @@ colaxo
 colchicum						
 colchicus						
 colchis						
-colchus						
+colchus				4268.0	97.0	0.218
 coleatus						
 colecto						
 colego						
@@ -11720,9 +11136,9 @@ constantiensis
 constantina						
 constantinianus						
 constantiniensis						
-constantinopolis						
+constantinopolis				6161.0	51.0	0.115
 constantinopolitanus						
-constantinus						
+constantinus				4883.0	77.0	0.173
 constantius				4686.0	83.0	0.187
 constellatio						
 consternatio	dismay, consternation, alarm, disturbance					
@@ -12219,7 +11635,7 @@ corbita	a ship of burden
 corbitus						
 corbona						
 corbula						
-corbulo						
+corbulo				4951.0	75.0	0.169
 corchoros						
 corcillum						
 corcodilus	see crocodilus					
@@ -12260,8 +11676,8 @@ corinthiarius
 corinthienses						
 corinthiensis						
 corinthii						
-corinthius	a costly bronze, an alloy of gold, silver, and copper					
-corinthus	Corinth					
+corinthius	a costly bronze, an alloy of gold, silver, and copper			5842.0	56.0	0.126
+corinthus	Corinth			4838.0	78.0	0.176
 coriolanus						
 corioli						
 corion						
@@ -12271,7 +11687,7 @@ corissum
 corium	skin, hide, leather			5298.0	67.0	0.151
 corius				4422.0	91.0	0.205
 cormasa						
-cornelius						
+cornelius				1391.0	454.0	1.022
 corneolus	horny, of horn					
 cornesco						
 cornetum						
@@ -12448,7 +11864,7 @@ corysidia
 corythus						
 corytos	a quiver					
 coryza						
-cos	a flint-stone, whetstone, grindstone					
+cos	a flint-stone, whetstone, grindstone			6229.0	50.0	0.113
 cosa						
 cosani						
 cosanum						
@@ -12520,7 +11936,7 @@ cotono
 cotoriae						
 cotracto						
 cotraho						
-cotta						
+cotta				2665.0	200.0	0.45
 cottabus						
 cottana						
 cottianus						
@@ -12973,7 +12389,7 @@ cumae
 cumaeus						
 cumana						
 cumani						
-cumanum						
+cumanum				6229.0	50.0	0.113
 cumanus						
 cumatile						
 cumatilis						
@@ -13105,7 +12521,7 @@ curiosus	bestowing care, painstaking, careful, diligent, thoughtful, devoted, at
 curis	a spear					
 curitis						
 curito						
-curius						
+curius				3078.0	162.0	0.365
 curius2						
 curo	to care for, take pains with, be solicitous for, look to, attend to, regard	curo	cūrō, cūrāre, cūrāvī, cūrātum	479.0	1310.0	2.949
 currax						
@@ -13278,7 +12694,7 @@ cynosura	(dog’s tail), the Lesser Bear (a constellation)
 cynosurae						
 cynosuris						
 cynozolon						
-cynthia						
+cynthia				5842.0	56.0	0.126
 cynthius						
 cynthus						
 cyparissa						
@@ -13326,7 +12742,7 @@ cyrrhestica
 cyrrhus						
 cyrsilus						
 cyrtaei						
-cyrus						
+cyrus				4578.0	86.0	0.194
 cysthos						
 cytae						
 cytaeaeus						
@@ -13359,7 +12775,7 @@ cyziceni
 cyzicos						
 cyzicum						
 cyzicus						
-d	abbr. (ante) diem, dat, dicit 					
+d	abbr. (ante) diem, dat, dicit 			1099.0	583.0	1.312
 dabar						
 dabla						
 dacia						
@@ -13381,7 +12797,7 @@ daedalion
 daedalis						
 daedalus	skilful,  cunning					
 daedalus2	Daedalus, mythical architect					
-daemon						
+daemon				5896.0	55.0	0.124
 daemones						
 daemoniacus						
 daemonicola						
@@ -13435,7 +12851,7 @@ danaeius
 danaidae						
 danaides						
 danaster						
-danaus						
+danaus				2959.0	172.0	0.387
 dandari						
 dani						
 dania						
@@ -13447,7 +12863,7 @@ danuvius
 dapalis						
 daphitas						
 daphnaeus						
-daphne	Daphne, a nymph, daughter of king Peneuslaurel tree					
+daphne	laurel treeDaphne, a nymph, daughter of king Peneus					
 daphnensis						
 daphnia						
 daphnis						
@@ -13461,10 +12877,10 @@ dardanarius
 dardania	region in upper Moesia, modern Serbia, land of the Dardani					
 dardanides						
 dardanis						
-dardanius	Trojan					
-dardanus	(adj) Trojan; (noun) mythical founder of Trojan royal family					
+dardanius	Trojan			5641.0	60.0	0.135
+dardanus	(adj) Trojan; (noun) mythical founder of Trojan royal family			5688.0	59.0	0.133
 dares						
-dareus						
+dareus				2327.0	239.0	0.538
 darius						
 dasea						
 dassaresii						
@@ -13490,7 +12906,7 @@ daunii
 daunus						
 david						
 davidicus						
-davus						
+davus				5896.0	55.0	0.124
 dc						
 de						
 de2	from, away from, down from, out offrom, away from, down from, out of	de2	dē	30.0	19281.0	43.401
@@ -13711,7 +13127,7 @@ decedo	to go away, depart, withdraw, retire			1425.0	443.0	0.997
 decelea						
 decem	ten3,'a commission of ten men, college  of ten magistrates'	1-Dec	decem	1305.0	486.0	1.094
 decem2	the heads of the ten decuriae forming the senate in a  colony or municipal town					
-december	month of December					
+december	month of December			5298.0	67.0	0.151
 decemiugis						
 decemmodiae						
 decemmodius						
@@ -13781,7 +13197,7 @@ decipulum
 decircino						
 decisio	a decision, settlement, agreement					
 decisus						
-decius						
+decius				3339.0	144.0	0.324
 declamatio	practice in public speaking, oratorical exercise, declamation			5109.0	71.0	0.16
 declamatiuncula						
 declamator	a speaker for show, elocutionist, declaimer			5842.0	56.0	0.126
@@ -14071,7 +13487,7 @@ deion
 deioneus						
 deionides						
 deiopea						
-deiotarus						
+deiotarus				4883.0	77.0	0.173
 deipara						
 deipassianus						
 deiphobe						
@@ -14190,11 +13606,11 @@ delitisco	to hide away, conceal oneself, lie hid, lurk
 delitor						
 delitus	P. of delino					
 delium						
-delius	Delian, of Delos; epithet of Apollo					
+delius	Delian, of Delos; epithet of Apollo			5351.0	66.0	0.149
 delminium						
 delos						
 delotus						
-delphi						
+delphi				6023.0	53.0	0.119
 delphicus						
 delphinus	 a dolphin					
 delphis						
@@ -14246,7 +13662,7 @@ demeto	to mow, reap, cut off, gather, crop, harvest
 demetriacus						
 demetrias						
 demetrium						
-demetrius						
+demetrius				4951.0	75.0	0.169
 demigratio	an emigration					
 demigro	to migrate, emigrate, move, depart, remove, go away					
 deminoratio						
@@ -14269,7 +13685,7 @@ democritea
 democriteus						
 democriticus						
 democritii						
-democritus						
+democritus				3776.0	119.0	0.268
 demodocus						
 demogrammateus						
 demoleon						
@@ -14293,7 +13709,7 @@ demorior	to die off, die (out of a number)
 demoror	 to retard, detain, delay					
 demortuus	P. of demorior					
 demos						
-demosthenes						
+demosthenes				2914.0	176.0	0.396
 demosthenicus						
 demostratus						
 demoveo	to move away, put away, remove, expel, drive out					
@@ -14906,7 +14322,7 @@ diamastigosis
 diametros						
 diametrum						
 diamoron						
-diana	the goddess of light and of the moon					
+diana	the goddess of light and of the moon			2626.0	204.0	0.459
 dianarius						
 dianaticus						
 dianium						
@@ -14999,7 +14415,7 @@ dictynnaeum
 dictys						
 didascalicus						
 didius						
-dido	to give out, spread abroad, disseminate, distribute,  scatter (poet.)					
+dido	to give out, spread abroad, disseminate, distribute,  scatter (poet.)			5641.0	60.0	0.135
 diduco	to draw apart, part, split, separate, sever, sunder,  divide, undo, relax			2672.0	199.0	0.448
 diductio	a divergence, opposite conclusion					
 diductus	P. of diduco					
@@ -15201,11 +14617,11 @@ diobolaris
 diochares						
 diocharinus						
 diocletianus						
-diodorus						
+diodorus				6091.0	52.0	0.117
 diodotus						
 dioecesis	a  governor’s jurisdiction, district					
 dioecetes	an  overseer of the revenue, royal treasurer					
-diogenes						
+diogenes				4658.0	84.0	0.189
 diogmitae						
 diognetus						
 diomedes						
@@ -15215,7 +14631,7 @@ dionymus
 dionysia	the  festival of Bacchus, the Bacchanalia					
 dionysiacus						
 dionysias						
-dionysius						
+dionysius				3339.0	144.0	0.324
 dionysonymphas						
 dionysopolitae						
 dionysus						
@@ -15278,7 +14694,7 @@ diruptus	P. of dirumpo
 dirus	 ill - omened, ominous, boding,  portentous, fearful, awful, dread			1153.0	557.0	1.254
 dirutio						
 dirutus	P. of diruo					
-dis	deityPluto, god of the underworld					
+dis	deityPluto, god of the underworld			6091.0	52.0	0.117
 discaedo						
 discalceo						
 discapedino						
@@ -15831,7 +15247,7 @@ dogma	a philosophic  tenet, doctrine
 dogmaticus						
 dogmatistes						
 dogmatizo						
-dolabella						
+dolabella				1907.0	313.0	0.705
 dolabellianus						
 dolabra	a mattock, pickaxe					
 dolabrarius						
@@ -15894,7 +15310,7 @@ dominulus
 dominus	a master, possessor, ruler, lord, proprietor, owner	dominus	dominus, dominī, m.	292.0	2042.0	4.597
 domiporta	the house carrier, snail					
 domiseda						
-domitianus						
+domitianus				4364.0	93.0	0.209
 domitius				2688.0	197.0	0.443
 domito	to tame, break in					
 domitor	a tamer, breaker					
@@ -16015,7 +15431,7 @@ drungus
 drusianus						
 drusilla						
 drusinus						
-drusus						
+drusus				2251.0	251.0	0.565
 dryades	wood-nymphs, dryads					
 dryantides						
 dryas						
@@ -16207,7 +15623,7 @@ dyodecas
 dyonymus						
 dyraspes						
 dyrrachini						
-dyrrachium						
+dyrrachium				6229.0	50.0	0.113
 dyscolus						
 dysenteria						
 dysentericus				5109.0	71.0	0.16
@@ -16947,7 +16363,7 @@ enneaphyllon
 enneas						
 ennianista						
 ennianus						
-ennius						
+ennius				2419.0	226.0	0.509
 ennoea						
 ennoematicus						
 ennosigaeus						
@@ -17008,7 +16424,7 @@ eoad
 eodem	loci, in the same place			3011.0	167.0	0.376
 eon						
 eos	the dawn					
-eous	of dawn, of the morning					
+eous	of dawn, of the morning			3879.0	115.0	0.259
 epactae						
 epagoge						
 epaminondas						
@@ -17035,7 +16451,7 @@ ephemeris	a  day-book, diary, ephemeris
 ephemeron						
 ephesii						
 ephesius						
-ephesus						
+ephesus				4838.0	78.0	0.176
 ephialtes						
 ephippiatus	riding with a saddle					
 ephippium	a  pad-saddle, caparison, rug (as a rider’s seat)					
@@ -17063,7 +16479,7 @@ epicrocum
 epictetus						
 epicurei						
 epicureus						
-epicurus						
+epicurus				1638.0	378.0	0.851
 epicus	epic,  heroic					
 epicyclus						
 epidamniensis						
@@ -17121,7 +16537,7 @@ epiredium
 epirensis						
 epirotes						
 epiroticus						
-epirus						
+epirus				4291.0	96.0	0.216
 episcenium						
 episcopalis						
 episcopatus				3659.0	125.0	0.281
@@ -17227,7 +16643,7 @@ eratine
 erato						
 eratosthenes						
 erebeus						
-erebus	the god of  darkness					
+erebus	the god of  darkness			6161.0	51.0	0.115
 erechtheus						
 erechthis						
 erecthidae						
@@ -17282,7 +16698,7 @@ erinaceus
 erindes						
 erineos						
 erinna						
-erinys	a Fury,  goddess of revenge, Remorse					
+erinys	a Fury,  goddess of revenge, Remorse			5842.0	56.0	0.126
 eriophoros						
 erioxylon						
 eriphia						
@@ -17450,8 +16866,8 @@ etiamnum				1840.0	325.0	0.732
 etiamsi				1510.0	416.0	0.936
 etiamtum						
 etrsucus						
-etruria						
-etruscus						
+etruria				2898.0	177.0	0.398
+etruscus				2327.0	239.0	0.538
 etsi	though, although, albeit	etsi	etsī	676.0	947.0	2.132
 etymologia						
 etymologice						
@@ -17503,7 +16919,7 @@ eumenes
 eumenides	the  Furies					
 eumitres						
 eumolpidae						
-eumolpus						
+eumolpus				5060.0	72.0	0.162
 eunuchinus						
 eunuchion						
 eunuchismus						
@@ -17522,7 +16938,7 @@ euphorbea
 euphorbus						
 euphorio						
 euphranor						
-euphrates						
+euphrates				3776.0	119.0	0.268
 euphratis						
 euphrone						
 euphrosyne						
@@ -17535,13 +16951,13 @@ eupteron
 eureos						
 eurinus						
 euripice						
-euripides						
+euripides				5688.0	59.0	0.133
 euripideus						
 euripus	a channel,  strait, narrow sea					
 euroaquilo						
 euronotus						
 europaeus						
-europe						
+europe				3808.0	118.0	0.266
 europensis						
 eurotas						
 eurotias						
@@ -18691,7 +18107,7 @@ faberianus
 faberius						
 fabiani						
 fabianus						
-fabius						
+fabius				1182.0	542.0	1.22
 fabrateria						
 fabraterni						
 fabre						
@@ -18705,7 +18121,7 @@ fabricatrix
 fabricatus						
 fabricensis						
 fabricianus						
-fabricius						
+fabricius				3677.0	124.0	0.279
 fabrico	to make, build, construct, erect			5801.0	57.0	0.128
 fabricor	to make, frame, forge, construct, build					
 fabrificatio						
@@ -18817,7 +18233,7 @@ falco
 falcula						
 falere						
 falerii						
-falernum						
+falernum				5443.0	64.0	0.144
 falernus	Falernian					
 falisca						
 falisci						
@@ -18885,7 +18301,7 @@ fanaticus	inspired, enthusiastic
 fandus	to be uttered					
 fanitalis						
 fannianus						
-fannius						
+fannius				3721.0	122.0	0.275
 fano						
 fanulum						
 fanum	a shrine, sanctuary, temple			2181.0	261.0	0.588
@@ -18993,7 +18409,7 @@ fauna
 faunalia						
 faunigenae						
 faunius						
-faunus	a mythical king of Latium, worshipped as the Italian Pan					
+faunus	a mythical king of Latium, worshipped as the Italian Pan			6023.0	53.0	0.119
 fausta						
 fauste	favorably, beneficently					
 faustina						
@@ -19021,7 +18437,7 @@ favor	favor, good-will, inclination, partiality			2138.0	268.0	0.603
 favorabilis	favored, in favor					
 favorabiliter						
 favoratus						
-favorinus						
+favorinus				4450.0	90.0	0.203
 favus	a honey-comb			5351.0	66.0	0.149
 fax	a torch, firebrand, flambeau, link	fax	fax, facis, f.	1209.0	527.0	1.186
 faxitur	pass. for factum erit					
@@ -19291,7 +18707,7 @@ fidicula
 fidiculae	a small stringed instrument, small lute					
 fidiculanius						
 fidicularius						
-fidius	epithet of Jupiter (Ζεὺς πίστιος); me dius fidius heaven help me					
+fidius	epithet of Jupiter (Ζεὺς πίστιος); me dius fidius heaven help me	Fidius	mediusfidius	5590.0	61.0	0.137
 fido	to trust, confide, put confidence in, rely upon			2565.0	210.0	0.473
 fiducia	trust, confidence, reliance, assurance			1577.0	396.0	0.891
 fiducialiter						
@@ -19414,7 +18830,7 @@ flacceo	to be flaccid, flag, droop
 flaccesco	to wither, droop, languish					
 flaccianus						
 flaccidus						
-flaccus	flabby, flap-eared					
+flaccus	flabby, flap-eared			2369.0	233.0	0.524
 flagellatio						
 flagello	to scourge, lash					
 flagellum	a whip, scourge			4044.0	106.0	0.239
@@ -19442,7 +18858,7 @@ flaminianus
 flaminica	the wife of a flamen					
 flamininus						
 flaminium	the office of flamen					
-flaminius						
+flaminius				5060.0	72.0	0.162
 flamma	a blazing fire, blaze, flame	flamma1	flamma, flammae, f.	637.0	1002.0	2.255
 flammabundus						
 flammans	PP. of flammo					
@@ -19484,7 +18900,7 @@ flavidus
 flavina						
 flavinium						
 flavinius						
-flavius						
+flavius				4799.0	79.0	0.178
 flavus	golden yellow, reddish yellow, flaxen-colored, blonde			2391.0	230.0	0.518
 flebilis	to be wept over, lamentable, deplorable			3519.0	132.0	0.297
 flebiliter	mournfully, dolefully					
@@ -19638,7 +19054,7 @@ fontana
 fontaneus						
 fontanus	of a spring, from a fountain, spring-					
 fonteianus						
-fonteius						
+fonteius				5351.0	66.0	0.149
 fonticulus	a little spring					
 fontinalia						
 fontinalis						
@@ -19686,7 +19102,7 @@ formatura
 formella						
 formiae						
 formiani						
-formianum						
+formianum				4838.0	78.0	0.176
 formianus						
 formica	an ant, pismire			4910.0	76.0	0.171
 formicabilis						
@@ -20006,7 +19422,7 @@ fucus				5245.0	68.0	0.153
 fucus2	a drone					
 fufidianus						
 fufidius						
-fufius						
+fufius				5590.0	61.0	0.137
 fuga	a fleeing, flight, running away	fuga	fuga, fugae, f.	568.0	1103.0	2.483
 fugaciter						
 fugacius	timidly, in readiness for flight					
@@ -20082,7 +19498,7 @@ fultus	P. of fulcio
 fulvaster						
 fulvia						
 fulviaster						
-fulvius						
+fulvius				6091.0	52.0	0.117
 fulvum						
 fulvus	deep yellow, reddish yellow, gold-colored, tawny			2946.0	173.0	0.389
 fumans	P. of fumo					
@@ -20194,7 +19610,7 @@ furio	to drive mad, madden, infuriate			2672.0	199.0	0.448
 furiose	madly					
 furiositas						
 furiosus	full of madness, mad, raging, furious			4077.0	105.0	0.236
-furius						
+furius				3403.0	140.0	0.315
 furnaceus						
 furnaria						
 furnarius						
@@ -20262,7 +19678,7 @@ gabiensis
 gabii						
 gabini						
 gabinianus						
-gabinius						
+gabinius				3776.0	119.0	0.268
 gabinus						
 gad						
 gades						
@@ -20276,7 +19692,7 @@ gaetulus
 gagates						
 gaia						
 gaianus						
-gaius						
+gaius				238.0	2472.0	5.564
 gala						
 galaad						
 galactites						
@@ -20289,7 +19705,7 @@ galatia
 galaticor						
 galaticus						
 galaxias						
-galba	a worm, the ash-borer; in Gallic, paunch					
+galba	a worm, the ash-borer; in Gallic, paunch			2145.0	267.0	0.601
 galbanatus						
 galbaneus	of galbanum					
 galbanum						
@@ -20320,14 +19736,14 @@ galgulus
 galilaea						
 galilaei						
 galilaeus						
-galla						
+galla				5488.0	63.0	0.142
 galla2	a gall-apple, gall-nut (an excrescence on the oak,      caused by insects)					
 gallae						
 gallaeci						
 gallaecia						
 gallaecus						
 galli	I. See 2 Gallus					
-gallia						
+gallia				955.0	679.0	1.528
 galliambus						
 gallica	a Gallic shoe, galosh					
 gallicani						
@@ -20336,7 +19752,7 @@ gallicarius
 gallicinia						
 gallicinium						
 gallicula						
-gallicus						
+gallicus				3121.0	158.0	0.356
 gallidraga						
 gallina	a hen, domestic hen			4387.0	92.0	0.207
 gallina2						
@@ -20344,7 +19760,7 @@ gallinaceus	of hens, of fowls			4769.0	80.0	0.18
 gallinarium						
 gallinarius	a keeper of poultry					
 gallinula						
-gallius						
+gallius				3755.0	120.0	0.27
 gallograeci						
 gallograecia						
 gallohispani						
@@ -20355,6 +19771,7 @@ gallulus
 gallus	a cock, domestic cockof Gaul, Gallic			2774.0	188.0	0.423
 gallus2	river, tributary of Sagaris; pl priests of Cybele					
 gallus3	cognomen in gens Cornelia, Aquilia, Sulpicia					
+gallus4				4951.0	75.0	0.169
 galumma						
 galus						
 gamba						
@@ -20455,7 +19872,7 @@ gelida
 gelide	coldly, indifferently					
 gelidus	icy cold, very cold, icy, frosty			1947.0	304.0	0.684
 gellianus						
-gellius						
+gellius				5206.0	69.0	0.155
 gelo	to freeze, congeal					
 gelon						
 gelonus						
@@ -20596,13 +20013,13 @@ gergovia
 germalus						
 germana	a full sister, own sister					
 germane	sincerely					
-germani						
-germania						
+germani				1897.0	315.0	0.709
+germania				3243.0	150.0	0.338
 germaniae						
 germaniciani						
 germanicianus						
 germaniciensis						
-germanicus	of the Germans, German					
+germanicus	of the Germans, German			1866.0	320.0	0.72
 germanitas	the relation between children of the same parents, brotherhood, sisterhood					
 germanitus						
 germanus	full, own			2868.0	180.0	0.405
@@ -20654,8 +20071,8 @@ gestor
 gestuosus						
 gestus				4799.0	79.0	0.178
 gestus2	bearing, carriage, posture, attitude, motion, gesture, movement, action,              sign					
-getes						
-geticus						
+getes				3808.0	118.0	0.266
+geticus				6229.0	50.0	0.113
 geum						
 gibba						
 gibber						
@@ -20680,7 +20097,7 @@ gingrina
 gingritus						
 ginnus						
 gitanae						
-giton						
+giton				5408.0	65.0	0.146
 gizeria						
 glabellus						
 glaber	smooth					
@@ -20808,7 +20225,7 @@ glycyrrhiza
 glycyrrhizon						
 glycyside						
 glycysis						
-gnaeus	a praenomen, usu. written					
+gnaeus	a praenomen, usu. written			874.0	742.0	1.67
 gnaphalion						
 gnaritas						
 gnaruris						
@@ -20849,7 +20266,7 @@ gordius
 gordueni						
 gordyaei						
 gorge						
-gorgias						
+gorgias				6161.0	51.0	0.115
 gorgis						
 gorgo	a Gorgon;  plur. Gorgones, the three daughters of Phorcus, Stheno, Euryale, and Medusa, with  beautiful faces, snakes for hair, and a petrifying look					
 gorgobina						
@@ -20867,7 +20284,7 @@ gorytos
 gossympinus						
 gossypion						
 gotarzes						
-gothi						
+gothi				5744.0	58.0	0.131
 gothicus						
 gothini						
 gothones						
@@ -20876,7 +20293,7 @@ grabatum
 grabatus	a low couch, camp-bed, pallet					
 gracchanus						
 gracchuris						
-gracchus						
+gracchus				2055.0	283.0	0.637
 gracilens						
 gracilentus						
 gracilesco						
@@ -20894,16 +20311,16 @@ gradatus
 gradilis						
 gradior	to take steps, step, walk, go, advance			2704.0	196.0	0.441
 gradivicola						
-gradivus	a surname of Mars					
+gradivus	a surname of Mars			5408.0	65.0	0.146
 gradus	a step, pace, gait, walk	gradus	gradus, gradūs, m.	848.0	758.0	1.706
 graea						
 graeae						
 graecalis						
 graecanice						
 graecati						
-graece	in the Greek language, in Greek					
+graece	in the Greek language, in Greek			2859.0	181.0	0.407
 graeceius						
-graecia						
+graecia				1562.0	402.0	0.905
 graeciensis						
 graecigena						
 graecisso						
@@ -20914,8 +20331,8 @@ graecostasis	a building in which foreign ambassadors  awaited decisions of the s
 graeculio						
 graeculus	Grecian, Greek					
 graecum						
-graecus	of the  Greeks, Greek, Grecian					
-graii	the Greeks, Grecian, Greek					
+graecus	of the  Greeks, Greek, Grecian			368.0	1688.0	3.8
+graii	the Greeks, Grecian, Greek			2055.0	283.0	0.637
 graioceli						
 graiugena	a Grecian by birth, Greek					
 graius						
@@ -21218,7 +20635,7 @@ haemon
 haemonia						
 haemonides						
 haemonis						
-haemonius	of or belonging to Thessaly (Haemonia)					
+haemonius	of or belonging to Thessaly (Haemonia)			5896.0	55.0	0.124
 haemophthisicus						
 haemoptyicus						
 haemorrhagia						
@@ -21302,7 +20719,7 @@ hammonius
 hamula						
 hamulus						
 hamus	a hook			4988.0	74.0	0.167
-hannibal	a  Carthaginian name					
+hannibal	a  Carthaginian name			2084.0	278.0	0.626
 hanno						
 hapalopsis						
 hapaluria						
@@ -21414,7 +20831,7 @@ hecato
 hecatombe	a  sacrifice of a hundred oxen, hecatomb					
 hecatombion						
 hecatontas						
-hector						
+hector				3307.0	146.0	0.329
 hectoreus						
 hecube						
 hecyra						
@@ -21496,7 +20913,7 @@ helvenacius
 helvenacus						
 helveolus						
 helveticus						
-helvetii						
+helvetii				4988.0	74.0	0.167
 helvetius						
 helvicus						
 helvidius						
@@ -21569,7 +20986,7 @@ heracleus
 heraclides						
 heraclitei						
 heraclitus						
-heraclius						
+heraclius				6161.0	51.0	0.115
 heraea						
 herba	an herb, grass, green blades, herbage, turf			733.0	869.0	1.956
 herbaceus						
@@ -21603,8 +21020,8 @@ herculaneus
 herculanus						
 hercularia						
 hercule	by Hercules, assuredly, indeed					
-hercules	a son of Jupiter and Alcmena, and god of strength					
-herculeus	of Hercules, Herculean					
+hercules	a son of Jupiter and Alcmena, and god of strength			344.0	1764.0	3.971
+herculeus	of Hercules, Herculean			3078.0	162.0	0.365
 herculius						
 hercyniasilva						
 hercynna						
@@ -21655,7 +21072,7 @@ hermunduri
 hermupoa						
 hermus						
 hernia						
-hernicus						
+hernicus				4364.0	93.0	0.209
 herniosi						
 herniosus						
 hero						
@@ -21685,9 +21102,9 @@ hesiodicus
 hesiodus						
 hesiona						
 hesperia	the land of the west, Italy					
-hesperie						
+hesperie				5488.0	63.0	0.142
 hesperis	of  evening, of the west, western					
-hesperius	of Hesperus, of the west, western					
+hesperius	of Hesperus, of the west, western			5408.0	65.0	0.146
 hesperugo						
 hesperus						
 hesternus	of yesterday, yesterday’s			3927.0	112.0	0.252
@@ -21732,7 +21149,7 @@ hibernia
 hiberno	to pass the winter, winter, occupy winter-quarters					
 hibernum	winter (late Latin)			5896.0	55.0	0.124
 hibernus	of winter, wintry, winter-			4102.0	104.0	0.234
-hiberus						
+hiberus				3121.0	158.0	0.356
 hibiscum	the  marsh-mallow					
 hibrida						
 hic	this (proximate: this here and now)	hic1	hic, haec, hoc	6.0	54183.0	121.965
@@ -21833,7 +21250,7 @@ hippodamus
 hippodromos						
 hippolapathon						
 hippolyta						
-hippolytus						
+hippolytus				5590.0	61.0	0.137
 hippomanes	a humor  from a mare, used as a drug to excite passion					
 hippomarathum						
 hippomeneis						
@@ -21878,7 +21295,7 @@ hirrus
 hirsutia						
 hirsutus	rough, shaggy, bristly, prickly, hirsute			5060.0	72.0	0.162
 hirtinus						
-hirtius						
+hirtius				4951.0	75.0	0.169
 hirtus	rough, hairy, shaggy			4131.0	103.0	0.232
 hirudo	a leech, blood-sucker					
 hirundineus						
@@ -21888,18 +21305,18 @@ hisco	to open, gape, yawn
 hispalensis						
 hispalienses						
 hispalis						
-hispania						
+hispania				2010.0	291.0	0.655
 hispaniae						
 hispanicus						
 hispaniensis						
-hispanus						
+hispanus				4838.0	78.0	0.176
 hispellates						
 hispellum						
 hispido						
 hispidus	rough, shaggy, hairy, bristly, prickly					
 hispo						
 hispulla						
-hister						
+hister				5963.0	54.0	0.122
 histon						
 historia	a narrative  of past events, history			1446.0	436.0	0.981
 historialis						
@@ -21952,7 +21369,7 @@ homerius
 homerocento						
 homeronides						
 homeros						
-homerus	Homer					
+homerus	Homer			2388.0	231.0	0.52
 homicida	a manslayer, homicide, murderer					
 homicidalis						
 homicidarius						
@@ -22011,7 +21428,7 @@ horalis
 horarium						
 horatia						
 horatianus						
-horatius						
+horatius				3832.0	117.0	0.263
 horconia						
 horda						
 hordeaceus	of barley; relating to barley					
@@ -22077,7 +21494,7 @@ hortatus	incitement, encouragement, exhortation
 hortensia						
 hortensianus						
 hortensis				5590.0	61.0	0.137
-hortensius						
+hortensius				2898.0	177.0	0.398
 hortinus						
 horto				1976.0	300.0	0.675
 hortor	to urge, press, incite, instigate, encourage, cheer, exhort		hortor, hortārī, hortātus sum	1956.0	303.0	0.682
@@ -22224,7 +21641,7 @@ hyleus
 hylleus	of or pertaining to Hyllus, son of Heracles; Hyllei					
 hyllus	son of Heracles					
 hylonome						
-hymen	the god of marriage, god of weddings, Hymen (only      nom sing.)					
+hymen	the god of marriage, god of weddings, Hymen (only      nom sing.)			5535.0	62.0	0.14
 hymenaeus	the      nuptial hymn, wedding song			4169.0	101.0	0.227
 hymenaeus2	the      god of marriage, god of weddings, Hymen					
 hymenaicus						
@@ -22408,9 +21825,9 @@ ianthis
 ianua	a door, house-door			2616.0	205.0	0.461
 ianual						
 ianualis						
-ianuarius	of Janus; January					
+ianuarius	of Janus; January			3755.0	120.0	0.27
 ianuarus						
-ianus	an old Italian deity, good of doors, passages, and entrances, of all beginnings, and of the month of January					
+ianus	an old Italian deity, good of doors, passages, and entrances, of all beginnings, and of the month of January			5245.0	68.0	0.153
 iapetides						
 iapetionides						
 iapetus						
@@ -22429,7 +21846,7 @@ iasides
 iasidos						
 iasione						
 iasius						
-iason						
+iason				5245.0	68.0	0.153
 iasonides						
 iasonius						
 iaspachates						
@@ -22484,13 +21901,13 @@ icterus
 ictis						
 ictus2	a blow, stroke, stab, cut, thrust, bite, sting, wound	ictus2	īctus, īctūs, m.	1370.0	459.0	1.033
 icuncula						
-idaeus						
+idaeus				4557.0	87.0	0.196
 idalie						
 idalium						
 idalius						
 idas						
 idcirco	on that account, for that reason, therefore			1796.0	334.0	0.752
-ide						
+ide				5408.0	65.0	0.146
 idea						
 idealis						
 idem	the same	idem	īdem, eadem, idem	45.0	11700.0	26.336
@@ -22518,7 +21935,7 @@ idumaea
 idumaeus						
 idume						
 iduo						
-idus	the ides, middle of the month (the fifteenth day of March, May, July, and October; the thirteenth of every other month)					
+idus	the ides, middle of the month (the fifteenth day of March, May, July, and October; the thirteenth of every other month)			1927.0	308.0	0.693
 idyia						
 idyllium						
 iecinerosus						
@@ -22541,7 +21958,7 @@ iento
 ieremias						
 iericho						
 ierna						
-iesus						
+iesus				5896.0	55.0	0.124
 ietae						
 igilium						
 igitur	then, therefore, thereupon, accordingly, consequently	igitur	igitur	144.0	3931.0	8.849
@@ -22595,9 +22012,9 @@ iguvinates
 iguvini						
 iguvium						
 ii						
-iii						
-iiii						
-iius						
+iii				5535.0	62.0	0.14
+iiii				3537.0	131.0	0.295
+iius				4526.0	88.0	0.198
 ile	see ilia					
 ileos						
 ilerda						
@@ -22607,7 +22024,7 @@ ilergavonenses
 ilergetes						
 ilex	an oak, holm-oak, great scarlet oak			4343.0	94.0	0.212
 ilia	the abdomen below the ribs, groin, flanks			3622.0	127.0	0.286
-iliacus	of Ilium, Ilian, Trojanpertaining to colic; colic sufferer					
+iliacus	pertaining to colic; colic suffererof Ilium, Ilian, Trojan			4910.0	76.0	0.171
 iliades						
 ilias						
 ilicet	let us go, have done					
@@ -22738,7 +22155,7 @@ illyria
 illyriae						
 illyricianus						
 illyricum						
-illyricus	Illyrian					
+illyricus	Illyrian			3899.0	114.0	0.257
 illyrii						
 illyris						
 illyrius						
@@ -23858,7 +23275,7 @@ indevoro
 indevotio						
 indevotus						
 index	one who points out, a discloser, discoverer, informer, witness			3024.0	166.0	0.374
-india						
+india				5060.0	72.0	0.162
 indianus						
 indicabilis						
 indicatio						
@@ -24005,7 +23422,7 @@ induratus	hardened
 indureo						
 induresco	to grow hard on, stiffen upon					
 induro	to make hard, harden					
-indus						
+indus				3721.0	122.0	0.275
 indus2						
 indusiarius						
 indusiatus						
@@ -26169,7 +25586,7 @@ ismenis
 ismenius						
 ismenus						
 isocinnamon						
-isocrates						
+isocrates				5896.0	55.0	0.124
 isocrateus						
 isocratius						
 isoetes						
@@ -26210,12 +25627,12 @@ istrus
 istuc	thither, to you, to where you are, in that direction	istuc	istūc			
 istyaeones						
 ita	in this manner, in this wise, in such a way, so, thus, accordingly, as has been said	ita	ita	44.0	11896.0	26.778
-italia						
+italia				651.0	982.0	2.21
 italica						
 italicenses						
-italicus	of Italy, Italian					
+italicus	of Italy, Italian			5488.0	63.0	0.142
 italis						
-italus	Italian; mythical king Italus					
+italus	Italian; mythical king Italus			3448.0	137.0	0.308
 itaque	and so, and thus, and accordingly	ita	itaque			
 item	likewise, besides, also, further, moreover, too, as well	item	item	247.0	2361.0	5.315
 iter	(a going, walk, way;) journey, march, road	iter	iter, itineris, n.	338.0	1776.0	3.998
@@ -26266,7 +25683,7 @@ iucundo
 iucundus	pleasant, agreeable, delightful, pleasing			890.0	731.0	1.645
 iuda						
 iudaea						
-iudaei						
+iudaei				5022.0	73.0	0.164
 iudaeus						
 iudaicus	Jewish					
 iudaismus						
@@ -26315,17 +25732,17 @@ iugulus
 iugum	a yoke, collar; juger of land, mountain ridge	jugum	iugum, iugī, n.	861.0	747.0	1.681
 iugumento						
 iugumentum						
-iugurtha						
+iugurtha				2811.0	185.0	0.416
 iugurthinus						
 iugus						
 iuleus	I. Named from Iulus					
 iuliacum						
-iulianus						
+iulianus				2428.0	225.0	0.506
 iuliensis						
 iuliobriga						
 iuliobrigensis						
 iulis						
-iulius	Julian, of Julius					
+iulius	Julian, of Julius			1235.0	512.0	1.153
 iulus				4988.0	74.0	0.167
 iumentarius						
 iumentum	a beast for hauling, draught-animal, beast of burden, horse, mule, ass			2200.0	258.0	0.581
@@ -26345,14 +25762,14 @@ iuniculus
 iunior	comp. of iuvenis					
 iunipereus						
 iuniperus	the juniper-tree					
-iunius						
+iunius				2577.0	209.0	0.47
 iunix						
-iuno	a daughter of Saturn, sister and wife of Jupiter, goddess of marriage					
+iuno	a daughter of Saturn, sister and wife of Jupiter, goddess of marriage			1638.0	378.0	0.851
 iunonalis	of Juno					
 iunonicola	a worshipper of Juno					
 iunonigena	born of Juno					
 iunonius	of Juno, Junonian					
-iuppiter	Jupiter, Jove, son of Saturn, brother and husband of Juno, chief of the gods, god of the sky					
+iuppiter	Jupiter, Jove, son of Saturn, brother and husband of Juno, chief of the gods, god of the sky			394.0	1597.0	3.595
 iura						
 iuramentum						
 iurandum				4077.0	105.0	0.236
@@ -26449,7 +25866,7 @@ ixionides
 ixionius						
 ixor						
 izi						
-kalendae	the day of proclamation, Calends, first day of the month					
+kalendae	the day of proclamation, Calends, first day of the month			1177.0	544.0	1.225
 kalendalis						
 kalendarium						
 kalendarius						
@@ -26481,7 +25898,7 @@ labici
 labicum						
 labidus						
 labienianus						
-labienus						
+labienus				3480.0	135.0	0.304
 labilis						
 labina						
 labio						
@@ -26516,7 +25933,7 @@ lacca
 laccar						
 lacedaemon						
 lacedaemones						
-lacedaemonius						
+lacedaemonius				2350.0	235.0	0.529
 lacer	mangled, lacerated, torn			3507.0	133.0	0.299
 lacerabilis						
 laceratio	a tearing, rending, mangling, laceration, mutilation					
@@ -26620,7 +26037,7 @@ laecasin
 laedo	to hurt, wound, injure, damage	laedo	laedō, laedere, laesī, laesum	878.0	741.0	1.668
 laelia						
 laelianus						
-laelius						
+laelius				2379.0	232.0	0.522
 laena	a woollen  mantle, shawl, cloak					
 laenas						
 laenius						
@@ -26816,7 +26233,7 @@ lanx	a plate, platter, charger, dish			5641.0	60.0	0.135
 laocoon						
 laodamia						
 laodice						
-laodicea						
+laodicea				5744.0	58.0	0.131
 laodiceni						
 laodicia						
 laomedon						
@@ -26873,7 +26290,7 @@ lardarius
 lardum	cured swine’s flesh, bacon, lard					
 larentalia	a festival celebrated Dec. 23d, in honor of Larentia,  nurse of Romulus and Remus					
 larentia						
-lares	the gods of places, protecting deities, Lares					
+lares	the gods of places, protecting deities, Lares			2474.0	220.0	0.495
 larga						
 large	abundantly, plentifully, bountifully, liberally					
 largianus						
@@ -26982,8 +26399,8 @@ latinitas	pure Latin style, Latinity
 latinius						
 latinizo						
 latino						
-latinus	of Latium, Latin					
-latinus2	king Latinus					
+latinus	of Latium, Latin			880.0	738.0	1.661
+latinus2	king Latinus			2534.0	214.0	0.482
 latio	a bearing, bringing					
 latissime	of late					
 latitabundus						
@@ -26992,8 +26409,8 @@ latitator
 latitia						
 latito	to be hid, be concealed, lie hid, hide, lurk					
 latitudo	breadth, width			1778.0	338.0	0.761
-latium	Latium, a region in Italy that includes Rome					
-latius	of or belonging to Latium					
+latium	Latium, a region in Italy that includes Rome			4291.0	96.0	0.216
+latius	of or belonging to Latium			2756.0	190.0	0.428
 latius2	comp. of late					
 latmiadeus						
 latmius						
@@ -27053,7 +26470,7 @@ laurago
 laurea	the laurel-tree			5206.0	69.0	0.155
 laureatae						
 laureatus	crowned with laurel, laureate, laurelled					
-laurens						
+laurens				6161.0	51.0	0.115
 laurentes						
 laurentinum						
 laurentinus						
@@ -27245,7 +26662,7 @@ lentitudo	sluggishness, dulness, apathy, insensibility
 lento	to make flexible, bend					
 lentor						
 lentulitas	the nobility of a Lentulus, Lentulity					
-lentulus	rather slow					
+lentulus	rather slow			1785.0	336.0	0.756
 lentus	pliant, flexible, tough, tenacious, sticky, viscous			1462.0	431.0	0.97
 lenullus						
 lenuncularius						
@@ -27450,7 +26867,7 @@ libens	willing, with readiness, with good will, with pleasure, glad			3307.0	146
 libenter	willingly, cheerfully, gladly, with pleasure					
 libentia						
 libentina	a surname of Venus as goddess of pleasure					
-liber	an Italian deity of planting and fructificationfree	liber1	līber, lībera, līberum	310.0	1939.0	4.365
+liber	freean Italian deity of planting and fructification	liber1	līber, lībera, līberum	310.0	1939.0	4.365
 liber2	child	liberi	līberī, līberōrum, m. pl.	452.0	1401.0	3.154
 liber4	book; bark	liber4	liber, librī, m.	492.0	1277.0	2.875
 libera						
@@ -27510,11 +26927,11 @@ liburnia
 liburnica						
 liburnicus						
 liburnus	of Liburnia (in Illyria)					
-libya						
+libya				3207.0	152.0	0.342
 libyci						
-libycus						
+libycus				3927.0	112.0	0.252
 libyphoenices						
-libys						
+libys				6091.0	52.0	0.117
 libyssus						
 libystinus						
 libystis						
@@ -27540,7 +26957,7 @@ liciniani
 licinianus						
 licinio						
 licinium						
-licinius						
+licinius				3289.0	147.0	0.331
 licinus						
 licita				5298.0	67.0	0.151
 licitatio	a bidding, offering of a price					
@@ -27561,7 +26978,7 @@ ligamen	a tie, bandage
 ligamentum	a bandage					
 ligariana						
 ligarianus						
-ligarius						
+ligarius				5022.0	73.0	0.164
 ligatio						
 ligatura						
 ligatus						
@@ -27825,14 +27242,14 @@ livens	bluish, leadcolored, black and blue, livid
 liventer						
 liveo	to be black and blue, be livid			5443.0	64.0	0.144
 livesco						
-livia						
+livia				5351.0	66.0	0.149
 livianus						
 livido						
 lividulus	inclined to envy					
 lividus	of a leaden color, bluish, blue			4883.0	77.0	0.173
 livilla						
 livineius						
-livius						
+livius				4614.0	85.0	0.191
 livor	a bluish color, black and blue spot, bruise			5298.0	67.0	0.151
 lixa	a sutler, camp-follower					
 lixio						
@@ -27993,7 +27410,7 @@ lucagus
 lucania						
 lucanica	Lucanian sausage, smoked sausage					
 lucanicus						
-lucanus	of Lucania (a district of Lower Italy)					
+lucanus	of Lucania (a district of Lower Italy)			4686.0	83.0	0.187
 lucar	money paid to actors					
 lucaria						
 lucaris						
@@ -28029,7 +27446,7 @@ lucifuga
 lucifugax						
 lucifugus	light-shunning					
 lucilianus						
-lucilius						
+lucilius				1814.0	330.0	0.743
 lucina	she that brings to light, goddess of childbirth					
 lucinus						
 luciparens						
@@ -28041,7 +27458,7 @@ lucrativus	attended with gain, gainful
 lucrator						
 lucretilis						
 lucretinus						
-lucretius						
+lucretius				4044.0	106.0	0.239
 lucricupido						
 lucrifacio						
 lucrificabilis						
@@ -28089,7 +27506,7 @@ luculentus	full of light, bright, splendid			6229.0	50.0	0.113
 lucullanus						
 luculleus						
 lucullianus						
-lucullus						
+lucullus				3038.0	165.0	0.371
 luculus						
 lucumo	an Etruscan priest					
 lucumonius						
@@ -28263,7 +27680,7 @@ luxus	dislocated
 luxus2	dislocation					
 luxus3	excess, indulgence, luxury, debauchery			4450.0	90.0	0.203
 lx						
-lyaeus	Lyaeus,  deliverer from care, a surname of Bacchus					
+lyaeus	Lyaeus,  deliverer from care, a surname of Bacchus			5688.0	59.0	0.133
 lycabas						
 lycaeus						
 lycambes						
@@ -28294,7 +27711,7 @@ lycinna
 lycisce						
 lyciscus						
 lycium	a gymnasium  near Athens					
-lycius	of Lycia, Lycian					
+lycius	of Lycia, Lycian			5842.0	56.0	0.126
 lyco						
 lycomedes						
 lyconides						
@@ -28314,7 +27731,7 @@ lyctius
 lyctus						
 lycurgei						
 lycurgides						
-lycurgus						
+lycurgus				5245.0	68.0	0.153
 lycus						
 lyde						
 lydia						
@@ -28384,7 +27801,8 @@ maccis
 maccius						
 maccus						
 macedo	Macedonian					
-macedonia						
+macedones				2534.0	214.0	0.482
+macedonia				2879.0	179.0	0.403
 macedonianus						
 macedonicus						
 macedoniensis						
@@ -28483,7 +27901,7 @@ maeander	a river  of Ionia and Phrygia, famous for its winding course
 maeandratus						
 maeandricus						
 maeandrius						
-maecenas	an Etruscan family name					
+maecenas	an Etruscan family name			4838.0	78.0	0.176
 maecenatianus						
 maecia						
 maecius						
@@ -28718,7 +28136,7 @@ malva	mallows
 malvaceus						
 mamercinus						
 mamercus						
-mamertinus	of Mars, Mamertine					
+mamertinus	of Mars, Mamertine			4988.0	74.0	0.167
 mamilius						
 mamilla	a breast, pap, nipple, teat					
 mamillanus						
@@ -28815,7 +28233,7 @@ manifestus	clear, plain, apparent, evident, manifest, exposed, caught in the act
 manifolium						
 manilia						
 manilianus						
-manilius						
+manilius				6229.0	50.0	0.113
 maniolae						
 maniopoeos						
 maniosus						
@@ -28826,7 +28244,7 @@ manipulus	a handful, bundle			3595.0	128.0	0.288
 manius						
 manlianum						
 manlianus	of a Manlius					
-manlius	a gentile name					
+manlius	a gentile name			2586.0	208.0	0.468
 manna						
 mannulus						
 mannus	a small Gallic horse, coach-horse, cob					
@@ -28915,7 +28333,7 @@ marathus
 marcellia						
 marcellianus						
 marcellinus						
-marcellus						
+marcellus				1870.0	319.0	0.718
 marceo	to be faint, droop, be feeble, be languid			4557.0	87.0	0.196
 marcesco	to become weak, grow feeble, pine away, waste, languish					
 marcianopolis						
@@ -28925,7 +28343,7 @@ marcidus	withered, wilted
 marcion						
 marcionita						
 marcipor						
-marcius						
+marcius				3276.0	148.0	0.333
 marcodurum						
 marcolica						
 marcomani						
@@ -28982,7 +28400,7 @@ maritimus	of the sea, sea-, marine, maritime			2606.0	206.0	0.464
 marito	to wed, marry					
 maritus	of marriage, matrimonial, nuptial; (noun) spouse	maritus1	marītus, marītī, m.	941.0	690.0	1.553
 marium						
-marius						
+marius				2225.0	254.0	0.572
 marmaricus						
 marmarides						
 marmaritis						
@@ -29014,12 +28432,12 @@ marrubius
 marrucini						
 marrucinus						
 marruvii						
-mars	Mars, father of Romulus and god of war, with whose month, Martius, the Roman          year began					
+mars	Mars, father of Romulus and god of war, with whose month, Martius, the Roman          year began			1934.0	306.0	0.689
 marsaci						
 marsicus						
 marsigni						
 marsupium						
-marsus						
+marsus				4910.0	76.0	0.171
 marsyas	a satyr,  flayed by Apollo					
 martes				1757.0	344.0	0.774
 martialis						
@@ -29030,7 +28448,7 @@ marticultor
 martigena						
 martiobarbulus						
 martiolus						
-martius	of Mars; March					
+martius	of Mars; March			1796.0	334.0	0.752
 martyr						
 martyrium				6229.0	50.0	0.113
 marucca						
@@ -29066,9 +28484,9 @@ massaris
 massaticius						
 massicum						
 massicus	of Mount Massicus in Campania					
-massilia						
+massilia				5963.0	54.0	0.122
 massilianus						
-massiliensis						
+massiliensis				6023.0	53.0	0.119
 massilioticus						
 massilitani						
 massilitanum						
@@ -29174,7 +28592,7 @@ maurella
 mauretania						
 mauricus						
 mauritanicus						
-maurus						
+maurus				4216.0	99.0	0.223
 maurusia						
 maurusiacus						
 maurusii						
@@ -29218,7 +28636,7 @@ meconites
 meconium						
 meddix	a magistrate					
 mede						
-medea						
+medea				4492.0	89.0	0.2
 medeis						
 medela						
 medens	a healer, physician					
@@ -29314,7 +28732,7 @@ medullula	marrow
 medullum						
 medullus						
 medulus						
-medus						
+medus				5535.0	62.0	0.14
 medusa	a Gorgon					
 medusaeus	of Medusa, Medusean					
 megabocchus						
@@ -29495,7 +28913,7 @@ memecylon
 memini	I remember, recollect, think of, am mindful of, bear in mind	memini	meminī, meminisse	595.0	1063.0	2.393
 memmiades						
 memmianus						
-memmius						
+memmius				4686.0	83.0	0.187
 memnon	son of  Tithonus and Aurora					
 memnonia						
 memnonides						
@@ -29657,7 +29075,7 @@ mercor	to trade, traffic, deal in, buy, purchase			3432.0	138.0	0.311
 mercuriales						
 mercurialis	of Mercury					
 mercuriolus						
-mercurius	Mercury, the messenger of the gods, the god of dexterity and of eloquence, of          traders and thieves					
+mercurius	Mercury, the messenger of the gods, the god of dexterity and of eloquence, of          traders and thieves			4244.0	98.0	0.221
 merda	dung, ordure, excrement					
 merdaceus						
 merdaleus						
@@ -29746,7 +29164,7 @@ mespila
 mespilum						
 messalina						
 messalinus						
-messalla						
+messalla				3403.0	140.0	0.315
 messana						
 messanius						
 messapia						
@@ -29811,7 +29229,7 @@ metaxa
 metaxarii						
 metella						
 metellinus						
-metellus						
+metellus				1446.0	436.0	0.981
 metempsychosis						
 metensomatosis						
 meteoria						
@@ -29942,11 +29360,11 @@ millesimus	the thousandth
 millies	a thousand times, innumerable times			5443.0	64.0	0.144
 millimodus						
 millio						
-milo						
+milo				2308.0	242.0	0.545
 miloniana						
 milonianus						
 milonius						
-miltiades						
+miltiades				5963.0	54.0	0.122
 miltos						
 milua						
 miluago						
@@ -29991,7 +29409,7 @@ minctio
 minctura						
 minctus						
 mindius						
-minerva	the goddess of wisdom, sense, and reflection, of the arts and sciences, of          poetry, and of spinning and weaving, identified with the Grecian Athene					
+minerva	the goddess of wisdom, sense, and reflection, of the arts and sciences, of          poetry, and of spinning and weaving, identified with the Grecian Athene			2565.0	210.0	0.473
 minerval						
 minervalia						
 minervalicium						
@@ -30051,7 +29469,7 @@ minturnae
 minturnenses						
 minturnensis						
 minucia						
-minucius						
+minucius				5167.0	70.0	0.158
 minuisco						
 minuo	to make small, lessen, diminish, divide into small pieces			1391.0	454.0	1.022
 minurio						
@@ -30179,7 +29597,7 @@ mitesco	to be softened
 mithradatium						
 mithras						
 mithriacus						
-mithridates						
+mithridates				4268.0	97.0	0.218
 mithridateus						
 mithridaticus						
 mitifico	to ripen					
@@ -30606,7 +30024,7 @@ muceo
 mucesco						
 muchula						
 mucia						
-mucianus						
+mucianus				4883.0	77.0	0.173
 mucidus	mouldy, musty					
 mucilago						
 mucinium						
@@ -30874,7 +30292,7 @@ murtatus
 murteta	a myrtlewood, grove of myrtles					
 murus	a wall, city wall	murus	mūrus, mūrī, m.	639.0	997.0	2.244
 mus	a mouse			3038.0	165.0	0.371
-musa	a muse, one  of the nine Muses (goddesses of poetry, music, and all liberal arts)					
+musa	a muse, one  of the nine Muses (goddesses of poetry, music, and all liberal arts)			2534.0	214.0	0.482
 musaeus						
 musagetes						
 musca	a fly			5842.0	56.0	0.126
@@ -30951,7 +30369,7 @@ mutilitas
 mutilo	to cut off, lop off, cut short, clip, crop, maim, mutilate					
 mutilum						
 mutilus	maimed, mutilated					
-mutina						
+mutina				5842.0	56.0	0.126
 mutinensis						
 mutinus						
 mutio						
@@ -30960,7 +30378,7 @@ mutitatio
 mutitio						
 mutito						
 mutitus						
-mutius						
+mutius				4315.0	95.0	0.214
 muto	to move, move away, remove; change	muto1	mūtō, mūtāre, mūtāvī, mūtātum	443.0	1435.0	3.23
 muto2	the penis					
 mutoniatus						
@@ -31126,7 +30544,7 @@ naccinus
 nacolea						
 nactus	P. of nanciscor					
 naevianus						
-naevius						
+naevius				3961.0	110.0	0.248
 naevulus						
 naevus	a birth-mark, mole, wart					
 nahanarvali						
@@ -31372,7 +30790,7 @@ ne3	really, indeed (only with pron pers. or demonst.)
 neaera						
 neaethus						
 neaniscologus						
-neapolis						
+neapolis				5963.0	54.0	0.122
 neapolitani						
 neapolitanum						
 neapolitanus						
@@ -31554,7 +30972,7 @@ neptunia
 neptunicola						
 neptunine						
 neptunius	of Neptune, Neptunian					
-neptunus	Neptune, god of the sea, son of Saturn and brother of Jupiter					
+neptunus	Neptune, god of the sea, son of Saturn and brother of Jupiter			3168.0	155.0	0.349
 nequam	indecl. with comp. nequior,  and sup. nequissimus, worthless, good for nothing			3168.0	155.0	0.349
 nequaquam	in no wise, by no means, not at all			2998.0	168.0	0.378
 neque	and notand not	neque	nec	18.0	26610.0	59.899
@@ -31581,10 +30999,10 @@ nerita
 neritius						
 neritos						
 nerius						
-nero						
+nero				1378.0	457.0	1.029
 neroneus						
 neronianus						
-neronius						
+neronius				5488.0	63.0	0.142
 neropolis						
 nersae						
 nersia						
@@ -31704,7 +31122,7 @@ nigellio
 nigellus						
 niger	black, sable, dark, dusky	niger1	niger, nigra, nigrum	631.0	1005.0	2.262
 nigidianus						
-nigidius						
+nigidius				6161.0	51.0	0.115
 nigrans	black, dark, dusky					
 nigredo						
 nigrefacio						
@@ -31733,7 +31151,7 @@ niligena	born on the Nile, Egyptian
 niloticus						
 nilotis						
 nilum	not a shred, nothing			5109.0	71.0	0.16
-nilus	the Nile,  the river of Egypt					
+nilus	the Nile,  the river of Egypt			4169.0	101.0	0.227
 nimbatus						
 nimbifer	storm-bringing, stormy					
 nimbosus	stormy, rainy					
@@ -31894,7 +31312,7 @@ nonacria
 nonacrinus	of Nonacris (a mountain of Arcadia); hence, Arcadian					
 nonacris						
 nonacrius						
-nonae	the Nones, ninth day before the ides					
+nonae	the Nones, ninth day before the ides			3415.0	139.0	0.313
 nonagenarius						
 nonageni						
 nonagesimus	the ninetieth					
@@ -32109,7 +31527,7 @@ nullificatio
 nullifico						
 nullus	not any, none, no	nullus	nūllus, nūlla, nūllum	67.0	7882.0	17.742
 num	surely not?; whether	num1	num	687.0	935.0	2.105
-numa						
+numa				3961.0	110.0	0.248
 numana						
 numantia						
 numantinus						
@@ -32137,7 +31555,7 @@ numerosus	in full number, numerous, manifold			2849.0	182.0	0.41
 numerus	a number	numerus	numerus, numerī, m.	300.0	1991.0	4.482
 numicius						
 numicus						
-numida	a nomad;  esp., a Numidian					
+numida	a nomad;  esp., a Numidian			3739.0	121.0	0.272
 numidia						
 numidianus						
 numidicus						
@@ -32866,7 +32284,7 @@ oceanensis
 oceaneolus						
 oceanitis						
 oceanum						
-oceanus	the great sea, outer sea, ocean					
+oceanus	the great sea, outer sea, ocean			1970.0	301.0	0.678
 ocelis						
 ocella						
 ocellatum						
@@ -32904,9 +32322,9 @@ octateuchus
 octava						
 octavani						
 octavarius						
-octavia						
+octavia				5744.0	58.0	0.131
 octavianus						
-octavius						
+octavius				3927.0	112.0	0.252
 octavum	for the eighth time					
 octavus	the eighth			3376.0	142.0	0.32
 octavusdecimus	the eighteenth					
@@ -33239,8 +32657,8 @@ olympiodorus
 olympionices						
 olympiscus						
 olympium						
-olympius						
-olympus	a high mountain on the borders of Macedonia and Thessaly					
+olympius				5060.0	72.0	0.162
+olympus	a high mountain on the borders of Macedonia and Thessaly			4450.0	90.0	0.203
 olynthia						
 olynthius						
 olyra						
@@ -33469,7 +32887,7 @@ oppessulatus
 oppeto	to go to meet, encounter			5245.0	68.0	0.153
 oppexus						
 oppia						
-oppianicus						
+oppianicus				2959.0	172.0	0.387
 oppico						
 oppidaneus						
 oppidani						
@@ -33483,7 +32901,7 @@ oppignero	to give as a pledge, pledge, pawn
 oppilatio						
 oppilo	to stop up, shut up					
 oppingo						
-oppius						
+oppius				4557.0	87.0	0.196
 oppleo	to fill completely, fill up, fill					
 opploro						
 oppono	to set against, set before, place opposite, oppose			1574.0	397.0	0.894
@@ -33605,7 +33023,7 @@ orcinus
 orcivius						
 orcula						
 orcularis						
-orcus	the Lower World, prison of the dead, Orcus					
+orcus	the Lower World, prison of the dead, Orcus			5408.0	65.0	0.146
 orcynus						
 ordinalis						
 ordinarius	of order, usual, regular, ordinary					
@@ -33625,7 +33043,7 @@ oreon
 oreos						
 oreoselinon						
 oresitrophos						
-orestes						
+orestes				4838.0	78.0	0.176
 oresteus						
 orestilla						
 orestion						
@@ -33721,7 +33139,7 @@ orphaicus
 orphanotrophium						
 orphanotrophus						
 orphanus						
-orpheus						
+orpheus				5022.0	73.0	0.164
 orphicus						
 orphne						
 orphus						
@@ -33867,7 +33285,7 @@ osyris
 otacilia						
 otacilius						
 otacustes						
-otho						
+otho				2440.0	224.0	0.504
 othonianus						
 othonna						
 othrepte						
@@ -33992,14 +33410,14 @@ pactus	agreed, settled, determined, covenanted, stipulated
 pactus2	P. of pango					
 pactya						
 pacuvianus						
-pacuvius						
+pacuvius				6023.0	53.0	0.119
 padaei						
 padaneus						
 padanus						
 padi						
 padus						
 padusa						
-paean	the god of healing (an epithet of Apollo)					
+paean	the god of healing (an epithet of Apollo)			5590.0	61.0	0.137
 paeanitis						
 paeantis						
 paedagoga						
@@ -34044,7 +33462,7 @@ paestani
 paestanus						
 paestum						
 paetulus	with a cast in the eye, slightly blink-eyed					
-paetus	with a cast in the eye, blinking, leering					
+paetus	with a cast in the eye, blinking, leering			5443.0	64.0	0.144
 pagae						
 pagaei						
 paganalia						
@@ -34101,7 +33519,7 @@ palaria
 palaris						
 palasea						
 palatha						
-palatinus	of the Palatium, Palatine					
+palatinus	of the Palatium, Palatine			6023.0	53.0	0.119
 palatio						
 palatium	the Palatine hill, on which was the residence of Augustus			2544.0	213.0	0.479
 palatua						
@@ -34135,15 +33553,15 @@ palla	a long robe, mantle			3507.0	133.0	0.299
 pallaca						
 pallacana						
 palladium	an image  of Pallas					
-palladius						
+palladius				4988.0	74.0	0.167
 pallanteum						
 pallanteus						
 pallantias						
 pallantis	Aurora					
 pallantius						
 pallaris						
-pallas	a surname  of Athene (identified with the Roman Minerva)					
-pallas2						
+pallas	a surname  of Athene (identified with the Roman Minerva)			3231.0	151.0	0.34
+pallas2				5963.0	54.0	0.122
 pallenaeus						
 pallene						
 pallenensis						
@@ -34232,7 +33650,7 @@ pammenes
 pammenia						
 pamphagus						
 pamphila						
-pamphilus						
+pamphilus				3739.0	121.0	0.272
 pamphylia						
 pamphylii						
 pamphylius						
@@ -34251,7 +33669,7 @@ panacea	an herb  said to heal all diseases, all-heal, panacea, catholicon
 panaces						
 panacinus						
 panaenus						
-panaetius						
+panaetius				5206.0	69.0	0.155
 panaetolicus						
 panaetolium						
 panaricium						
@@ -34357,7 +33775,7 @@ panormitanus
 panormum						
 panormus						
 panosus						
-pansa						
+pansa				3985.0	109.0	0.245
 pansa2						
 pantagathus						
 pantagias						
@@ -34403,7 +33821,7 @@ papilus
 papinianus						
 papinus						
 papirianus						
-papirius						
+papirius				3698.0	123.0	0.277
 papisius						
 papius						
 pappo						
@@ -34500,7 +33918,7 @@ paratus	prepared, ready	paro1	parātus, parāta, parātum	1732.0	351.0	0.79
 paratus2	a preparation, provision, outfit					
 paraveredus						
 parazonium						
-parca	a goddess of Fate					
+parca	a goddess of Fate			5408.0	65.0	0.146
 parce	sparingly, frugally, thriftily, penuriously, parsimoniously, stingily					
 parcens	sparing, niggardly					
 parciloquium						
@@ -34569,8 +33987,8 @@ parius
 parma	a small round  shield, light shield, target (for cavalry or light infantry)			4769.0	80.0	0.18
 parmatus	bearing the parma, with light shields, light-armed					
 parmenides						
-parmenio						
-parmeno						
+parmenio				4910.0	76.0	0.171
+parmeno				5245.0	68.0	0.153
 parmenses						
 parmensis						
 parmula	a little shield					
@@ -34600,7 +34018,7 @@ parotis
 parra	a bird of ill omen, screech-owl					
 parrhasia						
 parrhasis						
-parrhasius						
+parrhasius				5842.0	56.0	0.126
 parrhesiastes						
 parricida	one who slays his father, a murderer of his parent, parricide			3231.0	151.0	0.34
 parricidialis						
@@ -34629,11 +34047,11 @@ parthenopeius
 parthenopolis						
 parthia						
 parthicarius						
-parthicus						
+parthicus				6091.0	52.0	0.117
 parthiene						
 parthieni						
 parthinus						
-parthus						
+parthus				2084.0	278.0	0.626
 partialiter						
 partianus						
 partiarius						
@@ -34835,7 +34253,7 @@ paucus	few, littlefew, little	paucus	paucī, paucae, pauca	302.0	1986.0	4.47
 paulatim	by little and little, by degrees, gradually			1502.0	418.0	0.941
 paulianus						
 paulina						
-paulinus						
+paulinus				4387.0	92.0	0.207
 paulisper	for a little while, for a short time			2859.0	181.0	0.407
 paulo	by a little, a little, somewhat	paulum	paulō			
 paululo	by a little, a little, somewhat					
@@ -35037,7 +34455,7 @@ pelasgi	the  Pelasgians, oldest settlers of Greece
 pelasgia						
 pelasgias						
 pelasgis						
-pelasgus						
+pelasgus				6091.0	52.0	0.117
 pelecanus						
 pelecinon						
 pelecinos						
@@ -35106,7 +34524,7 @@ peloponnesiacus
 peloponnesii						
 peloponnesius						
 peloponnesus						
-pelops						
+pelops				6091.0	52.0	0.117
 pelorias						
 peloris	a large  shell-fish, the giant mussel					
 pelorum						
@@ -35125,7 +34543,7 @@ pelvis	a basin, laver
 pemma						
 penaria						
 penarius	for provisions					
-penates	the Penates, guardian gods of the family, household gods					
+penates	the Penates, guardian gods of the family, household gods			1893.0	316.0	0.711
 penatiger	carrying the household gods					
 penator						
 pendeo	to hang, hang down, be suspended			1449.0	435.0	0.979
@@ -35418,7 +34836,7 @@ perdensus
 perdepso	to knead, work over					
 perdespuo						
 perdicalis						
-perdiccas						
+perdiccas				5351.0	66.0	0.149
 perdicium						
 perdico						
 perdifficilis	very difficult					
@@ -35630,7 +35048,7 @@ pergameni
 pergamenus						
 pergameus	of Pergama (citadel of Troy); Trojan (poet.); of Pergamum					
 pergamis						
-pergamum						
+pergamum				5351.0	66.0	0.149
 pergamum2						
 pergaudeo	to rejoice greatly					
 pergenero						
@@ -35727,7 +35145,7 @@ periodeuta
 periodicus						
 periodus						
 periosteon						
-peripateticus	of  the Peripatetic philosophy, Aristotelian					
+peripateticus	of  the Peripatetic philosophy, Aristotelian			3432.0	138.0	0.311
 peripetasmata	coverings, hangings, rugs					
 periphas						
 peripheria						
@@ -36056,7 +35474,7 @@ perrogatio	the enactment of a law
 perrogito						
 perrogo	to ask in succession, complete the roll-call					
 perrumpo	to break through, force a way through, get across			3307.0	146.0	0.329
-persa						
+persa				2313.0	241.0	0.542
 persae	the  Persians					
 persaepe	very often			5963.0	54.0	0.122
 persaevio						
@@ -36108,7 +35526,7 @@ persepolis
 persequax						
 persequor	to follow perseveringly, follow after, follow up,  pursue			1019.0	633.0	1.425
 persero						
-perses	a Persian; Perses, son of Perseus and Andromeda; Perses king of Macedonia					
+perses	a Persian; Perses, son of Perseus and Andromeda; Perses king of Macedonia			3721.0	122.0	0.275
 perseus						
 perseverabilis						
 perseverans	persevering, persistent					
@@ -36124,7 +35542,7 @@ persiccatus
 persiccus						
 persice						
 persicum						
-persicus	Persian,  of Persia					
+persicus	Persian,  of Persia			5963.0	54.0	0.122
 persideo						
 persido	to sink down, penetrate					
 persigno	to register accurately, record					
@@ -36460,7 +35878,7 @@ phaecasiatus
 phaecasium						
 phaedo						
 phaedra						
-phaedrias						
+phaedrias				5488.0	63.0	0.142
 phaedrus						
 phaenion						
 phaenomena						
@@ -36535,7 +35953,7 @@ pharis
 pharisaeus						
 pharisaicus						
 pharitae						
-pharius						
+pharius				5535.0	62.0	0.14
 pharmaceuticus						
 pharmaceutria						
 pharmacopola	a  drugseller, quack					
@@ -36565,7 +35983,7 @@ phasianinus
 phasianus						
 phasias						
 phasiolos						
-phasis						
+phasis				5641.0	60.0	0.135
 phasma	an  apparition, spectre, phantom					
 phatnae						
 phaulius						
@@ -36626,7 +36044,7 @@ philippianus
 philippica						
 philippicus	of  Philip, Philippic					
 philippopolis						
-philippus	a king of  Macedonia, father of Alexander the Great					
+philippus	a king of  Macedonia, father of Alexander the Great			2005.0	292.0	0.657
 philistaea						
 philistaeus						
 philisthim						
@@ -36649,7 +36067,7 @@ philograecus
 philolaus						
 philologia	love of  study, literary culture					
 philologus	scholarly, learned					
-philomela	a  daughter of Pandion, changed into a nightingalea nightingale (after Philomela)					
+philomela	a nightingale (after Philomela)a  daughter of Pandion, changed into a nightingale					
 philomelenses						
 philomelium						
 philometor						
@@ -36670,7 +36088,7 @@ philosophus	philosophical			800.0	810.0	1.823
 philostorgus						
 philotechnus						
 philotes						
-philotimus						
+philotimus				6161.0	51.0	0.115
 philoxenus						
 philtrodotes						
 philtrum	a  love-potion					
@@ -36724,12 +36142,12 @@ phocion
 phocis	a kind of pear tree on the isle of ChiosPhocis, part of Greece between Boeotia and Aetolia					
 phocus	son of Aeacus, slain by his brother Peleus					
 phoebas	a priestess  of Phoebus; hence, an inspired woman, prophetess					
-phoebe	goddess of  the moon (the Roman Diana)					
+phoebe	goddess of  the moon (the Roman Diana)			5641.0	60.0	0.135
 phoebeius	of Phoebus, of Apollo					
 phoebeum						
 phoebeus						
 phoebigena	son of Phoebus					
-phoebus	Apollo as  the god of light					
+phoebus	Apollo as  the god of light			1316.0	482.0	1.085
 phoenice						
 phoenices	the  Phoenicians (on the eastern coast of the Mediterranean Sea)					
 phoeniceus	purple-red, scarlet					
@@ -36775,14 +36193,14 @@ phrixianus
 phrixus						
 phronesis						
 phryganion						
-phryges						
-phrygia						
+phryges				4988.0	74.0	0.167
+phrygia				4244.0	98.0	0.221
 phrygiae						
 phrygianus						
 phrygio						
 phrygionius						
 phrygiscus						
-phrygius	Phrygian,  of Phrygia					
+phrygius	Phrygian,  of Phrygia			3808.0	118.0	0.266
 phryne						
 phrynion						
 phrynos						
@@ -37168,7 +36586,7 @@ planasia
 planca						
 plancianus						
 plancina						
-plancius						
+plancius				5022.0	73.0	0.164
 planctus	a beating of the breast, wailing, lamentation, lament			5801.0	57.0	0.128
 plancus				3243.0	150.0	0.338
 plane	evenly, simply, plainly, clearly, distinctly, intelligibly					
@@ -37222,7 +36640,7 @@ platea	a broad  way, street, avenue			5488.0	63.0	0.142
 platessa						
 platice						
 platicus						
-plato						
+plato				1416.0	445.0	1.002
 platonici						
 platonicus						
 platycoriasis						
@@ -37244,8 +36662,8 @@ plausus2	a clapping, flapping, noise from striking
 plausus3						
 plautianus						
 plautinus						
-plautius						
-plautus						
+plautius				5167.0	70.0	0.158
+plautus				4102.0	104.0	0.234
 plebecula	the common people, rabble, poor folks					
 plebeius	of the common people, of the populace, plebeian			2073.0	281.0	0.633
 plebicola	one who courts the crowd, a demagogue, democrat					
@@ -37295,7 +36713,7 @@ plicatrix
 plicatura						
 plico	to fold, wind, coil					
 plinianus						
-plinius						
+plinius				1545.0	407.0	0.916
 plinthis						
 plinthium						
 plinthus						
@@ -37415,7 +36833,7 @@ poeninus	Pennine
 poenio				4268.0	97.0	0.218
 poenosus						
 poenulus						
-poenus						
+poenus				1850.0	323.0	0.727
 poenus2	Punic, Carthaginian					
 poesis	a poem,  poetry					
 poeta	a poet	poeta	poēta, poētae, m.	1017.0	635.0	1.429
@@ -37475,7 +36893,7 @@ pollinaris
 pollinarius						
 pollinctor						
 pollingo						
-pollio						
+pollio				3636.0	126.0	0.284
 pollis						
 pollubrum						
 pollucibilis						
@@ -37488,7 +36906,7 @@ polluo	to soil, defile, stain, foul, pollute			2828.0	183.0	0.412
 pollutio						
 pollutrix						
 pollutus	polluted, unchaste					
-pollux	a son  of Tyndarus and Leda, twin brother of Castor					
+pollux	a son  of Tyndarus and Leda, twin brother of Castor			6091.0	52.0	0.117
 polose						
 polulus						
 polus	an end of an  axis, pole			2225.0	254.0	0.572
@@ -37578,19 +36996,19 @@ pompatilis
 pompeia						
 pompeiani						
 pompeianum						
-pompeianus						
+pompeianus				3808.0	118.0	0.266
 pompeiopolis						
-pompeius	a gentile name					
+pompeius	a gentile name			395.0	1595.0	3.59
 pompeum						
 pompilianus						
 pompilius						
 pompilus	a  sea-fish, pilotfish, rudder-fish					
 pompo						
 pomponia						
-pomponius						
+pomponius				4044.0	106.0	0.239
 pomposus						
 pomptinum						
-pomptinus						
+pomptinus				5896.0	55.0	0.124
 pomulum						
 pomum	a fruit, tree-fruit, orchard-fruit			2474.0	220.0	0.495
 pomus	a fruit-tree			4450.0	90.0	0.203
@@ -37616,7 +37034,7 @@ pontia
 pontiae						
 ponticulus	a little bridge					
 ponticum						
-ponticus						
+ponticus				5488.0	63.0	0.142
 ponticus2						
 pontifex	a high-priest, pontiff, pontifex			1725.0	354.0	0.797
 pontificalis	of a highpriest, pontifical					
@@ -37634,7 +37052,7 @@ popa	a priest’s assistant
 popanum	a  sacrificial cake					
 popellus	the rabble, crowd					
 popilia						
-popilius						
+popilius				4153.0	102.0	0.23
 popina	a cook-shop, eatinghouse, low tavern					
 popinalis						
 popinarius						
@@ -37769,7 +37187,7 @@ posides
 posideum						
 posidianus						
 posidonia						
-posidonius						
+posidonius				6161.0	51.0	0.115
 posidorus						
 positio	a situation			6091.0	52.0	0.117
 positivus						
@@ -37855,7 +37273,7 @@ postulo	to ask, demand, claim, require, request, desire	postulo	postulō, postul
 postumatus						
 postumia						
 postumianus						
-postumius						
+postumius				4000.0	108.0	0.243
 postumo						
 postumum						
 postumus	last, latest-born, late-born			3467.0	136.0	0.306
@@ -38633,7 +38051,7 @@ praetergeo
 praetergero						
 praetergredior	to walk by, march by, pass by, pass					
 praeteriens	P. of praetereo					
-praeterita						
+praeterita				6161.0	51.0	0.115
 praeteritio						
 praeteritus	gone by, past, past and gone, departed					
 praeterlabor	to glide by, flow by, run past					
@@ -38843,7 +38261,7 @@ prex	a prayer, request, entreaty	prex	prex, precis, f.	895.0	726.0	1.634
 priameis						
 priameius						
 priamides						
-priamus						
+priamus				3194.0	153.0	0.344
 priantae						
 priapeia						
 priapeius						
@@ -39297,7 +38715,7 @@ promercor
 promereo	to deserve, be deserving of, merit			6161.0	51.0	0.115
 promereor	to deserve, merit, earn, be worthy					
 promeritum	desert, merit					
-prometheus	a  son of Iapetus, who stole fire from heaven for men					
+prometheus	a  son of Iapetus, who stole fire from heaven for men			6023.0	53.0	0.119
 promethiades						
 promethides	son of Prometheus, Deucalion					
 prometior						
@@ -39572,7 +38990,7 @@ prosemino	to sow, scatter, plant
 prosequium						
 prosequor	to follow, accompany, attend, follow after, escort			2130.0	269.0	0.606
 prosero						
-proserpina	Proserpine, wife of Pluto, and queen of the Lower World					
+proserpina	Proserpine, wife of Pluto, and queen of the Lower World			5896.0	55.0	0.124
 proserpinaca						
 proserpinalis						
 proserpo						
@@ -39863,7 +39281,7 @@ psora
 psoranthemis						
 psoricum						
 psoricus						
-psyche						
+psyche				4883.0	77.0	0.173
 psychicus						
 psychomachia						
 psychomantium	a  place for inquiring of the dead, place of necromancy					
@@ -39896,11 +39314,11 @@ ptochotropheum
 ptochotrophus						
 ptolemaeeus						
 ptolemaeum						
-ptolemaeus						
+ptolemaeus				5590.0	61.0	0.137
 ptolemaida						
 ptolemais						
 ptolemenses						
-ptolomaeus						
+ptolomaeus				5443.0	64.0	0.144
 ptyas						
 ptychia						
 pubeda						
@@ -39923,9 +39341,9 @@ publicius
 publico	to make public, adjudge to public use, confiscate			4216.0	99.0	0.223
 publicus	of the people, of the state, done for the state, public, common	publicus	pūblicus, pūblica, pūblicum	97.0	5492.0	12.362
 publilianus						
-publilius						
+publilius				5896.0	55.0	0.124
 publipor						
-publius						
+publius				303.0	1984.0	4.466
 pucinum						
 pucinus						
 pudefactus						
@@ -40110,7 +39528,7 @@ punctus
 pungo	to prick, puncture			2933.0	174.0	0.392
 punicanus	Punic, Carthaginian					
 puniceus	Punic, Carthaginian					
-punicus	Punic, Carthaginian					
+punicus	Punic, Carthaginian			2986.0	170.0	0.383
 punio	to punish, correct, chastise					
 punior	to punish, correct, chastise			2504.0	217.0	0.488
 punitio						
@@ -40299,9 +39717,9 @@ pyrrhidae
 pyrrho						
 pyrrhocorax						
 pyrrhonei						
-pyrrhus						
+pyrrhus				3755.0	120.0	0.27
 pysma						
-pythagoras						
+pythagoras				3808.0	118.0	0.266
 pythagorei						
 pythagoreus						
 pythagoricus	Pythagorean, of Pythagoras (a philos. of Samos)					
@@ -40655,17 +40073,17 @@ quintilia
 quintilianus						
 quintilis						
 quintilius						
-quintius						
+quintius				2251.0	251.0	0.565
 quinto	for the fifth time					
 quintum	for the fifth time					
 quintuplex						
-quintus	the fifth			1251.0	506.0	1.139
+quintus	the fifth	Quintus2	Quīntus, Quīntī, m.	1251.0	506.0	1.139
 quippe	of course, as you see, obviously, as one might expect, naturally, by all      means	quippe	quīppe	594.0	1064.0	2.395
 quippini						
 quirina						
 quirinalia						
 quirinalis	of Quirinus, of Romulus, Quirinal					
-quirinus	of Cures, of the Quirites					
+quirinus	of Cures, of the Quirites			4710.0	82.0	0.185
 quirinus2	of Quirinus, of Romulus, Quirinal					
 quiris				5896.0	55.0	0.124
 quiris2	the inhabitants of Cures, Quirites					
@@ -40741,7 +40159,7 @@ rabiose	ravingly, madly, fiercely
 rabiosulus	a little rabid, half crazy					
 rabiosus	raving, fierce, mad, rabid					
 rabirianus						
-rabirius						
+rabirius				6023.0	53.0	0.119
 rabo						
 rabocentus						
 rabula	a brawling advocate, pettifogger					
@@ -40901,7 +40319,7 @@ raudusculum	a little piece of brass money
 raunonia						
 rauraci						
 rauracum						
-ravenna						
+ravenna				6091.0	52.0	0.117
 ravidus						
 ravilla						
 ravio						
@@ -41458,7 +40876,7 @@ remeo	to go back, turn back, return			2890.0	178.0	0.401
 remergo						
 remetior	to measure again					
 remex	a rower, oarsman			4131.0	103.0	0.232
-remi						
+remi				5443.0	64.0	0.144
 remigatio	a rowing					
 remigium	an oar-plying, rowing			5963.0	54.0	0.122
 remigo	to ply the oar, row					
@@ -42057,7 +41475,7 @@ rhea	Cybele
 rhedones						
 rhenanus						
 rhene						
-rhenus						
+rhenus				2241.0	252.0	0.567
 rhesus						
 rhetenor						
 rhetico						
@@ -42095,11 +41513,11 @@ rhizotomumena
 rho	the Greek letter r					
 rhoda						
 rhodanitis						
-rhodanus						
+rhodanus				5744.0	58.0	0.131
 rhodiacus						
 rhodienses						
 rhodiensis						
-rhodii						
+rhodii				4883.0	77.0	0.173
 rhodinus						
 rhoditis						
 rhodius						
@@ -42111,7 +41529,7 @@ rhodope
 rhodopeius						
 rhodopeus						
 rhodora						
-rhodos						
+rhodos				4526.0	88.0	0.198
 rhoduntia						
 rhoea						
 rhoeas						
@@ -42248,15 +41666,15 @@ rogito	to ask eagerly, inquire persistently, keep asking			3927.0	112.0	0.252
 rogo	to ask, question, interrogate	rogo	rogō, rogāre, rogāvī, rogātum	359.0	1716.0	3.863
 rogum		rogus	rogum, rogī, n.	3415.0	139.0	0.313
 rogus	a funeral pile	rogus	rogus, rogī, m.	1525.0	411.0	0.925
-roma	Rome, the mother city					
+roma	Rome, the mother city	Roma	Rōma, Rōmae, f.	249.0	2326.0	5.236
 romanicus						
-romanus	of Rome, Roman					
+romanus	of Rome, Roman			109.0	5027.0	11.316
 romphea						
 romularis						
 romuleus	of Romulus					
 romulidae						
 romulius						
-romulus	of Romulus					
+romulus	of Romulus			2398.0	229.0	0.515
 rorarii	light-armed troops, who made the first attack and  retired behind the triarii, skirmishers					
 rorarius						
 roratio						
@@ -42275,7 +41693,7 @@ rosatum
 rosatus						
 roscianus	of Roscius					
 roscidus	full of dew, wet with dew, dewy			6023.0	53.0	0.119
-roscius						
+roscius				2327.0	239.0	0.538
 rosea						
 roseanus						
 rosetum	a garden of roses, rosebed					
@@ -42378,6 +41796,7 @@ rufrae
 rufuli						
 rufulus	a tribune of the soldiers elected by the army					
 rufus	red, reddishRufus (Roman cognomen)			3078.0	162.0	0.365
+rufus2				5963.0	54.0	0.122
 ruga	a crease in the face, wrinkle					
 rugatio						
 rugii						
@@ -42391,7 +41810,7 @@ ruidus
 ruina	a rushing down, tumbling, falling down, fall			1435.0	439.0	0.988
 ruinosa						
 ruinosus	fallen, tumbling, ruinous, ruined					
-rullus						
+rullus				6161.0	51.0	0.115
 ruma						
 rumen						
 rumex						
@@ -42486,13 +41905,13 @@ rutellum
 ruteni						
 rutilesco						
 rutilianus						
-rutilius						
+rutilius				4614.0	85.0	0.191
 rutilo	to redden, make reddish					
 rutilus	red, golden red, reddish yellow			4216.0	99.0	0.223
 rutrum	an implement for digging, spade, shovel					
 rutuba						
 rutula	a little piece of rue					
-rutulus						
+rutulus				3721.0	122.0	0.275
 rutupiae						
 rutupinus						
 saba						
@@ -42523,7 +41942,7 @@ sabini
 sabiniani						
 sabinianus						
 sabinum						
-sabinus	of the Sabini, Sabine					
+sabinus	of the Sabini, Sabine			1809.0	332.0	0.747
 sabis						
 sabota						
 sabrata						
@@ -42746,7 +42165,7 @@ salivosus
 salix	a willow-tree, willow, sallow			5245.0	68.0	0.153
 sallo						
 sallustianus						
-sallustius						
+sallustius				3519.0	132.0	0.297
 salluvii						
 salmacidus						
 salmacis	a  fountain in Caria (producing effeminacy)					
@@ -42855,10 +42274,10 @@ samia
 samiator						
 samio						
 samiolus						
-samius	of Samos					
+samius	of Samos			6229.0	50.0	0.113
 samnis	of Samnium, Samnite					
-samnites						
-samnium	a mountainous country north of Campania					
+samnites				1727.0	353.0	0.795
+samnium	a mountainous country north of Campania			4387.0	92.0	0.207
 samolus						
 samos	an island  near Ephesus					
 samosata						
@@ -43008,7 +42427,7 @@ sardanapalus
 sardi						
 sardiani						
 sardianus						
-sardinia						
+sardinia				5535.0	62.0	0.14
 sardinianus						
 sardiniensis						
 sardinus						
@@ -43028,7 +42447,7 @@ saripha
 sarisa	a long  Macedonian lance					
 sarisophoros	a  Macedonian lancer					
 sarmata						
-sarmatae						
+sarmatae				5963.0	54.0	0.122
 sarmaticus						
 sarmen						
 sarmenticii						
@@ -43118,12 +42537,12 @@ saturius
 saturnalia	the festival of the Saturnalia					
 saturnalicius						
 saturnalis						
-saturnia						
+saturnia				4838.0	78.0	0.176
 saturniacus						
 saturnigena						
-saturninus						
+saturninus				4364.0	93.0	0.209
 saturnius	of Saturn, Saturnian					
-saturnus	Saturn, the ancient Latin god of agriculture and of civilization, identified          with the Grecian Kronos					
+saturnus	Saturn, the ancient Latin god of agriculture and of civilization, identified          with the Grecian Kronos			4799.0	79.0	0.178
 saturo	to fill, glut, cloy, satiate			4838.0	78.0	0.176
 satus2	a sowing, planting					
 satyriasis						
@@ -43161,7 +42580,7 @@ saxifragus	stonebreaking, rock-crushing
 saxigenus						
 saxiperium						
 saxitas						
-saxo						
+saxo				5443.0	64.0	0.144
 saxones						
 saxosa						
 saxositas						
@@ -43197,7 +42616,7 @@ scaeptrum
 scaeus						
 scaeva						
 scaevitas						
-scaevola						
+scaevola				3090.0	161.0	0.362
 scaevus						
 scala				5896.0	55.0	0.124
 scalae	a flight of steps, stairs, staircase, ladder, scaling-ladder					
@@ -43255,7 +42674,7 @@ scaptesula
 scaptia						
 scaptiensis						
 scaptius						
-scapula						
+scapula				4883.0	77.0	0.173
 scapulae	the shoulder-blades, shoulders					
 scapulanus						
 scapus				6023.0	53.0	0.119
@@ -43540,7 +42959,7 @@ scylace
 scylaceum						
 scylaceus						
 scylax						
-scylla						
+scylla				5443.0	64.0	0.144
 scyllaeus	of Scylla (a promontory at the entrance of the  Sicilian straits)					
 scymnus						
 scyphulus						
@@ -43554,10 +42973,10 @@ scyros
 scytala						
 scytalosagittipelliger						
 scytanum						
-scythes						
-scythia						
+scythes				4291.0	96.0	0.216
+scythia				5963.0	54.0	0.122
 scythice						
-scythicus						
+scythicus				5167.0	70.0	0.158
 scythis						
 scythissa						
 scythopolis						
@@ -43746,7 +43165,7 @@ segutilum
 sehabeo						
 seia						
 seianianus						
-seianus						
+seianus				3860.0	116.0	0.261
 seimpedio						
 seincurro						
 seindo						
@@ -43968,7 +43387,7 @@ sempiternitas
 sempiternus	everlasting, everduring, perpetual, continual, imperishable, eternal,          sempiternal			2924.0	175.0	0.394
 sempronia						
 sempronianus						
-sempronius						
+sempronius				4740.0	81.0	0.182
 semulco						
 semuncia	a half-ounce, one twenty-fourth part of a pound					
 semuncialis						
@@ -43985,7 +43404,7 @@ senarius	of six each
 senator	a member of the Senate			1566.0	400.0	0.9
 senatorius	of a senator, senatorial			4077.0	105.0	0.236
 senatus	the council of the elders, council of state, Senate, body of senators	senatus1	senātus, senātūs, m.	160.0	3548.0	7.986
-seneca						
+seneca				3776.0	119.0	0.268
 senecio						
 seneco				3356.0	143.0	0.322
 senecta	old age, extreme age, senility			3776.0	119.0	0.268
@@ -44207,14 +43626,14 @@ seretraho
 sergestus						
 sergia						
 sergianus						
-sergius						
+sergius				6229.0	50.0	0.113
 seria	a cylindrical earthen vessel, large jar, tun, cask			5060.0	72.0	0.162
 serica						
 sericarius						
 sericatus						
 serichatum						
 sericum						
-sericus	of the Seres, Seric, Tartar, Chinesebelonging to the Seres (the Chinese); silk					
+sericus	belonging to the Seres (the Chinese); silkof the Seres, Seric, Tartar, Chinese					
 serie						
 series	a row, succession, series, chain			3339.0	144.0	0.324
 serietas						
@@ -44301,14 +43720,14 @@ servilia
 servilianus						
 servilis	of a slave, slavish, servile			2577.0	209.0	0.47
 serviliter	like a slave, slavishly, servilely					
-servilius						
+servilius				3289.0	147.0	0.331
 servio	to be a servant, be enslaved, serve, be in service	servio	serviō, servīre	874.0	742.0	1.67
 servitium	the condition of a slave, service, slavery, servitude			2586.0	208.0	0.468
 servitor						
 servitritius						
 servitudo						
 servitus	the condition of a servant, slavery, serfdom, service, servitude			1821.0	328.0	0.738
-servius						
+servius				2391.0	230.0	0.518
 servo	to make safe, save, keep unharmed, preserve, guard, keep, protect, deliver,          rescue	servo	servō, servāre, servāvī, servātum	315.0	1902.0	4.281
 servola	a young female servant, handmaid					
 servolus	a young slave, young man-servant, boy					
@@ -44377,7 +43796,7 @@ sesterto
 sestiacus						
 sestianus						
 sestias						
-sestius						
+sestius				3322.0	145.0	0.326
 sesto						
 sestos						
 sestus						
@@ -44445,7 +43864,7 @@ sextariolus
 sextarius	the sixth part			3808.0	118.0	0.266
 sextilia						
 sextilianus						
-sextilis	the sixth					
+sextilis	the sixth			5896.0	55.0	0.124
 sextilius						
 sextula	the sixth part of an uncia, one seventy-second part of an as					
 sextum	for the sixth time					
@@ -44465,7 +43884,7 @@ sibilus	hissing, whistling
 sibilus2	a hissing, whistling			5842.0	56.0	0.126
 sibina						
 sibonis						
-sibylla	a female  soothsayer, prophetess, priestess of Apollo, Sibyl					
+sibylla	a female  soothsayer, prophetess, priestess of Apollo, Sibyl			5896.0	55.0	0.124
 sibyllinus	of a Sibyl, Sibylline					
 sic	thus, in this way, as I do, as you see	sic	sīc	83.0	6646.0	14.96
 sica	a curved dagger, poniard					
@@ -44495,7 +43914,7 @@ siccus	dry			1340.0	472.0	1.062
 sicelicon						
 sicelis	 Sicilian					
 sicera						
-sicilia						
+sicilia				1449.0	435.0	0.979
 sicilicula						
 sicilicus						
 siciliensis						
@@ -44511,7 +43930,7 @@ sicinnium
 sicoris						
 sicubi	if in any place, if anywhere, wheresoever					
 sicula	a little dagger					
-siculus						
+siculus				1763.0	343.0	0.772
 sicunde	if from anywhere					
 sicut	so as, just as, as	sicut	sīcut	374.0	1661.0	3.739
 sicuti						
@@ -44538,7 +43957,7 @@ sidon	Sidon, Phoenician city
 sidonia						
 sidonicus						
 sidonis	Sidonian, Phoenician					
-sidonius	of Sidon, Sidonian					
+sidonius	of Sidon, Sidonian			2280.0	247.0	0.556
 sidus	a group of stars, constellation, heavenly body	sidus	sīdus, sīderis, n.	692.0	928.0	2.089
 siem	subj praes. of sum					
 sifilum						
@@ -44586,7 +44005,7 @@ silaceus
 silana						
 silanianus						
 silanio						
-silanus						
+silanus				4686.0	83.0	0.187
 silanus2						
 silarus						
 silaus						
@@ -44618,7 +44037,7 @@ siliquae
 siliquastrum						
 siliquor						
 silis						
-silius						
+silius				4492.0	89.0	0.2
 sillographus						
 sillybus	see sittybos					
 silo				5535.0	62.0	0.14
@@ -44629,7 +44048,7 @@ silurus	the  sheat-fish
 silus	pug-nosed,  snub-nosed					
 silva	a wood, forest, woodland	silva	silva, silvae, f.	636.0	1003.0	2.258
 silvanae						
-silvanus	a god of woods and plantations					
+silvanus	a god of woods and plantations			5590.0	61.0	0.137
 silvaticus						
 silvesco	to grow wild, run wild					
 silvestris	of a wood, of forest, overgrown with woods, wooded, woody			1859.0	321.0	0.723
@@ -44904,7 +44323,7 @@ socius2	a fellow, sharer, partner, comrade, companion, associate
 socordia	dulness, carelessness, negligence, sloth, laziness, indolence, inactivity					
 socorditer	negligently, slothfully					
 socors	without spirit, unenterprising, negligent, sluggish, slothful, inactive					
-socrates						
+socrates				1999.0	294.0	0.662
 socratici						
 socraticus						
 socrualis						
@@ -45135,7 +44554,7 @@ sortitor	a distributor by lot, allotter
 sortitus						
 sortitus2	a casting of lots, drawing					
 sosagoras						
-sosia						
+sosia				5298.0	67.0	0.151
 sosianus						
 sosigenes						
 sosilus						
@@ -45182,7 +44601,7 @@ spartacus
 spartanus						
 spartaria						
 spartarius						
-sparte						
+sparte				6229.0	50.0	0.113
 spartea						
 sparteolus						
 sparteus						
@@ -45462,7 +44881,7 @@ spurco	to defile
 spurcus	unclean, impure, foul, base, low					
 spurinna						
 spurium						
-spurius						
+spurius				3776.0	119.0	0.268
 sputamentum						
 sputatilicus	to be spit upon, abominable, detestable					
 sputator						
@@ -45532,7 +44951,7 @@ stagnosus
 stagnum	a standing water, lake, pool, pond, swamp, fen			2303.0	243.0	0.547
 stagonias						
 stagonitis						
-staienus						
+staienus				5963.0	54.0	0.122
 stalagmias						
 stalagmium						
 stalagmus						
@@ -45672,7 +45091,7 @@ stheneboea
 stheneleis						
 stheneleius						
 sthenelus						
-sthenius						
+sthenius				5298.0	67.0	0.151
 sthennis						
 stheno						
 stibadium						
@@ -45752,7 +45171,7 @@ stoica
 stoice	like a Stoic, stoically					
 stoicida						
 stoicidae	sons of Stoics, would-be Stoics					
-stoicus	of the  Stoic philosophy, of Stoics, Stoic					
+stoicus	of the  Stoic philosophy, of Stoics, Stoic			1469.0	428.0	0.963
 stoidis						
 stola	a woman’s  upper garment, long robe, gown, stole					
 stolatae						
@@ -45959,7 +45378,7 @@ sturnini
 sturninus						
 sturnus						
 stygialis						
-stygius	of the Styx, Stygian, of the lower world, infernal					
+stygius	of the Styx, Stygian, of the lower world, infernal			2654.0	201.0	0.452
 stylobata						
 stymma						
 stymphalicus						
@@ -45973,7 +45392,7 @@ stypteria
 stypticus						
 styracinus						
 styrax						
-styx	a river of the infernal regions					
+styx	a river of the infernal regions			5688.0	59.0	0.133
 suada	the goddess of Persuasion					
 suadela	the goddess of Persuasion					
 suadenter						
@@ -46821,9 +46240,9 @@ sulfuratus
 sulfureus	of sulphur, sulphurous, sulphureous					
 sulfurosus						
 suliviae						
-sulla	a family name in the Cornelian gens					
+sulla	a family name in the Cornelian gens			1435.0	439.0	0.988
 sullani						
-sullanus	of Sulla (the dictator)					
+sullanus	of Sulla (the dictator)			5688.0	59.0	0.133
 sullaturio	to imitate Sulla, play the part of Sulla					
 sulmo						
 sulmonenses						
@@ -46833,7 +46252,7 @@ sulphureus
 sulpicia						
 sulpicianus						
 sulpicilla						
-sulpicius						
+sulpicius				2073.0	281.0	0.633
 sum	to be, exist, live	sum1	sum, esse, fuī	1.0	145573.0	327.682
 sumen	a breast, udder					
 suminatus						
@@ -47018,7 +46437,7 @@ supergredior	to surmount, pass over
 supergressus						
 superhabeo						
 superhaurio						
-superi	see superusthose who live above: the gods; those who do not live in the underworld: mankind	superi	superī, superōrum, m. pl.	1266.0	500.0	1.125
+superi	those who live above: the gods; those who do not live in the underworld: mankindsee superus	superi	superī, superōrum, m. pl.	1266.0	500.0	1.125
 superiaceo						
 superiacio	to cast over, throw upon					
 superiacto						
@@ -47514,9 +46933,9 @@ sypheum
 syra						
 syracosii						
 syracosius	Syracusan, of Syracuse (the chief city of Sicily)					
-syracusae						
-syracusani						
-syracusanus						
+syracusae				3207.0	152.0	0.342
+syracusani				5641.0	60.0	0.135
+syracusanus				5488.0	63.0	0.142
 syracusii						
 syracusius						
 syrbotae						
@@ -47525,7 +46944,7 @@ syria
 syriacus	Syrian, of Syria (a country of Asia)					
 syriarcha						
 syriaticus						
-syrie						
+syrie				1985.0	298.0	0.671
 syrii						
 syringa						
 syringes						
@@ -47546,8 +46965,8 @@ syrophoenissa
 syrophoenix						
 syros						
 syrticus						
-syrtis	a sand-bank  in the sea.  Esp., two sand-banks on the coast of Africa					
-syrus	see Syriacus					
+syrtis	a sand-bank  in the sea.  Esp., two sand-banks on the coast of Africa			4838.0	78.0	0.176
+syrus	see Syriacus			3698.0	123.0	0.277
 syrus3						
 systalticus						
 systema						
@@ -47708,7 +47127,7 @@ tantaleus
 tantalides	a  descendant of Tantalus, Tantalide, i. e. Pelops, O.; Agamemnon, O.					
 tantalis	a  descendant of Tantalus, i. e. Niobe, O.; Hermione, O					
 tantalos	a king of  Phrygia					
-tantalus						
+tantalus				5896.0	55.0	0.124
 tanti						
 tantillum						
 tantillus	so little, so small					
@@ -47763,7 +47182,7 @@ tardus	slow,  not swift, sluggish, tardy	tardus	tardus, tarda, tardum	1024.0	631
 tarentini						
 tarentinus						
 tarentum						
-tarentus						
+tarentus				5488.0	63.0	0.142
 targines						
 tarichea						
 taricheae						
@@ -47773,11 +47192,11 @@ tarmes
 tarnis						
 tarpeia						
 tarpeianus						
-tarpeius	of Tarpeia, Tarpeian					
+tarpeius	of Tarpeia, Tarpeian			5896.0	55.0	0.124
 tarpessita						
 tarquinienses						
 tarquiniensis	of Tarquinii (a city of Etruria)					
-tarquinius						
+tarquinius				2616.0	205.0	0.461
 tarquitius						
 tarracina						
 tarracinae						
@@ -47789,9 +47208,9 @@ tarsatica
 tarsenses						
 tarsensis						
 tarsus						
-tartareus	of the infernal regions, Tartarean, infernal					
+tartareus	of the infernal regions, Tartarean, infernal			6023.0	53.0	0.119
 tartarinus						
-tartarus	Tartarus, the underworld					
+tartarus	Tartarus, the underworld			3832.0	117.0	0.263
 tartessiacus						
 tartessii						
 tartessis						
@@ -48118,7 +47537,7 @@ teredo	a boring  worm, wood-fretter, moth
 teredon						
 tereides						
 terensis						
-terentia						
+terentia				5109.0	71.0	0.16
 terentianus						
 terentilla						
 terentina						
@@ -48296,7 +47715,7 @@ tetricus	forbidding, gloomy, crabbed, harsh, severe
 tettigometra						
 tettigonia						
 tettius						
-teucer	king Teucer; (adjective Teucri) Trojans					
+teucer	king Teucer; (adjective Teucri) Trojans			2828.0	183.0	0.412
 teuchites						
 teucria						
 teucrion						
@@ -48333,7 +47752,7 @@ textus	P. of texo			4910.0	76.0	0.171
 thabena						
 thabenenses						
 thabraca						
-thais						
+thais				5245.0	68.0	0.153
 thala						
 thalamegus						
 thalamus	an inner room, chamber, apartment; marriage			1790.0	335.0	0.754
@@ -48369,7 +47788,7 @@ theangelis
 theatralis	of the theatre, theatrical					
 theatricus						
 theatrum	a  play-house, theatre			1830.0	326.0	0.734
-thebae	the city of Thebes					
+thebae	the city of Thebes			2684.0	198.0	0.446
 thebaeus						
 thebaica						
 thebaicus						
@@ -48392,14 +47811,14 @@ themiscyra
 themiscyrenus						
 themison						
 themista						
-themistocles						
+themistocles				5688.0	59.0	0.133
 themistocleus						
 theocritus						
 theodamanteus	of Theodamas, king of the Dryopes and father of Hylas					
 theodamas						
 theodectes						
 theodoreus						
-theodorus						
+theodorus				4216.0	99.0	0.223
 theodosia						
 theognis						
 theogonia						
@@ -48412,7 +47831,7 @@ theoninus	of Theon (a writer of satires)
 theophane						
 theophanes						
 theophilus						
-theophrastus						
+theophrastus				4315.0	95.0	0.214
 theopompeus						
 theopompos						
 theopompus						
@@ -48463,7 +47882,7 @@ thesaurochrysonicochrysides
 thesaurus	something  laid up, a hoard, treasure, provision, store			3494.0	134.0	0.302
 theseis						
 theseius						
-theseus						
+theseus				3698.0	123.0	0.277
 thesides						
 thesion						
 thesis						
@@ -48481,13 +47900,13 @@ thesprotis
 thesprotius						
 thesprotus						
 thessali						
-thessalia						
-thessalicus						
+thessalia				4492.0	89.0	0.2
+thessalicus				5245.0	68.0	0.153
 thessalis						
 thessalius						
 thessalonice						
 thessalonicenses						
-thessalus						
+thessalus				4658.0	84.0	0.189
 thessandrus						
 thestiades						
 thestias						
@@ -48524,10 +47943,10 @@ thorax	the breast,  chest, thorax; hence, a defence of the breast, breast-plate,
 thorius						
 thos						
 thraca						
-thracia						
+thracia				4838.0	78.0	0.176
 thracicus						
-thracius						
-thracus						
+thracius				6023.0	53.0	0.119
+thracus				6161.0	51.0	0.115
 thraecidica	(sc. arma), the Thracian arms of a gladiator					
 thraecium						
 thranis						
@@ -48625,8 +48044,8 @@ tibereius
 tiberianus						
 tiberinis						
 tiberinus						
-tiberis						
-tiberius						
+tiberis				3636.0	126.0	0.284
+tiberius				1209.0	527.0	1.186
 tibi	dat. of tu					
 tibia	a large shin-bone, tibia, shin, leg			3480.0	135.0	0.304
 tibiale						
@@ -48742,7 +48161,7 @@ tironianus
 tiruncula						
 tirunculus	a young beginner, little tiro					
 tirynthii						
-tirynthius	of Tiryns (in Argolis, the early home of  Hercules). Hence, of Hercules, Herculean					
+tirynthius	of Tiryns (in Argolis, the early home of  Hercules). Hence, of Hercules, Herculean			5206.0	69.0	0.155
 tisaeum						
 tisaeus						
 tisagoras						
@@ -48753,7 +48172,7 @@ tisicrates
 tisiphone	(avenger  of murder), one of the Furies					
 tisse						
 tissenses						
-titan						
+titan				4658.0	84.0	0.189
 titanis						
 titanius						
 titanomachia						
@@ -48776,7 +48195,7 @@ titillo	to tickle, titillate
 titillus						
 titinius						
 titio						
-titius						
+titius				5641.0	60.0	0.135
 titivillitium						
 titubanter	totteringly, hesitatingly, falteringly					
 titubantia						
@@ -48787,7 +48206,7 @@ titulus	a superscription, inscription, label, title, ticket, bill, placard, noti
 titurianus						
 titurius						
 titurnius						
-titus						
+titus				1282.0	494.0	1.112
 tityrus	a shepherd					
 tityus						
 tlepolemus						
@@ -48928,7 +48347,7 @@ torpidus	benumbed, stupefied, torpid
 torpor	numbness, stupefaction, torpor, sluggishness			5842.0	56.0	0.126
 torporo						
 torquatianus						
-torquatus	adorned with a necklace, collared					
+torquatus	adorned with a necklace, collared			3231.0	151.0	0.34
 torqueo	to turn, turn about, turn away, twist, bend, wind			959.0	676.0	1.522
 torques	a twisted neck-chain, necklace, collar			6161.0	51.0	0.115
 torrefacio						
@@ -49047,7 +48466,7 @@ traharius
 trahax						
 trahea	a drag, sledge					
 traho	to draw, drag, haul, train along, draw off, pull forth, drag away	traho	trahō, trahere, trāxī, trāctum	397.0	1586.0	3.57
-traianus						
+traianus				3721.0	122.0	0.275
 traicio	to throw across, cause to cross, cause to go across, put over, transfer, throw          over, shoot across			3551.0	130.0	0.293
 traiecticius						
 traiectio	a crossing over, passing over, passage					
@@ -49280,7 +48699,7 @@ trausius
 travectio	a carrying across, crossing over					
 traveho						
 trebaciter						
-trebatius						
+trebatius				5590.0	61.0	0.137
 trebax						
 trebellianus						
 trebellicus						
@@ -49290,7 +48709,7 @@ trebiani
 trebianus						
 trebiates						
 trebius						
-trebonius						
+trebonius				4769.0	80.0	0.18
 trebula						
 trebulani						
 trebulanum						
@@ -49324,7 +48743,7 @@ tres	three			318.0	1884.0	4.241
 tres 		tres	trēs, tria			
 tressis						
 tresviri	three associates in office, a board of three  colleagues, three joint commissioners					
-treveri						
+treveri				5963.0	54.0	0.122
 trevericus						
 triacontas						
 triangularis						
@@ -49470,7 +48889,7 @@ trilinguis	triple-tongued, with three tongues
 trilix	of three cords, triple-twilled					
 trilongus						
 triloris						
-trimalchio						
+trimalchio				4364.0	93.0	0.209
 trimatus						
 trimembris						
 trimestria						
@@ -49643,11 +49062,11 @@ trogini
 troglodytae						
 troglodyticus						
 troglodytis						
-troia	Troy					
+troia	Troy			1979.0	299.0	0.673
 troiades						
 troiani						
 troianum						
-troianus	of Troy					
+troianus	of Troy			3879.0	115.0	0.259
 troicus	of Troy,  Trojan					
 troilus						
 troiugena	son of Troy, descendant of Trojans, Trojan					
@@ -49665,7 +49084,7 @@ tropis
 tropologia						
 tropologicus						
 tropus				5896.0	55.0	0.124
-tros						
+tros				5744.0	58.0	0.131
 trosmis						
 trossuli						
 troucillus						
@@ -49723,7 +49142,7 @@ tubarius
 tuber	a lump, bump, swelling, tumor, protuberance, hump					
 tuberatus						
 tuberculum						
-tubero						
+tubero				4000.0	108.0	0.243
 tuberosus						
 tubertus						
 tubicen	a trumpeter					
@@ -49755,12 +49174,12 @@ tuguriunculum
 tuisco						
 tuitio	a caring for, watching over, guardianship, protection					
 tulingi						
-tullia						
+tullia				5535.0	62.0	0.14
 tullianum						
 tullianus	of Tullius, Tullian					
 tulliola						
-tullius						
-tullus						
+tullius				1720.0	355.0	0.799
+tullus				5109.0	71.0	0.16
 tulo						
 tum	then, at that time, in those times	tum	tum	81.0	6751.0	15.196
 tumba						
@@ -49858,7 +49277,7 @@ turmales
 turmalis	of a troop, of a squadron.					
 turmarii						
 turmatim	by troops, in squadrons					
-turnus						
+turnus				2785.0	187.0	0.421
 turones						
 turoni						
 turonicensis						
@@ -49894,12 +49313,12 @@ tuscanus
 tuscia						
 tusculanensis						
 tusculani						
-tusculanum						
-tusculanus						
+tusculanum				3259.0	149.0	0.335
+tusculanus				3207.0	152.0	0.342
 tusculi						
 tusculum						
 tusculus						
-tuscus	of the Tuscans, Tuscan, Etruscan, Etrurian					
+tuscus	of the Tuscans, Tuscan, Etruscan, Etrurian			3571.0	129.0	0.29
 tussedo						
 tussicula						
 tussicularis						
@@ -49986,13 +49405,13 @@ tyras
 tyrianthina						
 tyrianthinus						
 tyrium						
-tyrius						
+tyrius				2181.0	261.0	0.588
 tyro						
 tyropatina						
 tyrotarichos	a  ragout of cheese and salt-fish					
 tyrrhenia						
 tyrrhenicus						
-tyrrhenus	Tyrrhenian, Etrurian					
+tyrrhenus	Tyrrhenian, Etrurian			4000.0	108.0	0.243
 tyrrhidae						
 tyrrhus						
 tyrtaeus						
@@ -50034,7 +49453,7 @@ ulia
 uliginosa						
 uliginosus						
 uligo	moisture, dampness					
-ulixes						
+ulixes				2822.0	184.0	0.414
 ullatenus						
 ullus	any, any one	ullus	ūllus, ūlla, ūllum	185.0	3046.0	6.856
 ulmarium						
@@ -50403,7 +49822,7 @@ uxorcula
 uxorium				4102.0	104.0	0.234
 uxorius	of a wife, of a married					
 uzita						
-v						
+v				712.0	903.0	2.033
 vacalus						
 vacans	empty, unoccupied, vacant					
 vacanter						
@@ -50475,7 +49894,7 @@ valentulus
 valeo	to be strong, be vigorous, have strength, be ableto be strong, be vigorous, have strength, be able	valeo	valē (sg.), valēte (pl.)	210.0	2740.0	6.168
 valeria						
 valerianus						
-valerius						
+valerius				1903.0	314.0	0.707
 valesco	to grow strong, gain strength					
 valetudinarium	a sickroom, hospital					
 valetudinarius						
@@ -50565,7 +49984,7 @@ varisidius
 varius	Of color and appearance, variegated, party-colored, mottled, diverse, various	varius1	varius, varia, varium	485.0	1295.0	2.915
 varix	a dilated vein, varix					
 varo						
-varro						
+varro				1410.0	447.0	1.006
 varronianus						
 varus	bent, turned awry, crooked			3108.0	159.0	0.358
 varvari						
@@ -50611,7 +50030,7 @@ vaticinus	prophetical, vaticinal
 vatienus						
 vatillum	see batillum					
 vatinianus						
-vatinius						
+vatinius				5109.0	71.0	0.16
 vatius						
 vatrax						
 vatrenus						
@@ -50665,13 +50084,13 @@ vehiculum	a means of transport, carriage, conveyance, vehicle			3698.0	123.0	0.2
 vehilius						
 veho	to bear, carry, convey, draw	veho	vehō, vehere, vēxī, vectum	1297.0	488.0	1.098
 veia						
-veiens						
+veiens				3307.0	146.0	0.329
 veientana						
 veientani						
 veientanum						
 veientanus	of Veii, Veientian					
 veiento						
-veii						
+veii				3961.0	110.0	0.248
 veiovis	Little Jupiter, Anti-Jove, an ancient god of vengeance, identified with Apollo, and with the Jupiter of the lower world					
 veius						
 vel	choose, take your choice, or if you will, or as you prefer, or at least, or what is the same thing, or else, or	uel1	vel	64.0	8013.0	18.037
@@ -50781,7 +50200,7 @@ veneratio	profoundest respect, reverence, veneration			5351.0	66.0	0.149
 venerator	one who holds in honor, a reverencer					
 venereae						
 venereum						
-venereus						
+venereus				5842.0	56.0	0.126
 venerius	of Venus					
 veneror	to reverence, worship, adore, revere, venerate			2034.0	288.0	0.648
 veneti						
@@ -50903,7 +50322,7 @@ vergellus
 vergentum						
 vergiliae	the Pleiades (constellation)					
 vergilianus						
-vergilius	a gentile name					
+vergilius	a gentile name			2181.0	261.0	0.588
 vergo	to bend, turn, be inclined, lie, be situated			3659.0	125.0	0.281
 vergoanum						
 vergobretus	the minister of justice, executive					
@@ -50951,7 +50370,7 @@ veronenses
 veronensis						
 verpa	i. e. membrum virile					
 verpus	a circumcised man					
-verres	a boar, male swine					
+verres	a boar, male swine			2785.0	187.0	0.421
 verria						
 verriculum						
 verrinae						
@@ -51060,7 +50479,7 @@ vesiculosus
 vesontio						
 vespa	a wasp					
 vespasia						
-vespasianus						
+vespasianus				2713.0	195.0	0.439
 vespasius						
 vesper	the evening-star			5408.0	65.0	0.146
 vespera	the evening, even-tide					
@@ -51074,9 +50493,9 @@ vespertinus	of evening, of even-tide, evening			5963.0	54.0	0.122
 vesperugo						
 vesperus				3141.0	157.0	0.353
 vespillo						
-vesta	daughter of Saturn and Ops, goddess of flocks and herds, and of the household; in her temple the Vestal virgins maintained a perpetual fire					
+vesta	daughter of Saturn and Ops, goddess of flocks and herds, and of the household; in her temple the Vestal virgins maintained a perpetual fire			4614.0	85.0	0.191
 vestalia						
-vestalis	of Vesta, Vestal					
+vestalis	of Vesta, Vestal			5443.0	64.0	0.144
 vester	your, yours, of you	uester	vester, vestra, vestrum	219.0	2617.0	5.891
 vestiarium						
 vestiarius						
@@ -51133,7 +50552,7 @@ vetilius
 vetitum	that which is forbidden, something prohibited, a forbidden thing					
 veto	not to suffer, not to permit, to oppose, forbid, prohibit	veto	vetō, vetāre, vetuī, vetītum	901.0	720.0	1.621
 vettienus						
-vettius						
+vettius				5963.0	54.0	0.122
 vettonica						
 vetula						
 vetulonia						
@@ -51161,7 +50580,7 @@ vexillatio
 vexillifer						
 vexillum	a military ensign, standard, banner, flag			3721.0	122.0	0.275
 vexo	to shake, jolt, toss violently			1737.0	350.0	0.788
-vi						
+vi				3480.0	135.0	0.304
 via	a way, highway, road, path, street	via	via, viae, f.	325.0	1844.0	4.151
 vialis						
 viantes						
@@ -51284,8 +50703,8 @@ vigintiviratus	the office of the twenty, vigintivirate
 vigintiviri	a commission of twenty men, appointed by Caesar as consul to distribute lands					
 vigor	liveliness, activity, force, vigor			2774.0	188.0	0.423
 vigoro						
-vii						
-viii						
+vii				4951.0	75.0	0.169
+viii				3108.0	159.0	0.358
 vilica	a female overseer, overseer’s wife					
 vilicatio						
 vilicatus						
@@ -51515,7 +50934,7 @@ vitellia
 vitelliani						
 vitellianus						
 vitellina						
-vitellius						
+vitellius				1631.0	379.0	0.853
 vitellum						
 vitellus	the yellow part of an egg, yolk, yelk					
 viteus	of the vine					
@@ -51648,7 +51067,7 @@ volcae
 volcanalia						
 volcanalis						
 volcanius	of Vulcan, Vulcanian					
-volcanus	Vulcan, the fire-god, son of Jupiter and Juno					
+volcanus	Vulcan, the fire-god, son of Jupiter and Juno			4799.0	79.0	0.178
 volcatius						
 volcens						
 volcentes						
@@ -51676,9 +51095,9 @@ volpecula	a little fox
 volpes	a fox					
 volpis						
 volscens						
-volsci						
+volsci				2946.0	173.0	0.389
 volscius						
-volscus						
+volscus				4044.0	106.0	0.239
 volsella						
 volsinienses						
 volsiniensis						
@@ -51703,7 +51122,7 @@ voluminosus
 volumna						
 volumnia						
 volumnianus						
-volumnius						
+volumnius				6023.0	53.0	0.119
 volumnus						
 voluntarii				5896.0	55.0	0.124
 voluntarius	willing, of freewill, voluntary, self-constituted			3551.0	130.0	0.293
@@ -51809,7 +51228,7 @@ vulturnusventus
 vulturus						
 vultus	facial expression, face	vultus	vultus, vultūs, m.	411.0	1550.0	3.489
 washingtonius						
-x						
+x				2460.0	221.0	0.497
 xanthicus						
 xanthippe						
 xanthippus						
@@ -51837,21 +51256,21 @@ xeromyrrha
 xerophagia						
 xerophthalmia						
 xerxes						
-xii						
-xiiii						
+xii				2041.0	286.0	0.644
+xiiii				5022.0	73.0	0.164
 xiphias	a sword-fish					
 xiphion						
-xl						
+xl				5842.0	56.0	0.126
 xuthus						
-xv						
-xvi						
-xviii						
+xv				3985.0	109.0	0.245
+xvi				5109.0	71.0	0.16
+xviii				6091.0	52.0	0.117
 xviiii						
-xx						
+xx				4077.0	105.0	0.236
 xxiii						
 xxiiii						
 xxv						
-xxx						
+xxx				2403.0	228.0	0.513
 xxxii						
 xxxvi						
 xyline						
@@ -51900,13 +51319,13 @@ zelotypia	jealousy
 zelotypus	jealous					
 zelus						
 zema						
-zeno						
+zeno				2688.0	197.0	0.443
 zenobia						
 zenonianus						
 zephyre						
 zephyritis						
 zephyrius						
-zephyrus	a gentle west wind, western breeze, zephyr					
+zephyrus	a gentle west wind, western breeze, zephyr			4364.0	93.0	0.209
 zeros						
 zerynthius						
 zetarius						

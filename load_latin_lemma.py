@@ -5,7 +5,7 @@ from tqdm import tqdm
 from lemmatization.models import Lemma
 
 
-file_path = "import-data/lemma_frequency.tsv"
+file_path = "import-data/distinct_lemma_short_defs_frequencies.tsv"
 total_lines = sum(1 for i in open(file_path, "r"))
 print(f"Begin latin lemma import (size: {total_lines})")
 
@@ -17,14 +17,11 @@ with open(file_path) as f:
     batch = []
     all_lemmas_qs = Lemma.objects.values()
     lemmas_data = {q["lemma"]: q for q in all_lemmas_qs}
-
     for row in tqdm(csv_reader, total=total_lines):
         count_1 += 1
         val = list(row.values())
         lemma, alt_lemma, label, short_def, rank, count, rate = val
-
         data = dict(lang="lat", lemma=lemma.lower())
-
         lemma_exist = lemmas_data.get(lemma)
         if alt_lemma:
             data["alt_lemma"] = alt_lemma.lower()
@@ -48,6 +45,7 @@ with open(file_path) as f:
             data["rate"] = 0.000
         if not label:
             data["label"] = lemma.lower()
+
         if not lemma_exist and lemma:
             batch.append(Lemma(**data))
 

@@ -11,18 +11,20 @@ short_defs = pd.read_csv("import-data/shortdefs.csv")
 # omitted lookupform
 lemma_frequencies = pd.read_csv("import-data/frequencies.csv", usecols=["lemma", "rank", "count", "rate"])
 ivy_lattice = pd.read_csv("import-data/ivy_lattice_new.csv", usecols=["lemma", "alt_lemma", "label"])
-
-distinct_lemmas["lemma"] = distinct_lemmas["lemma"].str.lower()
-short_defs["lemma"] = short_defs["lemma"].str.lower()
 merge_distinct_lemmas_short_defs = pd.merge(distinct_lemmas, short_defs, on="lemma", how="outer")
 
 merge_lemmas_short_defs_frequencies = pd.merge(merge_distinct_lemmas_short_defs, lemma_frequencies, on="lemma", how="outer")
 merge_lemmas_short_defs_frequencies.set_index("lemma", inplace=True)
 
 final_aggregated_lemmas = pd.merge(merge_lemmas_short_defs_frequencies, ivy_lattice, on="lemma", how="outer")
+
+# lowercase capital letters
+final_aggregated_lemmas["lemma"] = final_aggregated_lemmas["lemma"].str.lower()
+
+# fill null values with blank
 final_aggregated_lemmas[["def"]] = final_aggregated_lemmas[["def"]].fillna("")
 
 # Combines entries with same lemma into single row
 grouped_by_lemmas = final_aggregated_lemmas.groupby(by="lemma").agg({"def": "sum", "alt_lemma": "first", "label": "first", "rank": "first", "count": "first", "rate": "first"})
 
-grouped_by_lemmas.to_csv("distinct_lemma_short_defs_frequencies.tsv", sep="\t")
+grouped_by_lemmas.to_csv("import-data/distinct_lemma_short_defs_frequencies.tsv", sep="\t")
