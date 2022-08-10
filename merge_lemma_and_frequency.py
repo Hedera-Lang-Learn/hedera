@@ -5,12 +5,12 @@ import pandas as pd
 Performs 3 outer joins using distinct_lemmas.csv as the base to match against shortdefs.csv, frequencies.csv, and ivy_lattice_new
 The script will then output the merged tables into a tsv to migrate into the lemmas table
 """
-distinct_lemmas = pd.read_csv("import-data/distinct_lemmas.csv")
-short_defs = pd.read_csv("import-data/shortdefs.csv")
+distinct_lemmas = pd.read_csv("merge-data/distinct_lemmas.csv")
+short_defs = pd.read_csv("merge-data/shortdefs.csv")
 
 # omitted lookupform column
-lemma_frequencies = pd.read_csv("import-data/frequencies.csv", usecols=["lemma", "rank", "count", "rate"])
-ivy_lattice = pd.read_csv("import-data/ivy_lattice_new.csv", usecols=["lemma", "alt_lemma", "label"])
+lemma_frequencies = pd.read_csv("merge-data/frequencies.csv", usecols=["lemma", "rank", "count", "rate"])
+ivy_lattice = pd.read_csv("merge-data/ivy_lattice_new.csv", usecols=["lemma", "alt_lemma", "label"])
 merge_distinct_lemmas_short_defs = pd.merge(distinct_lemmas, short_defs, on="lemma", how="outer")
 
 merge_lemmas_short_defs_frequencies = pd.merge(merge_distinct_lemmas_short_defs, lemma_frequencies, on="lemma", how="outer")
