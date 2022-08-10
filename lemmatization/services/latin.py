@@ -4,7 +4,14 @@ from typing import List
 
 from django.db import models
 
+from ..models import lookup_form
 from .base import BaseService, Tokenizer, triples
+
+
+def strip_macrons(word):
+    return unicodedata.normalize("NFC", "".join(
+        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
+    ))
 
 
 LATIN_COPULA = [
@@ -20,6 +27,7 @@ LATIN_COPULA = [
 
 
 def latin_periphrastic_normalizer(token):
+    token = strip_macrons(token)
     if " " in token:
         return " ".join(word for word in token.split() if word not in LATIN_COPULA)
     else:
@@ -75,9 +83,7 @@ class LatinService(BaseService):
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
         """
-        results_qs = LatinLexicon.objects.filter(token=form)
-        lemmas = list(results_qs.values_list("lemma", flat=True).order_by("-rate", "lemma"))
-        return lemmas
+        return lookup_form(form, "lat")
 
 
 class EncliticTokenizer(Tokenizer):
