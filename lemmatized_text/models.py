@@ -279,7 +279,7 @@ class LemmatizationLog(models.Model):
     # Changed What Attributes
     token_index = models.IntegerField()
 
-#   ***This requires some more thought***
+# ***This requires some more thought***
 #    lemma = models.ForeignKey("Lemmatization.Lemma")
 #    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
     resolved = models.CharField(max_length=100)

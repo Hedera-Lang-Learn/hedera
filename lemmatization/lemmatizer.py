@@ -2,7 +2,7 @@ import logging
 
 from hedera.supported_languages import SUPPORTED_LANGUAGES
 
-from .models import Lemma, lookup_form
+from .models import Lemma
 
 
 logger = logging.getLogger(__name__)
@@ -37,21 +37,24 @@ class Lemmatizer(object):
         return self._tokenizer.tokenize(text)
 
     def _lemmatize_token(self, token):
-        s = lookup_form(token, self.lang)
-        # if not s or self.force_refresh:
-        #     lemmas = self._service.lemmatize(token)
-        #     s |= add_form(
-        #         lang=self.lang,
-        #         form=token,
-        #         lemmas=lemmas
-        #     )
-        return list(s)
+        lemmas = self._service.lemmatize(token)
+        return list(lemmas)
 
     def _report_progress(self, index, total_count):
         if callable(self.cb):
             self.cb((index + 1) / total_count)
 
     def lemmatize(self, text):
+        # import debugpy
+
+        # try:
+        #     debugpy.listen(("0.0.0.0", 5678))
+        #     print("Waiting for debugger attach")
+        #     debugpy.wait_for_client()
+        #     debugpy.breakpoint()
+        #     print('break on this line')
+        # except:
+        #     pass
         result = []
         tokens = list(self._tokenize(text))
         total_count = len(tokens)
