@@ -6,10 +6,10 @@ Performs 3 outer joins using distinct_lemmas.csv as the base to match against sh
 The script will then output the merged tables into a tsv to migrate into the lemmas table
 
 Input files:
-    - shortdefs.csv: this file is an export of the shortdefs table from morph16.db which contains lemma definitions
+    - shortdefs.csv: this file is an export of the shortdefs table from morph16.db(From Logeion/Helma Dik - https://logeion.uchicago.edu/) which contains lemma definitions
     - ivy_lattice_new.csv: this file is manually curated by Ivy Livingston and converted from a tsv file in import-data folder
-    - distinct_lemmas.csv: this file is a list created by Bill Barthelmy which contains unique lemmas
-    - frequencies.csv: this file is an export of the latininfo.db. This table contains frequency(rank, count, rate) data on different lemmas
+    - distinct_lemmas.csv: this file is a list curated by Bill Barthelmy and Ivy Livingston which contains unique lemmas
+    - frequencies.csv: this file is an export of the latininfo.db(From Logeion/Helma Dik - https://logeion.uchicago.edu/). This table contains frequency(rank, count, rate) data on different lemmas
  Output file(located in the import-data folder):
    - distinct_lemma_short_defs_frequencies.tsv: merged frequencies, short definitions, and ivy's curated lemmas into a single table of lemmas, which will be used to import into the lemmas table
 """
