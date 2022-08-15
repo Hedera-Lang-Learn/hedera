@@ -2,8 +2,6 @@ from typing import List
 
 from django.db import models
 
-from .utils import strip_macrons
-
 
 class Lemma(models.Model):
     # TODO: consider indexing alt_lemma and rank
@@ -70,12 +68,6 @@ class FormToLemma(models.Model):
                 lang=lang,
                 form=form,
                 lemma=lemma,
-            )
-            FormToLemma.objects.get_or_create(
-                context=context,
-                lang=lang,
-                form=strip_macrons(form),
-                lemma=strip_macrons(lemma),
             )
 
     def get_lemma(self):
