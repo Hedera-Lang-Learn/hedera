@@ -3,9 +3,6 @@ from typing import List
 from django.db import models
 
 
-# from .utils import strip_macrons
-
-
 class Lemma(models.Model):
     # TODO: consider indexing alt_lemma and rank
     lang = models.CharField(max_length=3)  # ISO 639.2
