@@ -27,10 +27,10 @@ merge_lemmas_short_defs_frequencies.set_index("lemma", inplace=True)
 final_aggregated_lemmas = pd.merge(merge_lemmas_short_defs_frequencies, ivy_lattice, on="lemma", how="outer")
 
 # lowercase capital letters
-final_aggregated_lemmas["lemma"] = final_aggregated_lemmas["lemma"].str.lower()
+final_aggregated_lemmas.lemma = final_aggregated_lemmas.lemma.str.lower()
 
 # fill null values with blank
-final_aggregated_lemmas[["def"]] = final_aggregated_lemmas[["def"]].fillna("")
+final_aggregated_lemmas["def"] = final_aggregated_lemmas["def"].fillna("")
 
 # Combines entries with same lemma into single row
 grouped_by_lemmas = final_aggregated_lemmas.groupby(by="lemma").agg({"def": "sum", "alt_lemma": "first", "label": "first", "rank": "first", "count": "first", "rate": "first"})

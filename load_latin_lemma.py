@@ -17,8 +17,12 @@ with open(file_path) as f:
     all_lemmas_qs = Lemma.objects.values()
     lemmas_data = {q["lemma"]: q for q in all_lemmas_qs}
     for row in tqdm(csv_reader, total=total_lines):
-        val = list(row.values())
-        lemma, alt_lemma, label, short_def, rank, count, rate = val
+        lemma = row["lemma"]
+        alt_lemma = row["alt_lemma"]
+        label = row["label"]
+        rank = row["rank"]
+        count = row["count"]
+        rate = row["rate"]
         data = dict(lang="lat", lemma=lemma.lower())
         lemma_exist = lemmas_data.get(lemma)
 
@@ -48,9 +52,9 @@ with open(file_path) as f:
                 data["label"] = lemma.lower()
             batch.append(Lemma(**data))
 
-    if len(batch) == batch_size:
-        Lemma.objects.bulk_create(batch, batch_size)
-        batch = []
-        count += batch_size
+        if len(batch) == batch_size:
+            Lemma.objects.bulk_create(batch, batch_size)
+            batch = []
+            count += batch_size
     if len(batch) > 0:
         Lemma.objects.bulk_create(batch, batch_size)
