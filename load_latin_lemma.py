@@ -17,40 +17,40 @@ with open(file_path) as f:
     all_lemmas_qs = Lemma.objects.values()
     lemmas_data = {q["lemma"]: q for q in all_lemmas_qs}
     for row in tqdm(csv_reader, total=total_lines):
-        count += 1
         val = list(row.values())
         lemma, alt_lemma, label, short_def, rank, count, rate = val
         data = dict(lang="lat", lemma=lemma.lower())
         lemma_exist = lemmas_data.get(lemma)
-        if alt_lemma:
-            data["alt_lemma"] = alt_lemma.lower()
-        else:
-            data["alt_lemma"] = lemma.lower()
-        if label:
-            data["label"] = label.lower()
-        else:
-            data["label"] = lemma.lower()
-        if rank:
-            data["rank"] = float(rank)
-        else:
-            data["rank"] = 99999
-        if count:
-            data["count"] = float(count)
-        else:
-            data["count"] = 0
-        if rate:
-            data["rate"] = float(rate)
-        else:
-            data["rate"] = 0.000
-        if not label:
-            data["label"] = lemma.lower()
+
         # only adds to the batch lemma does not already exist in the database
         if not lemma_exist and lemma:
+            if alt_lemma:
+                data["alt_lemma"] = alt_lemma.lower()
+            else:
+                data["alt_lemma"] = lemma.lower()
+            if label:
+                data["label"] = label.lower()
+            else:
+                data["label"] = lemma.lower()
+            if rank:
+                data["rank"] = float(rank)
+            else:
+                data["rank"] = 99999
+            if count:
+                data["count"] = float(count)
+            else:
+                data["count"] = 0
+            if rate:
+                data["rate"] = float(rate)
+            else:
+                data["rate"] = 0.000
+            if not label:
+                data["label"] = lemma.lower()
             batch.append(Lemma(**data))
 
-        if len(batch) == batch_size:
-            Lemma.objects.bulk_create(batch, batch_size)
-            batch = []
-            count = batch_size
+    if len(batch) == batch_size:
+        Lemma.objects.bulk_create(batch, batch_size)
+        batch = []
+        count += batch_size
     if len(batch) > 0:
         Lemma.objects.bulk_create(batch, batch_size)

@@ -72,12 +72,6 @@ class FormToLemma(models.Model):
                 form=form,
                 lemma=lemma,
             )
-            # FormToLemma.objects.get_or_create(
-            #     context=context,
-            #     lang=lang,
-            #     form=strip_macrons(form),
-            #     lemma=strip_macrons(lemma),
-            # )
 
     def get_lemma(self):
         return self.lemma.to_dict()
