@@ -36,8 +36,8 @@ class Lemmatizer(object):
     def _tokenize(self, text):
         return self._tokenizer.tokenize(text)
 
-    def _lemmatize_token(self, token):
-        lemmas = self._service.lemmatize(token)
+    def _lemmatize_token(self, word, word_normalized):
+        lemmas = self._service.lemmatize(word, word_normalized)
         return list(lemmas)
 
     def _report_progress(self, index, total_count):
@@ -60,12 +60,13 @@ class Lemmatizer(object):
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
+
             lemma_id = None
             gloss_ids = []
             glossed = GLOSSED_NA
             resolved = RESOLVED_NA
             if word_normalized:
-                lemma_names = self._lemmatize_token(word_normalized)
+                lemma_names = self._lemmatize_token(word, word_normalized)
                 lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
 
                 # automatically select the highest frequency lemma

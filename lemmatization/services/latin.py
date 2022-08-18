@@ -8,10 +8,19 @@ from ..models import lookup_form
 from .base import BaseService, Tokenizer, triples
 
 
+COMBINING_MACRON = unicodedata.lookup("COMBINING MACRON")  # Unicode: 0x0304
+
+
 def strip_macrons(word):
+    """ Returns the word stripped of any combining macrons. """
     return unicodedata.normalize("NFC", "".join(
-        ch for ch in unicodedata.normalize("NFD", word) if ch not in ["\u0304"]
+        ch for ch in unicodedata.normalize("NFD", word) if ch not in [COMBINING_MACRON]
     ))
+
+
+def has_macron(word):
+    """ Returns True if a combining macron exists in the word, False otherwise. """
+    return COMBINING_MACRON in unicodedata.normalize("NFD", word)
 
 
 LATIN_COPULA = [
@@ -74,7 +83,7 @@ class LatinService(BaseService):
     SID = "morpheus"
     LANGUAGES = ["lat"]
 
-    def lemmatize(self, form: str) -> List[str]:
+    def lemmatize(self, word: str, word_normalized: str) -> List[str]:
         """
         Retrieves matching lemmas (headwords) for a word by querying our local database of
         latin tokens and lemmas. This was previously a remote call to the remote
@@ -83,7 +92,14 @@ class LatinService(BaseService):
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
         """
-        return lookup_form(form, "lat")
+        # TODO: Move the normalization step HERE instead of the tokenizer.
+        # The tokenizers should return doubles: (word, following) instead of triples.
+        lemmas = []
+        if has_macron(word):
+            lemmas = lookup_form(word, "lat")
+        if not lemmas:
+            lemmas = lookup_form(word_normalized, "lat")
+        return lemmas
 
 
 class EncliticTokenizer(Tokenizer):

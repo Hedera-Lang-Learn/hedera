@@ -42,6 +42,9 @@ class Lemma(models.Model):
             glosses=[gloss.to_dict() for gloss in self.glosses.all()],
         )
 
+    def __str__(self):
+        return self.lemma
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["lemma", "lang"], name="unique_lemma_lang")
