@@ -11,7 +11,6 @@ print(f"Begin latin lemma import (size: {total_lines})")
 
 with open(file_path) as f:
     csv_reader = csv.DictReader(f, delimiter="\t")
-    count = 0
     batch_size = 5000
     batch = []
     all_lemmas_qs = Lemma.objects.values()
@@ -55,6 +54,5 @@ with open(file_path) as f:
         if len(batch) == batch_size:
             Lemma.objects.bulk_create(batch, batch_size)
             batch = []
-            count += batch_size
     if len(batch) > 0:
         Lemma.objects.bulk_create(batch, batch_size)
