@@ -37,7 +37,6 @@
         gloss_ids: [...this.$store.state.selectedToken.gloss_ids],
       };
     },
-
     methods: {
       onLemmaChange(lemma) {
         this.updateLemma(lemma);
@@ -100,7 +99,7 @@
       selectedForm() {
         return (
           this.selectedToken
-          && this.$store.state.forms[this.selectedToken.word_normalized]
+          && this.$store.state.forms[this.selectedToken.word]
         );
       },
       activeGlosses() {

@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from locale import normalize
 from typing import List
 
 from django.db import models
@@ -34,6 +35,8 @@ LATIN_COPULA = [
     "esse", "fuisse", "iri", "fore",
 ]
 
+LATIN_ENCLITICS = ("que", "ne", "qve", "ve", "ue", "met")
+
 
 def latin_periphrastic_normalizer(token):
     token = strip_macrons(token)
@@ -52,6 +55,27 @@ def re_tokenize_clitics(tokens):
         else:
             yield token
 
+def find_latin_enclitics(tokens: List(str)) -> List[str]:
+    """
+    This function finds the enclitics attached to the word and returns a list of two strings
+    ex: ["virum", "que"]
+
+    Notes: triples?
+    - we need to create the   "word, word_normalized, following = token" object so that lemmatize can build the database entry
+    - we are close  - with splitting the word+enclitics in the lemmatizer.py
+    """
+    new_tokens = []
+    for token in tokens:
+        word, word_normalized, following = token
+        if lookup_form(word):
+            new_tokens += token
+        else:
+            for enclitic in LATIN_ENCLITICS:
+                if word.endswith(enclitic):
+                    #TODO  example word, word_normalized, following = new_token
+                    new_tokens += [word[:word.find(enclitic)], "", enclitic]
+    return tokens
+            
 
 class LatinLexicon(models.Model):
     """
@@ -95,10 +119,19 @@ class LatinService(BaseService):
         # TODO: Move the normalization step HERE instead of the tokenizer.
         # The tokenizers should return doubles: (word, following) instead of triples.
         lemmas = []
-        if has_macron(word):
-            lemmas = lookup_form(word, "lat")
-        if not lemmas:
-            lemmas = lookup_form(word_normalized, "lat")
+        # if has_macron(word):
+        #     lemmas = lookup_form(word, "lat")
+        # if not lemmas:
+        #     lemmas = lookup_form(word_normalized, "lat")
+        # # TODO: if not found strip out enclitic matching -que, -qve, -ue, -ve, -ne, -met
+        # # then do the lookup without that
+        # # should do what tokenize does - ex: ['virum', 'que']
+        # print("word.endswith(LATIN_ENCLITICS)", word.endswith(LATIN_ENCLITICS))
+        # if word.endswith(LATIN_ENCLITICS) and not lemmas:
+        word_enclitics_list = find_latin_enclitics(word)
+        word1 = lookup_form(word_enclitics_list[0], "lat")
+        enclitics = lookup_form(word_enclitics_list[1], "lat")
+        lemmas = word1 + enclitics
         return lemmas
 
 
@@ -115,6 +148,8 @@ class EncliticTokenizer(Tokenizer):
 
         The first item returned will have an empty string for `word` if the
         text starts with a non-word.
+
+        tokens returns a list of split word + enclitics ex: ['virum', '', 'que']
         """
         text = unicodedata.normalize("NFC", text)
         tokens = re.split(r"(\W+)", text)
