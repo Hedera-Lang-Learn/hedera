@@ -10,7 +10,7 @@ from lemmatization.services.russian import ClancyService, RUSTokenizer
 
 SupportedLanguage = namedtuple("SupportedLanguage", ["code", "verbose_name", "service", "tokenizer"])
 
-
+# TODO add preprocessor to each language - ex latin enclitics lookup
 SUPPORTED_LANGUAGES = {
     "grc": SupportedLanguage("grc", "Ancient Greek", GreekService(lang="grc"), GreekTokenizer(lang="grc")),
     "lat": SupportedLanguage("lat", "Latin", LatinService(lang="lat"), EncliticTokenizer(lang="lat")),

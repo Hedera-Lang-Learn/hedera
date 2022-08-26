@@ -65,7 +65,8 @@ class Lemmatizer(object):
             - que, " "
         check if its enclitic and split
         """
-        tokens = find_latin_enclitics(tokens)
+        # transformation - generic processing step -> lemmatizer
+        # tokens = preprocessing_tokens(tokens)
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token

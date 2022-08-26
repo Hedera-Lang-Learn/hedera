@@ -55,7 +55,7 @@ def re_tokenize_clitics(tokens):
         else:
             yield token
 
-def find_latin_enclitics(tokens: List(str)) -> List[str]:
+def find_latin_enclitics(tokens: List[str]) -> List[str]:
     """
     This function finds the enclitics attached to the word and returns a list of two strings
     ex: ["virum", "que"]
@@ -115,23 +115,24 @@ class LatinService(BaseService):
 
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
+        
         """
         # TODO: Move the normalization step HERE instead of the tokenizer.
         # The tokenizers should return doubles: (word, following) instead of triples.
         lemmas = []
-        # if has_macron(word):
-        #     lemmas = lookup_form(word, "lat")
-        # if not lemmas:
-        #     lemmas = lookup_form(word_normalized, "lat")
+        if has_macron(word):
+            lemmas = lookup_form(word, "lat")
+        if not lemmas:
+            lemmas = lookup_form(word_normalized, "lat")
         # # TODO: if not found strip out enclitic matching -que, -qve, -ue, -ve, -ne, -met
         # # then do the lookup without that
         # # should do what tokenize does - ex: ['virum', 'que']
         # print("word.endswith(LATIN_ENCLITICS)", word.endswith(LATIN_ENCLITICS))
         # if word.endswith(LATIN_ENCLITICS) and not lemmas:
-        word_enclitics_list = find_latin_enclitics(word)
-        word1 = lookup_form(word_enclitics_list[0], "lat")
-        enclitics = lookup_form(word_enclitics_list[1], "lat")
-        lemmas = word1 + enclitics
+        # word_enclitics_list = find_latin_enclitics(word)
+        # word1 = lookup_form(word_enclitics_list[0], "lat")
+        # enclitics = lookup_form(word_enclitics_list[1], "lat")
+        # lemmas = word1 + enclitics
         return lemmas
 
 
