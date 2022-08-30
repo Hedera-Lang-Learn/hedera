@@ -28,10 +28,13 @@ class Lemmatizer(object):
         self.force_refresh = force_refresh
         self._service = SUPPORTED_LANGUAGES[lang].service
         self._tokenizer = SUPPORTED_LANGUAGES[lang].tokenizer
+        self._preprocessor = SUPPORTED_LANGUAGES[lang].preprocessor
         if self._service is None:
             raise ValueError(f"Lemmatization not supported for language '{lang}''")
         if self._tokenizer is None:
             raise ValueError(f"Tokenization not supported for language '{lang}''")
+        if self._preprocessor is None:
+            raise ValueError(f"Preprocessor not supported for language '{lang}''")
 
     def _tokenize(self, text):
         return self._tokenizer.tokenize(text)
@@ -45,34 +48,22 @@ class Lemmatizer(object):
             self.cb((index + 1) / total_count)
 
     def lemmatize(self, text):
-        import debugpy
+        # import debugpy
 
-        try:
-            debugpy.listen(("0.0.0.0", 5678))
-            print("Waiting for debugger attach")
-            debugpy.wait_for_client()
-            debugpy.breakpoint()
-            print('break on this line')
-        except:
-            pass
+        # try:
+        #     debugpy.listen(("0.0.0.0", 5678))
+        #     print("Waiting for debugger attach")
+        #     debugpy.wait_for_client()
+        #     debugpy.breakpoint()
+        #     print('break on this line')
+        # except:
+        #     pass
         result = []
-        tokens = list(self._tokenize(text)) 
-        #tokens = ['virum', '', 'que']
-        """
-            text = virumque, " "
-            Broken into:
-            - virum, ""
-            - que, " "
-        check if its enclitic and split
-        """
-        # transformation - generic processing step -> lemmatizer
-        # tokens = preprocessing_tokens(tokens)
+        tokens = list(self._tokenize(text))
+        tokens = self._preprocessor.preprocessor(tokens)
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
-            """
-            [virum, "", que] = find_latin_enclitics("virumque")
-            """
             lemma_id = None
             gloss_ids = []
             glossed = GLOSSED_NA

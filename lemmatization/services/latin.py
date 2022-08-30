@@ -1,12 +1,11 @@
 import re
 import unicodedata
-from locale import normalize
 from typing import List
 
 from django.db import models
 
 from ..models import lookup_form
-from .base import BaseService, Tokenizer, triples
+from .base import BaseService, Preprocessor, Tokenizer, triples
 
 
 COMBINING_MACRON = unicodedata.lookup("COMBINING MACRON")  # Unicode: 0x0304
@@ -55,27 +54,6 @@ def re_tokenize_clitics(tokens):
         else:
             yield token
 
-def find_latin_enclitics(tokens: List[str]) -> List[str]:
-    """
-    This function finds the enclitics attached to the word and returns a list of two strings
-    ex: ["virum", "que"]
-
-    Notes: triples?
-    - we need to create the   "word, word_normalized, following = token" object so that lemmatize can build the database entry
-    - we are close  - with splitting the word+enclitics in the lemmatizer.py
-    """
-    new_tokens = []
-    for token in tokens:
-        word, word_normalized, following = token
-        if lookup_form(word):
-            new_tokens += token
-        else:
-            for enclitic in LATIN_ENCLITICS:
-                if word.endswith(enclitic):
-                    #TODO  example word, word_normalized, following = new_token
-                    new_tokens += [word[:word.find(enclitic)], "", enclitic]
-    return tokens
-            
 
 class LatinLexicon(models.Model):
     """
@@ -115,7 +93,6 @@ class LatinService(BaseService):
 
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
-        
         """
         # TODO: Move the normalization step HERE instead of the tokenizer.
         # The tokenizers should return doubles: (word, following) instead of triples.
@@ -124,15 +101,6 @@ class LatinService(BaseService):
             lemmas = lookup_form(word, "lat")
         if not lemmas:
             lemmas = lookup_form(word_normalized, "lat")
-        # # TODO: if not found strip out enclitic matching -que, -qve, -ue, -ve, -ne, -met
-        # # then do the lookup without that
-        # # should do what tokenize does - ex: ['virum', 'que']
-        # print("word.endswith(LATIN_ENCLITICS)", word.endswith(LATIN_ENCLITICS))
-        # if word.endswith(LATIN_ENCLITICS) and not lemmas:
-        # word_enclitics_list = find_latin_enclitics(word)
-        # word1 = lookup_form(word_enclitics_list[0], "lat")
-        # enclitics = lookup_form(word_enclitics_list[1], "lat")
-        # lemmas = word1 + enclitics
         return lemmas
 
 
@@ -156,3 +124,34 @@ class EncliticTokenizer(Tokenizer):
         tokens = re.split(r"(\W+)", text)
         tokens = list(re_tokenize_clitics(tokens))
         return triples(tokens, normalize=latin_periphrastic_normalizer)
+
+
+class LatinPreprocessor(Preprocessor):
+    """
+    This is used to apply various prepocessing to the words/tokens before they are further parsed by the lemmatizer
+    """
+    def preprocessor(self, tokens):
+        """
+        This function finds the first enclitics attached to the word and returns a list of two strings
+        Example:
+            tokens = [('virumque', 'virumque', ' ')]
+            note: this is following the "(word, word_normalized, following)" tuple format
+            virumque will then be broken down into the following:
+            Broken into:
+            - (virum, virum, "")
+            - (que, que, " ")
+        """
+        new_tokens = []
+        found_first_enclitic = False
+        for token in tokens:
+            word, word_normalized, following = token
+            if lookup_form(word, "lat"):
+                new_tokens += token
+            else:
+                for enclitic in LATIN_ENCLITICS:
+                    if word.endswith(enclitic) and found_first_enclitic is False:
+                        found_first_enclitic = True
+                        #Creates example word, word_normalized, following = new_token
+                        new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
+                        new_tokens.append((enclitic, enclitic, " "))
+        return new_tokens
