@@ -47,14 +47,17 @@ class LatinServiceTests(TransactionTestCase):
         # Add mappings to DB
         for (token, lemmas) in token_to_lemmas.items():
             for lemma in lemmas:
-                lemma_qs = Lemma.objects.filter(lang="lat", lemma=lemma)
-                if not lemma_qs.exists():
-                    lemma_object = Lemma.objects.create(lang="lat", lemma=lemma, alt_lemma=lemma, label=lemma)
-                else:
-                    lemma_object = list(lemma_qs)[0]
+                lemma_object, _ = Lemma.objects.get_or_create(
+                    lang="lat",
+                    lemma=lemma,
+                    alt_lemma=lemma,
+                    label=lemma,
+                )
                 FormToLemma.objects.create(lang="lat", form=token, lemma=lemma_object)
 
         # Check that they are lemmatized as expected
         service = LatinService(lang="lat")
         for (token, lemmas) in token_to_lemmas.items():
-            self.assertEqual(set(service.lemmatize(token, token)), set(lemmas))
+            expected_lemmas_set = set(lemmas)
+            actual_lemmas_set = set(service.lemmatize(token, token))
+            self.assertEqual(actual_lemmas_set, expected_lemmas_set)
