@@ -150,6 +150,8 @@ class LatinPreprocessor(Preprocessor):
                 new_tokens.append(token)
             else:
                 found_form_normalized = lookup_form(word_normalized, "lat")
+                if found_form_normalized:
+                    new_tokens.append(token)
                 if not found_form_normalized:
                     for enclitic in LATIN_ENCLITICS:
                         if word.endswith(enclitic) and found_first_enclitic is False:
