@@ -34,6 +34,7 @@ LATIN_COPULA = [
     "esse", "fuisse", "iri", "fore",
 ]
 
+# order is optimized for lookup e.g. "ue" is after "que"
 LATIN_ENCLITICS = ("que", "ne", "qve", "ve", "ue", "met")
 
 
@@ -138,20 +139,25 @@ class LatinPreprocessor(Preprocessor):
             note: this is following the "(word, word_normalized, following)" tuple format
             virumque will then be broken down into the following:
             Broken into:
-            - (virum, virum, "")
-            - (que, que, " ")
+            - [(virum, virum, ""), (que, que, " ")]
         """
         new_tokens = []
         found_first_enclitic = False
         for token in tokens:
             word, word_normalized, following = token
-            if lookup_form(word, "lat"):
-                new_tokens += token
+            found_form = lookup_form(word, "lat")
+            if found_form:
+                new_tokens.append(token)
             else:
-                for enclitic in LATIN_ENCLITICS:
-                    if word.endswith(enclitic) and found_first_enclitic is False:
-                        found_first_enclitic = True
-                        #Creates example word, word_normalized, following = new_token
-                        new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
-                        new_tokens.append((enclitic, enclitic, " "))
+                found_form_normalized = lookup_form(word_normalized, "lat")
+                if not found_form_normalized:
+                    for enclitic in LATIN_ENCLITICS:
+                        if word.endswith(enclitic) and found_first_enclitic is False:
+                            found_first_enclitic = True
+                            #Creates example word, word_normalized, following = new_token
+                            new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
+                            new_tokens.append((enclitic, enclitic, " "))
+                            break
+                if found_first_enclitic is False and not found_form_normalized:
+                    new_tokens.append(token)
         return new_tokens
