@@ -98,7 +98,7 @@ class LatinService(BaseService):
         if has_macron(word):
             lemmas = lookup_form(word, "lat")
         if not lemmas:
-            lemmas = lookup_form(word_normalized, "lat")
+            lemmas = lookup_form(word_normalized.lower(), "lat")
         return lemmas
 
 

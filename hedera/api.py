@@ -172,7 +172,7 @@ class LemmatizationLemmaAPI(APIView):
 
 class LemmatizationFormLookupAPI(APIView):
     def get_data(self):
-        form = self.kwargs.get("form")
+        form = self.kwargs.get("form").lower()
         lang = self.kwargs.get("lang")
         # gets list of forms
         forms = FormToLemma.objects.filter(lang=lang, form=form)

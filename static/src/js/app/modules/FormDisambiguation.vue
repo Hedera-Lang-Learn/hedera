@@ -98,10 +98,15 @@
         return this.$store.state.selectedToken;
       },
       selectedForm() {
-        return (
+        let form = (
           this.selectedToken
           && this.$store.state.forms[this.selectedToken.word_normalized]
         );
+        // used to look up forms that have capital: example "Sum" will not return glosses due to being capitalized
+        if (!form) {
+          form = this.selectedToken && this.$store.state.forms[this.selectedToken.word_normalized.toLowerCase()];
+        }
+        return form;
       },
       activeGlosses() {
         return this.gloss_ids;
