@@ -28,7 +28,9 @@ def parse_following(follower):
 
 
 def format_token_key_value_pairs(token):
-    return " ".join([f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")])
+    key_value_pairs = [f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")]
+    key_value_pairs.sort()
+    return " ".join(key_value_pairs)
 
 
 @job("default", timeout=600)

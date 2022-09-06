@@ -66,7 +66,7 @@ class LemmatizedTextTests(TestCase):
             "i": [60, 60, 60],
             "ism": [None]
         }
-        self.assertEqual(lt.self.token_lemma_dict(), expected)
+        self.assertEqual(lt.token_lemma_dict(), expected)
 
     def test_transform_data_to_html(self):
         data = [
@@ -86,7 +86,8 @@ class LemmatizedTextTests(TestCase):
             data=data
         )
 
-        expected = "<span lemma_id='3' resolved='True'>mis</span><span follower='true'> </span><span lemma_id='55' resolved='True'>sim</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'>.<br/></span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span lemma_id='None' resolved='False'>ism</span><span follower='true'> </span><span lemma_id='22' resolved='True'>mis</span><span follower='true'>.</span>"
+        # TODO: Figure out how to do these HTML tests better / less brittle
+        expected = "<span gloss_ids='[]' glossed='na' lemma_id='3' resolved='True'>mis</span><span follower='true'> </span><span gloss_ids='[]' glossed='na' lemma_id='55' resolved='True'>sim</span><span follower='true'> </span><span gloss_ids='[]' glossed='na' lemma_id='60' resolved='True'>i</span><span follower='true'>.<br/></span><span gloss_ids='[]' glossed='na' lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span gloss_ids='[]' glossed='na' lemma_id='60' resolved='True'>i</span><span follower='true'> </span><span gloss_ids='[]' glossed='na' lemma_id='None' resolved='False'>ism</span><span follower='true'> </span><span gloss_ids='[]' glossed='na' lemma_id='22' resolved='True'>mis</span><span follower='true'>.</span>"
         self.assertEqual(lt.transform_data_to_html(), expected)
 
     def test_handle_edited_data(self):
@@ -105,11 +106,12 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(example_text.token_count(), 3)
         self.assertEqual(example_text.original_text, "Femina somnia habet.")
 
+        # TODO: Figure out how to do these HTML tests better / less brittle
         edited_text = "<span follower='true'> </span><span lemma_id='55' gloss_ids='[]' glossed='na' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span lemma_id='60' gloss_ids='[]' glossed='na' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
         example_text.handle_edited_data("New title", edited_text)
         transformed_data_to_html = example_text.transform_data_to_html()
-        section_one = "<span word_normalized='something' lemma_id='None' gloss_ids='[]' glossed='na' resolved='no-lemma'>something</span>"
-        section_two = "<span lemma_id='60' resolved='True' gloss_ids='[]' glossed='na' word_normalized='habet'>habet</span><span follower='true'>. </span>"
+        section_one = "<span gloss_ids='[]' glossed='na' lemma_id='None' resolved='no-lemma' word_normalized='something'>something</span>"
+        section_two = "<span gloss_ids='[]' glossed='na' lemma_id='None' resolved='no-lemma' word_normalized='habet'>habet</span><span follower='true'> . </span>"
         self.assertIn(section_one, transformed_data_to_html)
         self.assertIn(section_two, transformed_data_to_html)
         self.assertEqual(example_text.token_count(), 7)
