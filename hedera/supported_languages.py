@@ -1,12 +1,6 @@
 from collections import namedtuple
 
-# from lemmatization.services.chinese import ChineseService, LACChineseTokenizer
-# from lemmatization.services.greek import GreekService, GreekTokenizer
-from lemmatization.services.latin import EncliticTokenizer, LatinService
-
-
 # from lemmatization.services.russian import ClancyService, RUSTokenizer
-=======
 from lemmatization.services.chinese import (
     ChinesePreprocessor,
     ChineseService,
@@ -17,6 +11,8 @@ from lemmatization.services.greek import (
     GreekService,
     GreekTokenizer
 )
+# from lemmatization.services.chinese import ChineseService, LACChineseTokenizer
+# from lemmatization.services.greek import GreekService, GreekTokenizer
 from lemmatization.services.latin import (
     EncliticTokenizer,
     LatinPreprocessor,
@@ -40,7 +36,7 @@ SUPPORTED_LANGUAGES = {
     "lat": SupportedLanguage("lat", "Latin", LatinService(lang="lat"), EncliticTokenizer(lang="lat")),
     # "rus": SupportedLanguage("rus", "Russian", ClancyService(lang="rus"), RUSTokenizer(lang="rus")),
     # "zho": SupportedLanguage("zho", "Chinese", ChineseService(lang="zho"), LACChineseTokenizer(lang="zho"))
-=======
+}
 SupportedLanguage = namedtuple("SupportedLanguage", ["code", "verbose_name", "service", "tokenizer", "preprocessor"])
 
 SUPPORTED_LANGUAGES = {
