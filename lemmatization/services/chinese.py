@@ -8,7 +8,7 @@ from typing import (  # can use `list` and `tuple` in python 3.9
 
 from LAC import LAC
 
-from .base import BaseService, Tokenizer
+from .base import BaseService, Preprocessor, Tokenizer
 
 
 TripleIterable = Iterable[Tuple[str, str, str]]
@@ -227,3 +227,12 @@ class LACChineseTokenizer(ChineseTokenizer):
                     subtoken += char
             if subtoken:
                 yield subtoken
+
+
+class ChinesePreprocessor(Preprocessor):
+    """
+    Returns an iterable list of tokens if a custom preprocessor was provided
+    This placeholder method can be overridden.
+    """
+    def preprocessor(self, tokens: List[tuple]) -> List[tuple]:
+        return tokens

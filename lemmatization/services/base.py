@@ -88,3 +88,23 @@ class Tokenizer(object):
         This method must be overridden.
         """
         raise NotImplementedError("Must provide implementation on a per tokenizer basis.")
+
+
+class Preprocessor(object):
+    """
+    Preprocessor for running custom transformation of tokens list.
+
+    Subclasses should override the preprocessor() method to provide
+    language-specific preprocessor.
+    """
+
+    def __init__(self, lang):
+        self.lang = lang
+
+    def preprocessor(self, tokens):
+        """
+        Returns an iterable list of tokens if a custom preprocessor was provided
+
+        This method must be overridden.
+        """
+        raise NotImplementedError("Must provide implementation on a per preprocessor basis.")

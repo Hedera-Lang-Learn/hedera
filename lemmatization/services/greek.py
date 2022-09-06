@@ -1,7 +1,7 @@
 import re
 import unicodedata
 
-from .base import HttpService, Tokenizer, triples
+from .base import HttpService, Preprocessor, Tokenizer, triples
 
 
 class MorpheusService(HttpService):
@@ -44,3 +44,12 @@ class GreekTokenizer(Tokenizer):
         text = unicodedata.normalize("NFC", text)
         tokens = re.split(r"(\W+)", text)
         return triples(tokens)
+
+
+class GreekPreprocessor(Preprocessor):
+    """
+    Returns an iterable list of tokens if a custom preprocessor was provided
+    This placeholder method can be overridden.
+    """
+    def preprocessor(self, tokens):
+        return tokens

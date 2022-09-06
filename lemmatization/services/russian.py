@@ -1,7 +1,7 @@
 import re
 import unicodedata
 
-from .base import HttpService, Tokenizer, triples
+from .base import HttpService, Preprocessor, Tokenizer, triples
 
 
 def maketrans_remove(accents=("COMBINING ACUTE ACCENT", "COMBINING GRAVE ACCENT")):
@@ -94,3 +94,12 @@ class RUSTokenizer(Tokenizer):
             else:
                 processed.append(token)
         return processed
+
+
+class RUSPreprocessor(Preprocessor):
+    """
+    Returns an iterable list of tokens if a custom preprocessor was provided
+    This placeholder method can be overridden.
+    """
+    def preprocessor(self, tokens):
+        return tokens
