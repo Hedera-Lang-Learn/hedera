@@ -1,7 +1,8 @@
 from django.test import SimpleTestCase, TransactionTestCase
 
+from ..models import FormToLemma, Lemma
 from ..services.chinese import ChineseService
-from ..services.latin import LatinLexicon, LatinService
+from ..services.latin import LatinService
 
 
 class ChineseServiceTests(SimpleTestCase):
@@ -44,13 +45,19 @@ class LatinServiceTests(TransactionTestCase):
         }
 
         # Add mappings to DB
-        objects = []
         for (token, lemmas) in token_to_lemmas.items():
             for lemma in lemmas:
-                objects.append(LatinLexicon(token=token, lemma=lemma))
-        LatinLexicon.objects.bulk_create(objects)
+                lemma_object, _ = Lemma.objects.get_or_create(
+                    lang="lat",
+                    lemma=lemma,
+                    alt_lemma=lemma,
+                    label=lemma,
+                )
+                FormToLemma.objects.create(lang="lat", form=token, lemma=lemma_object)
 
         # Check that they are lemmatized as expected
         service = LatinService(lang="lat")
         for (token, lemmas) in token_to_lemmas.items():
-            self.assertEqual(service.lemmatize(token), lemmas)
+            expected_lemmas_set = set(lemmas)
+            actual_lemmas_set = set(service.lemmatize(token, token))
+            self.assertEqual(actual_lemmas_set, expected_lemmas_set)
