@@ -5,7 +5,7 @@ from typing import List
 from django.db import models
 
 from ..models import lookup_form
-from .base import BaseService, Tokenizer, triples
+from .base import BaseService, Preprocessor, Tokenizer, triples
 
 
 COMBINING_MACRON = unicodedata.lookup("COMBINING MACRON")  # Unicode: 0x0304
@@ -33,6 +33,9 @@ LATIN_COPULA = [
     "forem", "fores", "foret", "foremus", "foretis", "forent",
     "esse", "fuisse", "iri", "fore",
 ]
+
+# order is optimized for lookup e.g. "ue" is after "que"
+LATIN_ENCLITICS = ("que", "ne", "qve", "ve", "ue", "met")
 
 
 def latin_periphrastic_normalizer(token):
@@ -115,8 +118,48 @@ class EncliticTokenizer(Tokenizer):
 
         The first item returned will have an empty string for `word` if the
         text starts with a non-word.
+
+        tokens returns a list of split word + enclitics ex: ['virum', '', 'que']
         """
         text = unicodedata.normalize("NFC", text)
         tokens = re.split(r"(\W+)", text)
         tokens = list(re_tokenize_clitics(tokens))
         return triples(tokens, normalize=latin_periphrastic_normalizer)
+
+
+class LatinPreprocessor(Preprocessor):
+    """
+    This is used to apply various prepocessing to the words/tokens before they are further parsed by the lemmatizer
+    """
+    def preprocessor(self, tokens):
+        """
+        This function finds the first enclitics attached to the word and returns a list of two strings
+        Example:
+            tokens = [('virumque', 'virumque', ' ')]
+            note: this is following the "(word, word_normalized, following)" tuple format
+            virumque will then be broken down into the following:
+            Broken into:
+            - [(virum, virum, ""), (que, que, " ")]
+        """
+        new_tokens = []
+        found_first_enclitic = False
+        for token in tokens:
+            word, word_normalized, following = token
+            found_form = lookup_form(word, "lat")
+            if found_form:
+                new_tokens.append(token)
+            else:
+                found_form_normalized = lookup_form(word_normalized, "lat")
+                if found_form_normalized:
+                    new_tokens.append(token)
+                if not found_form_normalized:
+                    for enclitic in LATIN_ENCLITICS:
+                        if word.endswith(enclitic) and found_first_enclitic is False:
+                            found_first_enclitic = True
+                            #Creates example word, word_normalized, following = new_token
+                            new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
+                            new_tokens.append((enclitic, enclitic, " "))
+                            break
+                if found_first_enclitic is False and not found_form_normalized:
+                    new_tokens.append(token)
+        return new_tokens

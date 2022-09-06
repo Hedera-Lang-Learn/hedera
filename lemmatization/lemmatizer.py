@@ -28,10 +28,13 @@ class Lemmatizer(object):
         self.force_refresh = force_refresh
         self._service = SUPPORTED_LANGUAGES[lang].service
         self._tokenizer = SUPPORTED_LANGUAGES[lang].tokenizer
+        self._preprocessor = SUPPORTED_LANGUAGES[lang].preprocessor
         if self._service is None:
             raise ValueError(f"Lemmatization not supported for language '{lang}''")
         if self._tokenizer is None:
             raise ValueError(f"Tokenization not supported for language '{lang}''")
+        if self._preprocessor is None:
+            raise ValueError(f"Preprocessor not supported for language '{lang}''")
 
     def _tokenize(self, text):
         return self._tokenizer.tokenize(text)
@@ -57,10 +60,10 @@ class Lemmatizer(object):
         #     pass
         result = []
         tokens = list(self._tokenize(text))
+        tokens = self._preprocessor.preprocessor(tokens)
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
-
             lemma_id = None
             gloss_ids = []
             glossed = GLOSSED_NA
