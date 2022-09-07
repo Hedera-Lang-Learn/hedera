@@ -46,7 +46,7 @@
       <div class="container">
         {% block topbar %}
           <a class="navbar-brand" href="/">Hedera</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-container" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars" aria-hidden="true" title="Toggle navigation"></i><span class="sr-only">Toggle navigation</span>
           </button>
           <div class="nav-container collapse navbar-collapse" id="navbar">
@@ -71,15 +71,13 @@
                     <li class="navbar-item">
                         {% default_vocab_list request.user as vocab_list %}
                         {% if vocab_list %}
-                        <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
-                          Personal Vocabulary
-                        </a>
+                          <a class="nav-link" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">
+                            Personal Vocabulary
+                          </a>
                         {% else %}
-                        <li class="nav-item">
                           <a class="nav-link" href="{% url 'vocab_list_personal_create' %}">
                             Personal Vocabulary
                           </a>
-                        </li>
                         {% endif %}
                     </li>
                   {% endif %}

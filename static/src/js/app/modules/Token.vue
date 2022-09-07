@@ -3,7 +3,7 @@
     <span
       class="word"
       v-if="token.word"
-      :class="[token.resolved, {selected, sameNode, sameWord, 'in-vocab-list': inVocabList, ignored }]"
+      :class="[token.resolved, {selected, sameLemma, sameWord, 'in-vocab-list': inVocabList, ignored }]"
       @click.prevent="onClick()"
     >{{ token.word }}</span><span class="following" v-if="token.following">{{ token.following }}</span>
   </span>
@@ -22,6 +22,9 @@
       },
       sameNode() {
         return this.selectedToken && this.selectedToken.node === this.token.node;
+      },
+      sameLemma() {
+        return this.selectedToken && this.selectedToken.lemma_id === this.token.lemma_id;
       },
       sameWord() {
         return this.selectedToken && this.selectedToken.word === this.token.word && this.sameWords.length > 1;

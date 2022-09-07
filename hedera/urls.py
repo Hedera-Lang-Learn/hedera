@@ -36,6 +36,8 @@ urlpatterns = [
     path("api/v1/me/", api.MeAPI.as_view()),
     path("api/v1/bookmarks/", api.BookmarksListAPI.as_view()),
     path("api/v1/bookmarks/<int:pk>/", api.BookmarksDetailAPI.as_view()),
+    path("api/v1/lemmatization/lemma/<int:lemma_id>/", api.LemmatizationLemmaAPI.as_view()),
+    path("api/v1/lemmatization/forms/<str:lang>/<str:form>/", api.LemmatizationFormLookupAPI.as_view()),
     path("api/v1/lemmatized_texts/", api.LemmatizedTextListAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/detail/", api.LemmatizedTextDetailAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/status/", api.LemmatizedTextStatusAPI.as_view()),

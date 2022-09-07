@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 
 from lattices.models import LatticeNode, LemmaNode
-from lemmatization.models import FormToLemma, LatinLexicon
+from lemmatization.models import FormToLemma, Gloss, Lemma
 from lemmatized_text.models import (
     LemmatizationLog,
     LemmatizedText,
@@ -17,8 +17,9 @@ from vocab_list.models import (
 
 
 MODELS = [
-    LatinLexicon,
     FormToLemma,
+    Gloss,
+    Lemma,
     LemmatizedText,
     LatticeNode,
     VocabularyList,

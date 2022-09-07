@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.views import View
 
 from lattices.models import LatticeNode, LemmaNode
+from lemmatization.models import FormToLemma, Lemma
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
@@ -162,44 +163,75 @@ class LemmatizedTextDetailAPI(APIView):
         return text.api_data()
 
 
+class LemmatizationLemmaAPI(APIView):
+    def get_data(self):
+        lemma_id = self.kwargs.get("lemma_id")
+        lemma = get_object_or_404(Lemma, pk=lemma_id)
+        return lemma.to_dict()
+
+
+class LemmatizationFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+        # gets list of forms
+        forms = FormToLemma.objects.filter(lang=lang, form=form)
+        if not forms:
+            forms = FormToLemma.objects.filter(lang=lang, form=form.lower())
+        lemma_list = [form.get_lemma() for form in forms]
+        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
+        data = {
+            "lang": lang,
+            "form": form,
+            "lemmas": sorted_lemma_list
+        }
+        return data
+
+
 class LemmatizationAPI(APIView):
 
     def decorate_token_data(self, text):
         data = text.data
-        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
-        nodes_cache = {
-            node.pk: node
-            for node in nodes
-        }
-        vocablist_id = self.request.GET.get("vocablist", None)
-        if vocablist_id is not None:
-            if vocablist_id == "personal":
-                vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
-            else:
-                vl = get_object_or_404(VocabularyList, pk=vocablist_id)
-            node_ids = vl.entries.values_list("node__pk", flat=True)
-            related_node_cache = dict()
-            for token in data:
-                node = nodes_cache.get(token["node"])
-                if node is not None:
-                    if related_node_cache.get(node.pk) is None:
-                        related_node_cache[node.pk] = [n.pk for n in node.related_nodes()]
-                    related_node_ids = related_node_cache[node.pk]
-                    token["inVocabList"] = token["resolved"] and any(item in related_node_ids for item in node_ids)
-                else:
-                    token["inVocabList"] = False
 
-        if self.request.GET.get("personalvocablist", None) is not None:
-            vl = get_object_or_404(PersonalVocabularyList, pk=self.request.GET.get("personalvocablist"))
-            for token in data:
-                token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
-                token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
+        lemmas = Lemma.objects.filter(pk__in=[token["lemma_id"] for token in data])
+        lemmas_cache = {
+            lemma.pk: lemma
+            for lemma in lemmas
+        }
+
+        # this is checking to see if the token is in the user's personal vocab list
+        # it annotates the token with inVocabList=True|False
+        # vocablist_id = self.request.GET.get("vocablist", None)
+        # if vocablist_id is not None:
+        #     if vocablist_id == "personal":
+        #         vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
+        #     else:
+        #         vl = get_object_or_404(VocabularyList, pk=vocablist_id)
+        #     lemma_ids = vl.entries.values_list("lemma__pk", flat=True)
+        #     lemma_node_cache = dict()
+        #
+        #
+        #     for token in data:
+        #         lemma = lemmas_cache.get(token["lemma_id"])
+        #         if lemma is not None:
+        #             if lemma_node_cache.get(lemma.pk) is None:
+        #                 lemma_node_cache[lemma.pk] = [n.pk for n in lemma.related_nodes()]
+        #             related_node_ids = lemma_node_cache[lemma.pk]
+        #             token["inVocabList"] = token["resolved"] and any(item in related_node_ids for item in node_ids)
+        #         else:
+        #             token["inVocabList"] = False
+        #
+        # if self.request.GET.get("personalvocablist", None) is not None:
+        #     vl = get_object_or_404(PersonalVocabularyList, pk=self.request.GET.get("personalvocablist"))
+        #     for token in data:
+        #         token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
+        #         token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
 
         for index, token in enumerate(data):
             token["tokenIndex"] = index
-            node = nodes_cache.get(token["node"])
-            if node is not None:
-                token.update(node.gloss_data())
+            lemma = lemmas_cache.get(token["lemma_id"])
+            if lemma is not None:
+                token.update(lemma.gloss_data())
 
         return data
 
@@ -219,10 +251,12 @@ class LemmatizationAPI(APIView):
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
-        node_id = data["nodeId"]
+        lemma_id = data["lemmaId"]
         resolved = data["resolved"]
+        # list of gloss ids
+        gloss_ids = data["glossIds"]
 
-        text.update_token(self.request.user, token_index, node_id, resolved)
+        text.update_token(self.request.user, token_index, lemma_id, gloss_ids, resolved)
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
