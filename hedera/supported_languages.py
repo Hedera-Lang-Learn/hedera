@@ -10,6 +10,11 @@ from collections import namedtuple
 #     GreekService,
 #     GreekTokenizer
 # )
+# from lemmatization.services.russian import (
+#     ClancyService,
+#     RUSPreprocessor,
+#     RUSTokenizer
+# )
 from lemmatization.services.latin import (
     EncliticTokenizer,
     LatinPreprocessor,
@@ -17,15 +22,9 @@ from lemmatization.services.latin import (
 )
 
 
-# from lemmatization.services.russian import (
-#     ClancyService,
-#     RUSPreprocessor,
-#     RUSTokenizer
-# )
-
-
 # using ISO 639.2 CODES
-
+#NOTE: disables language here for version 1.0
+#TODO: Add back languages after
 SupportedLanguage = namedtuple("SupportedLanguage", ["code", "verbose_name", "service", "tokenizer", "preprocessor"])
 
 SUPPORTED_LANGUAGES = {
