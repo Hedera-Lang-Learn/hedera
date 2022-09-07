@@ -57,7 +57,7 @@
     "imports-loader": "^1.1.0",
     "jest": "^27.0.6",
     "mini-css-extract-plugin": "^0.11.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "postcss": "^8.2.15",
     "postcss-loader": "^3.0.0",
