@@ -242,6 +242,7 @@ $ docker compose exec django python manage.py reset_db --no_input
 # Run commands to reload the data
 $ docker compose run --rm django python manage.py shell -c "import load_latin_lemma"
 $ docker compose run --rm django python manage.py shell -c "import load_latin_form_to_lemma"
+$ docker compose run --rm django python manage.py shell -c "import load_latin_gloss"
 ```
 
 ## Adding a new language
