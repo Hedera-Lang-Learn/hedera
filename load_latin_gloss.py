@@ -15,13 +15,20 @@ with open(file_path) as f:
     batch = []
     all_lemmas_qs = Lemma.objects.all()
     all_gloss_qs = Gloss.objects.all()
+    lemmas_data = {q.lemma: q for q in all_lemmas_qs}
+    all_gloss_data = {str(g.lemma_id) + g.gloss: g for g in all_gloss_qs}
+
     for row in tqdm(csv_reader, total=total_lines):
         lemma = row["lemma"]
         gloss = row["def"]
-        lemma_exist = all_lemmas_qs.filter(lemma=lemma).first()
-        gloss_exist = all_gloss_qs.filter(gloss=gloss, lemma=lemma_exist).first()
+        lemma_exist = lemma in lemmas_data
+        lemma_object = lemmas_data.get(lemma)
+        gloss_exist = False
+        if lemma_exist:
+            lemma_id = lemma_object.id
+            gloss_exist = str(lemma_id) + gloss in all_gloss_data
         if lemma_exist and gloss and not gloss_exist:
-            data = dict(gloss=gloss, lemma=lemma_exist)
+            data = dict(gloss=gloss, lemma=lemma_object)
             batch.append(Gloss(**data))
         if len(batch) == batch_size:
             Gloss.objects.bulk_create(batch, batch_size)
