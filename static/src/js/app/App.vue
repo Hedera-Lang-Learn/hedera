@@ -57,7 +57,7 @@
           if (this.selectedVocabListId === 'personal') {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.$store.state.text.lang });
           }
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabListId });
+          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
         },
       },
     },

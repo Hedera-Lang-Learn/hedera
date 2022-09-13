@@ -66,11 +66,11 @@ export default {
       .fetchPersonalVocabList(lang, cb)
       .catch(logoutOnError(commit));
   },
-  [FETCH_TOKENS]: ({ commit }, { id, vocabList, personalVocabList }) => {
+  [FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
     commit(SET_TEXT_ID, id);
     const cb = (data) => commit(FETCH_TOKENS, data.data);
     return api
-      .fetchTokens(id, vocabList, personalVocabList, cb)
+      .fetchTokens(id, vocabListId, personalVocabListId, cb)
       .catch(logoutOnError(commit));
   },
   [SELECT_TOKEN]: ({ commit, state }, { token }) => api.fetchTokenHistory(

@@ -201,14 +201,17 @@ class LemmatizationAPI(APIView):
 
         # this is checking to see if the token is in the user's personal vocab list
         # it annotates the token with inVocabList=True|False
-        # vocablist_id = self.request.GET.get("vocablist", None)
+        # vocablist_id = self.request.GET.get("vocablistId", None)
+        # this is checking to see if the token is in the user's personal vocab list
+        # it annotates the token with inVocabList=True|False
+        # print("*vocab_list_data",vocablist_id )
         # if vocablist_id is not None:
         #     if vocablist_id == "personal":
-        #         vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
+        #         vocab_list_data = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
         #     else:
-        #         vl = get_object_or_404(VocabularyList, pk=vocablist_id)
-        #     lemma_ids = vl.entries.values_list("lemma__pk", flat=True)
-        #     lemma_node_cache = dict()
+        #         vocab_list_data = get_object_or_404(VocabularyList, pk=vocablist_id)
+        # lemma_ids = vocab_list_data.entries.values_list("lemma__pk", flat=True)
+        # lemma_node_cache = dict()
         #
         #
         #     for token in data:
@@ -305,10 +308,9 @@ class VocabularyListEntryAPI(APIView):
     def post(self, request, *args, **kwargs):
         entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
-
         if action == "link":
             data = json.loads(request.body)
-            node = get_object_or_404(LatticeNode, pk=data["node"])
+            node = get_object_or_404(Lemma, pk=data["node"])
             entry.node = node
             entry.save()
             return_data = entry.data()

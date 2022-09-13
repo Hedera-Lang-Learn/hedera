@@ -33,7 +33,7 @@ export default {
     }
     let qs = '';
     if (vocabList) {
-      qs = `vocablist=${vocabList}`;
+      qs = `vocablistId=${vocabList}`;
     }
     if (personalVocabList) {
       qs = `personalvocablist=${personalVocabList}`;

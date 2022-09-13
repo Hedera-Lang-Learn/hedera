@@ -7,7 +7,8 @@ from django.utils import timezone
 from django_rq import job
 from iso639 import languages
 
-from lattices.models import LatticeNode, LemmaNode
+from lattices.models import LatticeNode
+from lemmatization.models import Lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -180,13 +181,8 @@ class AbstractVocabListEntry(models.Model):
 
     def link(self):
         first = strip_diacritics(self.headword.split()[0].strip(","))
-        lemma_node = LemmaNode.objects.filter(lemma=first).first()
-        if lemma_node is None:
-            for lemma_node in LemmaNode.objects.filter(lemma__istartswith=first):
-                if lemma_node.node.children.exists():
-                    break
-        if lemma_node:
-            self.node = lemma_node.node
+        lemma = Lemma.objects.filter(lemma=first).first()
+        self.lemma = lemma
         self.link_job_ended = timezone.now()
         self.save()
 
@@ -208,8 +204,8 @@ class AbstractVocabListEntry(models.Model):
 class VocabularyListEntry(AbstractVocabListEntry):
     vocabulary_list = models.ForeignKey(
         VocabularyList, related_name="entries", on_delete=models.CASCADE)
-    node = models.ForeignKey(
-        LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
+    lemma = models.ForeignKey(
+        Lemma, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "vocabulary list entry"
@@ -220,7 +216,7 @@ class VocabularyListEntry(AbstractVocabListEntry):
         return super().link_job(VocabularyListEntry)
 
     def data(self):
-        return super().data(node=self.node_id)
+        return super().data(lemma=self.lemma_id)
 
 
 class PersonalVocabularyListEntry(AbstractVocabListEntry):

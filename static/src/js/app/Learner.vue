@@ -105,7 +105,7 @@
       selectedVocabList: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, personalVocabList: this.selectedVocabList });
+          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, personalVocabListId: this.selectedVocabListId });
         },
       },
       selectedNode: {
