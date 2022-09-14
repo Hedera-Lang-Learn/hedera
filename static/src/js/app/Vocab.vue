@@ -68,7 +68,7 @@
     methods: {
       onSelectEntry(entry) {
         this.selectedEntry = entry;
-        this.selectNode(entry.node);
+        this.selectNode(entry.lemma);
       },
       selectNode(nodePK) {
         if (nodePK === null) {

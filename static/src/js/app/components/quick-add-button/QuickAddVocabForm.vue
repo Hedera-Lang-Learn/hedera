@@ -34,9 +34,9 @@
         <input
           class="form-control ml-2 mt-2"
           type="text"
-          placeholder="gloss"
-          aria-label="gloss"
-          v-model="gloss"
+          placeholder="definition"
+          aria-label="definition"
+          v-model="definition"
           @change="resetLatticeNodeId()"
           required
         />
@@ -53,12 +53,12 @@
         </div>
       </div>
       <div class="lattice-node-container" :style="showLatticeNodeList">
-        <label for="LatticeNode">Suggested Gloss</label>
+        <label for="LatticeNode">Suggested definition</label>
         <select
           id="lattice-node-select"
           v-model="latticeNodeId"
           @change="onSelect"
-          aria-label="Suggested Gloss List"
+          aria-label="Suggested definition List"
         >
           <option
             id="lattice-node-options"
@@ -74,10 +74,10 @@
                 >{{ node.label.replace(/[0-9]/g, "") }} -
               </span>
               <span
-                class="lattice-gloss"
-                :value="node.gloss"
-                aria-label="gloss"
-                >{{ node.gloss }}</span
+                class="lattice-definition"
+                :value="node.definition"
+                aria-label="definition"
+                >{{ node.definition }}</span
               >
             </div>
           </option>
@@ -154,7 +154,7 @@
       return {
         vocabularyListItem: null,
         headword: null,
-        gloss: null,
+        definition: null,
         latticeNodeId: null,
         familiarityRating: 1,
         showSuccesAlert: false,
@@ -175,8 +175,8 @@
         this.showSuccesAlert = false;
         this.submitting = true;
 
-        const { headword, gloss, vocabularyListItem } = this;
-        if (!headword || !gloss) {
+        const { headword, definition, vocabularyListItem } = this;
+        if (!headword || !definition) {
           this.submitting = false;
           return;
         }
@@ -184,22 +184,21 @@
           const node = this.latticeNode.find(
             (ele) => parseInt(ele.pk, 10) === parseInt(this.latticeNodeId, 10),
           );
-          if (node.gloss !== this.gloss) {
+          if (node.definition !== this.definition) {
             this.latticeNodeId = null;
           }
         }
 
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
           headword,
-          gloss,
+          definition,
           vocabularyListId: vocabularyListItem.id,
           familiarity: this.familiarityRating,
-          node: this.latticeNodeId,
           lang: vocabularyListItem.lang,
         });
         if (this.$store.state.personalVocabAdded) {
           this.headword = null;
-          this.gloss = null;
+          this.definition = null;
           this.showSuccesAlert = true;
           this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
         } else {
@@ -231,7 +230,7 @@
       // method function for parent components to reset the form when modal is closed
       resetForm() {
         this.headword = null;
-        this.gloss = null;
+        this.definition = null;
         this.showSuccesAlert = false;
         this.showUnsuccessfullAlert = false;
         this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
@@ -243,9 +242,9 @@
         });
         // sets first latticenode as the default in select options
         if (this.latticeNode) {
-          const { gloss, pk } = this.latticeNode[0];
+          const { definition, pk } = this.latticeNode[0];
           this.latticeNodeId = pk;
-          this.gloss = gloss;
+          this.definition = definition;
         }
       },
       onSelect(event) {
@@ -253,9 +252,9 @@
         const node = this.latticeNode.find(
           (ele) => parseInt(ele.pk, 10) === parseInt(event.target.value, 10),
         );
-        const { gloss, pk } = node;
+        const { definition, pk } = node;
         if (pk) {
-          this.gloss = gloss;
+          this.definition = definition;
           this.latticeNodeId = pk;
         }
       },
@@ -284,11 +283,11 @@
         if (!nodes.length) return null;
         const formatedNodes = nodes.map((node) => {
           const {
-            canonical, gloss, label, lemmas, pk,
+            canonical, definition, label, lemmas, pk,
           } = node;
           return {
             canonical,
-            gloss,
+            definition,
             label,
             lemmas,
             pk,
