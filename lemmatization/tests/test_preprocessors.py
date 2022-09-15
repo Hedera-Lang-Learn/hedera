@@ -18,11 +18,22 @@ class LatinPreprocessorTests(TransactionTestCase):
         """
         Test word splitting on enclitic based on form exist in `FormtoLemma` table
         """
-        input_tokens = [("virumque", "virumque", " ")]
-        expected_result = [("virum", "que", ""), ("que", "que", " ")]
-        self.assertEqual(
-            LatinPreprocessor(lang="lat").preprocessor(input_tokens), expected_result
-        )
+        tests = [
+            {
+                "input_tokens": [("virumque", "virumque", " ")],
+                "expected_result": [("virum", "virum", ""), ("que", "que", " ")]
+            },
+            {
+                "input_tokens": [("estne", "estne", " ")],
+                "expected_result": [("est", "est", ""), ("ne", "ne", " ")]
+            }
+        ]
+
+        for test in tests:
+            self.assertEqual(
+                LatinPreprocessor(lang="lat").preprocessor(test["input_tokens"]),
+                test["expected_result"]
+            )
 
     def test_word_with_macron_without_enclitics(self):
         """

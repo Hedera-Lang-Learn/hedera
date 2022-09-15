@@ -2,8 +2,6 @@ import re
 import unicodedata
 from typing import List
 
-from django.db import models
-
 from ..models import lookup_form
 from .base import BaseService, Preprocessor, Tokenizer, triples
 
@@ -34,7 +32,8 @@ LATIN_COPULA = [
     "esse", "fuisse", "iri", "fore",
 ]
 
-# order is optimized for lookup e.g. "ue" is after "que"
+# Enclitics are particles that "hang on" to the end of latin words.
+# Order is optimized for lookup e.g. "ue" is after "que"
 LATIN_ENCLITICS = ("que", "ne", "qve", "ve", "ue", "met")
 
 
@@ -54,24 +53,6 @@ def re_tokenize_clitics(tokens):
             yield ""
         else:
             yield token
-
-
-class LatinLexicon(models.Model):
-    """
-    This model contains a copy of the data from LatinMorph16.db
-    and is intended to replace the external Perseids Morphology Service
-    for the purpose of headword/lemma retrieval.
-    """
-    token = models.CharField(max_length=255)
-    lemma = models.CharField(max_length=255)
-    rank = models.IntegerField(default=999999)
-    count = models.IntegerField(default=0)
-    rate = models.FloatField(default=0)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=["token", "lemma"], name="unique_token_lemma")
-        ]
 
 
 class LatinService(BaseService):
@@ -95,7 +76,6 @@ class LatinService(BaseService):
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
         """
-        # TODO: Move the normalization step HERE instead of the tokenizer.
         # The tokenizers should return doubles: (word, following) instead of triples.
         lemmas = []
         if has_macron(word):
@@ -108,11 +88,15 @@ class LatinService(BaseService):
         return lemmas
 
 
-class EncliticTokenizer(Tokenizer):
-    """
-    a tokenizer that
-    _
-    |
+class LatinTokenizer(Tokenizer):
+    """Latin tokenizer.
+
+    Features:
+    - Segments latin text into a stream of tokens.
+    - A pipe (|) will split words, and an underscore (_) combines words.
+    - Tokens are normalized in NFC form.
+    - Tokens containing more than one word have any connective/linking words
+      automatically stripped from the normalized form (e.g. words in the LATIN_COPULA).
     """
 
     def tokenize(self, text):
@@ -159,8 +143,8 @@ class LatinPreprocessor(Preprocessor):
                     for enclitic in LATIN_ENCLITICS:
                         if word.endswith(enclitic) and found_first_enclitic is False:
                             found_first_enclitic = True
-                            #Creates example word, word_normalized, following = new_token
-                            new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
+                            word_without_enclitic = word[:word.find(enclitic)]
+                            new_tokens.append((word_without_enclitic, word_without_enclitic, ""))
                             new_tokens.append((enclitic, enclitic, " "))
                             break
                 if found_first_enclitic is False and not found_form_normalized:

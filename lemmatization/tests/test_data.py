@@ -39,6 +39,19 @@ test_data_list = [
         },
     },
     {
+        "form": "est",
+        "lang": "lat",
+        "lemma_data": {
+            "lemma": "sum",
+            "alt_lemma": "sum1",
+            "label": "sum, esse, fuī",
+            "rank": 1,
+            "count": 145573,
+            "rate": 327.682,
+            "lang": "lat"
+        },
+    },
+    {
         "form": "que",
         "lang": "lat",
         "lemma_data": {
@@ -61,6 +74,19 @@ test_data_list = [
             "rank": 87,
             "count": 6258,
             "rate": 14.087,
+            "lang": "lat",
+        }
+    },
+    {
+        "form": "ne",
+        "lang": "lat",
+        "lemma_data": {
+            "lemma": "ne",
+            "alt_lemma": "ne1",
+            "label": "nē",
+            "rank": 47,
+            "count": 11500,
+            "rate": 25.886,
             "lang": "lat",
         }
     }
