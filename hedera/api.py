@@ -308,8 +308,8 @@ class VocabularyListEntryAPI(APIView):
 
         if action == "link":
             data = json.loads(request.body)
-            node = get_object_or_404(LatticeNode, pk=data["node"])
-            entry.node = node
+            lemma = get_object_or_404(Lemma, pk=data["lemma"])
+            entry.lemma = lemma
             entry.save()
             return_data = entry.data()
         elif action == "delete":
@@ -407,7 +407,7 @@ class PersonalVocabularyQuickAddAPI(APIView):
         return lang_list
 
     def check_data(self, data):
-        keys = ["familiarity", "headword", "gloss", "vocabulary_list_id"]
+        keys = ["familiarity", "headword", "definition", "vocabulary_list_id"]
         for key in keys:
             if key not in data:
                 return False
@@ -418,8 +418,8 @@ class PersonalVocabularyQuickAddAPI(APIView):
         checked_data = self.check_data(data)
         if checked_data is not True:
             return JsonResponseBadRequest({"error": "Missing required fields"})
-        if "node" in data and data["node"] is not None:
-            data["node"] = get_object_or_404(LatticeNode, pk=data["node"])
+        if "lemma" in data and data["lemma"] is not None:
+            data["lemma"] = get_object_or_404(Lemma, pk=data["lemma"])
         try:
             # to handle new quick add when list doesnt exist create using lang if
             if data["vocabulary_list_id"] is None:

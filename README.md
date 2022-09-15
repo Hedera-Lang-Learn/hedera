@@ -11,7 +11,7 @@ Hedera is an application for viewing texts in different languages such that:
 ### Prequisite for new Lemma changes - Aug-9-2022
 Before running migrations you must run the `merge_lemma_and_frequency.py` script which joins 4 CSV files and creates a single TSV file for migration into new Lemma table.
 You will need a `virtualenv` or have `pandas` installed locally to run the script
-# ./manage.py shell -c "import merge_lattice_and_frequency"
+<!-- ./manage.py shell -c "import merge_lattice_and_frequency" -->
 
 ### With Docker (compose)
 
@@ -42,6 +42,7 @@ To import latin data:
 ```
 docker compose run --rm django python manage.py shell -c "import load_latin_lemma"
 docker compose run --rm django python manage.py shell -c "import load_latin_form_to_lemma"
+docker compose run --rm django python manage.py shell -c "import load_latin_gloss"
 ```
 
 <!-- TODO UPDATE -->
@@ -82,6 +83,8 @@ docker compose down --rmi all
 docker compose build
 docker compose up
 ```
+
+Note: This will not remove the data in the database, to keep from having to re-load the language data. If you want to remove the database, you can remove `./.docker-data` in this directory. This is specified in the `docker-compose.yml`, s if that doesn't work you can check if the configuration has changed there.
 
 If you've run a lot of containers and you'd like to clean them up so that your `docker compose` command output isn't endless:
 

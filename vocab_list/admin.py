@@ -10,7 +10,7 @@ class VocabularyListAdmin(admin.ModelAdmin):
 
 @admin.register(models.VocabularyListEntry)
 class VocabularyListEntryAdmin(admin.ModelAdmin):
-    list_display = ["id", "headword", "gloss", "vocabulary_list"]
+    list_display = ["id", "headword", "definition", "vocabulary_list"]
 
 
 @admin.register(models.PersonalVocabularyList)
@@ -20,4 +20,4 @@ class PersonalVocabularyListAdmin(admin.ModelAdmin):
 
 @admin.register(models.PersonalVocabularyListEntry)
 class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
-    list_display = ["id", "vocabulary_list", "headword", "gloss", "familiarity"]
+    list_display = ["id", "vocabulary_list", "headword", "definition", "familiarity"]
