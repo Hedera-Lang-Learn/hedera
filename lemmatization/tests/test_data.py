@@ -89,5 +89,18 @@ test_data_list = [
             "rate": 25.886,
             "lang": "lat",
         }
+    },
+    {
+        "form": "arachne",
+        "lang": "lat",
+        "lemma_data": {
+            "lemma": "arachne",
+            "alt_lemma": "arachne",
+            "label": "arachne",
+            "rank": 9999,
+            "count": 0,
+            "rate": 0,
+            "lang": "lat",
+        }
     }
 ]

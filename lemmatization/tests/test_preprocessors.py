@@ -49,6 +49,17 @@ class LatinPreprocessorTests(TestCase):
             LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
         )
 
+    def test_word_ending_with_enclitic_twice(self):
+        """
+        Test a word that naturally ends in -ne like "arachne" AND has the -ne enclitic on the end.
+        This should test an edge case where the enclitic appears twice in the string.
+        """
+        input_tokens = [("arachnene", "arachnene", " ")]
+        expected_result = [("arachne", "arachne", ""), ("ne", "ne", " ")]
+        self.assertEqual(
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), expected_result
+        )
+
     def test_word_with_macron_without_enclitics(self):
         """
         Test word with macrons but no enclitics
