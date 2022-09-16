@@ -1,18 +1,23 @@
-from django.test import TransactionTestCase
+from django.test import TestCase
 
 from ..models import FormToLemma, Lemma
 from ..services.latin import LatinPreprocessor
 from .test_data import test_data_list
 
 
-class LatinPreprocessorTests(TransactionTestCase):
-    def setUp(self):
+class LatinPreprocessorTests(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        """
+        Setup test data for the whole TestCase.
+        """
         for form_data in test_data_list:
-            lemma_data = form_data["lemma_data"]
-            lemma_qs = Lemma.objects.filter(lang=lemma_data["lang"], lemma=lemma_data["lemma"])
-            if not lemma_qs.exists():
-                lemma = Lemma.objects.create(**lemma_data)
-                FormToLemma.objects.create(lang=form_data["lang"], lemma=lemma, form=form_data["form"])
+            lang = form_data["lang"]
+            form = form_data["form"]
+            lemma = form_data["lemma_data"]["lemma"]
+            lemma_object, created = Lemma.objects.get_or_create(lang=lang, lemma=lemma)
+            FormToLemma.objects.create(lang=lang, form=form, lemma=lemma_object)
 
     def test_successful_word_with_enclitics(self):
         """
@@ -26,14 +31,23 @@ class LatinPreprocessorTests(TransactionTestCase):
             {
                 "input_tokens": [("estne", "estne", " ")],
                 "expected_result": [("est", "est", ""), ("ne", "ne", " ")]
-            }
+            },
         ]
 
         for test in tests:
             self.assertEqual(
-                LatinPreprocessor(lang="lat").preprocessor(test["input_tokens"]),
+                LatinPreprocessor(lang="lat").preprocess(test["input_tokens"]),
                 test["expected_result"]
             )
+
+    def test_word_with_enclitic_but_unknown(self):
+        """
+        Test word with enclitic, but preceding word is unknown so it's not split off.
+        """
+        input_tokens = [("somethingque", "somethingque", " ")]
+        self.assertEqual(
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
+        )
 
     def test_word_with_macron_without_enclitics(self):
         """
@@ -41,7 +55,7 @@ class LatinPreprocessorTests(TransactionTestCase):
         """
         input_tokens = [("ratiōne", "ratione", " ")]
         self.assertEqual(
-            LatinPreprocessor(lang="lat").preprocessor(input_tokens), input_tokens
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
         )
 
     def test_word_without_enclitics(self):
@@ -50,7 +64,7 @@ class LatinPreprocessorTests(TransactionTestCase):
         """
         input_tokens = [("sum", "sum", " ")]
         self.assertEqual(
-            LatinPreprocessor(lang="lat").preprocessor(input_tokens), input_tokens
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
         )
 
     def test_name_without_enclitics(self):
@@ -59,5 +73,5 @@ class LatinPreprocessorTests(TransactionTestCase):
         """
         input_tokens = [("Medea", "Medea", " ")]
         self.assertEqual(
-            LatinPreprocessor(lang="lat").preprocessor(input_tokens), input_tokens
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
         )

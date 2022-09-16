@@ -101,5 +101,5 @@ class RUSPreprocessor(Preprocessor):
     Returns an iterable list of tokens if a custom preprocessor was provided
     This placeholder method can be overridden.
     """
-    def preprocessor(self, tokens):
+    def preprocess(self, tokens):
         return tokens

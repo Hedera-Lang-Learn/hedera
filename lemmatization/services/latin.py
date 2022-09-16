@@ -2,7 +2,7 @@ import re
 import unicodedata
 from typing import List
 
-from ..models import lookup_form
+from ..models import exists_form, lookup_form
 from .base import BaseService, Preprocessor, Tokenizer, triples
 
 
@@ -118,7 +118,7 @@ class LatinPreprocessor(Preprocessor):
     """
     This is used to apply various prepocessing to the words/tokens before they are further parsed by the lemmatizer
     """
-    def preprocessor(self, tokens):
+    def preprocess(self, tokens):
         """
         This function finds the first enclitics attached to the word and returns a list of two strings
         Example:
@@ -129,24 +129,27 @@ class LatinPreprocessor(Preprocessor):
             - [(virum, virum, ""), (que, que, " ")]
         """
         new_tokens = []
-        found_first_enclitic = False
         for token in tokens:
             word, word_normalized, following = token
-            found_form = lookup_form(word, "lat")
-            if found_form:
+
+            # 1. Known word forms should be returned to the token stream unchanged.
+            if exists_form(word, "lat") or exists_form(word_normalized, "lat"):
                 new_tokens.append(token)
-            else:
-                found_form_normalized = lookup_form(word_normalized, "lat")
-                if found_form_normalized:
-                    new_tokens.append(token)
-                if not found_form_normalized:
-                    for enclitic in LATIN_ENCLITICS:
-                        if word.endswith(enclitic) and found_first_enclitic is False:
-                            found_first_enclitic = True
-                            word_without_enclitic = word[:word.find(enclitic)]
-                            new_tokens.append((word_without_enclitic, word_without_enclitic, ""))
-                            new_tokens.append((enclitic, enclitic, " "))
-                            break
-                if found_first_enclitic is False and not found_form_normalized:
-                    new_tokens.append(token)
+                continue
+
+            # 2. Automatically split off enclitics if the word that precedes the clitic is known.
+            found_enclitic = False
+            for enclitic in LATIN_ENCLITICS:
+                if word.endswith(enclitic):
+                    preceding_word = word[:-len(enclitic)]
+                    preceding_word_normalized = word_normalized[:-len(enclitic)]
+                    if exists_form(preceding_word, "lat") or exists_form(preceding_word_normalized, "lat"):
+                        new_tokens.append((preceding_word, preceding_word_normalized, ""))
+                        new_tokens.append((enclitic, enclitic, " "))
+                        found_enclitic = True
+                        break
+
+            # 3. The token is unknown and does not have an enclitic so return to the token stream unchanged.
+            if not found_enclitic:
+                new_tokens.append(token)
         return new_tokens
