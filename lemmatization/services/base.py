@@ -101,7 +101,7 @@ class Preprocessor(object):
     def __init__(self, lang):
         self.lang = lang
 
-    def preprocessor(self, tokens):
+    def preprocess(self, tokens):
         """
         Returns an iterable list of tokens if a custom preprocessor was provided
 

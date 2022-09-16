@@ -234,5 +234,5 @@ class ChinesePreprocessor(Preprocessor):
     Returns an iterable list of tokens if a custom preprocessor was provided
     This placeholder method can be overridden.
     """
-    def preprocessor(self, tokens: List[tuple]) -> List[tuple]:
+    def preprocess(self, tokens: List[tuple]) -> List[tuple]:
         return tokens

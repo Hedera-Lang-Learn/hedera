@@ -39,7 +39,10 @@ class Lemmatizer(object):
     def _tokenize(self, text):
         return self._tokenizer.tokenize(text)
 
-    def _lemmatize_token(self, word, word_normalized):
+    def _preprocess(self, tokens):
+        return self._preprocessor.preprocess(tokens)
+
+    def _lemmatize(self, word, word_normalized):
         lemmas = self._service.lemmatize(word, word_normalized)
         return list(lemmas)
 
@@ -48,19 +51,9 @@ class Lemmatizer(object):
             self.cb((index + 1) / total_count)
 
     def lemmatize(self, text):
-        # import debugpy
-
-        # try:
-        #     debugpy.listen(("0.0.0.0", 5678))
-        #     print("Waiting for debugger attach")
-        #     debugpy.wait_for_client()
-        #     debugpy.breakpoint()
-        #     print('break on this line')
-        # except:
-        #     pass
         result = []
         tokens = list(self._tokenize(text))
-        tokens = self._preprocessor.preprocessor(tokens)
+        tokens = self._preprocess(tokens)
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
@@ -69,7 +62,7 @@ class Lemmatizer(object):
             glossed = GLOSSED_NA
             resolved = RESOLVED_NA
             if word_normalized:
-                lemma_names = self._lemmatize_token(word, word_normalized)
+                lemma_names = self._lemmatize(word, word_normalized)
                 lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
 
                 # automatically select the highest frequency lemma
