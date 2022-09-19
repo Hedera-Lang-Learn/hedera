@@ -7,8 +7,7 @@ from django.utils import timezone
 from django_rq import job
 from iso639 import languages
 
-from lattices.models import LatticeNode
-from lemmatization.models import Lemma
+from lemmatization.models import FormToLemma, Lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -23,6 +22,7 @@ def strip_diacritics(s):
     )
 
 
+# TODO: Investigate using this decorator within the class
 @job("default", timeout=600)
 def link_vl_node(model, pk):
     obj = model.objects.get(pk=pk)
@@ -41,6 +41,20 @@ def parse_line(idx, line):
     except UnicodeDecodeError:
         return ("Line " + str(idx), "Bad Data")
     return clean(*columns)
+
+
+def find_lemma(headword):
+    headword_no_macrons = strip_diacritics(headword)
+    lemma_matches = Lemma.objects.filter(lemma=headword_no_macrons).order_by("rank").first()
+    if lemma_matches:
+        return lemma_matches
+    if not lemma_matches:
+        lemma_matches = Lemma.objects.filter(lemma=headword).order_by("rank")
+        if not lemma_matches:
+            formtolemma_matches = FormToLemma.objects.filter(form=headword)
+            lemma_id = formtolemma_matches.values()[0]["lemma_id"]
+            lemma_matches = Lemma.objects.get(id=lemma_id)
+    return lemma_matches or False
 
 
 class AbstractVocabList(models.Model):
@@ -70,13 +84,19 @@ class AbstractVocabList(models.Model):
         """
         return languages.get(part3=self.lang).name
 
-    def _create_entires(self, new_headwords, entry_model, extra_attrs):
+    def _create_entries(self, new_headwords, entry_model, extra_attrs):
         """
         Parameters: new_headwords (list), entry_model (class), extra_attrs (dict)
         Returns: list of vocab list entry objects
         """
         return [
-            entry_model(vocabulary_list=self, _order=idx, headword=line[0], gloss=line[1], **extra_attrs)
+            entry_model(
+                vocabulary_list=self,
+                _order=idx,
+                headword=line[0],
+                definition=line[1],
+                **extra_attrs
+            )
             for idx, line in enumerate(new_headwords)
         ]
 
@@ -90,10 +110,10 @@ class AbstractVocabList(models.Model):
         # filter out duplicates in the files
         # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
         filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "gloss")
+        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "definition")
         # Must do check for matching headword + definition
         new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
-        entries = self._create_entires(new_headwords, entry_model, extra_attrs)
+        entries = self._create_entries(new_headwords, entry_model, extra_attrs)
         return entry_model.objects.bulk_create(entries)
 
 
@@ -168,8 +188,28 @@ class PersonalVocabularyList(AbstractVocabList):
 
 
 class AbstractVocabListEntry(models.Model):
+    """
+    TODO: Add this docstring for real
+
+    Args:
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
+            headword will be used to match a lemma in the database.
+        lemma: Foreign key to link to the lemma in the database
+        definition: User-supplied definition for the term, not connected to the
+            gloss for the related lemma.
+        link_job_id:
+        link_job_started:
+        link_job_ended:
+
+    TODO: Add vue components for matching headword lemma
+
+    headword = "sum, esse, fui, futurus" kind of entry
+    See: https://logeion.uchicago.edu/hic and https://logeion.uchicago.edu/sum
+    """
     headword = models.CharField(max_length=255)
-    gloss = models.TextField(blank=True)
+    lemma = models.ForeignKey(Lemma, null=True, on_delete=models.SET_NULL)
+    definition = models.TextField(blank=True)
     link_job_id = models.CharField(max_length=250, blank=True)
     link_job_started = models.DateTimeField(null=True)
     link_job_ended = models.DateTimeField(null=True)
@@ -180,11 +220,26 @@ class AbstractVocabListEntry(models.Model):
         abstract = True
 
     def link(self):
-        first = strip_diacritics(self.headword.split()[0].strip(","))
-        lemma = Lemma.objects.filter(lemma=first).first()
-        self.lemma = lemma
-        self.link_job_ended = timezone.now()
-        self.save()
+        """
+        Links a headword as entered to a lemma in the database.
+
+        This function looks for an exact match to the headword provided, and
+        links the entry to the lowest-ranked lemma entry (e.g. rank 1 is
+        preferred to rank 10). This function runs as a job via the `link_job`
+        function on this object and `link_vl_node` declared in this file.
+        """
+        headword = self.headword.split()[0].strip(",")
+        lemma_matches = find_lemma(headword)
+        if lemma_matches:
+            # Use the lowest-ranked lemma whether or not there are multiple matches
+            lemma = lemma_matches
+            self.lemma = lemma
+            self.link_job_ended = timezone.now()
+            self.save()
+        else:
+            # There are no lemma matches, don't save a linked lemma
+            self.link_job = timezone.now()
+            self.save()
 
     def link_job(self, model):
         j = link_vl_node.delay(model, self.pk)
@@ -196,7 +251,7 @@ class AbstractVocabListEntry(models.Model):
         return {
             "id": self.pk,
             "headword": self.headword,
-            "gloss": self.gloss,
+            "definition": self.definition,
             **kwargs
         }
 
@@ -204,8 +259,8 @@ class AbstractVocabListEntry(models.Model):
 class VocabularyListEntry(AbstractVocabListEntry):
     vocabulary_list = models.ForeignKey(
         VocabularyList, related_name="entries", on_delete=models.CASCADE)
-    lemma = models.ForeignKey(
-        Lemma, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
+    # node = models.ForeignKey(
+    #     LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "vocabulary list entry"
@@ -228,7 +283,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
     # 3. I think I know what this word means
     # 4. I definitely know what this word means but could forget soon
     # 5. I know this word so well, I am unlikely to ever forget it
-    node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
+    # node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "personal vocabulary list entry"
@@ -239,7 +294,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         return super().link_job(PersonalVocabularyListEntry)
 
     def data(self):
-        return super().data(familiarity=self.familiarity, node=self.node_id)
+        return super().data(familiarity=self.familiarity, lemma=self.lemma_id)
 
     def familiarity_range(self):
         # hack for template iteration

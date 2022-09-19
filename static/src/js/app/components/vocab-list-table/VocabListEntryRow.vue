@@ -3,7 +3,7 @@
     <tr :class="{ 'selected-entry': selected }">
       <td>{{ entry.headword }}</td>
       <td>{{ entry.gloss }}</td>
-      <td v-if="showIds">{{ entry.node }}</td>
+      <td v-if="showIds">{{ entry.lemma }}</td>
       <td>
       </td>
     </tr>
@@ -21,7 +21,7 @@
   <tr v-else-if="editing" :class="{ 'selected-entry': selected }">
     <td><input class="form-control" v-model="model.headword" /></td>
     <td><input class="form-control" v-model="model.gloss" /></td>
-    <td>{{ entry.node }}</td>
+    <td>{{ entry.lemma }}</td>
     <td>
       <span class="saving" v-if="saving">Saving...</span>
       <div class="btn-group text-nowrap" v-else>
@@ -35,7 +35,7 @@
       <a href @click.prevent="$emit('select-entry', entry)">{{ entry.headword }}</a>
     </td>
     <td>{{ entry.gloss }}</td>
-    <td v-if="showIds">{{ entry.node }}</td>
+    <td v-if="showIds">{{ entry.lemma }}</td>
     <td>
       <div class="btn-group" v-if='canEdit'>
         <a class="btn btn-light btn-sm delete-entry" href @click.prevent="onDelete"><i class="fa fa-fw fa-trash" aria-hidden="true" title="Delete Entry" /><span class="sr-only">Delete Entry</span></a>
