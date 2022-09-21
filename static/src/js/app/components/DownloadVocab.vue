@@ -1,5 +1,5 @@
 <template>
-  <a class="btn btn-sm btn-light" :href="glossesDownload" download="glosses.csv">
+  <a class="btn btn-sm btn-light" :href="VocabListDownload" download="personal_vocab_list.csv">
     <i class="fa fa-fw fa-download" aria-hidden="true" /> Export
   </a>
 </template>
@@ -41,12 +41,18 @@
       personalVocabList() {
         return this.$store.state.personalVocabList;
       },
-      glossesDownload() {
-        const data = toCSV(this.glosses.map((g) => {
-          const row = { label: g.label, gloss: g.gloss };
+      VocabListDownload() {
+        const vocabList = this.glosses;
+        const data = toCSV(vocabList.map((entry) => {
+          const row = {
+            headword: entry.headword,
+            definition: entry.definition,
+            lemma_id: entry.lemma
+          };
           if (this.withFamiliarity) {
-            const entry = this.personalVocabList.entries.filter((e) => e.node === g.node);
-            row.familiarity = (entry[0] && entry[0].familiarity) || '';
+            row.familiarity = entry.familiarity;
+            // const entry = this.personalVocabList.entries.filter((e) => e.node === g.node);
+            // row.familiarity = (entry[0] && entry[0].familiarity) || '';
           }
           return row;
         }));

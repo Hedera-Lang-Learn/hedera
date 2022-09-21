@@ -71,7 +71,7 @@
         },
         columns: [
           { label: 'Headword', field: 'headword' },
-          { label: 'Gloss', field: 'gloss' },
+          { label: 'Definition', field: 'definition' },
           { label: 'Familiarity', field: 'familiarity' },
         ],
       };

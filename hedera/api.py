@@ -366,14 +366,14 @@ class PersonalVocabularyListAPI(APIView):
             entry.familiarity = familiarity
             entry.save()
         else:
-            node = get_object_or_404(LatticeNode, pk=data["nodeId"])
+            lemma = get_object_or_404(Lemma, pk=data["lemmaId"])
             headword = data["headword"]
             gloss = data["gloss"]
             vl.entries.create(
                 headword=headword,
                 gloss=gloss,
                 familiarity=familiarity,
-                node=node,
+                lemma=lemma,
             )
 
         if self.text:

@@ -1,6 +1,7 @@
 import unicodedata
 
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -29,10 +30,10 @@ def link_vl_node(model, pk):
     obj.link()
 
 
-def clean(headword, gloss):
-    """Expect a headword and gloss, i.e., two columns,
+def clean(headword, definition):
+    """Expect a headword and definition, i.e., two columns,
     & additional columns will be ingnored."""
-    return (headword.strip().strip('"'), gloss.strip().strip('"'))
+    return (headword.strip().strip('"'), definition.strip().strip('"'))
 
 
 def parse_line(idx, line):
@@ -96,7 +97,7 @@ class AbstractVocabList(models.Model):
         # filter out duplicates in the files
         # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
         filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "gloss")
+        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "definition")
         # Must do check for matching headword + definition
         new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
         entries = self._create_entries(new_headwords, entry_model, extra_attrs)
@@ -175,11 +176,16 @@ class PersonalVocabularyList(AbstractVocabList):
 
 class AbstractVocabListEntry(models.Model):
     """
-    TODO: Add this docstring for real
+    Base class for vocab list entries.
+
+    Vocab list entries are matched against lemma used in texts to determine if
+    a word is known. This base class defines the core elements of the entries
+    and provides functionality to link those entries to their lemma via an
+    async job.
 
     Args:
-        headword: Dictionary definition for vocab list entry, expected to look 
-            something like "sum, esse, fui, futurus". The first word of the 
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
             headword will be used to match a lemma in the database.
         lemma: Foreign key to link to the lemma in the database
         definition: User-supplied definition for the term, not connected to the
@@ -189,9 +195,6 @@ class AbstractVocabListEntry(models.Model):
         link_job_ended:
 
     TODO: Add vue components for matching headword lemma
-
-    headword = "sum, esse, fui, futurus" kind of entry
-    See: https://logeion.uchicago.edu/hic and https://logeion.uchicago.edu/sum
     """
     headword = models.CharField(max_length=255)
     lemma = models.ForeignKey(Lemma, null=True, on_delete=models.SET_NULL)
@@ -208,9 +211,9 @@ class AbstractVocabListEntry(models.Model):
     def link(self):
         """
         Links a headword as entered to a lemma in the database.
-        
-        This function looks for an exact match to the headword provided, and 
-        links the entry to the lowest-ranked lemma entry (e.g. rank 1 is 
+
+        This function looks for an exact match to the headword provided, and
+        links the entry to the lowest-ranked lemma entry (e.g. rank 1 is
         preferred to rank 10). This function runs as a job via the `link_job`
         function on this object and `link_vl_node` declared in this file.
         """
@@ -227,8 +230,12 @@ class AbstractVocabListEntry(models.Model):
             self.link_job = timezone.now()
             self.save()
 
-    def link_job(self, model):
-        j = link_vl_node.delay(model, self.pk)
+    def link_job(self):
+        """
+        Call the `link_vl_node` async function passing `self.__class__` as the
+        model so that the `link()` function can be run as a job.
+        """
+        j = link_vl_node.delay(self.__class__, self.pk)
         self.link_job_id = j.id
         self.link_job_started = timezone.now()
         self.save()
@@ -240,50 +247,97 @@ class AbstractVocabListEntry(models.Model):
             "definition": self.definition,
             **kwargs
         }
+    
+    def save(self, *args, **kwargs):
+        """
+        Override default save behavior to run `link_job()` when creating a new
+        instance of a vocabulary list entry. When the entry is new, there is no
+        pk, so save the instance first then run the `link_job`
+        """
+        if not self.pk:
+            super().save(*args, **kwargs)
+            self.link_job()
+        else:
+            super().save(*args, **kwargs)
 
 
 class VocabularyListEntry(AbstractVocabListEntry):
+    """
+    Vocabulary list entries for re-usable vocabulary lists.
+
+    Vocab list entries are matched against lemma used in texts to determine if
+    a word is known. This inherits from `AbstractVocabListEntry` for 
+    functionality and adds a link to the parent vocabulary list.
+
+    Args:
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
+            headword will be used to match a lemma in the database.
+        lemma: Foreign key to link to the lemma in the database
+        definition: User-supplied definition for the term, not connected to the
+            gloss for the related lemma.
+        link_job_id:
+        link_job_started:
+        link_job_ended:
+        vocabulary_list: Foreign key for parent vocabulary list
+    """
     vocabulary_list = models.ForeignKey(
         VocabularyList, related_name="entries", on_delete=models.CASCADE)
-    # node = models.ForeignKey(
-    #     LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "vocabulary list entry"
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
 
-    def link_job(self):
-        return super().link_job(VocabularyListEntry)
-
     def data(self):
         return super().data(lemma=self.lemma_id)
 
 
 class PersonalVocabularyListEntry(AbstractVocabListEntry):
+    """
+    Vocabulary list entries for user-specific personal vocabulary lists.
+
+    Personal vocab list entries are matched against lemma used in texts to
+    determine if a word is known. This inherits from `AbstractVocabListEntry`
+    for functionality and adds a link to the parent personal vocabulary list.
+    It also adds a `familiarity` attribute to each entry, which is used to
+    indicate how much of a text is well-known.
+
+    Args:
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
+            headword will be used to match a lemma in the database.
+        lemma: Foreign key to link to the lemma in the database
+        definition: User-supplied definition for the term, not connected to the
+            gloss for the related lemma.
+        link_job_id:
+        link_job_started:
+        link_job_ended:
+        vocabulary_list: Foreign key for parent personal vocabulary list
+        familiarity: Number from 1 to 5 representing familiarity with the term.
+            1 = I don't recognise this word
+            2 = I recognise this word but don't know what it means
+            3 = I think I know what this word means
+            4 = I definitely know what this word means but could forget soon
+            5 = I know this word so well, I am unlikely to ever forget it
+    """
     vocabulary_list = models.ForeignKey(
         PersonalVocabularyList, related_name="entries", on_delete=models.CASCADE)
-    familiarity = models.IntegerField(null=True)
-    # 1. I don't recognise this word
-    # 2. I recognise this word but don't know what it means
-    # 3. I think I know what this word means
-    # 4. I definitely know what this word means but could forget soon
-    # 5. I know this word so well, I am unlikely to ever forget it
-    # node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
+    familiarity = models.IntegerField(
+        null=True, 
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+    )
 
     class Meta:
         verbose_name = "personal vocabulary list entry"
         verbose_name_plural = "personal vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
 
-    def link_job(self):
-        return super().link_job(PersonalVocabularyListEntry)
-
     def data(self):
         return super().data(familiarity=self.familiarity, lemma=self.lemma_id)
 
     def familiarity_range(self):
-        # hack for template iteration
+        """hack for template iteration"""
         return range(self.familiarity)
 
 
