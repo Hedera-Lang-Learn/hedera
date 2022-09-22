@@ -44,7 +44,7 @@
       VocabListDownload() {
         const vocabList = this.glosses;
         const data = toCSV(vocabList.map((entry) => {
-          var row = {};
+          let row = {};
           row.headword = entry.headword;
           row.definition = entry.definition;
           if (this.withFamiliarity) {
