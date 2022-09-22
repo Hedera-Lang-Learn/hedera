@@ -31,9 +31,10 @@ def link_vl_node(model, pk):
     obj = model.objects.get(pk=pk)
     obj.link()
 
-def validate_lines(lines:list, entry_model:models.Model) -> list:
+
+def validate_lines(lines: list, entry_model: models.Model) -> list:
     """
-    Make sure that the provided lines are unique, and that they have only the 
+    Make sure that the provided lines are unique, and that they have only the
     metadata fields that are valid for the given `entry_model`.
 
     Args:
@@ -52,7 +53,7 @@ def validate_lines(lines:list, entry_model:models.Model) -> list:
 
     # lowercase all the keys on the unique lines
     for i, line in enumerate(unique_lines):
-        unique_lines[i] = {k.lower():v for k,v in line.items()}
+        unique_lines[i] = {k.lower(): v for k, v in line.items()}
 
     # get the fields that exist in the model
     model_fields = [f.name for f in entry_model._meta.get_fields()]
@@ -71,7 +72,7 @@ def validate_lines(lines:list, entry_model:models.Model) -> list:
     # It's filtering each line down to a dict that just has the fields in valid fields
     # meaning it won't try to add data to fields that don't exist or that it can't add to
     valid_lines = [{fieldname: line[fieldname] for fieldname in valid_fields} for line in unique_lines]
-    
+
     return valid_lines
 
 
@@ -101,11 +102,11 @@ class AbstractVocabList(models.Model):
         Returns the display name of self.lang
         """
         return languages.get(part3=self.lang).name
-    
-    def _create_entries(self, lines:list, entry_model:models.Model, familiarity:int=0) -> list:
+
+    def _create_entries(self, lines: list, entry_model: models.Model, familiarity: int = 0) -> list:
         """
         Creates vocab list entries from provided lines.
-        
+
         New vocab list entries are created with the provided model, since there
         are different models for personal vocab lists and regular vocab lists.
         Ensures that new entries are not duplicates with the `get_or_create()`
@@ -116,7 +117,7 @@ class AbstractVocabList(models.Model):
                 function assumes that the dict keys have already been
                 validated, so that they should only contain values that can be
                 added to the provided data model.
-            entry_model: Django model that the vocab list entries should be 
+            entry_model: Django model that the vocab list entries should be
                 created as. The model should inherit from
                 `AbstractVocabListEntry`
             familiarity: A familiarity score to use as a default if none is
@@ -127,11 +128,11 @@ class AbstractVocabList(models.Model):
         # familiarity is not set.
         if familiarity > 0:
             for line in lines:
-                if 'familiarity' in line:
-                    line['familiarity'] = line['familiarity'] or familiarity
+                if "familiarity" in line:
+                    line["familiarity"] = line["familiarity"] or familiarity
                 else:
-                    line['familiarity'] = familiarity
-        
+                    line["familiarity"] = familiarity
+
         # Get or create the entries
         entries = [entry_model.objects.get_or_create(
             vocabulary_list=self,
@@ -142,14 +143,14 @@ class AbstractVocabList(models.Model):
         )[0] for line in lines]
         return entries
 
-    def load_tab_delimited(self, fd, entry_model:models.Model, familiarity:int=0, **kwargs):
+    def load_tab_delimited(self, fd, entry_model: models.Model, familiarity: int = 0, **kwargs):
         """
         Method to load vocab lists from tsv upload.
         Parameters: fd (iterable), entry_model (class), extra_attrs (dict)
         Returns: bulk create query of vocab list entries
         """
-        decoded_file = fd.read().decode('utf-8').splitlines()
-        lines = csv.DictReader(decoded_file, delimiter='\t')
+        decoded_file = fd.read().decode("utf-8").splitlines()
+        lines = csv.DictReader(decoded_file, delimiter="\t")
 
         valid_lines = validate_lines(lines, entry_model)
 
@@ -301,7 +302,7 @@ class AbstractVocabListEntry(models.Model):
             "definition": self.definition,
             **kwargs
         }
-    
+
     def save(self, *args, **kwargs):
         """
         Override default save behavior to run `link_job()` when creating a new
@@ -320,7 +321,7 @@ class VocabularyListEntry(AbstractVocabListEntry):
     Vocabulary list entries for re-usable vocabulary lists.
 
     Vocab list entries are matched against lemma used in texts to determine if
-    a word is known. This inherits from `AbstractVocabListEntry` for 
+    a word is known. This inherits from `AbstractVocabListEntry` for
     functionality and adds a link to the parent vocabulary list.
 
     Args:
@@ -378,7 +379,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
     vocabulary_list = models.ForeignKey(
         PersonalVocabularyList, related_name="entries", on_delete=models.CASCADE)
     familiarity = models.IntegerField(
-        null=True, 
+        null=True,
         validators=[MaxValueValidator(5), MinValueValidator(1)]
     )
 

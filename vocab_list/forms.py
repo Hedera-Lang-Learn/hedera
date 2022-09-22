@@ -19,11 +19,11 @@ RATINGS = [
 sampledata = b64encode((
     b"headword\tdefinition\tfamiliarity\n"
     b"your headword\tyour definition\tfamiliarity rating from 1 (least familiar) to 5 (most familiar)"
-)).decode('utf-8')
+)).decode("utf-8")
 
 upload_help_text = (
     "Expects a TAB delimited file as exported from Excel or Google Sheets."
-    f"</br><a href=\"data:text/csv;base64,{sampledata}\" download=\"vocab_list_template.tsv\">Download a template file</a>"
+    f'</br><a href="data:text/csv;base64,{sampledata}" download="vocab_list_template.tsv">Download a template file</a>'
 )
 
 

@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
-from lattices.models import LatticeNode, LemmaNode
+from lattices.models import LemmaNode
 from lemmatization.models import FormToLemma, Lemma
 # from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
