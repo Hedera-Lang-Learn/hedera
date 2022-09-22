@@ -44,16 +44,13 @@
       VocabListDownload() {
         const vocabList = this.glosses;
         const data = toCSV(vocabList.map((entry) => {
-          const row = {
-            headword: entry.headword,
-            definition: entry.definition,
-            lemma_id: entry.lemma
-          };
+          var row = {};
+          row.headword = entry.headword;
+          row.definition = entry.definition;
           if (this.withFamiliarity) {
             row.familiarity = entry.familiarity;
-            // const entry = this.personalVocabList.entries.filter((e) => e.node === g.node);
-            // row.familiarity = (entry[0] && entry[0].familiarity) || '';
           }
+          row.lemma_id = entry.lemma;
           return row;
         }));
         return data === null ? null : encodeURI(`data:text/csv;charset=utf-8,${data}`);

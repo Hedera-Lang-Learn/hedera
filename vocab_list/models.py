@@ -1,3 +1,5 @@
+import csv
+import json
 import unicodedata
 
 from django.conf import settings
@@ -29,19 +31,48 @@ def link_vl_node(model, pk):
     obj = model.objects.get(pk=pk)
     obj.link()
 
+def validate_lines(lines:list, entry_model:models.Model) -> list:
+    """
+    Make sure that the provided lines are unique, and that they have only the 
+    metadata fields that are valid for the given `entry_model`.
 
-def clean(headword, definition):
-    """Expect a headword and definition, i.e., two columns,
-    & additional columns will be ingnored."""
-    return (headword.strip().strip('"'), definition.strip().strip('"'))
+    Args:
+        lines: A list of dicts representing new vocabulary entries to be added.
+            The dicts are expected to be in {fieldName: value} format, as this
+            function will compare those field names with a list of field names
+            from the model and remove any pairs where the key is not a valid
+            field name.
+        entry_model: The model for the vocabulary list entry that will be used.
+            This should inherit from `AbstractVocabListEntry`
+    """
+    # Make sure that lines aren't repeated,
+    # method described in https://stackoverflow.com/a/11092607
+    unique_line_strings = set([json.dumps(line, sort_keys=True) for line in lines])
+    unique_lines = [json.loads(linestring) for linestring in unique_line_strings]
 
+    # lowercase all the keys on the unique lines
+    for i, line in enumerate(unique_lines):
+        unique_lines[i] = {k.lower():v for k,v in line.items()}
 
-def parse_line(idx, line):
-    try:
-        columns = line.decode("utf-8").strip().split("\t")
-    except UnicodeDecodeError:
-        return ("Line " + str(idx), "Bad Data")
-    return clean(*columns)
+    # get the fields that exist in the model
+    model_fields = [f.name for f in entry_model._meta.get_fields()]
+    # check for foreign key fields and add "_id" to the end of the field name
+    for i, field in enumerate(model_fields):
+        fieldType = entry_model._meta.get_field(field).get_internal_type()
+        if fieldType == "ForeignKey":
+            model_fields[i] = model_fields[i] + "_id"
+
+    # valid fields are the ones that exist in the uploaded data
+    # since we're using dictreader, all lines should have the same keys,
+    # so we only need to check against the first one.
+    valid_fields = list(filter(lambda x: x in unique_lines[0], model_fields))
+
+    # Yes this is both a list comprehension and a dict comprehension, I'm sorry.
+    # It's filtering each line down to a dict that just has the fields in valid fields
+    # meaning it won't try to add data to fields that don't exist or that it can't add to
+    valid_lines = [{fieldname: line[fieldname] for fieldname in valid_fields} for line in unique_lines]
+    
+    return valid_lines
 
 
 class AbstractVocabList(models.Model):
@@ -70,38 +101,60 @@ class AbstractVocabList(models.Model):
         Returns the display name of self.lang
         """
         return languages.get(part3=self.lang).name
-
-    def _create_entries(self, new_headwords, entry_model, extra_attrs):
+    
+    def _create_entries(self, lines:list, entry_model:models.Model, familiarity:int=0) -> list:
         """
-        Parameters: new_headwords (list), entry_model (class), extra_attrs (dict)
-        Returns: list of vocab list entry objects
-        """
-        return [
-            entry_model(
-                vocabulary_list=self,
-                _order=idx,
-                headword=line[0],
-                definition=line[1],
-                **extra_attrs
-            )
-            for idx, line in enumerate(new_headwords)
-        ]
+        Creates vocab list entries from provided lines.
+        
+        New vocab list entries are created with the provided model, since there
+        are different models for personal vocab lists and regular vocab lists.
+        Ensures that new entries are not duplicates with the `get_or_create()`
+        function off of `entry_model.objects`.
 
-    def load_tab_delimited(self, fd, entry_model, extra_attrs={}):
+        Args:
+            lines: List of dicts corresponding to entries to be created. This
+                function assumes that the dict keys have already been
+                validated, so that they should only contain values that can be
+                added to the provided data model.
+            entry_model: Django model that the vocab list entries should be 
+                created as. The model should inherit from
+                `AbstractVocabListEntry`
+            familiarity: A familiarity score to use as a default if none is
+                provided. Defaults to zero, in which case familiarity scores
+                won't be taken into account.
+        """
+        # If using familiarity scores, set a default value on each line if
+        # familiarity is not set.
+        if familiarity > 0:
+            for line in lines:
+                if 'familiarity' in line:
+                    line['familiarity'] = line['familiarity'] or familiarity
+                else:
+                    line['familiarity'] = familiarity
+        
+        # Get or create the entries
+        entries = [entry_model.objects.get_or_create(
+            vocabulary_list=self,
+            defaults={
+                "_order": 1
+            },
+            **line
+        )[0] for line in lines]
+        return entries
+
+    def load_tab_delimited(self, fd, entry_model:models.Model, familiarity:int=0, **kwargs):
         """
         Method to load vocab lists from tsv upload.
         Parameters: fd (iterable), entry_model (class), extra_attrs (dict)
         Returns: bulk create query of vocab list entries
         """
-        lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
-        # filter out duplicates in the files
-        # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
-        filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "definition")
-        # Must do check for matching headword + definition
-        new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
-        entries = self._create_entries(new_headwords, entry_model, extra_attrs)
-        return entry_model.objects.bulk_create(entries)
+        decoded_file = fd.read().decode('utf-8').splitlines()
+        lines = csv.DictReader(decoded_file, delimiter='\t')
+
+        valid_lines = validate_lines(lines, entry_model)
+
+        entries = self._create_entries(valid_lines, entry_model, familiarity=familiarity)
+        return entries
 
 
 class VocabularyList(AbstractVocabList):
@@ -161,7 +214,7 @@ class PersonalVocabularyList(AbstractVocabList):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, extra_attrs={"familiarity": familiarity})
+        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, familiarity=familiarity)
 
     def data(self):
         stats = {}
@@ -235,10 +288,11 @@ class AbstractVocabListEntry(models.Model):
         Call the `link_vl_node` async function passing `self.__class__` as the
         model so that the `link()` function can be run as a job.
         """
-        j = link_vl_node.delay(self.__class__, self.pk)
-        self.link_job_id = j.id
-        self.link_job_started = timezone.now()
-        self.save()
+        if not self.lemma:
+            j = link_vl_node.delay(self.__class__, self.pk)
+            self.link_job_id = j.id
+            self.link_job_started = timezone.now()
+            self.save()
 
     def data(self, **kwargs):
         return {

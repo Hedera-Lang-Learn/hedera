@@ -55,8 +55,6 @@ class VocabularyListCreateView(CreateView):
         vl.owner = self.request.user
         vl.save()
         entries = vl.load_tab_delimited(form.cleaned_data["data"])
-        for entry in entries:
-            entry.link_job()
         return redirect(reverse("vocab_list_detail", args=[vl.pk]))
 
 
@@ -94,7 +92,5 @@ class PersonalVocabularyListEntriesCreateView(CreateView):
 
     def form_valid(self, form):
         vl, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=form.cleaned_data["lang"])
-        entries = vl.load_tab_delimited(form.cleaned_data["data"], familiarity=form.cleaned_data["rating"])
-        for entry in entries:
-            entry.link_job()
+        entries = vl.load_tab_delimited(form.cleaned_data["data"], familiarity=int(form.cleaned_data["rating"]))
         return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))
