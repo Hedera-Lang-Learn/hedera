@@ -50,6 +50,10 @@ def validate_lines(lines: list, entry_model: models.Model) -> list:
     # method described in https://stackoverflow.com/a/11092607
     unique_line_strings = set([json.dumps(line, sort_keys=True) for line in lines])
     unique_lines = [json.loads(linestring) for linestring in unique_line_strings]
+    if len(unique_lines) == 0:
+        # As far as I can tell, there's no proper logging in the project, but there probably should be
+        print(f"No unique lines found in lines: {list(lines)}")
+        return []
 
     # lowercase all the keys on the unique lines
     for i, line in enumerate(unique_lines):
@@ -103,7 +107,7 @@ class AbstractVocabList(models.Model):
         """
         return languages.get(part3=self.lang).name
 
-    def _create_entries(self, lines: list, entry_model: models.Model, familiarity: int = 0) -> list:
+    def _create_entries(self, lines: csv.DictReader, entry_model: models.Model, familiarity: int = 0) -> list:
         """
         Creates vocab list entries from provided lines.
 
