@@ -316,20 +316,18 @@ class PersonalVocabularyStats(models.Model):
     five = models.DecimalField(max_digits=5, decimal_places=4, default="0")
 
     def update(self):
-        unique_nodes = list(set([token["node"] for token in self.text.data]))
-        ranked_nodes = [e.node.pk for e in self.vocab_list.entries.filter(node__isnull=False)]
-        unranked_nodes = list(filter(lambda node_id: node_id not in ranked_nodes, unique_nodes))
-
+        unique_lemmas = list(set([token["lemma_id"] for token in self.text.data]))
+        ranked_lemmas = [e.lemma_id for e in self.vocab_list.entries.filter(lemma_id__isnull=False)]
+        unranked_lemmas = list(filter(lambda lemma_id: lemma_id not in ranked_lemmas, unique_lemmas))
         familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
-        for entry in self.vocab_list.entries.filter(familiarity__isnull=False, node__pk__in=unique_nodes):
+        for entry in self.vocab_list.entries.filter(familiarity__isnull=False, lemma__pk__in=unique_lemmas):
             familiarities[str(entry.familiarity)] += 1
-
-        self.unranked = len(unranked_nodes) / len(unique_nodes)
-        self.one = familiarities["1"] / len(unique_nodes)
-        self.two = familiarities["2"] / len(unique_nodes)
-        self.three = familiarities["3"] / len(unique_nodes)
-        self.four = familiarities["4"] / len(unique_nodes)
-        self.five = familiarities["5"] / len(unique_nodes)
+        self.unranked = len(unranked_lemmas) / len(unique_lemmas)
+        self.one = familiarities["1"] / len(unique_lemmas)
+        self.two = familiarities["2"] / len(unique_lemmas)
+        self.three = familiarities["3"] / len(unique_lemmas)
+        self.four = familiarities["4"] / len(unique_lemmas)
+        self.five = familiarities["5"] / len(unique_lemmas)
 
         self.save()
 

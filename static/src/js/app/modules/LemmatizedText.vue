@@ -123,7 +123,7 @@
         let className = '';
         if (this.showFamiliarity && this.vocabEntries) {
           const entries = this.vocabEntries.reduce((map, obj) => {
-            map[obj.node] = obj.familiarity;
+            map[obj.lemma] = obj.familiarity;
             return map;
           }, {});
           className = entries[token.lemma_id] !== undefined ? `rating-${entries[token.lemma_id]}` : '';

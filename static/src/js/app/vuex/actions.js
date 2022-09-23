@@ -46,18 +46,18 @@ export default {
       .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data.data))
       .catch(logoutOnError(commit));
   },
-  [CREATE_VOCAB_ENTRY]: ({ commit, state }, { nodeId, familiarity, headword, gloss }) => {
+  [CREATE_VOCAB_ENTRY]: ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
     const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     api
-      .updatePersonalVocabList(state.text.id, nodeId, familiarity, headword, gloss, null, null, cb)
+      .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null, cb)
       .catch(logoutOnError(commit));
   },
   // eslint-disable-next-line max-len
-  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, gloss, lang = null }) => {
+  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, definition, lang = null }) => {
     const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
     // eslint-disable-next-line max-len
     api
-      .updatePersonalVocabList(state.text.id, null, familiarity, headword, gloss, entryId, lang, cb)
+      .updatePersonalVocabList(state.text.id, null, familiarity, headword, definition, entryId, lang, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {

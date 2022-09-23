@@ -14,15 +14,15 @@ export default {
   textRetryLemmatization: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/retry/`).then((r) => cb(r.data)),
   textCancelLemmatization: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/cancel/`).then((r) => cb(r.data)),
   fetchPersonalVocabList: (lang, cb) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`).then((r) => cb(r.data)),
-  updatePersonalVocabList: (textId, nodeId, familiarity, headword, gloss, entryId, lang, cb) => {
-    let data = { familiarity, headword, gloss };
+  updatePersonalVocabList: (textId, lemmaId, familiarity, headword, definition, entryId, lang, cb) => {
+    let data = { familiarity, headword, definition };
     if (lang !== null && entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then((r) => cb(r.data));
     }
     if (entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?text=${textId}`, data).then((r) => cb(r.data));
     }
-    data = { ...data, nodeId };
+    data = { ...data, lemmaId };
     return axios.post(`${BASE_URL}personal_vocab_list/?text=${textId}`, data).then((r) => cb(r.data));
   },
   fetchVocabLists: (lang, cb) => axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`).then((r) => cb(r.data)),
