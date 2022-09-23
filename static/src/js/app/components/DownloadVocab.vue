@@ -12,7 +12,7 @@
 
     let result; let
       ctr;
-    const columnDelimiter = ',';
+    const columnDelimiter = '\t';
     const lineDelimiter = '\n';
     const keys = Object.keys(data[0]);
 
@@ -26,7 +26,8 @@
         if (ctr > 0) {
           result += columnDelimiter;
         }
-        result += `"${item[key]}"`;
+        const value = (item[key]) ? item[key] : "";
+        result += `"${value}"`;
         ctr += 1;
       });
       result += lineDelimiter;
@@ -44,7 +45,7 @@
       VocabListDownload() {
         const vocabList = this.glosses;
         const data = toCSV(vocabList.map((entry) => {
-          let row = {};
+          const row = {};
           row.headword = entry.headword;
           row.definition = entry.definition;
           if (this.withFamiliarity) {

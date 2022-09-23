@@ -46,6 +46,9 @@ def validate_lines(lines: list, entry_model: models.Model) -> list:
         entry_model: The model for the vocabulary list entry that will be used.
             This should inherit from `AbstractVocabListEntry`
     """
+    # Remove any empty values from lines dicts
+    lines = [{k: v for k, v in line.items() if v} for line in lines]
+
     # Make sure that lines aren't repeated,
     # method described in https://stackoverflow.com/a/11092607
     unique_line_strings = set([json.dumps(line, sort_keys=True) for line in lines])
@@ -72,12 +75,12 @@ def validate_lines(lines: list, entry_model: models.Model) -> list:
     # so we only need to check against the first one.
     valid_fields = list(filter(lambda x: x in unique_lines[0], model_fields))
 
-    # Yes this is both a list comprehension and a dict comprehension, I'm sorry.
-    # It's filtering each line down to a dict that just has the fields in valid fields
+    # Filtering each line down to a dict that just has the fields in valid fields
     # meaning it won't try to add data to fields that don't exist or that it can't add to
-    valid_lines = [{fieldname: line[fieldname] for fieldname in valid_fields} for line in unique_lines]
+    for i, line in enumerate(unique_lines):
+        unique_lines[i] = {fieldname: line[fieldname] for fieldname in valid_fields if fieldname in line}
 
-    return valid_lines
+    return unique_lines
 
 
 class AbstractVocabList(models.Model):
