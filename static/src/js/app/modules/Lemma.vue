@@ -21,15 +21,12 @@
     methods: {
       onGlossChange(gloss, isChecked) {
         const eventData = { lemma: this.lemma, gloss, active: isChecked };
-        console.log('glossChange', eventData);
         this.$emit('glossChange', eventData);
       },
       onClickLemma() {
-        console.log('lemmaChange', this.lemma.pk, this.lemma.label);
         this.$emit('lemmaChange', this.lemma);
       },
       isGlossActive(gloss) {
-        console.log('isGlossActive?', gloss.pk, gloss.gloss, this.activeGlosses.includes(gloss.pk));
         return this.activeGlosses.includes(gloss.pk);
       },
     },

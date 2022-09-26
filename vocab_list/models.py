@@ -316,7 +316,7 @@ class PersonalVocabularyStats(models.Model):
     five = models.DecimalField(max_digits=5, decimal_places=4, default="0")
 
     def update(self):
-        unique_lemmas = list(set([token["lemma_id"] for token in self.text.data]))
+        unique_lemmas = list(set([token["lemma_id"] for token in self.text.data if token["lemma_id"] is not None]))
         ranked_lemmas = [e.lemma_id for e in self.vocab_list.entries.filter(lemma_id__isnull=False)]
         unranked_lemmas = list(filter(lambda lemma_id: lemma_id not in ranked_lemmas, unique_lemmas))
         familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}

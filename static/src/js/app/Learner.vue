@@ -43,18 +43,17 @@
           <div
             class="glossed-token"
             :class="{
-              selected: selectedToken && gloss.node === selectedToken.node
+              selected: selectedToken && selectedToken.node
             }"
             v-for="token in glosses"
             :key="token.pk"
           >
             <span class="token">{{ token.label }}</span>
-            <span
-              class="gloss"
-              v-for="gloss in token.glosses"
-              :key="gloss.pk"
+            <span class="gloss">{{ token.glosses[0].gloss }}</span>
+            <!-- commented out code for multiple glosses -->
+            <!-- <span class="gloss" v-for="gloss in token.glosses" :key="gloss.pk"
               >{{ gloss.gloss }}
-            </span>
+            </span> -->
           </div>
         </div>
         <div class="xxxposition-fixed" v-else>
@@ -209,11 +208,18 @@
         return this.$store.state.text;
       },
       uniqueNodes() {
-        return [...new Set(this.tokens.map((token) => token.lemma_id))];
+        return [
+          ...new Set(
+            this.tokens
+              .map((token) => token.lemma_id)
+              .filter((token) => token !== null),
+          ),
+        ];
       },
       ranks() {
         return (
-          this.personalVocabList
+          this.$store.state.textId
+          && this.personalVocabList.statsByText
           && this.personalVocabList.statsByText[this.$store.state.textId]
         );
       },
