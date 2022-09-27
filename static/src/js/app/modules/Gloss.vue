@@ -13,7 +13,7 @@
     name: 'Gloss',
     props: ['gloss', 'active'],
     data() {
-      console.log('Gloss data', this.gloss.pk, 'active', this.active);
+      console.log('Gloss', this.gloss.pk, 'active', this.active);
       return {
         labelIdentifier: `gloss-${this.gloss.pk}`,
       };
