@@ -69,6 +69,15 @@ class LatinPreprocessorTests(TestCase):
             LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
         )
 
+    def test_word_looks_like_enclitic(self):
+        """
+        Test that a word that looks like an enclitic is not split.
+        """
+        input_tokens = [("que", "que", ""), ("ne", "ne", " ")]
+        self.assertEqual(
+            LatinPreprocessor(lang="lat").preprocess(input_tokens), input_tokens
+        )
+
     def test_word_without_enclitics(self):
         """
         Test word with no enclitics
