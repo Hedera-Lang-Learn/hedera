@@ -235,7 +235,7 @@
           && this.personalVocabList
           && this.personalVocabList.entries
           && this.personalVocabList.entries.filter(
-            (e) => e.lemma === this.selectedNode.pk,
+            (e) => e.lemma_id === this.selectedNode.pk,
           )[0]
         );
       },
@@ -257,9 +257,11 @@
       glosses() {
         return this.uniqueNodes
           .filter(
-            (lemma) => this.knownEntries.filter((k) => k.lemma === lemma).length === 0,
+            (lemmaId) => this.knownEntries.filter((k) => k.lemma_id === lemmaId).length === 0,
           )
-          .map((lemma) => this.tokens.filter((t) => t.lemma_id === lemma)[0] || null)
+          .map(
+            (lemmaId) => this.tokens.filter((t) => t.lemma_id === lemmaId)[0] || null,
+          )
           .filter(
             (t) => t !== null
               && t.resolved !== 'unresolved'
@@ -376,8 +378,7 @@
       opacity: 1;
     }
   }
-  .token {
-  }
+
   .gloss {
     font-style: italic;
     color: $gray-600;

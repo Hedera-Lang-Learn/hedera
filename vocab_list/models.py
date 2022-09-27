@@ -294,7 +294,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         return super().link_job(PersonalVocabularyListEntry)
 
     def data(self):
-        return super().data(familiarity=self.familiarity, lemma=self.lemma_id)
+        return super().data(familiarity=self.familiarity, lemma_id=self.lemma_id, lemma=self.lemma.lemma)
 
     def familiarity_range(self):
         # hack for template iteration
