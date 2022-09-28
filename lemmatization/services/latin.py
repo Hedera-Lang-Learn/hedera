@@ -2,9 +2,7 @@ import re
 import unicodedata
 from typing import List
 
-from django.db import models
-
-from ..models import lookup_form
+from ..models import exists_form, lookup_form
 from .base import BaseService, Preprocessor, Tokenizer, triples
 
 
@@ -34,7 +32,8 @@ LATIN_COPULA = [
     "esse", "fuisse", "iri", "fore",
 ]
 
-# order is optimized for lookup e.g. "ue" is after "que"
+# Enclitics are particles that "hang on" to the end of latin words.
+# Order is optimized for lookup e.g. "ue" is after "que"
 LATIN_ENCLITICS = ("que", "ne", "qve", "ve", "ue", "met")
 
 
@@ -54,24 +53,6 @@ def re_tokenize_clitics(tokens):
             yield ""
         else:
             yield token
-
-
-class LatinLexicon(models.Model):
-    """
-    This model contains a copy of the data from LatinMorph16.db
-    and is intended to replace the external Perseids Morphology Service
-    for the purpose of headword/lemma retrieval.
-    """
-    token = models.CharField(max_length=255)
-    lemma = models.CharField(max_length=255)
-    rank = models.IntegerField(default=999999)
-    count = models.IntegerField(default=0)
-    rate = models.FloatField(default=0)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=["token", "lemma"], name="unique_token_lemma")
-        ]
 
 
 class LatinService(BaseService):
@@ -95,7 +76,6 @@ class LatinService(BaseService):
         Results are returned in order of highest frequency (rate) first, or simply
         alphabetical by lemma if there is no frequency data.
         """
-        # TODO: Move the normalization step HERE instead of the tokenizer.
         # The tokenizers should return doubles: (word, following) instead of triples.
         lemmas = []
         if has_macron(word):
@@ -108,11 +88,15 @@ class LatinService(BaseService):
         return lemmas
 
 
-class EncliticTokenizer(Tokenizer):
-    """
-    a tokenizer that
-    _
-    |
+class LatinTokenizer(Tokenizer):
+    """Latin tokenizer.
+
+    Features:
+    - Segments latin text into a stream of tokens.
+    - A pipe (|) will split words, and an underscore (_) combines words.
+    - Tokens are normalized in NFC form.
+    - Tokens containing more than one word have any connective/linking words
+      automatically stripped from the normalized form (e.g. words in the LATIN_COPULA).
     """
 
     def tokenize(self, text):
@@ -134,7 +118,7 @@ class LatinPreprocessor(Preprocessor):
     """
     This is used to apply various prepocessing to the words/tokens before they are further parsed by the lemmatizer
     """
-    def preprocessor(self, tokens):
+    def preprocess(self, tokens):
         """
         This function finds the first enclitics attached to the word and returns a list of two strings
         Example:
@@ -145,24 +129,27 @@ class LatinPreprocessor(Preprocessor):
             - [(virum, virum, ""), (que, que, " ")]
         """
         new_tokens = []
-        found_first_enclitic = False
         for token in tokens:
             word, word_normalized, following = token
-            found_form = lookup_form(word, "lat")
-            if found_form:
+
+            # 1. Known word forms should be returned to the token stream unchanged.
+            if exists_form(word, "lat") or exists_form(word_normalized, "lat"):
                 new_tokens.append(token)
-            else:
-                found_form_normalized = lookup_form(word_normalized, "lat")
-                if found_form_normalized:
-                    new_tokens.append(token)
-                if not found_form_normalized:
-                    for enclitic in LATIN_ENCLITICS:
-                        if word.endswith(enclitic) and found_first_enclitic is False:
-                            found_first_enclitic = True
-                            #Creates example word, word_normalized, following = new_token
-                            new_tokens.append((word[:word.find(enclitic)], enclitic, ""))
-                            new_tokens.append((enclitic, enclitic, " "))
-                            break
-                if found_first_enclitic is False and not found_form_normalized:
-                    new_tokens.append(token)
+                continue
+
+            # 2. Automatically split off enclitics if the word that precedes the clitic is known.
+            found_enclitic = False
+            for enclitic in LATIN_ENCLITICS:
+                if len(word) > len(enclitic) and word.endswith(enclitic):
+                    preceding_word = word[:-len(enclitic)]
+                    preceding_word_normalized = word_normalized[:-len(enclitic)]
+                    if exists_form(preceding_word, "lat") or exists_form(preceding_word_normalized, "lat"):
+                        new_tokens.append((preceding_word, preceding_word_normalized, ""))
+                        new_tokens.append((enclitic, enclitic, " "))
+                        found_enclitic = True
+                        break
+
+            # 3. The token is unknown and does not have an enclitic so return to the token stream unchanged.
+            if not found_enclitic:
+                new_tokens.append(token)
         return new_tokens

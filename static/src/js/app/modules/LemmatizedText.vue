@@ -79,7 +79,7 @@
         const fetchLemmasByForm = () => {
           this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
             lang: this.$store.state.text.lang,
-            form: this.selectedToken.word,
+            form: this.selectedToken.word_normalized,
           });
         };
 

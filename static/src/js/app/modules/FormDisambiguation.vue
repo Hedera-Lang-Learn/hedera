@@ -1,10 +1,10 @@
 <template>
   <div class="form-disambiguation" v-if="selectedForm">
     <h4>{{ selectedForm.form }}</h4>
-    <div v-for="form_lemma in selectedForm.lemmas" :key="form_lemma.pk">
+    <div v-for="lemma_object in selectedForm.lemmas" :key="lemma_object.pk">
       <Lemma
-        :lemma="form_lemma"
-        :active="isActive(form_lemma)"
+        :lemma="lemma_object"
+        :active="isActive(lemma_object)"
         :activeGlosses="activeGlosses"
         @glossChange="onGlossChange"
         @lemmaChange="onLemmaChange"
@@ -14,73 +14,56 @@
 </template>
 <script>
   import Lemma from './Lemma.vue';
+  import { UPDATE_TOKEN, RESOLVED_MANUAL } from '../constants';
 
-  // const formFilter = (node, selectedWord) => {
-  //   if (node.forms.length > 0) {
-  //     /* remove trailing punctuation */
-  //     const strippedToken = selectedWord.replace(/[,.?:;·—]+$/, '');
-  //     if (node.forms[0].form === strippedToken) {
-  //       return true;
-  //     }
-  //     return false;
-  //   }
-  //   return true;
-  // };
+  const getGlossIds = (lemmas, lemma) => {
+    const matchingLemmas = lemmas.filter((x) => x.pk === lemma.pk);
+    if (matchingLemmas.length === 0) {
+      return [];
+    }
+    const { glosses } = matchingLemmas[0];
+    return glosses.map((gloss) => gloss.pk);
+  };
+
+  const addGloss = (glossIds, gloss) => glossIds.concat([gloss.pk]);
+
+  const removeGloss = (glossIds, gloss) => glossIds.filter((glossId) => glossId !== gloss.pk);
 
   export default {
     name: 'FormDisambiguation',
     components: { Lemma },
     props: ['lemma', 'showIds', 'customClass', 'customClassHeading'],
     data() {
-      return {
-        lemma_id: this.$store.state.selectedToken.lemma_id,
-        gloss_ids: [...this.$store.state.selectedToken.gloss_ids],
-      };
+      return {};
     },
     methods: {
       onLemmaChange(lemma) {
-        this.updateLemma(lemma);
-        console.log('onLemmaChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
+        const { lemmas } = this.$store.state.forms[this.selectedToken.word_normalized];
+        this.updateToken(lemma, getGlossIds(lemmas, lemma));
       },
       onGlossChange({ lemma, gloss, active }) {
-        if (this.lemma_id !== lemma.pk) {
-          this.lemma_id = lemma.pk;
-          this.gloss_ids = [];
+        let glossIds = [];
+        if (lemma.pk === this.selectedToken.lemma_id) {
+          glossIds = this.selectedToken.gloss_ids;
         }
-
-        this.updateGloss(gloss, active);
-        console.log('onGlossChange', JSON.stringify({ lemma_id: this.lemma_id, gloss_ids: this.gloss_ids }));
-      },
-      updateLemma(lemma) {
-        if (this.lemma_id !== lemma.pk) {
-          this.lemma_id = lemma.pk;
-          const { lemmas } = this.$store.state.forms[this.selectedToken.word_normalized];
-          const matchingLemmas = lemmas.filter((x) => x.pk === lemma.pk);
-          const { glosses } = matchingLemmas[0];
-          this.gloss_ids = glosses.map((gloss) => gloss.pk);
-          console.log('selected glosses', this.gloss_ids, glosses, matchingLemmas);
-        }
-      },
-      updateGloss(gloss, active) {
         if (active) {
-          this.gloss_ids.push(gloss.pk);
+          glossIds = addGloss(glossIds, gloss);
         } else {
-          const index = this.gloss_ids.indexOf(gloss.pk);
-          if (index >= 0) {
-            this.gloss_ids.splice(index, 1);
-          }
+          glossIds = removeGloss(glossIds, gloss);
         }
+        this.updateToken(lemma, glossIds);
       },
-      updateToken() {
-        // this.$store.dispatch(UPDATE_TOKEN, {
-        //   id: this.textId,
-        //   tokenIndex: this.selectedToken.tokenIndex,
-        //   nodeId: node.pk,
-        //   resolved: RESOLVED_MANUAL,
-        // });
+      updateToken(lemma, glossIds = []) {
+        this.$store.dispatch(UPDATE_TOKEN, {
+          id: this.$store.state.textId,
+          tokenIndex: this.selectedToken.tokenIndex,
+          lemmaId: lemma.pk,
+          glossIds,
+          resolved: RESOLVED_MANUAL,
+        });
       },
       isActive(lemma) {
-        return lemma.pk === this.lemma_id;
+        return lemma.pk === this.selectedToken.lemma_id;
       },
     },
     computed: {
@@ -108,7 +91,7 @@
         return form;
       },
       activeGlosses() {
-        return this.gloss_ids;
+        return this.selectedToken && this.selectedToken.gloss_ids;
       },
     },
   };

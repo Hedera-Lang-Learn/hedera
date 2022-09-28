@@ -18,10 +18,14 @@
     components: { Gloss },
     name: 'Lemma',
     props: ['lemma', 'active', 'activeGlosses'],
+    data() {
+      console.log('Lemma', this.lemma.pk, 'active', this.active);
+      return {};
+    },
     methods: {
       onGlossChange(gloss, isChecked) {
-        const eventData = { lemma: this.lemma, gloss, active: isChecked };
-        this.$emit('glossChange', eventData);
+        console.log('glossChange', this.lemma.pk, gloss.pk, isChecked);
+        this.$emit('glossChange', { lemma: this.lemma, gloss, active: isChecked });
       },
       onClickLemma() {
         this.$emit('lemmaChange', this.lemma);

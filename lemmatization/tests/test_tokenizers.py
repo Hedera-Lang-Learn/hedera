@@ -1,6 +1,7 @@
 from django.test import SimpleTestCase
 
 from ..services.chinese import LACChineseTokenizer
+from ..services.latin import LatinTokenizer
 
 
 class LACChineseTokenizerTests(SimpleTestCase):
@@ -218,3 +219,75 @@ class LACChineseTokenizerTests(SimpleTestCase):
             # non-breaking space is removed by normalization
             " => ",
         )
+
+
+class LatinTokenizerTests(SimpleTestCase):
+    def test_tokenizer_text_no_macrons(self):
+        text_input = "Medea, filia regis, amorem ratione vincere conatur."
+        output = list(LatinTokenizer(lang="lat").tokenize(text_input))
+        self.assertEqual(output, [
+            ("Medea", "Medea", ", "),
+            ("filia", "filia", " "),
+            ("regis", "regis", ", "),
+            ("amorem", "amorem", " "),
+            ("ratione", "ratione", " "),
+            ("vincere", "vincere", " "),
+            ("conatur", "conatur", "."),
+            ("", "", " "),
+        ])
+
+    def test_tokenizer_text_with_macrons(self):
+        text_input = "Medea, fīlia rēgis, amōrem ratiōne vincere conātur."
+        output = list(LatinTokenizer(lang="lat").tokenize(text_input))
+        self.assertEqual(output, [
+            ("Medea", "Medea", ", "),
+            ("fīlia", "filia", " "),
+            ("rēgis", "regis", ", "),
+            ("amōrem", "amorem", " "),
+            ("ratiōne", "ratione", " "),
+            ("vincere", "vincere", " "),
+            ("conātur", "conatur", "."),
+            ("", "", " "),
+        ])
+
+    def test_tokenizer_does_not_auto_split_enclitics(self):
+        """
+        Enclitics are NOT automatically split off by the tokenizer.
+
+        To handle enclitics (particles hanging on to words like -que),
+        either use the pipe (|) to instruct the tokenizer to split it off,
+        or rely on the automatic enclitic handling that happens later in the
+        lemmatization process (e.g. preprocessing).
+        """
+        text_input = "estne"
+        output = list(LatinTokenizer(lang="lat").tokenize(text_input))
+        self.assertEqual(output, [
+            ("estne", "estne", " ")
+        ])
+
+    def test_tokenizer_pipe_splits_word(self):
+        """
+        Use the pipe (|) to intsruct the tokenizer that there is a word boundary
+        within a word (e.g. to split off an enclitic like -ne or -que).
+        """
+        text_input = "est|ne"
+        output = list(LatinTokenizer(lang="lat").tokenize(text_input))
+        self.assertEqual(output, [
+            ("est", "est", ""),
+            ("ne", "ne", " "),
+        ])
+
+    def test_tokenizer_underscore_combines_words_with_latin_copula(self):
+        """
+        Use the underscore (_) to combine words that should be represented as a
+        single unit of meaning. This is often used with latin copula, or connective/linking
+        words. In that case, we expect the linking word (latin copula) to be removed in
+        the normalized representation of the word.
+        """
+        text_input = "expulsus_est"
+        output = list(LatinTokenizer(lang="lat").tokenize(text_input))
+        self.assertEqual(output, [
+            # the normalized word has any words in the latin copula removed
+            # automatically, since these are considered connecting words
+            ("expulsus est", "expulsus", " "),
+        ])

@@ -114,6 +114,11 @@ def lookup_form(form, lang) -> List[str]:
     return list(lemmas.values_list("lemma", flat=True))
 
 
+def exists_form(form, lang) -> bool:
+    """ Returns True if the form exists, otherwise False. """
+    return FormToLemma.objects.filter(form=form, lang=lang).exists()
+
+
 def add_form(lang, form, lemmas):
     for lemma in lemmas:
         FormToLemma.objects.create(

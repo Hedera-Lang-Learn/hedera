@@ -8,7 +8,6 @@ import {
   FETCH_LEMMAS_BY_FORM,
   UPDATE_TOKEN,
   SET_TEXT_ID,
-  ADD_LEMMA,
   FETCH_VOCAB_LISTS,
   SET_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
@@ -81,20 +80,18 @@ export default {
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
   [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
-  [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, nodeId, resolved }) => {
+  [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
+    // Fetch the most recent lemma data
     api
-      .fetchNode(nodeId, (data) => commit(FETCH_NODE, data))
+      .fetchLemma(lemmaId, (data) => commit(FETCH_LEMMA, data))
       .catch(logoutOnError(commit));
+
+    // Callback to commit the changes once the API call has completed
     const mutate = (data) => commit(UPDATE_TOKEN, data.data);
+
+    // Perform the API request to update the token data
     return api
-      .updateToken(id, tokenIndex, resolved, state.selectedVocabList, nodeId, null, mutate)
-      .catch(logoutOnError(commit));
-  },
-  [ADD_LEMMA]: ({ commit, dispatch, state }, { id, tokenIndex, lemma, resolved }) => {
-    const mutate = (data) => commit(UPDATE_TOKEN, data.data);
-    return api
-      .updateToken(id, tokenIndex, resolved, null, state.selectedToken.node, lemma, mutate)
-      .then(() => dispatch(FETCH_NODE, { id: state.tokens[tokenIndex].node }))
+      .updateToken(id, tokenIndex, resolved, state.selectedVocabList, lemmaId, glossIds, null, mutate)
       .catch(logoutOnError(commit));
   },
   [SET_VOCAB_LIST]: ({ commit }, { id }) => {
