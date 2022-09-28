@@ -44,18 +44,20 @@ export default {
   fetchLemma: (id, cb) => axios.get(`${BASE_URL}lemmatization/lemma/${id}/`).then((r) => cb(r.data)),
   fetchLemmasByForm: (lang, form, cb) => axios.get(`${BASE_URL}lemmatization/forms/${lang}/${encodeURIComponent(form)}/`).then((r) => cb(r.data)),
   fetchTokenHistory: (id, tokenIndex, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`).then((r) => cb(r.data)),
-  updateToken: (id, tokenIndex, resolved, vocabList, nodeId = null, lemma = null, cb) => {
+  updateToken: (id, tokenIndex, resolved, vocabList, lemmaId = null, glossIds = [], lemma = null, cb) => {
     if (vocabList === null) {
       return axios.post(`${BASE_URL}lemmatized_texts/${id}/`, {
         tokenIndex,
-        nodeId,
+        lemmaId,
+        glossIds,
         lemma,
         resolved,
       }).then((r) => cb(r.data));
     }
     return axios.post(`${BASE_URL}lemmatized_texts/${id}/?vocablist=${vocabList}`, {
       tokenIndex,
-      nodeId,
+      lemmaId,
+      glossIds,
       lemma,
       resolved,
     }).then((r) => cb(r.data));

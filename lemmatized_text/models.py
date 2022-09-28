@@ -15,6 +15,7 @@ from iso639 import languages
 from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
+from lemmatization.models import Lemma
 
 from .parsers import EditedTextHtmlParser, TagStripper
 
@@ -214,7 +215,6 @@ class LemmatizedText(models.Model):
             user=user,
             token_index=token_index,
             lemma_id=lemma_id,
-            gloss_ids=gloss_ids,
             resolved=resolved,
         )
 
@@ -281,9 +281,8 @@ class LemmatizationLog(models.Model):
     # Changed What Attributes
     token_index = models.IntegerField()
 
-# ***This requires some more thought***
-#    lemma = models.ForeignKey("Lemmatization.Lemma")
-#    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
+    lemma = models.ForeignKey(Lemma, null=True, on_delete=models.CASCADE)
+
     resolved = models.CharField(max_length=100)
 
     # On What Text

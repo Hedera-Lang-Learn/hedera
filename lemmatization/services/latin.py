@@ -140,7 +140,7 @@ class LatinPreprocessor(Preprocessor):
             # 2. Automatically split off enclitics if the word that precedes the clitic is known.
             found_enclitic = False
             for enclitic in LATIN_ENCLITICS:
-                if word.endswith(enclitic):
+                if len(word) > len(enclitic) and word.endswith(enclitic):
                     preceding_word = word[:-len(enclitic)]
                     preceding_word_normalized = word_normalized[:-len(enclitic)]
                     if exists_form(preceding_word, "lat") or exists_form(preceding_word_normalized, "lat"):
