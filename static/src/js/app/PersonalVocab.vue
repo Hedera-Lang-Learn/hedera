@@ -70,8 +70,9 @@
           mode: 'records',
         },
         columns: [
+          { label: 'Lemma', field: 'lemma' },
           { label: 'Headword', field: 'headword' },
-          { label: 'Gloss', field: 'gloss' },
+          { label: 'Definition', field: 'definition' },
           { label: 'Familiarity', field: 'familiarity' },
         ],
       };
@@ -108,7 +109,9 @@
         }
         return this.personalVocabEntries.map((e) => ({
           ...e,
-          label: e.headword,
+          label: e.lemma,
+          headword: e.headword,
+          definition: e.definition ? e.definition : e.glosses[0].gloss,
         }));
       },
       ranks() {

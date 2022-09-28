@@ -7,7 +7,7 @@ from django.utils import timezone
 from django_rq import job
 from iso639 import languages
 
-from lemmatization.models import Lemma
+from lemmatization.models import FormToLemma, Lemma
 from lemmatized_text.models import LemmatizedText
 
 
@@ -41,6 +41,23 @@ def parse_line(idx, line):
     except UnicodeDecodeError:
         return ("Line " + str(idx), "Bad Data")
     return clean(*columns)
+
+
+def find_lemma(headword):
+    headword_no_macrons = strip_diacritics(headword)
+    lemma_matches = Lemma.objects.filter(lemma=headword_no_macrons).order_by("rank").first()
+    if lemma_matches:
+        return lemma_matches
+    if not lemma_matches:
+        lemma_matches = Lemma.objects.filter(lemma=headword).order_by("rank").first()
+        if not lemma_matches:
+            formtolemma_matches = FormToLemma.objects.filter(form=headword).first()
+            try:
+                lemma_id = formtolemma_matches.lemma_id
+                lemma_matches = Lemma.objects.get(id=lemma_id)
+            except AttributeError:
+                return None
+    return lemma_matches
 
 
 class AbstractVocabList(models.Model):
@@ -96,7 +113,7 @@ class AbstractVocabList(models.Model):
         # filter out duplicates in the files
         # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
         filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "gloss")
+        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "definition")
         # Must do check for matching headword + definition
         new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
         entries = self._create_entries(new_headwords, entry_model, extra_attrs)
@@ -178,8 +195,8 @@ class AbstractVocabListEntry(models.Model):
     TODO: Add this docstring for real
 
     Args:
-        headword: Dictionary definition for vocab list entry, expected to look 
-            something like "sum, esse, fui, futurus". The first word of the 
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
             headword will be used to match a lemma in the database.
         lemma: Foreign key to link to the lemma in the database
         definition: User-supplied definition for the term, not connected to the
@@ -208,17 +225,17 @@ class AbstractVocabListEntry(models.Model):
     def link(self):
         """
         Links a headword as entered to a lemma in the database.
-        
-        This function looks for an exact match to the headword provided, and 
-        links the entry to the lowest-ranked lemma entry (e.g. rank 1 is 
+
+        This function looks for an exact match to the headword provided, and
+        links the entry to the lowest-ranked lemma entry (e.g. rank 1 is
         preferred to rank 10). This function runs as a job via the `link_job`
         function on this object and `link_vl_node` declared in this file.
         """
-        parsed_headword = strip_diacritics(self.headword.split()[0].strip(","))
-        lemma_matches = Lemma.objects.filter(lemma=parsed_headword).order_by("rank")
+        headword = self.headword.split()[0].strip(",")
+        lemma_matches = find_lemma(headword)
         if lemma_matches:
             # Use the lowest-ranked lemma whether or not there are multiple matches
-            lemma = lemma_matches.first()
+            lemma = lemma_matches
             self.lemma = lemma
             self.link_job_ended = timezone.now()
             self.save()
@@ -280,7 +297,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         return super().link_job(PersonalVocabularyListEntry)
 
     def data(self):
-        return super().data(familiarity=self.familiarity, lemma=self.lemma_id)
+        return super().data(familiarity=self.familiarity, lemma_id=self.lemma_id, lemma=self.lemma.lemma)
 
     def familiarity_range(self):
         # hack for template iteration
@@ -302,20 +319,18 @@ class PersonalVocabularyStats(models.Model):
     five = models.DecimalField(max_digits=5, decimal_places=4, default="0")
 
     def update(self):
-        unique_nodes = list(set([token["node"] for token in self.text.data]))
-        ranked_nodes = [e.node.pk for e in self.vocab_list.entries.filter(node__isnull=False)]
-        unranked_nodes = list(filter(lambda node_id: node_id not in ranked_nodes, unique_nodes))
-
+        unique_lemmas = list(set([token["lemma_id"] for token in self.text.data if token["lemma_id"] is not None]))
+        ranked_lemmas = [e.lemma_id for e in self.vocab_list.entries.filter(lemma_id__isnull=False)]
+        unranked_lemmas = list(filter(lambda lemma_id: lemma_id not in ranked_lemmas, unique_lemmas))
         familiarities = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}
-        for entry in self.vocab_list.entries.filter(familiarity__isnull=False, node__pk__in=unique_nodes):
+        for entry in self.vocab_list.entries.filter(familiarity__isnull=False, lemma__pk__in=unique_lemmas):
             familiarities[str(entry.familiarity)] += 1
-
-        self.unranked = len(unranked_nodes) / len(unique_nodes)
-        self.one = familiarities["1"] / len(unique_nodes)
-        self.two = familiarities["2"] / len(unique_nodes)
-        self.three = familiarities["3"] / len(unique_nodes)
-        self.four = familiarities["4"] / len(unique_nodes)
-        self.five = familiarities["5"] / len(unique_nodes)
+        self.unranked = len(unranked_lemmas) / len(unique_lemmas)
+        self.one = familiarities["1"] / len(unique_lemmas)
+        self.two = familiarities["2"] / len(unique_lemmas)
+        self.three = familiarities["3"] / len(unique_lemmas)
+        self.four = familiarities["4"] / len(unique_lemmas)
+        self.five = familiarities["5"] / len(unique_lemmas)
 
         self.save()
 

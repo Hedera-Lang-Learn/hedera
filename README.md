@@ -251,3 +251,20 @@ $ docker compose run --rm django python manage.py shell -c "import load_latin_gl
 ## Adding a new language
 
 In order to add a new language, you will need to add an entry to `SUPPORTED_LANGUAGES` in `hedera.supported_languages.py`. Every language requires a "code", "verbose_name", "service", and "tokenizer." Language specific services are defined in `lemmatization.services`. Please, review the existing services and tokenizers, and add your language's module.
+
+## Debugging
+
+To debug from within vscode you can enter this line into the file/endpoint you want to debug. [Reference to debugger](https://code.visualstudio.com/docs/editor/debugging) and [debugpy vscode reference](https://code.visualstudio.com/docs/python/debugging)
+```python
+        import debugpy
+
+        try:
+            debugpy.listen(("0.0.0.0", 5678))
+            print("Waiting for debugger attach")
+            debugpy.wait_for_client()
+            debugpy.breakpoint()
+            print('break on this line')
+        except:
+            pass
+
+```

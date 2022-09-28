@@ -28,7 +28,6 @@
         this.$emit('glossChange', { lemma: this.lemma, gloss, active: isChecked });
       },
       onClickLemma() {
-        console.log('lemmaChange', this.lemma.pk, this.lemma.label);
         this.$emit('lemmaChange', this.lemma);
       },
       isGlossActive(gloss) {
