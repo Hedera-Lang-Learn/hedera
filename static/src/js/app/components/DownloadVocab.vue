@@ -14,7 +14,7 @@
       return null;
     }
 
-    let result; 
+    let result;
     let ctr;
     const columnDelimiter = '\t';
     const lineDelimiter = '\n';
@@ -30,7 +30,7 @@
         if (ctr > 0) {
           result += columnDelimiter;
         }
-        const value = (item[key]) ? item[key] : "";
+        const value = (item[key]) ? item[key] : '';
         result += `"${value}"`;
         ctr += 1;
       });
