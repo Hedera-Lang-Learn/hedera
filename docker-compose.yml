@@ -27,7 +27,17 @@ services:
             - localdev
         ports:
             - "6379:6379"
-
+    pdfservice:
+        image: eldarioninc/pdf-service
+        container_name: hedera-pdfservice
+        restart: unless-stopped
+        environment:
+          X_API_KEY: "pdfservice-api-key"
+        networks:
+          - localdev
+        ports:
+          - "9000:9000"
+        command: /bin/sh -c 'exec gunicorn --bind 0.0.0.0:9000 wsgi:app'
     npm:
         image: hedera-django
         build:
@@ -49,6 +59,9 @@ services:
             file: docker-compose-common.yml
             service: django
         container_name: hedera-django
+        environment:
+          PDF_SERVICE_ENDPOINT: "http://pdfservice:9000/pdf"
+          PDF_SERVICE_KEY: "pdfservice-api-key"
         ports:
             - "5678:5678"  # 5678 is default port for debugpy
             - "8000:8000"

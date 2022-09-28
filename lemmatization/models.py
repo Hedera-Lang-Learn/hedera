@@ -105,6 +105,9 @@ class Gloss(models.Model):
             gloss=self.gloss,
         )
 
+    class Meta:
+        ordering = ["lemma", "gloss"]
+
 
 def lookup_form(form, lang) -> List[str]:
     """ Returns a list of lemmas (strings) in frequency order. """

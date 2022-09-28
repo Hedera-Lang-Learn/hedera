@@ -255,11 +255,24 @@ class LemmatizedText(models.Model):
             )
             for token in self.data
         ])
-    """
-    check if user has the filtered_group ids in ther enrolled classes or taught classes
-    Note: only checks if user is related to at least one class with the same text/group id
-    """
+
+    def transform_data_to_glossary(self):
+        """Returns a list of words used in the text with their full glosses."""
+        lemma_ids = [token["lemma_id"] for token in self.data if token.get("lemma_id")]
+        lemma_queryset = Lemma.objects.filter(pk__in=lemma_ids).order_by("label")
+        glossary = []
+        for lemma_object in lemma_queryset:
+            glossary.append({
+                "label": lemma_object.label,
+                "glosses": [gloss_object.gloss for gloss_object in lemma_object.glosses.all()],
+            })
+        return glossary
+
     def is_valid_user(self, user):
+        """
+        check if user has the filtered_group ids in their enrolled classes or taught classes
+        Note: only checks if user is related to at least one class with the same text/group id
+        """
         groups = self.classes.all()
         filtered_groups = groups.filter(texts__in=[self.pk])
         enrolled_classes = user.enrolled_classes.all()

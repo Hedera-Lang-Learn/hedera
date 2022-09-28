@@ -7,7 +7,6 @@ from rest_framework.test import APITestCase
 
 from hedera.supported_languages import SUPPORTED_LANGUAGES
 from hedera.tests import utils
-from lattices.models import LatticeNode, LemmaNode
 from lemmatized_text.models import LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -158,53 +157,6 @@ class BookmarksListAPITest(APITestCase):
 
         content = json.loads(response.content)
         self.assertEqual(new_text.pk, content["data"]["text"]["id"])
-
-
-class LatticeNodesAPITest(APITestCase):
-
-    def setUp(self):
-        test_username = f"test_user_{uuid4()}"
-        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
-        self.lattice_node = LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
-        LemmaNode.objects.create(context="morpheus", lemma="sum", node_id=self.lattice_node.pk)
-        self.client.force_login(user=self.created_user)
-
-    def test_get_related_lattice_nodes(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=sum")
-        success_response = [
-            {
-                "pk": self.lattice_node.pk,
-                "label": "sum, esse, fuī",
-                "gloss": "to be, exist",
-                "canonical": True,
-                "forms": [],
-                "lemmas": [
-                    {
-                        "lemma": "sum",
-                        "context": "morpheus"
-                    }
-                ],
-                "vocabulary_entries": [],
-                "children": [],
-                "parents": []
-            }
-        ]
-        json_response = response.json()["data"]
-        self.assertEqual(json_response[0]["pk"], success_response[0]["pk"])
-        self.assertEqual(json_response[0]["label"], success_response[0]["label"])
-        self.assertEqual(json_response[0]["lemmas"], success_response[0]["lemmas"])
-
-    def test_fail_to_get_related_lattice_nodes(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=ssss")
-        self.assertEqual(len(response.json()["data"]), 0)
-
-    def test_fail_headword_not_provided(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=")
-        self.assertEqual(len(response.json()["data"]), 0)
-
-    def test_fail_headword_query_key_not_provided(self):
-        response = self.client.get("/api/v1/lattice_nodes/")
-        self.assertEqual(response.json()["error"], "Missing headword")
 
 
 class MeAPITest(APITestCase):

@@ -1,5 +1,4 @@
 import json
-import re
 
 from django.db.models import Q
 from django.http import Http404, JsonResponse
@@ -7,9 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
-from lattices.models import LemmaNode
 from lemmatization.models import FormToLemma, Lemma
-# from lattices.utils import get_or_create_nodes_for_form_and_lemmas
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -417,46 +414,6 @@ class PersonalVocabularyQuickAddAPI(APIView):
 
         except Exception as e:
             return JsonResponseBadRequest(data={"error": f"{e}"})
-
-
-class LatticeNodesAPI(APIView):
-
-    def get(self, request):
-        try:
-            headword = self.request.GET.get("headword")
-            if len(headword) == 0:
-                return JsonResponse({"data": []})
-            filtered_headword_iterable = filter(str.isalnum, headword)
-            filtered_headword_string = "".join(filtered_headword_iterable)
-            # [0-9]* includes headword matches with trailing numbers 0 - 9 eg 20 or 2
-            lemmas = LemmaNode.objects.filter(lemma__iregex=rf"\y{re.escape(filtered_headword_string)}[0-9]*\y")
-            lattice_nodes = [lemma.to_dict()["node"] for lemma in lemmas]
-            return JsonResponse({"data": self.filter_lattice_nodes(lattice_nodes)})
-        except TypeError:
-            return JsonResponseBadRequest({"error": "Missing headword"})
-
-    def filter_lattice_nodes(self, lattice_nodes):
-        lattice_node_list = []
-        for node in lattice_nodes:
-            gloss = node["gloss"]
-            if gloss != "from morpheus" and gloss != "morpheus ambiguity":
-                lattice_node_list.append(node)
-            elif len(node["children"]):
-                # checks child nodes appends them to the result
-                for child_node in node["children"]:
-                    if child_node["gloss"] != "from morpheus" and child_node["gloss"] != "morpheus ambiguity":
-                        lattice_node_list.append(child_node)
-        # checks for duplicates lattice nodes
-        seen = set()
-        filtered_results = []
-        for dic in lattice_node_list:
-            key = (dic["pk"])
-            if key in seen:
-                continue
-            filtered_results.append(dic)
-            seen.add(key)
-
-        return filtered_results
 
 
 class JsonResponseBadRequest(JsonResponse):
