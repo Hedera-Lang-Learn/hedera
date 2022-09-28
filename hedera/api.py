@@ -215,7 +215,7 @@ class LemmatizationAPI(APIView):
                 if vocablist_id == "personal":
                     # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
                     familarity = list(vocab_entry.values_list("familiarity", flat=True))
-                    token["familiarity"] = token["resolved"] and familarity[0]
+                    token["familiarity"] = token["resolved"] and familarity and familarity[0]
                 token["inVocabList"] = token["resolved"] and vocab_entry.exists()
         return data
 
