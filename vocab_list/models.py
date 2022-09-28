@@ -49,12 +49,15 @@ def find_lemma(headword):
     if lemma_matches:
         return lemma_matches
     if not lemma_matches:
-        lemma_matches = Lemma.objects.filter(lemma=headword).order_by("rank")
+        lemma_matches = Lemma.objects.filter(lemma=headword).order_by("rank").first()
         if not lemma_matches:
-            formtolemma_matches = FormToLemma.objects.filter(form=headword)
-            lemma_id = formtolemma_matches.values()[0]["lemma_id"]
-            lemma_matches = Lemma.objects.get(id=lemma_id)
-    return lemma_matches or False
+            formtolemma_matches = FormToLemma.objects.filter(form=headword).first()
+            try:
+                lemma_id = formtolemma_matches.lemma_id
+                lemma_matches = Lemma.objects.get(id=lemma_id)
+            except AttributeError:
+                return None
+    return lemma_matches
 
 
 class AbstractVocabList(models.Model):
