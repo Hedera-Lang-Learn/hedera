@@ -55,7 +55,7 @@
             if (this.withFamiliarity) {
               row.familiarity = entry.familiarity;
             }
-            row.lemma_id = entry.lemma;
+            row.lemma_id = entry.lemma_id;
             return row;
           }),
         );
