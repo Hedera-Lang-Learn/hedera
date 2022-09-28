@@ -201,38 +201,22 @@ class LemmatizationAPI(APIView):
 
         # this is checking to see if the token is in the user's personal vocab list
         # it annotates the token with inVocabList=True|False
-        # vocablist_id = self.request.GET.get("vocablist", None)
-        # if vocablist_id is not None:
-        #     if vocablist_id == "personal":
-        #         vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
-        #     else:
-        #         vl = get_object_or_404(VocabularyList, pk=vocablist_id)
-        #     lemma_ids = vl.entries.values_list("lemma__pk", flat=True)
-        #     lemma_node_cache = dict()
-        #
-        #
-        #     for token in data:
-        #         lemma = lemmas_cache.get(token["lemma_id"])
-        #         if lemma is not None:
-        #             if lemma_node_cache.get(lemma.pk) is None:
-        #                 lemma_node_cache[lemma.pk] = [n.pk for n in lemma.related_nodes()]
-        #             related_node_ids = lemma_node_cache[lemma.pk]
-        #             token["inVocabList"] = token["resolved"] and any(item in related_node_ids for item in node_ids)
-        #         else:
-        #             token["inVocabList"] = False
-        #
-        # if self.request.GET.get("personalvocablist", None) is not None:
-        #     vl = get_object_or_404(PersonalVocabularyList, pk=self.request.GET.get("personalvocablist"))
-        #     for token in data:
-        #         token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
-        #         token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
-
+        vocablist_id = self.request.GET.get("vocablist_id", None)
+        vocablist = None
+        if vocablist_id is not None:
+            vocablist = get_any_vocablist_by_id(self.request.user.id, text.lang, vocablist_id)
         for index, token in enumerate(data):
             token["tokenIndex"] = index
             lemma = lemmas_cache.get(token["lemma_id"])
             if lemma is not None:
                 token.update(lemma.gloss_data())
-
+            if vocablist_id is not None:
+                vocab_entry = vocablist.entries.filter(lemma_id=token["lemma_id"])
+                if vocablist_id == "personal":
+                    # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
+                    familarity = list(vocab_entry.values_list("familiarity", flat=True))
+                    token["familiarity"] = token["resolved"] and familarity and familarity[0]
+                token["inVocabList"] = token["resolved"] and vocab_entry.exists()
         return data
 
     def get_data(self):
@@ -305,7 +289,6 @@ class VocabularyListEntryAPI(APIView):
     def post(self, request, *args, **kwargs):
         entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
-
         if action == "link":
             data = json.loads(request.body)
             lemma = get_object_or_404(Lemma, pk=data["lemma"])
@@ -368,14 +351,13 @@ class PersonalVocabularyListAPI(APIView):
         else:
             lemma = get_object_or_404(Lemma, pk=data["lemmaId"])
             headword = data["headword"]
-            gloss = data["gloss"]
+            definition = data["definition"]
             vl.entries.create(
                 headword=headword,
-                gloss=gloss,
+                definition=definition,
                 familiarity=familiarity,
                 lemma=lemma,
             )
-
         if self.text:
             stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
             stats.update()
@@ -485,3 +467,9 @@ class SupportedLanguagesAPI(APIView):
 
     def get_data(self):
         return LANGUAGES
+
+
+def get_any_vocablist_by_id(user_id, lang, vocablist_id):
+    if vocablist_id == "personal":
+        return get_object_or_404(PersonalVocabularyList, user=user_id, lang=lang)
+    return get_object_or_404(VocabularyList, pk=vocablist_id)

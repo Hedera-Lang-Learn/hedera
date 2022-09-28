@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container" :class="{'read-mode': readMode}">
+  <div class="app-container" :class="{ 'read-mode': readMode }">
     <div class="row">
       <div class="col-8">
         <LemmatizedText
@@ -12,17 +12,48 @@
         <BookmarkTextButton :text-id="textId"></BookmarkTextButton>
         <div>
           <div class="nav nav-tabs mb-3">
-            <li class="nav-item"><a href class="nav-link" :class="{active: !readMode}" @click.prevent="readMode = false">Familiarity</a></li>
-            <li class="nav-item"><a href class="nav-link" :class="{active: readMode}" @click.prevent="readMode = true">Glosses</a></li>
+            <li class="nav-item">
+              <a
+                href
+                class="nav-link"
+                :class="{ active: !readMode }"
+                @click.prevent="readMode = false"
+                >Familiarity</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href
+                class="nav-link"
+                :class="{ active: readMode }"
+                @click.prevent="readMode = true"
+                >Glosses</a
+              >
+            </li>
           </div>
         </div>
         <div class="glosses" v-if="readMode">
           <div class="text-right">
-            <DownloadVocab v-if="glosses" :glosses="glosses" :with-familiarity="false" />
+            <DownloadVocab
+              v-if="glosses"
+              :glosses="glosses"
+              :with-familiarity="false"
+            />
           </div>
-          <div class="glossed-token" :class="{selected: selectedToken && gloss.node === selectedToken.node }" v-for="gloss in glosses" :key="gloss.pk">
-            <span class="token">{{ gloss.label }}</span>
-            <span class="gloss">{{ gloss.gloss }}</span>
+          <div
+            class="glossed-token"
+            :class="{
+              selected: selectedToken && selectedToken.node
+            }"
+            v-for="token in glosses"
+            :key="token.pk"
+          >
+            <span class="token">{{ token.label }}</span>
+            <span class="gloss">{{ token.glosses[0].gloss }}</span>
+            <!-- commented out code for multiple glosses -->
+            <!-- <span class="gloss" v-for="gloss in token.glosses" :key="gloss.pk"
+              >{{ gloss.gloss }}
+            </span> -->
           </div>
         </div>
         <div class="xxxposition-fixed" v-else>
@@ -40,19 +71,30 @@
             <TextFamiliarity v-if="ranks" :ranks="ranks" />
 
             <div class="mb-5">
-              <a href @click.prevent="toggleFamiliarity">{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity in Text</a>
+              <a href @click.prevent="toggleFamiliarity"
+                >{{ showFamiliarity ? 'Hide' : 'Show' }} Familiarity in Text</a
+              >
             </div>
 
             <div v-if="selectedNode" class="selection-controls">
               <div class="mb-3 selected-token-wrapper">
                 <span class="selected-token">{{ selectedToken.word }}</span>
-                <a href @click.prevent="revealGloss = !revealGloss">{{ revealGloss ? 'Hide' : 'Show' }} Gloss</a>
+                <a href @click.prevent="revealGloss = !revealGloss"
+                  >{{ revealGloss ? 'Hide' : 'Show' }} Gloss</a
+                >
               </div>
-              <div class="glossed-token revealable-gloss mb-3" :class="{show: revealGloss}">
+              <div
+                class="glossed-token revealable-gloss mb-3"
+                :class="{ show: revealGloss }"
+              >
                 <span class="token">{{ selectedNode.label }}</span>
-                <span class="gloss">{{ selectedNode.gloss }}</span>
+                <span class="gloss">{{ selectedNode.glosses[0].gloss }}</span>
               </div>
-              <FamiliarityRating class="familiarity-rating" :value="selectedNodeRating" @input="onRatingChange" />
+              <FamiliarityRating
+                class="familiarity-rating"
+                :value="selectedNodeRating"
+                @input="onRatingChange"
+              />
             </div>
             <VocabularyEntries class="at-root" :vocabEntries="vocabEntries" />
           </div>
@@ -63,7 +105,13 @@
 </template>
 <script>
   import {
-    FETCH_TOKENS, FETCH_PERSONAL_VOCAB_LIST, FETCH_TEXT, CREATE_VOCAB_ENTRY, UPDATE_VOCAB_ENTRY, FETCH_ME, FETCH_BOOKMARKS,
+    FETCH_TOKENS,
+    FETCH_PERSONAL_VOCAB_LIST,
+    FETCH_TEXT,
+    CREATE_VOCAB_ENTRY,
+    UPDATE_VOCAB_ENTRY,
+    FETCH_ME,
+    FETCH_BOOKMARKS,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -99,13 +147,18 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.text.lang }));
+          this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
+            lang: this.text.lang,
+          }));
         },
       },
       selectedVocabList: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, personalVocabList: this.selectedVocabList });
+          this.$store.dispatch(FETCH_TOKENS, {
+            id: this.textId,
+            personalVocabListId: this.selectedVocabListId,
+          });
         },
       },
       selectedNode: {
@@ -123,7 +176,7 @@
         this.showFamiliarity = !this.showFamiliarity;
       },
       onRatingChange(rating) {
-        const { label, gloss } = this.selectedNode;
+        const { label, glosses } = this.selectedNode;
 
         this.selectedNodeRating = rating;
         if (this.personalVocabEntry) {
@@ -131,14 +184,14 @@
             entryId: this.personalVocabEntry.id,
             familiarity: rating,
             headword: label,
-            gloss,
+            definition: glosses[0].gloss,
           });
         } else {
           this.$store.dispatch(CREATE_VOCAB_ENTRY, {
-            nodeId: this.selectedNode.pk,
+            lemmaId: this.selectedNode.pk,
             familiarity: rating,
             headword: label,
-            gloss,
+            definition: glosses[0].gloss,
           });
         }
       },
@@ -155,10 +208,20 @@
         return this.$store.state.text;
       },
       uniqueNodes() {
-        return [...new Set(this.tokens.map((token) => token.node))];
+        return [
+          ...new Set(
+            this.tokens
+              .map((token) => token.lemma_id)
+              .filter((token) => token !== null),
+          ),
+        ];
       },
       ranks() {
-        return this.personalVocabList && this.personalVocabList.statsByText[this.$store.state.textId];
+        return (
+          this.$store.state.textId
+          && this.personalVocabList.statsByText
+          && this.personalVocabList.statsByText[this.$store.state.textId]
+        );
       },
       tokens() {
         return this.$store.state.tokens;
@@ -167,7 +230,14 @@
         return this.$store.state.personalVocabList;
       },
       personalVocabEntry() {
-        return this.selectedNode && this.personalVocabList && this.personalVocabList.entries && this.personalVocabList.entries.filter((e) => e.node === this.selectedNode.pk)[0];
+        return (
+          this.selectedNode
+          && this.personalVocabList
+          && this.personalVocabList.entries
+          && this.personalVocabList.entries.filter(
+            (e) => e.lemma_id === this.selectedNode.pk,
+          )[0]
+        );
       },
       vocabEntries() {
         return this.selectedNode && this.selectedNode.vocabulary_entries;
@@ -176,23 +246,35 @@
         return this.$store.state.selectedToken;
       },
       selectedNode() {
-        return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+        return (
+          this.selectedToken
+          && this.$store.state.lemmas[this.selectedToken.lemma_id]
+        );
       },
       knownEntries() {
         return this.personalVocabList.entries.filter((e) => e.familiarity > 2);
       },
       glosses() {
         return this.uniqueNodes
-          .filter((node) => this.knownEntries.filter((k) => k.node === node).length === 0)
-          .map((node) => this.tokens.filter((t) => t.node === node)[0] || null)
-          .filter((t) => t !== null && t.gloss !== null && t.resolved !== 'unresolved');
+          .filter(
+            (lemmaId) => this.knownEntries.filter((k) => k.lemma_id === lemmaId).length === 0,
+          )
+          .map(
+            (lemmaId) => this.tokens.filter((t) => t.lemma_id === lemmaId)[0] || null,
+          )
+          .filter(
+            (t) => t !== null
+              && t.resolved !== 'unresolved'
+              && t.glosses
+              && t.glosses.length !== 0,
+          );
       },
     },
   };
 </script>
 
 <style lang="scss">
-@import "../../scss/config";
+@import '../../scss/config';
 .read-mode-toggle {
   text-align: center;
   label {
@@ -201,7 +283,7 @@
 
   margin-bottom: 25px;
   .btn-group {
-    background: #FFF;
+    background: #fff;
   }
 }
 .vocab-entries.at-root {
@@ -277,47 +359,47 @@
     }
   }
 }
-  .glossed-token {
-    font-family: 'Noto Serif';
-    font-size: 13pt;
+.glossed-token {
+  font-family: 'Noto Serif';
+  font-size: 13pt;
 
-    &.selected {
-      border-width: 0;
-      background: $highlight;
-      padding: 0 0.5rem;
-      margin: 0 -0.5rem;
-      .gloss {
-        color: $gray-800;
-      }
-    }
-    &.revealable-gloss {
-      opacity: 0;
-      &.show {
-        opacity: 1;
-      }
-    }
-    .token {
-    }
+  &.selected {
+    border-width: 0;
+    background: $highlight;
+    padding: 0 0.5rem;
+    margin: 0 -0.5rem;
     .gloss {
-      font-style: italic;
-      color: $gray-600;
-      font-size: 11pt;
+      color: $gray-800;
+    }
+  }
+  &.revealable-gloss {
+    opacity: 0;
+    &.show {
+      opacity: 1;
     }
   }
 
-  .familiarity-rating {
-    position: relative;
-    .help-text {
-      position: absolute;
-      top: 50px;
-      left: 0;
-      color: $gray-700;
-      background: #FFF;
-      padding: 2px 8px;
-      border: 1px solid #DDD;
-      border-radius: 4px;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-      z-index: 9999;
-    }
+  .gloss {
+    font-style: italic;
+    color: $gray-600;
+    font-size: 11pt;
+    padding-left: 12px;
   }
+}
+
+.familiarity-rating {
+  position: relative;
+  .help-text {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    color: $gray-700;
+    background: #fff;
+    padding: 2px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    z-index: 9999;
+  }
+}
 </style>
