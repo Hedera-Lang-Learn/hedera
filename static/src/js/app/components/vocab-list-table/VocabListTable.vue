@@ -4,7 +4,7 @@
         <col style="width:20%">
         <col style="width:80%">
     </colgroup>
-    <tr><th>Headword</th><th>Gloss</th><th v-if="showIds">Lemma Link</th><th></th></tr>
+    <tr><th>Headword</th><th>Definition</th><th v-if="showIds">Lemma ID</th><th></th></tr>
     <VocabListEntryRow
       v-for="(entry, index) in entries" :key="`${index}-${entry.id}`"
       :selected="selectedIndex === index"

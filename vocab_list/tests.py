@@ -11,17 +11,21 @@ from .models import (
 )
 
 
-vocab_list_tsv_content = b"""\
-melon\tarmor
-foo\tbar
-bin\tbash
-hello\tworld"""
+vocab_list_tsv_content = (
+    b"headword\tdefinition\n"
+    b"melon\tarmor\n"
+    b"foo\tbar\n"
+    b"bin\tbash\n"
+    b"hello\tworld\n"
+)
 
 dupe_vocab_list_tsv_content = b"""\
+headword\tdefinition
 quam\thow
 quam\thow"""
 
 dupe_headword_list_tsv_content = b"""\
+headword\tdefinition
 quam\tas possible as
 quam\thow
 quam\tthan"""
@@ -75,13 +79,13 @@ class VocabularyListAndEntryTests(TestCase):
         entry = VocabularyListEntry.objects.filter(vocabulary_list=self.vocab_list)
         expected_data = {
             "headword": "melon",
-            "gloss": "armor",
-            "node": None
+            "definition": "armor",
+            "lemma": None
         }
-        found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "gloss", "node")))
+        found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "definition", "lemma")))
         self.assertEqual(len(found), 1)
 
-    def test_duplicate_headword_and_gloss_tsv(self):
+    def test_duplicate_headword_and_definition_tsv(self):
         dup_headword_vocab_list = VocabularyList(
             lang="lat",
             title="duplicate headwords",
@@ -90,11 +94,11 @@ class VocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
         self.assertEqual(len(found_match), 1)
 
-    def test_duplicate_headword_diff_gloss_tsv(self):
+    def test_duplicate_headword_diff_definition_tsv(self):
         dup_headword_vocab_list = VocabularyList(
             lang="lat",
             title="duplicate headwords",
@@ -103,7 +107,7 @@ class VocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
         self.assertEqual(len(found_match), 3)
 
@@ -126,22 +130,22 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         expected_entries = [
             {
                 "headword": "bin",
-                "gloss": "bash",
+                "definition": "bash",
                 "familiarity": 2,
             },
             {
                 "headword": "foo",
-                "gloss": "bar",
+                "definition": "bar",
                 "familiarity": 2,
             },
             {
                 "headword": "hello",
-                "gloss": "world",
+                "definition": "world",
                 "familiarity": 2,
             },
             {
                 "headword": "melon",
-                "gloss": "armor",
+                "definition": "armor",
                 "familiarity": 2,
             }
         ]
@@ -154,14 +158,14 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         entry = PersonalVocabularyListEntry.objects.filter(vocabulary_list=self.vocab_list)
         expected_data = {
             "headword": "melon",
-            "gloss": "armor",
+            "definition": "armor",
             "familiarity": 2,
-            "node": None
+            "lemma": None
         }
-        found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "gloss", "familiarity", "node")))
+        found = list(filter(lambda vocab_dict: vocab_dict == expected_data, entry.values("headword", "definition", "familiarity", "lemma")))
         self.assertEqual(len(found), 1)
 
-    def test_duplicate_headword_and_gloss_tsv(self):
+    def test_duplicate_headword_and_definition_tsv(self):
         user = create_user("donkeykong", "donkeykong@fake.com", "password")
         dup_headword_vocab_list = PersonalVocabularyList(
             lang="lat",
@@ -170,11 +174,11 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
         self.assertEqual(len(found_match), 1)
 
-    def test_duplicate_headword_diff_gloss_tsv(self):
+    def test_duplicate_headword_diff_definition_tsv(self):
         user = create_user("diddykong", "diddykong@fake.com", "password")
         dup_headword_vocab_list = PersonalVocabularyList(
             lang="lat",
@@ -183,5 +187,5 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         dup_headword_vocab_list.save()
         dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
-        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "gloss")))
+        found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
         self.assertEqual(len(found_match), 3)

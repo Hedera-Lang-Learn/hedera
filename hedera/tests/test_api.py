@@ -7,7 +7,6 @@ from rest_framework.test import APITestCase
 
 from hedera.supported_languages import SUPPORTED_LANGUAGES
 from hedera.tests import utils
-from lattices.models import LatticeNode, LemmaNode
 from lemmatized_text.models import LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -25,7 +24,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         data = {
             "familiarity": 1,
             "headword": "testers",
-            "gloss": "therefore",
+            "definition": "therefore",
             "vocabulary_list_id": self.personal_vocab_list.id
         }
         self.personal_vocab_list_entry = PersonalVocabularyListEntry.objects.create(**data)
@@ -44,7 +43,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_post_personal_vocabulary_quick_add_api_with_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": self.personal_vocab_list.id,
         }
@@ -54,7 +53,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_post_personal_vocabulary_quick_add_api_no_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": None,
             "lang": "lat"
@@ -65,7 +64,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_no_id_no_lang(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": None
         }
@@ -76,7 +75,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_missing_vocab_list_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
@@ -84,14 +83,14 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
 
     def test_fail_post_personal_vocabulary_quick_add_api_missing_familiarity(self):
         payload = {
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": self.personal_vocab_list.id,
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 400)
 
-    def test_fail_post_personal_vocabulary_quick_add_api_missing_gloss(self):
+    def test_fail_post_personal_vocabulary_quick_add_api_missing_definition(self):
         payload = {
             "familiarity": 1,
             "headword": "sum",
@@ -103,7 +102,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_missing_headword(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "vocabulary_list_id": self.personal_vocab_list.id
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
@@ -158,53 +157,6 @@ class BookmarksListAPITest(APITestCase):
 
         content = json.loads(response.content)
         self.assertEqual(new_text.pk, content["data"]["text"]["id"])
-
-
-class LatticeNodesAPITest(APITestCase):
-
-    def setUp(self):
-        test_username = f"test_user_{uuid4()}"
-        self.created_user = User.objects.create_user(username=test_username, email=f"{test_username}@test.com", password="password")
-        self.lattice_node = LatticeNode.objects.create(label="sum, esse, fuī", canonical=True, gloss="to be, exist")
-        LemmaNode.objects.create(context="morpheus", lemma="sum", node_id=self.lattice_node.pk)
-        self.client.force_login(user=self.created_user)
-
-    def test_get_related_lattice_nodes(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=sum")
-        success_response = [
-            {
-                "pk": self.lattice_node.pk,
-                "label": "sum, esse, fuī",
-                "gloss": "to be, exist",
-                "canonical": True,
-                "forms": [],
-                "lemmas": [
-                    {
-                        "lemma": "sum",
-                        "context": "morpheus"
-                    }
-                ],
-                "vocabulary_entries": [],
-                "children": [],
-                "parents": []
-            }
-        ]
-        json_response = response.json()["data"]
-        self.assertEqual(json_response[0]["pk"], success_response[0]["pk"])
-        self.assertEqual(json_response[0]["label"], success_response[0]["label"])
-        self.assertEqual(json_response[0]["lemmas"], success_response[0]["lemmas"])
-
-    def test_fail_to_get_related_lattice_nodes(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=ssss")
-        self.assertEqual(len(response.json()["data"]), 0)
-
-    def test_fail_headword_not_provided(self):
-        response = self.client.get("/api/v1/lattice_nodes/?headword=")
-        self.assertEqual(len(response.json()["data"]), 0)
-
-    def test_fail_headword_query_key_not_provided(self):
-        response = self.client.get("/api/v1/lattice_nodes/")
-        self.assertEqual(response.json()["error"], "Missing headword")
 
 
 class MeAPITest(APITestCase):

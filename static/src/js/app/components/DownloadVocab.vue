@@ -1,8 +1,8 @@
 <template>
   <a
     class="btn btn-sm btn-light"
-    :href="glossesDownload"
-    download="glosses.csv"
+    :href="VocabListDownload"
+    download="personal_vocab_list.csv"
   >
     <i class="fa fa-fw fa-download" aria-hidden="true" /> Export
   </a>
@@ -16,7 +16,7 @@
 
     let result;
     let ctr;
-    const columnDelimiter = ',';
+    const columnDelimiter = '\t';
     const lineDelimiter = '\n';
     const keys = Object.keys(data[0]);
 
@@ -30,7 +30,8 @@
         if (ctr > 0) {
           result += columnDelimiter;
         }
-        result += `"${item[key]}"`;
+        const value = (item[key]) ? item[key] : '';
+        result += `"${value}"`;
         ctr += 1;
       });
       result += lineDelimiter;
@@ -45,21 +46,16 @@
       personalVocabList() {
         return this.$store.state.personalVocabList;
       },
-      glossesDownload() {
+      VocabListDownload() {
         const data = toCSV(
-          this.glosses.map((g) => {
-            const row = { label: g.label };
+          this.glosses.map((entry) => {
+            const row = {};
+            row.headword = entry.headword;
+            row.definition = entry.definition;
             if (this.withFamiliarity) {
-              const entry = this.personalVocabList.entries.filter(
-                (e) => e.lemma_id === g.lemma_id,
-              );
-              row.familiarity = (entry[0] && entry[0].familiarity) || '';
+              row.familiarity = entry.familiarity;
             }
-            if (g.definition) {
-              row.definition = g.definition;
-            } else if (g.glosses.length > 0) {
-              row.gloss = g.glosses[0].gloss;
-            }
+            row.lemma_id = entry.lemma_id;
             return row;
           }),
         );
