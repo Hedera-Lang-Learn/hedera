@@ -24,7 +24,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
         data = {
             "familiarity": 1,
             "headword": "testers",
-            "gloss": "therefore",
+            "definition": "therefore",
             "vocabulary_list_id": self.personal_vocab_list.id
         }
         self.personal_vocab_list_entry = PersonalVocabularyListEntry.objects.create(**data)
@@ -43,7 +43,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_post_personal_vocabulary_quick_add_api_with_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": self.personal_vocab_list.id,
         }
@@ -53,7 +53,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_post_personal_vocabulary_quick_add_api_no_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": None,
             "lang": "lat"
@@ -64,7 +64,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_no_id_no_lang(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": None
         }
@@ -75,7 +75,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_missing_vocab_list_id(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
@@ -83,14 +83,14 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
 
     def test_fail_post_personal_vocabulary_quick_add_api_missing_familiarity(self):
         payload = {
-            "gloss": "something",
+            "definition": "something",
             "headword": "sum",
             "vocabulary_list_id": self.personal_vocab_list.id,
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 400)
 
-    def test_fail_post_personal_vocabulary_quick_add_api_missing_gloss(self):
+    def test_fail_post_personal_vocabulary_quick_add_api_missing_definition(self):
         payload = {
             "familiarity": 1,
             "headword": "sum",
@@ -102,7 +102,7 @@ class PersonalVocabularyQuickAddAPITest(APITestCase):
     def test_fail_post_personal_vocabulary_quick_add_api_missing_headword(self):
         payload = {
             "familiarity": 1,
-            "gloss": "something",
+            "definition": "something",
             "vocabulary_list_id": self.personal_vocab_list.id
         }
         response = self.client.post("/api/v1/personal_vocab_list/quick_add/", json.dumps(payload), content_type="application/json")

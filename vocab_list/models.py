@@ -1,6 +1,9 @@
+import csv
+import json
 import unicodedata
 
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -29,18 +32,55 @@ def link_vl_node(model, pk):
     obj.link()
 
 
-def clean(headword, gloss):
-    """Expect a headword and gloss, i.e., two columns,
-    & additional columns will be ingnored."""
-    return (headword.strip().strip('"'), gloss.strip().strip('"'))
+def validate_lines(lines: list, entry_model: models.Model) -> list:
+    """
+    Make sure that the provided lines are unique, and that they have only the
+    metadata fields that are valid for the given `entry_model`.
 
+    Args:
+        lines: A list of dicts representing new vocabulary entries to be added.
+            The dicts are expected to be in {fieldName: value} format, as this
+            function will compare those field names with a list of field names
+            from the model and remove any pairs where the key is not a valid
+            field name.
+        entry_model: The model for the vocabulary list entry that will be used.
+            This should inherit from `AbstractVocabListEntry`
+    """
+    # Remove any empty values from lines dicts
+    lines = [{k: v for k, v in line.items() if v} for line in lines]
 
-def parse_line(idx, line):
-    try:
-        columns = line.decode("utf-8").strip().split("\t")
-    except UnicodeDecodeError:
-        return ("Line " + str(idx), "Bad Data")
-    return clean(*columns)
+    # Make sure that lines aren't repeated,
+    # method described in https://stackoverflow.com/a/11092607
+    unique_line_strings = set([json.dumps(line, sort_keys=True) for line in lines])
+    unique_lines = [json.loads(linestring) for linestring in unique_line_strings]
+    if len(unique_lines) == 0:
+        # As far as I can tell, there's no proper logging in the project, but there probably should be
+        print(f"No unique lines found in lines: {list(lines)}")
+        return []
+
+    # lowercase all the keys on the unique lines
+    for i, line in enumerate(unique_lines):
+        unique_lines[i] = {k.lower(): v for k, v in line.items()}
+
+    # get the fields that exist in the model
+    model_fields = [f.name for f in entry_model._meta.get_fields()]
+    # check for foreign key fields and add "_id" to the end of the field name
+    for i, field in enumerate(model_fields):
+        fieldType = entry_model._meta.get_field(field).get_internal_type()
+        if fieldType == "ForeignKey":
+            model_fields[i] = model_fields[i] + "_id"
+
+    # valid fields are the ones that exist in the uploaded data
+    # since we're using dictreader, all lines should have the same keys,
+    # so we only need to check against the first one.
+    valid_fields = list(filter(lambda x: x in unique_lines[0], model_fields))
+
+    # Filtering each line down to a dict that just has the fields in valid fields
+    # meaning it won't try to add data to fields that don't exist or that it can't add to
+    for i, line in enumerate(unique_lines):
+        unique_lines[i] = {fieldname: line[fieldname] for fieldname in valid_fields if fieldname in line}
+
+    return unique_lines
 
 
 def find_lemma(headword):
@@ -87,37 +127,59 @@ class AbstractVocabList(models.Model):
         """
         return languages.get(part3=self.lang).name
 
-    def _create_entries(self, new_headwords, entry_model, extra_attrs):
+    def _create_entries(self, lines: csv.DictReader, entry_model: models.Model, familiarity: int = 0) -> list:
         """
-        Parameters: new_headwords (list), entry_model (class), extra_attrs (dict)
-        Returns: list of vocab list entry objects
-        """
-        return [
-            entry_model(
-                vocabulary_list=self,
-                _order=idx,
-                headword=line[0],
-                definition=line[1],
-                **extra_attrs
-            )
-            for idx, line in enumerate(new_headwords)
-        ]
+        Creates vocab list entries from provided lines.
 
-    def load_tab_delimited(self, fd, entry_model, extra_attrs={}):
+        New vocab list entries are created with the provided model, since there
+        are different models for personal vocab lists and regular vocab lists.
+        Ensures that new entries are not duplicates with the `get_or_create()`
+        function off of `entry_model.objects`.
+
+        Args:
+            lines: List of dicts corresponding to entries to be created. This
+                function assumes that the dict keys have already been
+                validated, so that they should only contain values that can be
+                added to the provided data model.
+            entry_model: Django model that the vocab list entries should be
+                created as. The model should inherit from
+                `AbstractVocabListEntry`
+            familiarity: A familiarity score to use as a default if none is
+                provided. Defaults to zero, in which case familiarity scores
+                won't be taken into account.
+        """
+        # If using familiarity scores, set a default value on each line if
+        # familiarity is not set.
+        if familiarity > 0:
+            for line in lines:
+                if "familiarity" in line:
+                    line["familiarity"] = line["familiarity"] or familiarity
+                else:
+                    line["familiarity"] = familiarity
+
+        # Get or create the entries
+        entries = [entry_model.objects.get_or_create(
+            vocabulary_list=self,
+            defaults={
+                "_order": 1
+            },
+            **line
+        )[0] for line in lines]
+        return entries
+
+    def load_tab_delimited(self, fd, entry_model: models.Model, familiarity: int = 0, **kwargs):
         """
         Method to load vocab lists from tsv upload.
         Parameters: fd (iterable), entry_model (class), extra_attrs (dict)
         Returns: bulk create query of vocab list entries
         """
-        lines = [parse_line(idx, line) for idx, line in enumerate(fd)]
-        # filter out duplicates in the files
-        # how do we know its not a real duplicate vs word duplicate with different definitions? sets!
-        filter_repeats_lines = list(set(lines))
-        existing_headwords = entry_model.objects.filter(vocabulary_list=self).values_list("headword", "definition")
-        # Must do check for matching headword + definition
-        new_headwords = filter(lambda x: x != "" and x not in existing_headwords, filter_repeats_lines)
-        entries = self._create_entries(new_headwords, entry_model, extra_attrs)
-        return entry_model.objects.bulk_create(entries)
+        decoded_file = fd.read().decode("utf-8").splitlines()
+        lines = csv.DictReader(decoded_file, delimiter="\t")
+
+        valid_lines = validate_lines(lines, entry_model)
+
+        entries = self._create_entries(valid_lines, entry_model, familiarity=familiarity)
+        return entries
 
 
 class VocabularyList(AbstractVocabList):
@@ -177,7 +239,7 @@ class PersonalVocabularyList(AbstractVocabList):
         return 10
 
     def load_tab_delimited(self, fd, familiarity):
-        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, extra_attrs={"familiarity": familiarity})
+        return super().load_tab_delimited(fd, PersonalVocabularyListEntry, familiarity=familiarity)
 
     def data(self):
         stats = {}
@@ -192,7 +254,12 @@ class PersonalVocabularyList(AbstractVocabList):
 
 class AbstractVocabListEntry(models.Model):
     """
-    TODO: Add this docstring for real
+    Base class for vocab list entries.
+
+    Vocab list entries are matched against lemma used in texts to determine if
+    a word is known. This base class defines the core elements of the entries
+    and provides functionality to link those entries to their lemma via an
+    async job.
 
     Args:
         headword: Dictionary definition for vocab list entry, expected to look
@@ -206,9 +273,6 @@ class AbstractVocabListEntry(models.Model):
         link_job_ended:
 
     TODO: Add vue components for matching headword lemma
-
-    headword = "sum, esse, fui, futurus" kind of entry
-    See: https://logeion.uchicago.edu/hic and https://logeion.uchicago.edu/sum
     """
     headword = models.CharField(max_length=255)
     lemma = models.ForeignKey(Lemma, null=True, on_delete=models.SET_NULL)
@@ -244,11 +308,16 @@ class AbstractVocabListEntry(models.Model):
             self.link_job = timezone.now()
             self.save()
 
-    def link_job(self, model):
-        j = link_vl_node.delay(model, self.pk)
-        self.link_job_id = j.id
-        self.link_job_started = timezone.now()
-        self.save()
+    def link_job(self):
+        """
+        Call the `link_vl_node` async function passing `self.__class__` as the
+        model so that the `link()` function can be run as a job.
+        """
+        if not self.lemma:
+            j = link_vl_node.delay(self.__class__, self.pk)
+            self.link_job_id = j.id
+            self.link_job_started = timezone.now()
+            self.save()
 
     def data(self, **kwargs):
         return {
@@ -258,49 +327,96 @@ class AbstractVocabListEntry(models.Model):
             **kwargs
         }
 
+    def save(self, *args, **kwargs):
+        """
+        Override default save behavior to run `link_job()` when creating a new
+        instance of a vocabulary list entry. When the entry is new, there is no
+        pk, so save the instance first then run the `link_job`
+        """
+        if not self.pk:
+            super().save(*args, **kwargs)
+            self.link_job()
+        else:
+            super().save(*args, **kwargs)
+
 
 class VocabularyListEntry(AbstractVocabListEntry):
+    """
+    Vocabulary list entries for re-usable vocabulary lists.
+
+    Vocab list entries are matched against lemma used in texts to determine if
+    a word is known. This inherits from `AbstractVocabListEntry` for
+    functionality and adds a link to the parent vocabulary list.
+
+    Args:
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
+            headword will be used to match a lemma in the database.
+        lemma: Foreign key to link to the lemma in the database
+        definition: User-supplied definition for the term, not connected to the
+            gloss for the related lemma.
+        link_job_id:
+        link_job_started:
+        link_job_ended:
+        vocabulary_list: Foreign key for parent vocabulary list
+    """
     vocabulary_list = models.ForeignKey(
         VocabularyList, related_name="entries", on_delete=models.CASCADE)
-    # node = models.ForeignKey(
-    #     LatticeNode, related_name="vocabulary_entries", null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "vocabulary list entry"
         verbose_name_plural = "vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
 
-    def link_job(self):
-        return super().link_job(VocabularyListEntry)
-
     def data(self):
         return super().data(lemma=self.lemma_id)
 
 
 class PersonalVocabularyListEntry(AbstractVocabListEntry):
+    """
+    Vocabulary list entries for user-specific personal vocabulary lists.
+
+    Personal vocab list entries are matched against lemma used in texts to
+    determine if a word is known. This inherits from `AbstractVocabListEntry`
+    for functionality and adds a link to the parent personal vocabulary list.
+    It also adds a `familiarity` attribute to each entry, which is used to
+    indicate how much of a text is well-known.
+
+    Args:
+        headword: Dictionary definition for vocab list entry, expected to look
+            something like "sum, esse, fui, futurus". The first word of the
+            headword will be used to match a lemma in the database.
+        lemma: Foreign key to link to the lemma in the database
+        definition: User-supplied definition for the term, not connected to the
+            gloss for the related lemma.
+        link_job_id:
+        link_job_started:
+        link_job_ended:
+        vocabulary_list: Foreign key for parent personal vocabulary list
+        familiarity: Number from 1 to 5 representing familiarity with the term.
+            1 = I don't recognise this word
+            2 = I recognise this word but don't know what it means
+            3 = I think I know what this word means
+            4 = I definitely know what this word means but could forget soon
+            5 = I know this word so well, I am unlikely to ever forget it
+    """
     vocabulary_list = models.ForeignKey(
         PersonalVocabularyList, related_name="entries", on_delete=models.CASCADE)
-    familiarity = models.IntegerField(null=True)
-    # 1. I don't recognise this word
-    # 2. I recognise this word but don't know what it means
-    # 3. I think I know what this word means
-    # 4. I definitely know what this word means but could forget soon
-    # 5. I know this word so well, I am unlikely to ever forget it
-    # node = models.ForeignKey(LatticeNode, null=True, blank=True, on_delete=models.SET_NULL)
+    familiarity = models.IntegerField(
+        null=True,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+    )
 
     class Meta:
         verbose_name = "personal vocabulary list entry"
         verbose_name_plural = "personal vocabulary list entries"
         order_with_respect_to = "vocabulary_list"
 
-    def link_job(self):
-        return super().link_job(PersonalVocabularyListEntry)
-
     def data(self):
         return super().data(familiarity=self.familiarity, lemma_id=self.lemma_id, lemma=self.lemma.lemma)
 
     def familiarity_range(self):
-        # hack for template iteration
+        """hack for template iteration"""
         return range(self.familiarity)
 
 
