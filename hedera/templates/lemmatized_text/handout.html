@@ -85,10 +85,10 @@
       </div>
       <div class="glossary">
         <h4>Glossary</h4>
-        {% for node in words %}
+        {% for word in glossary %}
           <div class="word">
-            <span class="label">{{ node.label }}</span>
-            <span class="gloss">{{ node.gloss }}</span>
+            <span class="label">{{ word.label }}</span>
+            <span class="gloss">{{ word.glosses | join:"; " }}</span>
           </div>
         {% endfor %}
       </div>
