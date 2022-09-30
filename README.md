@@ -43,6 +43,7 @@ To import latin data:
 docker compose run --rm django python manage.py shell -c "import load_latin_lemma"
 docker compose run --rm django python manage.py shell -c "import load_latin_form_to_lemma"
 docker compose run --rm django python manage.py shell -c "import load_latin_gloss"
+docker compose run --rm django python manage.py shell -c "import load_latin_vocab"
 ```
 
 <!-- TODO UPDATE -->
