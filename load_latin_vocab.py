@@ -9,6 +9,8 @@ Usage:
 
 import csv
 
+from tqdm import tqdm
+
 from vocab_list.models import VocabularyList, VocabularyListEntry
 
 
@@ -29,20 +31,24 @@ CORE_VOCAB_LISTS = [
 
 for core_vocab in CORE_VOCAB_LISTS:
     filename = core_vocab["filename"]
+    filepath = f"import-data/{filename}"
     title = core_vocab["title"]
     description = core_vocab["description"]
     fieldnames = core_vocab["fieldnames"]
 
-    with open(f"import-data/{filename}", newline="") as csvfile:
-        reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+    total_lines = sum(1 for i in open(filepath, "r"))
+    print(f"Begin vocab list import {filename} (size: {total_lines})")
+
+    with open(filepath, newline="") as csvfile:
+        csv_reader = csv.DictReader(csvfile, fieldnames=fieldnames)
 
         vocab_list, vocab_list_created = VocabularyList.objects.get_or_create(
             title=title,
             lang="lat",
-            description=description,
+            defaults={"description": description},
         )
 
-        for row in reader:
+        for row in tqdm(csv_reader, total=total_lines):
             entry, entry_created = VocabularyListEntry.objects.get_or_create(
                 vocabulary_list=vocab_list,
                 headword=row["headword"],
