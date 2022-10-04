@@ -21,7 +21,6 @@ RUN pip install -r base.txt && \
 # Install node dependencies
 COPY ./package-lock.json ./package.json /app/
 RUN npm i && \
-    npm rebuild node-sass && \
     rm package-lock.json package.json
 
 # Copy app files
