@@ -1,4 +1,8 @@
 import json
+import os
+import re
+import sys
+import traceback
 
 from django.db.models import Q
 from django.http import Http404, JsonResponse
@@ -386,7 +390,13 @@ class PersonalVocabularyQuickAddAPI(APIView):
         return lang_list
 
     def check_data(self, data):
-        keys = ["familiarity", "headword", "definition", "vocabulary_list_id"]
+        """Ensures that all expected keys are in the data."""
+        keys = [
+            "familiarity",
+            "headword",
+            "definition",
+            "vocabulary_list_id"
+        ]
         for key in keys:
             if key not in data:
                 return False
@@ -397,8 +407,8 @@ class PersonalVocabularyQuickAddAPI(APIView):
         checked_data = self.check_data(data)
         if checked_data is not True:
             return JsonResponseBadRequest({"error": "Missing required fields"})
-        if "lemma" in data and data["lemma"] is not None:
-            data["lemma"] = get_object_or_404(Lemma, pk=data["lemma"])
+        if "lemma_id" in data and data["lemma_id"] is not None:
+            data["lemma"] = get_object_or_404(Lemma, pk=data["lemma_id"])
         try:
             # to handle new quick add when list doesnt exist create using lang if
             if data["vocabulary_list_id"] is None:
@@ -413,7 +423,15 @@ class PersonalVocabularyQuickAddAPI(APIView):
             return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
 
         except Exception as e:
-            return JsonResponseBadRequest(data={"error": f"{e}"})
+            exception_message = str(e)
+            exception_type, exception_object, exception_traceback = sys.exc_info()
+            filename = os.path.split(exception_traceback.tb_frame.f_code.co_filename)[1]
+            return JsonResponseBadRequest(data={
+                "error": f"{exception_message}",
+                "error_type": exception_type.__name__,
+                "error_traceback": traceback.format_tb(exception_traceback),
+                "error_filename": filename
+            })
 
 
 class JsonResponseBadRequest(JsonResponse):
