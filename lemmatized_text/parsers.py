@@ -24,7 +24,7 @@ class EditedTextHtmlParser(HTMLParser):
         if "follower" in self.current_attrs:
             self.separate_true_followers(self.current_data)
         elif self.current_data is not None:
-            self.current_attrs["node"] = self.parse_node_value()
+            self.current_attrs["lemma_id"] = self.parse_lemma_id_value()
             self.lemmatized_text_data.append(
                 {
                     **self.current_attrs,
@@ -44,7 +44,7 @@ class EditedTextHtmlParser(HTMLParser):
                 if(
                     (self.current_tag is None) or
                     (self.current_tag == "span" and self.current_attrs == {}) or
-                    (self.parse_node_value() not in self.token_lemma_dict[data])
+                    (self.parse_lemma_id_value() not in self.token_lemma_dict[data])
                 ):
                     self.lemmatize_chunk(data)
                 else:
@@ -75,7 +75,7 @@ class EditedTextHtmlParser(HTMLParser):
             self.lemmatized_text_data.append(
                 {
                     "word": "",
-                    "node": None,
+                    "lemma_id": None,
                     "resolved": True,
                     "word_normalized": "",
                     "following": "".join(followers)
@@ -84,13 +84,13 @@ class EditedTextHtmlParser(HTMLParser):
         if(len(text) > 0):
             self.lemmatize_chunk("".join(text))
 
-    def parse_node_value(self):
+    def parse_lemma_id_value(self):
         """
-        Parses the string node value in the current attrs to an integer.
+        Parses the string lemma_id value in the current attrs to an integer.
         Returns int, or None if there is an error
         """
         try:
-            return int(self.current_attrs["node"])
+            return int(self.current_attrs["lemma_id"])
         except (KeyError, ValueError):
             return None
 
