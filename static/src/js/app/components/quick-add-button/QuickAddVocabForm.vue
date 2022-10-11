@@ -286,12 +286,12 @@
        */
       async onSelect(event) {
         if (!Object.hasOwn(this.$store.state.lemmas, event.target.value)) {
-          await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value});
+          await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
         }
         const lemma = this.$store.state.lemmas[event.target.value];
         this.definition = lemma.glosses[0].gloss;
       },
-    }, 
+    },
     computed: {
       // gives access to the state store of personalVocabLangList
       personalVocabLangList() {
@@ -346,9 +346,8 @@
       showLemmaOptionsList() {
         if (!this.lemmaOptions.length) {
           return { display: 'none' };
-        } else {
-          return {};
         }
+        return {};
       },
     },
   };
