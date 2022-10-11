@@ -111,7 +111,6 @@
   import {
     FETCH_PERSONAL_VOCAB_LANG_LIST,
     CREATE_PERSONAL_VOCAB_ENTRY,
-    FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
     SET_LANGUAGE_PREF,
     FETCH_SUPPORTED_LANG_LIST,
@@ -157,7 +156,7 @@
         vocabularyListItem: null,
         headword: null,
         definition: null,
-        errorMessage: "An error has occurred. The entry could not be added.",
+        errorMessage: 'An error has occurred. The entry could not be added.',
         lemmaOptions: [],
         lemmaId: null,
         latticeNodeId: null,
@@ -175,7 +174,7 @@
       resetLatticeNodeId() {
         this.latticeNodeId = null;
       },
-      /* 
+      /*
       Handle form submission. This should add a new vocab entry and link it
       to the selected lemma.
        */
@@ -196,7 +195,7 @@
           vocabularyListId: vocabularyListItem.id,
           familiarity: this.familiarityRating,
           lang: vocabularyListItem.lang,
-          lemma_id: null
+          lemma_id: null,
         };
         if (this.lemmaId) {
           newEntryData.lemma_id = this.lemmaId;
@@ -253,7 +252,7 @@
       async getHeadword() {
         console.log(`!${this.headword}:\tNew getHeadword event`);
         // Don't do anything if headword is empty
-        if (this.headword == "") {
+        if (this.headword === '') {
           return null;
         }
 
@@ -267,21 +266,22 @@
         }
 
         // Get the fetched lemmas from the forms in state
-        // TODO: there is a race condition happening here because state is 
+        // TODO: there is a race condition happening here because state is
         // being accessed before it has been modified if you type too fast.
         try {
           this.lemmaOptions = this.stateForms[this.headword].lemmas;
-        } catch(error) {
-          "This is fine actually? It'll keep trying to access state until it succeeds.";
+        } catch (error) {
+          "This is fine actually? It'll keep trying to access state until it succeeds."; // eslint-disable-line
         }
         // sets first lemma option as the default in select options
         if (this.lemmaOptions.length) {
           const { glosses, pk } = this.lemmaOptions[0];
           this.lemmaId = pk;
-          this.definition = glosses.length ? glosses[0].gloss : "";
+          this.definition = glosses.length ? glosses[0].gloss : '';
         }
+        return 0;
       },
-      /* 
+      /*
       When a lemma is selected, update component variables accordingly
        */
       async onSelect(event) {
@@ -330,7 +330,7 @@
       },
       // gives access to the state store of forms
       stateForms() {
-        const forms = this.$store.state.forms;
+        const { forms } = this.$store.state;
         return forms;
       },
       showLatticeNodeList() {
@@ -339,17 +339,17 @@
         }
         return {};
       },
-      /* 
+      /*
       If there are no lemma options to display, set the style of the container
       to display: none;
        */
       showLemmaOptionsList() {
-        if(!this.lemmaOptions.length) {
+        if (!this.lemmaOptions.length) {
           return { display: 'none' };
         } else {
           return {};
         }
-      }
+      },
     },
   };
 </script>
