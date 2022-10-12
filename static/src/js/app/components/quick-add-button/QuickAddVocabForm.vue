@@ -250,7 +250,6 @@
       headword as a lemma form. Runs on input to the headword field.
        */
       async getHeadword() {
-        console.log(`!${this.headword}:\tNew getHeadword event`);
         // Don't do anything if headword is empty
         if (this.headword === '') {
           return null;
@@ -262,7 +261,6 @@
             form: this.headword,
             lang: this.vocabularyListItem.lang,
           });
-          console.log(`${this.headword}:\tpromise resolved to ${newLemma}`);
         }
 
         // Get the fetched lemmas from the forms in state
