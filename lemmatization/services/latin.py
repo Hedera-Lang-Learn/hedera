@@ -87,6 +87,15 @@ class LatinService(BaseService):
             lemmas = lookup_form(word_normalized.lower(), "lat")
         return lemmas
 
+    def normalize(self, word):
+        """
+        For Latin, normalized words are lowercased and macrons are removed.
+        """
+        word = word.lower()
+        if has_macron(word):
+            word = strip_macrons(word)
+        return word
+
 
 class LatinTokenizer(Tokenizer):
     """Latin tokenizer.

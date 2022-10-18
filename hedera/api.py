@@ -174,10 +174,13 @@ class LemmatizationFormLookupAPI(APIView):
     def get_data(self):
         form = self.kwargs.get("form")
         lang = self.kwargs.get("lang")
+
         # gets list of forms
         forms = FormToLemma.objects.filter(lang=lang, form=form)
         if not forms:
-            forms = FormToLemma.objects.filter(lang=lang, form=form.lower())
+            language_service = SUPPORTED_LANGUAGES[lang].service
+            form_normalized = language_service.normalize(form)
+            forms = FormToLemma.objects.filter(lang=lang, form=form_normalized)
         lemma_list = [form.get_lemma() for form in forms]
         sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
         data = {

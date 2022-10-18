@@ -41,6 +41,12 @@ class BaseService(object):
         """
         raise NotImplementedError("Must provide implementation on a per service basis.")
 
+    def normalize(self, word):
+        """
+        Define a normalization strategy for the language. By default returns the word unchanged.
+        """
+        return word
+
 
 class HttpService(BaseService):
     ENDPOINT = ""
