@@ -338,12 +338,15 @@ class PersonalVocabularyListAPI(APIView):
         vl = self.get_object()
 
         data = json.loads(request.body)
-        familiarity = int(data["familiarity"])
-
+        familiarity = int(data.get("familiarity", 1))
         pk = kwargs.get("pk", None)
         if pk is not None:
             entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
-            entry.familiarity = familiarity
+            # Update based on data payload
+            for field in PersonalVocabularyListEntry._meta.get_fields():
+                data_field = data.get(field.name, None)
+                if data_field is not None:
+                    setattr(entry, field.name, data_field)
             entry.save()
         else:
             lemma = get_object_or_404(Lemma, pk=data["lemmaId"])

@@ -1,3 +1,4 @@
+headword	definition
 ā 1	from (+abl.)
 ā 2	by (+abl.)
 ab 1	from (+abl.)

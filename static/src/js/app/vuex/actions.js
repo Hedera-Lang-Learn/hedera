@@ -52,12 +52,14 @@ export default {
       .catch(logoutOnError(commit));
   },
   // eslint-disable-next-line max-len
-  [UPDATE_VOCAB_ENTRY]: ({ commit, state }, { entryId, familiarity, headword, definition, lang = null }) => {
-    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
+  [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null }) => {
     // eslint-disable-next-line max-len
-    api
-      .updatePersonalVocabList(state.text.id, null, familiarity, headword, definition, entryId, lang, cb)
-      .catch(logoutOnError(commit));
+    const { response, data } = await api.updatePersonalVocabList(state.text.id, null, familiarity, headword, definition, entryId, lang);
+    if (response && response.status >= 400) {
+      return response;
+    }
+    commit(FETCH_PERSONAL_VOCAB_LIST, data);
+    return data;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
     const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
