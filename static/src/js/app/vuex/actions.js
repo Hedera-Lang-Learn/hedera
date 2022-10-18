@@ -59,7 +59,7 @@ export default {
       return response;
     }
     commit(FETCH_PERSONAL_VOCAB_LIST, data);
-    return data;
+    return null;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
     const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);

@@ -233,8 +233,9 @@
         if (response) {
           const { statusText, status } = response;
           this.makeToast(statusText, `Error - ${status}`);
+        } else {
+          this.makeToast(`Successfully Updated Vocabulary ${headword}`, 'Success!');
         }
-        this.makeToast(`Successfully Updated Vocabulary ${headword}`, 'Success!');
         this.editingFields = null;
         this.editingFields = {
           headword: null,
