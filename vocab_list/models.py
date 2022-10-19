@@ -203,7 +203,10 @@ class VocabularyList(AbstractVocabList):
 
     @property
     def link_status(self):
-        return self.entries.filter(link_job_ended__isnull=False).count() / self.entries.count()
+        try:
+            return self.entries.filter(link_job_ended__isnull=False).count() / self.entries.count()
+        except ZeroDivisionError:
+            return 1
 
     class Meta:
         verbose_name = "vocabulary list"
