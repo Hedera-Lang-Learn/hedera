@@ -257,7 +257,7 @@
 
         // Get headword from database if it isn't already in state
         if (!Object.hasOwn(this.$store.state.forms, this.headword)) {
-          const newLemma = await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+          await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
             form: this.headword,
             lang: this.vocabularyListItem.lang,
           });
