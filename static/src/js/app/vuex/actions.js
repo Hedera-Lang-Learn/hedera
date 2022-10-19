@@ -6,6 +6,7 @@ import {
   FETCH_NODE,
   FETCH_LEMMA,
   FETCH_LEMMAS_BY_FORM,
+  FETCH_LEMMAS_BY_PARTIAL_FORM,
   UPDATE_TOKEN,
   SET_TEXT_ID,
   FETCH_VOCAB_LISTS,
@@ -82,6 +83,7 @@ export default {
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
   [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
+  [FETCH_LEMMAS_BY_PARTIAL_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByPartialForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_PARTIAL_FORM, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
     // Fetch the most recent lemma data
     api
@@ -150,9 +152,4 @@ export default {
     api.fetchSupportedLangList((data) => commit(FETCH_SUPPORTED_LANG_LIST, data.data))
       .catch(logoutOnError(commit))
   ),
-  // TODO add suggested node functionality
-  // [FETCH_LATTICE_NODES]: ({commit}, { headword }) => {
-  //   const cb = (data) => commit(FETCH_LATTICE_NODES, data.data);
-  //   return api.fetchLatticeNodes(headword, cb).catch(logoutOnError(commit));
-  // }
 };

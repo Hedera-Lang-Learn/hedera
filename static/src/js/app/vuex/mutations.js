@@ -20,6 +20,7 @@ import {
   DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   FETCH_SUPPORTED_LANG_LIST,
+  FETCH_LEMMAS_BY_PARTIAL_FORM,
 } from '../constants';
 
 export default {
@@ -105,5 +106,9 @@ export default {
   },
   [FETCH_SUPPORTED_LANG_LIST]: (state, data) => {
     state.supportedLanguages = data;
+  },
+  [FETCH_LEMMAS_BY_PARTIAL_FORM]: (state, data) => {
+    const forms = data.data;
+    state.partialMatchForms = [...forms];
   },
 };

@@ -6,6 +6,7 @@ export const SELECT_TOKEN = 'selectToken';
 export const FETCH_NODE = 'fetchNode';
 export const FETCH_LEMMA = 'fetchLemma';
 export const FETCH_LEMMAS_BY_FORM = 'fetchLemmasByForm';
+export const FETCH_LEMMAS_BY_PARTIAL_FORM = 'fetchLemmasByPartialForm';
 export const UPDATE_TOKEN = 'updateToken';
 export const SET_TEXT_ID = 'setTextId';
 export const ADD_LEMMA = 'addLemma';

@@ -433,3 +433,24 @@ def get_any_vocablist_by_id(user_id, lang, vocablist_id):
     if vocablist_id == "personal":
         return get_object_or_404(PersonalVocabularyList, user=user_id, lang=lang)
     return get_object_or_404(VocabularyList, pk=vocablist_id)
+
+
+class PartialMatchFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+        # gets list of forms
+        forms = FormToLemma.objects.filter(lang=lang, form__startswith=form)
+        if not forms:
+            forms = FormToLemma.objects.filter(lang=lang, form__startswith=form.lower())
+        lemma_list = [form.get_lemma() for form in forms]
+        lemma_dict = {}
+        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
+        distinct_lemma_list = []
+        # removing duplicates using a dict lookup
+        for lemma_obj in sorted_lemma_list:
+            lemma_word = lemma_obj["lemma"]
+            if lemma_word not in lemma_dict:
+                lemma_dict[lemma_word] = lemma_obj
+                distinct_lemma_list.append(lemma_obj)
+        return distinct_lemma_list

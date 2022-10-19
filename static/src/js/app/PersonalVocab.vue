@@ -14,17 +14,32 @@
         <template slot="table-row" slot-scope="props">
           <span
             v-if="
-              props.row.lemma &&
-                props.column.field == 'lemma' &&
-                editingFields.entryId == props.row.id
+              props.column.field == 'lemma' &&
+              editingFields.entryId == props.row.id
             "
           >
-            <div>{{ props.row.lemma }}</div>
+            <b-form-input
+              list="my-list-id"
+              class="form-control"
+              v-model="props.row.lemma"
+              v-on:keyup.enter="onEnter"
+              @keyup="
+                changeCell(
+                  props.row[props.column.field],
+                  props.column.field,
+                  props.row.originalIndex,
+                  props.row.familiarity
+                )
+              "
+            ></b-form-input>
+            <datalist id="my-list-id">
+              <option v-for="form in partialMatchForms"  :key="form.pk">{{ form.lemma }}</option>
+            </datalist>
           </span>
           <span
             v-if="
               props.column.field == 'headword' &&
-                editingFields.entryId == props.row.id
+              editingFields.entryId == props.row.id
             "
           >
             <input
@@ -46,7 +61,7 @@
             class="d-flex"
             v-if="
               props.column.field == 'definition' &&
-                editingFields.entryId == props.row.id
+              editingFields.entryId == props.row.id
             "
           >
             <input
@@ -66,7 +81,7 @@
           <div v-if="props.column.field == 'familiarity'" class="d-flex">
             <FamiliarityRating
               :value="props.row.familiarity"
-              @input="rating => onRatingChange(rating, props.row)"
+              @input="(rating) => onRatingChange(rating, props.row)"
             />
             <button
               class="btn btn-sm edit-entry"
@@ -124,6 +139,7 @@
     UPDATE_VOCAB_ENTRY,
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
+    FETCH_LEMMAS_BY_PARTIAL_FORM,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -213,10 +229,16 @@
           lang: this.lang,
         };
       },
-      changeCell(value, field, index, familiarity) {
+      async changeCell(value, field, index, familiarity) {
         this.editingFields[field] = value;
         this.editingFields.index = index;
         this.editingFields.familiarity = familiarity;
+        if (field === 'lemma' && value !== '') {
+          await this.$store.dispatch(FETCH_LEMMAS_BY_PARTIAL_FORM, {
+            form: value,
+            lang: this.lang,
+          });
+        }
       },
       async onSave() {
         this.saving = true;
@@ -234,7 +256,10 @@
           const { statusText, status } = response;
           this.makeToast(statusText, `Error - ${status}`);
         } else {
-          this.makeToast(`Successfully Updated Vocabulary ${headword}`, 'Success!');
+          this.makeToast(
+            `Successfully Updated Vocabulary ${headword}`,
+            'Success!',
+          );
         }
         this.editingFields = null;
         this.editingFields = {
@@ -245,6 +270,7 @@
           familiarity: null,
         };
         this.saving = false;
+        this.forms = [];
       },
       onEnter() {
         this.onSave();
@@ -275,12 +301,15 @@
       personalVocabEntries() {
         return this.personalVocabList && this.personalVocabList.entries;
       },
+      partialMatchForms() {
+        return this.$store.state.partialMatchForms;
+      },
     },
   };
 </script>
 
 <style lang="scss">
-@import '../../scss/config';
+@import "../../scss/config";
 
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
@@ -305,7 +334,6 @@
 
 // other views
 @media only screen and (min-device-width: 813px) {
-
   #td-familiarity-rating {
     display: flex;
     flex-direction: row;

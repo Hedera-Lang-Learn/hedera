@@ -17,4 +17,5 @@ export default {
   latticeNodes: [],
   bookmarks: [],
   supportedLanguages: [],
+  partialMatchForms: [],
 };
