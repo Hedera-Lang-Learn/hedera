@@ -312,9 +312,6 @@
 
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
-  // #td-delete-button {
-  //   padding-left: 0;
-  // }
 
   #td-no-padding-left-right {
     padding-right: 0;
