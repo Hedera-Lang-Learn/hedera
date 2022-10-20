@@ -1,11 +1,11 @@
 Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,Shelmerdine,Part of Speech,Semantic Group
-21,ā,from (+abl.),ab,,,,,,,,Preposition,Place
-21,ā,by (+abl.),ab,,,,,,,,Preposition,Place
-21,ab,from (+abl.),ab,,,,,,,,Preposition,Place
-21,ab,by (+abl.),ab,,,,,,,,Preposition,Place
+21,ā 1,from (+abl.),ab,,,,,,,,Preposition,Place
+21,ā 2,by (+abl.),ab,,,,,,,,Preposition,Place
+21,ab 1,from (+abl.),ab,,,,,,,,Preposition,Place
+21,ab 2,by (+abl.),ab,,,,,,,,Preposition,Place
 553,abeō -īre -iī -itum,go away,,,,FALSE,FALSE,5,,,Verb: Irregular,Motion
-21,abs,from (+abl.),ab,,,,,,,,Preposition,Place
-21,abs,by (+abl.),ab,,,TRUE,FALSE,1,,,Preposition,Place
+21,abs 1,from (+abl.),ab,,,,,,,,Preposition,Place
+21,abs 2,by (+abl.),ab,,,TRUE,FALSE,1,,,Preposition,Place
 445,absum abesse āfuī,"be away, absent",,,,FALSE,FALSE,14,,,Verb: Irregular,Travel
 36,ac,"and in addition, and also, and; (after comparatives) than; simul ac, as soon as; → atque",atque,ac does resolve to dcc atque,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
 614,accēdō -cēdere -cessī -cessum,approach,,,,FALSE,FALSE,5,,,Verb: 3rd Conjugation -ō,Motion
@@ -22,10 +22,10 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 379,adhūc,"thus far, to this point",,,,FALSE,FALSE,,,,Adverb,Place
 279,adsum adesse affuī,be present,,,,TRUE,FALSE,14,,,Verb: Irregular,Place
 987,adveniō -īre -vēnī -ventum,"come to, arrive at",,,,TRUE,FALSE,,,,Verb: 4th Conjugation,Travel
-460,adversum,"facing, opposite, against, opposed (to)",adversus3,which doesn’t show up in Hedera? But this whole situation in Perseus is confusing,,FALSE,FALSE,,,,Adverb,War and Peace
-460,adversum,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
-460,adversus,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Adverb,War and Peace
-460,adversus,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
+460,adversum 1,"facing, opposite, against, opposed (to)",adversus3,which doesn’t show up in Hedera? But this whole situation in Perseus is confusing,,FALSE,FALSE,,,,Adverb,War and Peace
+460,adversum 2,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
+460,adversus 1,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Adverb,War and Peace
+460,adversus 2,"facing, opposite, against, opposed (to)",adversus3,,,,,,,,Preposition,War and Peace
 657,adversus -a -um,"facing, opposed; unfavorable",adversus,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,War and Peace
 986,advertō -vertere -vertī -versum,turn towards,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
 965,aedēs -is f.,building; (pl.) house,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The House
@@ -72,8 +72,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 547,animal -ālis n.,"a living being, an animal",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Animals/Plants
 40,animus -ī m.,"spirit, mind",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
 167,annus -ī m.,year,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Lengths of Time
-112,ante,"before, in front (adv.)",,adv and prep have same morpheus ,,,,,,,Preposition,Time
-112,ante,"before, in front of (prep. + acc.)",,adv and prep have same morpheus ,,FALSE,FALSE,,,,Preposition,Time
+112,ante 1,"before, in front (adv.)",,adv and prep have same morpheus ,,,,,,,Preposition,Time
+112,ante 2,"before, in front of (prep. + acc.)",,adv and prep have same morpheus ,,FALSE,FALSE,,,,Preposition,Time
 787,antequam,before,,,,FALSE,FALSE,,,,Conjunction,Time
 617,antīquus -a -um,"ancient, old-time, former",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Lengths of Time
 837,aperiō aperīre aperuī apertum,open,,,,FALSE,FALSE,,,,Verb: 4th Conjugation,The House
@@ -156,8 +156,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 863,cibus -ī m.,food,,,,FALSE,FALSE,,,,Noun: 2nd Declension,Life and Being
 814,cingō cingere cīnxī cīnctum,"encircle, surround, gird",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,War and Peace
 779,cinis cineris m./f.,"ashes, embers",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Air and Fire
-735,circā,around,,,,FALSE,FALSE,,,,Adverb,Place
-735,circā,around (+acc.),,,,FALSE,FALSE,,,,Preposition,Place
+735,circā 1,around,,,,FALSE,FALSE,,,,Adverb,Place
+735,circā 2,around (+acc.),,,,FALSE,FALSE,,,,Preposition,Place
 590,citō,swiftly,cieo,split from citus ,,,,,,,Adjective: 1st and 2nd Declension,Time
 590,citus -a -um,swift,cieo,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
 471,cīvis -is m./f.,citizen,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
@@ -200,8 +200,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 615,contemnō -temnere -tempsī -temptum,"despise, scorn, disdain",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Emotions
 804,contineō -tinēre -tinuī -tentum,"contain, restrain",,,,FALSE,FALSE,,,,Verb: 2nd Conjugation,Verbs of Compelling/Directing
 494,contingō -tingere -tigī -tactum,"touch, be contiguous to",contingo1,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Place
-271,contrā,"against, opposite",,split from preposition,,TRUE,FALSE,,,,Adverb,Place
-271,contrā,"against, opposite (+acc.)",,,,FALSE,FALSE,,,,Preposition,Place
+271,contrā 1,"against, opposite",,split from preposition,,TRUE,FALSE,,,,Adverb,Place
+271,contrā 2,"against, opposite (+acc.)",,,,FALSE,FALSE,,,,Preposition,Place
 698,conveniō -venīre -vēnī -ventum,"assemble, meet; agree",,,,FALSE,FALSE,,,,Verb: 4th Conjugation,Social Life
 834,convertō -vertere -vertī -versum,"turn about, turn, change",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
 921,convīvium -iī n.,"banquet, feast",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Social Life
@@ -215,8 +215,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 609,crēscō crēscere crēvī crētum,"grow, increase",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Animals/Plants
 475,crīmen -inis n.,"verdict, accusation",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Justice
 769,culpa -ae f.,"guilt, fault, blame",,,,FALSE,FALSE,,,,Noun: 1st Declension,Justice
-10,cum,with (prep. + abl.),cum1,split from conjunction,,FALSE,FALSE,,,,Preposition,Conjunctions/Adverbs
-10,cum,"when, since, although (conjunction + subj.)",cum2,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+10,cum 1,with (prep. + abl.),cum1,split from conjunction,,FALSE,FALSE,,,,Preposition,Conjunctions/Adverbs
+10,cum 2,"when, since, although (conjunction + subj.)",cum2,,,TRUE,FALSE,,,,Conjunction,Conjunctions/Adverbs
 292,cūnctus -a -um,entire all together,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Measurement
 906,cupīdō -inis f.,"desire, eagerness, craving",,,,FALSE,FALSE,,,,Noun: 3rd Declension,Love
 441,cupiō -ere -īvī -ītum,desire,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Love
@@ -706,8 +706,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 853,portō -āre,carry a load,,,,FALSE,FALSE,,,,Verb: 1st Conjugation,Measurement
 487,pōscō pōscere popōscī,"demand, claim; inquire into",,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Speech/Oratory
 23,possum posse potuī,be able,,,,TRUE,FALSE,,,,Verb: Irregular,Making/Doing
-164,post,after (adv.),post1,,,TRUE,FALSE,,,,Adverb,Time
-164,post,after (prep. +acc.),post1,split from adverb. post2 in elementary Lewis,,FALSE,FALSE,,,,Preposition,Time
+164,post 1,after (adv.),post1,,,TRUE,FALSE,,,,Adverb,Time
+164,post 2,after (prep. +acc.),post1,split from adverb. post2 in elementary Lewis,,FALSE,FALSE,,,,Preposition,Time
 964,posteā,afterwards,,,,FALSE,FALSE,,,,Adverb,Time
 877,posterus -a -um,"next, later",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Time
 384,postquam,after,,,,FALSE,FALSE,,,,Conjunction,Time
@@ -765,8 +765,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 336,quā,"where, how",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
 113,quaerō -rere -sīvī -sītum,"seek, inquire",,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Education/Knowledge
 263,quālis -e,of what kind? what?,,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
-29,quam,how?,,,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
-29,quam,(after comparative) than,,split from other quam,,,,,,,Adverb,Pronouns/Interrogatives
+29,quam 1,how?,,,,TRUE,FALSE,,,,Adverb,Pronouns/Interrogatives
+29,quam 2,(after comparative) than,,split from other quam,,,,,,,Adverb,Pronouns/Interrogatives
 644,quamquam,"however, although",,,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
 489,quamvīs,however you like; although,,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
 621,quandō,when?; since,,,,FALSE,FALSE,,,,Adverb,Pronouns/Interrogatives
@@ -785,8 +785,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 126,quīdam quaedam quoddam,"a certain one, someone",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
 136,quidem,"certainly, at least",,,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
 969,quiēscō quiēscere quiēvī quiētum,keep quiet; sleep,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Life and Being
-456,quīn,"indeed, in fact",,,,,,,,,Adverb,Conjunctions/Adverbs
-456,quīn,so that ... not (+ subj.),,split from other quīn,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
+456,quīn 1,"indeed, in fact",,,,,,,,,Adverb,Conjunctions/Adverbs
+456,quīn 2,so that ... not (+ subj.),,split from other quīn,,FALSE,FALSE,,,,Conjunction,Conjunctions/Adverbs
 499,quīppe,"(adv.) indeed, surely",,,,FALSE,FALSE,,,,Adverb,Conjunctions/Adverbs
 212,quis quid,who? what? which?,quis1,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
 12,quisquam quicquam/quidquam,"any (single) person, anyone at all",,,,TRUE,FALSE,,,,Pronoun,Pronouns/Interrogatives
@@ -914,16 +914,16 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 17,sui sibi sē/sēsē,"him- her- itself, themselves",,,,FALSE,FALSE,,,,Pronoun,Pronouns/Interrogatives
 2,sum esse fuī,"be, exist",sum1,,,TRUE,FALSE,,,,Verb: Irregular,Life and Being
 454,sūmō sūmere sūmpsī sūmptum,take up,,,,TRUE,FALSE,,,,Verb: 3rd Conjugation -ō,Motion
-401,super,over (adv.),super2,,,,,,,,Adverb,Place
-401,super,over (prep. +acc.),super2,split from super adverb,,TRUE,FALSE,,,,Preposition,Place
+401,super 1,over (adv.),super2,,,,,,,,Adverb,Place
+401,super 2,over (prep. +acc.),super2,split from super adverb,,TRUE,FALSE,,,,Preposition,Place
 656,superbus -a -um,"overbearing, proud, haughty",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
 714,superī -ōrum m. pl.,"those above, i.e. the gods",superi,"Morpheus offers superi, but L&S just say see superus anyway ",,FALSE,FALSE,,,,Noun: 2nd Declension,Religion
 668,superō -āre,"overcome, surpass, defeat",,,,FALSE,FALSE,,,,Verb: 1st Conjugation,War and Peace
 623,supersum -esse -fuī,"remain, survive; be superfluous (to)",,,,FALSE,FALSE,,,,Verb: Irregular,Place
 99,superus -a -um,"situated above, upper",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Religion
 683,supplicium -ī n.,"punishment, penalty",,,,FALSE,FALSE,,,,Noun: 2nd Declension,Justice
-588,suprā,"above, beyond (adv.)",,,,,,,,,Adverb,Place
-588,suprā,"above, beyond (prep. +acc.)",,split from suprā adverb,,FALSE,FALSE,,,,Preposition,Place
+588,suprā 1,"above, beyond (adv.)",,,,,,,,,Adverb,Place
+588,suprā 2,"above, beyond (prep. +acc.)",,split from suprā adverb,,FALSE,FALSE,,,,Preposition,Place
 570,surgō surgere surrēxī surrēctum,rise,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -ō,Earth and Water
 937,suscipiō -cipere -cēpī ceptum,take up,,,,FALSE,FALSE,,,,Verb: 3rd Conjugation -iō,Verbs of Transport
 762,sustineō sustinēre sustinuī sustentum,"hold up, sustain",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Social Life
@@ -979,8 +979,8 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 92,ubi,"where, when",,,,TRUE,FALSE,,,,Adverb,Place
 178,ūllus -a -um,"any, anyone",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Pronouns/Interrogatives
 432,ultimus -a -um,"farthest, final, last, ultimate",ulter,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Geography
-600,ultrā,"beyond, further (adv.)",ultra1,,,,,,,,Adverb,Place
-600,ultrā,"beyond, further (prep. + acc.)",ultra1,split from adverb. ultra2 seems to be specifically the preposition in the elementary Lewis. ,,FALSE,FALSE,,,,Preposition,Place
+600,ultrā 1,"beyond, further (adv.)",ultra1,,,,,,,,Adverb,Place
+600,ultrā 2,"beyond, further (prep. + acc.)",ultra1,split from adverb. ultra2 seems to be specifically the preposition in the elementary Lewis. ,,FALSE,FALSE,,,,Preposition,Place
 257,umbra -ae f.,"shade, shadow",,,,FALSE,FALSE,,,,Noun: 1st Declension,Vision
 482,umquam,ever,,,,TRUE,FALSE,,,,Adverb,Time
 207,unda -ae f.,"wave, flowing water, water",,,,FALSE,FALSE,,,,Noun: 1st Declension,Earth and Water
@@ -990,10 +990,10 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 82,urbs urbis f.,city,,,,FALSE,FALSE,,,,Noun: 3rd Declension,The City
 527,ūsque,up to; continuously,,,,FALSE,FALSE,,,,Adverb,Time
 446,ūsus -ūs m.,"use, experience",usus2,,,FALSE,FALSE,,,,Noun: 4th Declension,Education/Knowledge
-15,ut,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
-15,ut,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
-15,utī,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
-15,utī,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
+15,ut 1,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,ut 2,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,utī 1,as (+ indic.),ut,single entry for ut/uti with indicative and subjunctive divided into 4,,,,,,,Adverb,Conjunctions/Adverbs
+15,utī 2,"so that, with the result that (+ subj.)",ut,subjunctive use is ut2 with elementary Lewis. single entry for ut/uti with indicative and subjunctive divided into 4,,TRUE,FALSE,,,,Adverb,Conjunctions/Adverbs
 243,uterque utraque utrumque,each of two,uter3,,,FALSE,FALSE,,,,Conjunction,Measurement
 850,ūtilis -e,useful,,,,FALSE,FALSE,,,,Adjective: 3rd Declension,Making/Doing
 330,ūtor ūtī ūsus sum,"use, consume, employ (+ abl.)",,,,TRUE,FALSE,,,,Verb: Deponent,Making/Doing
@@ -1004,7 +1004,6 @@ Frequency Rank,Headword,Definitions,Morpheus,*Comments*,CL5,AG,AL,K&R,Wheelock,S
 539,valeō valēre valuī,"be strong, excel, be valid, prevail",,,,,,,,,Verb: 2nd Conjugation,Social Life
 ,valē,farewell!,,split from valeō,,FALSE,FALSE,,,,,
 674,vagus -a -um,"wandering, shifting",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Travel
-539,valeō valēre valuī,"be strong, excel, be valid, prevail;: farewell!",,,,TRUE,FALSE,,,,Verb: 2nd Conjugation,Social Life
 816,validus -a -um,strong,,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Personality Traits/Characteristics
 856,vanus -a -um,"empty; false, deceitful",,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Deception
 631,varius -a -um,"changing, varied, various",varius1,,,FALSE,FALSE,,,,Adjective: 1st and 2nd Declension,Other Senses
