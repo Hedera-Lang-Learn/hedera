@@ -343,6 +343,9 @@ class PersonalVocabularyListAPI(APIView):
         if pk is not None:
             entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
             # Update based on data payload
+            lemma_id = data.get("lemmaId", None)
+            if lemma_id:
+                data["lemma"] = lemma = get_object_or_404(Lemma, pk=lemma_id)
             for field in PersonalVocabularyListEntry._meta.get_fields():
                 data_field = data.get(field.name, None)
                 if data_field is not None:

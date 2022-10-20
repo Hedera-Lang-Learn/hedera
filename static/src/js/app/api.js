@@ -15,7 +15,9 @@ export default {
   textCancelLemmatization: (id, cb) => axios.post(`${BASE_URL}lemmatized_texts/${id}/cancel/`).then((r) => cb(r.data)),
   fetchPersonalVocabList: (lang, cb) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`).then((r) => cb(r.data)),
   updatePersonalVocabList: (textId, lemmaId, familiarity, headword, definition, entryId, lang) => {
-    let data = { familiarity, headword, definition };
+    let data = {
+      familiarity, headword, definition, lemmaId,
+    };
     if (lang !== null && entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then((r) => r.data).catch((error) => error);
     }

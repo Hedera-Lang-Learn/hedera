@@ -53,9 +53,9 @@ export default {
       .catch(logoutOnError(commit));
   },
   // eslint-disable-next-line max-len
-  [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null }) => {
+  [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
     // eslint-disable-next-line max-len
-    const { response, data } = await api.updatePersonalVocabList(state.text.id, null, familiarity, headword, definition, entryId, lang);
+    const { response, data } = await api.updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, entryId, lang);
     if (response && response.status >= 400) {
       return response;
     }
@@ -83,6 +83,7 @@ export default {
   [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
   [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
   [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
+  // Note: might be slow to looks up partial matches
   [FETCH_LEMMAS_BY_PARTIAL_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByPartialForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_PARTIAL_FORM, data)),
   [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
     // Fetch the most recent lemma data

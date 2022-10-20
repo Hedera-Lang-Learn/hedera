@@ -19,21 +19,18 @@
             "
           >
             <b-form-input
-              list="my-list-id"
+              list="lemma-list-id"
               class="form-control"
               v-model="props.row.lemma"
               v-on:keyup.enter="onEnter"
-              @keyup="
-                changeCell(
-                  props.row[props.column.field],
-                  props.column.field,
-                  props.row.originalIndex,
-                  props.row.familiarity
-                )
-              "
+              @keyup="changeCell(props.column.field, props.row)"
             ></b-form-input>
-            <datalist id="my-list-id">
-              <option v-for="form in partialMatchForms"  :key="form.pk">{{ form.lemma }}</option>
+            <datalist id="lemma-list-id">
+              <option v-for="form in partialMatchForms" :key="form.pk" :value="form.lemma">
+                {{
+                  form.glosses.map((glossObj) => glossObj.gloss).join(", ")
+                }}
+              </option>
             </datalist>
           </span>
           <span
@@ -46,14 +43,7 @@
               class="form-control"
               v-model="props.row.headword"
               v-on:keyup.enter="onEnter"
-              @keyup="
-                changeCell(
-                  props.row[props.column.field],
-                  props.column.field,
-                  props.row.originalIndex,
-                  props.row.familiarity
-                )
-              "
+              @keyup="changeCell(props.column.field, props.row)"
             />
           </span>
 
@@ -68,21 +58,10 @@
               class="form-control"
               v-model="props.row.definition"
               v-on:keyup.enter="onEnter"
-              @keyup="
-                changeCell(
-                  props.row[props.column.field],
-                  props.column.field,
-                  props.row.originalIndex,
-                  props.row.familiarity
-                )
-              "
+              @keyup="changeCell(props.column.field, props.row)"
             />
           </div>
-          <div v-if="props.column.field == 'familiarity'" class="d-flex">
-            <FamiliarityRating
-              :value="props.row.familiarity"
-              @input="(rating) => onRatingChange(rating, props.row)"
-            />
+          <div v-if="props.column.field == 'edit'" class="d-flex edit-width">
             <button
               class="btn btn-sm edit-entry"
               href
@@ -90,7 +69,7 @@
               v-if="editingFields.entryId != props.row.id"
             >
               <i
-                class="fa fa-fw fa-pen-fancy"
+                class="fa fa-fw fa-pen-fancy pen-icon-size"
                 aria-hidden="true"
                 title="Edit Entry"
               />
@@ -122,6 +101,13 @@
               </div>
             </div>
           </div>
+          <div v-if="props.column.field == 'familiarity'" class="d-flex">
+            <FamiliarityRating
+              :value="props.row.familiarity"
+              @input="(rating) => onRatingChange(rating, props.row)"
+            />
+          </div>
+
           <div v-else-if="editingFields.entryId != props.row.id">
             {{ props.formattedRow[props.column.field] }}
           </div>
@@ -178,7 +164,8 @@
           { label: 'Lemma', field: 'lemma' },
           { label: 'Headword', field: 'headword' },
           { label: 'Definition', field: 'definition' },
-          { label: 'Familiarity', field: 'familiarity' },
+          { label: 'Familiarity', field: 'familiarity', width: '10rem' },
+          { label: 'Edit', field: 'edit' },
         ],
         editingIdx: null,
         saving: false,
@@ -188,6 +175,7 @@
           currentIndex: null,
           entryId: null,
           familiarity: null,
+          lemmaId: null,
         },
       };
     },
@@ -220,16 +208,21 @@
         this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
       },
       onEdit(entryId, row) {
-        const { headword, definition, familiarity } = row;
+        const {
+          headword, definition, familiarity, lemma_id: lemmaId,
+        } = row;
         this.editingFields = {
           entryId,
           headword,
           definition,
           familiarity,
           lang: this.lang,
+          lemmaId,
         };
       },
-      async changeCell(value, field, index, familiarity) {
+      async changeCell(field, row) {
+        const value = row[field];
+        const { originalIndex: index, familiarity } = row;
         this.editingFields[field] = value;
         this.editingFields.index = index;
         this.editingFields.familiarity = familiarity;
@@ -238,12 +231,16 @@
             form: value,
             lang: this.lang,
           });
+          const found = this.partialMatchForms.find((el) => el.lemma === value);
+          if (found) {
+            this.editingFields.lemmaId = found.pk;
+          }
         }
       },
       async onSave() {
         this.saving = true;
         const {
-          entryId, headword, definition, familiarity,
+          entryId, headword, definition, familiarity, lemmaId,
         } = this.editingFields;
         const response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId,
@@ -251,6 +248,7 @@
           headword,
           definition,
           lang: this.lang,
+          lemmaId,
         });
         if (response) {
           const { statusText, status } = response;
@@ -268,6 +266,7 @@
           currentIndex: null,
           entryId: null,
           familiarity: null,
+          lemmaId: null,
         };
         this.saving = false;
         this.forms = [];
@@ -338,5 +337,15 @@
     display: flex;
     flex-direction: row;
   }
+}
+.pen-icon-size {
+  width: 40px;
+  height: 38px;
+}
+.edit-width {
+  width: 83px;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 </style>
