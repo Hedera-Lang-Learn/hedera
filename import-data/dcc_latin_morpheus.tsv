@@ -1,11 +1,11 @@
 headword	definition	frequency_rank
-ā 1	from (+abl.)	21
-ā 2	by (+abl.)	21
-ab 1	from (+abl.)	21
-ab 2	by (+abl.)	21
+ā	from (+abl.)	21
+ā2	by (+abl.)	21
+ab	from (+abl.)	21
+ab2	by (+abl.)	21
 abeō -īre -iī -itum	go away	553
-abs 1	from (+abl.)	21
-abs 2	by (+abl.)	21
+abs	from (+abl.)	21
+abs2	by (+abl.)	21
 absum abesse āfuī	be away, absent	445
 ac	and in addition, and also, and; (after comparatives) than; simul ac, as soon as; → atque	36
 accēdō -cēdere -cessī -cessum	approach	614
@@ -22,10 +22,10 @@ adhibeō -hibēre -hibuī -hibitum	apply	959
 adhūc	thus far, to this point	379
 adsum adesse affuī	be present	279
 adveniō -īre -vēnī -ventum	come to, arrive at	987
-adversum 1	facing, opposite, against, opposed (to)	460
-adversum 2	facing, opposite, against, opposed (to)	460
-adversus 1	facing, opposite, against, opposed (to)	460
-adversus 2	facing, opposite, against, opposed (to)	460
+adversum	facing, opposite, against, opposed (to)	460
+adversum2	facing, opposite, against, opposed (to)	460
+adversus	facing, opposite, against, opposed (to)	460
+adversus2	facing, opposite, against, opposed (to)	460
 adversus -a -um	facing, opposed; unfavorable	657
 advertō -vertere -vertī -versum	turn towards	986
 aedēs -is f.	building; (pl.) house	965
@@ -72,8 +72,8 @@ anima -ae f.	breath, spirit	493
 animal -ālis n.	a living being, an animal	547
 animus -ī m.	spirit, mind	40
 annus -ī m.	year	167
-ante 1	before, in front (adv.)	112
-ante 2	before, in front of (prep. + acc.)	112
+ante	before, in front (adv.)	112
+ante2	before, in front of (prep. + acc.)	112
 antequam	before	787
 antīquus -a -um	ancient, old-time, former	617
 aperiō aperīre aperuī apertum	open	837
@@ -156,8 +156,8 @@ cēterus -a -um	the others, the rest	596
 cibus -ī m.	food	863
 cingō cingere cīnxī cīnctum	encircle, surround, gird	814
 cinis cineris m./f.	ashes, embers	779
-circā 1	around	735
-circā 2	around (+acc.)	735
+circā	around	735
+circā2	around (+acc.)	735
 citō	swiftly	590
 citus -a -um	swift	590
 cīvis -is m./f.	citizen	471
@@ -200,8 +200,8 @@ cōnsūmō -sūmere -sūmpsī -sūmptum	to use up, consume	869
 contemnō -temnere -tempsī -temptum	despise, scorn, disdain	615
 contineō -tinēre -tinuī -tentum	contain, restrain	804
 contingō -tingere -tigī -tactum	touch, be contiguous to	494
-contrā 1	against, opposite	271
-contrā 2	against, opposite (+acc.)	271
+contrā	against, opposite	271
+contrā2	against, opposite (+acc.)	271
 conveniō -venīre -vēnī -ventum	assemble, meet; agree	698
 convertō -vertere -vertī -versum	turn about, turn, change	834
 convīvium -iī n.	banquet, feast	921
@@ -215,8 +215,8 @@ creō -āre	produce, create; elect, choose	978
 crēscō crēscere crēvī crētum	grow, increase	609
 crīmen -inis n.	verdict, accusation	475
 culpa -ae f.	guilt, fault, blame	769
-cum 1	with (prep. + abl.)	10
-cum 2	when, since, although (conjunction + subj.)	10
+cum	with (prep. + abl.)	10
+cum2	when, since, although (conjunction + subj.)	10
 cūnctus -a -um	entire all together	292
 cupīdō -inis f.	desire, eagerness, craving	906
 cupiō -ere -īvī -ītum	desire	441
@@ -706,8 +706,8 @@ porta -ae f.	gate	759
 portō -āre	carry a load	853
 pōscō pōscere popōscī	demand, claim; inquire into	487
 possum posse potuī	be able	23
-post 1	after (adv.)	164
-post 2	after (prep. +acc.)	164
+post	after (adv.)	164
+post2	after (prep. +acc.)	164
 posteā	afterwards	964
 posterus -a -um	next, later	877
 postquam	after	384
@@ -765,8 +765,8 @@ putō -āre	think, suppose	166
 quā	where, how	336
 quaerō -rere -sīvī -sītum	seek, inquire	113
 quālis -e	of what kind? what?	263
-quam 1	how?	29
-quam 2	(after comparative) than	29
+quam	how?	29
+quam2	(after comparative) than	29
 quamquam	however, although	644
 quamvīs	however you like; although	489
 quandō	when?; since	621
@@ -785,8 +785,8 @@ quīcumque quaecumque quodcumque	who-, whatever	284
 quīdam quaedam quoddam	a certain one, someone	126
 quidem	certainly, at least	136
 quiēscō quiēscere quiēvī quiētum	keep quiet; sleep	969
-quīn 1	indeed, in fact	456
-quīn 2	so that ... not (+ subj.)	456
+quīn	indeed, in fact	456
+quīn2	so that ... not (+ subj.)	456
 quīppe	(adv.) indeed, surely	499
 quis quid	who? what? which?	212
 quisquam quicquam/quidquam	any (single) person, anyone at all	12
@@ -914,16 +914,16 @@ subitō	suddenly, unexpectedly	848
 sui sibi sē/sēsē	him- her- itself, themselves	17
 sum esse fuī	be, exist	2
 sūmō sūmere sūmpsī sūmptum	take up	454
-super 1	over (adv.)	401
-super 2	over (prep. +acc.)	401
+super	over (adv.)	401
+super2	over (prep. +acc.)	401
 superbus -a -um	overbearing, proud, haughty	656
 superī -ōrum m. pl.	those above, i.e. the gods	714
 superō -āre	overcome, surpass, defeat	668
 supersum -esse -fuī	remain, survive; be superfluous (to)	623
 superus -a -um	situated above, upper	99
 supplicium -ī n.	punishment, penalty	683
-suprā 1	above, beyond (adv.)	588
-suprā 2	above, beyond (prep. +acc.)	588
+suprā	above, beyond (adv.)	588
+suprā2	above, beyond (prep. +acc.)	588
 surgō surgere surrēxī surrēctum	rise	570
 suscipiō -cipere -cēpī ceptum	take up	937
 sustineō sustinēre sustinuī sustentum	hold up, sustain	762
@@ -979,8 +979,8 @@ tuus -a -um	your	44
 ubi	where, when	92
 ūllus -a -um	any, anyone	178
 ultimus -a -um	farthest, final, last, ultimate	432
-ultrā 1	beyond, further (adv.)	600
-ultrā 2	beyond, further (prep. + acc.)	600
+ultrā	beyond, further (adv.)	600
+ultrā2	beyond, further (prep. + acc.)	600
 umbra -ae f.	shade, shadow	257
 umquam	ever	482
 unda -ae f.	wave, flowing water, water	207
@@ -990,10 +990,10 @@ undique	from all sides, on all sides	686
 urbs urbis f.	city	82
 ūsque	up to; continuously	527
 ūsus -ūs m.	use, experience	446
-ut 1	as (+ indic.)	15
-ut 2	so that, with the result that (+ subj.)	15
-utī 1	as (+ indic.)	15
-utī 2	so that, with the result that (+ subj.)	15
+ut	as (+ indic.)	15
+ut2	so that, with the result that (+ subj.)	15
+utī	as (+ indic.)	15
+utī2	so that, with the result that (+ subj.)	15
 uterque utraque utrumque	each of two	243
 ūtilis -e	useful	850
 ūtor ūtī ūsus sum	use, consume, employ (+ abl.)	330
