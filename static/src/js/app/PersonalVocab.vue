@@ -348,4 +348,7 @@
   align-items: center;
   justify-content: center;
 }
+.vgt-responsive {
+  overflow-x: visible;
+}
 </style>
