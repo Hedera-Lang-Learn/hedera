@@ -73,7 +73,7 @@ export default {
       familiarity,
       vocabulary_list_id: vocabularyListId,
       lang,
-      lemmaId,
+      lemma_id: lemmaId,
     };
     return axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, payload).then((r) => cb(r.data));
   },

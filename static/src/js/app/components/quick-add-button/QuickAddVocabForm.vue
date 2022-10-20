@@ -54,34 +54,22 @@
       </div>
       <div class="lemma-options-container" :style="showLemmaOptionsList">
         <label for="lemma-select">Linked definition</label>
-        <select
-          id="lemma-select"
-          v-model="lemmaId"
-          @change="onSelect"
-          aria-label="Suggested definition List"
+        <div
+          v-for="lemma in lemmaOptions"
+          :key="lemma.pk"
         >
-          <option
-            id="lemma-options"
-            v-for="lemma in lemmaOptions"
-            :key="lemma.pk"
+          <input
+            type="radio"
+            v-model="lemmaId"
+            @change="onSelect"
             :value="lemma.pk"
+            :id="`lemma-option-${lemma.pk}`"
           >
-            <div>
-              <span
-                class="lemma-label"
-                :value="lemma.label"
-                aria-label="headword"
-                >{{ lemma.label.replace(/[0-9]/g, "") }} -
-              </span>
-              <span
-                class="lemma-gloss"
-                :value='(lemma.glosses.length) ? lemma.glosses[0].gloss : ""'
-                aria-label="gloss"
-                >{{ (lemma.glosses.length) ? lemma.glosses[0].gloss : "" }}</span
-              >
-            </div>
-          </option>
-        </select>
+          <label :for="`lemma-option-${lemma.pk}`">
+            <span class="lemma-label" aria-label="headword">{{ lemma.label.replace(/[0-9]/g, "") }}</span>
+             - <span class="lemma-gloss" aria-label="gloss">{{ (lemma.glosses.length) ? lemma.glosses[0].gloss : "" }}</span>
+          </label>
+        </div>
       </div>
       <button
         type="submit"
@@ -195,11 +183,12 @@
           vocabularyListId: vocabularyListItem.id,
           familiarity: this.familiarityRating,
           lang: vocabularyListItem.lang,
-          lemma_id: null,
+          lemmaId: null,
         };
         if (this.lemmaId) {
-          newEntryData.lemma_id = this.lemmaId;
+          newEntryData.lemmaId = this.lemmaId;
         }
+        console.log(newEntryData);
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
 
         if (this.$store.state.personalVocabAdded) {
@@ -232,7 +221,7 @@
       },
       setFocus() {
         this.$nextTick(() => {
-          this.$refs.select.focus();
+          // this.$refs.select.focus();
         });
       },
       // method function for parent components to reset the form when modal is closed
