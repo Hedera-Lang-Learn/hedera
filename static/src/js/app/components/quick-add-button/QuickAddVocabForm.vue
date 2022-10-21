@@ -107,7 +107,6 @@
     FETCH_LEMMA,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
-  import debounce from 'lodash.debounce';
 
   export default {
     components: { FamiliarityRating },
