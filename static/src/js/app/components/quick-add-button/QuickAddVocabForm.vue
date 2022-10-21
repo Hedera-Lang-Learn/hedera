@@ -107,6 +107,7 @@
     FETCH_LEMMA,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
+  import debounce from 'lodash.debounce';
 
   export default {
     components: { FamiliarityRating },
@@ -188,7 +189,6 @@
         if (this.lemmaId) {
           newEntryData.lemmaId = this.lemmaId;
         }
-        console.log(newEntryData);
         await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
 
         if (this.$store.state.personalVocabAdded) {
@@ -256,7 +256,7 @@
         // TODO: there is a race condition happening here because state is
         // being accessed before it has been modified if you type too fast.
         try {
-          this.lemmaOptions = this.stateForms[this.headword].lemmas;
+          this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
         } catch (error) {
           "This is fine actually? It'll keep trying to access state until it succeeds."; // eslint-disable-line
         }
@@ -296,29 +296,6 @@
           return found;
         });
         return formattedPersonalVocabList;
-      },
-      // filters lattice node to exclude parent data for simplier UI in LatticeNode component
-      latticeNode() {
-        const nodes = this.$store.state.latticeNodes || [];
-        if (!nodes.length) return null;
-        const formatedNodes = nodes.map((node) => {
-          const {
-            canonical, definition, label, lemmas, pk,
-          } = node;
-          return {
-            canonical,
-            definition,
-            label,
-            lemmas,
-            pk,
-          };
-        });
-        return formatedNodes;
-      },
-      // gives access to the state store of forms
-      stateForms() {
-        const { forms } = this.$store.state;
-        return forms;
       },
       showLatticeNodeList() {
         if (!this.latticeNode) {
