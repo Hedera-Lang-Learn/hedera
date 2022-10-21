@@ -5,7 +5,7 @@ from tqdm import tqdm
 from lemmatization.models import Gloss, Lemma
 
 
-file_path = "import-data/distinct_lemma_short_defs_frequencies.tsv"
+file_path = "import-data/latin_gloss_table.tsv"
 total_lines = sum(1 for i in open(file_path, "r"))
 print(f"Begin latin gloss import (size: {total_lines})")
 
@@ -20,7 +20,7 @@ with open(file_path) as f:
 
     for row in tqdm(csv_reader, total=total_lines):
         lemma = row["lemma"]
-        gloss = row["def"]
+        gloss = row["gloss"]
         lemma_exist = lemma in lemmas_data
         lemma_object = lemmas_data.get(lemma)
         gloss_exist = False
