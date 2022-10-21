@@ -344,12 +344,18 @@ class PersonalVocabularyListAPI(APIView):
         vl = self.get_object()
 
         data = json.loads(request.body)
-        familiarity = int(data["familiarity"])
-
+        familiarity = int(data.get("familiarity", 1))
         pk = kwargs.get("pk", None)
         if pk is not None:
             entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
-            entry.familiarity = familiarity
+            # Update based on data payload
+            lemma_id = data.get("lemmaId", None)
+            if lemma_id:
+                data["lemma"] = lemma = get_object_or_404(Lemma, pk=lemma_id)
+            for field in ["familiarity", "headword", "definition", "lemma"]:
+                data_field = data.get(field, None)
+                if data_field is not None:
+                    setattr(entry, field, data_field)
             entry.save()
         else:
             lemma = get_object_or_404(Lemma, pk=data["lemmaId"])
@@ -450,3 +456,26 @@ def get_any_vocablist_by_id(user_id, lang, vocablist_id):
     if vocablist_id == "personal":
         return get_object_or_404(PersonalVocabularyList, user=user_id, lang=lang)
     return get_object_or_404(VocabularyList, pk=vocablist_id)
+
+
+class PartialMatchFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+        # gets list of forms - Match exactly since startswith doesnt match exactly
+        forms = FormToLemma.objects.filter(lang=lang, form=form)
+        if not forms:
+            forms = FormToLemma.objects.filter(lang=lang, form__startswith=form)
+            if not forms:
+                forms = FormToLemma.objects.filter(lang=lang, form__startswith=form.lower())
+        lemma_list = [form.get_lemma() for form in forms]
+        lemma_dict = {}
+        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
+        distinct_lemma_list = []
+        # removing duplicates using a dict lookup
+        for lemma_obj in sorted_lemma_list:
+            lemma_word = lemma_obj["lemma"]
+            if lemma_word not in lemma_dict:
+                lemma_dict[lemma_word] = lemma_obj
+                distinct_lemma_list.append(lemma_obj)
+        return distinct_lemma_list

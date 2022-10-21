@@ -2,7 +2,10 @@ import Vue from 'vue';
 import VueKeybindings from 'vue-keybindings';
 import VueFilterDateFormat from '@vuejs-community/vue-filter-date-format';
 import VueGoodTablePlugin from 'vue-good-table';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import 'vue-good-table/dist/vue-good-table.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import globalComponents from './components';
 import store from './store';
@@ -33,6 +36,8 @@ const load = (appId, appComponent, keyBindingsConfig, appProps) => {
 
     Vue.use(VueFilterDateFormat);
     Vue.use(VueGoodTablePlugin);
+    Vue.use(BootstrapVue);
+    Vue.use(IconsPlugin);
 
     /* eslint-disable no-new */
     new Vue({
