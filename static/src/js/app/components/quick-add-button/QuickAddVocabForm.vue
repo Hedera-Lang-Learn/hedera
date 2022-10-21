@@ -52,36 +52,24 @@
           />
         </div>
       </div>
-      <div class="lattice-node-container" :style="showLatticeNodeList">
-        <label for="LatticeNode">Suggested definition</label>
-        <select
-          id="lattice-node-select"
-          v-model="latticeNodeId"
-          @change="onSelect"
-          aria-label="Suggested definition List"
+      <div class="lemma-options-container" :style="showLemmaOptionsList">
+        <label for="lemma-select">Linked definition</label>
+        <div
+          v-for="lemma in lemmaOptions"
+          :key="lemma.pk"
         >
-          <option
-            id="lattice-node-options"
-            v-for="node in latticeNode"
-            :key="node.pk"
-            :value="node.pk"
+          <input
+            type="radio"
+            v-model="lemmaId"
+            @change="onSelect"
+            :value="lemma.pk"
+            :id="`lemma-option-${lemma.pk}`"
           >
-            <div>
-              <span
-                class="lattice-label"
-                :value="node.label"
-                aria-label="headword"
-                >{{ node.label.replace(/[0-9]/g, "") }} -
-              </span>
-              <span
-                class="lattice-definition"
-                :value="node.definition"
-                aria-label="definition"
-                >{{ node.definition }}</span
-              >
-            </div>
-          </option>
-        </select>
+          <label :for="`lemma-option-${lemma.pk}`">
+            <span class="lemma-label" aria-label="headword">{{ lemma.label.replace(/[0-9]/g, "") }}</span>
+             - <span class="lemma-gloss" aria-label="gloss">{{ (lemma.glosses.length) ? lemma.glosses[0].gloss : "" }}</span>
+          </label>
+        </div>
       </div>
       <button
         type="submit"
@@ -101,8 +89,8 @@
     >
       Successfully added Vocabulary Word!
     </div>
-    <div class="alert alert-info" role="alert" v-show="showUnsuccessfullAlert">
-      Word was previously added
+    <div class="alert alert-info" role="alert" v-show="showUnsuccessfulAlert">
+      {{ errorMessage }}
     </div>
   </div>
 </template>
@@ -111,11 +99,12 @@
   import {
     FETCH_PERSONAL_VOCAB_LANG_LIST,
     CREATE_PERSONAL_VOCAB_ENTRY,
-    FETCH_LATTICE_NODES_BY_HEADWORD,
     RESET_LATTICE_NODES_BY_HEADWORD,
     SET_LANGUAGE_PREF,
     FETCH_SUPPORTED_LANG_LIST,
     FETCH_ME,
+    FETCH_LEMMAS_BY_FORM,
+    FETCH_LEMMA,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
 
@@ -155,10 +144,13 @@
         vocabularyListItem: null,
         headword: null,
         definition: null,
+        errorMessage: 'An error has occurred. The entry could not be added.',
+        lemmaOptions: [],
+        lemmaId: null,
         latticeNodeId: null,
         familiarityRating: 1,
         showSuccesAlert: false,
-        showUnsuccessfullAlert: false,
+        showUnsuccessfulAlert: false,
         submitting: false,
         suppLangKey: null,
       };
@@ -170,8 +162,12 @@
       resetLatticeNodeId() {
         this.latticeNodeId = null;
       },
+      /*
+      Handle form submission. This should add a new vocab entry and link it
+      to the selected lemma.
+       */
       async handleSubmit() {
-        this.showUnsuccessfullAlert = false;
+        this.showUnsuccessfulAlert = false;
         this.showSuccesAlert = false;
         this.submitting = true;
 
@@ -180,29 +176,29 @@
           this.submitting = false;
           return;
         }
-        if (this.latticeNodeId !== null) {
-          const node = this.latticeNode.find(
-            (ele) => parseInt(ele.pk, 10) === parseInt(this.latticeNodeId, 10),
-          );
-          if (node.definition !== this.definition) {
-            this.latticeNodeId = null;
-          }
-        }
 
-        await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, {
+        const newEntryData = {
           headword,
           definition,
           vocabularyListId: vocabularyListItem.id,
           familiarity: this.familiarityRating,
           lang: vocabularyListItem.lang,
-        });
+          lemmaId: null,
+        };
+        if (this.lemmaId) {
+          newEntryData.lemmaId = this.lemmaId;
+        }
+        await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
+
         if (this.$store.state.personalVocabAdded) {
           this.headword = null;
           this.definition = null;
+          this.lemmaOptions = [];
+          this.lemmaId = null;
           this.showSuccesAlert = true;
           this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
         } else {
-          this.showUnsuccessfullAlert = true;
+          this.showUnsuccessfulAlert = true;
         }
         // updates pref language on form submit
         if (vocabularyListItem) {
@@ -224,39 +220,62 @@
       },
       setFocus() {
         this.$nextTick(() => {
-          this.$refs.select.focus();
+          // this.$refs.select.focus();
         });
       },
       // method function for parent components to reset the form when modal is closed
       resetForm() {
         this.headword = null;
         this.definition = null;
+        this.lemmaOptions = [];
+        this.lemmaId = null;
         this.showSuccesAlert = false;
-        this.showUnsuccessfullAlert = false;
+        this.showUnsuccessfulAlert = false;
         this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
       },
+      /*
+      Get the lemma options from the database by looking up the provided
+      headword as a lemma form. Runs on input to the headword field.
+       */
       async getHeadword() {
-        await this.$store.dispatch(FETCH_LATTICE_NODES_BY_HEADWORD, {
-          headword: this.headword,
-          lang: this.vocabularyListItem.lang,
-        });
-        // sets first latticenode as the default in select options
-        if (this.latticeNode) {
-          const { definition, pk } = this.latticeNode[0];
-          this.latticeNodeId = pk;
-          this.definition = definition;
+        // Don't do anything if headword is empty
+        if (this.headword === '') {
+          return null;
         }
+
+        // Get headword from database if it isn't already in state
+        if (!Object.hasOwn(this.$store.state.forms, this.headword)) {
+          await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+            form: this.headword,
+            lang: this.vocabularyListItem.lang,
+          });
+        }
+
+        // Get the fetched lemmas from the forms in state
+        // TODO: there is a race condition happening here because state is
+        // being accessed before it has been modified if you type too fast.
+        try {
+          this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
+        } catch (error) {
+          "This is fine actually? It'll keep trying to access state until it succeeds."; // eslint-disable-line
+        }
+        // sets first lemma option as the default in select options
+        if (this.lemmaOptions.length) {
+          const { glosses, pk } = this.lemmaOptions[0];
+          this.lemmaId = pk;
+          this.definition = glosses.length ? glosses[0].gloss : '';
+        }
+        return 0;
       },
-      onSelect(event) {
-        // Radix must be provided to parseInt
-        const node = this.latticeNode.find(
-          (ele) => parseInt(ele.pk, 10) === parseInt(event.target.value, 10),
-        );
-        const { definition, pk } = node;
-        if (pk) {
-          this.definition = definition;
-          this.latticeNodeId = pk;
+      /*
+      When a lemma is selected, update component variables accordingly
+       */
+      async onSelect(event) {
+        if (!Object.hasOwn(this.$store.state.lemmas, event.target.value)) {
+          await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
         }
+        const lemma = this.$store.state.lemmas[event.target.value];
+        this.definition = lemma.glosses[0].gloss;
       },
     },
     computed: {
@@ -277,26 +296,18 @@
         });
         return formattedPersonalVocabList;
       },
-      // filters lattice node to exclude parent data for simplier UI in LatticeNode component
-      latticeNode() {
-        const nodes = this.$store.state.latticeNodes || [];
-        if (!nodes.length) return null;
-        const formatedNodes = nodes.map((node) => {
-          const {
-            canonical, definition, label, lemmas, pk,
-          } = node;
-          return {
-            canonical,
-            definition,
-            label,
-            lemmas,
-            pk,
-          };
-        });
-        return formatedNodes;
-      },
       showLatticeNodeList() {
         if (!this.latticeNode) {
+          return { display: 'none' };
+        }
+        return {};
+      },
+      /*
+      If there are no lemma options to display, set the style of the container
+      to display: none;
+       */
+      showLemmaOptionsList() {
+        if (!this.lemmaOptions.length) {
           return { display: 'none' };
         }
         return {};
@@ -312,7 +323,7 @@
   border-color: #c3e6cb;
 }
 
-.lattice-node-container {
+.lemma-options-container {
   padding-top: 10px;
   font-weight: bold;
 }

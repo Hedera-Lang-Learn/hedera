@@ -66,9 +66,17 @@ export default {
   vocabEntryEdit: (id, headword, gloss, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, gloss }).then((r) => cb(r.data)),
   vocabEntryDelete: (id, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/delete/`).then((r) => cb(r.data)),
   fetchPersonalVocabLangList: (cb) => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`).then((r) => cb(r.data)),
-  createPersonalVocabEntry: (headword, definition, vocabularyListId, familiarity, lang, cb) => axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, {
-    headword, definition, familiarity, vocabulary_list_id: vocabularyListId, lang,
-  }).then((r) => cb(r.data)),
+  createPersonalVocabEntry: (headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb) => {
+    const payload = {
+      headword,
+      definition,
+      familiarity,
+      vocabulary_list_id: vocabularyListId,
+      lang,
+      lemma_id: lemmaId,
+    };
+    return axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, payload).then((r) => cb(r.data));
+  },
   fetchLatticeNodes: (headword, lang, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}&lang=${lang}`).then((r) => cb(r.data)),
   updateMeLang: (lang, cb) => axios.post(`${BASE_URL}me/`, { lang }).then((r) => cb(r.data)),
   deletePersonalVocabEntry: (id, cb) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }).then((r) => cb(r)),
