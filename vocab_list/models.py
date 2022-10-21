@@ -416,7 +416,12 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         order_with_respect_to = "vocabulary_list"
 
     def data(self):
-        return super().data(familiarity=self.familiarity, lemma_id=self.lemma_id, lemma=self.lemma.lemma if self.lemma else self.headword)
+        output = {}
+        output["familiarity"] = self.familiarity
+        if self.lemma:
+            output["lemma_id"] = self.lemma_id,
+            output["lemma"] = self.lemma.lemma
+        return super().data(**output)
 
     def familiarity_range(self):
         """hack for template iteration"""

@@ -111,10 +111,10 @@ export default {
       .fetchPersonalVocabLangList(cb)
       .catch(logoutOnError(commit));
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang }) => {
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
     const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
     return api
-      .createPersonalVocabEntry(headword, definition, vocabularyListId, familiarity, lang, cb)
+      .createPersonalVocabEntry(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: ({ commit }, { headword, lang }) => {
