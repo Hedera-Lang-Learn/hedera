@@ -201,7 +201,7 @@ Here's one way to run them, using the containerized app, which is already config
 ```
 docker compose up -d postgres redis
 # make sure postgres and redis are available, then run:
-docker compose run --rm --no-deps -e DJANGO_SETTINGS_MODULE=hedera.test_settings django python manage.py test
+docker compose run --rm --no-deps --service-ports -e DJANGO_SETTINGS_MODULE=hedera.test_settings django python manage.py test
 ```
 
 You can also run them locally (i.e. not in a container) if you have the appropriate python environment configured. For instance:
