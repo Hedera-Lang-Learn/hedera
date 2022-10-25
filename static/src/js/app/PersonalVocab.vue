@@ -190,22 +190,24 @@
           appendToast: false,
         });
       },
-      onRatingChange(rating, entry) {
+      async onRatingChange(rating, entry) {
         const headword = entry.headword || '';
         if (headword === '') {
           return;
         }
         const definition = entry.definition || '';
-        this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+        await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId: entry.id,
           familiarity: rating,
           headword,
           definition,
           lang: this.lang,
         });
+        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
       },
-      deleteVocab(id) {
-        this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
+      async deleteVocab(id) {
+        await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id, listId: this.personalVocabList.id });
+        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
       },
       onEdit(entryId, row) {
         const {

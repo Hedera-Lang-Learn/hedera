@@ -82,7 +82,7 @@ export default {
   },
   fetchLatticeNodes: (headword, lang, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}&lang=${lang}`).then((r) => cb(r.data)),
   updateMeLang: (lang, cb) => axios.post(`${BASE_URL}me/`, { lang }).then((r) => cb(r.data)),
-  deletePersonalVocabEntry: (id, cb) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }).then((r) => cb(r)),
+  deletePersonalVocabEntry: (id, listId, cb) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id, listId } }).then((r) => cb(r)),
   fetchBookmarks: (cb) => axios.get(`${BASE_URL}bookmarks/`).then((r) => cb(r.data)),
   addBookmark: (textId) => axios.post(`${BASE_URL}bookmarks/`, { textId }),
   removeBookmark: (bookmarkId) => axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),

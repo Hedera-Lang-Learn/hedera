@@ -59,7 +59,14 @@ export default {
     if (response && response.status >= 400) {
       return response;
     }
-    commit(FETCH_PERSONAL_VOCAB_LIST, data);
+    const { entries } = data;
+    const { entries: localEntries } = state.personalVocabList;
+    const foundObj = entries.find((el) => el.id === entryId);
+    const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
+    const updatedEntries = { ...state.personalVocabList };
+    updatedEntries.entries[localEntryIndex] = foundObj;
+
+    commit(FETCH_PERSONAL_VOCAB_LIST, updatedEntries);
     return null;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
@@ -127,9 +134,9 @@ export default {
     const cb = commit(SET_LANGUAGE_PREF, lang);
     return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
   },
-  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
+  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id, listId }) => {
     const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
-    return api.deletePersonalVocabEntry(id, cb)
+    return api.deletePersonalVocabEntry(id, listId, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_BOOKMARKS]: ({ commit }) => (
