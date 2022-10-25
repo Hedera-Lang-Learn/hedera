@@ -419,7 +419,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
         output = {}
         output["familiarity"] = self.familiarity
         if self.lemma:
-            output["lemma_id"] = self.lemma_id,
+            output["lemma_id"] = self.lemma_id
             output["lemma"] = self.lemma.lemma
         return super().data(**output)
 
