@@ -46,11 +46,15 @@ export default {
       .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data.data))
       .catch(logoutOnError(commit));
   },
-  [CREATE_VOCAB_ENTRY]: ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
-    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data);
-    api
-      .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null, cb)
-      .catch(logoutOnError(commit));
+  [CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
+    // TODO: Make DRY with updateVocabEntry
+    const { response, data } = await api
+      .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null);
+    if (response && response.status >= 400) {
+      return response;
+    }
+    commit(FETCH_PERSONAL_VOCAB_LIST, data);
+    return null;
   },
   // eslint-disable-next-line max-len
   [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
