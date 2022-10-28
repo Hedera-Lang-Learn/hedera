@@ -79,13 +79,17 @@ const vocabAppKeyBindings = {
 };
 const textAppProps = ($el) => ({ textId: store.state.textId || $el.attributes['text-id'].value });
 const personalVocabAppProps = ($el) => ({ lang: $el.attributes.lang.value });
-const vocabAppProps = ($el) => ({ vocabId: $el.attributes.vocabId.value });
+const vocabAppProps = ($el) => ({
+  vocabId: $el.attributes.vocabId.value,
+  lang: $el.attributes.lang.value,
+  personalVocab: $el.attributes.personalVocab.value === 'true',
+});
 
 export default () => {
   load('app', App, appKeyBindings, textAppProps);
   load('learner-app', Learner, learnerKeyBindings, textAppProps);
   load('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
-  load('vocab-app', Vocab, vocabAppKeyBindings, vocabAppProps);
+  load('vocab-app', Vocab, null, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
   load('quick-add', QuickAddButton, null, () => {});

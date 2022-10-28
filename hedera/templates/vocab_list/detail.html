@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}Vocabulary Lists{% endblock %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
 
 {% block body_class %}vocabulary{% endblock %}
 
@@ -10,9 +10,18 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-  <nav><a href="{% url "vocab_list_list" %}">Vocabulary Lists</a> &raquo; <b>{{ vocabularylist.title }}</b></nav>
+  {% if personalVocab %}
+    <ul class="nav nav-tabs mb-5">
+        {% for vocab_list in lists %}
+        <li class="nav-item">
+            <a class="nav-link {% if vocab_list == object %}active{% endif %}" href="{% url "vocab_list_personal_detail" vocab_list.lang %}">{{ vocab_list.display_name }}</a>
+        </li>
+        {% endfor %}
+        <li class="nav-item">
+            <a class="nav-link text-success" href="{% url 'vocab_list_personal_create' %}"><i class="fa fa-plus" aria-hidden="true"></i> Import</a>
+        </li>
+    </ul>
+  {% endif %}
 
-  <h1 class="mt-2 mb-4">{{ vocabularylist.title }}</h1>
-
-  <div id="vocab-app" vocabId="{{ vocabularylist.pk }}"></div>
+    <div id="vocab-app" vocabId="{{ object.id }}" lang="{{ object.lang }}" personalVocab="{% if personalVocab %}true{% else %}false{% endif %}"></div>
 {% endblock %}

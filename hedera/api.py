@@ -277,6 +277,21 @@ class VocabularyListAPI(APIView):
         ]
 
 
+class VocabularyListDetailAPI(APIView):
+    """
+    Return details about a vocabulary list, including all entries, when
+    requested via primary key.
+    """
+
+    def get_data(self):
+        vocab_list = get_object_or_404(VocabularyList, pk=self.kwargs.get("pk"))
+        return_data = vocab_list.data()
+        return_data["canEdit"] = vocab_list.owner == self.request.user
+        return_data["entries"] = [v.data() for v in vocab_list.entries.all().order_by("headword")]
+
+        return return_data
+
+
 class VocabularyListEntriesAPI(APIView):
 
     def get_data(self):
@@ -327,6 +342,9 @@ class PersonalVocabularyListAPI(APIView):
             lang = self.text.lang
         else:
             lang = self.request.GET.get("lang")
+            # Try to access lang as a supported language to throw a key error
+            # if it isn't there
+            SUPPORTED_LANGUAGES[lang]
         vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
             lang=lang,

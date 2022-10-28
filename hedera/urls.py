@@ -46,6 +46,7 @@ urlpatterns = [
     path("api/v1/lemmatized_texts/<int:pk>/", api.LemmatizationAPI.as_view()),
     path("api/v1/lemmatized_texts/<int:pk>/tokens/<int:token_index>/history/", api.TokenHistoryAPI.as_view()),
     path("api/v1/vocab_lists/", api.VocabularyListAPI.as_view()),
+    path("api/v1/vocab_lists/<int:pk>", api.VocabularyListDetailAPI.as_view()),
     path("api/v1/vocab_lists/<int:pk>/entries/", api.VocabularyListEntriesAPI.as_view()),
     path("api/v1/vocab_entries/<int:pk>/<str:action>/", api.VocabularyListEntryAPI.as_view()),
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),

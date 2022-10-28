@@ -23,12 +23,22 @@ class VocabularyListDetailView(DetailView):
 
     template_name = "vocab_list/detail.html"
     model = VocabularyList
+    personalVocab = False
 
     def get_queryset(self):
         queryset = super().get_queryset().filter(
             Q(owner__isnull=True) | Q(owner=self.request.user)
         )
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        vocab_list = self.get_object()
+        context.update({
+            "pagetitle": vocab_list.title
+        })
+        print(context)
+        return context
 
 
 class VocabularyListDeleteView(DeleteView):
@@ -60,10 +70,12 @@ class VocabularyListCreateView(CreateView):
 
 class PersonalVocabListDetailView(DetailView):
 
-    template_name = "vocab_list/personal.html"
+    template_name = "vocab_list/detail.html"
     model = PersonalVocabularyList
     slug_field = "lang"
     slug_url_kwarg = "lang"
+    pagetitle = "Your Vocabulary List"
+    personalVocab = True
 
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
@@ -74,6 +86,7 @@ class PersonalVocabListDetailView(DetailView):
         context.update({
             "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang")
         })
+        print(context)
         return context
 
 
