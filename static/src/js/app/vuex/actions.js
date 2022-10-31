@@ -24,6 +24,7 @@ import {
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   FETCH_SUPPORTED_LANG_LIST,
+  FETCH_VOCAB_LIST,
 } from '../constants';
 import api from '../api';
 
@@ -39,6 +40,12 @@ export default {
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
+  [FETCH_VOCAB_LIST]: ({ commit }, { vocabListId }) => {
+    const cb = (data) => commit(FETCH_VOCAB_LIST, data.data);
+    api
+      .fetchVocabList(vocabListId, cb)
+      .catch(logoutOnError(commit));
+  },
   [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
     api
       .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data.data))

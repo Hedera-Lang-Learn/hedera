@@ -4,10 +4,10 @@
       <QuickAddVocabForm class="mr-2 text-left" :current-lang-tab="lang" />
       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
     </div>
-    <div v-if="personalVocabEntries">
+    <div v-if="vocabEntries">
       <vue-good-table
         :columns="columns"
-        :rows="personalVocabEntries"
+        :rows="vocabEntries"
         :pagination-options="paginationOptions"
         :search-options="searchOptions"
       >
@@ -126,6 +126,7 @@
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
     FETCH_LEMMAS_BY_PARTIAL_FORM,
+    FETCH_VOCAB_LIST,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -146,16 +147,10 @@
         handler() {
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
+            this.vocabListType = "personal";
           } else {
-            // This is how list was loaded in old file, but api isn't imported 
-            // here. there isn't a constant associated with this method, as far
-            // as i can tell.
-            // this.loading = true;
-            // api.fetchVocabEntries(this.vocabId, (data) => {
-            //   this.entries = data.data.entries;
-            //   this.canEdit = data.data.canEdit;
-            //   this.loading = false;
-            // });
+            this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
+            this.vocabListType = "general";
           }
         },
       },
@@ -176,8 +171,8 @@
           { label: 'Lemma', field: 'lemma' },
           { label: 'Headword', field: 'headword' },
           { label: 'Definition', field: 'definition' },
-          { label: 'Familiarity', field: 'familiarity', width: '10rem' },
-          { label: 'Edit', field: 'edit' },
+          { label: 'Familiarity', field: 'familiarity', width: '10rem' }, // TODO: hide when not a personal vocab list
+          { label: 'Edit', field: 'edit' }, // TODO: hide when cannot edit
         ],
         editingIdx: null,
         saving: false,
@@ -189,6 +184,7 @@
           familiarity: null,
           lemmaId: null,
         },
+        vocabListType: null,
       };
     },
     created() {
@@ -217,9 +213,11 @@
         });
       },
       deleteVocab(id) {
+        // TODO: different methods for different kinds of entries
         this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
       },
       onEdit(entryId, row) {
+        // TODO: make familiarity optional here or something
         const {
           headword, definition, familiarity, lemma_id: lemmaId,
         } = row;
@@ -233,6 +231,7 @@
         };
       },
       async changeCell(field, row) {
+        // TODO: remove dependency on familiarity
         const value = row[field];
         const { originalIndex: index, familiarity } = row;
         this.editingFields[field] = value;
@@ -250,6 +249,7 @@
         }
       },
       async onSave() {
+        // TODO: remove mandatory familiarity, make sure API call is correct
         this.saving = true;
         const {
           entryId, headword, definition, familiarity, lemmaId,
@@ -289,10 +289,11 @@
     },
     computed: {
       glosses() {
-        if (!this.personalVocabEntries) {
+        // TODO: this should work with general vocab lists too
+        if (!this.vocabEntries) {
           return [];
         }
-        return this.personalVocabEntries.map((e) => ({
+        return this.vocabEntries.map((e) => ({
           ...e,
           label: e.lemma,
           headword: e.headword,
@@ -301,16 +302,23 @@
         }));
       },
       ranks() {
-        return (
-          this.personalVocabList
-          && this.personalVocabList.statsByText[this.$store.state.textId]
-        );
+        if (this.vocabListType === "personal") {
+          return (
+            this.vocabList
+            && this.vocabList.statsByText[this.$store.state.textId]
+          );
+        }
+        return null;
       },
-      personalVocabList() {
-        return this.$store.state.personalVocabList;
+      // TODO: update these things to be generic
+      vocabList() {
+        if (this.vocabListType === "personal") {
+          return this.$store.state.personalVocabList;
+        }
+        return this.$store.state.vocabList;
       },
-      personalVocabEntries() {
-        return this.personalVocabList && this.personalVocabList.entries;
+      vocabEntries() {
+        return this.vocabList && this.vocabList.entries;
       },
       partialMatchForms() {
         return this.$store.state.partialMatchForms;

@@ -20,6 +20,7 @@ import {
   FETCH_BOOKMARKS,
   FETCH_SUPPORTED_LANG_LIST,
   FETCH_LEMMAS_BY_PARTIAL_FORM,
+  FETCH_VOCAB_LIST,
 } from '../constants';
 
 export default {
@@ -28,6 +29,9 @@ export default {
   },
   [FETCH_TEXT]: (state, data) => {
     state.text = data;
+  },
+  [FETCH_VOCAB_LIST]: (state, data) => {
+    state.vocabList = data;
   },
   [FETCH_VOCAB_LISTS]: (state, data) => {
     state.vocabLists = data;
