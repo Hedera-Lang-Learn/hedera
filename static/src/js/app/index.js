@@ -89,7 +89,7 @@ export default () => {
   load('app', App, appKeyBindings, textAppProps);
   load('learner-app', Learner, learnerKeyBindings, textAppProps);
   load('personal-vocab-app', PersonalVocab, null, personalVocabAppProps);
-  load('vocab-app', Vocab, null, vocabAppProps);
+  load('vocab-app', PersonalVocab, null, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
   load('quick-add', QuickAddButton, null, () => {});
