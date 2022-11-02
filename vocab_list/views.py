@@ -75,7 +75,6 @@ class PersonalVocabListDetailView(DetailView):
     slug_field = "lang"
     slug_url_kwarg = "lang"
     pagetitle = "Your Vocabulary List"
-    personalVocab = True
 
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
@@ -84,7 +83,8 @@ class PersonalVocabListDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         vocab_list = self.get_object()
         context.update({
-            "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang")
+            "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang"),
+            "personalVocab": True
         })
         print(context)
         return context

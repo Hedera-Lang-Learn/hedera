@@ -10,6 +10,7 @@ export default {
   forms: {},
   vocabLists: [],
   personalVocabList: {},
+  vocabList: {},
   selectedVocabList: null,
   showInVocabList: true,
   personalVocabLangList: [],

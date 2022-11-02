@@ -37,7 +37,7 @@ export default {
     state.vocabLists = data;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: (state, data) => {
-    state.personalVocabList = data;
+    state.vocabList = data;
   },
   [SET_TEXT_ID]: (state, id) => {
     state.textId = id;

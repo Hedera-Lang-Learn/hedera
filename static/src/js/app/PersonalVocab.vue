@@ -117,6 +117,7 @@
         </template>
       </vue-good-table>
     </div>
+    <div v-else>Loading Data</div>
   </div>
 </template>
 
@@ -148,6 +149,20 @@
       lang: {
         immediate: true,
         handler() {
+          console.log(`lang watcher running, personalVocab is ${this.personalVocab}`);
+          if (this.personalVocab) {
+            this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
+            this.vocabListType = 'personal';
+          } else {
+            this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
+            this.vocabListType = 'general';
+          }
+        },
+      },
+      vocabId: {
+        immediate: true,
+        handler() {
+          console.log(`vocabId watcher running, personalVocab is ${this.personalVocab}`);
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
             this.vocabListType = 'personal';
@@ -342,14 +357,14 @@
         }
         return null;
       },
-      // TODO: update these things to be generic
       vocabList() {
-        if (this.vocabListType === "personal") {
-          return this.$store.state.personalVocabList;
-        }
+        // Retrieve vocab list from state
+        console.log(`getting vocablist from state, it is ${this.$store.state.vocabList}`)
         return this.$store.state.vocabList;
       },
       vocabEntries() {
+        // Retrieve entries on their own, or return undefined if no list is present
+        console.log(`getting vocab list entries, list is ${this.vocabList}`)
         return this.vocabList && this.vocabList.entries;
       },
       partialMatchForms() {
