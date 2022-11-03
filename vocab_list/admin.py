@@ -11,6 +11,7 @@ class VocabularyListAdmin(admin.ModelAdmin):
 @admin.register(models.VocabularyListEntry)
 class VocabularyListEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "headword", "definition", "vocabulary_list"]
+    autocomplete_fields = ["lemma"]
 
 
 @admin.register(models.PersonalVocabularyList)
@@ -21,3 +22,5 @@ class PersonalVocabularyListAdmin(admin.ModelAdmin):
 @admin.register(models.PersonalVocabularyListEntry)
 class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "vocabulary_list", "headword", "definition", "familiarity"]
+    autocomplete_fields = ["lemma"]
+

@@ -11,6 +11,7 @@ import csv
 
 from tqdm import tqdm
 
+from lemmatized_text.models import Lemma
 from vocab_list.models import VocabularyList, VocabularyListEntry
 
 
@@ -38,6 +39,7 @@ for system_vocab in SYSTEM_VOCAB_LISTS:
 
     with open(filepath, newline="") as csvfile:
         csv_reader = csv.DictReader(csvfile, delimiter="\t")
+        has_lemma_field = csv_reader.fieldnames and 'lemma' in csv_reader.fieldnames
 
         vocab_list, vocab_list_created = VocabularyList.objects.get_or_create(
             title=title,
@@ -46,8 +48,18 @@ for system_vocab in SYSTEM_VOCAB_LISTS:
         )
 
         for row in tqdm(csv_reader, total=total_lines):
-            entry, entry_created = VocabularyListEntry.objects.get_or_create(
+            entry = dict(
                 vocabulary_list=vocab_list,
                 headword=row["headword"],
-                definition=row["definition"]
+                definition=row["definition"],
             )
+
+            # Try to link to the lemma directly if it is specified in the vocab list,
+            # otherwise a link job will try to do this automatically.
+            if has_lemma_field and row["lemma"]:
+                try:
+                    entry["lemma"] = Lemma.objects.get(lemma=row["lemma"])
+                except Lemma.DoesNotExist:
+                    print(f"Lemma does not exist: {row}")
+
+            entry, entry_created = VocabularyListEntry.objects.get_or_create(**entry)

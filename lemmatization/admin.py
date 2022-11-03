@@ -11,11 +11,13 @@ class LemmaAdmin(admin.ModelAdmin):
 class FormToLemmaAdmin(admin.ModelAdmin):
     list_display = ("lang", "form", "lemma")
     search_fields = ["form__iexact"]
+    autocomplete_fields = ["lemma"]
 
 
 class GlossAdmin(admin.ModelAdmin):
     list_display = ("lemma", "gloss")
     search_fields = ["lemma__iexact"]
+    autocomplete_fields = ["lemma"]
 
 
 admin.site.register(models.Lemma, LemmaAdmin)

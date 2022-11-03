@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from . import models
+from .models import LemmatizedText
 
 
-admin.site.register(models.LemmatizedText)
+class LemmatizedTextAdmin(admin.ModelAdmin):
+    list_display = ("lang", "title", "public", "created_by", "created_at")
+    search_fields = ["title__iexact"]
+
+
+admin.site.register(LemmatizedText, LemmatizedTextAdmin)
