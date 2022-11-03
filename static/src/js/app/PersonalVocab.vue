@@ -26,10 +26,12 @@
               @keyup="changeCell(props.column.field, props.row)"
             ></b-form-input>
             <datalist id="lemma-list-id">
-              <option v-for="form in partialMatchForms" :key="form.pk" :value="form.lemma">
-                {{
-                  form.glosses.map((glossObj) => glossObj.gloss).join(", ")
-                }}
+              <option
+                v-for="form in partialMatchForms"
+                :key="form.pk"
+                :value="form.lemma"
+              >
+                {{ form.glosses.map((glossObj) => glossObj.gloss).join(", ") }}
               </option>
             </datalist>
           </span>
@@ -181,6 +183,10 @@
     },
     created() {
       this.$store.dispatch(FETCH_ME);
+      document.addEventListener('keydown', this.onKeyDown);
+    },
+    beforeDestroy() {
+      document.removeEventListener('keydown', this.onKeyDown);
     },
     methods: {
       makeToast(statusText, statusCode) {
@@ -190,22 +196,30 @@
           appendToast: false,
         });
       },
-      onRatingChange(rating, entry) {
+      async onRatingChange(rating, entry) {
         const headword = entry.headword || '';
         if (headword === '') {
           return;
         }
         const definition = entry.definition || '';
-        this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+        await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId: entry.id,
           familiarity: rating,
           headword,
           definition,
           lang: this.lang,
         });
+        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
+          lang: this.lang,
+        });
       },
-      deleteVocab(id) {
-        this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
+      async deleteVocab(id) {
+        await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, {
+          id,
+        });
+        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
+          lang: this.lang,
+        });
       },
       onEdit(entryId, row) {
         const {
@@ -240,7 +254,11 @@
       async onSave() {
         this.saving = true;
         const {
-          entryId, headword, definition, familiarity, lemmaId,
+          entryId,
+          headword,
+          definition,
+          familiarity,
+          lemmaId,
         } = this.editingFields;
         const response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
           entryId,
@@ -259,7 +277,13 @@
             'Success!',
           );
         }
-        this.editingFields = null;
+        this.saving = false;
+        this.resetEdit();
+      },
+      onEnter() {
+        this.onSave();
+      },
+      resetEdit() {
         this.editingFields = {
           headword: null,
           definition: null,
@@ -268,11 +292,13 @@
           familiarity: null,
           lemmaId: null,
         };
-        this.saving = false;
         this.forms = [];
+        this.editingIdx = null;
       },
-      onEnter() {
-        this.onSave();
+      onKeyDown(event) {
+        if (event.key === 'Escape') {
+          this.resetEdit();
+        }
       },
     },
     computed: {
@@ -312,7 +338,6 @@
 
 // mobile view - TODO may need to update later
 @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
-
   #td-no-padding-left-right {
     padding-right: 0;
     padding-left: 0;

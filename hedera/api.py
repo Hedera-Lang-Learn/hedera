@@ -378,7 +378,12 @@ class PersonalVocabularyListAPI(APIView):
     def delete(self, request, *args, **kwargs):
         data = json.loads(request.body)
         if "id" in data:
+            entry = get_object_or_404(PersonalVocabularyListEntry, pk=data["id"])
             count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
+            # Updates stats for all text matching the vocab_list_id when vocab entry is deleted
+            stats = PersonalVocabularyStats.objects.filter(vocab_list_id=entry.vocabulary_list_id)
+            for stat in stats:
+                stat.update()
             if(count != 0):
                 return JsonResponse({"data": True, "id": data["id"]})
             return JsonResponseBadRequest({"error": f"could not find vocab with id={data['id']}"}, status=404)

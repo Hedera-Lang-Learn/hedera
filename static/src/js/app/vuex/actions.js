@@ -63,7 +63,20 @@ export default {
     if (response && response.status >= 400) {
       return response;
     }
-    commit(FETCH_PERSONAL_VOCAB_LIST, data);
+    /**
+     * The code below replaces the edited personal vocab entry in the vuex state
+     * to preserve the order of the vocab in the UI to streamline the user experience.
+     * Note: this code does not take into account new personal vocab list data
+     * if the data was updated in paralell with the editing of the personal vocab entry.
+     */
+    const { entries } = data;
+    const { entries: localEntries } = state.personalVocabList;
+    const foundObj = entries.find((el) => el.id === entryId);
+    const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
+    const updatedEntries = { ...state.personalVocabList };
+    updatedEntries.entries[localEntryIndex] = foundObj;
+
+    commit(FETCH_PERSONAL_VOCAB_LIST, updatedEntries);
     return null;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
