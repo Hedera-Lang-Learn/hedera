@@ -59,6 +59,12 @@ export default {
     if (response && response.status >= 400) {
       return response;
     }
+    /**
+     * The code below replaces the edited personal vocab entry in the vuex state
+     * to preserve the order of the vocab in the UI to streamline the user experience.
+     * Note: this code does not take into account new personal vocab list data
+     * if the data was updated in paralell with the editing of the personal vocab entry.
+     */
     const { entries } = data;
     const { entries: localEntries } = state.personalVocabList;
     const foundObj = entries.find((el) => el.id === entryId);
@@ -134,9 +140,9 @@ export default {
     const cb = commit(SET_LANGUAGE_PREF, lang);
     return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
   },
-  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id, listId }) => {
+  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
     const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
-    return api.deletePersonalVocabEntry(id, listId, cb)
+    return api.deletePersonalVocabEntry(id, cb)
       .catch(logoutOnError(commit));
   },
   [FETCH_BOOKMARKS]: ({ commit }) => (

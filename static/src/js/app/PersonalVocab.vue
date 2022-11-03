@@ -216,7 +216,6 @@
       async deleteVocab(id) {
         await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, {
           id,
-          listId: this.personalVocabList.id,
         });
         await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
           lang: this.lang,
