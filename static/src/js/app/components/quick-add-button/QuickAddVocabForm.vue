@@ -104,6 +104,7 @@
     FETCH_ME,
     FETCH_LEMMAS_BY_FORM,
     FETCH_LEMMA,
+    CREATE_VOCAB_ENTRY,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
 
@@ -178,23 +179,30 @@
         const newEntryData = {
           headword,
           definition,
-          vocabularyListId: vocabularyListItem.id,
-          familiarity: this.familiarityRating,
-          lang: vocabularyListItem.lang,
+          vocabularyListId: this.vocabularyListId,
+          lang: null,
+          familiarity: null,
           lemmaId: null,
         };
         if (this.lemmaId) {
           newEntryData.lemmaId = this.lemmaId;
         }
-        await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
+        if (this.vocabListType === "personal") {
+          newEntryData.familiarity = this.familiarityRating;
+          newEntryData.lang = vocabularyListItem.lang;
+          await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
+        } else {
+          await this.$store.dispatch(CREATE_VOCAB_ENTRY, newEntryData);
+        }
 
-        if (this.$store.state.personalVocabAdded) {
+        if (this.$store.state.vocabAdded) {
           this.headword = null;
           this.definition = null;
           this.lemmaOptions = [];
           this.lemmaId = null;
           this.showSuccesAlert = true;
         } else {
+          this.errorMessage("The process of adding a vocab entry did not report a success.")
           this.showUnsuccessfulAlert = true;
         }
         // updates pref language on form submit
@@ -296,6 +304,15 @@
           return found;
         });
         return formattedPersonalVocabList;
+      },
+      vocabListType() {
+        // Get vocab list type from state. Should be set from Vocab component.
+        return this.$store.state.vocabListType;
+      },
+      vocabularyListId() {
+        // Get vocab list ID from state. Should be set from Vocab component on
+        // load, regardless of vocab list type.
+        return this.$store.state.vocabList.id;
       },
     },
   };

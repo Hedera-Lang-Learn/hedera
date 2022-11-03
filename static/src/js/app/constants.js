@@ -1,7 +1,9 @@
 export const FETCH_ME = 'fetchMe';
 export const FETCH_VOCAB_LIST = 'fetchVocabList';
+export const DELETE_VOCAB_ENTRY = 'vocabEntryDelete'
 export const FETCH_VOCAB_LISTS = 'fetchVocabLists';
 export const FETCH_PERSONAL_VOCAB_LIST = 'fetchPersonalVocabList';
+export const SET_VOCAB_LIST_TYPE = 'setVocabListType';
 export const FETCH_TOKENS = 'fetchTokens';
 export const SELECT_TOKEN = 'selectToken';
 export const FETCH_NODE = 'fetchNode';
@@ -14,10 +16,11 @@ export const ADD_LEMMA = 'addLemma';
 export const SET_VOCAB_LIST = 'setVocabList';
 export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
-export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
+export const OLD_CREATE_VOCAB_ENTRY = 'oldCreateVocabEntry';
 export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
 export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
+export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
 export const FETCH_LATTICE_NODES_BY_HEADWORD = 'fetchLatticeNodesByHeadword';
 export const FETCH_SUPPORTED_LANG_LIST = 'fetchSupportedLangList';
 // TODO add language preference

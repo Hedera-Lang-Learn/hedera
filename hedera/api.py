@@ -301,10 +301,63 @@ class VocabularyListEntriesAPI(APIView):
             entries=[v.data() for v in vocab_list.entries.all().order_by("headword")]
         )
 
+    def post(self, request, *args, **kwargs):
+        """
+        Create a new vocab list entry from JSON in the request body.
+
+        Posting a JSON representation of a new entry to the list entries
+        endpoint will create a new vocab list entry from that data. The data
+        structure for this object should be as follows:
+
+        Keys:
+            headword: (required) The user-specified text identifying the entry.
+            lemma_id: (optional) The primary key of a lemma to be associated
+                with the entry. If this is not provided, the headword will be
+                used to link the entry to a lemma.
+            definition: (required) The user-specified definition for the
+                vocabulary list entry. This is separate from the gloss
+                associated with the linked lemma, although they may have the
+                same value.
+        """
+        data = json.loads(request.body)
+        data["vocabulary_list_id"] = kwargs.get("pk")
+        entry = VocabularyListEntry(**data)
+        entry.save()
+        return JsonResponse(entry.data())
+
 
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
+        """
+        Edit an existing vocabulary list entry.
+
+        The url for this function requires an ID and an action.
+
+        For a `link` action, there must be a JSON payload in the request with a
+        "lemma" key. The value of this key should be a lemma ID for the lemma
+        that this vocab list entry should be linked to.
+
+        For a `delete` action, no GET parameters are required. The specified
+        vocab list entry will be deleted.
+
+        For an `edit` action, there must be a JSON payload in the request with
+        "headword" and "definition" keys. The values of those keys will be
+        assigned to the corresponding attributes of the entry.
+
+        Args:
+            request: Django request object. Includes JSON payload as `data`
+                attribute, which requires "lemma" for the link action or
+                "headword" and "definition" fro the edit action.
+            *args: unused
+            **kwargs: Includes params from Django routing. Should have "pk" and
+                "action" keys to get the vocab list object and desired action,
+                respectively.
+
+        Returns:
+            A JSON represention of the entry that was linked or edited, or an
+            empty JSON object in the case of a delete action.
+        """
         entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
         if action == "link":
@@ -319,7 +372,7 @@ class VocabularyListEntryAPI(APIView):
         elif action == "edit":
             data = json.loads(request.body)
             entry.headword = data["headword"]
-            entry.gloss = data["gloss"]
+            entry.definition = data["definition"]
             entry.save()
             return_data = entry.data()
 

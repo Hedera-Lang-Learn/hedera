@@ -131,6 +131,8 @@
     DELETE_PERSONAL_VOCAB_ENTRY,
     FETCH_LEMMAS_BY_PARTIAL_FORM,
     FETCH_VOCAB_LIST,
+    DELETE_VOCAB_ENTRY,
+    SET_VOCAB_LIST_TYPE,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -151,10 +153,10 @@
         handler() {
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
-            this.vocabListType = 'personal';
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
           } else {
             this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
-            this.vocabListType = 'general';
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'general' });
           }
         },
       },
@@ -163,10 +165,10 @@
         handler() {
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
-            this.vocabListType = 'personal';
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
           } else {
             this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
-            this.vocabListType = 'general';
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'general' });
           }
         },
       },
@@ -183,13 +185,6 @@
           dropdownAllowAll: true,
           mode: 'records',
         },
-        columns: [
-          { label: 'Lemma', field: 'lemma' },
-          { label: 'Headword', field: 'headword' },
-          { label: 'Definition', field: 'definition' },
-          { label: 'Familiarity', field: 'familiarity', width: '10rem' }, // TODO: hide when not a personal vocab list
-          { label: 'Edit', field: 'edit' }, // TODO: hide when cannot edit
-        ],
         editingIdx: null,
         saving: false,
         editingFields: {
@@ -235,19 +230,15 @@
           lang: this.lang,
         });
       },
-<<<<<<< HEAD
       async deleteVocab(id) {
-        await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, {
-          id,
-        });
-        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
-          lang: this.lang,
-        });
-=======
-      deleteVocab(id) {
         // TODO: different methods for different kinds of entries
-        this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
->>>>>>> 43c1eca (moved changes from Vocab to PersonalVocab)
+        if (this.vocabListType === "personal") {
+          await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
+        }
+        else if (this.vocabList.canEdit) {
+          await this.$store.dispatch(DELETE_VOCAB_ENTRY, { id });
+        }
+        else this.makeToast("You don't have permission to delete this", 403);
       },
       onEdit(entryId, row) {
         // TODO: make familiarity optional here or something
@@ -333,8 +324,26 @@
       },
     },
     computed: {
+      columns() {
+        var theColumns = [
+          { label: 'Lemma', field: 'lemma' },
+          { label: 'Headword', field: 'headword' },
+          { label: 'Definition', field: 'definition' }
+        ];
+
+        if (this.vocabListType === "personal") {
+          // Add familiarity column for personal vocab lists only
+          theColumns.push({ label: 'Familiarity', field: 'familiarity', width: '10rem' });
+        }
+
+        if (this.vocabListType === "personal" || this.vocabList.canEdit) {
+          // Add edit column only if user can edit this vocab list
+          theColumns.push({ label: 'Edit', field: 'edit' });
+        }
+
+        return theColumns;
+      },
       glosses() {
-        // TODO: this should work with general vocab lists too
         if (!this.vocabEntries) {
           return [];
         }

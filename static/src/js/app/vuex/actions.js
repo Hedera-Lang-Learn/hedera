@@ -13,18 +13,21 @@ import {
   SET_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_PERSONAL_VOCAB_LIST,
-  CREATE_VOCAB_ENTRY,
+  OLD_CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
   SET_LANGUAGE_PREF,
   DELETE_PERSONAL_VOCAB_ENTRY,
+  DELETE_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   FETCH_SUPPORTED_LANG_LIST,
   FETCH_VOCAB_LIST,
+  SET_VOCAB_LIST_TYPE,
+  CREATE_VOCAB_ENTRY,
 } from '../constants';
 import api from '../api';
 
@@ -48,11 +51,19 @@ export default {
   },
   [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
     api
-      .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data.data))
+      .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data))
       .catch(logoutOnError(commit));
   },
-  [CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
+  [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
+    const { data } = await api
+      .createVocabEntry(vocabularyListId, headword, definition, lemmaId)
+      .catch(logoutOnError(commit));
+    commit(CREATE_VOCAB_ENTRY, data);
+  },
+  [OLD_CREATE_VOCAB_ENTRY]:  async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
     // TODO: Make DRY with updateVocabEntry
+    // TODO: this function is redundant with CREATE_PERSONAL_VOCAB_ENTRY, but works a little different.
+    // Places where it is used should be adapted to use CREATE_PERSONAL_VOCAB_ENTRY and this function should be removed.
     const { response, data } = await api
       .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null);
     if (response && response.status >= 400) {
@@ -147,6 +158,14 @@ export default {
     const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
     return api.deletePersonalVocabEntry(id, cb)
       .catch(logoutOnError(commit));
+  },
+  [DELETE_VOCAB_ENTRY]: async ({ commit }, { id }) => {
+    await api.deleteVocabEntry(id)
+      .catch(logoutOnError(commit));
+    commit(DELETE_VOCAB_ENTRY, id);
+  },
+  [SET_VOCAB_LIST_TYPE]: ({ commit }, { vocabListType }) => {
+    commit(SET_VOCAB_LIST_TYPE, vocabListType);
   },
   [FETCH_BOOKMARKS]: ({ commit }) => (
     api

@@ -97,7 +97,7 @@
       },
       onDeleteEntry(entryData) {
         const { entry, cb } = entryData;
-        return api.vocabEntryDelete(entry.id, () => {
+        return api.deleteVocabEntry(entry.id, () => {
           const index = this.entries.findIndex((e) => e.id === entry.id);
           this.entries.splice(index, 1);
           cb();
