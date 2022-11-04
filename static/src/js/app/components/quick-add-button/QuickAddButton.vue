@@ -2,7 +2,7 @@
   <div class="quick-add">
     <Modal
       ref="Modal"
-      title="Add Word to Personal Vocabulary List"
+      title="Add Word to Vocabulary List"
       description="Modal to quick add vocab"
       >
         <QuickAddVocabForm ref="QuickAddVocabForm" :current-lang-tab="currentLangTab"/>

@@ -195,7 +195,7 @@
         if (this.lemmaId) {
           newEntryData.lemmaId = this.lemmaId;
         }
-        if (this.vocabListType === "personal") {
+        if (this.vocabListType === 'personal') {
           newEntryData.familiarity = this.familiarityRating;
           newEntryData.lang = vocabularyListItem.lang;
           await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
@@ -211,7 +211,7 @@
           this.lemmaId = null;
           this.showSuccesAlert = true;
         } else {
-          this.errorMessage("The process of adding a vocab entry did not report a success.")
+          this.errorMessage('The process of adding a vocab entry did not report a success.');
           this.showUnsuccessfulAlert = true;
         }
 
@@ -228,7 +228,7 @@
         }
         this.submitting = false;
       },
-      /* 
+      /*
       Get the human-readable label for a language from stat by looking up its
       language code.
        */
@@ -300,7 +300,7 @@
       },
       setFocus() {
         "Don't do anything";
-      }
+      },
     },
     computed: {
       // gives access to the state store of personalVocabLangList
@@ -326,7 +326,7 @@
       },
       isPersonal() {
         // Return a boolean for whether or not the current vocab list is a personal vocab list.
-        return this.vocabListType === "personal";
+        return this.vocabListType === 'personal';
       },
       vocabularyListId() {
         // Get vocab list ID from state. Should be set from Vocab component on
@@ -336,7 +336,7 @@
       vocabularyListLang() {
         // Get vocab list language from vocabList in state
         return this.$store.state.vocabList.lang;
-      }
+      },
     },
   };
 </script>

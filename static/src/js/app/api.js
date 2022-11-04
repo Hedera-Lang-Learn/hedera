@@ -83,12 +83,12 @@ export default {
   },
   createVocabEntry: (vocabularyListId, headword, definition, lemmaId) => {
     const payload = {
-      headword: headword,
-      definition: definition,
+      headword,
+      definition,
     };
     if (lemmaId) {
       payload.lemma_id = lemmaId;
-    };
+    }
     return axios.post(`${BASE_URL}vocab_lists/${vocabularyListId}/entries/`, payload);
   },
   fetchLatticeNodes: (headword, lang, cb) => axios.get(`${BASE_URL}lattice_nodes/?headword=${headword}&lang=${lang}`).then((r) => cb(r.data)),

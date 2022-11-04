@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h2 v-if="isPersonal">Personal Vocabulary List ({{ vocabularyListLang }})</h2>
+    <h2 v-else>{{ vocabList.title }}</h2>
     <div class="d-flex justify-content-between mb-2">
       <QuickAddVocabForm class="mr-2 text-left" :current-lang-tab="lang" />
       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
@@ -231,28 +233,27 @@
         });
       },
       async deleteVocab(id) {
-        // TODO: different methods for different kinds of entries
-        if (this.vocabListType === "personal") {
+        if (this.isPersonal) {
           await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
-        }
-        else if (this.vocabList.canEdit) {
+        } else if (this.vocabList.canEdit) {
           await this.$store.dispatch(DELETE_VOCAB_ENTRY, { id });
+        } else {
+          this.makeToast("You don't have permission to delete this", 403);
         }
-        else this.makeToast("You don't have permission to delete this", 403);
       },
       onEdit(entryId, row) {
-        // TODO: make familiarity optional here or something
-        const {
-          headword, definition, familiarity, lemma_id: lemmaId,
-        } = row;
+        const { headword, definition, lemma_id: lemmaId } = row;
         this.editingFields = {
           entryId,
           headword,
           definition,
-          familiarity,
           lang: this.lang,
           lemmaId,
         };
+        if (this.isPersonal) {
+          const { familiarity } = row;
+          this.editingFields.familiarity = familiarity;
+        }
       },
       async changeCell(field, row) {
         // TODO: remove dependency on familiarity
@@ -325,18 +326,18 @@
     },
     computed: {
       columns() {
-        var theColumns = [
+        const theColumns = [
           { label: 'Lemma', field: 'lemma' },
           { label: 'Headword', field: 'headword' },
-          { label: 'Definition', field: 'definition' }
+          { label: 'Definition', field: 'definition' },
         ];
 
-        if (this.vocabListType === "personal") {
+        if (this.isPersonal) {
           // Add familiarity column for personal vocab lists only
           theColumns.push({ label: 'Familiarity', field: 'familiarity', width: '10rem' });
         }
 
-        if (this.vocabListType === "personal" || this.vocabList.canEdit) {
+        if (this.isPersonal || this.vocabList.canEdit) {
           // Add edit column only if user can edit this vocab list
           theColumns.push({ label: 'Edit', field: 'edit' });
         }
@@ -356,7 +357,7 @@
         }));
       },
       ranks() {
-        if (this.vocabListType === "personal") {
+        if (this.isPersonal) {
           return (
             this.vocabList
             && this.vocabList.statsByText[this.$store.state.textId]
@@ -374,6 +375,10 @@
       },
       partialMatchForms() {
         return this.$store.state.partialMatchForms;
+      },
+      isPersonal() {
+        // Convenience prop to quickly check if vocab list is a personal vocab list
+        return this.$store.state.vocabListType === 'personal';
       },
     },
   };

@@ -1,6 +1,6 @@
 export const FETCH_ME = 'fetchMe';
 export const FETCH_VOCAB_LIST = 'fetchVocabList';
-export const DELETE_VOCAB_ENTRY = 'vocabEntryDelete'
+export const DELETE_VOCAB_ENTRY = 'vocabEntryDelete';
 export const FETCH_VOCAB_LISTS = 'fetchVocabLists';
 export const FETCH_PERSONAL_VOCAB_LIST = 'fetchPersonalVocabList';
 export const SET_VOCAB_LIST_TYPE = 'setVocabListType';

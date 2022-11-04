@@ -13,7 +13,6 @@ import store from './store';
 import App from './App.vue';
 import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
-import Vocab from './Vocab.vue';
 import Texts from './Texts.vue';
 import Dashboard from './Dashboard.vue';
 import QuickAddButton from './components/quick-add-button';
@@ -71,14 +70,7 @@ const learnerKeyBindings = {
     five: ['5'],
   },
 };
-const vocabAppKeyBindings = {
-  alias: {
-    nextVocabEntry: ['arrowright'],
-    prevVocabEntry: ['arrowleft'],
-  },
-};
 const textAppProps = ($el) => ({ textId: store.state.textId || $el.attributes['text-id'].value });
-const personalVocabAppProps = ($el) => ({ lang: $el.attributes.lang.value });
 const vocabAppProps = ($el) => ({
   vocabId: $el.attributes.vocabId.value,
   lang: $el.attributes.lang.value,
