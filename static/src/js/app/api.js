@@ -66,8 +66,8 @@ export default {
       resolved,
     }).then((r) => cb(r.data));
   },
-  vocabEntryLink: (id, node, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { node }).then((r) => cb(r.data)),
-  vocabEntryEdit: (id, headword, gloss, cb) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, gloss }).then((r) => cb(r.data)),
+  linkVocabEntry: (id, lemmaId) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { lemmaId }),
+  updateVocabEntry: (id, headword, definition) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, definition }),
   deleteVocabEntry: (id) => axios.post(`${BASE_URL}vocab_entries/${id}/delete/`),
   fetchPersonalVocabLangList: (cb) => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`).then((r) => cb(r.data)),
   createPersonalVocabEntry: (headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb) => {

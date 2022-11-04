@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 v-if="isPersonal">Personal Vocabulary List ({{ vocabularyListLang }})</h2>
+    <h2 v-if="isPersonal">Personal Vocabulary List</h2>
     <h2 v-else>{{ vocabList.title }}</h2>
     <div class="d-flex justify-content-between mb-2">
       <QuickAddVocabForm class="mr-2 text-left" :current-lang-tab="lang" />
@@ -128,13 +128,14 @@
 
   import {
     FETCH_PERSONAL_VOCAB_LIST,
-    UPDATE_VOCAB_ENTRY,
+    UPDATE_PERSONAL_VOCAB_ENTRY,
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
     FETCH_LEMMAS_BY_PARTIAL_FORM,
     FETCH_VOCAB_LIST,
     DELETE_VOCAB_ENTRY,
     SET_VOCAB_LIST_TYPE,
+    UPDATE_VOCAB_ENTRY,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -221,7 +222,7 @@
           return;
         }
         const definition = entry.definition || '';
-        await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+        await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
           entryId: entry.id,
           familiarity: rating,
           headword,
@@ -274,7 +275,7 @@
         }
       },
       async onSave() {
-        // TODO: remove mandatory familiarity, make sure API call is correct
+        // TODO: updates work, but don't appear. Looks like state and the components are updating though?
         this.saving = true;
         const {
           entryId,
@@ -283,14 +284,24 @@
           familiarity,
           lemmaId,
         } = this.editingFields;
-        const response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
-          entryId,
-          familiarity,
-          headword,
-          definition,
-          lang: this.lang,
-          lemmaId,
-        });
+        let response = null;
+        if (this.isPersonal) {
+          response = await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
+            entryId,
+            familiarity,
+            headword,
+            definition,
+            lang: this.lang,
+            lemmaId,
+          });
+        } else {
+          response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+            entryId,
+            headword,
+            definition,
+            lemmaId
+          });
+        }
         if (response) {
           const { statusText, status } = response;
           this.makeToast(statusText, `Error - ${status}`);

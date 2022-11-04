@@ -89,7 +89,9 @@
       },
       onSelectLemma(lemma) {
         if (this.canEdit) {
-          api.vocabEntryLink(this.selectedEntry.id, lemma.pk, (data) => {
+          // This is using an outdated version of this function that relies on callbacks
+          // It's just preserved for posterity until this file gets a total rewrite.
+          api.linkVocabEntry(this.selectedEntry.id, lemma.pk, (data) => {
             this.entries.splice(this.selectedIndex, 1, data);
             this.selectLemma(lemma.pk);
           });
@@ -110,7 +112,9 @@
           gloss,
           cb,
         } = entryData;
-        return api.vocabEntryEdit(entry.id, headword, gloss, (data) => {
+        // This is using an outdated version of this function that relies on callbacks
+        // It's just preserved for posterity until this file gets a total rewrite.
+        return api.updateVocabEntry(entry.id, headword, gloss, (data) => {
           const index = this.entries.findIndex((e) => e.id === entry.id);
           this.entries.splice(index, 1, data);
           cb();

@@ -18,6 +18,7 @@ export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
 export const FETCH_TEXT = 'fetchText';
 export const OLD_CREATE_VOCAB_ENTRY = 'oldCreateVocabEntry';
 export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
+export const UPDATE_PERSONAL_VOCAB_ENTRY = 'updatePersonalVocabEntry';
 export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
 export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
