@@ -1,17 +1,17 @@
 <template>
   <div class="form-group">
     <form id="addvocab-form" v-on:submit.prevent>
-      <label for="FormControlSelect"
-        >Select Language of Your Personal Vocabulary List</label
+      <label v-if="isPersonal" for="FormControlSelect"
+        >Select Language of Your Vocabulary List</label
       >
       <select
+        v-if="isPersonal"
         v-model="vocabularyListItem"
         class="form-control mb-2"
         id="FormControlSelect"
         aria-label="language List"
         ref="select"
         required
-        @change="resetLatticeNodeId()"
       >
         <option
           v-for="langItem in personalVocabLangList"
@@ -37,10 +37,9 @@
           placeholder="definition"
           aria-label="definition"
           v-model="definition"
-          @change="resetLatticeNodeId()"
           required
         />
-        <div class="flex-column ml-2">
+        <div v-if="isPersonal" class="flex-column ml-2">
           <label class="mb-0" for="FamiliarityRating">Familiarity</label>
           <FamiliarityRating
             id="FamiliarityRating"
@@ -117,18 +116,27 @@
       /**
       need to fetch supported languages and profile due to django templates causing vuex state to not persistant
       ex: navigation and personal vocab templates
-     * */
+       */
       await this.$store.dispatch(FETCH_ME);
       await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
-      // set pref language
-      if (this.$store.state.me && this.$store.state.me.lang) {
-        const foundLangListItem = this.personalVocabLangList.find(
-          (ele) => ele.lang === this.$store.state.me.lang,
-        );
-        this.vocabularyListItem = foundLangListItem || this.personalVocabLangList[0];
-      } else {
-        const [langItem] = this.personalVocabLangList;
-        this.vocabularyListItem = langItem;
+      // set pref language for personal vocab lists
+      if (this.isPersonal) {
+        if (this.$store.state.me && this.$store.state.me.lang) {
+          const foundLangListItem = this.personalVocabLangList.find(
+            (ele) => ele.lang === this.$store.state.me.lang,
+          );
+          this.vocabularyListItem = foundLangListItem || this.personalVocabLangList[0];
+        } else {
+          const [langItem] = this.personalVocabLangList;
+          this.vocabularyListItem = langItem;
+        }
+        // change language option to what the currently selected tab on PersonalVocab.vue
+        if (this.currentLangTab) {
+          const foundLangListItem = this.personalVocabLangList.find(
+            (ele) => ele.lang === this.currentLangTab,
+          );
+          this.vocabularyListItem = foundLangListItem;
+        }
       }
       // change language option to what the currently selected tab on PersonalVocab.vue
       if (this.currentLangTab) {
@@ -158,9 +166,6 @@
       onRatingChange(rating) {
         this.familiarityRating = rating;
       },
-      resetLatticeNodeId() {
-        this.latticeNodeId = null;
-      },
       /*
       Handle form submission. This should add a new vocab entry and link it
       to the selected lemma.
@@ -171,11 +176,14 @@
         this.submitting = true;
 
         const { headword, definition, vocabularyListItem } = this;
+
+        // If headword and definition are empty, don't do anything on submit
         if (!headword || !definition) {
           this.submitting = false;
           return;
         }
 
+        // Prepare object to pass to action for creating new entry
         const newEntryData = {
           headword,
           definition,
@@ -195,6 +203,7 @@
           await this.$store.dispatch(CREATE_VOCAB_ENTRY, newEntryData);
         }
 
+        // Clear component variables on successful submit, or report an error
         if (this.$store.state.vocabAdded) {
           this.headword = null;
           this.definition = null;
@@ -205,8 +214,9 @@
           this.errorMessage("The process of adding a vocab entry did not report a success.")
           this.showUnsuccessfulAlert = true;
         }
-        // updates pref language on form submit
-        if (vocabularyListItem) {
+
+        // updates pref language on form submit, only relevant to personal vocab
+        if (this.isPersonal && vocabularyListItem) {
           const prefLang = this.$store.state.personalVocabLangList.find(
             (ele) => ele.lang === vocabularyListItem.lang,
           );
@@ -218,6 +228,10 @@
         }
         this.submitting = false;
       },
+      /* 
+      Get the human-readable label for a language from stat by looking up its
+      language code.
+       */
       formatLang(lang) {
         const { supportedLanguages } = this.$store.state;
         const found = supportedLanguages.find((ele) => ele[0] === lang);
@@ -260,8 +274,6 @@
         }
 
         // Get the fetched lemmas from the forms in state
-        // TODO: there is a race condition happening here because state is
-        // being accessed before it has been modified if you type too fast.
         try {
           this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
         } catch (error) {
@@ -308,6 +320,10 @@
       vocabListType() {
         // Get vocab list type from state. Should be set from Vocab component.
         return this.$store.state.vocabListType;
+      },
+      isPersonal() {
+        // Return a boolean for whether or not the current vocab list is a personal vocab list.
+        return this.vocabListType === "personal";
       },
       vocabularyListId() {
         // Get vocab list ID from state. Should be set from Vocab component on
