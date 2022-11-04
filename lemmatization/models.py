@@ -49,6 +49,8 @@ class Lemma(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["lemma", "lang"], name="unique_lemma_lang")
         ]
+        verbose_name = "Lemma"
+        verbose_name_plural = "Lemmas"
 
 
 class FormToLemma(models.Model):
@@ -87,6 +89,8 @@ class FormToLemma(models.Model):
         constraints = [
             models.UniqueConstraint(fields=["lang", "form", "lemma"], name="unique_lang_form_lemma")
         ]
+        verbose_name = "Form to Lemma"
+        verbose_name_plural = "Form to Lemmas"
 
 
 class Gloss(models.Model):
@@ -107,6 +111,8 @@ class Gloss(models.Model):
 
     class Meta:
         ordering = ["lemma", "gloss"]
+        verbose_name = "Gloss"
+        verbose_name_plural = "Glosses"
 
 
 def lookup_form(form, lang) -> List[str]:
