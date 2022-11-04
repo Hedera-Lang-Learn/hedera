@@ -225,6 +225,7 @@ class VocabularyList(AbstractVocabList):
             "description": self.description,
             "link_status": self.link_status,
             "owner": self.owner.email if self.owner else None,
+            "lang": self.lang,
         }
 
 
@@ -255,7 +256,8 @@ class PersonalVocabularyList(AbstractVocabList):
         return {
             "entries": [w.data() for w in self.entries.all().order_by("headword")],
             "statsByText": stats,
-            "id": self.pk
+            "id": self.pk,
+            "lang": self.lang,
         }
 
 

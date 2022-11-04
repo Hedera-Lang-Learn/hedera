@@ -269,7 +269,7 @@
         if (!Object.prototype.hasOwnProperty.call(this.$store.state.forms, this.headword)) {
           await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
             form: this.headword,
-            lang: this.vocabularyListItem.lang,
+            lang: this.vocabularyListLang,
           });
         }
 
@@ -298,6 +298,9 @@
         const lemma = this.$store.state.lemmas[event.target.value];
         this.definition = lemma.glosses[0].gloss;
       },
+      setFocus() {
+        "Don't do anything";
+      }
     },
     computed: {
       // gives access to the state store of personalVocabLangList
@@ -330,6 +333,10 @@
         // load, regardless of vocab list type.
         return this.$store.state.vocabList.id;
       },
+      vocabularyListLang() {
+        // Get vocab list language from vocabList in state
+        return this.$store.state.vocabList.lang;
+      }
     },
   };
 </script>
