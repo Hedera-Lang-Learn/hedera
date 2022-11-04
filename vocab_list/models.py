@@ -179,7 +179,6 @@ class AbstractVocabList(models.Model):
         """
         decoded_file = fd.read().decode("utf-8").splitlines()
         lines = csv.DictReader(decoded_file, delimiter="\t")
-        logger.debug(f"load_tab_delimited: {decoded_file}")
 
         valid_lines = validate_lines(lines, entry_model)
 
