@@ -299,7 +299,7 @@
             entryId,
             headword,
             definition,
-            lemmaId
+            lemmaId,
           });
         }
         if (response) {

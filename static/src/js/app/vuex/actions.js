@@ -115,11 +115,11 @@ export default {
       }
       data = linkData;
     }
-    
+
     // If data is still null, return a message that nothing happened.
     if (!data) {
       return {
-        statusText:"No changes were made",
+        statusText: 'No changes were made',
         status: 204,
       };
     }
@@ -130,12 +130,12 @@ export default {
      * Note: this code does not take into account new personal vocab list data
      * if the data was updated in paralell with the editing of the personal vocab entry.
      * This code is similar to the function in UPDATE_PERSONAL_VOCAB_ENTRY, but since
-     * it's hitting an endpoint that returns a single modified vocab list entry, 
+     * it's hitting an endpoint that returns a single modified vocab list entry,
      * it doesn't need to look up the new entry in the results.
      */
     console.log(data);
     const { entries: localEntries } = state.vocabList;
-    const localEntryIndex = localEntries.findIndex((el) => el.id === entryId)
+    const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
     const updatedEntries = { ...state.vocabList };
     updatedEntries.entries[localEntryIndex] = data;
 
