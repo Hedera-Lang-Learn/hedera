@@ -1,18 +1,7 @@
 <template>
-  <div class="lattice-tree cloning" v-if="cloning">
-    <p>Cloning...</p>
-    <small>You will be redirected to your clone when complete.</small>
-  </div>
-  <div class="lattice-tree clone-required" v-else-if="requireClone">
-    <div class="well">
-      This text currently belongs to one or more classes.  You must clone it if
-      you want to make changes to it's lemma lattice.
-    </div>
-    <button class="btn btn-block btn-primary" @click.prevent="onCloneText">Clone Now</button>
-  </div>
-  <div class="lattice-tree" v-else>
+  <div class="lattice-tree">
     <h4>{{ selectedToken.word }}</h4>
-    <LatticeNode :node="selectedNode" @selected="onSelect" :show-ids="showIds" />
+    <LatticeNode :lemma="selectedLemma" @selected="onSelect" :show-ids="showIds" />
     <AddLemma @addLemma="onAddLemma" v-if="false" />
     <div v-if="showToggle" class="text-right my-1"><small><a href @click.prevent="toggleShowIds = !toggleShowIds">Toggle Node IDs</a></small></div>
 
@@ -56,8 +45,8 @@
       textId() {
         return this.$store.state.textId;
       },
-      selectedNode() {
-        return this.selectedToken && this.$store.state.nodes[this.selectedToken.node];
+      selectedLemma() {
+        return this.selectedToken && this.$store.state.lemmas[this.selectedToken.lemma_id];
       },
       selectedToken() {
         return this.$store.state.selectedToken;

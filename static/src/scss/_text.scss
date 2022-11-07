@@ -5,6 +5,10 @@ div.lemmatized-text {
   line-height: 1.8;
 }
 
+div.lemmatized-text.text-lang-zho {
+  font-family: 'Noto Serif SC';
+}
+
 .token {
   cursor: pointer;
 }

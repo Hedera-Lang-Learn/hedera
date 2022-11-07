@@ -1,0 +1,37 @@
+<template>
+  <div class="bookmark-list-wrapper">
+    <h2>My Bookmarks</h2>
+    <ul class="list-group bookmark-list" v-if="hasBookmarks">
+      <BookmarkItem v-for="(bookmark, index) in bookmarks" :key="index" :bookmark="bookmark" />
+    </ul>
+    <div v-else>
+      You haven't bookmarked any texts yet.
+    </div>
+  </div>
+</template>
+
+<script>
+  import BookmarkItem from './BookmarkItem.vue';
+  import { FETCH_BOOKMARKS } from '../constants';
+
+  export default {
+    components: { BookmarkItem },
+    created() {
+      this.$store.dispatch(FETCH_BOOKMARKS);
+    },
+    computed: {
+      bookmarks() {
+        return this.$store.state.bookmarks;
+      },
+      hasBookmarks() {
+        return this.bookmarks.length > 0;
+      },
+    },
+  };
+</script>
+<style lang="scss">
+  @import "../../../scss/config";
+  .bookmark-list-wrapper {
+    margin-top: 1rem;
+  }
+</style>

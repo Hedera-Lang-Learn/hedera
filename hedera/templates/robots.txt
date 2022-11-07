@@ -1,0 +1,11 @@
+User-agent: LinkCheck by SiteImprove.com
+User-agent: SiteCheck-sitecrawl by Siteimprove.com
+User-agent: Image size by Siteimprove.com
+Disallow: /admin/
+Disallow: /api/
+Disallow: /cms/
+Disallow: /django-rq/
+Disallow: /lti/
+
+User-agent: *
+Disallow: /

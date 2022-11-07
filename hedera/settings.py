@@ -35,7 +35,8 @@ except ValueError:
 
 
 DATABASES = {
-    "default": dj_database_url.config(default="postgres://localhost/hedera")
+    "default": dj_database_url.config(default="postgres://hedera:hedera@localhost/hedera"),
+    "test": dj_database_url.config(default="postgres://hedera:hedera@localhost/test_hedera"),
 }
 
 CSRF_TRUSTED_ORIGINS = ["canvas.harvard.edu"]
@@ -180,7 +181,8 @@ AUTHENTICATED_EXEMPT_URLS = [
     r"/api/",
     r"/lemmatized_text/\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/handout/",
     "/lti/config.xml",
-    "/lti/lti_initializer/"
+    "/lti/lti_initializer/",
+    "/robots.txt",
 ]
 
 ROOT_URLCONF = "hedera.urls"
@@ -206,7 +208,6 @@ INSTALLED_APPS = [
 
     # external
     "account",
-    "django_jsonfield_backport",
     "pinax.eventlog",
     "django_rq",
     "lti_provider",
@@ -214,6 +215,7 @@ INSTALLED_APPS = [
     # wagtail
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
+    "wagtail.contrib.search_promotions",
     "wagtail.embeds",
     "wagtail.sites",
     "wagtail.users",
@@ -227,7 +229,6 @@ INSTALLED_APPS = [
     "taggit",
 
     # local apps
-    "databasetext",
     "vocab_list",
     "lattices",
     "lemmatization",
@@ -239,6 +240,7 @@ INSTALLED_APPS = [
 
     # project
     "hedera",
+    "ckeditor",
 ]
 
 RQ_ASYNC = bool(int(os.environ.get("RQ_ASYNC", "0")))
@@ -329,6 +331,8 @@ ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = False
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_USE_AUTH_AUTHENTICATE = True
+ACCOUNT_LOGIN_REDIRECT_URL = "/dashboard"
+ACCOUNT_SIGNUP_REDIRECT_URL = "/dashboard"
 
 # LTI configuration
 
@@ -396,17 +400,6 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 EMAIL_USE_TLS = True
 
-TEXT_PROVIDER_BACKENDS = [
-    "databasetext.backends.TextProviderBackend",
-]
-
-# ISO 639.2 CODES
-SUPPORTED_LANGUAGES = [
-    ["grc", "Ancient Greek"],
-    ["lat", "Latin"],
-    ["rus", "Russian"],
-]
-
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_SAMESITE = None
@@ -418,4 +411,17 @@ PDF_SERVICE_TOKEN = os.environ.get("PDF_SERVICE_KEY")
 
 # SSL is terminated at the ELB so look for this header to know that we should be in ssl mode
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = bool(int(os.environ.get("SESSION_COOKIE_SECURE", "0")))
+
+# Default primary key field type (for django 3.2+)
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+
+# CKEDITOR SETTINGS
+CKEDITOR_CONFIGS = {
+    "hedera_ckeditor": {
+        "toolbar": "Custom",
+        "toolbar_Custom": [],
+        "removePlugins": "stylesheetparser",
+        "allowedContent": "span[*]",
+    },
+}

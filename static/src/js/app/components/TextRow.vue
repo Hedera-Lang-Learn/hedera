@@ -17,9 +17,11 @@
         </div>
       </div>
     </td>
+    <td>{{ this.$options.filters.dateFormat(this.$data.createdAt, 'MMM D, YYYY') }}</td>
     <td v-if="teacherMode">
-      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" /> Delete</a>
-      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" /> Clone</a>
+      <a class="btn btn-outline-danger btn-sm" :href="text.deleteUrl"><i class="fa fa-trash" aria-hidden="true" /> Delete</a>
+      <a v-if="completed == 100" class="btn btn-outline-primary btn-sm" :href="text.cloneUrl"><i class="fa fa-copy" aria-hidden="true" /> Clone</a>
+      <a v-if="completed == 100" class="btn btn-outline-info btn-sm" :href="text.editUrl"><i class="fa fa-edit" aria-hidden="true" /> Edit</a>
     </td>
     <td v-else>
       <div v-if="text.stats" class="text-familiarity mb-0">
@@ -56,6 +58,7 @@
     data() {
       return {
         completed: this.text.completed,
+        createdAt: new Date(this.text.createdAt),
         tokenCount: this.text.tokenCount,
         lemmatizationStatus: this.text.lemmatizationStatus,
       };

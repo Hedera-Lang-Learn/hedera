@@ -1,14 +1,16 @@
 import json
+import os
+import sys
+import traceback
 
 from django.db.models import Q
-from django.http import JsonResponse
+from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views import View
 
-from lattices.models import LatticeNode
-# from lattices.utils import get_or_create_nodes_for_form_and_lemmas
-from lemmatized_text.models import LemmatizedText
+from lemmatization.models import FormToLemma, Lemma
+from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
@@ -16,6 +18,12 @@ from vocab_list.models import (
     VocabularyList,
     VocabularyListEntry
 )
+
+from .models import Profile
+from .supported_languages import SUPPORTED_LANGUAGES
+
+
+LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
 
 
 class JsonResponseAuthError(JsonResponse):
@@ -54,6 +62,51 @@ class MeAPI(APIView):
     def get_data(self):
         return self.request.user.profile.data()
 
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        profile = Profile.objects.get(user=request.user)
+        if(data["lang"] in (x[0] for x in LANGUAGES)):
+            profile.lang = data["lang"]
+            profile.save()
+            return JsonResponse({"data": profile.data()})
+        return JsonResponseBadRequest({"error": "language not supported"})
+
+
+class BookmarksListAPI(APIView):
+    def get_data(self):
+        qs = LemmatizedTextBookmark.objects.filter(Q(user=self.request.user)).order_by("-created_at")
+        return [bookmark.api_data() for bookmark in qs]
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        textId = int(data["textId"])
+
+        # ensure user has access to the text
+        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        text = get_object_or_404(qs, pk=textId)
+
+        bookmark, _ = LemmatizedTextBookmark.objects.get_or_create(
+            user=self.request.user,
+            text=text
+        )
+        return JsonResponse(dict(data=bookmark.api_data()))
+
+
+class BookmarksDetailAPI(APIView):
+    def get_data(self):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        return bookmark.api_data()
+
+    def delete(self, request, *args, **kwargs):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        try:
+            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+            bookmark.delete()
+        except LemmatizedTextBookmark.DoesNotExist:
+            pass
+        return JsonResponse({})
+
 
 class LemmatizedTextListAPI(APIView):
 
@@ -86,6 +139,7 @@ class LemmatizedTextStatusAPI(APIView):
         )
 
     def post(self, request, *args, **kwargs):
+        cloned = None
         if self.kwargs.get("action") == "retry" and self.text.can_retry():
             self.text.retry_lemmatization()
         elif self.kwargs.get("action") == "cancel" and self.text.can_cancel():
@@ -93,7 +147,7 @@ class LemmatizedTextStatusAPI(APIView):
         elif self.kwargs.get("action") == "clone":
             # @@@ self.text can only be fetched if public or you own it, probably need to expand for teachers
             cloned = self.text.clone(cloned_by=request.user)
-        return JsonResponse(data=dict(data=self.get_data(cloned)))
+        return JsonResponse(data=dict(data=self.get_data(new_text=cloned)))
 
 
 class LemmatizedTextDetailAPI(APIView):
@@ -109,45 +163,63 @@ class LemmatizedTextDetailAPI(APIView):
         return text.api_data()
 
 
+class LemmatizationLemmaAPI(APIView):
+    def get_data(self):
+        lemma_id = self.kwargs.get("lemma_id")
+        lemma = get_object_or_404(Lemma, pk=lemma_id)
+        return lemma.to_dict()
+
+
+class LemmatizationFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+
+        # gets list of forms
+        forms = FormToLemma.objects.filter(lang=lang, form=form)
+        if not forms:
+            language_service = SUPPORTED_LANGUAGES[lang].service
+            form_normalized = language_service.normalize(form)
+            forms = FormToLemma.objects.filter(lang=lang, form=form_normalized)
+        lemma_list = [form.get_lemma() for form in forms]
+        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
+        data = {
+            "lang": lang,
+            "form": form,
+            "lemmas": sorted_lemma_list
+        }
+        return data
+
+
 class LemmatizationAPI(APIView):
 
     def decorate_token_data(self, text):
         data = text.data
-        nodes = LatticeNode.objects.filter(pk__in=[token["node"] for token in data])
-        nodes_cache = {
-            node.pk: node
-            for node in nodes
+
+        lemmas = Lemma.objects.filter(pk__in=[token["lemma_id"] for token in data])
+        lemmas_cache = {
+            lemma.pk: lemma
+            for lemma in lemmas
         }
-        vocablist_id = self.request.GET.get("vocablist", None)
+
+        # this is checking to see if the token is in the user's personal vocab list
+        # it annotates the token with inVocabList=True|False
+        vocablist_id = self.request.GET.get("vocablist_id", None)
+        vocablist = None
         if vocablist_id is not None:
-            if vocablist_id == "personal":
-                vl = get_object_or_404(PersonalVocabularyList, user=self.request.user, lang=text.lang)
-            else:
-                vl = get_object_or_404(VocabularyList, pk=vocablist_id)
-            node_ids = vl.entries.values_list("node__pk", flat=True)
-            related_node_cache = dict()
-            for token in data:
-                node = nodes_cache.get(token["node"])
-                if node is not None:
-                    if related_node_cache.get(node.pk) is None:
-                        related_node_cache[node.pk] = [n.pk for n in node.related_nodes()]
-                    related_node_ids = related_node_cache[node.pk]
-                    token["inVocabList"] = token["resolved"] and any(item in related_node_ids for item in node_ids)
-                else:
-                    token["inVocabList"] = False
-
-        if self.request.GET.get("personalvocablist", None) is not None:
-            vl = get_object_or_404(PersonalVocabularyList, pk=self.request.GET.get("personalvocablist"))
-            for token in data:
-                token["inVocabList"] = token["resolved"] and vl.entries.filter(node__pk=token["node"]).exists()
-                token["familiarity"] = token["resolved"] and vl.node_familiarity(token["node"])
-
+            vocablist = get_any_vocablist_by_id(self.request.user.id, text.lang, vocablist_id)
         for index, token in enumerate(data):
             token["tokenIndex"] = index
-            node = nodes_cache.get(token["node"])
-            if node is not None:
-                token.update(node.gloss_data())
-
+            lemma = lemmas_cache.get(token["lemma_id"])
+            if lemma is not None:
+                token.update(lemma.gloss_data())
+            if vocablist_id is not None:
+                vocab_entry = vocablist.entries.filter(lemma_id=token["lemma_id"])
+                if vocablist_id == "personal":
+                    # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
+                    familarity = list(vocab_entry.values_list("familiarity", flat=True))
+                    token["familiarity"] = token["resolved"] and familarity and familarity[0]
+                token["inVocabList"] = token["resolved"] and vocab_entry.exists()
         return data
 
     def get_data(self):
@@ -166,10 +238,12 @@ class LemmatizationAPI(APIView):
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         token_index = data["tokenIndex"]
-        node_id = data["nodeId"]
+        lemma_id = data["lemmaId"]
         resolved = data["resolved"]
+        # list of gloss ids
+        gloss_ids = data["glossIds"]
 
-        text.update_token(self.request.user, token_index, node_id, resolved)
+        text.update_token(self.request.user, token_index, lemma_id, gloss_ids, resolved)
 
         text.refresh_from_db()
         data = self.decorate_token_data(text)
@@ -180,11 +254,14 @@ class LemmatizationAPI(APIView):
 class TokenHistoryAPI(APIView):
 
     def get_data(self):
-        qs = LemmatizedText.objects.filter(Q(public=True) | Q(created_by=self.request.user))
+        qs = LemmatizedText.objects.all()
         text = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        token_index = self.kwargs.get("token_index")
-        history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
-        return dict(tokenHistory=history)
+        is_valid_user = text.is_valid_user(self.request.user)
+        if is_valid_user:
+            token_index = self.kwargs.get("token_index")
+            history = [h.data() for h in text.logs.filter(token_index=token_index).order_by("created_at")]
+            return dict(tokenHistory=history)
+        raise Http404()
 
 
 class VocabularyListAPI(APIView):
@@ -215,11 +292,10 @@ class VocabularyListEntryAPI(APIView):
     def post(self, request, *args, **kwargs):
         entry = get_object_or_404(VocabularyListEntry, pk=self.kwargs.get("pk"), vocabulary_list__owner=request.user)
         action = kwargs.get("action")
-
         if action == "link":
             data = json.loads(request.body)
-            node = get_object_or_404(LatticeNode, pk=data["node"])
-            entry.node = node
+            lemma = get_object_or_404(Lemma, pk=data["lemma"])
+            entry.lemma = lemma
             entry.save()
             return_data = entry.data()
         elif action == "delete":
@@ -268,24 +344,29 @@ class PersonalVocabularyListAPI(APIView):
         vl = self.get_object()
 
         data = json.loads(request.body)
-        familiarity = int(data["familiarity"])
-
+        familiarity = int(data.get("familiarity", 1))
         pk = kwargs.get("pk", None)
         if pk is not None:
             entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
-            entry.familiarity = familiarity
+            # Update based on data payload
+            lemma_id = data.get("lemmaId", None)
+            if lemma_id:
+                data["lemma"] = lemma = get_object_or_404(Lemma, pk=lemma_id)
+            for field in ["familiarity", "headword", "definition", "lemma"]:
+                data_field = data.get(field, None)
+                if data_field is not None:
+                    setattr(entry, field, data_field)
             entry.save()
         else:
-            node = get_object_or_404(LatticeNode, pk=data["nodeId"])
+            lemma = get_object_or_404(Lemma, pk=data["lemmaId"])
             headword = data["headword"]
-            gloss = data["gloss"]
+            definition = data["definition"]
             vl.entries.create(
                 headword=headword,
-                gloss=gloss,
+                definition=definition,
                 familiarity=familiarity,
-                node=node,
+                lemma=lemma,
             )
-
         if self.text:
             stats, _ = PersonalVocabularyStats.objects.get_or_create(text=self.text, vocab_list=vl)
             stats.update()
@@ -293,3 +374,113 @@ class PersonalVocabularyListAPI(APIView):
         vl.refresh_from_db()
 
         return JsonResponse({"data": vl.data()})
+
+    def delete(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        if "id" in data:
+            entry = get_object_or_404(PersonalVocabularyListEntry, pk=data["id"])
+            count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
+            # Updates stats for all text matching the vocab_list_id when vocab entry is deleted
+            stats = PersonalVocabularyStats.objects.filter(vocab_list_id=entry.vocabulary_list_id)
+            for stat in stats:
+                stat.update()
+            if(count != 0):
+                return JsonResponse({"data": True, "id": data["id"]})
+            return JsonResponseBadRequest({"error": f"could not find vocab with id={data['id']}"}, status=404)
+        return JsonResponseBadRequest({"error": f"missing 'id'"})
+
+
+class PersonalVocabularyQuickAddAPI(APIView):
+
+    def get_data(self):
+        qs = PersonalVocabularyList.objects.filter(user=self.request.user)
+        lang_list = []
+        for lang_data in qs:
+            lang_list.append({
+                "lang": lang_data.lang,
+                "id": lang_data.id
+            })
+        return lang_list
+
+    def check_data(self, data):
+        """Ensures that all expected keys are in the data."""
+        keys = [
+            "familiarity",
+            "headword",
+            "definition",
+            "vocabulary_list_id"
+        ]
+        for key in keys:
+            if key not in data:
+                return False
+        return True
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        checked_data = self.check_data(data)
+        if checked_data is not True:
+            return JsonResponseBadRequest({"error": "Missing required fields"})
+        if "lemma_id" in data and data["lemma_id"] is not None:
+            data["lemma"] = get_object_or_404(Lemma, pk=data["lemma_id"])
+        try:
+            # to handle new quick add when list doesnt exist create using lang if
+            if data["vocabulary_list_id"] is None:
+                if "lang" not in data:
+                    raise KeyError("lang field not provided")
+                new_vocab_list, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=data["lang"])
+                data["vocabulary_list_id"] = new_vocab_list.data()["id"]
+            # removes lang key before creating the entry
+            if "lang" in data:
+                del data["lang"]
+            new_entry = PersonalVocabularyListEntry.objects.create(**data)
+            return JsonResponse({"data": {"created": True, "data": new_entry.data()}})
+
+        except Exception as e:
+            exception_message = str(e)
+            exception_type, exception_object, exception_traceback = sys.exc_info()
+            filename = os.path.split(exception_traceback.tb_frame.f_code.co_filename)[1]
+            return JsonResponseBadRequest(data={
+                "error": f"{exception_message}",
+                "error_type": exception_type.__name__,
+                "error_traceback": traceback.format_tb(exception_traceback),
+                "error_filename": filename
+            })
+
+
+class JsonResponseBadRequest(JsonResponse):
+    status_code = 400
+
+
+class SupportedLanguagesAPI(APIView):
+
+    def get_data(self):
+        return LANGUAGES
+
+
+def get_any_vocablist_by_id(user_id, lang, vocablist_id):
+    if vocablist_id == "personal":
+        return get_object_or_404(PersonalVocabularyList, user=user_id, lang=lang)
+    return get_object_or_404(VocabularyList, pk=vocablist_id)
+
+
+class PartialMatchFormLookupAPI(APIView):
+    def get_data(self):
+        form = self.kwargs.get("form")
+        lang = self.kwargs.get("lang")
+        # gets list of forms - Match exactly since startswith doesnt match exactly
+        forms = FormToLemma.objects.filter(lang=lang, form=form)
+        if not forms:
+            forms = FormToLemma.objects.filter(lang=lang, form__startswith=form)
+            if not forms:
+                forms = FormToLemma.objects.filter(lang=lang, form__startswith=form.lower())
+        lemma_list = [form.get_lemma() for form in forms]
+        lemma_dict = {}
+        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
+        distinct_lemma_list = []
+        # removing duplicates using a dict lookup
+        for lemma_obj in sorted_lemma_list:
+            lemma_word = lemma_obj["lemma"]
+            if lemma_word not in lemma_dict:
+                lemma_dict[lemma_word] = lemma_obj
+                distinct_lemma_list.append(lemma_obj)
+        return distinct_lemma_list

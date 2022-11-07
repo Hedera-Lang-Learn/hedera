@@ -8,7 +8,7 @@
 
   export default {
     name: 'icon',
-    props: ['name', 'inline'],
+    props: ['name', 'inline', 'title'],
     components: {
       FontAwesomeIcon,
     },

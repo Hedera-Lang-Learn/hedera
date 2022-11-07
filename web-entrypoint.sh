@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata sites
 python manage.py collectstatic --noinput
-sudo gunicorn hedera.wsgi:application \
+exec gunicorn hedera.wsgi:application \
     --env AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     --env AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     --env DATABASE_URL=$DATABASE_URL \
@@ -24,6 +24,7 @@ sudo gunicorn hedera.wsgi:application \
     --env SENTRY_DSN="$SENTRY_DSN" \
     --env SENTRY_ENVIRONMENT=$SENTRY_ENVIRONMENT \
     --env DJANGO_DEBUG=$DJANGO_DEBUG \
+    --env SESSION_COOKIE_SECURE=${SESSION_COOKIE_SECURE:-1} \
     --env CONSUMER_KEY=$CONSUMER_KEY \
     --env LTI_SECRET=$LTI_SECRET \
     --env PDF_SERVICE_ENDPOINT=$PDF_SERVICE_ENDPOINT \

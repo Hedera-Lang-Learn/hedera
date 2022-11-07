@@ -1,30 +1,12 @@
-# from lattices.utils import get_lattice_node
-
 import logging
 
-from lattices.models import LatticeNode, LemmaNode
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 
-from .models import add_form, lookup_form
-from .services.clancy import ClancyService
-from .services.morpheus import MorpheusService
-from .tokenizer import RUSTokenizer, Tokenizer
+from .models import Lemma
 
 
 logger = logging.getLogger(__name__)
 
-
-# from vocab_list.models import VocabularyList
-
-SERVICES = {
-    "lat": MorpheusService(lang="lat"),
-    "grc": MorpheusService(lang="grc"),
-    "rus": ClancyService(lang="rus"),
-}
-TOKENIZERS = {
-    "lat": Tokenizer(lang="lat"),
-    "grc": Tokenizer(lang="grc"),
-    "rus": RUSTokenizer(lang="rus"),
-}
 
 RESOLVED_NA = "na"
 RESOLVED_NO_LEMMA = "no-lemma"
@@ -33,6 +15,10 @@ RESOLVED_NO_AMBIGUITY = "no-ambiguity"
 RESOLVED_AUTOMATIC = "resolved-automatic"
 RESOLVED_MANUAL = "resolved-manual"
 
+GLOSSED_NA = "na"
+GLOSSED_AUTOMATIC = "glossed-automatic"
+GLOSSED_MANUAL = "glossed-manual"
+
 
 class Lemmatizer(object):
 
@@ -40,103 +26,70 @@ class Lemmatizer(object):
         self.lang = lang
         self.cb = cb
         self.force_refresh = force_refresh
-        self._service = SERVICES.get(lang)
-        self._tokenizer = TOKENIZERS.get(lang)
+        self._service = SUPPORTED_LANGUAGES[lang].service
+        self._tokenizer = SUPPORTED_LANGUAGES[lang].tokenizer
+        self._preprocessor = SUPPORTED_LANGUAGES[lang].preprocessor
         if self._service is None:
             raise ValueError(f"Lemmatization not supported for language '{lang}''")
         if self._tokenizer is None:
             raise ValueError(f"Tokenization not supported for language '{lang}''")
+        if self._preprocessor is None:
+            raise ValueError(f"Preprocessor not supported for language '{lang}''")
 
     def _tokenize(self, text):
         return self._tokenizer.tokenize(text)
 
-    def _lemmatize_token(self, token):
-        s = lookup_form(token)
-        if not s or self.force_refresh:
-            lemmas = self._service.lemmatize(token)
-            s |= add_form(
-                context=self._service.SID,
-                lang=self.lang,
-                form=token,
-                lemmas=lemmas
-            )
-        return list(s)
+    def _preprocess(self, tokens):
+        return self._preprocessor.preprocess(tokens)
+
+    def _lemmatize(self, word, word_normalized):
+        lemmas = self._service.lemmatize(word, word_normalized)
+        return list(lemmas)
 
     def _report_progress(self, index, total_count):
         if callable(self.cb):
             self.cb((index + 1) / total_count)
 
     def lemmatize(self, text):
-        context = self._service.SID  # e.g. "morpheus"
         result = []
         tokens = list(self._tokenize(text))
+        tokens = self._preprocess(tokens)
         total_count = len(tokens)
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
+            lemma_id = None
+            gloss_ids = []
+            glossed = GLOSSED_NA
+            resolved = RESOLVED_NA
             if word_normalized:
-                lemmas = self._lemmatize_token(word_normalized)
+                lemma_names = self._lemmatize(word, word_normalized)
+                lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
 
-                # node = get_lattice_node(lemmas, word)  # @@@ not sure what to use for context here
-
-                lemmas = sorted(lemma.rstrip("1") for lemma in lemmas)
-
-                label = " or ".join(lemmas)
-                lemma_node = LemmaNode.objects.filter(
-                    context=context,
-                    lemma=label).first()
-                logger.debug(f"lemmatize {context} -> {word} {lemmas} {label}")
-
-                if lemma_node:
-                    node = lemma_node.node
-                    logger.debug(f"got lemma node {lemma_node.pk} pointing to lattice node {node.pk}")
-                else:
-                    logger.debug("did not get lemma node")
-                    if len(lemmas) > 1:
-                        lattice_node = LatticeNode.objects.create(
-                            label=label,
-                            gloss=f"{context} ambiguity",
-                            canonical=False,
-                        )
-                        for lemma in lemmas:
-                            logger.debug(lemma)
-                            lemma_node = LemmaNode.objects.filter(
-                                context=context,
-                                lemma=lemma).first()
-                            logger.debug(lemma_node)
-                            if lemma_node:
-                                child_lattice_node = lemma_node.node
-                                lattice_node.children.add(child_lattice_node)
-                        lattice_node.save()
-                        lemma_node = LemmaNode.objects.create(
-                            context=context,
-                            lemma=label,
-                            node=lattice_node,
-                        )
-                        children = lattice_node.children.all()
-                        logger.debug(f"ambiguous so creating join node {lattice_node.pk} with children {children}")
-                        if len(children) == 1:
-                            node = children[0]
-                        else:
-                            node = lattice_node
-                    else:
-                        node = None
-
-                if node:
-                    if node.children.exists():
-                        resolved = RESOLVED_UNRESOLVED
-                    else:
-                        resolved = RESOLVED_NO_AMBIGUITY
-                else:
+                # automatically select the highest frequency lemma
+                # assumes that the lemma entries are ranked in frequency order, highest frequency first
+                if len(lemma_entries) == 0:
                     resolved = RESOLVED_NO_LEMMA
-            else:
-                node = None
-                resolved = RESOLVED_NA
-            node_pk = node.pk if node else None
+                    lemma_id = None
+                elif len(lemma_entries) == 1:
+                    resolved = RESOLVED_NO_AMBIGUITY
+                    lemma_id = lemma_entries[0].pk
+                else:
+                    resolved = RESOLVED_AUTOMATIC
+                    lemma_id = lemma_entries[0].pk
+
+                # automatically select all glosses for the lemma
+                # this can be changed later by manually selecting glosses if desired
+                if lemma_id:
+                    gloss_ids = [gloss.pk for gloss in lemma_entries[0].glosses.all()]
+                    glossed = GLOSSED_AUTOMATIC
+
             result.append(dict(
                 word=word,
                 word_normalized=word_normalized,
                 following=following,
-                node=node_pk,
+                lemma_id=lemma_id,
+                gloss_ids=gloss_ids,
+                glossed=glossed,
                 resolved=resolved
             ))
             self._report_progress(index, total_count)

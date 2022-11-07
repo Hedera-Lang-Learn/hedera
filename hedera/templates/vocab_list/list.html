@@ -24,7 +24,7 @@
         <td class="d-flex justify-content-between">
           <a href="{% url "vocab_list_detail" vocab_list.pk %}">{{ vocab_list.title }}</a>
           {% if request.user == vocab_list.owner %}
-            <a href="{% url "vocab_list_delete" vocab_list.pk %}" class="text-danger"><i class="fa fa-fw fa-trash"></i></a>
+            <a href="{% url "vocab_list_delete" vocab_list.pk %}" class="text-danger"><i class="fa fa-fw fa-trash" aria-hidden="true" title="Delete"></i><span class="sr-only">Delete</span></a>
           {% endif %}
         </td>
         <td>{{ vocab_list.display_name }}</td>

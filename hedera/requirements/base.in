@@ -1,0 +1,28 @@
+django-user-accounts~=3.0.2
+pinax-eventlog~=5.1.0
+django~=3.2.15
+django-webpack-loader~=1.3.0
+django-ckeditor~=6.1.0
+pinax-templates~=2.0.6
+requests~=2.26.0
+gunicorn~=20.1.0
+psycopg2-binary~=2.9.1
+dj-database-url~=0.5.0
+boto3~=1.18.37
+django-storages~=1.11.1
+django-rq~=2.4.1
+django-querycount~=0.7.0
+iso-639~=0.4.5
+sentry-sdk~=1.3.1
+rq~=1.9.0
+wagtail~=2.14.1
+django-lti-provider~=0.4.7
+lac~=2.1.2
+pip-tools~=6.4.0
+tqdm~=4.63.0
+# Pinned protobuf to 3.20.1 because of LAC issue with protobuf 4.21.1
+# See related:
+# 	https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+# 	https://github.com/protocolbuffers/protobuf/issues/10051
+protobuf==3.20.1
+pandas~=1.3.5

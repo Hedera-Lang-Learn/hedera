@@ -1,5 +1,5 @@
 <template>
-  <div class="lemmatized-text" :class="highlightClass">
+  <div class="lemmatized-text" :class="[highlightClass, languageClass]">
     <template v-for="token in tokens">
       <Token
         :key="token.tokenIndex"
@@ -14,7 +14,7 @@
 </template>
 <script>
   import debounce from 'lodash.debounce';
-  import { SELECT_TOKEN, FETCH_NODE } from '../constants';
+  import { SELECT_TOKEN, FETCH_LEMMAS_BY_FORM, FETCH_LEMMA } from '../constants';
 
   import Token from './Token.vue';
 
@@ -69,17 +69,29 @@
     methods: {
       selectToken(index) {
         const token = this.tokens[index];
-        const fetchNode = () => {
-          if (this.selectedToken.node !== null) {
-            this.$store.dispatch(FETCH_NODE, { id: this.selectedToken.node });
+
+        const fetchLemma = () => {
+          if (this.selectedToken.lemma_id !== null) {
+            this.$store.dispatch(FETCH_LEMMA, { id: this.selectedToken.lemma_id });
           }
         };
-        const debouncedFetchNode = debounce(fetchNode, 300);
+
+        const fetchLemmasByForm = () => {
+          this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+            lang: this.$store.state.text.lang,
+            form: this.selectedToken.word_normalized,
+          });
+        };
+
+        const debouncedFetch = debounce(() => {
+          fetchLemma();
+          fetchLemmasByForm();
+        }, 300);
 
         // The debounce is delaying the call but it's accumulating all the instances
         // so the network call is happening multiple times.
         this.$store.dispatch(SELECT_TOKEN, { token })
-          .then(debouncedFetchNode());
+          .then(debouncedFetch());
       },
       onToggleSelect(token) {
         if (this.selectedToken === token) {
@@ -111,10 +123,10 @@
         let className = '';
         if (this.showFamiliarity && this.vocabEntries) {
           const entries = this.vocabEntries.reduce((map, obj) => {
-            map[obj.node] = obj.familiarity;
+            map[obj.lemma_id] = obj.familiarity;
             return map;
           }, {});
-          className = entries[token.node] !== undefined ? `rating-${entries[token.node]}` : '';
+          className = entries[token.lemma_id] !== undefined ? `rating-${entries[token.lemma_id]}` : '';
         }
         return className;
       },
@@ -122,6 +134,9 @@
     computed: {
       unresolvedTokens() {
         return this.tokens.filter((t) => !t.resolved || t === this.selectedToken);
+      },
+      languageClass() {
+        return `text-lang-${this.$store.state.text.lang ?? 'unknown'}`;
       },
       highlightClass() {
         if (this.$store.state.selectedVocabList === null) {

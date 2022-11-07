@@ -7,9 +7,13 @@ static/dist/
 .DS_Store
 .vscode
 .idea
+.python-version
 .env*
+.venv
 db_dumps/
 npm-debug.log
 cert.pem
 key.pem
 .docker-data
+coverage
+.venv

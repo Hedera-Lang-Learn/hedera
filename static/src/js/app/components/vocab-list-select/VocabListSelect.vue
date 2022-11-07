@@ -3,7 +3,7 @@
     <div class="vocab-list-select-dropdown" :class="{ open }">
       <div class="vocab-list-select--title" :class="{ open }" @click="open = !open">
         <span>Select a Vocab List</span>
-        <icon name="caret-down" />
+        <i class="fa fa-fw fa-caret-down" aria-hidden="true" />
       </div>
       <div class="vocab-list-select--opened" v-if="open">
         <VocabListEntry v-for="vocabList in vocabLists" :key="vocabList.id" :vocab-list="vocabList" @selected="onSelect" />

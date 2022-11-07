@@ -5,8 +5,12 @@
         <LemmatizedText />
       </div>
       <div class="col-4">
+        <BookmarkTextButton :text-id="textId" />
+        <a class="btn btn-block btn-outline-info mb-3" :href="this.$store.state.text.editUrl">
+          <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
+        </a>
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
-        <LatticeTree v-if="selectedToken" />
+        <FormDisambiguation v-if="selectedToken" />
       </div>
     </div>
   </div>
@@ -17,18 +21,25 @@
     FETCH_VOCAB_LISTS,
     FETCH_TEXT,
     FETCH_ME,
-    FETCH_PERSONAL_VOCAB_LIST,
+    FETCH_PERSONAL_VOCAB_LIST, FETCH_BOOKMARKS,
   } from './constants';
 
-  import LatticeTree from './modules/LatticeTree.vue';
   import LemmatizedText from './modules/LemmatizedText.vue';
   import VocabListSelect from './components/vocab-list-select';
+  import BookmarkTextButton from './modules/BookmarkTextButton.vue';
+  import FormDisambiguation from './modules/FormDisambiguation.vue';
 
   export default {
     props: ['textId'],
-    components: { LatticeTree, LemmatizedText, VocabListSelect },
+    components: {
+      FormDisambiguation,
+      LemmatizedText,
+      VocabListSelect,
+      BookmarkTextButton,
+    },
     created() {
       this.$store.dispatch(FETCH_ME);
+      this.$store.dispatch(FETCH_BOOKMARKS);
     },
     watch: {
       textId: {
@@ -46,7 +57,7 @@
           if (this.selectedVocabListId === 'personal') {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.$store.state.text.lang });
           }
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabList: this.selectedVocabListId });
+          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
         },
       },
     },

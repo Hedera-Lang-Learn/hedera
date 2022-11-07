@@ -1,6 +1,10 @@
 <template>
-  <a class="btn btn-sm btn-light" :href="glossesDownload" download="glosses.csv">
-    <icon name="download" /> Export
+  <a
+    class="btn btn-sm btn-light"
+    :href="VocabListDownload"
+    download="personal_vocab_list.csv"
+  >
+    <i class="fa fa-fw fa-download" aria-hidden="true" /> Export
   </a>
 </template>
 
@@ -10,9 +14,9 @@
       return null;
     }
 
-    let result; let
-      ctr;
-    const columnDelimiter = ',';
+    let result;
+    let ctr;
+    const columnDelimiter = '\t';
     const lineDelimiter = '\n';
     const keys = Object.keys(data[0]);
 
@@ -26,7 +30,8 @@
         if (ctr > 0) {
           result += columnDelimiter;
         }
-        result += `"${item[key]}"`;
+        const value = (item[key]) ? item[key] : '';
+        result += `"${value}"`;
         ctr += 1;
       });
       result += lineDelimiter;
@@ -41,21 +46,25 @@
       personalVocabList() {
         return this.$store.state.personalVocabList;
       },
-      glossesDownload() {
-        const data = toCSV(this.glosses.map((g) => {
-          const row = { label: g.label, gloss: g.gloss };
-          if (this.withFamiliarity) {
-            const entry = this.personalVocabList.entries.filter((e) => e.node === g.node);
-            row.familiarity = (entry[0] && entry[0].familiarity) || '';
-          }
-          return row;
-        }));
-        return data === null ? null : encodeURI(`data:text/csv;charset=utf-8,${data}`);
+      VocabListDownload() {
+        const data = toCSV(
+          this.glosses.map((entry) => {
+            const row = {};
+            row.headword = entry.headword;
+            row.definition = entry.definition;
+            if (this.withFamiliarity) {
+              row.familiarity = entry.familiarity;
+            }
+            row.lemma_id = entry.lemma_id;
+            return row;
+          }),
+        );
+        return data === null
+          ? null
+          : encodeURI(`data:text/csv;charset=utf-8,${data}`);
       },
     },
   };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

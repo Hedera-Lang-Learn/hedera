@@ -2,6 +2,8 @@ import {
   FETCH_TOKENS,
   SELECT_TOKEN,
   FETCH_NODE,
+  FETCH_LEMMA,
+  FETCH_LEMMAS_BY_FORM,
   UPDATE_TOKEN,
   SET_TEXT_ID,
   FETCH_VOCAB_LISTS,
@@ -10,6 +12,15 @@ import {
   FETCH_TEXT,
   FETCH_PERSONAL_VOCAB_LIST,
   FETCH_ME,
+  FETCH_PERSONAL_VOCAB_LANG_LIST,
+  CREATE_PERSONAL_VOCAB_ENTRY,
+  FETCH_LATTICE_NODES_BY_HEADWORD,
+  RESET_LATTICE_NODES_BY_HEADWORD,
+  SET_LANGUAGE_PREF,
+  DELETE_PERSONAL_VOCAB_ENTRY,
+  FETCH_BOOKMARKS,
+  FETCH_SUPPORTED_LANG_LIST,
+  FETCH_LEMMAS_BY_PARTIAL_FORM,
 } from '../constants';
 
 export default {
@@ -41,6 +52,20 @@ export default {
       [data.pk]: data,
     };
   },
+  [FETCH_LEMMA]: (state, data) => {
+    const lemma = data.data;
+    state.lemmas = {
+      ...state.lemmas,
+      [lemma.pk]: lemma,
+    };
+  },
+  [FETCH_LEMMAS_BY_FORM]: (state, data) => {
+    const form = data.data;
+    state.forms = {
+      ...state.forms,
+      [form.form]: form,
+    };
+  },
   [UPDATE_TOKEN]: (state, data) => {
     state.tokens = data.tokens;
     state.selectedTokenHistory = data.tokenHistory;
@@ -53,5 +78,37 @@ export default {
   },
   [TOGGLE_SHOW_IN_VOCAB_LIST]: (state) => {
     state.showInVocabList = !state.showInVocabList;
+  },
+  [FETCH_PERSONAL_VOCAB_LANG_LIST]: (state, data) => {
+    state.personalVocabLangList = data;
+  },
+  [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+    state.personalVocabAdded = data.created;
+    if (state.personalVocabList.entries) {
+      state.personalVocabList.entries = [data.data, ...state.personalVocabList.entries];
+    }
+  },
+  [FETCH_LATTICE_NODES_BY_HEADWORD]: (state, data) => {
+    state.latticeNodes = data;
+  },
+  [RESET_LATTICE_NODES_BY_HEADWORD]: (state) => {
+    state.latticeNodes = [];
+  },
+  [SET_LANGUAGE_PREF]: (state, data) => {
+    state.me = data;
+  },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+  },
+  [FETCH_BOOKMARKS]: (state, data) => {
+    state.bookmarks = data;
+  },
+  [FETCH_SUPPORTED_LANG_LIST]: (state, data) => {
+    state.supportedLanguages = data;
+  },
+  [FETCH_LEMMAS_BY_PARTIAL_FORM]: (state, data) => {
+    const forms = data.data;
+    state.partialMatchForms = [...forms];
   },
 };

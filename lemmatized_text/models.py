@@ -1,23 +1,37 @@
 import logging
 import uuid
+from collections import defaultdict
 
+from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import floatformat
 from django.urls import reverse
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-from django.contrib.postgres.fields import JSONField
 
 from django_rq import get_connection, job
 from iso639 import languages
 from rq.job import Job, NoSuchJobError
 
 from lemmatization.lemmatizer import Lemmatizer
+from lemmatization.models import Lemma
+
+from .parsers import EditedTextHtmlParser, TagStripper
 
 
 def to_percent(val):
     return floatformat(val * 100, 2) + "%"
+
+
+def parse_following(follower):
+    return follower.replace("\n", "<br/>")
+
+
+def format_token_key_value_pairs(token):
+    key_value_pairs = [f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")]
+    key_value_pairs.sort()
+    return " ".join(key_value_pairs)
 
 
 @job("default", timeout=600)
@@ -44,7 +58,7 @@ class LemmatizedText(models.Model):
     title = models.CharField(max_length=100)
     lang = models.CharField(max_length=3)  # ISO 639.2
     cloned_from = models.ForeignKey("LemmatizedText", null=True, blank=True, on_delete=models.SET_NULL)
-    cloned_for = models.ForeignKey("groups.Group", null=True, on_delete=models.SET_NULL)
+    cloned_for = models.ForeignKey("groups.Group", null=True, blank=True, on_delete=models.SET_NULL)
     original_text = models.TextField()
     completed = models.IntegerField(default=0)
 
@@ -69,7 +83,7 @@ class LemmatizedText(models.Model):
     # ]
     # where node is the pk of the LatticeNode
 
-    data = JSONField()
+    data = models.JSONField()
 
     def display_name(self):
         return languages.get(part3=self.lang).name
@@ -137,6 +151,14 @@ class LemmatizedText(models.Model):
             }
 
     @property
+    def learner_url(self):
+        return reverse("lemmatized_texts_learner", args=[self.pk])
+
+    @property
+    def handout_url(self):
+        return reverse("lemmatized_texts_handout", args=[self.secret_id])
+
+    @property
     def delete_url(self):
         return reverse("lemmatized_texts_delete", args=[self.pk])
 
@@ -145,15 +167,22 @@ class LemmatizedText(models.Model):
         url = reverse("lemmatized_texts_create")
         return f"{url}?cloned_from={self.pk}"
 
+    @property
+    def edit_url(self):
+        return reverse("lemmatized_text_edit", args=[self.pk])
+
     def clone(self, cloned_by=None):
-        return LemmatizedText.objects.create(
-            title=self.title,
-            lang=self.lang,
-            original_text=self.original_text,
-            cloned_from=self,
-            data=self.data,
-            created_by=cloned_by or self.created_by,
-        )
+        """Set a copy of this object's pk to None, set some relationships and save (cloning)"""
+        # https://docs.djangoproject.com/en/3.2/topics/db/queries/#copying-model-instances
+        obj = LemmatizedText.objects.get(pk=self.pk)  # declaring 'self' here results in a ValueError
+        obj.pk = None
+        obj.cloned_from = self
+        obj.created_by = cloned_by or self.created_by
+        obj.secret_id = uuid.uuid4()
+        obj.created_at = timezone.now()
+        obj.title += " (clone)"
+        obj.save()
+        return obj
 
     def api_data(self):
         return {
@@ -169,22 +198,93 @@ class LemmatizedText(models.Model):
             "canCancel": self.can_cancel(),
             "deleteUrl": self.delete_url,
             "cloneUrl": self.clone_url,
+            "editUrl": self.edit_url,
             "clonedFrom": self.cloned_from.pk if self.cloned_from else None,
             "clonedFor": self.cloned_for.pk if self.cloned_for else None,
             "requireClone": self.classes.all().count() > 0,
-            "handoutUrl": reverse("lemmatized_texts_handout", args=[self.secret_id]),
+            "handoutUrl": self.handout_url,
+            "learnerUrl": self.learner_url,
         }
 
-    def update_token(self, user, token_index, node_id, resolved):
-        self.data[token_index]["node"] = node_id
+    def update_token(self, user, token_index, lemma_id, gloss_ids, resolved):
+        self.data[token_index]["lemma_id"] = lemma_id
+        self.data[token_index]["gloss_ids"] = gloss_ids
         self.data[token_index]["resolved"] = resolved
         self.save()
         self.logs.create(
             user=user,
             token_index=token_index,
-            node_id=node_id,
+            lemma_id=lemma_id,
             resolved=resolved,
         )
+
+    def handle_edited_data(self, title, edits):
+        self.title = title
+
+        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
+        edit_parser = EditedTextHtmlParser(
+            token_lemma_dict=self.token_lemma_dict(),
+            lang=self.lang
+        )
+        edit_parser.feed(cleaned_edits)
+
+        # Trimming junk tokens that get appended to the end of the list
+        for token in reversed(edit_parser.lemmatized_text_data):
+            if token["word"] != "":
+                break
+            edit_parser.lemmatized_text_data.remove(token)
+        self.data = edit_parser.lemmatized_text_data
+
+        strip_parser = TagStripper()
+        strip_parser.feed(cleaned_edits)
+        self.original_text = strip_parser.get_data()
+        self.save()
+
+    def token_lemma_dict(self):
+        lemma_dict = defaultdict(list)
+        for token in self.data:
+            lemma_dict[token["word"]].append(token["lemma_id"])
+        return dict(lemma_dict)
+
+    def transform_data_to_html(self):
+        return "".join([
+            (
+                f"<span {format_token_key_value_pairs(token)}>"
+                f"{token['word']}</span><span follower='true'>"
+                f"{parse_following(token['following'])}</span>"
+            )
+            for token in self.data
+        ])
+
+    def transform_data_to_glossary(self):
+        """Returns a list of words used in the text with their full glosses."""
+        lemma_ids = [token["lemma_id"] for token in self.data if token.get("lemma_id")]
+        lemma_queryset = Lemma.objects.filter(pk__in=lemma_ids).order_by("label")
+        glossary = []
+        for lemma_object in lemma_queryset:
+            glossary.append({
+                "label": lemma_object.label,
+                "glosses": [gloss_object.gloss for gloss_object in lemma_object.glosses.all()],
+            })
+        return glossary
+
+    def is_valid_user(self, user):
+        """
+        check if user has the filtered_group ids in their enrolled classes or taught classes
+        Note: only checks if user is related to at least one class with the same text/group id
+        """
+        groups = self.classes.all()
+        filtered_groups = groups.filter(texts__in=[self.pk])
+        enrolled_classes = user.enrolled_classes.all()
+        taught_classes = user.taught_classes.all()
+        is_student = False
+        is_teacher = False
+        is_public = self.public
+        is_created_by = self.created_by
+        for fg in filtered_groups:
+            is_student = enrolled_classes.filter(pk=fg.pk).exists()
+            is_teacher = taught_classes.filter(pk=fg.pk).exists()
+        return any([is_student, is_teacher, is_public, is_created_by.pk == user.pk]) is True
 
 
 class LemmatizationLog(models.Model):
@@ -193,7 +293,9 @@ class LemmatizationLog(models.Model):
 
     # Changed What Attributes
     token_index = models.IntegerField()
-    node = models.ForeignKey("lattices.LatticeNode", on_delete=models.CASCADE)
+
+    lemma = models.ForeignKey(Lemma, null=True, on_delete=models.CASCADE)
+
     resolved = models.CharField(max_length=100)
 
     # On What Text
@@ -207,8 +309,36 @@ class LemmatizationLog(models.Model):
             id=self.pk,
             user=self.user.email,
             tokenIndex=self.token_index,
-            node=self.node.pk,
+            lemma_id=self.lemma_id,
             resolves=self.resolved,
             text=self.text.pk,
             createdAt=self.created_at
         )
+
+
+class LemmatizedTextBookmark(models.Model):
+    user = models.ForeignKey(
+        getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+        on_delete=models.CASCADE
+    )
+    text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "lemmatized text bookmark"
+        verbose_name_plural = "lemmatized text bookmarks"
+        ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(fields=["user", "text"], name="unique_lemmatized_text_bookmark")
+        ]
+
+    def api_data(self):
+        return dict(
+            id=self.pk,
+            userId=self.user.pk,
+            createdAt=self.created_at,
+            text=self.text.api_data(),
+        )
+
+    def __str__(self):
+        return f"{self.user} lemmatized text bookmark: {self.text}"
