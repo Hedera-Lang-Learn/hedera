@@ -1,3 +1,4 @@
+lemma	gloss
 a	ah!
 a2	abbrev.: ante, anno: ante diem, anno urbis conditae
 a2	ah!
@@ -524,12 +525,12 @@ adversarius	opposite, hostile, contrary
 adversatrix	an opponent
 adversio	direction, employment
 adversor	to resist, withstand, oppose
-adversum	praep
+adversum	opposite to, against, toward, facing, compared to [adv. and prep. + acc.]
 adversum2	 the opposite direction
 adversum3	misfortune, calamity, disaster
 adversus	turned towards, fronting, facing, before, in front
 adversus2	 an enemy, opponent
-adversus3	opposite, in opposition
+adversus3	opposite to, against, toward, facing, compared to [adv. and prep. + acc.]
 adverto	to turn toward
 advesperascit	impers, it approaches evening, is twilight
 advigilo	to watch, be watchful
@@ -573,6 +574,7 @@ aemulator	a zealous imitator
 aemulatus	 rivalry, jealousy
 aemulor	to rival, vie with, emulate, strive to excel
 aemulus	striving earnestly after, emulating, rivalling, vying with, emulous
+aeneas	A Trojan chief and hero of the Aeneid
 aeneius	of Aeneas
 aeneus	of copper, of bronze
 aenigma	 a figure, allegory
@@ -719,6 +721,8 @@ alaris	of the wing
 alarius	of the wing
 alatus	winged, having wings
 alauda	a soldier of the legion
+albani	The Albans, the inhabitants of Alba Longa
+albanus	pertaining to Alba; Alban
 albatus	white - robed, clothed in white
 albens	whitening, white
 albeo	to be white
@@ -1036,8 +1040,8 @@ annuus	of a year, lasting a year
 anquiro	to seek on all sides, look about, search after
 ansa	 a handle, haft
 anser	a goose
-ante	before, in front of (+ acc.)
 ante	before; in front
+ante	before, in front of (+ acc.)
 antea	before, earlier, formerly, aforetime, previously
 antecanem	 transl. of Προκύων, Procyon, the forerunner of the dog (Sirius), lesser dog-star
 antecapio	to obtain before, receive before; anticipate
@@ -1060,6 +1064,8 @@ anteoccupatio	In rhet., an anticipation (of objections)
 antepes	the forefoot, C. (poet.)
 antepilanus	 a soldier of the first two ranks, in front of the triarii, L
 antepono	to set before
+antequam	(adv.), before that; sooner than
+antequam	(conj.) before
 antes	 rows (of vines), V
 antesignanus	a leader in battle
 antesto	to excel, be superior to; to distinguish oneself, to be distinguished
@@ -1878,6 +1884,7 @@ caeres	of Caere
 caerimonia	a religious usage, sacred rite, religious ceremony
 caeruleus	like the sky, azure, blue, dark blue, dark green
 caerulus	azure, blue, dark blue, cerulian
+caesar	Caesar
 caesaries	 the hair, head of hair, locks (only sing.)
 caesim	by cutting
 caesius	cutting, sharp
@@ -2074,6 +2081,7 @@ carptim	by pieces, by detached parts, in parts, separately, piecemeal
 carptor	a carver
 carrus	 a wagon for freight, baggagewagon (with four wheels), Cs., L
 carthaginiensis	Carthaginian, of Carthage
+carthago	Carthage
 caruncula	a bit of flesh
 carus	dear, precious, valued, esteemed, beloved
 casa	a small house, cottage, hut, cabin, shed
@@ -2097,15 +2105,15 @@ castigatus	small, contracted
 castigo	to set right, correct, chastise, punish, blame, reprove, chide, censure, find fault with
 castimonia	purity of morals, morality
 castitas	purity, chastity
-castor	 the castor, beaver, O
 castor	Castor, son of Leda and Tyndarus
+castor	 the castor, beaver, O
 castoreum	castoreum, a strong-smelling secretion of the beaver
 castra	fem. collateral form of neut. castrum - castra
-castra2	 a military camp, encampment (regularly a square surrounded by a trench, and a wall with four gates): stativa, permanent
+castra2	military camp
 castrensis	of the camp, in the camp
 castro	to emasculate, Iu., Cu. --Fig., to enervate
 castrum	castle, fort
-castrum	military camp
+castrum	military camp (in plural)
 castus	morally pure, unpolluted, spotless, guiltless, virtuous
 casu	by chance, casually, by accident, accidentally
 casula	a cottage, hut
@@ -2132,8 +2140,8 @@ cathedra	 a chair, stool, cushioned seat, arm - chair
 catillus	a small dish, plate of earthenware
 catinus	 a deep vessel of earthenware, bowl, H. --A pot, H., Iu
 catonium	the lower world
-catulus	Catulus; cognomen in the gens Lutatia
 catulus	a young animal, whelp
+catulus	Catulus; cognomen in the gens Lutatia
 catus	clear - sighted, intelligent, sagacious, wise
 cauda	a tail
 caudex	a trunk of a tree, stock, stem
@@ -4498,8 +4506,8 @@ diruo	to tear asunder, overthrow, demolish, destroy
 diruptus	P. of dirumpo
 dirus	 ill - omened, ominous, boding, portentous, fearful, awful, dread
 dirutus	P. of diruo
-dis	Pluto, god of the underworld
 dis	deity
+dis	Pluto, god of the underworld
 discedo	to go apart, part asunder, divide, separate, disperse, scatter
 disceptatio	a dispute, disputation, debate, discussion, disquisition
 disceptator	an umpire, arbitrator, judge
@@ -4802,7 +4810,7 @@ dulcitudo	sweetness
 dum	provided that (+ subj.)
 dum	until (+ subj.)
 dum	while (+ indic.)
-dum2	while, whilst, at the time that, during the time in which, where
+dum2	while
 dumeta	thorn bushes, a thorn-hedge, thicket
 dumosus	full of thorn-bushes, bushy
 dumtaxat	while one examines
@@ -5939,6 +5947,7 @@ figura	a form, shape, figure
 figuratus	formed, shaped
 figuro	to form, fashion, shape
 filia	a daughter
+fīlia	daughter
 filicatus	adorned with fern
 filiola	a little daughter
 filiolus	a little son
@@ -6110,8 +6119,8 @@ foro	bore, pierce
 fors	chance
 forsan	perhaps, perchance, peradventure
 forsit	perhaps
-forsitan	perhaps, peradventure, it may be that
-fortasse	perhaps, peradventure, probably, possibly
+forsitan	perhaps
+fortasse	perhaps, possibly
 fortassis	perhaps, probably, possibly, it may be that
 forte	by chance
 forticulus	somewhat bold, rather brave
@@ -6338,7 +6347,6 @@ futtilitas	worthlessness, emptiness, vanity
 futuo	to have carnal connection
 futurus	going to be, yet to be, to come, future
 fututio	copulation
-fīlia	daughter
 gaesum	a heavy iron javelin
 galba	a worm, the ash-borer; in Gallic, paunch
 galbaneus	of galbanum
@@ -6349,6 +6357,7 @@ galeritus	wearing a hood, rustic in attire
 galerus	a conical cap of leather, fur cap
 galla2	a gall-apple, gall-nut (an excrescence on the oak, caused by insects)
 galli	I. See 2 Gallus
+gallia	Gaul
 gallica	a Gallic shoe, galosh
 gallina	a hen, domestic hen
 gallinaceus	of hens, of fowls
@@ -6474,8 +6483,8 @@ glans	an acorn, nut
 glarea	gravel
 glareosus	full of gravel
 glaucion	celandine, a bluish plant
-glaucus	Glaucus
 glaucus	bright, sparkling, gleaming, grayish
+glaucus	Glaucus
 glaucus2	a bluish fish
 glisco	to swell, spread gradually, grow imperceptibly
 globosus	round as a ball, spherical, globular
@@ -6911,6 +6920,7 @@ ianuarius	of Janus; January
 ianus	an old Italian deity, good of doors, passages, and entrances, of all beginnings, and of the month of January
 iapys	of the Iapydes (in Illyria)
 iapyx	of Iapyx, Iapygian, Apulian, Calabrian
+iason	Jason, chef des Argonautes
 iaspis	a green precious stone, jasper
 ibam	imperf. of eo
 ibi	in that place, there
@@ -8352,6 +8362,7 @@ istoc	thither, that way, yonder
 istorsum	thitherwards
 istuc	thither, to you, to where you are, in that direction
 ita	so, in this way
+italia	Italy
 italicus	of Italy, Italian
 italus	Italian; mythical king Italus
 itaque	and so, and thus, and accordingly
@@ -8439,6 +8450,7 @@ iuvencus	a young bullock
 iuvenesco	to attain youth, grow up
 iuvenilis	of youth, youthful, juvenile
 iuveniliter	after the manner of youth
+iuvenis	a young person, youth; young man
 iuvenis	young, youthful
 iuvenor	to act with youthful indiscretion, wanton
 iuventa	the age of youth, youth
@@ -8666,6 +8678,7 @@ lautumiae	a quarry (in which condemned slaves were worked), prison, place for co
 lautus	neat, elegant, splendid, sumptuous, luxurious
 lavatio	a bathing, bath, bathing apparatus
 laverna	the goddess of gain, patroness of rogues and thieves
+lavinia	daughter of Latinus and wife of Aeneas
 lavinium	Lavinium, a city in Latium
 lavinius	of Lavinium (a city of Latium)
 lavo	to wash, bathe, lave
@@ -8706,7 +8719,6 @@ lego2	to read; to choose, gather
 leguleius	a pettifogging lawyer, pettifogger
 legumen	pulse, a leguminous plant
 lembus	a pinnace, yacht, cutter (built for speed)
-lemma	gloss
 lemnias	a Lemnian woman
 lemnicola	a dweller in Lemnos
 lemniscatus	adorned with pendent ribbons
@@ -8745,6 +8757,7 @@ lepidus	pleasant, agreeable, charming, fine, elegant, neat
 lepor	pleasantness, agreeableness, charm, grace, politeness, wit
 lepus	a hare
 lepusculus	a young hare, little hare, leveret
+lesbia	a woman's name
 lesbius	of Lesbos, Lesbian
 lesbous	of Lesbos, Lesbian
 lessus	a wailing, funeral lamentation
@@ -8824,8 +8837,8 @@ licenter	freely, without restraint, boldly, impudently, licentiously
 licentia	freedom, liberty, license, leave
 liceo	to be for sale, be priced, be valued
 liceor	to bid, make a bid
-licet	although
 licet	it is permitted
+licet2	although
 licitatio	a bidding, offering of a price
 licitator	a bidder
 licitus	permitted, allowable, lawful
@@ -8897,8 +8910,8 @@ litigo	to dispute, quarrel, strive
 lito	to make an acceptable sacrifice, obtain favorable omens
 litoralis	of the sea-shore
 litoreus	of the sea-shore, shore-, beach
-littera	letter (of the alphabet)
 littera	letter, epistle; literature
+littera	letter (of the alphabet)
 litterarius	of reading and writing
 litterate	learnedly, intelligently
 litterator	a grammarian, philologist
@@ -8932,6 +8945,7 @@ logica	logic
 logos	a word
 lolium	darnel, cockle, tares
 lolligo	a cuttle-fish
+londinium	London
 longaevus	of great age, aged, ancient
 longe	a long way off, far, far off, at a distance
 longinquitas	distance, remoteness
@@ -9143,7 +9157,7 @@ maius2	neut. comp. of magnus
 maiusculus	somewhat greater, considerable
 mala	the cheek-bone, jaw
 malacia	a calm at sea
-male	badly, ill, wrongly, wickedly; for parum, or nōn, not, un-
+male	badly, wickedly; [for parum or nōn] not, un-
 maledice	slanderously, abusively, scurrilously
 maledicentissimus	sup. of maledicus
 maledico	to speak ill of, abuse, revile, slander, asperse
@@ -9294,6 +9308,7 @@ me	acc. and abl. of ego
 meatus	a going, passing, motion, course
 mecastor	so help me Castor, by Castor
 meddix	a magistrate
+medea	sorceress,  lover of Jason the Argonaut
 medens	a healer, physician
 medeor	to heal, cure, remedy, be good for
 mediastinus	a common servant, drudge, slave of all work, menial
@@ -9426,8 +9441,8 @@ merito2	to earn, yield
 meritorius	earning money
 meritum	a merit, service, kindness, benefit, favor
 meritus	deserving
-merops	Ethiopian king Merops, father of Phaethon; legendary king of island Cos, (pl) inhabitants of Cos; Roman proper name
 merops	a bee-eater (a bird)
+merops	Ethiopian king Merops, father of Phaethon; legendary king of island Cos, (pl) inhabitants of Cos; Roman proper name
 merso	to dip, immerse
 mersus	P. of mergo
 merula	a blackbird, ousel, merle
@@ -9752,7 +9767,7 @@ mulus	a mule
 mundanus	a citizen of the world, cosmopolite
 munditia	cleanliness, neatness, elegance, fineness
 mundus	clean, neat, elegant
-mundus2	 toilet ornament, decoration, dress; cosmos, universe
+mundus2	decoration, dress; universe
 muneror	to give, bestow, present, honor, reward
 munia	duties, functions, official duties
 municeps	an inhabitant of a free town, burgher, citizen
@@ -10085,6 +10100,7 @@ nonus	the ninth
 nonusdecimus	num ord., the nineteenth
 norma	a measure, standard
 nortia	an Etruscan goddess of Fortune
+nōs	we, us
 noscito	to know recognize
 nosco	to get to know, learn
 noster	our, ours
@@ -10107,7 +10123,7 @@ novacula	a sharp knife, razor
 novalis	ploughed anew, ploughed for the first time
 novatrix	she who renews, a renovator
 novellus	young, new
-novem	num, nine
+novem	nine
 november	of nine, ninth
 novendialis	of nine days, that lasts nine days, a nine-days’ festival
 noveni	nine each, nine
@@ -10196,7 +10212,6 @@ nutus	a nodding, nod
 nux	a nut
 nyctelius	a surname of Bacchus
 nympha	a bride, mistress, young woman; nymph, demi-goddess inhabiting water or other natural parts
-nōs	we, us
 o	O! oh!
 ob	on account of (+ acc.)
 ob	towards, against (+ acc.)
@@ -10391,7 +10406,7 @@ occecini	perf. of occino
 occento	to satirize in song, lampoon
 occidens	the sunset, west, occident
 occidio	a massacre, utter destruction, extermination
-occido	to strike down, knock down
+occido	to strike down, cut down, kill
 occido2	to fall down, fall
 occiduus	going down, setting
 occino	to sing inauspiciously, croak
@@ -10428,7 +10443,7 @@ octavusdecimus	the eighteenth
 octiens	eight times
 octingentesimus	the eight hundredth
 octipes	eight-footed
-octo	num, eight
+octo	eight
 october	of the eighth month
 octodecim	eighteen
 octogeni	eighty each
@@ -10585,15 +10600,15 @@ opprobrium	a reproach, scandal, disgrace, dishonor, opprobrium
 oppugnatio	a storming, besieging, attack, assault, siege
 oppugnator	an assaulter, assailant
 oppugno	to fight against, attack, assail, assault, storm, besiege, war with
-ops	(usu. plural) money
 ops	power, help, (usu. plural) money
+ops	(usu. plural) money
 optabilis	to be wished, desirable
 optandus	desirable
 optatio	a wishing, wish
 optato	as desired, in fulfilment of wishes
 optatus	wished, desired, longed for, welcome, desirable, pleasing
 optimas	of the best, of the noblest, aristocratic
-optime	well, better, best
+optime	very well, best
 optio	choice, free choice, liberty to choose, privilege, option
 optio2	an adjutant
 optivus	chosen
@@ -10974,8 +10989,8 @@ pavio	to beat, strike
 pavito	to tremble, quake, be fearful
 pavo	a peacock
 pavor	a trembling, quaking, shaking, terror, anxiety, fear, dread, alarm
-pax	Peace
 pax	peace
+pax	Peace
 peccans	sinful, full of sin
 peccatum	a fault, error, mistake, transgression, sin
 peccatus	a failing, fault, trespass
@@ -11625,8 +11640,8 @@ philyra	the lindentree
 phimus	a dice-box
 phlegethon	a river of fire in the Lower World
 phoca	a seal, seadog, sea-calf
-phocis	Phocis, part of Greece between Boeotia and Aetolia
 phocis	a kind of pear tree on the isle of Chios
+phocis	Phocis, part of Greece between Boeotia and Aetolia
 phocus	son of Aeacus, slain by his brother Peleus
 phoebas	a priestess of Phoebus; hence, an inspired woman, prophetess
 phoebe	goddess of the moon (the Roman Diana)
@@ -12347,6 +12362,7 @@ priscus	of former times, of old, olden, ancient, primitive, antique
 pristinus	former, early, original, primitive, pristine
 pristis	a sea-monster (another form of pistrix)
 prius	before, sooner, first, previously
+priusquam	before
 privantia	compounds reversing the meaning of simple words, privatives
 privatim	apart from State affairs, as an individual, in private, privately, in a private capacity
 privatio	a taking away, privation
@@ -13741,8 +13757,8 @@ rudo	to roar, bellow, bray
 rudus	a bit of copper
 rudus2	broken stone, rubbish, debris
 rufulus	a tribune of the soldiers elected by the army
-rufus	Rufus (Roman cognomen)
 rufus	red, reddish
+rufus	Rufus (Roman cognomen)
 ruga	a crease in the face, wrinkle
 rugosus	wrinkled, shrivelled
 ruina	a rushing down, tumbling, falling down, fall
@@ -13886,7 +13902,7 @@ salutatrix	that makes complimentary visits
 salutifer	health-bringing, healing, salubrious
 saluto	to greet, wish health, pay respects, salute, hail
 salve	well, in good health, in good condition
-salve2	imper. of salveo
+salve2	hello, good day [imptv. of salveo]
 salveo	to be well, be in good health
 salvos	in good health, well, sound, safe, unharmed, uninjured
 salvus	saved, preserved, unharmed, safe, unhurt
@@ -15369,6 +15385,7 @@ synedrus	in Macedon, an assessor, counsellor, senator
 syngrapha	a written promise to pay, promissory note, bond
 synodus	a bream (a sea-fish)
 syracosius	Syracusan, of Syracuse (the chief city of Sicily)
+syracusae	Syracuse
 syriacus	Syrian, of Syria (a country of Asia)
 syrma	a robe with a train, tragic robe (to add to the actor’s apparent stature)
 syrtis	a sand-bank in the sea. Esp., two sand-banks on the coast of Africa
@@ -15433,6 +15450,7 @@ tantulum	so little, never so little, in the least
 tantulus	so little, so small
 tantum	so much, so greatly, to such a degree, so far, so long, so
 tantum2	only, merely
+tantummodo	only
 tantus	so great, such
 tantusdem	just so much, just as much, the same amount
 tapes	a heavy cloth with inwrought figures, carpet, tapestry, hangings, coverlet
@@ -16298,10 +16316,10 @@ vagitus	a crying, squalling
 vagor	to stroll about, go to and fro, ramble, wander, roam, range, rove
 vagus	strolling, rambling, roving, roaming, wandering, unfixed, unsettled, vagrant
 vah	interj., of surprise, joy or anger, ah! oh!
-valde	strongly, vehemently, energetically, vigorously, intensely, very, very much, exceedingly
+valde	very, very much; strongly
+vale	goodbye, farewell [imptv. of valeo]
 valens	strong, stout, vigorous, powerful
 valenter	strongly, powerfully, violently
-valeo	good-bye, farewell
 valeo	to be strong, be well
 valesco	to grow strong, gain strength
 valetudinarium	a sickroom, hospital
