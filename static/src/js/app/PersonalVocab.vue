@@ -154,6 +154,7 @@
       lang: {
         immediate: true,
         handler() {
+          console.log(`lang handler running. This is a personal vocab list: ${this.personalVocab}`);
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
             this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
@@ -166,6 +167,7 @@
       vocabId: {
         immediate: true,
         handler() {
+          console.log(`vocabId handler running. This is a personal vocab list: ${this.personalVocab}`);
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
             this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
@@ -285,7 +287,10 @@
           lemmaId,
         } = this.editingFields;
         let response = null;
+        console.log(`This is personal vocab list: ${this.isPersonal}`)
         if (this.isPersonal) {
+          console.log("personal vocabEntries before update:");
+          console.log(this.$store.state.vocabList.entries);
           response = await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
             entryId,
             familiarity,
@@ -294,13 +299,19 @@
             lang: this.lang,
             lemmaId,
           });
+          console.log("vocabEntries after update:");
+          console.log(this.$store.state.vocabList.entries);
         } else {
+          console.log("non-personal vocabEntries before update:");
+          console.log(this.$store.state.vocabList.entries);
           response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
             entryId,
             headword,
             definition,
             lemmaId,
           });
+          console.log("vocabEntries after update:");
+          console.log(this.$store.state.vocabList.entries);
         }
         if (response) {
           const { statusText, status } = response;
@@ -382,6 +393,8 @@
       },
       vocabEntries() {
         // Retrieve entries on their own, or return undefined if no list is present
+        console.log("computed vocab entries run");
+        console.log(this.vocabList.entries);
         return this.vocabList && this.vocabList.entries;
       },
       partialMatchForms() {

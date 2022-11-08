@@ -296,7 +296,7 @@
           await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
         }
         const lemma = this.$store.state.lemmas[event.target.value];
-        this.definition = lemma.glosses[0].gloss;
+        this.definition = lemma.glosses.length ? lemma.glosses[0].gloss : '';
       },
       setFocus() {
         "Don't do anything";

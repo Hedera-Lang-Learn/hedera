@@ -362,7 +362,7 @@ class VocabularyListEntryAPI(APIView):
         action = kwargs.get("action")
         if action == "link":
             data = json.loads(request.body)
-            lemma = get_object_or_404(Lemma, pk=data["lemma"])
+            lemma = get_object_or_404(Lemma, pk=data["lemma_id"])
             entry.lemma = lemma
             entry.save()
             return_data = entry.data()

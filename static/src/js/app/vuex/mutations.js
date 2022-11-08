@@ -24,6 +24,8 @@ import {
   DELETE_VOCAB_ENTRY,
   SET_VOCAB_LIST_TYPE,
   CREATE_VOCAB_ENTRY,
+  UPDATE_VOCAB_LIST,
+  UPDATE_VOCAB_LIST_ENTRIES,
 } from '../constants';
 
 export default {
@@ -32,6 +34,14 @@ export default {
   },
   [FETCH_TEXT]: (state, data) => {
     state.text = data;
+  },
+  [UPDATE_VOCAB_LIST]: (state, data) => {
+    console.log("mutation received:");
+    console.log(data);
+    state.vocabList = data;
+  },
+  [UPDATE_VOCAB_LIST_ENTRIES]: (state, updatedEntries) => {
+    state.vocabList.entries = updatedEntries;
   },
   [FETCH_VOCAB_LIST]: (state, data) => {
     state.vocabList = data;

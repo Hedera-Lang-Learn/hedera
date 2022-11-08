@@ -29,6 +29,8 @@ import {
   FETCH_VOCAB_LIST,
   SET_VOCAB_LIST_TYPE,
   CREATE_VOCAB_ENTRY,
+  UPDATE_VOCAB_LIST,
+  UPDATE_VOCAB_LIST_ENTRIES,
 } from '../constants';
 import api from '../api';
 
@@ -44,11 +46,19 @@ export default {
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
-  [FETCH_VOCAB_LIST]: ({ commit }, { vocabListId }) => {
-    const cb = (data) => commit(FETCH_VOCAB_LIST, data.data);
-    api
-      .fetchVocabList(vocabListId, cb)
+  [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
+    console.log("fetching vocab list");
+    const { data } = await api
+      .fetchVocabList(vocabListId)
       .catch(logoutOnError(commit));
+    commit(UPDATE_VOCAB_LIST, data.data);
+  },
+  [FETCH_PERSONAL_VOCAB_LIST]: async ({ commit }, { lang }) => {
+    console.log("fetching personal vocab list")
+    const { data } = await api
+      .fetchPersonalVocabList(lang)
+      .catch(logoutOnError(commit));
+    commit(UPDATE_VOCAB_LIST, data.data.personalVocabList);
   },
   [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
     api
@@ -90,10 +100,10 @@ export default {
     const { entries: localEntries } = state.vocabList;
     const foundObj = entries.find((el) => el.id === entryId);
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
-    const updatedEntries = { ...state.vocabList };
-    updatedEntries.entries[localEntryIndex] = foundObj;
+    const updatedEntries = [ ...state.vocabList.entries ];
+    updatedEntries[localEntryIndex] = foundObj;
 
-    commit(FETCH_PERSONAL_VOCAB_LIST, updatedEntries);
+    commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
   },
   [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, headword, definition, lemmaId }) => {
@@ -133,20 +143,15 @@ export default {
      * it's hitting an endpoint that returns a single modified vocab list entry,
      * it doesn't need to look up the new entry in the results.
      */
-    console.log(data);
     const { entries: localEntries } = state.vocabList;
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
-    const updatedEntries = { ...state.vocabList };
-    updatedEntries.entries[localEntryIndex] = data;
+    const updatedEntries = [...state.vocabList.entries];
+    updatedEntries[localEntryIndex] = data;
 
-    commit(FETCH_VOCAB_LIST, updatedEntries);
+    console.log("updatedEntries:");
+    console.log(updatedEntries);
+    commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
-  },
-  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
-    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
-    api
-      .fetchPersonalVocabList(lang, cb)
-      .catch(logoutOnError(commit));
   },
   [FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
     commit(SET_TEXT_ID, id);
