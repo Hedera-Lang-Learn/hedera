@@ -10,7 +10,7 @@ WORKDIR /app
 # Install system dependencies and target node v14
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get update && \
-    apt-get install -y netcat git nodejs && \
+    apt-get install -y netcat git nodejs postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies

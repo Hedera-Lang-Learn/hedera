@@ -373,8 +373,10 @@
     }
   }
   &.revealable-gloss {
-    opacity: 0;
-    &.show {
+    .gloss {
+      opacity: 0;
+    }
+    &.show .gloss {
       opacity: 1;
     }
   }

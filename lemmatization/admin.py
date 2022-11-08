@@ -16,7 +16,7 @@ class FormToLemmaAdmin(admin.ModelAdmin):
 
 class GlossAdmin(admin.ModelAdmin):
     list_display = ("lemma", "gloss")
-    search_fields = ["lemma__iexact"]
+    search_fields = ["lemma__lemma__iexact"]
     autocomplete_fields = ["lemma"]
 
 

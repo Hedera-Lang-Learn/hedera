@@ -22,7 +22,7 @@ advenio	"adveniō, advenīre, advēnī, adventūrus"	"to arrive, come to; happen
 adventus	"adventus, adventūs, m."	arrival	18
 aedifico	"aedificō, aedificāre, aedificāvī, aedificātus"	to build	3
 aeger	"aeger, aegra, aegrum"	"sick, weak"	5
-	"Aenēās, Aenēae, m."	Aeneas [leader of the Trojans]	30
+aeneas	"Aenēās, Aenēae, m."	Aeneas [leader of the Trojans]	30
 aequus	"aequus, aequa, aequum"	"even, calm, equal"	15
 aestus	"aestus, aestūs, m."	heat; tide	18
 aetas	"aetās, aetātis, f."	"age, life"	11
@@ -82,8 +82,8 @@ brevis	"brevis, breve"	"brief, short"	10
 cado	"cadō, cadere, cecidī, cāsūrus"	to fall	16
 caedes	"caedēs, caedis, f."	"slaughter, murder"	19
 caedo	"caedō, caedere, cecīdī, caesus"	"to kill, cut; sacrifice [of animals]"	19
-caelum	"caelum, caelī, n."	"sky, heavens"	3
-	"Caesar, Caesaris, m."	Julius Caesar [a Roman general]	17
+caelum2	"caelum, caelī, n."	"sky, heavens"	3
+caesar	"Caesar, Caesaris, m."	Julius Caesar [a Roman general]	17
 canis	"canis, canis, m. or f."	dog	28
 cano	"canō, canere, cecinī, cantus"	to sing	17
 capio	"capiō, capere, cēpī, captus"	"to take, seize, capture"	8
@@ -92,7 +92,7 @@ careo	"careō, carēre, caruī, caritūrus"	"to be without, free from; need, mis
 carmen	"carmen, carminis, n."	"song, poem"	9
 carus	"cārus, cāra, cārum"	dear (to)	12
 casa	"casa, casae, f."	"house, hut"	2
-castrum	"castra, castrōrum, n. pl."	camp	17
+castra2	"castra, castrōrum, n. pl."	camp	17
 casus	"cāsus, cāsūs, m."	"fall; misfortune, destruction; chance, accident"	16
 causa	causā	"for the sake of, because of [+ gen.]"	10
 causa	"causa, causae, f."	"cause, reason"	10
@@ -137,15 +137,16 @@ contra	contrā	in reply; face to face	14
 contra	contrā	opposite; against [+ acc.]	14
 convenio	"conveniō, convenīre, convēnī, conventūrus"	"to assemble, gather; meet; agree"	29
 copia	"cōpia, cōpiae, f."	"abundance, plenty, resources, wealth; [pl.] troops"	19
+copia	"cōpiae, cōpiārum, f. pl."	troops	19
 cornu	"cornū, cornūs, n."	horn; wing (of an army)	16
 corpus	"corpus, corporis, n."	"body, corpse"	7
 credo	"crēdō, crēdere, crēdidī, crēditus"	"to believe, trust [+ dat. of person believed; + acc. of thing believed)"	9
 creo	"creō, creāre, creāvī, creātus"	"to create; elect, choose"	8
 crimen	"crīmen, crīminis, n."	"crime; accusation, charge"	17
 culpa	"culpa, culpae, f."	"fault, blame"	22
+cum	cum	with [+ abl.]	5
 cum2	cum	when	12
 cum2	cum	"because, since, although"	26
-cum	cum	with [+ abl.]	5
 cunctus	"cunctus, cuncta, cunctum"	"the whole, all [collectively]"	23
 cupiditas	"cupiditās, cupiditātis, f."	"desire, wish, longing, eagerness"	25
 cupido	"cupīdō, cupidinis, f."	"desire, wish, longing, eagerness"	25
@@ -157,6 +158,7 @@ curro	"currō, currere, cucurrī, cursus"	to run	13
 de2	dē	"down from; about, concerning [+ abl.]"	6
 dea	"dea, deae, f."	goddess	3
 debeo	"dēbeō, dēbēre, dēbui, dēbitus"	"""ought to, should""; to owe; to be obligated to"	1
+decem	decem	ten	11
 deinde	deinde	"then, next"	30
 deleo	"dēleō, dēlēre, dēlēvī, dēlētus"	to destroy; blot out	21
 denique	dēnique	"finally, at last; in short; in fact"	24
@@ -185,17 +187,16 @@ dormio	"dormiō, dormīre, dormīvī, dormitūrus"	to sleep	8
 dubito	"dubitō, dubitāre, dubitāvī, dubitātus"	"to hesitate, doubt"	2
 duco 	"dūcō, dūcere, dūxī, ductus"	to lead	8
 dulcis	"dulcis, dulce"	sweet; pleasant	10
-dum	dum	"while, as long as [with indicative]"	12
 dum	dum	until [with subjunctive]	26
+dum2	dum	"while, as long as [with indicative]"	12
 duo	"duō, duae, duō"	two	11
 durus	"dūrus, dūra, dūrum"	"hard, harsh, rough"	31
 dux	"dux, ducis, m."	"(military) leader, commander"	7
 ex	ē	"out of, from [+ abl.]"	4
 efficio	"efficiō, efficere, effēcī, effectus"	"to bring about, produce"	18
 ego	"ego, meī, mihi, mē, mē"	"I, me"	7
-nos	"nōs, nostrum (nostrī), nōbīs, nōs, nōbīs"	"we, us"	7
 enim	enim	"for; in fact; yes, truly"	6
-eo	"eō, īre, iī (or īvī) itūrus"	to go	23
+eo	"eō, īre, iī (or īvī), itūrus"	to go	23
 epistula	"epistula, epistulae, f."	letter	13
 equidem	equidem	"truly, indeed"	24
 equus	"equus, equī, m."	horse	15
@@ -249,7 +250,7 @@ fructus2	"frūctus, frūctūs, m."	"fruit, enjoyment; profit"	24
 fruor	"fruor, fruī, frūctus sum"	to enjoy [+ abl.]	22
 fugio	"fugiō, fugere, fūgī, fugitūrus"	"to flee (from), escape, avoid"	9
 fungor	"fungor, fungī, fūnctus sum"	"to perform, do [+ abl.]"	22
-	"Gallia, Galliae, f."	Gaul	15
+gallia	"Gallia, Galliae, f."	Gaul	15
 gaudeo	"gaudeō, gaudēre, gāvīsus sum"	"to rejoice, be glad; delight in [+ abl.]"	19
 gaudium	"gaudium, gaudiī, n."	"joy, delight"	17
 gens	"gēns, gentis, f. "	clan	12
@@ -258,7 +259,7 @@ genus	"genus, generis, n."	birth	14
 gero	"gerō, gerere, gessī, gestus"	to bear	12
 gladius	"gladius, gladiī, m. "	sword	28
 gloria	"glōria, glōriae, f."	"glory, fame; ambition, boasting"	24
-	"Graecia, Graeciae, f."	Greece	20
+graecia	"Graecia, Graeciae, f."	Greece	20
 graecus	"Graecus, Graeca, Graecum"	Greek	18
 gratia	gratiā	"for the sake of, because of [+ gen.]"	10
 gratia	"grātia, grātiae, f."	"grace; favor, kindness; gratitude"	10
@@ -292,7 +293,7 @@ impetus	"impetus, impetūs, m."	attack; charge; impulse	16
 impleo	"impleō, implēre, implēvī, implētus"	"to fill, fill up; complete"	3
 in	in	"in, on [+ abl.]"	4
 in	in	"into, onto [+ acc.]"	4
-in	in	against [+ acc.]
+in	in	against [+ acc.]	4
 incendo	"incendō, incendere, incendī, incēnsus"	"to set fire to, burn; inflame"	15
 incipio	"incipiō, incipere, incēpī, inceptus"	to begin	9
 incolo	"incolō, incolere, incoluī, —"	"to inhabit, live in"	13
@@ -317,7 +318,7 @@ ira	"īra, īrae, f."	anger	6
 iratus	"īrātus, īrāta, īrātum"	angry	8
 is	"is, ea, id"	"he, she, it, (pl.) they; this, that"	8
 ita	ita	"thus, so, in this way"	13
-	"Ītalia, Ītaliae, f."	Italy	6
+italia	"Ītalia, Ītaliae, f."	Italy	6
 itaque	itaque	"and so, therefore"	12
 iter	"iter, itineris, n."	"journey, path, route; a day’s march"	12
 iterum	iterum	"again, a second time"	30
@@ -409,7 +410,7 @@ necesse	necesse	necessary	20
 nefas	"nefās, n."	"sin, crime (against divine law), wrong"	26
 neglego	"neglegō, neglegere, neglēxī, neglēctus"	"to ignore, neglect"	24
 nego	"negō, negāre, negāvī, negātus"	"to deny, say that … not"	19
-nemo	"nēmō, m."	no one	3
+nemo	"nēmō, [acc.] nēminem, m."	no one	3
 neque	neque	"and not, and … not"	10
 nescio	"nesciō, nescīre, nescīvī, nescītus"	not to know	19
 neuter	"neuter, neutra, neutrum"	neither (of two)	11
@@ -421,7 +422,9 @@ noceo	"noceō, nocēre, nocuī, nocitūrus"	"to harm, be harmful to [+ dat.]"	7
 nolo	"nōlō, nōlle, nōluī"	"to be unwilling, not want"	20
 nomen	"nōmen, nōminis, n."	name	7
 non	nōn	not	4
+nos	"nōs, nostrum (nostrī), nōbīs, nōs, nōbīs"	"we, us"	7
 noster	"noster, nostra, nostrum"	"our, ours"	5
+novem	novem	nine	11
 novus	"novus, nova, novum"	new; strange	6
 nox	"nox, noctis, f. "	night	11
 nubes	"nūbēs, nūbis, f."	cloud	14
@@ -435,6 +438,7 @@ nuntio	"nūntiō, nūntiāre, nūntiāvī, nūntiātus"	"to announce, report"	6
 nuntius	"nūntius, nūntiī, m."	messenger; message	17
 ob	ob	because of [+ acc.]	10
 occasio	"occāsiō, occāsiōnis, f."	"occasion, opportunity"	29
+octo	octō	eight	11
 oculus	"oculus, oculī, m."	eye	4
 odi	"ōdī, ōdisse, —"	to hate; dislike	27
 odium	"odium, odiī, n."	"hatred, unpopularity"	27
@@ -516,11 +520,13 @@ quam	quam	"(rather) than, as [in comparison]"	21
 quam	quam	"how, how much; as ___ as possible [with superlatives]"	22
 quamquam	quamquam	although	17
 quantus	"quantus, quanta, quantum"	how much	25
+quattuor	quattuor	four	11
 qui	"quī, quae, quod"	"who, which, that"	13
 qui	"quī, quae, quod"	which ___? what ___?	18
 quia	quia	because	12
 quidam	"quīdam, quaedam, quoddam"	"a certain ___, a sort of ___"	21
 quidem	quidem	"indeed, certainly in fact"	25
+quinque	quīnque	five	11
 quisquis	"quiquis, quicquid (quidquid)"	"whoever, whatever; everyone who"	26
 quis	"quis, quid"	"who, what"	18
 quis2	"quis, quid (= aliquis, aliquid)"	"someone, something, anyone, anything [with sī, nisi, num, nē]"	26
@@ -572,9 +578,11 @@ senatus	"senātus, senātūs, m."	senate	16
 senex	"senex, senis, m."	old man	18
 sensus2	"sēnsus, sēnsūs, m."	"sense, perception; emotion; idea"	27
 sentio	"sentiō, sentīre, sēnsī, sēnsus"	"to feel, perceive"	8
+septem	septem	seven	11
 sequor	"sequor, sequī, secūtus sum"	"to follow, accompany; pursure"	22
 servio	"serviō, servīre, servīvī or serviī, servītūrus"	to serve [+ dat.]	9
 servus2	"servus, servī, m."	"slave, servant"	17
+sex	sex	six	11
 si	sī	if	12
 sic	sīc	"thus, so"	11
 signum	"signum, signī, n."	"sign, token, signal; (military) standard"	17
@@ -637,7 +645,6 @@ tristis	"tristis, triste"	sad; gloomy	20
 troia	"Trōia, Trōiae, f."	Troy	14
 troianus	"Trōiānus, Trōiāna, Trōiānum"	Trojan	30
 tu	"tū, tuī, tibi, tē, tē"	you (sg.)	7
-tu	"vōs, vestrum (vestrī), vōbīs, vōs, vōbīs"	you (pl.)	7
 tum	tum	"then, at that time; next"	4
 tunc	tunc	then	6
 turba	"turba, turbae, f."	crowd	3
@@ -690,6 +697,7 @@ voco	"vocō, vocāre, vocāvī, vocātus"	"to call, summon"	1
 volo	"volō, velle, voluī, —"	"to wish, want, be willing"	20
 voluptas	"voluptās, voluptātis, f."	"pleasure, delight"	29
 volvo	"volvō, volvere, volvī, volūtus"	"to roll, turn/twist around"	14
+tu	"vōs, vestrum (vestrī), vōbīs, vōs, vōbīs"	you (pl.)	7
 vox	"vōx, vōcis, f."	voice	18
 vulnero	"vulnerō, vulnerāre, vulnerāvī, vulnerātus"	to wound	17
 vulnus	"vulnus, vulneris, n."	wound	17
