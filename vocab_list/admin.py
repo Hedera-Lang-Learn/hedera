@@ -23,4 +23,3 @@ class PersonalVocabularyListAdmin(admin.ModelAdmin):
 class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "vocabulary_list", "headword", "definition", "familiarity"]
     autocomplete_fields = ["lemma"]
-

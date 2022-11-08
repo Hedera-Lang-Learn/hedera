@@ -36,7 +36,7 @@ export default {
     state.text = data;
   },
   [UPDATE_VOCAB_LIST]: (state, data) => {
-    console.log("mutation received:");
+    console.log('mutation received:');
     console.log(data);
     state.vocabList = data;
   },

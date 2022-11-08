@@ -47,14 +47,14 @@ export default {
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
   [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
-    console.log("fetching vocab list");
+    console.log('fetching vocab list');
     const { data } = await api
       .fetchVocabList(vocabListId)
       .catch(logoutOnError(commit));
     commit(UPDATE_VOCAB_LIST, data.data);
   },
   [FETCH_PERSONAL_VOCAB_LIST]: async ({ commit }, { lang }) => {
-    console.log("fetching personal vocab list")
+    console.log('fetching personal vocab list');
     const { data } = await api
       .fetchPersonalVocabList(lang)
       .catch(logoutOnError(commit));
@@ -100,7 +100,7 @@ export default {
     const { entries: localEntries } = state.vocabList;
     const foundObj = entries.find((el) => el.id === entryId);
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
-    const updatedEntries = [ ...state.vocabList.entries ];
+    const updatedEntries = [...state.vocabList.entries];
     updatedEntries[localEntryIndex] = foundObj;
 
     commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
@@ -145,10 +145,12 @@ export default {
      */
     const { entries: localEntries } = state.vocabList;
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
+    // Work with the entries only, rather than the whole vocab list, since
+    // working with the whole list results in the table not showing the updated entry.
     const updatedEntries = [...state.vocabList.entries];
     updatedEntries[localEntryIndex] = data;
 
-    console.log("updatedEntries:");
+    console.log('updatedEntries:');
     console.log(updatedEntries);
     commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
