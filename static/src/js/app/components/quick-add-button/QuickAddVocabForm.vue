@@ -52,7 +52,7 @@
           />
         </div>
       </div>
-      <div class="lemma-options-container" :style="showLemmaOptionsList">
+      <div class="lemma-options-container" v-if="lemmaOptions.length">
         <label for="lemma-select">Linked definition</label>
         <div
           v-for="lemma in lemmaOptions"
@@ -99,7 +99,6 @@
   import {
     FETCH_PERSONAL_VOCAB_LANG_LIST,
     CREATE_PERSONAL_VOCAB_ENTRY,
-    RESET_LATTICE_NODES_BY_HEADWORD,
     SET_LANGUAGE_PREF,
     FETCH_SUPPORTED_LANG_LIST,
     FETCH_ME,
@@ -137,7 +136,6 @@
         );
         this.vocabularyListItem = foundLangListItem;
       }
-    // await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
     },
     data() {
       return {
@@ -196,7 +194,6 @@
           this.lemmaOptions = [];
           this.lemmaId = null;
           this.showSuccesAlert = true;
-          this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
         } else {
           this.showUnsuccessfulAlert = true;
         }
@@ -219,8 +216,11 @@
         return found[1];
       },
       setFocus() {
+        /* sets focus to the modal upon press of the quick add button
+         * field must be selected for 'esc' to close functionality
+         */
         this.$nextTick(() => {
-          // this.$refs.select.focus();
+          this.$refs.select.focus();
         });
       },
       // method function for parent components to reset the form when modal is closed
@@ -231,7 +231,6 @@
         this.lemmaId = null;
         this.showSuccesAlert = false;
         this.showUnsuccessfulAlert = false;
-        this.$store.dispatch(RESET_LATTICE_NODES_BY_HEADWORD);
       },
       /*
       Get the lemma options from the database by looking up the provided
@@ -244,7 +243,8 @@
         }
 
         // Get headword from database if it isn't already in state
-        if (!Object.hasOwn(this.$store.state.forms, this.headword)) {
+        // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
+        if (!Object.prototype.hasOwnProperty.call(this.$store.state.forms, this.headword)) {
           await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
             form: this.headword,
             lang: this.vocabularyListItem.lang,
@@ -271,7 +271,8 @@
       When a lemma is selected, update component variables accordingly
        */
       async onSelect(event) {
-        if (!Object.hasOwn(this.$store.state.lemmas, event.target.value)) {
+        // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
+        if (!Object.prototype.hasOwnProperty.call(this.$store.state.lemmas, event.target.value)) {
           await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
         }
         const lemma = this.$store.state.lemmas[event.target.value];
@@ -295,22 +296,6 @@
           return found;
         });
         return formattedPersonalVocabList;
-      },
-      showLatticeNodeList() {
-        if (!this.latticeNode) {
-          return { display: 'none' };
-        }
-        return {};
-      },
-      /*
-      If there are no lemma options to display, set the style of the container
-      to display: none;
-       */
-      showLemmaOptionsList() {
-        if (!this.lemmaOptions.length) {
-          return { display: 'none' };
-        }
-        return {};
       },
     },
   };

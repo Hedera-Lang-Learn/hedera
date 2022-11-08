@@ -65,6 +65,7 @@
           </div>
           <div v-if="props.column.field == 'edit'" class="d-flex edit-width">
             <button
+              id="td-edit-button"
               class="btn btn-sm edit-entry"
               href
               @click.prevent="onEdit(props.row.id, props.row)"
