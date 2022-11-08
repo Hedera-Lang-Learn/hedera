@@ -30,7 +30,7 @@ SYSTEM_VOCAB_LISTS = [
 
 for system_vocab in SYSTEM_VOCAB_LISTS:
     filename = system_vocab["filename"]
-    filepath = f"data/lat/{filename}"
+    filepath = f"data/lat/vocab/{filename}"
     title = system_vocab["title"]
     description = system_vocab["description"]
 
