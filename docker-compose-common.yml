@@ -26,6 +26,7 @@ services:
             - ./lti/:/app/lti
             - ./manage.py/:/app/manage.py
             - ./pdfservice/:/app/pdfservice
+            - ./scripts/:/app/scripts
             - ./static/src/:/app/static/src
             - ./vocab_list/:/app/vocab_list
             - ./webpack-stats/:/app/webpack-stats
