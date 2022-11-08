@@ -18,7 +18,6 @@ export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
 export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
 export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
 export const FETCH_LATTICE_NODES_BY_HEADWORD = 'fetchLatticeNodesByHeadword';
-export const RESET_LATTICE_NODES_BY_HEADWORD = 'resetLatticeNodesByHeadword';
 export const FETCH_SUPPORTED_LANG_LIST = 'fetchSupportedLangList';
 // TODO add language preference
 export const SET_LANGUAGE_PREF = 'setLanguagePref';

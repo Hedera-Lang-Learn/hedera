@@ -3,7 +3,7 @@ from django.urls import reverse
 
 from django.contrib.auth.models import User
 
-from .models import LemmatizedText
+from .models import LemmatizedText, transform_data_to_html
 
 
 def create_user(username, email, password):
@@ -96,6 +96,7 @@ class LemmatizedTextTests(TestCase):
             {"word": "somnia", "lemma_id": 55, "resolved": False, "following": " ", "gloss_ids": [], "glossed": "na", "word_normalized": "somina"},
             {"word": "habet", "lemma_id": 60, "resolved": True, "following": ".", "gloss_ids": [], "glossed": "na", "word_normalized": "habet"},
         ]
+
         example_text = LemmatizedText.objects.create(
             title="Test title",
             lang="lat",
@@ -106,16 +107,22 @@ class LemmatizedTextTests(TestCase):
         self.assertEqual(example_text.token_count(), 3)
         self.assertEqual(example_text.original_text, "Femina somnia habet.")
 
-        # TODO: Figure out how to do these HTML tests better / less brittle
-        edited_text = "<span follower='true'> </span><span lemma_id='55' gloss_ids='[]' glossed='na' resolved='False' word_normalized='somina'>somnia something else</span><span follower='true'> </span><span lemma_id='60' gloss_ids='[]' glossed='na' resolved='True' word_normalized='habet'>habet</span><span follower='true'>. </span><span>And more!</span>"
-        example_text.handle_edited_data("New title", edited_text)
-        transformed_data_to_html = example_text.transform_data_to_html()
-        section_one = "<span gloss_ids='[]' glossed='na' lemma_id='None' resolved='no-lemma' word_normalized='something'>something</span>"
-        section_two = "<span gloss_ids='[]' glossed='na' lemma_id='None' resolved='no-lemma' word_normalized='habet'>habet</span><span follower='true'> . </span>"
-        self.assertIn(section_one, transformed_data_to_html)
-        self.assertIn(section_two, transformed_data_to_html)
-        self.assertEqual(example_text.token_count(), 7)
-        self.assertEqual(example_text.original_text, " somnia something else habet. And more!")
+        # modify HTML, mimicking what's happening in the WYSIWYG
+        html = transform_data_to_html(data)
+        html = html.replace(data[0]["word"], data[0]["word"] + " virtus imperator")
+        html = html.replace(data[2]["word"], "pecunia " + data[-1]["word"])
+
+        # handle edits and sanity check the result
+        example_text.handle_edited_data("New title", html)
+        self.assertEqual(example_text.original_text, "Femina virtus imperator somnia pecunia habet.")
+        self.assertEqual(example_text.token_count(), 6)
+
+        # check the individual token words
+        words_post_edit = [token["word"] for token in example_text.data]
+        self.assertIn("virtus", words_post_edit)
+        self.assertIn("imperator", words_post_edit)
+        self.assertIn("somnia", words_post_edit)
+        self.assertIn("pecunia", words_post_edit)
 
 
 class LemmatizedTextViewsTests(TestCase):

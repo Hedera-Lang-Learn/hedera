@@ -1,5 +1,6 @@
 import csv
 import json
+import logging
 import unicodedata
 
 from django.conf import settings
@@ -12,6 +13,9 @@ from iso639 import languages
 
 from lemmatization.models import FormToLemma, Lemma
 from lemmatized_text.models import LemmatizedText
+
+
+logger = logging.getLogger(__name__)
 
 
 def strip_diacritics(s):
@@ -55,7 +59,7 @@ def validate_lines(lines: list, entry_model: models.Model) -> list:
     unique_lines = [json.loads(linestring) for linestring in unique_line_strings]
     if len(unique_lines) == 0:
         # As far as I can tell, there's no proper logging in the project, but there probably should be
-        print(f"No unique lines found in lines: {list(lines)}")
+        logger.warn(f"No unique lines found in lines: {list(lines)}")
         return []
 
     # lowercase all the keys on the unique lines

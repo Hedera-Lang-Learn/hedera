@@ -30,10 +30,6 @@ quam\tas possible as
 quam\thow
 quam\tthan"""
 
-EXAMPLE_VOCAB_LIST_TSV = SimpleUploadedFile("test.tsv", vocab_list_tsv_content)
-DUPLICATE_VOCAB_LIST_TSV = SimpleUploadedFile("dupe_test.tsv", dupe_vocab_list_tsv_content)
-DUPLICATE_HEADWORD_VOCAB_LIST_TSV = SimpleUploadedFile("dupe_headword_test.tsv", dupe_headword_list_tsv_content)
-
 
 def create_user(username, email, password):
     return get_user_model().objects.create_user(username, email=email, password=password)
@@ -52,13 +48,15 @@ def check_entries(expected_entries, actual_entries):
 class VocabularyListAndEntryTests(TestCase):
 
     def setUp(self):
+        example_vocab_list_file = SimpleUploadedFile("test.tsv", vocab_list_tsv_content)
+
         self.vocab_list = VocabularyList(
             lang="lat",
             title="Foo",
             description="Bar"
         )
         self.vocab_list.save()
-        self.vocab_list.load_tab_delimited(EXAMPLE_VOCAB_LIST_TSV)
+        self.vocab_list.load_tab_delimited(example_vocab_list_file)
 
     def test_load_tab_delimited(self):
         self.assertEqual(self.vocab_list.entries.count(), 4)
@@ -86,26 +84,28 @@ class VocabularyListAndEntryTests(TestCase):
         self.assertEqual(len(found), 1)
 
     def test_duplicate_headword_and_definition_tsv(self):
+        dup_test_file = SimpleUploadedFile("dupe_test.tsv", dupe_vocab_list_tsv_content)
         dup_headword_vocab_list = VocabularyList(
             lang="lat",
             title="duplicate headwords",
             description="dupes"
         )
         dup_headword_vocab_list.save()
-        dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV)
+        dup_headword_vocab_list.load_tab_delimited(dup_test_file)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
         self.assertEqual(len(found_match), 1)
 
     def test_duplicate_headword_diff_definition_tsv(self):
+        dup_headword_test_file = SimpleUploadedFile("dupe_headword_test.tsv", dupe_headword_list_tsv_content)
         dup_headword_vocab_list = VocabularyList(
             lang="lat",
             title="duplicate headwords",
             description="dupes"
         )
         dup_headword_vocab_list.save()
-        dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV)
+        dup_headword_vocab_list.load_tab_delimited(dup_headword_test_file)
         dup_vocab_list = VocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
@@ -115,13 +115,15 @@ class VocabularyListAndEntryTests(TestCase):
 class PersonalVocabularyListAndEntryTests(TestCase):
 
     def setUp(self):
+        example_vocab_list_file = SimpleUploadedFile("test.tsv", vocab_list_tsv_content)
+
         self.user = create_user("okieDokey", "smokey@fake.com", "password")
         self.vocab_list = PersonalVocabularyList(
             lang="lat",
             user=self.user
         )
         self.vocab_list.save()
-        self.vocab_list.load_tab_delimited(EXAMPLE_VOCAB_LIST_TSV, 2)
+        self.vocab_list.load_tab_delimited(example_vocab_list_file, 2)
 
     def test_load_tab_delimited(self):
         self.assertEqual(self.vocab_list.entries.count(), 4)
@@ -166,26 +168,28 @@ class PersonalVocabularyListAndEntryTests(TestCase):
         self.assertEqual(len(found), 1)
 
     def test_duplicate_headword_and_definition_tsv(self):
+        dup_test_file = SimpleUploadedFile("dupe_test.tsv", dupe_vocab_list_tsv_content)
         user = create_user("donkeykong", "donkeykong@fake.com", "password")
         dup_headword_vocab_list = PersonalVocabularyList(
             lang="lat",
             user=user
         )
         dup_headword_vocab_list.save()
-        dup_headword_vocab_list.load_tab_delimited(DUPLICATE_VOCAB_LIST_TSV, 2)
+        dup_headword_vocab_list.load_tab_delimited(dup_test_file, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
 
         self.assertEqual(len(found_match), 1)
 
     def test_duplicate_headword_diff_definition_tsv(self):
+        dup_headword_test_file = SimpleUploadedFile("dupe_headword_test.tsv", dupe_headword_list_tsv_content)
         user = create_user("diddykong", "diddykong@fake.com", "password")
         dup_headword_vocab_list = PersonalVocabularyList(
             lang="lat",
             user=user
         )
         dup_headword_vocab_list.save()
-        dup_headword_vocab_list.load_tab_delimited(DUPLICATE_HEADWORD_VOCAB_LIST_TSV, 2)
+        dup_headword_vocab_list.load_tab_delimited(dup_headword_test_file, 2)
         dup_vocab_list = PersonalVocabularyListEntry.objects.filter(vocabulary_list=dup_headword_vocab_list)
         found_match = list(filter(lambda vocab_dict: vocab_dict["headword"] == "quam", dup_vocab_list.values("id", "headword", "definition")))
         self.assertEqual(len(found_match), 3)

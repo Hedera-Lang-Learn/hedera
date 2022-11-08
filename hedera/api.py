@@ -378,15 +378,18 @@ class PersonalVocabularyListAPI(APIView):
     def delete(self, request, *args, **kwargs):
         data = json.loads(request.body)
         if "id" in data:
-            entry = get_object_or_404(PersonalVocabularyListEntry, pk=data["id"])
+            try:
+                entry = PersonalVocabularyListEntry.objects.get(pk=data["id"])
+            except PersonalVocabularyListEntry.DoesNotExist:
+                return JsonResponseNotFound({"error": f"could not find vocab with id={data['id']}"})
+
             count, _ = PersonalVocabularyListEntry.objects.filter(id=data["id"]).delete()
             # Updates stats for all text matching the vocab_list_id when vocab entry is deleted
             stats = PersonalVocabularyStats.objects.filter(vocab_list_id=entry.vocabulary_list_id)
             for stat in stats:
                 stat.update()
-            if(count != 0):
-                return JsonResponse({"data": True, "id": data["id"]})
-            return JsonResponseBadRequest({"error": f"could not find vocab with id={data['id']}"}, status=404)
+            deleted_data = True if count > 0 else False
+            return JsonResponse({"data": deleted_data, "id": data["id"]})
         return JsonResponseBadRequest({"error": f"missing 'id'"})
 
 
@@ -449,6 +452,10 @@ class PersonalVocabularyQuickAddAPI(APIView):
 
 class JsonResponseBadRequest(JsonResponse):
     status_code = 400
+
+
+class JsonResponseNotFound(JsonResponse):
+    status_code = 404
 
 
 class SupportedLanguagesAPI(APIView):

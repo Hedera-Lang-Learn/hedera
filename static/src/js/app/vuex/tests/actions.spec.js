@@ -50,9 +50,11 @@ describe('Actions', () => {
       const commit = jest.fn();
       const payload = {
         headword: 'ergo',
-        gloss: 'sum',
-        vocabularyListId: 1,
+        definition: 'sum',
+        lemmaId: 1,
         familiarity: 1,
+        lang: 'lat',
+        vocabularyListId: 1,
       };
       //   const response = { data: { created: true } };
       await actions.createPersonalVocabEntry({ commit }, payload);
@@ -60,9 +62,11 @@ describe('Actions', () => {
       expect(url).toBe('/api/v1/personal_vocab_list/quick_add/');
       expect(body).toEqual({
         headword: 'ergo',
-        gloss: 'sum',
+        definition: 'sum',
         vocabulary_list_id: 1,
         familiarity: 1,
+        lemma_id: 1,
+        lang: 'lat',
       });
     });
   });
