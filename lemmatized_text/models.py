@@ -34,6 +34,17 @@ def format_token_key_value_pairs(token):
     return " ".join(key_value_pairs)
 
 
+def transform_token_to_html(token):
+    return (
+        f"<span {format_token_key_value_pairs(token)}>"
+        f"{token['word']}</span><span follower='true'>"
+        f"{parse_following(token['following'])}</span>")
+
+
+def transform_data_to_html(data):
+    return "".join([transform_token_to_html(token) for token in data])
+
+
 @job("default", timeout=600)
 def lemmatize_text_job(text, lang, pk):
     try:
@@ -247,14 +258,7 @@ class LemmatizedText(models.Model):
         return dict(lemma_dict)
 
     def transform_data_to_html(self):
-        return "".join([
-            (
-                f"<span {format_token_key_value_pairs(token)}>"
-                f"{token['word']}</span><span follower='true'>"
-                f"{parse_following(token['following'])}</span>"
-            )
-            for token in self.data
-        ])
+        return transform_data_to_html(self.data)
 
     def transform_data_to_glossary(self):
         """Returns a list of words used in the text with their full glosses."""
