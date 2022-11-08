@@ -4,7 +4,7 @@
 This script imports core/system vocabulary lists for latin.
 
 Usage:
-    python manage.py shell -c "import load_latin_vocab"
+    python manage.py shell -c "import loaders.lat.load_latin_vocab"
 """
 
 import csv
@@ -30,7 +30,7 @@ SYSTEM_VOCAB_LISTS = [
 
 for system_vocab in SYSTEM_VOCAB_LISTS:
     filename = system_vocab["filename"]
-    filepath = f"import-data/{filename}"
+    filepath = f"data/lat/{filename}"
     title = system_vocab["title"]
     description = system_vocab["description"]
 
@@ -39,7 +39,7 @@ for system_vocab in SYSTEM_VOCAB_LISTS:
 
     with open(filepath, newline="") as csvfile:
         csv_reader = csv.DictReader(csvfile, delimiter="\t")
-        has_lemma_field = csv_reader.fieldnames and 'lemma' in csv_reader.fieldnames
+        has_lemma_field = csv_reader.fieldnames and "lemma" in csv_reader.fieldnames
 
         vocab_list, vocab_list_created = VocabularyList.objects.get_or_create(
             title=title,
