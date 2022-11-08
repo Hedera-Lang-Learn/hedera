@@ -15,7 +15,6 @@ import {
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
   FETCH_LATTICE_NODES_BY_HEADWORD,
-  RESET_LATTICE_NODES_BY_HEADWORD,
   SET_LANGUAGE_PREF,
   DELETE_PERSONAL_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
@@ -90,9 +89,6 @@ export default {
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: (state, data) => {
     state.latticeNodes = data;
-  },
-  [RESET_LATTICE_NODES_BY_HEADWORD]: (state) => {
-    state.latticeNodes = [];
   },
   [SET_LANGUAGE_PREF]: (state, data) => {
     state.me = data;

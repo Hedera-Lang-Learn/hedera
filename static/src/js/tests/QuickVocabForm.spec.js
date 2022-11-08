@@ -1,43 +1,39 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import Vue from 'vue';
 import Vuex from 'vuex';
 import QuickVocabAddForm from '../app/components/quick-add-button/QuickAddButton.vue';
+import testData from './testData';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('QuickVocabForm', () => {
-  let actions;
   let store;
+  const actions = {
+    fetchPersonalVocabLangList: jest.fn(),
+    createPersonalVocabEntry: jest.fn(),
+    fetchLemmasByForm: jest.fn(),
+    fetchMe: jest.fn(),
+    setLanguagePref: jest.fn(),
+    fetchSupportedLangList: jest.fn(),
+    fetchLemma: jest.fn(),
+  };
+  const state = {
+    personalVocabLangList: [
+      { lang: 'lat', id: 1 },
+      { lang: 'grc', id: 36 },
+    ],
+    me: {
+      email: 'testing@test.com',
+      displayName: 'vez-test',
+      showNodeIds: 'toggle',
+      lang: 'lat',
+    },
+    supportedLanguages: testData.supportedLanguages,
+  };
   beforeEach(() => {
-    actions = {
-      fetchPersonalVocabLangList: jest.fn(),
-      createPersonalVocabEntry: jest.fn(),
-      fetchLatticeNodesByHeadword: jest.fn(),
-      resetLatticeNodesByHeadword: jest.fn(),
-      fetchMe: jest.fn(),
-      setLanguagePref: jest.fn(),
-      fetchSupportedLangList: jest.fn(),
-    };
-
     store = new Vuex.Store({
-      state: {
-        personalVocabLangList: [
-          { lang: 'lat', id: 1 },
-          { lang: 'grc', id: 36 },
-        ],
-        latticeNodes: [],
-        me: {
-          email: 'testing@test.com',
-          displayName: 'vez-test',
-          showNodeIds: 'toggle',
-          lang: 'lat',
-        },
-        supportedLanguages: [
-          ['grc', 'Ancient Greek'],
-          ['lat', 'Latin'],
-          ['rus', 'Russian'],
-        ],
-      },
+      state,
       actions,
     });
   });
@@ -47,29 +43,36 @@ describe('QuickVocabForm', () => {
     expect(wrapper.find('#addvocab-form').isVisible()).toBe(true);
   });
 
-  it('loads latticeNodes when data exist', () => {
-    store.state.latticeNodes = [
-      {
-        pk: 1,
-        label: 'sum, esse, fuī',
-        gloss: 'to be, exist',
-        canonical: true,
-        forms: [],
-        lemmas: [{ lemma: 'sum', context: 'morpheus' }],
-        vocabulary_entries: [],
-        children: [],
-      },
-    ];
-    const wrapper = mount(QuickVocabAddForm, {
+  it('loads lemma options when data exist', async () => {
+    const { forms } = testData;
+    const newState = {
+      lemmas: forms.sum.lemmas,
+      forms,
+      ...state,
+    };
+    store = new Vuex.Store({
+      state: newState,
+      actions,
+    });
+    const wrapper = await mount(QuickVocabAddForm, {
       store,
       localVue,
     });
-    expect(wrapper.findAll('#lattice-node-options')).toHaveLength(1);
+    const options = wrapper.find('#FormControlSelect').findAll('option');
+    // Note: for debugging an array of options - wrapper.find('#FormControlSelect').findAll('option').wrappers.forEach(w=>console.log(w.html()))
+    await options.at(0).setSelected();
+    await wrapper
+      .find('input[type=text][placeholder=headword]')
+      .setValue('sum');
+    await Vue.nextTick();
+    expect(
+      wrapper.find(`#lemma-option-${forms.sum.lemmas[0].pk}`).exists(),
+    ).toBe(true);
   });
 
-  it('should not load latticeNodes when data not exist', () => {
+  it('should not load suggested lemmas when data does not exist', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
-    expect(wrapper.findAll('#lattice-node-options')).toHaveLength(0);
+    expect(wrapper.findAll('lemma-label')).toHaveLength(0);
   });
 
   it('fails to calls store createPersonalVocabEntry "submit" when button is clicked', () => {
@@ -78,16 +81,30 @@ describe('QuickVocabForm', () => {
     expect(actions.createPersonalVocabEntry).toHaveBeenCalledTimes(0);
   });
 
-  it('successfully calls store createPersonalVocabEntry "submit" when button is clicked', () => {
+  it('successfully calls store createPersonalVocabEntry "submit" when button is clicked', async () => {
+    const { forms } = testData;
+    const newState = {
+      lemmas: forms.sum.lemmas,
+      forms,
+      ...state,
+    };
+    store = new Vuex.Store({
+      state: newState,
+      actions,
+    });
     const wrapper = mount(QuickVocabAddForm, {
       store,
       localVue,
     });
     const options = wrapper.find('#FormControlSelect').findAll('option');
-    options.at(1).setSelected();
-    wrapper.find('input[type=text][placeholder=headword]').setValue('sum');
-    expect(actions.fetchLatticeNodesByHeadword).toHaveBeenCalled();
-    wrapper.find('input[type=text][placeholder=gloss]').setValue('testGloss');
+    await options.at(0).setSelected();
+    await wrapper
+      .find('input[type=text][placeholder=headword]')
+      .setValue(forms.sum.form);
+    wrapper
+      .find('input[type=text][placeholder=definition]')
+      .setValue('testGloss');
+    await Vue.nextTick();
     wrapper.find("[type='submit']").trigger('click');
     expect(actions.createPersonalVocabEntry).toHaveBeenCalled();
   });
