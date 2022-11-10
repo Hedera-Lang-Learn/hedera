@@ -215,11 +215,15 @@ class LemmatizationAPI(APIView):
                 token.update(lemma.gloss_data())
             if vocablist_id is not None:
                 vocab_entry = vocablist.entries.filter(lemma_id=token["lemma_id"])
+                # check if token has resolved key:value pair before comparison further down so there isnt key error
+                resolved = False
+                if "resolved" in token.keys():
+                    resolved = token["resolved"]
                 if vocablist_id == "personal":
                     # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
                     familarity = list(vocab_entry.values_list("familiarity", flat=True))
-                    token["familiarity"] = token["resolved"] and familarity and familarity[0]
-                token["inVocabList"] = token["resolved"] and vocab_entry.exists()
+                    token["familiarity"] = resolved and familarity and familarity[0]
+                token["inVocabList"] = resolved and vocab_entry.exists()
         return data
 
     def get_data(self):
