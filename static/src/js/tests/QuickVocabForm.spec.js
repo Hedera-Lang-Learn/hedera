@@ -60,7 +60,7 @@ describe('QuickVocabForm', () => {
       localVue,
     });
     // Enter a headword so that options appear
-    await wrapper.find("#quick-add-form-headword-entry").setValue(forms.sum.form);
+    await wrapper.find('#quick-add-form-headword-entry').setValue(forms.sum.form);
     const lemmaInputs = wrapper.find('#lemma-options-inputs').findAll('input');
     // Note: for debugging an array of options - wrapper.find('#FormControlSelect').findAll('option').wrappers.forEach(w=>console.log(w.html()))
     await lemmaInputs.at(0).setChecked();
