@@ -64,7 +64,7 @@ export default {
     const { data } = await api
       .fetchVocabLists(state.text.lang)
       .catch(logoutOnError(commit));
-    commit(FETCH_VOCAB_LISTS, data.data)
+    commit(FETCH_VOCAB_LISTS, data.data);
   },
   [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
     const { data } = await api
