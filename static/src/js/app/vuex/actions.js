@@ -60,10 +60,11 @@ export default {
       .catch(logoutOnError(commit));
     commit(UPDATE_VOCAB_LIST, data.data.personalVocabList);
   },
-  [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
-    api
-      .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data))
+  [FETCH_VOCAB_LISTS]: async ({ commit, state }) => {
+    const { data } = await api
+      .fetchVocabLists(state.text.lang)
       .catch(logoutOnError(commit));
+    commit(FETCH_VOCAB_LISTS, data.data)
   },
   [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
     const { data } = await api
