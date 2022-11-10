@@ -286,10 +286,7 @@
           lemmaId,
         } = this.editingFields;
         let response = null;
-        console.log(`This is personal vocab list: ${this.isPersonal}`);
         if (this.isPersonal) {
-          console.log('personal vocabEntries before update:');
-          console.log(this.$store.state.vocabList.entries);
           response = await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
             entryId,
             familiarity,
@@ -298,19 +295,13 @@
             lang: this.lang,
             lemmaId,
           });
-          console.log('vocabEntries after update:');
-          console.log(this.$store.state.vocabList.entries);
         } else {
-          console.log('non-personal vocabEntries before update:');
-          console.log(this.$store.state.vocabList.entries);
           response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
             entryId,
             headword,
             definition,
             lemmaId,
           });
-          console.log('vocabEntries after update:');
-          console.log(this.$store.state.vocabList.entries);
         }
         if (response) {
           const { statusText, status } = response;
@@ -392,8 +383,6 @@
       },
       vocabEntries() {
         // Retrieve entries on their own, or return undefined if no list is present
-        console.log('computed vocab entries run');
-        console.log(this.vocabList.entries);
         return this.vocabList && this.vocabList.entries;
       },
       partialMatchForms() {
