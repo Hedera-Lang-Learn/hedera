@@ -257,12 +257,14 @@
         }
       },
       async changeCell(field, row) {
-        // TODO: remove dependency on familiarity
         const value = row[field];
-        const { originalIndex: index, familiarity } = row;
+        const { originalIndex: index } = row;
         this.editingFields[field] = value;
         this.editingFields.index = index;
-        this.editingFields.familiarity = familiarity;
+        if (this.isPersonal) {
+          const { familiarity } = row;
+          this.editingFields.familiarity = familiarity;
+        }
         if (field === 'lemma' && value !== '') {
           await this.$store.dispatch(FETCH_LEMMAS_BY_PARTIAL_FORM, {
             form: value,
@@ -275,7 +277,6 @@
         }
       },
       async onSave() {
-        // TODO: updates work, but don't appear. Looks like state and the components are updating though?
         this.saving = true;
         const {
           entryId,

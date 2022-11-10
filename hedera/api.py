@@ -335,8 +335,8 @@ class VocabularyListEntryAPI(APIView):
         The url for this function requires an ID and an action.
 
         For a `link` action, there must be a JSON payload in the request with a
-        "lemma" key. The value of this key should be a lemma ID for the lemma
-        that this vocab list entry should be linked to.
+        "lemma_id" key. The value of this key should be a lemma ID for the
+        lemma that this vocab list entry should be linked to.
 
         For a `delete` action, no GET parameters are required. The specified
         vocab list entry will be deleted.
@@ -347,7 +347,7 @@ class VocabularyListEntryAPI(APIView):
 
         Args:
             request: Django request object. Includes JSON payload as `data`
-                attribute, which requires "lemma" for the link action or
+                attribute, which requires "lemma_id" for the link action or
                 "headword" and "definition" fro the edit action.
             *args: unused
             **kwargs: Includes params from Django routing. Should have "pk" and
