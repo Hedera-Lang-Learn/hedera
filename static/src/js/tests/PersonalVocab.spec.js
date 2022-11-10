@@ -12,16 +12,19 @@ describe('PersonalVocab', () => {
   const { personalVocabList, supportedLanguages } = testData;
   beforeEach(() => {
     actions = {
-      fetchMe: jest.fn(),
-      fetchPersonalVocabList: jest.fn(),
       deletePersonalVocabEntry: jest.fn(),
-      fetchSupportedLangList: jest.fn(),
+      fetchMe: jest.fn(),
       fetchPersonalVocabLangList: jest.fn(),
+      fetchPersonalVocabList: jest.fn(),
+      fetchSupportedLangList: jest.fn(),
+      fetchVocabList: jest.fn(),
+      setVocabListType: jest.fn(),
+      vocabEntryDelete: jest.fn(),
     };
 
     store = new Vuex.Store({
       state: {
-        personalVocabList,
+        vocabList: personalVocabList,
         supportedLanguages,
         personalVocabLangList: [{ lang: 'lat', id: 67 }],
       },
@@ -40,13 +43,7 @@ describe('PersonalVocab', () => {
   });
 
   it('should not load delete button if edit button is not clicked', () => {
-    store = new Vuex.Store({
-      state: {
-        personalVocabList: null,
-      },
-      actions,
-    });
-    const wrapper = shallowMount(PersonalVocab, { store, localVue });
+    const wrapper = mount(PersonalVocab, { store, localVue });
     expect(wrapper.find('#td-delete-button').exists()).toBe(false);
   });
   it('should successfully delete a vocab from the list', async () => {
@@ -60,6 +57,6 @@ describe('PersonalVocab', () => {
     });
     await wrapper.find('#td-edit-button').trigger('click');
     wrapper.find('#td-delete-button').trigger('click');
-    expect(actions.deletePersonalVocabEntry).toHaveBeenCalled();
+    expect(actions.vocabEntryDelete).toHaveBeenCalled();
   });
 });

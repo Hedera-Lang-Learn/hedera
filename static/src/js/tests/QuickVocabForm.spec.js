@@ -12,6 +12,7 @@ describe('QuickVocabForm', () => {
   const actions = {
     fetchPersonalVocabLangList: jest.fn(),
     createPersonalVocabEntry: jest.fn(),
+    createVocabEntry: jest.fn(),
     fetchLemmasByForm: jest.fn(),
     fetchMe: jest.fn(),
     setLanguagePref: jest.fn(),
@@ -58,9 +59,11 @@ describe('QuickVocabForm', () => {
       store,
       localVue,
     });
-    const options = wrapper.find('#FormControlSelect').findAll('option');
+    // Enter a headword so that options appear
+    await wrapper.find("#quick-add-form-headword-entry").setValue(forms.sum.form);
+    const lemmaInputs = wrapper.find('#lemma-options-inputs').findAll('input');
     // Note: for debugging an array of options - wrapper.find('#FormControlSelect').findAll('option').wrappers.forEach(w=>console.log(w.html()))
-    await options.at(0).setSelected();
+    await lemmaInputs.at(0).setChecked();
     await wrapper
       .find('input[type=text][placeholder=headword]')
       .setValue('sum');
@@ -75,17 +78,18 @@ describe('QuickVocabForm', () => {
     expect(wrapper.findAll('lemma-label')).toHaveLength(0);
   });
 
-  it('fails to calls store createPersonalVocabEntry "submit" when button is clicked', () => {
+  it('fails to calls store createVocabEntry "submit" when button is clicked', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
     wrapper.find("[type='submit']").trigger('click');
-    expect(actions.createPersonalVocabEntry).toHaveBeenCalledTimes(0);
+    expect(actions.createVocabEntry).toHaveBeenCalledTimes(0);
   });
 
-  it('successfully calls store createPersonalVocabEntry "submit" when button is clicked', async () => {
-    const { forms } = testData;
+  it('successfully calls store createVocabEntry "submit" when button is clicked', async () => {
+    const { forms, personalVocabList } = testData;
     const newState = {
       lemmas: forms.sum.lemmas,
       forms,
+      vocabList: personalVocabList,
       ...state,
     };
     store = new Vuex.Store({
@@ -96,16 +100,17 @@ describe('QuickVocabForm', () => {
       store,
       localVue,
     });
-    const options = wrapper.find('#FormControlSelect').findAll('option');
-    await options.at(0).setSelected();
+    // Enter a headword so that options appear
     await wrapper
       .find('input[type=text][placeholder=headword]')
       .setValue(forms.sum.form);
-    wrapper
+    const lemmaInputs = wrapper.find('#lemma-options-inputs').findAll('input');
+    await lemmaInputs.at(0).setChecked();
+    await wrapper
       .find('input[type=text][placeholder=definition]')
       .setValue('testGloss');
     await Vue.nextTick();
-    wrapper.find("[type='submit']").trigger('click');
-    expect(actions.createPersonalVocabEntry).toHaveBeenCalled();
+    await wrapper.find("[type='submit']").trigger('click');
+    expect(actions.createVocabEntry).toHaveBeenCalled();
   });
 });

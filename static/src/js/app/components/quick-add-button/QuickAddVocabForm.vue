@@ -23,6 +23,7 @@
       </select>
       <div class="d-flex">
         <input
+          id="quick-add-form-headword-entry"
           class="form-control mt-2"
           type="text"
           placeholder="headword"
@@ -54,6 +55,7 @@
       <div class="lemma-options-container" v-if="lemmaOptions.length">
         <label for="lemma-select">Linked definition</label>
         <div
+          id="lemma-options-inputs"
           v-for="lemma in lemmaOptions"
           :key="lemma.pk"
         >
@@ -211,7 +213,7 @@
           this.lemmaId = null;
           this.showSuccesAlert = true;
         } else {
-          this.errorMessage('The process of adding a vocab entry did not report a success.');
+          this.errorMessage = 'The process of adding a vocab entry did not report a success.';
           this.showUnsuccessfulAlert = true;
         }
 

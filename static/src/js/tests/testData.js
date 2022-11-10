@@ -48,6 +48,9 @@ const testData = {
         lemma: 'sum',
       },
     ],
+    canEdit: true,
+    title: 'Test vocab list',
+    id: 0,
   },
 };
 

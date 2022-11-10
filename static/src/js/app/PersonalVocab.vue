@@ -154,7 +154,6 @@
       lang: {
         immediate: true,
         handler() {
-          console.log(`lang handler running. This is a personal vocab list: ${this.personalVocab}`);
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
             this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
@@ -167,7 +166,6 @@
       vocabId: {
         immediate: true,
         handler() {
-          console.log(`vocabId handler running. This is a personal vocab list: ${this.personalVocab}`);
           if (this.personalVocab) {
             this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
             this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
