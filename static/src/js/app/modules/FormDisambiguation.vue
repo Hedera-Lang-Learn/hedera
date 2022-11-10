@@ -84,9 +84,8 @@
           this.selectedToken
           && this.$store.state.forms[this.selectedToken.word]
         );
-        // used to look up forms that have capital: example "Sum" will not return glosses due to being capitalized
         if (!form) {
-          form = this.selectedToken && this.$store.state.forms[this.selectedToken.word_normalized.toLowerCase()];
+          form = this.selectedToken && this.$store.state.forms[this.selectedToken.word_normalized];
         }
         return form;
       },
