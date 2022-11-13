@@ -8,10 +8,6 @@ Hedera is an application for viewing texts in different languages such that:
 - and a reader can see how much of a text should already be familiar.
 
 ## Getting Started
-### Prequisite for new Lemma changes - Aug-9-2022
-Before running migrations you must run the `merge_lemma_and_frequency.py` script which joins 4 CSV files and creates a single TSV file for migration into new Lemma table.
-You will need a `virtualenv` or have `pandas` installed locally to run the script
-<!-- ./manage.py shell -c "import merge_lattice_and_frequency" -->
 
 ### With Docker (compose)
 
@@ -40,10 +36,10 @@ docker compose run --rm django python manage.py create_cms
 To import latin data:
 
 ```
-docker compose run --rm django python manage.py shell -c "import load_latin_lemma"
-docker compose run --rm django python manage.py shell -c "import load_latin_form_to_lemma"
-docker compose run --rm django python manage.py shell -c "import load_latin_gloss"
-docker compose run --rm django python manage.py shell -c "import load_latin_vocab"
+docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_lemma"
+docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_form_to_lemma"
+docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_gloss"
+docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_vocab"
 ```
 
 <!-- TODO UPDATE -->
@@ -52,7 +48,7 @@ docker compose run --rm django python manage.py shell -c "import load_latin_voca
 **Caution**: _This can take more than one hour._
 
 ```sh
-docker compose run --rm django python manage.py shell -c "import load_chinese_lattice"
+docker compose run --rm django python manage.py shell -c "import loaders.zho.load_chinese_lattice"
 ```
 
 #### **Good to know's and Gotcha's**
@@ -117,8 +113,8 @@ createdb hedera
 3. To import lattice data:
 
 ```
-./manage.py shell -c "import load_latin_lemma"
-./manage.py shell -c "import load_latin_form_to_lemma"
+./manage.py shell -c "import loaders.lat.load_latin_lemma"
+./manage.py shell -c "import loaders.lat.load_latin_form_to_lemma"
 ```
 4. And finally, to start Django,
 
@@ -244,9 +240,9 @@ Every so often, it may be requested that the dev DB be "reset." Meaning, tables 
 $ docker compose exec django python manage.py reset_db --no_input
 
 # Run commands to reload the data
-$ docker compose run --rm django python manage.py shell -c "import load_latin_lemma"
-$ docker compose run --rm django python manage.py shell -c "import load_latin_form_to_lemma"
-$ docker compose run --rm django python manage.py shell -c "import load_latin_gloss"
+$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_lemma"
+$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_form_to_lemma"
+$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_gloss"
 ```
 
 ## Adding a new language

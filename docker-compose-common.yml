@@ -15,19 +15,21 @@ services:
             # node_modules, which may have different bindings on the
             # host vs container
             - ./cms/:/app/cms
+            - ./data/:/app/data
             - ./fixtures/:/app/fixtures
             - ./groups/:/app/groups
             - ./hedera/:/app/hedera
-            - ./import-data/:/app/import-data
             - ./lattices/:/app/lattices
             - ./lemmatization/:/app/lemmatization
             - ./lemmatized_text/:/app/lemmatized_text
+            - ./loaders/:/app/loaders
             - ./lti/:/app/lti
-            - ./pdfservice/:/app/pdfservice
-            - ./static/src/:/app/static/src
-            - ./webpack-stats/:/app/webpack-stats
-            - ./vocab_list/:/app/vocab_list
             - ./manage.py/:/app/manage.py
+            - ./pdfservice/:/app/pdfservice
+            - ./scripts/:/app/scripts
+            - ./static/src/:/app/static/src
+            - ./vocab_list/:/app/vocab_list
+            - ./webpack-stats/:/app/webpack-stats
         environment:
             RQ_ASYNC: 1
             DATABASE_URL: postgres://hedera:hedera@postgres/hedera

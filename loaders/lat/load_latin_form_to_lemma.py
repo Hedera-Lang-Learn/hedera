@@ -5,7 +5,7 @@ from tqdm import tqdm
 from lemmatization.models import FormToLemma, Lemma
 
 
-file_path = "import-data/form_to_lemma.tsv"
+file_path = "data/lat/form_to_lemma.tsv"
 
 total_lines = sum(1 for i in open(file_path, "r"))
 print(f"Begin latin formtolemma import (size: {total_lines})")
