@@ -4,7 +4,7 @@
 This script imports core/system vocabulary lists for latin.
 
 Usage:
-    python manage.py shell -c "import load_latin_vocab"
+    python manage.py shell -c "import loaders.lat.load_latin_vocab"
 """
 
 import csv
@@ -15,6 +15,7 @@ from lemmatized_text.models import Lemma
 from vocab_list.models import VocabularyList, VocabularyListEntry
 
 
+VOCAB_FILE_PATH = "data/lat/vocab/{filename}"
 SYSTEM_VOCAB_LISTS = [
     {
         "filename": "shelmerdine_latin.tsv",
@@ -22,15 +23,20 @@ SYSTEM_VOCAB_LISTS = [
         "description": "Vocabulary from the 2nd Edition of Susan Shelmerdine's Introduction to Latin",
     },
     {
-        "filename": "dcc_latin_morpheus.tsv",
+        "filename": "dcc_core.tsv",
         "title": "DCC Latin Core Vocabulary",
         "description": "The thousand most common words in Latin compiled by a team at Dickinson College led by Christopher Francese. See http://dcc.dickinson.edu/vocab/core-vocabulary",
     },
+    {
+        "filename": "dickey_1st.tsv",
+        "title": "Dickey 1st Edition Vocabulary",
+        "description": ""
+    }
 ]
 
 for system_vocab in SYSTEM_VOCAB_LISTS:
     filename = system_vocab["filename"]
-    filepath = f"import-data/{filename}"
+    filepath = VOCAB_FILE_PATH.format(filename=filename)
     title = system_vocab["title"]
     description = system_vocab["description"]
 
@@ -39,7 +45,7 @@ for system_vocab in SYSTEM_VOCAB_LISTS:
 
     with open(filepath, newline="") as csvfile:
         csv_reader = csv.DictReader(csvfile, delimiter="\t")
-        has_lemma_field = csv_reader.fieldnames and 'lemma' in csv_reader.fieldnames
+        has_lemma_field = csv_reader.fieldnames and "lemma" in csv_reader.fieldnames
 
         vocab_list, vocab_list_created = VocabularyList.objects.get_or_create(
             title=title,
@@ -61,5 +67,7 @@ for system_vocab in SYSTEM_VOCAB_LISTS:
                     entry["lemma"] = Lemma.objects.get(lemma=row["lemma"])
                 except Lemma.DoesNotExist:
                     print(f"Lemma does not exist: {row}")
+            elif has_lemma_field and not row["lemma"]:
+                print(f"Missing lemma for row: {row}")
 
             entry, entry_created = VocabularyListEntry.objects.get_or_create(**entry)

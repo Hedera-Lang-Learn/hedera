@@ -5,7 +5,7 @@ from tqdm import tqdm
 from lemmatization.models import Gloss, Lemma
 
 
-file_path = "import-data/latin_gloss_table.tsv"
+file_path = "data/lat/latin_gloss_table.tsv"
 total_lines = sum(1 for i in open(file_path, "r"))
 print(f"Begin latin gloss import (size: {total_lines})")
 
