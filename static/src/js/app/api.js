@@ -57,7 +57,7 @@ export default {
         resolved,
       }).then((r) => cb(r.data));
     }
-    return axios.post(`${BASE_URL}lemmatized_texts/${id}/?vocablist=${vocabList}`, {
+    return axios.post(`${BASE_URL}lemmatized_texts/${id}/?vocablist_id=${vocabList}`, {
       tokenIndex,
       lemmaId,
       glossIds,
