@@ -47,14 +47,12 @@ export default {
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
   [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
-    console.log('fetching vocab list');
     const { data } = await api
       .fetchVocabList(vocabListId)
       .catch(logoutOnError(commit));
     commit(UPDATE_VOCAB_LIST, data.data);
   },
   [FETCH_PERSONAL_VOCAB_LIST]: async ({ commit }, { lang }) => {
-    console.log('fetching personal vocab list');
     const { data } = await api
       .fetchPersonalVocabList(lang)
       .catch(logoutOnError(commit));
