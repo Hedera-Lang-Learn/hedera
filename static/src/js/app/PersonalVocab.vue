@@ -90,6 +90,7 @@
                 <i class="fa fa-trash" aria-hidden="true" />
               </button>
               <button
+                id="td-save-button"
                 class="btn btn-md"
                 href
                 @click.prevent="onSave"
