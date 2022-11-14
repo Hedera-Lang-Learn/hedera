@@ -37,7 +37,6 @@ class VocabularyListDetailView(DetailView):
         context.update({
             "pagetitle": vocab_list.title
         })
-        print(context)
         return context
 
 
@@ -86,7 +85,6 @@ class PersonalVocabListDetailView(DetailView):
             "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang"),
             "personalVocab": True
         })
-        print(context)
         return context
 
 
