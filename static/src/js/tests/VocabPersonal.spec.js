@@ -34,7 +34,7 @@ describe('VocabPersonal', () => {
       vocabId: 0,
       lang: 'lat',
       personalVocab: true,
-    }
+    };
 
     store = new Vuex.Store({
       state,
@@ -49,8 +49,8 @@ describe('VocabPersonal', () => {
 
   it('edits a vocab entry when save is clicked', async () => {
     const wrapper = mount(PersonalVocab, { propsData, store, localVue });
-    await wrapper.find("#td-edit-button").trigger('click');
-    await wrapper.find("#td-save-button").trigger('click');
+    await wrapper.find('#td-edit-button').trigger('click');
+    await wrapper.find('#td-save-button').trigger('click');
     expect(actions.updatePersonalVocabEntry).toHaveBeenCalled();
   });
 

@@ -49,11 +49,11 @@ describe('VocabGeneral', () => {
   });
 
   it('edits a vocab entry when save is clicked', async () => {
-    const wrapper = mount(PersonalVocab, {store, localVue});
-    await wrapper.find("#td-edit-button").trigger('click');
-    await wrapper.find("#td-save-button").trigger('click');
+    const wrapper = mount(PersonalVocab, { store, localVue });
+    await wrapper.find('#td-edit-button').trigger('click');
+    await wrapper.find('#td-save-button').trigger('click');
     expect(actions.updateVocabEntry).toHaveBeenCalled();
-  })
+  });
 
   it('loads in delete button Vocab - general', async () => {
     const wrapper = mount(PersonalVocab, { store, localVue });
