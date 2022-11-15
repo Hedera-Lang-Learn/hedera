@@ -319,7 +319,10 @@ class VocabularyListEntriesAPI(APIView):
                 associated with the linked lemma, although they may have the
                 same value.
         """
-        data = json.loads(request.body)
+        try:
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Could not parse data in request as JSON"})
         data["vocabulary_list_id"] = kwargs.get("pk")
         entry = VocabularyListEntry(**data)
         entry.save()
