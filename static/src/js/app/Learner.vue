@@ -108,8 +108,8 @@
     FETCH_TOKENS,
     FETCH_PERSONAL_VOCAB_LIST,
     FETCH_TEXT,
-    CREATE_VOCAB_ENTRY,
-    UPDATE_VOCAB_ENTRY,
+    OLD_CREATE_VOCAB_ENTRY,
+    UPDATE_PERSONAL_VOCAB_ENTRY,
     FETCH_ME,
     FETCH_BOOKMARKS,
   } from './constants';
@@ -180,14 +180,14 @@
 
         this.selectedNodeRating = rating;
         if (this.personalVocabEntry) {
-          this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+          this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
             entryId: this.personalVocabEntry.id,
             familiarity: rating,
             headword: label,
             definition: glosses[0].gloss,
           });
         } else {
-          this.$store.dispatch(CREATE_VOCAB_ENTRY, {
+          this.$store.dispatch(OLD_CREATE_VOCAB_ENTRY, {
             lemmaId: this.selectedNode.pk,
             familiarity: rating,
             headword: label,

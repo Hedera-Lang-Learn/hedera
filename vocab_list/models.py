@@ -225,6 +225,7 @@ class VocabularyList(AbstractVocabList):
             "description": self.description,
             "link_status": self.link_status,
             "owner": self.owner.email if self.owner else None,
+            "lang": self.lang,
         }
 
 
@@ -255,7 +256,8 @@ class PersonalVocabularyList(AbstractVocabList):
         return {
             "entries": [w.data() for w in self.entries.all().order_by("headword")],
             "statsByText": stats,
-            "id": self.pk
+            "id": self.pk,
+            "lang": self.lang,
         }
 
 
@@ -327,12 +329,16 @@ class AbstractVocabListEntry(models.Model):
             self.save()
 
     def data(self, **kwargs):
-        return {
+        output = {
             "id": self.pk,
             "headword": self.headword,
             "definition": self.definition,
             **kwargs
         }
+        if self.lemma:
+            output["lemma_id"] = self.lemma_id
+            output["lemma"] = self.lemma.lemma
+        return output
 
     def save(self, *args, **kwargs):
         """
@@ -376,7 +382,7 @@ class VocabularyListEntry(AbstractVocabListEntry):
         order_with_respect_to = "vocabulary_list"
 
     def data(self):
-        return super().data(lemma=self.lemma_id)
+        return super().data(vocabulary_list_id=self.vocabulary_list_id)
 
 
 class PersonalVocabularyListEntry(AbstractVocabListEntry):
@@ -422,9 +428,7 @@ class PersonalVocabularyListEntry(AbstractVocabListEntry):
     def data(self):
         output = {}
         output["familiarity"] = self.familiarity
-        if self.lemma:
-            output["lemma_id"] = self.lemma_id
-            output["lemma"] = self.lemma.lemma
+        output["vocabulary_list_id"] = self.vocabulary_list_id
         return super().data(**output)
 
     def familiarity_range(self):

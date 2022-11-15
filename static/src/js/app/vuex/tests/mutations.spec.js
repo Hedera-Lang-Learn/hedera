@@ -35,14 +35,14 @@ describe('Mutations', () => {
 
     it('successfully updates the state without entries fetched', () => {
       mutations.createPersonalVocabEntry(state, data);
-      expect(state.personalVocabAdded).toBe(true);
-      expect(state.personalVocabList.entries).toBe(undefined);
+      expect(state.vocabAdded).toBe(true);
+      expect(state.vocabList.entries).toBe(undefined);
     });
 
     it('successfully updates the state with entries fetched', () => {
       const updatedState = {
         ...state,
-        personalVocabList: {
+        vocabList: {
           ...state.personalVocabList,
           entries: [
             {
@@ -57,8 +57,8 @@ describe('Mutations', () => {
       };
 
       mutations.createPersonalVocabEntry(updatedState, data);
-      expect(updatedState.personalVocabAdded).toBe(true);
-      expect(updatedState.personalVocabList.entries.length).toBe(2);
+      expect(updatedState.vocabAdded).toBe(true);
+      expect(updatedState.vocabList.entries.length).toBe(2);
     });
   });
 
@@ -78,8 +78,8 @@ describe('Mutations', () => {
     it('successfully updates the state', () => {
       const modifiedState = {
         ...state,
-        personalVocabList: {
-          ...state.personalVocabList,
+        vocabList: {
+          ...state.vocabList,
           entries: [
             {
               id: 1,
@@ -93,13 +93,13 @@ describe('Mutations', () => {
       };
       const data = { data: true, id: 1 };
       mutations.deletePersonalVocabEntry(modifiedState, data);
-      expect(modifiedState.personalVocabList.entries.length).toBe(0);
+      expect(modifiedState.vocabList.entries.length).toBe(0);
     });
     it('unsuccessfully updates the state', () => {
       const modifiedState = {
         ...state,
-        personalVocabList: {
-          ...state.personalVocabList,
+        vocabList: {
+          ...state.vocabList,
           entries: [
             {
               id: 1,
@@ -113,7 +113,7 @@ describe('Mutations', () => {
       };
       const data = { data: true, id: 11 };
       mutations.deletePersonalVocabEntry(modifiedState, data);
-      expect(modifiedState.personalVocabList.entries.length).toBe(1);
+      expect(modifiedState.vocabList.entries.length).toBe(1);
     });
   });
 });

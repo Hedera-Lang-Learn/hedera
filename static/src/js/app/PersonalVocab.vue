@@ -1,13 +1,15 @@
 <template>
   <div>
+    <h2 v-if="isPersonal">Personal Vocabulary List</h2>
+    <h2 v-else>{{ vocabList.title }}</h2>
     <div class="d-flex justify-content-between mb-2">
       <QuickAddVocabForm class="mr-2 text-left" :current-lang-tab="lang" />
       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
     </div>
-    <div v-if="personalVocabEntries">
+    <div v-if="vocabEntries">
       <vue-good-table
         :columns="columns"
-        :rows="personalVocabEntries"
+        :rows="vocabEntries"
         :pagination-options="paginationOptions"
         :search-options="searchOptions"
       >
@@ -88,6 +90,7 @@
                 <i class="fa fa-trash" aria-hidden="true" />
               </button>
               <button
+                id="td-save-button"
                 class="btn btn-md"
                 href
                 @click.prevent="onSave"
@@ -117,6 +120,7 @@
         </template>
       </vue-good-table>
     </div>
+    <div v-else>Loading Data</div>
   </div>
 </template>
 
@@ -125,10 +129,14 @@
 
   import {
     FETCH_PERSONAL_VOCAB_LIST,
-    UPDATE_VOCAB_ENTRY,
+    UPDATE_PERSONAL_VOCAB_ENTRY,
     FETCH_ME,
     DELETE_PERSONAL_VOCAB_ENTRY,
     FETCH_LEMMAS_BY_PARTIAL_FORM,
+    FETCH_VOCAB_LIST,
+    DELETE_VOCAB_ENTRY,
+    SET_VOCAB_LIST_TYPE,
+    UPDATE_VOCAB_ENTRY,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -136,7 +144,7 @@
   import QuickAddVocabForm from './components/quick-add-button';
 
   export default {
-    props: ['lang'],
+    props: ['lang', 'vocabId', 'personalVocab'],
     components: {
       FamiliarityRating,
       DownloadVocab,
@@ -147,7 +155,25 @@
       lang: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
+          if (this.personalVocab) {
+            this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
+          } else {
+            this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'general' });
+          }
+        },
+      },
+      vocabId: {
+        immediate: true,
+        handler() {
+          if (this.personalVocab) {
+            this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.lang });
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'personal' });
+          } else {
+            this.$store.dispatch(FETCH_VOCAB_LIST, { vocabListId: this.vocabId });
+            this.$store.dispatch(SET_VOCAB_LIST_TYPE, { vocabListType: 'general' });
+          }
         },
       },
     },
@@ -163,13 +189,6 @@
           dropdownAllowAll: true,
           mode: 'records',
         },
-        columns: [
-          { label: 'Lemma', field: 'lemma' },
-          { label: 'Headword', field: 'headword' },
-          { label: 'Definition', field: 'definition' },
-          { label: 'Familiarity', field: 'familiarity', width: '10rem' },
-          { label: 'Edit', field: 'edit' },
-        ],
         editingIdx: null,
         saving: false,
         editingFields: {
@@ -180,6 +199,7 @@
           familiarity: null,
           lemmaId: null,
         },
+        vocabListType: null,
       };
     },
     created() {
@@ -203,7 +223,7 @@
           return;
         }
         const definition = entry.definition || '';
-        await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+        await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
           entryId: entry.id,
           familiarity: rating,
           headword,
@@ -215,32 +235,37 @@
         });
       },
       async deleteVocab(id) {
-        await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, {
-          id,
-        });
-        await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
-          lang: this.lang,
-        });
+        if (this.isPersonal) {
+          await this.$store.dispatch(DELETE_PERSONAL_VOCAB_ENTRY, { id });
+        } else if (this.vocabList.canEdit) {
+          await this.$store.dispatch(DELETE_VOCAB_ENTRY, { id });
+        } else {
+          this.makeToast("You don't have permission to delete this", 403);
+        }
       },
       onEdit(entryId, row) {
-        const {
-          headword, definition, familiarity, lemma_id: lemmaId,
-        } = row;
+        const { headword, definition, lemma_id: lemmaId } = row;
         this.editingFields = {
           entryId,
           headword,
           definition,
-          familiarity,
           lang: this.lang,
           lemmaId,
         };
+        if (this.isPersonal) {
+          const { familiarity } = row;
+          this.editingFields.familiarity = familiarity;
+        }
       },
       async changeCell(field, row) {
         const value = row[field];
-        const { originalIndex: index, familiarity } = row;
+        const { originalIndex: index } = row;
         this.editingFields[field] = value;
         this.editingFields.index = index;
-        this.editingFields.familiarity = familiarity;
+        if (this.isPersonal) {
+          const { familiarity } = row;
+          this.editingFields.familiarity = familiarity;
+        }
         if (field === 'lemma' && value !== '') {
           await this.$store.dispatch(FETCH_LEMMAS_BY_PARTIAL_FORM, {
             form: value,
@@ -261,14 +286,24 @@
           familiarity,
           lemmaId,
         } = this.editingFields;
-        const response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
-          entryId,
-          familiarity,
-          headword,
-          definition,
-          lang: this.lang,
-          lemmaId,
-        });
+        let response = null;
+        if (this.isPersonal) {
+          response = await this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
+            entryId,
+            familiarity,
+            headword,
+            definition,
+            lang: this.lang,
+            lemmaId,
+          });
+        } else {
+          response = await this.$store.dispatch(UPDATE_VOCAB_ENTRY, {
+            entryId,
+            headword,
+            definition,
+            lemmaId,
+          });
+        }
         if (response) {
           const { statusText, status } = response;
           this.makeToast(statusText, `Error - ${status}`);
@@ -303,11 +338,30 @@
       },
     },
     computed: {
+      columns() {
+        const theColumns = [
+          { label: 'Lemma', field: 'lemma' },
+          { label: 'Headword', field: 'headword' },
+          { label: 'Definition', field: 'definition' },
+        ];
+
+        if (this.isPersonal) {
+          // Add familiarity column for personal vocab lists only
+          theColumns.push({ label: 'Familiarity', field: 'familiarity', width: '10rem' });
+        }
+
+        if (this.isPersonal || this.vocabList.canEdit) {
+          // Add edit column only if user can edit this vocab list
+          theColumns.push({ label: 'Edit', field: 'edit' });
+        }
+
+        return theColumns;
+      },
       glosses() {
-        if (!this.personalVocabEntries) {
+        if (!this.vocabEntries) {
           return [];
         }
-        return this.personalVocabEntries.map((e) => ({
+        return this.vocabEntries.map((e) => ({
           ...e,
           label: e.lemma,
           headword: e.headword,
@@ -316,19 +370,28 @@
         }));
       },
       ranks() {
-        return (
-          this.personalVocabList
-          && this.personalVocabList.statsByText[this.$store.state.textId]
-        );
+        if (this.isPersonal) {
+          return (
+            this.vocabList
+            && this.vocabList.statsByText[this.$store.state.textId]
+          );
+        }
+        return null;
       },
-      personalVocabList() {
-        return this.$store.state.personalVocabList;
+      vocabList() {
+        // Retrieve vocab list from state
+        return this.$store.state.vocabList;
       },
-      personalVocabEntries() {
-        return this.personalVocabList && this.personalVocabList.entries;
+      vocabEntries() {
+        // Retrieve entries on their own, or return undefined if no list is present
+        return this.vocabList && this.vocabList.entries;
       },
       partialMatchForms() {
         return this.$store.state.partialMatchForms;
+      },
+      isPersonal() {
+        // Convenience prop to quickly check if vocab list is a personal vocab list
+        return this.$store.state.vocabListType === 'personal';
       },
     },
   };

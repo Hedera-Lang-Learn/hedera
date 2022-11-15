@@ -13,17 +13,24 @@ import {
   SET_VOCAB_LIST,
   TOGGLE_SHOW_IN_VOCAB_LIST,
   FETCH_PERSONAL_VOCAB_LIST,
-  CREATE_VOCAB_ENTRY,
+  OLD_CREATE_VOCAB_ENTRY,
   UPDATE_VOCAB_ENTRY,
+  UPDATE_PERSONAL_VOCAB_ENTRY,
   FETCH_ME,
   FETCH_PERSONAL_VOCAB_LANG_LIST,
   CREATE_PERSONAL_VOCAB_ENTRY,
   SET_LANGUAGE_PREF,
   DELETE_PERSONAL_VOCAB_ENTRY,
+  DELETE_VOCAB_ENTRY,
   FETCH_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   FETCH_SUPPORTED_LANG_LIST,
+  FETCH_VOCAB_LIST,
+  SET_VOCAB_LIST_TYPE,
+  CREATE_VOCAB_ENTRY,
+  UPDATE_VOCAB_LIST,
+  UPDATE_VOCAB_LIST_ENTRIES,
 } from '../constants';
 import api from '../api';
 
@@ -39,13 +46,34 @@ export default {
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
-  [FETCH_VOCAB_LISTS]: ({ commit, state }) => {
-    api
-      .fetchVocabLists(state.text.lang, (data) => commit(FETCH_VOCAB_LISTS, data.data))
+  [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
+    const { data } = await api
+      .fetchVocabList(vocabListId)
       .catch(logoutOnError(commit));
+    commit(UPDATE_VOCAB_LIST, data.data);
   },
-  [CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
+  [FETCH_PERSONAL_VOCAB_LIST]: async ({ commit }, { lang }) => {
+    const { data } = await api
+      .fetchPersonalVocabList(lang)
+      .catch(logoutOnError(commit));
+    commit(UPDATE_VOCAB_LIST, data.data.personalVocabList);
+  },
+  [FETCH_VOCAB_LISTS]: async ({ commit, state }) => {
+    const { data } = await api
+      .fetchVocabLists(state.text.lang)
+      .catch(logoutOnError(commit));
+    commit(FETCH_VOCAB_LISTS, data.data);
+  },
+  [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
+    const { data } = await api
+      .createVocabEntry(vocabularyListId, headword, definition, lemmaId)
+      .catch(logoutOnError(commit));
+    commit(CREATE_VOCAB_ENTRY, data);
+  },
+  [OLD_CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
     // TODO: Make DRY with updateVocabEntry
+    // TODO: this function is redundant with CREATE_PERSONAL_VOCAB_ENTRY, but works a little different.
+    // Places where it is used should be adapted to use CREATE_PERSONAL_VOCAB_ENTRY and this function should be removed.
     const { response, data } = await api
       .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null);
     if (response && response.status >= 400) {
@@ -55,7 +83,7 @@ export default {
     return null;
   },
   // eslint-disable-next-line max-len
-  [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
+  [UPDATE_PERSONAL_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
     // eslint-disable-next-line max-len
     const { response, data } = await api.updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, entryId, lang);
     if (response && response.status >= 400) {
@@ -68,20 +96,63 @@ export default {
      * if the data was updated in paralell with the editing of the personal vocab entry.
      */
     const { entries } = data;
-    const { entries: localEntries } = state.personalVocabList;
+    const { entries: localEntries } = state.vocabList;
     const foundObj = entries.find((el) => el.id === entryId);
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
-    const updatedEntries = { ...state.personalVocabList };
-    updatedEntries.entries[localEntryIndex] = foundObj;
+    const updatedEntries = [...state.vocabList.entries];
+    updatedEntries[localEntryIndex] = foundObj;
 
-    commit(FETCH_PERSONAL_VOCAB_LIST, updatedEntries);
+    commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
   },
-  [FETCH_PERSONAL_VOCAB_LIST]: ({ commit }, { lang }) => {
-    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LIST, data.data.personalVocabList);
-    api
-      .fetchPersonalVocabList(lang, cb)
-      .catch(logoutOnError(commit));
+  [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, headword, definition, lemmaId }) => {
+    let data = null;
+    // Hit the edit endpoint with new headword and/or definition, raise error if bad status returned
+    if (headword || definition) {
+      const { response, data: editData } = await api.updateVocabEntry(entryId, headword, definition);
+      if (response && response.status >= 400) {
+        return response;
+      }
+      data = editData;
+    }
+
+    // Hit the link endpoint with new lemmaId if provided, raise error if bad status returned
+    if (lemmaId) {
+      const { response, data: linkData } = await api.linkVocabEntry(entryId, lemmaId);
+      if (response && response.status >= 400) {
+        return response;
+      }
+      data = linkData;
+    }
+
+    // If data is still null, return a message that nothing happened.
+    if (!data) {
+      return {
+        statusText: 'No changes were made',
+        status: 204,
+      };
+    }
+
+    /**
+     * The code below replaces the edited personal vocab entry in the vuex state
+     * to preserve the order of the vocab in the UI to streamline the user experience.
+     * Note: this code does not take into account new personal vocab list data
+     * if the data was updated in paralell with the editing of the personal vocab entry.
+     * This code is similar to the function in UPDATE_PERSONAL_VOCAB_ENTRY, but since
+     * it's hitting an endpoint that returns a single modified vocab list entry,
+     * it doesn't need to look up the new entry in the results.
+     */
+    const { entries: localEntries } = state.vocabList;
+    const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
+    // Work with the entries only, rather than the whole vocab list, since
+    // working with the whole list results in the table not showing the updated entry.
+    const updatedEntries = [...state.vocabList.entries];
+    updatedEntries[localEntryIndex] = data;
+
+    console.log('updatedEntries:');
+    console.log(updatedEntries);
+    commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
+    return null;
   },
   [FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
     commit(SET_TEXT_ID, id);
@@ -140,6 +211,14 @@ export default {
     const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
     return api.deletePersonalVocabEntry(id, cb)
       .catch(logoutOnError(commit));
+  },
+  [DELETE_VOCAB_ENTRY]: async ({ commit }, { id }) => {
+    await api.deleteVocabEntry(id)
+      .catch(logoutOnError(commit));
+    commit(DELETE_VOCAB_ENTRY, id);
+  },
+  [SET_VOCAB_LIST_TYPE]: ({ commit }, { vocabListType }) => {
+    commit(SET_VOCAB_LIST_TYPE, vocabListType);
   },
   [FETCH_BOOKMARKS]: ({ commit }) => (
     api

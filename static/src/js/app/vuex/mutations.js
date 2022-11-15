@@ -20,6 +20,12 @@ import {
   FETCH_BOOKMARKS,
   FETCH_SUPPORTED_LANG_LIST,
   FETCH_LEMMAS_BY_PARTIAL_FORM,
+  FETCH_VOCAB_LIST,
+  DELETE_VOCAB_ENTRY,
+  SET_VOCAB_LIST_TYPE,
+  CREATE_VOCAB_ENTRY,
+  UPDATE_VOCAB_LIST,
+  UPDATE_VOCAB_LIST_ENTRIES,
 } from '../constants';
 
 export default {
@@ -29,11 +35,20 @@ export default {
   [FETCH_TEXT]: (state, data) => {
     state.text = data;
   },
+  [UPDATE_VOCAB_LIST]: (state, data) => {
+    state.vocabList = data;
+  },
+  [UPDATE_VOCAB_LIST_ENTRIES]: (state, updatedEntries) => {
+    state.vocabList.entries = updatedEntries;
+  },
+  [FETCH_VOCAB_LIST]: (state, data) => {
+    state.vocabList = data;
+  },
   [FETCH_VOCAB_LISTS]: (state, data) => {
     state.vocabLists = data;
   },
   [FETCH_PERSONAL_VOCAB_LIST]: (state, data) => {
-    state.personalVocabList = data;
+    state.vocabList = data;
   },
   [SET_TEXT_ID]: (state, id) => {
     state.textId = id;
@@ -82,9 +97,15 @@ export default {
     state.personalVocabLangList = data;
   },
   [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
-    state.personalVocabAdded = data.created;
-    if (state.personalVocabList.entries) {
-      state.personalVocabList.entries = [data.data, ...state.personalVocabList.entries];
+    state.vocabAdded = data.created;
+    if (state.vocabList.entries) {
+      state.vocabList.entries = [data.data, ...state.vocabList.entries];
+    }
+  },
+  [CREATE_VOCAB_ENTRY]: (state, data) => {
+    state.vocabAdded = data.id;
+    if (state.vocabList.entries) {
+      state.vocabList.entries = [data, ...state.vocabList.entries];
     }
   },
   [FETCH_LATTICE_NODES_BY_HEADWORD]: (state, data) => {
@@ -94,8 +115,15 @@ export default {
     state.me = data;
   },
   [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
-    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
-    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+    const index = state.vocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.vocabList.entries.splice(index, 1);
+  },
+  [DELETE_VOCAB_ENTRY]: (state, id) => {
+    const index = state.vocabList.entries.findIndex((vocab) => vocab.id === id);
+    if (index >= 0) state.vocabList.entries.splice(index, 1);
+  },
+  [SET_VOCAB_LIST_TYPE]: (state, vocabListType) => {
+    state.vocabListType = vocabListType;
   },
   [FETCH_BOOKMARKS]: (state, data) => {
     state.bookmarks = data;

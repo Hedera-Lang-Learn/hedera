@@ -48,6 +48,36 @@ const testData = {
         lemma: 'sum',
       },
     ],
+    id: 0,
+  },
+  generalVocabList: {
+    entries: [
+      {
+        id: 366,
+        headword: 'cum',
+        definition:
+          'with, together with, in the company of, in connection with, along with, together, and',
+        lemma_id: 1260,
+        lemma: 'cum',
+      },
+      {
+        id: 367,
+        headword: 'filia',
+        definition: 'a daughter',
+        lemma_id: 20526,
+        lemma: 'filia',
+      },
+      {
+        id: 365,
+        headword: 'sum',
+        definition: 'to be, exist, live',
+        lemma_id: 1225,
+        lemma: 'sum',
+      },
+    ],
+    canEdit: true,
+    title: 'Test vocab list',
+    id: 0,
   },
 };
 

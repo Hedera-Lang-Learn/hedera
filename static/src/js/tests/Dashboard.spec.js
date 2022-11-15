@@ -14,6 +14,9 @@ describe('Dashboard', () => {
     };
 
     store = new Vuex.Store({
+      // The tests get confused about something around here?
+      // console.error
+      //   [vuex] unknown action type: fetchSupportedLangList
       state: {},
       actions,
     });
