@@ -42,46 +42,100 @@ const logoutOnError = (commit) => (error) => {
 };
 
 export default {
-  [FETCH_ME]: ({ commit }) => api.fetchMe((data) => commit(FETCH_ME, data.data)),
+  /* -------------------------------------------------------------------------- */
+  /*                               hedera.Profile                               */
+  /* -------------------------------------------------------------------------- */
+  [FETCH_ME]: ({ commit }) => api.hederaProfileFetch((data) => commit(FETCH_ME, data.data)),
+  [SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
+    const cb = commit(SET_LANGUAGE_PREF, lang);
+    return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
+  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                             lemmatization.Form                             */
+  /* -------------------------------------------------------------------------- */
+  [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
+  // Note: might be slow to looks up partial matches
+  [FETCH_LEMMAS_BY_PARTIAL_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByPartialForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_PARTIAL_FORM, data)),
+
+  /* -------------------------------------------------------------------------- */
+  /*                             lemmatization.Lemma                            */
+  /* -------------------------------------------------------------------------- */
+  [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
+
+  /* -------------------------------------------------------------------------- */
+  /*                       lemmatized_text.LemmatizedText                       */
+  /* -------------------------------------------------------------------------- */
   [FETCH_TEXT]: ({ commit }, { id }) => api
     .fetchText(id, (data) => commit(FETCH_TEXT, data.data))
     .catch(logoutOnError(commit)),
-  [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
-    const { data } = await api
-      .fetchVocabList(vocabListId)
+  [FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
+    commit(SET_TEXT_ID, id);
+    const cb = (data) => commit(FETCH_TOKENS, data.data);
+    return api
+      .fetchTokens(id, vocabListId, personalVocabListId, cb)
       .catch(logoutOnError(commit));
-    commit(UPDATE_VOCAB_LIST, data.data);
   },
+  [SELECT_TOKEN]: ({ commit, state }, { token }) => api.fetchTokenHistory(
+    state.textId,
+    token.tokenIndex,
+    (data) => commit(SELECT_TOKEN, { token, data }),
+  ),
+  [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
+    // Fetch the most recent lemma data
+    api
+      .fetchLemma(lemmaId, (data) => commit(FETCH_LEMMA, data))
+      .catch(logoutOnError(commit));
+
+    // Callback to commit the changes once the API call has completed
+    const mutate = (data) => commit(UPDATE_TOKEN, data.data);
+
+    // Perform the API request to update the token data
+    return api
+      .updateToken(id, tokenIndex, resolved, state.selectedVocabList, lemmaId, glossIds, null, mutate)
+      .catch(logoutOnError(commit));
+  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                   lemmatized_text.LemmatizedTextBookmark                   */
+  /* -------------------------------------------------------------------------- */
+  [FETCH_BOOKMARKS]: ({ commit }) => (
+    api
+      .fetchBookmarks((data) => commit(FETCH_BOOKMARKS, data.data))
+      .catch(logoutOnError(commit))
+  ),
+  [ADD_BOOKMARK]: ({ dispatch, commit }, { textId }) => (
+    api
+      .addBookmark(textId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+  [REMOVE_BOOKMARK]: ({ dispatch, commit }, { bookmarkId }) => (
+    api
+      .removeBookmark(bookmarkId)
+      .then(() => dispatch(FETCH_BOOKMARKS))
+      .catch(logoutOnError(commit))
+  ),
+
+  /* -------------------------------------------------------------------------- */
+  /*                      vocab_list.PersonalVocabularyList                     */
+  /* -------------------------------------------------------------------------- */
   [FETCH_PERSONAL_VOCAB_LIST]: async ({ commit }, { lang }) => {
     const { data } = await api
       .fetchPersonalVocabList(lang)
       .catch(logoutOnError(commit));
     commit(UPDATE_VOCAB_LIST, data.data.personalVocabList);
   },
-  [FETCH_VOCAB_LISTS]: async ({ commit, state }) => {
-    const { data } = await api
-      .fetchVocabLists(state.text.lang)
+  [FETCH_PERSONAL_VOCAB_LANG_LIST]: ({ commit }) => {
+    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LANG_LIST, data.data);
+    return api
+      .fetchPersonalVocabLangList(cb)
       .catch(logoutOnError(commit));
-    commit(FETCH_VOCAB_LISTS, data.data);
   },
-  [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
-    const { data } = await api
-      .createVocabEntry(vocabularyListId, headword, definition, lemmaId)
-      .catch(logoutOnError(commit));
-    commit(CREATE_VOCAB_ENTRY, data);
-  },
-  [OLD_CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
-    // TODO: Make DRY with updateVocabEntry
-    // TODO: this function is redundant with CREATE_PERSONAL_VOCAB_ENTRY, but works a little different.
-    // Places where it is used should be adapted to use CREATE_PERSONAL_VOCAB_ENTRY and this function should be removed.
-    const { response, data } = await api
-      .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null);
-    if (response && response.status >= 400) {
-      return response;
-    }
-    commit(FETCH_PERSONAL_VOCAB_LIST, data);
-    return null;
-  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                   vocab_list.PersonalVocabularyListEntry                   */
+  /* -------------------------------------------------------------------------- */
   // eslint-disable-next-line max-len
   [UPDATE_PERSONAL_VOCAB_ENTRY]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
     // eslint-disable-next-line max-len
@@ -104,6 +158,52 @@ export default {
 
     commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
+  },
+  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
+    const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
+    return api
+      .createPersonalVocabEntry(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
+      .catch(logoutOnError(commit));
+  },
+  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
+    const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
+    return api.deletePersonalVocabEntry(id, cb)
+      .catch(logoutOnError(commit));
+  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                          vocab_list.VocabularyList                         */
+  /* -------------------------------------------------------------------------- */
+  [FETCH_VOCAB_LIST]: async ({ commit }, { vocabListId }) => {
+    const { data } = await api
+      .fetchVocabList(vocabListId)
+      .catch(logoutOnError(commit));
+    commit(UPDATE_VOCAB_LIST, data.data);
+  },
+  [FETCH_VOCAB_LISTS]: async ({ commit, state }) => {
+    const { data } = await api
+      .fetchVocabLists(state.text.lang)
+      .catch(logoutOnError(commit));
+    commit(FETCH_VOCAB_LISTS, data.data);
+  },
+  [SET_VOCAB_LIST]: ({ commit }, { id }) => {
+    commit(SET_VOCAB_LIST, id);
+  },
+  [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
+    commit(TOGGLE_SHOW_IN_VOCAB_LIST);
+  },
+  [SET_VOCAB_LIST_TYPE]: ({ commit }, { vocabListType }) => {
+    commit(SET_VOCAB_LIST_TYPE, vocabListType);
+  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                       vocab_list.VocabularyListEntry                       */
+  /* -------------------------------------------------------------------------- */
+  [CREATE_VOCAB_ENTRY]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
+    const { data } = await api
+      .createVocabEntry(vocabularyListId, headword, definition, lemmaId)
+      .catch(logoutOnError(commit));
+    commit(CREATE_VOCAB_ENTRY, data);
   },
   [UPDATE_VOCAB_ENTRY]: async ({ commit, state }, { entryId, headword, definition, lemmaId }) => {
     let data = null;
@@ -154,91 +254,34 @@ export default {
     commit(UPDATE_VOCAB_LIST_ENTRIES, updatedEntries);
     return null;
   },
-  [FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
-    commit(SET_TEXT_ID, id);
-    const cb = (data) => commit(FETCH_TOKENS, data.data);
-    return api
-      .fetchTokens(id, vocabListId, personalVocabListId, cb)
-      .catch(logoutOnError(commit));
-  },
-  [SELECT_TOKEN]: ({ commit, state }, { token }) => api.fetchTokenHistory(
-    state.textId,
-    token.tokenIndex,
-    (data) => commit(SELECT_TOKEN, { token, data }),
-  ),
-  [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
-  [FETCH_LEMMA]: ({ commit }, { id }) => api.fetchLemma(id, (data) => commit(FETCH_LEMMA, data)),
-  [FETCH_LEMMAS_BY_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_FORM, data)),
-  // Note: might be slow to looks up partial matches
-  [FETCH_LEMMAS_BY_PARTIAL_FORM]: ({ commit }, { lang, form }) => api.fetchLemmasByPartialForm(lang, form, (data) => commit(FETCH_LEMMAS_BY_PARTIAL_FORM, data)),
-  [UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
-    // Fetch the most recent lemma data
-    api
-      .fetchLemma(lemmaId, (data) => commit(FETCH_LEMMA, data))
-      .catch(logoutOnError(commit));
-
-    // Callback to commit the changes once the API call has completed
-    const mutate = (data) => commit(UPDATE_TOKEN, data.data);
-
-    // Perform the API request to update the token data
-    return api
-      .updateToken(id, tokenIndex, resolved, state.selectedVocabList, lemmaId, glossIds, null, mutate)
-      .catch(logoutOnError(commit));
-  },
-  [SET_VOCAB_LIST]: ({ commit }, { id }) => {
-    commit(SET_VOCAB_LIST, id);
-  },
-  [TOGGLE_SHOW_IN_VOCAB_LIST]: ({ commit }) => {
-    commit(TOGGLE_SHOW_IN_VOCAB_LIST);
-  },
-  [FETCH_PERSONAL_VOCAB_LANG_LIST]: ({ commit }) => {
-    const cb = (data) => commit(FETCH_PERSONAL_VOCAB_LANG_LIST, data.data);
-    return api
-      .fetchPersonalVocabLangList(cb)
-      .catch(logoutOnError(commit));
-  },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
-    const cb = (data) => commit(CREATE_PERSONAL_VOCAB_ENTRY, data.data);
-    return api
-      .createPersonalVocabEntry(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
-      .catch(logoutOnError(commit));
-  },
-  [SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
-    const cb = commit(SET_LANGUAGE_PREF, lang);
-    return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
-  },
-  [DELETE_PERSONAL_VOCAB_ENTRY]: ({ commit }, { id }) => {
-    const cb = (data) => commit(DELETE_PERSONAL_VOCAB_ENTRY, data.data);
-    return api.deletePersonalVocabEntry(id, cb)
-      .catch(logoutOnError(commit));
-  },
   [DELETE_VOCAB_ENTRY]: async ({ commit }, { id }) => {
     await api.deleteVocabEntry(id)
       .catch(logoutOnError(commit));
     commit(DELETE_VOCAB_ENTRY, id);
   },
-  [SET_VOCAB_LIST_TYPE]: ({ commit }, { vocabListType }) => {
-    commit(SET_VOCAB_LIST_TYPE, vocabListType);
-  },
-  [FETCH_BOOKMARKS]: ({ commit }) => (
-    api
-      .fetchBookmarks((data) => commit(FETCH_BOOKMARKS, data.data))
-      .catch(logoutOnError(commit))
-  ),
-  [ADD_BOOKMARK]: ({ dispatch, commit }, { textId }) => (
-    api
-      .addBookmark(textId)
-      .then(() => dispatch(FETCH_BOOKMARKS))
-      .catch(logoutOnError(commit))
-  ),
-  [REMOVE_BOOKMARK]: ({ dispatch, commit }, { bookmarkId }) => (
-    api
-      .removeBookmark(bookmarkId)
-      .then(() => dispatch(FETCH_BOOKMARKS))
-      .catch(logoutOnError(commit))
-  ),
+
+  /* -------------------------------------------------------------------------- */
+  /*                            Not accessing a model                           */
+  /* -------------------------------------------------------------------------- */
   [FETCH_SUPPORTED_LANG_LIST]: ({ commit }) => (
     api.fetchSupportedLangList((data) => commit(FETCH_SUPPORTED_LANG_LIST, data.data))
       .catch(logoutOnError(commit))
   ),
+
+  /* -------------------------------------------------------------------------- */
+  /*         TODO: Delete these things, ensuring that they are not used.        */
+  /* -------------------------------------------------------------------------- */
+  [OLD_CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
+    // TODO: Make DRY with updateVocabEntry
+    // TODO: this function is redundant with CREATE_PERSONAL_VOCAB_ENTRY, but works a little different.
+    // Places where it is used should be adapted to use CREATE_PERSONAL_VOCAB_ENTRY and this function should be removed.
+    const { response, data } = await api
+      .updatePersonalVocabList(state.text.id, lemmaId, familiarity, headword, definition, null, null);
+    if (response && response.status >= 400) {
+      return response;
+    }
+    commit(FETCH_PERSONAL_VOCAB_LIST, data);
+    return null;
+  },
+  [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
 };
