@@ -45,7 +45,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                               hedera.Profile                               */
   /* -------------------------------------------------------------------------- */
-  [FETCH_ME]: ({ commit }) => api.hederaProfileFetch((data) => commit(FETCH_ME, data.data)),
+  [FETCH_ME]: ({ commit }) => api.fetchMe((data) => commit(FETCH_ME, data.data)),
   [SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
     const cb = commit(SET_LANGUAGE_PREF, lang);
     return api.updateMeLang(lang, cb).catch(logoutOnError(commit));
