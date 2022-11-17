@@ -1,5 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import { FETCH_ME, FETCH_SUPPORTED_LANG_LIST } from '../app/constants';
 import Dashboard from '../app/Dashboard.vue';
 
 const localVue = createLocalVue();
@@ -10,7 +11,8 @@ describe('Dashboard', () => {
   let store;
   beforeEach(() => {
     actions = {
-      fetchMe: jest.fn(),
+      [FETCH_ME]: jest.fn(),
+      [FETCH_SUPPORTED_LANG_LIST]: jest.fn(),
     };
 
     store = new Vuex.Store({
