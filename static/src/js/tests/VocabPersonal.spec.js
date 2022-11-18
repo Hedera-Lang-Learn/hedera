@@ -1,13 +1,13 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import {
-  DELETE_PERSONAL_VOCAB_ENTRY,
-  FETCH_ME,
-  FETCH_PERSONAL_VOCAB_LANG_LIST,
-  FETCH_PERSONAL_VOCAB_LIST,
-  FETCH_SUPPORTED_LANG_LIST,
-  SET_VOCAB_LIST_TYPE,
-  UPDATE_PERSONAL_VOCAB_ENTRY,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PERSONAL_VOCAB_LIST_FETCH,
+  SUPPORTED_LANG_LIST_FETCH,
+  VOCAB_LIST_SET_TYPE,
+  PERSONAL_VOCAB_ENTRY_UPDATE,
 } from '../app/constants';
 import PersonalVocab from '../app/PersonalVocab.vue';
 import testData from './testData';
@@ -28,13 +28,13 @@ describe('VocabPersonal', () => {
   };
   beforeEach(() => {
     actions = {
-      [DELETE_PERSONAL_VOCAB_ENTRY]: jest.fn(),
-      [FETCH_ME]: jest.fn(),
-      [FETCH_PERSONAL_VOCAB_LANG_LIST]: jest.fn(),
-      [FETCH_PERSONAL_VOCAB_LIST]: jest.fn(),
-      [FETCH_SUPPORTED_LANG_LIST]: jest.fn(),
-      [SET_VOCAB_LIST_TYPE]: jest.fn(),
-      [UPDATE_PERSONAL_VOCAB_ENTRY]: jest.fn(),
+      [PERSONAL_VOCAB_ENTRY_DELETE]: jest.fn(),
+      [PROFILE_FETCH]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH]: jest.fn(),
+      [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_SET_TYPE]: jest.fn(),
+      [PERSONAL_VOCAB_ENTRY_UPDATE]: jest.fn(),
     };
 
     propsData = {
@@ -58,7 +58,7 @@ describe('VocabPersonal', () => {
     const wrapper = mount(PersonalVocab, { propsData, store, localVue });
     await wrapper.find('#td-edit-button').trigger('click');
     await wrapper.find('#td-save-button').trigger('click');
-    expect(actions[UPDATE_PERSONAL_VOCAB_ENTRY]).toHaveBeenCalled();
+    expect(actions[PERSONAL_VOCAB_ENTRY_UPDATE]).toHaveBeenCalled();
   });
 
   it('loads in delete button Vocab - personal', async () => {
@@ -84,6 +84,6 @@ describe('VocabPersonal', () => {
     });
     await wrapper.find('#td-edit-button').trigger('click');
     wrapper.find('#td-delete-button').trigger('click');
-    expect(actions[DELETE_PERSONAL_VOCAB_ENTRY]).toHaveBeenCalled();
+    expect(actions[PERSONAL_VOCAB_ENTRY_DELETE]).toHaveBeenCalled();
   });
 });

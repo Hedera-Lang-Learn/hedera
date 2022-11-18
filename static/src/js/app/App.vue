@@ -17,11 +17,11 @@
 </template>
 <script>
   import {
-    FETCH_TOKENS,
-    FETCH_VOCAB_LISTS,
-    FETCH_TEXT,
-    FETCH_ME,
-    FETCH_PERSONAL_VOCAB_LIST, FETCH_BOOKMARKS,
+    LEMMATIZED_TEXT_FETCH_TOKENS,
+    VOCAB_LIST_LIST,
+    LEMMATIZED_TEXT_FETCH,
+    PROFILE_FETCH,
+    PERSONAL_VOCAB_LIST_FETCH, BOOKMARK_LIST,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -38,16 +38,16 @@
       BookmarkTextButton,
     },
     created() {
-      this.$store.dispatch(FETCH_ME);
-      this.$store.dispatch(FETCH_BOOKMARKS);
+      this.$store.dispatch(PROFILE_FETCH);
+      this.$store.dispatch(BOOKMARK_LIST);
     },
     watch: {
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TEXT, { id: this.textId })
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
             .then(() => {
-              this.$store.dispatch(FETCH_VOCAB_LISTS);
+              this.$store.dispatch(VOCAB_LIST_LIST);
             });
         },
       },
@@ -55,9 +55,9 @@
         immediate: true,
         handler() {
           if (this.selectedVocabListId === 'personal') {
-            this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, { lang: this.$store.state.text.lang });
+            this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, { lang: this.$store.state.text.lang });
           }
-          this.$store.dispatch(FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
         },
       },
     },

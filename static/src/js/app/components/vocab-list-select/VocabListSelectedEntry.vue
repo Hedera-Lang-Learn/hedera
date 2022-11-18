@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { TOGGLE_SHOW_IN_VOCAB_LIST, SET_VOCAB_LIST } from '../../constants';
+  import { LEMMATIZED_TEXT_SHOW_KNOWN, VOCAB_LIST_SET } from '../../constants';
 
   export default {
     props: ['vocabList'],
@@ -46,11 +46,11 @@
     },
     methods: {
       toggleKnown() {
-        this.$store.dispatch(TOGGLE_SHOW_IN_VOCAB_LIST);
+        this.$store.dispatch(LEMMATIZED_TEXT_SHOW_KNOWN);
       },
       closeVocabList() {
         console.log('hhhh');
-        this.$store.dispatch(SET_VOCAB_LIST, { id: null });
+        this.$store.dispatch(VOCAB_LIST_SET, { id: null });
       },
     },
   };

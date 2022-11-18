@@ -1,53 +1,53 @@
 // hedera.Profile
-export const FETCH_ME = 'fetchMe';
+export const PROFILE_FETCH = 'profile_fetch';
 // TODO add language preference
-export const SET_LANGUAGE_PREF = 'setLanguagePref';
+export const PROFILE_SET_LANGUAGE_PREF = 'profile_setLanguagePref';
 
 // lemmatization.Form
-export const FETCH_LEMMAS_BY_FORM = 'fetchLemmasByForm';
-export const FETCH_LEMMAS_BY_PARTIAL_FORM = 'fetchLemmasByPartialForm';
+export const FORMS_FETCH = 'forms_fetch';
+export const FORMS_FETCH_PARTIAL = 'forms_fetchPartial';
 
 // lemmatization.Lemma
-export const FETCH_LEMMA = 'fetchLemma';
-export const ADD_LEMMA = 'addLemma';
+export const LEMMA_FETCH = 'lemma_fetch';
+export const LEMMA_CREATE = 'lemma_create';
 
 // lemmatized_text.LemmatizedText
-export const FETCH_TEXT = 'fetchText';
-export const SET_TEXT_ID = 'setTextId';
-export const FETCH_TOKENS = 'fetchTokens';
-export const UPDATE_TOKEN = 'updateToken';
-export const SELECT_TOKEN = 'selectToken';
+export const LEMMATIZED_TEXT_FETCH = 'lemmatizedText_fetch';
+export const LEMMATIZED_TEXT_SET_ID = 'lemmatizedText_setId';
+export const LEMMATIZED_TEXT_FETCH_TOKENS = 'lemmatizedText_fetchTokens';
+export const LEMMATIZED_TEXT_UPDATE_TOKEN = 'lemmatizedText_updateToken';
+export const LEMMATIZED_TEXT_SELECT_TOKEN = 'lemmatizedText_selectToken';
 
 // lemmatized_text.LemmatizedTextBookmark
-export const FETCH_BOOKMARKS = 'fetchBookmarks';
-export const ADD_BOOKMARK = 'addBookmark';
-export const REMOVE_BOOKMARK = 'removeBookmark';
+export const BOOKMARK_LIST = 'bookmark_list';
+export const BOOKMARK_CREATE = 'bookmark_create';
+export const BOOKMARK_DELETE = 'bookmark_delete';
 
 // vocab_list.PersonalVocabularyList
-export const FETCH_PERSONAL_VOCAB_LIST = 'fetchPersonalVocabList';
-export const FETCH_PERSONAL_VOCAB_LANG_LIST = 'fetchPersonalVocabLangList';
+export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
+export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetchLangList';
 
 // vocab_list.PersonalVocabularyListEntry
-export const UPDATE_PERSONAL_VOCAB_ENTRY = 'updatePersonalVocabEntry';
-export const CREATE_PERSONAL_VOCAB_ENTRY = 'createPersonalVocabEntry';
-export const DELETE_PERSONAL_VOCAB_ENTRY = 'deletePersonalVocabEntry';
+export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
+export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
+export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
 
 // vocab_list.VocabularyList
-export const FETCH_VOCAB_LIST = 'fetchVocabList';
-export const FETCH_VOCAB_LISTS = 'fetchVocabLists';
-export const SET_VOCAB_LIST_TYPE = 'setVocabListType';
-export const UPDATE_VOCAB_LIST = 'updateVocabList';
-export const SET_VOCAB_LIST = 'setVocabList';
-export const TOGGLE_SHOW_IN_VOCAB_LIST = 'toggleShowInVocabList';
+export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';
+export const VOCAB_LIST_LIST = 'vocabularyList_list';
+export const VOCAB_LIST_SET_TYPE = 'vocabularyList_setType';
+export const VOCAB_LIST_UPDATE = 'vocabularyList_update';
+export const VOCAB_LIST_SET = 'vocabularyList_set';
+export const LEMMATIZED_TEXT_SHOW_KNOWN = 'lemmatizedText_showKnown';
 
 // vocab_list.VocabularyListEntry
-export const DELETE_VOCAB_ENTRY = 'vocabEntryDelete';
-export const UPDATE_VOCAB_LIST_ENTRIES = 'updateVocabListEntries';
-export const UPDATE_VOCAB_ENTRY = 'updateVocabEntry';
-export const CREATE_VOCAB_ENTRY = 'createVocabEntry';
+export const VOCAB_ENTRY_DELETE = 'vocabularyListEntry_delete';
+export const VOCAB_ENTRY_UPDATE_MANY = 'vocabularyListEntry_updateMany';
+export const VOCAB_ENTRY_UPDATE = 'vocabularyListEntry_update';
+export const VOCAB_ENTRY_CREATE = 'vocabularyListEntry_delete';
 
 // Not accessing a model
-export const FETCH_SUPPORTED_LANG_LIST = 'fetchSupportedLangList';
+export const SUPPORTED_LANG_LIST_FETCH = 'supportedLangList_fetch';
 
 // Just constants, not used as function names
 export const RESOLVED_NA = 'na';

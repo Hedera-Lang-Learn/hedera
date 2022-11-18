@@ -34,7 +34,7 @@
   import api from './api';
   import VocabularyLemma from './modules/VocabularyLemma.vue';
   import VocabListTable from './components/vocab-list-table';
-  import { FETCH_LEMMA, FETCH_ME } from './constants';
+  import { LEMMA_FETCH, PROFILE_FETCH } from './constants';
 
   export default {
     props: ['vocabId'],
@@ -50,7 +50,7 @@
       };
     },
     created() {
-      this.$store.dispatch(FETCH_ME);
+      this.$store.dispatch(PROFILE_FETCH);
     },
     computed: {
       showToggle() {
@@ -82,7 +82,7 @@
         } else {
           // if primary key provided is not null and not in state, fetch it
           // and assign the result to selected lemma
-          this.$store.dispatch(FETCH_LEMMA, { id: lemmaPK }).then(() => {
+          this.$store.dispatch(LEMMA_FETCH, { id: lemmaPK }).then(() => {
             this.selectedLemma = this.$store.state.lemmas[lemmaPK];
           });
         }

@@ -3,13 +3,13 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import QuickVocabAddForm from '../app/components/quick-add-button/QuickAddButton.vue';
 import {
-  CREATE_VOCAB_ENTRY,
-  FETCH_LEMMA,
-  FETCH_LEMMAS_BY_FORM,
-  FETCH_ME,
-  FETCH_PERSONAL_VOCAB_LANG_LIST,
-  FETCH_SUPPORTED_LANG_LIST,
-  SET_LANGUAGE_PREF,
+  VOCAB_ENTRY_CREATE,
+  LEMMA_FETCH,
+  FORMS_FETCH,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  SUPPORTED_LANG_LIST_FETCH,
+  PROFILE_SET_LANGUAGE_PREF,
 } from '../app/constants';
 import testData from './testData';
 
@@ -19,13 +19,13 @@ localVue.use(Vuex);
 describe('QuickVocabForm', () => {
   let store;
   const actions = {
-    [FETCH_PERSONAL_VOCAB_LANG_LIST]: jest.fn(),
-    [CREATE_VOCAB_ENTRY]: jest.fn(),
-    [FETCH_LEMMAS_BY_FORM]: jest.fn(),
-    [FETCH_ME]: jest.fn(),
-    [SET_LANGUAGE_PREF]: jest.fn(),
-    [FETCH_SUPPORTED_LANG_LIST]: jest.fn(),
-    [FETCH_LEMMA]: jest.fn(),
+    [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+    [VOCAB_ENTRY_CREATE]: jest.fn(),
+    [FORMS_FETCH]: jest.fn(),
+    [PROFILE_FETCH]: jest.fn(),
+    [PROFILE_SET_LANGUAGE_PREF]: jest.fn(),
+    [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+    [LEMMA_FETCH]: jest.fn(),
   };
   const state = {
     personalVocabLangList: [
@@ -89,7 +89,7 @@ describe('QuickVocabForm', () => {
   it('fails to calls store createVocabEntry "submit" when button is clicked', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
     wrapper.find("[type='submit']").trigger('click');
-    expect(actions[CREATE_VOCAB_ENTRY]).toHaveBeenCalledTimes(0);
+    expect(actions[VOCAB_ENTRY_CREATE]).toHaveBeenCalledTimes(0);
   });
 
   it('successfully calls store createVocabEntry "submit" when button is clicked', async () => {
@@ -119,6 +119,6 @@ describe('QuickVocabForm', () => {
       .setValue('testGloss');
     await Vue.nextTick();
     await wrapper.find("[type='submit']").trigger('click');
-    expect(actions[CREATE_VOCAB_ENTRY]).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_CREATE]).toHaveBeenCalled();
   });
 });

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '../constants';
+  import { BOOKMARK_CREATE, BOOKMARK_DELETE } from '../constants';
 
   export default {
     props: ['textId'],
@@ -18,10 +18,10 @@
         }
       },
       addBookmark(textId) {
-        this.$store.dispatch(ADD_BOOKMARK, { textId });
+        this.$store.dispatch(BOOKMARK_CREATE, { textId });
       },
       removeBookmark(bookmarkId) {
-        this.$store.dispatch(REMOVE_BOOKMARK, { bookmarkId });
+        this.$store.dispatch(BOOKMARK_DELETE, { bookmarkId });
       },
     },
     computed: {

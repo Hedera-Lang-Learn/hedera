@@ -1,55 +1,55 @@
 import {
-  FETCH_TOKENS,
-  SELECT_TOKEN,
+  LEMMATIZED_TEXT_FETCH_TOKENS,
+  LEMMATIZED_TEXT_SELECT_TOKEN,
   FETCH_NODE,
-  FETCH_LEMMA,
-  FETCH_LEMMAS_BY_FORM,
-  UPDATE_TOKEN,
-  SET_TEXT_ID,
-  FETCH_VOCAB_LISTS,
-  SET_VOCAB_LIST,
-  TOGGLE_SHOW_IN_VOCAB_LIST,
-  FETCH_TEXT,
-  FETCH_PERSONAL_VOCAB_LIST,
-  FETCH_ME,
-  FETCH_PERSONAL_VOCAB_LANG_LIST,
-  CREATE_PERSONAL_VOCAB_ENTRY,
+  LEMMA_FETCH,
+  FORMS_FETCH,
+  LEMMATIZED_TEXT_UPDATE_TOKEN,
+  LEMMATIZED_TEXT_SET_ID,
+  VOCAB_LIST_LIST,
+  VOCAB_LIST_SET,
+  LEMMATIZED_TEXT_SHOW_KNOWN,
+  LEMMATIZED_TEXT_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PERSONAL_VOCAB_ENTRY_CREATE,
   FETCH_LATTICE_NODES_BY_HEADWORD,
-  SET_LANGUAGE_PREF,
-  DELETE_PERSONAL_VOCAB_ENTRY,
-  FETCH_BOOKMARKS,
-  FETCH_SUPPORTED_LANG_LIST,
-  FETCH_LEMMAS_BY_PARTIAL_FORM,
-  FETCH_VOCAB_LIST,
-  DELETE_VOCAB_ENTRY,
-  SET_VOCAB_LIST_TYPE,
-  CREATE_VOCAB_ENTRY,
-  UPDATE_VOCAB_LIST,
-  UPDATE_VOCAB_LIST_ENTRIES,
+  PROFILE_SET_LANGUAGE_PREF,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  BOOKMARK_LIST,
+  SUPPORTED_LANG_LIST_FETCH,
+  FORMS_FETCH_PARTIAL,
+  VOCAB_LIST_FETCH,
+  VOCAB_ENTRY_DELETE,
+  VOCAB_LIST_SET_TYPE,
+  VOCAB_ENTRY_CREATE,
+  VOCAB_LIST_UPDATE,
+  VOCAB_ENTRY_UPDATE_MANY,
 } from '../constants';
 
 export default {
   /* -------------------------------------------------------------------------- */
   /*                               hedera.Profile                               */
   /* -------------------------------------------------------------------------- */
-  [FETCH_ME]: (state, data) => {
+  [PROFILE_FETCH]: (state, data) => {
     state.me = data;
   },
-  [SET_LANGUAGE_PREF]: (state, data) => {
+  [PROFILE_SET_LANGUAGE_PREF]: (state, data) => {
     state.me = data;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
-  [FETCH_LEMMAS_BY_FORM]: (state, data) => {
+  [FORMS_FETCH]: (state, data) => {
     const form = data.data;
     state.forms = {
       ...state.forms,
       [form.form]: form,
     };
   },
-  [FETCH_LEMMAS_BY_PARTIAL_FORM]: (state, data) => {
+  [FORMS_FETCH_PARTIAL]: (state, data) => {
     const forms = data.data;
     state.partialMatchForms = [...forms];
   },
@@ -57,7 +57,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
-  [FETCH_LEMMA]: (state, data) => {
+  [LEMMA_FETCH]: (state, data) => {
     const lemma = data.data;
     state.lemmas = {
       ...state.lemmas,
@@ -68,20 +68,20 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
-  [FETCH_TEXT]: (state, data) => {
+  [LEMMATIZED_TEXT_FETCH]: (state, data) => {
     state.text = data;
   },
-  [SET_TEXT_ID]: (state, id) => {
+  [LEMMATIZED_TEXT_SET_ID]: (state, id) => {
     state.textId = id;
   },
-  [FETCH_TOKENS]: (state, data) => {
+  [LEMMATIZED_TEXT_FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },
-  [SELECT_TOKEN]: (state, { token, data }) => {
+  [LEMMATIZED_TEXT_SELECT_TOKEN]: (state, { token, data }) => {
     state.selectedToken = token;
     state.selectedTokenHistory = data.data.tokenHistory;
   },
-  [UPDATE_TOKEN]: (state, data) => {
+  [LEMMATIZED_TEXT_UPDATE_TOKEN]: (state, data) => {
     state.tokens = data.tokens;
     state.selectedTokenHistory = data.tokenHistory;
     if (state.selectedToken) {
@@ -92,30 +92,30 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
-  [FETCH_BOOKMARKS]: (state, data) => {
+  [BOOKMARK_LIST]: (state, data) => {
     state.bookmarks = data;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
-  [FETCH_PERSONAL_VOCAB_LANG_LIST]: (state, data) => {
+  [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
-  [FETCH_PERSONAL_VOCAB_LIST]: (state, data) => {
+  [PERSONAL_VOCAB_LIST_FETCH]: (state, data) => {
     state.vocabList = data;
   },
-  [CREATE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+  [PERSONAL_VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.created;
     if (state.vocabList.entries) {
       state.vocabList.entries = [data.data, ...state.vocabList.entries];
     }
   },
-  [DELETE_PERSONAL_VOCAB_ENTRY]: (state, data) => {
+  [PERSONAL_VOCAB_ENTRY_DELETE]: (state, data) => {
     const index = state.vocabList.entries.findIndex((vocab) => vocab.id === data.id);
     if (index >= 0) state.vocabList.entries.splice(index, 1);
   },
@@ -123,38 +123,38 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                          vocab_list.VocabularyList                         */
   /* -------------------------------------------------------------------------- */
-  [UPDATE_VOCAB_LIST]: (state, data) => {
+  [VOCAB_LIST_UPDATE]: (state, data) => {
     state.vocabList = data;
   },
-  [FETCH_VOCAB_LIST]: (state, data) => {
+  [VOCAB_LIST_FETCH]: (state, data) => {
     state.vocabList = data;
   },
-  [FETCH_VOCAB_LISTS]: (state, data) => {
+  [VOCAB_LIST_LIST]: (state, data) => {
     state.vocabLists = data;
   },
-  [SET_VOCAB_LIST]: (state, id) => {
+  [VOCAB_LIST_SET]: (state, id) => {
     state.selectedVocabList = id;
   },
-  [TOGGLE_SHOW_IN_VOCAB_LIST]: (state) => {
+  [LEMMATIZED_TEXT_SHOW_KNOWN]: (state) => {
     state.showInVocabList = !state.showInVocabList;
   },
-  [SET_VOCAB_LIST_TYPE]: (state, vocabListType) => {
+  [VOCAB_LIST_SET_TYPE]: (state, vocabListType) => {
     state.vocabListType = vocabListType;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                       vocab_list.VocabularyListEntry                       */
   /* -------------------------------------------------------------------------- */
-  [UPDATE_VOCAB_LIST_ENTRIES]: (state, updatedEntries) => {
+  [VOCAB_ENTRY_UPDATE_MANY]: (state, updatedEntries) => {
     state.vocabList.entries = updatedEntries;
   },
-  [CREATE_VOCAB_ENTRY]: (state, data) => {
+  [VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.id;
     if (state.vocabList.entries) {
       state.vocabList.entries = [data, ...state.vocabList.entries];
     }
   },
-  [DELETE_VOCAB_ENTRY]: (state, id) => {
+  [VOCAB_ENTRY_DELETE]: (state, id) => {
     const index = state.vocabList.entries.findIndex((vocab) => vocab.id === id);
     if (index >= 0) state.vocabList.entries.splice(index, 1);
   },
@@ -162,7 +162,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                            Not accessing a model                           */
   /* -------------------------------------------------------------------------- */
-  [FETCH_SUPPORTED_LANG_LIST]: (state, data) => {
+  [SUPPORTED_LANG_LIST_FETCH]: (state, data) => {
     state.supportedLanguages = data;
   },
 

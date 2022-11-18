@@ -1,13 +1,13 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import {
-  DELETE_VOCAB_ENTRY,
-  FETCH_ME,
-  FETCH_PERSONAL_VOCAB_LANG_LIST,
-  FETCH_SUPPORTED_LANG_LIST,
-  FETCH_VOCAB_LIST,
-  SET_VOCAB_LIST_TYPE,
-  UPDATE_VOCAB_ENTRY,
+  VOCAB_ENTRY_DELETE,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  SUPPORTED_LANG_LIST_FETCH,
+  VOCAB_LIST_FETCH,
+  VOCAB_LIST_SET_TYPE,
+  VOCAB_ENTRY_UPDATE,
 } from '../app/constants';
 import PersonalVocab from '../app/PersonalVocab.vue';
 import testData from './testData';
@@ -27,13 +27,13 @@ describe('VocabGeneral', () => {
   };
   beforeEach(() => {
     actions = {
-      [FETCH_ME]: jest.fn(),
-      [FETCH_PERSONAL_VOCAB_LANG_LIST]: jest.fn(),
-      [FETCH_SUPPORTED_LANG_LIST]: jest.fn(),
-      [FETCH_VOCAB_LIST]: jest.fn(),
-      [SET_VOCAB_LIST_TYPE]: jest.fn(),
-      [UPDATE_VOCAB_ENTRY]: jest.fn(),
-      [DELETE_VOCAB_ENTRY]: jest.fn(),
+      [PROFILE_FETCH]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+      [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_SET_TYPE]: jest.fn(),
+      [VOCAB_ENTRY_UPDATE]: jest.fn(),
+      [VOCAB_ENTRY_DELETE]: jest.fn(),
     };
 
     store = new Vuex.Store({
@@ -59,7 +59,7 @@ describe('VocabGeneral', () => {
     const wrapper = mount(PersonalVocab, { store, localVue });
     await wrapper.find('#td-edit-button').trigger('click');
     await wrapper.find('#td-save-button').trigger('click');
-    expect(actions[UPDATE_VOCAB_ENTRY]).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_UPDATE]).toHaveBeenCalled();
   });
 
   it('loads in delete button Vocab - general', async () => {
@@ -84,6 +84,6 @@ describe('VocabGeneral', () => {
     });
     await wrapper.find('#td-edit-button').trigger('click');
     wrapper.find('#td-delete-button').trigger('click');
-    expect(actions[DELETE_VOCAB_ENTRY]).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_DELETE]).toHaveBeenCalled();
   });
 });

@@ -14,7 +14,7 @@
     RESOLVED_UNRESOLVED,
     RESOLVED_MANUAL,
     RESOLVED_AUTOMATIC,
-    UPDATE_TOKEN,
+    LEMMATIZED_TEXT_UPDATE_TOKEN,
   } from '../constants';
 
   export default {
@@ -62,7 +62,7 @@
         return resolved;
       },
       updateToken(token) {
-        this.$store.dispatch(UPDATE_TOKEN, {
+        this.$store.dispatch(LEMMATIZED_TEXT_UPDATE_TOKEN, {
           id: this.$store.state.textId,
           tokenIndex: token.tokenIndex,
           nodeId: this.selectedToken.node,

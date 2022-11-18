@@ -98,14 +98,14 @@
 
 <script>
   import {
-    FETCH_PERSONAL_VOCAB_LANG_LIST,
-    CREATE_PERSONAL_VOCAB_ENTRY,
-    SET_LANGUAGE_PREF,
-    FETCH_SUPPORTED_LANG_LIST,
-    FETCH_ME,
-    FETCH_LEMMAS_BY_FORM,
-    FETCH_LEMMA,
-    CREATE_VOCAB_ENTRY,
+    PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+    PERSONAL_VOCAB_ENTRY_CREATE,
+    PROFILE_SET_LANGUAGE_PREF,
+    SUPPORTED_LANG_LIST_FETCH,
+    PROFILE_FETCH,
+    FORMS_FETCH,
+    LEMMA_FETCH,
+    VOCAB_ENTRY_CREATE,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
 
@@ -114,13 +114,13 @@
     props: ['currentLangTab'],
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
-      await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
+      await this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH_LANG_LIST);
       /**
       need to fetch supported languages and profile due to django templates causing vuex state to not persistant
       ex: navigation and personal vocab templates
        */
-      await this.$store.dispatch(FETCH_ME);
-      await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
+      await this.$store.dispatch(PROFILE_FETCH);
+      await this.$store.dispatch(SUPPORTED_LANG_LIST_FETCH);
       // set pref language for personal vocab lists
       if (this.isPersonal) {
         if (this.$store.state.me && this.$store.state.me.lang) {
@@ -200,9 +200,9 @@
         if (this.vocabListType === 'personal') {
           newEntryData.familiarity = this.familiarityRating;
           newEntryData.lang = vocabularyListItem.lang;
-          await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
+          await this.$store.dispatch(PERSONAL_VOCAB_ENTRY_CREATE, newEntryData);
         } else {
-          await this.$store.dispatch(CREATE_VOCAB_ENTRY, newEntryData);
+          await this.$store.dispatch(VOCAB_ENTRY_CREATE, newEntryData);
         }
 
         // Clear component variables on successful submit, or report an error
@@ -223,7 +223,7 @@
             (ele) => ele.lang === vocabularyListItem.lang,
           );
           if (prefLang && prefLang.lang !== this.$store.state.me.lang) {
-            await this.$store.dispatch(SET_LANGUAGE_PREF, {
+            await this.$store.dispatch(PROFILE_SET_LANGUAGE_PREF, {
               lang: prefLang.lang,
             });
           }
@@ -269,7 +269,7 @@
         // Get headword from database if it isn't already in state
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
         if (!Object.prototype.hasOwnProperty.call(this.$store.state.forms, this.headword)) {
-          await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+          await this.$store.dispatch(FORMS_FETCH, {
             form: this.headword,
             lang: this.vocabularyListLang,
           });
@@ -295,7 +295,7 @@
       async onSelect(event) {
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
         if (!Object.prototype.hasOwnProperty.call(this.$store.state.lemmas, event.target.value)) {
-          await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
+          await this.$store.dispatch(LEMMA_FETCH, { id: event.target.value });
         }
         const lemma = this.$store.state.lemmas[event.target.value];
         this.definition = lemma.glosses.length ? lemma.glosses[0].gloss : '';

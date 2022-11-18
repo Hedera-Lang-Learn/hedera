@@ -1,8 +1,14 @@
+import {
+  PERSONAL_VOCAB_ENTRY_CREATE,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PROFILE_SET_LANGUAGE_PREF,
+} from '../../constants';
 import mutations from '../mutations';
 import state from '../state';
 
 describe('Mutations', () => {
-  describe('fetchPersonalVocabLangList', () => {
+  describe('PERSONAL_VOCAB_LIST_FETCH_LANG_LIST', () => {
     it('successfully updates state', () => {
       const data = [
         {
@@ -15,7 +21,7 @@ describe('Mutations', () => {
         },
       ];
 
-      mutations.fetchPersonalVocabLangList(state, data);
+      mutations[PERSONAL_VOCAB_LIST_FETCH_LANG_LIST](state, data);
       expect(state.personalVocabLangList).toBe(data);
     });
   });
@@ -34,7 +40,7 @@ describe('Mutations', () => {
     };
 
     it('successfully updates the state without entries fetched', () => {
-      mutations.createPersonalVocabEntry(state, data);
+      mutations[PERSONAL_VOCAB_ENTRY_CREATE](state, data);
       expect(state.vocabAdded).toBe(true);
       expect(state.vocabList.entries).toBe(undefined);
     });
@@ -56,13 +62,13 @@ describe('Mutations', () => {
         },
       };
 
-      mutations.createPersonalVocabEntry(updatedState, data);
+      mutations[PERSONAL_VOCAB_ENTRY_CREATE](updatedState, data);
       expect(updatedState.vocabAdded).toBe(true);
       expect(updatedState.vocabList.entries.length).toBe(2);
     });
   });
 
-  describe('setLanguagePref', () => {
+  describe('PROFILE_SET_LANGUAGE_PREF', () => {
     it('successfully updates the state', () => {
       const data = {
         email: 'testing@test.com',
@@ -70,11 +76,11 @@ describe('Mutations', () => {
         showNodeIds: 'toggle',
         lang: 'lat',
       };
-      mutations.setLanguagePref(state, data);
+      mutations[PROFILE_SET_LANGUAGE_PREF](state, data);
       expect(state.me).toEqual(data);
     });
   });
-  describe('deletePersonalVocabEntry', () => {
+  describe('PERSONAL_VOCAB_ENTRY_DELETE', () => {
     it('successfully updates the state', () => {
       const modifiedState = {
         ...state,
@@ -92,7 +98,7 @@ describe('Mutations', () => {
         },
       };
       const data = { data: true, id: 1 };
-      mutations.deletePersonalVocabEntry(modifiedState, data);
+      mutations[PERSONAL_VOCAB_ENTRY_DELETE](modifiedState, data);
       expect(modifiedState.vocabList.entries.length).toBe(0);
     });
     it('unsuccessfully updates the state', () => {
@@ -112,7 +118,7 @@ describe('Mutations', () => {
         },
       };
       const data = { data: true, id: 11 };
-      mutations.deletePersonalVocabEntry(modifiedState, data);
+      mutations[PERSONAL_VOCAB_ENTRY_DELETE](modifiedState, data);
       expect(modifiedState.vocabList.entries.length).toBe(1);
     });
   });
