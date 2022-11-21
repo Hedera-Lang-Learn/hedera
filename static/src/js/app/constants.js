@@ -8,43 +8,43 @@ export const FORMS_FETCH = 'forms_fetch';
 export const FORMS_FETCH_PARTIAL = 'forms_fetchPartial';
 
 // lemmatization.Lemma
-export const LEMMA_FETCH = 'lemma_fetch';
 export const LEMMA_CREATE = 'lemma_create';
+export const LEMMA_FETCH = 'lemma_fetch';
 
 // lemmatized_text.LemmatizedText
 export const LEMMATIZED_TEXT_FETCH = 'lemmatizedText_fetch';
-export const LEMMATIZED_TEXT_SET_ID = 'lemmatizedText_setId';
 export const LEMMATIZED_TEXT_FETCH_TOKENS = 'lemmatizedText_fetchTokens';
-export const LEMMATIZED_TEXT_UPDATE_TOKEN = 'lemmatizedText_updateToken';
 export const LEMMATIZED_TEXT_SELECT_TOKEN = 'lemmatizedText_selectToken';
+export const LEMMATIZED_TEXT_SET_ID = 'lemmatizedText_setId';
+export const LEMMATIZED_TEXT_SHOW_KNOWN = 'lemmatizedText_showKnown';
+export const LEMMATIZED_TEXT_UPDATE_TOKEN = 'lemmatizedText_updateToken';
 
 // lemmatized_text.LemmatizedTextBookmark
-export const BOOKMARK_LIST = 'bookmark_list';
 export const BOOKMARK_CREATE = 'bookmark_create';
 export const BOOKMARK_DELETE = 'bookmark_delete';
+export const BOOKMARK_LIST = 'bookmark_list';
 
 // vocab_list.PersonalVocabularyList
 export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
 export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetchLangList';
 
 // vocab_list.PersonalVocabularyListEntry
-export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
 export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
 export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
+export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
 
 // vocab_list.VocabularyList
 export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';
 export const VOCAB_LIST_LIST = 'vocabularyList_list';
+export const VOCAB_LIST_SET = 'vocabularyList_set';
 export const VOCAB_LIST_SET_TYPE = 'vocabularyList_setType';
 export const VOCAB_LIST_UPDATE = 'vocabularyList_update';
-export const VOCAB_LIST_SET = 'vocabularyList_set';
-export const LEMMATIZED_TEXT_SHOW_KNOWN = 'lemmatizedText_showKnown';
 
 // vocab_list.VocabularyListEntry
-export const VOCAB_ENTRY_DELETE = 'vocabularyListEntry_delete';
-export const VOCAB_ENTRY_UPDATE_MANY = 'vocabularyListEntry_updateMany';
-export const VOCAB_ENTRY_UPDATE = 'vocabularyListEntry_update';
 export const VOCAB_ENTRY_CREATE = 'vocabularyListEntry_delete';
+export const VOCAB_ENTRY_DELETE = 'vocabularyListEntry_delete';
+export const VOCAB_ENTRY_UPDATE = 'vocabularyListEntry_update';
+export const VOCAB_ENTRY_UPDATE_MANY = 'vocabularyListEntry_updateMany';
 
 // Not accessing a model
 export const SUPPORTED_LANG_LIST_FETCH = 'supportedLangList_fetch';

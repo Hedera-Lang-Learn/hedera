@@ -1,36 +1,36 @@
 /* eslint-disable object-curly-newline */
 import {
-  LEMMATIZED_TEXT_FETCH,
-  LEMMATIZED_TEXT_FETCH_TOKENS,
-  LEMMATIZED_TEXT_SELECT_TOKEN,
-  FETCH_NODE,
-  LEMMA_FETCH,
-  FORMS_FETCH,
-  FORMS_FETCH_PARTIAL,
-  LEMMATIZED_TEXT_UPDATE_TOKEN,
-  LEMMATIZED_TEXT_SET_ID,
-  VOCAB_LIST_LIST,
-  VOCAB_LIST_SET,
-  LEMMATIZED_TEXT_SHOW_KNOWN,
-  PERSONAL_VOCAB_LIST_FETCH,
-  OLD_CREATE_VOCAB_ENTRY,
-  VOCAB_ENTRY_UPDATE,
-  PERSONAL_VOCAB_ENTRY_UPDATE,
-  PROFILE_FETCH,
-  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
-  PERSONAL_VOCAB_ENTRY_CREATE,
-  PROFILE_SET_LANGUAGE_PREF,
-  PERSONAL_VOCAB_ENTRY_DELETE,
-  VOCAB_ENTRY_DELETE,
-  BOOKMARK_LIST,
   BOOKMARK_CREATE,
   BOOKMARK_DELETE,
+  BOOKMARK_LIST,
+  FETCH_NODE,
+  FORMS_FETCH_PARTIAL,
+  FORMS_FETCH,
+  LEMMA_FETCH,
+  LEMMATIZED_TEXT_FETCH_TOKENS,
+  LEMMATIZED_TEXT_FETCH,
+  LEMMATIZED_TEXT_SELECT_TOKEN,
+  LEMMATIZED_TEXT_SET_ID,
+  LEMMATIZED_TEXT_SHOW_KNOWN,
+  LEMMATIZED_TEXT_UPDATE_TOKEN,
+  OLD_CREATE_VOCAB_ENTRY,
+  PERSONAL_VOCAB_ENTRY_CREATE,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PERSONAL_VOCAB_ENTRY_UPDATE,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PERSONAL_VOCAB_LIST_FETCH,
+  PROFILE_FETCH,
+  PROFILE_SET_LANGUAGE_PREF,
   SUPPORTED_LANG_LIST_FETCH,
-  VOCAB_LIST_FETCH,
-  VOCAB_LIST_SET_TYPE,
   VOCAB_ENTRY_CREATE,
-  VOCAB_LIST_UPDATE,
+  VOCAB_ENTRY_DELETE,
   VOCAB_ENTRY_UPDATE_MANY,
+  VOCAB_ENTRY_UPDATE,
+  VOCAB_LIST_FETCH,
+  VOCAB_LIST_LIST,
+  VOCAB_LIST_SET_TYPE,
+  VOCAB_LIST_SET,
+  VOCAB_LIST_UPDATE,
 } from '../constants';
 import api from '../api';
 
@@ -99,11 +99,6 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
-  [BOOKMARK_LIST]: ({ commit }) => (
-    api
-      .bookmark_list((data) => commit(BOOKMARK_LIST, data.data))
-      .catch(logoutOnError(commit))
-  ),
   [BOOKMARK_CREATE]: ({ dispatch, commit }, { textId }) => (
     api
       .bookmark_create(textId)
@@ -114,6 +109,11 @@ export default {
     api
       .bookmark_delete(bookmarkId)
       .then(() => dispatch(BOOKMARK_LIST))
+      .catch(logoutOnError(commit))
+  ),
+  [BOOKMARK_LIST]: ({ commit }) => (
+    api
+      .bookmark_list((data) => commit(BOOKMARK_LIST, data.data))
       .catch(logoutOnError(commit))
   ),
 
@@ -136,6 +136,17 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
+  [PERSONAL_VOCAB_ENTRY_CREATE]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
+    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_CREATE, data.data);
+    return api
+      .personalVocabularyListEntry_create(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
+      .catch(logoutOnError(commit));
+  },
+  [PERSONAL_VOCAB_ENTRY_DELETE]: ({ commit }, { id }) => {
+    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_DELETE, data.data);
+    return api.personalVocabularyListEntry_delete(id, cb)
+      .catch(logoutOnError(commit));
+  },
   // eslint-disable-next-line max-len
   [PERSONAL_VOCAB_ENTRY_UPDATE]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
     // eslint-disable-next-line max-len
@@ -159,17 +170,6 @@ export default {
     commit(VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
     return null;
   },
-  [PERSONAL_VOCAB_ENTRY_CREATE]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
-    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_CREATE, data.data);
-    return api
-      .personalVocabularyListEntry_create(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
-      .catch(logoutOnError(commit));
-  },
-  [PERSONAL_VOCAB_ENTRY_DELETE]: ({ commit }, { id }) => {
-    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_DELETE, data.data);
-    return api.personalVocabularyListEntry_delete(id, cb)
-      .catch(logoutOnError(commit));
-  },
 
   /* -------------------------------------------------------------------------- */
   /*                          vocab_list.VocabularyList                         */
@@ -189,11 +189,11 @@ export default {
   [VOCAB_LIST_SET]: ({ commit }, { id }) => {
     commit(VOCAB_LIST_SET, id);
   },
-  [LEMMATIZED_TEXT_SHOW_KNOWN]: ({ commit }) => {
-    commit(LEMMATIZED_TEXT_SHOW_KNOWN);
-  },
   [VOCAB_LIST_SET_TYPE]: ({ commit }, { vocabListType }) => {
     commit(VOCAB_LIST_SET_TYPE, vocabListType);
+  },
+  [LEMMATIZED_TEXT_SHOW_KNOWN]: ({ commit }) => {
+    commit(LEMMATIZED_TEXT_SHOW_KNOWN);
   },
 
   /* -------------------------------------------------------------------------- */
@@ -204,6 +204,11 @@ export default {
       .vocabularyListEntry_create(vocabularyListId, headword, definition, lemmaId)
       .catch(logoutOnError(commit));
     commit(VOCAB_ENTRY_CREATE, data);
+  },
+  [VOCAB_ENTRY_DELETE]: async ({ commit }, { id }) => {
+    await api.vocabularyListEntry_delete(id)
+      .catch(logoutOnError(commit));
+    commit(VOCAB_ENTRY_DELETE, id);
   },
   [VOCAB_ENTRY_UPDATE]: async ({ commit, state }, { entryId, headword, definition, lemmaId }) => {
     let data = null;
@@ -253,11 +258,6 @@ export default {
     console.log(updatedEntries);
     commit(VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
     return null;
-  },
-  [VOCAB_ENTRY_DELETE]: async ({ commit }, { id }) => {
-    await api.vocabularyListEntry_delete(id)
-      .catch(logoutOnError(commit));
-    commit(VOCAB_ENTRY_DELETE, id);
   },
 
   /* -------------------------------------------------------------------------- */

@@ -1,31 +1,31 @@
 import {
-  LEMMATIZED_TEXT_FETCH_TOKENS,
-  LEMMATIZED_TEXT_SELECT_TOKEN,
+  BOOKMARK_LIST,
+  FETCH_LATTICE_NODES_BY_HEADWORD,
   FETCH_NODE,
-  LEMMA_FETCH,
+  FORMS_FETCH_PARTIAL,
   FORMS_FETCH,
-  LEMMATIZED_TEXT_UPDATE_TOKEN,
-  LEMMATIZED_TEXT_SET_ID,
-  VOCAB_LIST_LIST,
-  VOCAB_LIST_SET,
-  LEMMATIZED_TEXT_SHOW_KNOWN,
+  LEMMA_FETCH,
+  LEMMATIZED_TEXT_FETCH_TOKENS,
   LEMMATIZED_TEXT_FETCH,
+  LEMMATIZED_TEXT_SELECT_TOKEN,
+  LEMMATIZED_TEXT_SET_ID,
+  LEMMATIZED_TEXT_SHOW_KNOWN,
+  LEMMATIZED_TEXT_UPDATE_TOKEN,
+  PERSONAL_VOCAB_ENTRY_CREATE,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
   PERSONAL_VOCAB_LIST_FETCH,
   PROFILE_FETCH,
-  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
-  PERSONAL_VOCAB_ENTRY_CREATE,
-  FETCH_LATTICE_NODES_BY_HEADWORD,
   PROFILE_SET_LANGUAGE_PREF,
-  PERSONAL_VOCAB_ENTRY_DELETE,
-  BOOKMARK_LIST,
   SUPPORTED_LANG_LIST_FETCH,
-  FORMS_FETCH_PARTIAL,
-  VOCAB_LIST_FETCH,
-  VOCAB_ENTRY_DELETE,
-  VOCAB_LIST_SET_TYPE,
   VOCAB_ENTRY_CREATE,
-  VOCAB_LIST_UPDATE,
+  VOCAB_ENTRY_DELETE,
   VOCAB_ENTRY_UPDATE_MANY,
+  VOCAB_LIST_FETCH,
+  VOCAB_LIST_LIST,
+  VOCAB_LIST_SET_TYPE,
+  VOCAB_LIST_SET,
+  VOCAB_LIST_UPDATE,
 } from '../constants';
 
 export default {
@@ -71,15 +71,18 @@ export default {
   [LEMMATIZED_TEXT_FETCH]: (state, data) => {
     state.text = data;
   },
-  [LEMMATIZED_TEXT_SET_ID]: (state, id) => {
-    state.textId = id;
-  },
   [LEMMATIZED_TEXT_FETCH_TOKENS]: (state, data) => {
     state.tokens = data;
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: (state, { token, data }) => {
     state.selectedToken = token;
     state.selectedTokenHistory = data.data.tokenHistory;
+  },
+  [LEMMATIZED_TEXT_SET_ID]: (state, id) => {
+    state.textId = id;
+  },
+  [LEMMATIZED_TEXT_SHOW_KNOWN]: (state) => {
+    state.showInVocabList = !state.showInVocabList;
   },
   [LEMMATIZED_TEXT_UPDATE_TOKEN]: (state, data) => {
     state.tokens = data.tokens;
@@ -99,6 +102,9 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
+  [PERSONAL_VOCAB_LIST_FETCH]: (state, data) => {
+    state.vocabList = data;
+  },
   [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
   },
@@ -106,9 +112,6 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
-  [PERSONAL_VOCAB_LIST_FETCH]: (state, data) => {
-    state.vocabList = data;
-  },
   [PERSONAL_VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.created;
     if (state.vocabList.entries) {
@@ -123,9 +126,6 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                          vocab_list.VocabularyList                         */
   /* -------------------------------------------------------------------------- */
-  [VOCAB_LIST_UPDATE]: (state, data) => {
-    state.vocabList = data;
-  },
   [VOCAB_LIST_FETCH]: (state, data) => {
     state.vocabList = data;
   },
@@ -135,19 +135,16 @@ export default {
   [VOCAB_LIST_SET]: (state, id) => {
     state.selectedVocabList = id;
   },
-  [LEMMATIZED_TEXT_SHOW_KNOWN]: (state) => {
-    state.showInVocabList = !state.showInVocabList;
-  },
   [VOCAB_LIST_SET_TYPE]: (state, vocabListType) => {
     state.vocabListType = vocabListType;
+  },
+  [VOCAB_LIST_UPDATE]: (state, data) => {
+    state.vocabList = data;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                       vocab_list.VocabularyListEntry                       */
   /* -------------------------------------------------------------------------- */
-  [VOCAB_ENTRY_UPDATE_MANY]: (state, updatedEntries) => {
-    state.vocabList.entries = updatedEntries;
-  },
   [VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.id;
     if (state.vocabList.entries) {
@@ -157,6 +154,9 @@ export default {
   [VOCAB_ENTRY_DELETE]: (state, id) => {
     const index = state.vocabList.entries.findIndex((vocab) => vocab.id === id);
     if (index >= 0) state.vocabList.entries.splice(index, 1);
+  },
+  [VOCAB_ENTRY_UPDATE_MANY]: (state, updatedEntries) => {
+    state.vocabList.entries = updatedEntries;
   },
 
   /* -------------------------------------------------------------------------- */
