@@ -1,10 +1,12 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import { BootstrapVue } from 'bootstrap-vue';
 import Vuex from 'vuex';
 import PersonalVocab from '../app/PersonalVocab.vue';
 import testData from './testData';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+localVue.use(BootstrapVue);
 
 describe('VocabGeneral', () => {
   let actions;
