@@ -6,6 +6,7 @@ import testData from './testData';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+// BootstrapVue plugin to mitigate [Vue warn]: Unknown custom element
 localVue.use(BootstrapVue);
 
 describe('VocabPersonal', () => {
