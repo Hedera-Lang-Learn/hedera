@@ -14,7 +14,7 @@
 </template>
 <script>
   import Lemma from './Lemma.vue';
-  import { UPDATE_TOKEN, RESOLVED_MANUAL } from '../constants';
+  import { LEMMATIZED_TEXT_UPDATE_TOKEN, RESOLVED_MANUAL } from '../constants';
 
   const getGlossIds = (lemmas, lemma) => {
     const matchingLemmas = lemmas.filter((x) => x.pk === lemma.pk);
@@ -54,7 +54,7 @@
         this.updateToken(lemma, glossIds);
       },
       updateToken(lemma, glossIds = []) {
-        this.$store.dispatch(UPDATE_TOKEN, {
+        this.$store.dispatch(LEMMATIZED_TEXT_UPDATE_TOKEN, {
           id: this.$store.state.textId,
           tokenIndex: this.selectedToken.tokenIndex,
           lemmaId: lemma.pk,

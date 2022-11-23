@@ -1,5 +1,14 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
+import {
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PERSONAL_VOCAB_LIST_FETCH,
+  SUPPORTED_LANG_LIST_FETCH,
+  VOCAB_LIST_SET_TYPE,
+  PERSONAL_VOCAB_ENTRY_UPDATE,
+} from '../app/constants';
 import PersonalVocab from '../app/PersonalVocab.vue';
 import testData from './testData';
 
@@ -19,15 +28,13 @@ describe('VocabPersonal', () => {
   };
   beforeEach(() => {
     actions = {
-      deletePersonalVocabEntry: jest.fn(),
-      fetchMe: jest.fn(),
-      fetchPersonalVocabLangList: jest.fn(),
-      fetchPersonalVocabList: jest.fn(),
-      fetchSupportedLangList: jest.fn(),
-      fetchVocabList: jest.fn(),
-      setVocabListType: jest.fn(),
-      updatePersonalVocabEntry: jest.fn(),
-      vocabEntryDelete: jest.fn(),
+      [PERSONAL_VOCAB_ENTRY_DELETE]: jest.fn(),
+      [PROFILE_FETCH]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH]: jest.fn(),
+      [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_SET_TYPE]: jest.fn(),
+      [PERSONAL_VOCAB_ENTRY_UPDATE]: jest.fn(),
     };
 
     propsData = {
@@ -51,7 +58,7 @@ describe('VocabPersonal', () => {
     const wrapper = mount(PersonalVocab, { propsData, store, localVue });
     await wrapper.find('#td-edit-button').trigger('click');
     await wrapper.find('#td-save-button').trigger('click');
-    expect(actions.updatePersonalVocabEntry).toHaveBeenCalled();
+    expect(actions[PERSONAL_VOCAB_ENTRY_UPDATE]).toHaveBeenCalled();
   });
 
   it('loads in delete button Vocab - personal', async () => {
@@ -77,6 +84,6 @@ describe('VocabPersonal', () => {
     });
     await wrapper.find('#td-edit-button').trigger('click');
     wrapper.find('#td-delete-button').trigger('click');
-    expect(actions.deletePersonalVocabEntry).toHaveBeenCalled();
+    expect(actions[PERSONAL_VOCAB_ENTRY_DELETE]).toHaveBeenCalled();
   });
 });

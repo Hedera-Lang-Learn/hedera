@@ -1,3 +1,9 @@
+import {
+  PERSONAL_VOCAB_ENTRY_CREATE,
+  PERSONAL_VOCAB_ENTRY_DELETE,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  PROFILE_SET_LANGUAGE_PREF,
+} from '../../constants';
 import actions from '../actions';
 
 let url = '';
@@ -21,7 +27,7 @@ jest.mock('axios', () => ({
   defaults: { withCredentials: true },
 }));
 describe('Actions', () => {
-  describe('FETCH_PERSONAL_VOCAB_LANG_LIST', () => {
+  describe('PERSONAL_VOCAB_LIST_FETCH_LANG_LIST', () => {
     it('successfully calls fetchPersonalVocabLangList action to update state', async () => {
       const commit = jest.fn();
       // TODO: when passed in the response isnt returned from the commit in the expect block, check why
@@ -37,15 +43,15 @@ describe('Actions', () => {
       //       }
       //     ]
       //   };
-      await actions.fetchPersonalVocabLangList({ commit });
+      await actions[PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]({ commit });
       expect(url).toBe('/api/v1/personal_vocab_list/quick_add/');
     //   expect(commit).toHaveBeenCalledWith(
-    //     'fetchPersonalVocabLangList',
+    //     PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
     //     undefined
     //   );
     });
   });
-  describe('CREATE_PERSONAL_VOCAB_ENTRY', () => {
+  describe('PERSONAL_VOCAB_ENTRY_CREATE', () => {
     it('successfully calls createPersonalVocabEntry action to update state', async () => {
       const commit = jest.fn();
       const payload = {
@@ -57,8 +63,8 @@ describe('Actions', () => {
         vocabularyListId: 1,
       };
       //   const response = { data: { created: true } };
-      await actions.createPersonalVocabEntry({ commit }, payload);
-      // expect(commit).toHaveBeenCalledWith('createPersonalVocabEntry', response)
+      await actions[PERSONAL_VOCAB_ENTRY_CREATE]({ commit }, payload);
+      // expect(commit).toHaveBeenCalledWith(PERSONAL_VOCAB_ENTRY_CREATE, response)
       expect(url).toBe('/api/v1/personal_vocab_list/quick_add/');
       expect(body).toEqual({
         headword: 'ergo',
@@ -71,22 +77,22 @@ describe('Actions', () => {
     });
   });
 
-  describe('SET_LANGUAGE_PREF', () => {
-    it('successfully calls setLanguagePref', async () => {
+  describe('PROFILE_SET_LANGUAGE_PREF', () => {
+    it('successfully calls PROFILE_SET_LANGUAGE_PREF', async () => {
       const commit = jest.fn();
       const payload = {
         lang: 'lat',
       };
-      await actions.setLanguagePref({ commit }, payload);
-      expect(commit).toHaveBeenCalledWith('setLanguagePref', 'lat');
+      await actions[PROFILE_SET_LANGUAGE_PREF]({ commit }, payload);
+      expect(commit).toHaveBeenCalledWith(PROFILE_SET_LANGUAGE_PREF, 'lat');
     });
   });
-  describe('DELETE_PERSONAL_VOCAB_ENTRY', () => {
-    it('successfully calls deletePersonalVocabEntry', async () => {
+  describe('PERSONAL_VOCAB_ENTRY_DELETE', () => {
+    it('successfully calls PERSONAL_VOCAB_ENTRY_DELETE', async () => {
       const commit = jest.fn();
       const payload = { id: 1 };
-      await actions.deletePersonalVocabEntry({ commit }, payload);
-      expect(commit).toHaveBeenCalledWith('deletePersonalVocabEntry', payload);
+      await actions[PERSONAL_VOCAB_ENTRY_DELETE]({ commit }, payload);
+      expect(commit).toHaveBeenCalledWith(PERSONAL_VOCAB_ENTRY_DELETE, payload);
       expect(body.data).toEqual(payload);
     });
   });

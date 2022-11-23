@@ -105,13 +105,13 @@
 </template>
 <script>
   import {
-    FETCH_TOKENS,
-    FETCH_PERSONAL_VOCAB_LIST,
-    FETCH_TEXT,
+    LEMMATIZED_TEXT_FETCH_TOKENS,
+    PERSONAL_VOCAB_LIST_FETCH,
+    LEMMATIZED_TEXT_FETCH,
     OLD_CREATE_VOCAB_ENTRY,
-    UPDATE_PERSONAL_VOCAB_ENTRY,
-    FETCH_ME,
-    FETCH_BOOKMARKS,
+    PERSONAL_VOCAB_ENTRY_UPDATE,
+    PROFILE_FETCH,
+    BOOKMARK_LIST,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -132,8 +132,8 @@
       BookmarkTextButton,
     },
     created() {
-      this.$store.dispatch(FETCH_ME);
-      this.$store.dispatch(FETCH_BOOKMARKS);
+      this.$store.dispatch(PROFILE_FETCH);
+      this.$store.dispatch(BOOKMARK_LIST);
     },
     data() {
       return {
@@ -147,7 +147,7 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TEXT, { id: this.textId }).then(() => this.$store.dispatch(FETCH_PERSONAL_VOCAB_LIST, {
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId }).then(() => this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
             lang: this.text.lang,
           }));
         },
@@ -155,7 +155,7 @@
       selectedVocabList: {
         immediate: true,
         handler() {
-          this.$store.dispatch(FETCH_TOKENS, {
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, {
             id: this.textId,
             personalVocabListId: this.selectedVocabListId,
           });
@@ -180,7 +180,7 @@
 
         this.selectedNodeRating = rating;
         if (this.personalVocabEntry) {
-          this.$store.dispatch(UPDATE_PERSONAL_VOCAB_ENTRY, {
+          this.$store.dispatch(PERSONAL_VOCAB_ENTRY_UPDATE, {
             entryId: this.personalVocabEntry.id,
             familiarity: rating,
             headword: label,
