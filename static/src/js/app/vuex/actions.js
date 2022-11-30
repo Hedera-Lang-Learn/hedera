@@ -45,10 +45,15 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                               hedera.Profile                               */
   /* -------------------------------------------------------------------------- */
-  [PROFILE_FETCH]: ({ commit }) => api.profile_fetch((data) => commit(PROFILE_FETCH, data.data)),
-  [PROFILE_SET_LANGUAGE_PREF]: ({ commit }, { lang }) => {
-    const cb = commit(PROFILE_SET_LANGUAGE_PREF, lang);
-    return api.profile_updateLang(lang, cb).catch(logoutOnError(commit));
+  [PROFILE_FETCH]: async ({ commit }) => {
+    // get `data` property of axios response, where response data is
+    const { data } = await api.profile_fetch();
+    // in the commit, still need to get data.data because that's how the api response wraps it
+    commit(PROFILE_FETCH, data.data);
+  },
+  [PROFILE_SET_LANGUAGE_PREF]: async ({ commit }, { lang }) => {
+    const { data } = await api.profile_updateLang(lang);
+    commit(PROFILE_SET_LANGUAGE_PREF, data.data.lang);
   },
 
   /* -------------------------------------------------------------------------- */
@@ -126,26 +131,28 @@ export default {
       .catch(logoutOnError(commit));
     commit(VOCAB_LIST_UPDATE, data.data.personalVocabList);
   },
-  [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: ({ commit }) => {
-    const cb = (data) => commit(PERSONAL_VOCAB_LIST_FETCH_LANG_LIST, data.data);
-    return api
-      .personalVocabularyList_fetchLangList(cb)
-      .catch(logoutOnError(commit));
+  [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: async ({ commit }) => {
+    const { data } = await api.personalVocabularyList_fetchLangList();
+    commit(PERSONAL_VOCAB_LIST_FETCH_LANG_LIST, data.data);
   },
 
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
-  [PERSONAL_VOCAB_ENTRY_CREATE]: ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
-    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_CREATE, data.data);
-    return api
-      .personalVocabularyListEntry_create(headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb)
-      .catch(logoutOnError(commit));
+  [PERSONAL_VOCAB_ENTRY_CREATE]: async ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
+    const { data } = await api.personalVocabularyListEntry_create(
+      headword,
+      definition,
+      vocabularyListId,
+      familiarity,
+      lang,
+      lemmaId,
+    );
+    commit(PERSONAL_VOCAB_ENTRY_CREATE, data.data);
   },
-  [PERSONAL_VOCAB_ENTRY_DELETE]: ({ commit }, { id }) => {
-    const cb = (data) => commit(PERSONAL_VOCAB_ENTRY_DELETE, data.data);
-    return api.personalVocabularyListEntry_delete(id, cb)
-      .catch(logoutOnError(commit));
+  [PERSONAL_VOCAB_ENTRY_DELETE]: async ({ commit }, { id }) => {
+    const { data } = await api.personalVocabularyListEntry_delete(id);
+    commit(PERSONAL_VOCAB_ENTRY_DELETE, data);
   },
   // eslint-disable-next-line max-len
   [PERSONAL_VOCAB_ENTRY_UPDATE]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {

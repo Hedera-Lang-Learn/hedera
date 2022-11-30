@@ -9,8 +9,8 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                               hedera.Profile                               */
   /* -------------------------------------------------------------------------- */
-  profile_fetch: (cb) => axios.get(`${BASE_URL}me/`).then((r) => cb(r.data)),
-  profile_updateLang: (lang, cb) => axios.post(`${BASE_URL}me/`, { lang }).then((r) => cb(r.data)),
+  profile_fetch: () => axios.get(`${BASE_URL}me/`),
+  profile_updateLang: (lang) => axios.post(`${BASE_URL}me/`, { lang }),
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Form                             */
@@ -76,7 +76,7 @@ export default {
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
   personalVocabularyList_fetch: (lang) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`),
-  personalVocabularyList_fetchLangList: (cb) => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`).then((r) => cb(r.data)),
+  personalVocabularyList_fetchLangList: () => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`),
   personalVocabularyList_update: (textId, lemmaId, familiarity, headword, definition, entryId, lang) => {
     let data = {
       familiarity, headword, definition, lemmaId,
@@ -94,7 +94,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
-  personalVocabularyListEntry_create: (headword, definition, vocabularyListId, familiarity, lang, lemmaId, cb) => {
+  personalVocabularyListEntry_create: (headword, definition, vocabularyListId, familiarity, lang, lemmaId) => {
     const payload = {
       headword,
       definition,
@@ -103,9 +103,9 @@ export default {
       lang,
       lemma_id: lemmaId,
     };
-    return axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, payload).then((r) => cb(r.data));
+    return axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, payload);
   },
-  personalVocabularyListEntry_delete: (id, cb) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }).then((r) => cb(r)),
+  personalVocabularyListEntry_delete: (id) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }),
 
   /* -------------------------------------------------------------------------- */
   /*                          vocab_list.VocabularyList                         */
