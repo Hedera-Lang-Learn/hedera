@@ -23,7 +23,12 @@ class EditedTextHtmlParser(HTMLParser):
     def handle_endtag(self, tag):
         if "follower" in self.current_attrs:
             self.separate_true_followers(self.current_data)
-        elif self.current_data is not None:
+        # check for breaks and add new line to following for last element in the lemmatized_text_data
+        elif tag == "br":
+            following = self.lemmatized_text_data[-1]["following"]
+            new_following = f"{following}\n"
+            self.lemmatized_text_data[-1]["following"] = new_following
+        elif self.current_data is not None and self.current_tag is not None:
             self.current_attrs["lemma_id"] = self.parse_lemma_id_value()
             self.lemmatized_text_data.append(
                 {
@@ -102,7 +107,13 @@ class EditedTextHtmlParser(HTMLParser):
         """
         self.current_data = None
         new_data = self.lemmatizer.lemmatize(chunk)
-        self.lemmatized_text_data.extend(new_data)
+        # check if last element in the new_data is empty and remove - fixes double newline when editing
+        if new_data[-1]["word"] == "" and new_data[-1]["following"] == " ":
+            new_data.pop()
+        # Checks if chunk is not return and newline "\r\n" - only add tokens if it the chunk is not a return/newline
+        # Fixes problem with empty tokens
+        if chunk != "\r\n":
+            self.lemmatized_text_data.extend(new_data)
 
 
 class TagStripper(HTMLParser):
