@@ -59,68 +59,78 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
-  [FORMS_FETCH]: ({ commit }, { lang, form }) => api.form_fetch(lang, form, (data) => commit(FORMS_FETCH, data)),
+  [FORMS_FETCH]: async ({ commit }, { lang, form }) => {
+    const response = await api.form_fetch(lang, form);
+    commit(FORMS_FETCH, response);
+  },
   // Note: might be slow to looks up partial matches
-  [FORMS_FETCH_PARTIAL]: ({ commit }, { lang, form }) => api.form_fetchPartial(lang, form, (data) => commit(FORMS_FETCH_PARTIAL, data)),
+  [FORMS_FETCH_PARTIAL]: async ({ commit }, { lang, form }) => {
+    const response = await api.form_fetchPartial(lang, form);
+    commit(FORMS_FETCH_PARTIAL, response);
+  },
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
-  [LEMMA_FETCH]: ({ commit }, { id }) => api.lemma_fetch(id, (data) => commit(LEMMA_FETCH, data)),
+  [LEMMA_FETCH]: async ({ commit }, { id }) => {
+    const response = await api.lemma_fetch(id);
+    commit(LEMMA_FETCH, response);
+  },
 
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
-  [LEMMATIZED_TEXT_FETCH]: ({ commit }, { id }) => api
-    .lemmatizedText_fetch(id, (data) => commit(LEMMATIZED_TEXT_FETCH, data.data))
-    .catch(logoutOnError(commit)),
-  [LEMMATIZED_TEXT_FETCH_TOKENS]: ({ commit }, { id, vocabListId, personalVocabListId }) => {
-    commit(LEMMATIZED_TEXT_SET_ID, id);
-    const cb = (data) => commit(LEMMATIZED_TEXT_FETCH_TOKENS, data.data);
-    return api
-      .lemmatizedText_fetchTokens(id, vocabListId, personalVocabListId, cb)
-      .catch(logoutOnError(commit));
+  [LEMMATIZED_TEXT_FETCH]: async ({ commit }, { id }) => {
+    const { data } = await api.lemmatizedText_fetch(id);
+    commit(LEMMATIZED_TEXT_FETCH, data);
   },
-  [LEMMATIZED_TEXT_SELECT_TOKEN]: ({ commit, state }, { token }) => api.lemmatizedText_fetchTokenHistory(
-    state.textId,
-    token.tokenIndex,
-    (data) => commit(LEMMATIZED_TEXT_SELECT_TOKEN, { token, data }),
-  ),
-  [LEMMATIZED_TEXT_UPDATE_TOKEN]: ({ commit, state }, { id, tokenIndex, lemmaId, glossIds, resolved }) => {
+  [LEMMATIZED_TEXT_FETCH_TOKENS]: async ({ commit }, { id, vocabListId, personalVocabListId }) => {
+    commit(LEMMATIZED_TEXT_SET_ID, id);
+    const { data } = await api.lemmatizedText_fetchTokens(id, vocabListId, personalVocabListId);
+    commit(LEMMATIZED_TEXT_FETCH_TOKENS, data);
+  },
+  [LEMMATIZED_TEXT_SELECT_TOKEN]: async ({ commit, state }, { token }) => {
+    const response = await api.lemmatizedText_fetchTokenHistory(
+      state.textId,
+      token.tokenIndex,
+    );
+    commit(LEMMATIZED_TEXT_SELECT_TOKEN, { token, data: response });
+  },
+  [LEMMATIZED_TEXT_UPDATE_TOKEN]: async (
+    { commit, state },
+    { id, tokenIndex, lemmaId, glossIds, resolved },
+  ) => {
     // Fetch the most recent lemma data
-    api
-      .lemma_fetch(lemmaId, (data) => commit(LEMMA_FETCH, data))
-      .catch(logoutOnError(commit));
-
-    // Callback to commit the changes once the API call has completed
-    const mutate = (data) => commit(LEMMATIZED_TEXT_UPDATE_TOKEN, data.data);
-
+    const response = await api.lemma_fetch(lemmaId);
+    commit(LEMMA_FETCH, response);
     // Perform the API request to update the token data
-    return api
-      .lemmatizedText_updateToken(id, tokenIndex, resolved, state.selectedVocabList, lemmaId, glossIds, null, mutate)
-      .catch(logoutOnError(commit));
+    const { data } = await api.lemmatizedText_updateToken(
+      id,
+      tokenIndex,
+      resolved,
+      state.selectedVocabList,
+      lemmaId,
+      glossIds,
+      null,
+    );
+    commit(LEMMATIZED_TEXT_UPDATE_TOKEN, data);
   },
 
   /* -------------------------------------------------------------------------- */
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
-  [BOOKMARK_CREATE]: ({ dispatch, commit }, { textId }) => (
-    api
-      .bookmark_create(textId)
-      .then(() => dispatch(BOOKMARK_LIST))
-      .catch(logoutOnError(commit))
-  ),
-  [BOOKMARK_DELETE]: ({ dispatch, commit }, { bookmarkId }) => (
-    api
-      .bookmark_delete(bookmarkId)
-      .then(() => dispatch(BOOKMARK_LIST))
-      .catch(logoutOnError(commit))
-  ),
-  [BOOKMARK_LIST]: ({ commit }) => (
-    api
-      .bookmark_list((data) => commit(BOOKMARK_LIST, data.data))
-      .catch(logoutOnError(commit))
-  ),
+  [BOOKMARK_CREATE]: async ({ dispatch }, { textId }) => {
+    await api.bookmark_create(textId);
+    dispatch(BOOKMARK_LIST);
+  },
+  [BOOKMARK_DELETE]: async ({ dispatch }, { bookmarkId }) => {
+    await api.bookmark_delete(bookmarkId);
+    dispatch(BOOKMARK_LIST);
+  },
+  [BOOKMARK_LIST]: async ({ commit }) => {
+    const { data } = await api.bookmark_list();
+    commit(BOOKMARK_LIST, data);
+  },
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
@@ -261,8 +271,6 @@ export default {
     const updatedEntries = [...state.vocabList.entries];
     updatedEntries[localEntryIndex] = data;
 
-    console.log('updatedEntries:');
-    console.log(updatedEntries);
     commit(VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
     return null;
   },
@@ -270,10 +278,10 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                            Not accessing a model                           */
   /* -------------------------------------------------------------------------- */
-  [SUPPORTED_LANG_LIST_FETCH]: ({ commit }) => (
-    api.supportedLangList_fetch((data) => commit(SUPPORTED_LANG_LIST_FETCH, data.data))
-      .catch(logoutOnError(commit))
-  ),
+  [SUPPORTED_LANG_LIST_FETCH]: async ({ commit }) => {
+    const { data } = await api.supportedLangList_fetch();
+    commit(SUPPORTED_LANG_LIST_FETCH, data);
+  },
 
   /* -------------------------------------------------------------------------- */
   /*         TODO: Delete these things, ensuring that they are not used.        */
