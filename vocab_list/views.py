@@ -82,6 +82,7 @@ class PersonalVocabListDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         vocab_list = self.get_object()
         context.update({
+            "pagetitle": "Personal Vocabulary List",
             "lists": vocab_list.user.personalvocabularylist_set.all().order_by("lang"),
             "personalVocab": True
         })
