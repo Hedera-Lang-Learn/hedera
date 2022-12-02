@@ -1,21 +1,21 @@
-from django.test import SimpleTestCase, TransactionTestCase
+from django.test import TransactionTestCase
 
 from ..models import FormToLemma, Lemma
-from ..services.chinese import ChineseService
 from ..services.latin import LatinService
 
 
-class ChineseServiceTests(SimpleTestCase):
-    def test_service(self):
-        """
-        Lemmatization is simple: output is simply a list with the input as the only member;
-        the input is not transformed, nor any additional lemmata included.
-        """
-        text_input = "月"
-        self.assertEqual(
-            ChineseService(lang="zho").lemmatize(text_input),
-            [text_input]
-        )
+# Chinese language test commented out until support for this language is enabled again.
+# class ChineseServiceTests(SimpleTestCase):
+#     def test_service(self):
+#         """
+#         Lemmatization is simple: output is simply a list with the input as the only member;
+#         the input is not transformed, nor any additional lemmata included.
+#         """
+#         text_input = "月"
+#         self.assertEqual(
+#             ChineseService(lang="zho").lemmatize(text_input),
+#             [text_input]
+#         )
 
 
 class LatinServiceTests(TransactionTestCase):
