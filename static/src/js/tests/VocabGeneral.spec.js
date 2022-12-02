@@ -1,4 +1,5 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import { BootstrapVue } from 'bootstrap-vue';
 import Vuex from 'vuex';
 import {
   VOCAB_ENTRY_DELETE,
@@ -14,6 +15,8 @@ import testData from './testData';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+// BootstrapVue plugin to mitigate [Vue warn]: Unknown custom element
+localVue.use(BootstrapVue);
 
 describe('VocabGeneral', () => {
   let actions;
