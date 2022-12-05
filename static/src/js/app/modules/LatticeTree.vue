@@ -17,7 +17,7 @@
   import TokenHistory from './TokenHistory.vue';
 
   import api from '../api';
-  import { UPDATE_TOKEN, ADD_LEMMA, RESOLVED_MANUAL } from '../constants';
+  import { LEMMATIZED_TEXT_UPDATE_TOKEN, LEMMA_CREATE, RESOLVED_MANUAL } from '../constants';
 
   export default {
     components: {
@@ -57,7 +57,7 @@
     },
     methods: {
       onAddLemma({ lemma }) {
-        this.$store.dispatch(ADD_LEMMA, {
+        this.$store.dispatch(LEMMA_CREATE, {
           id: this.textId,
           tokenIndex: this.selectedToken.tokenIndex,
           lemma,
@@ -65,7 +65,7 @@
         });
       },
       onSelect(node) {
-        this.$store.dispatch(UPDATE_TOKEN, {
+        this.$store.dispatch(LEMMATIZED_TEXT_UPDATE_TOKEN, {
           id: this.textId,
           tokenIndex: this.selectedToken.tokenIndex,
           nodeId: node.pk,

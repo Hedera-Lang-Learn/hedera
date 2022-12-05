@@ -2,6 +2,15 @@ import { createLocalVue, mount } from '@vue/test-utils';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import QuickVocabAddForm from '../app/components/quick-add-button/QuickAddButton.vue';
+import {
+  VOCAB_ENTRY_CREATE,
+  LEMMA_FETCH,
+  FORMS_FETCH,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  SUPPORTED_LANG_LIST_FETCH,
+  PROFILE_SET_LANGUAGE_PREF,
+} from '../app/constants';
 import testData from './testData';
 
 const localVue = createLocalVue();
@@ -10,14 +19,13 @@ localVue.use(Vuex);
 describe('QuickVocabForm', () => {
   let store;
   const actions = {
-    fetchPersonalVocabLangList: jest.fn(),
-    createPersonalVocabEntry: jest.fn(),
-    createVocabEntry: jest.fn(),
-    fetchLemmasByForm: jest.fn(),
-    fetchMe: jest.fn(),
-    setLanguagePref: jest.fn(),
-    fetchSupportedLangList: jest.fn(),
-    fetchLemma: jest.fn(),
+    [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+    [VOCAB_ENTRY_CREATE]: jest.fn(),
+    [FORMS_FETCH]: jest.fn(),
+    [PROFILE_FETCH]: jest.fn(),
+    [PROFILE_SET_LANGUAGE_PREF]: jest.fn(),
+    [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+    [LEMMA_FETCH]: jest.fn(),
   };
   const state = {
     personalVocabLangList: [
@@ -81,7 +89,7 @@ describe('QuickVocabForm', () => {
   it('fails to calls store createVocabEntry "submit" when button is clicked', () => {
     const wrapper = mount(QuickVocabAddForm, { store, localVue });
     wrapper.find("[type='submit']").trigger('click');
-    expect(actions.createVocabEntry).toHaveBeenCalledTimes(0);
+    expect(actions[VOCAB_ENTRY_CREATE]).toHaveBeenCalledTimes(0);
   });
 
   it('successfully calls store createVocabEntry "submit" when button is clicked', async () => {
@@ -111,6 +119,6 @@ describe('QuickVocabForm', () => {
       .setValue('testGloss');
     await Vue.nextTick();
     await wrapper.find("[type='submit']").trigger('click');
-    expect(actions.createVocabEntry).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_CREATE]).toHaveBeenCalled();
   });
 });

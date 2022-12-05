@@ -14,7 +14,7 @@
 </template>
 <script>
   import debounce from 'lodash.debounce';
-  import { SELECT_TOKEN, FETCH_LEMMAS_BY_FORM, FETCH_LEMMA } from '../constants';
+  import { LEMMATIZED_TEXT_SELECT_TOKEN, FORMS_FETCH, LEMMA_FETCH } from '../constants';
 
   import Token from './Token.vue';
 
@@ -72,12 +72,12 @@
 
         const fetchLemma = () => {
           if (this.selectedToken.lemma_id !== null) {
-            this.$store.dispatch(FETCH_LEMMA, { id: this.selectedToken.lemma_id });
+            this.$store.dispatch(LEMMA_FETCH, { id: this.selectedToken.lemma_id });
           }
         };
 
         const fetchLemmasByForm = () => {
-          this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+          this.$store.dispatch(FORMS_FETCH, {
             lang: this.$store.state.text.lang,
             form: this.selectedToken.word_normalized,
           });
@@ -90,12 +90,12 @@
 
         // The debounce is delaying the call but it's accumulating all the instances
         // so the network call is happening multiple times.
-        this.$store.dispatch(SELECT_TOKEN, { token })
+        this.$store.dispatch(LEMMATIZED_TEXT_SELECT_TOKEN, { token })
           .then(debouncedFetch());
       },
       onToggleSelect(token) {
         if (this.selectedToken === token) {
-          this.$store.dispatch(SELECT_TOKEN, { token: null });
+          this.$store.dispatch(LEMMATIZED_TEXT_SELECT_TOKEN, { token: null });
         } else {
           this.selectToken(token.tokenIndex);
         }

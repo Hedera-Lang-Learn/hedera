@@ -1,10 +1,22 @@
 import { createLocalVue, mount } from '@vue/test-utils';
+import { BootstrapVue } from 'bootstrap-vue';
 import Vuex from 'vuex';
+import {
+  VOCAB_ENTRY_DELETE,
+  PROFILE_FETCH,
+  PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+  SUPPORTED_LANG_LIST_FETCH,
+  VOCAB_LIST_FETCH,
+  VOCAB_LIST_SET_TYPE,
+  VOCAB_ENTRY_UPDATE,
+} from '../app/constants';
 import PersonalVocab from '../app/PersonalVocab.vue';
 import testData from './testData';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
+// BootstrapVue plugin to mitigate [Vue warn]: Unknown custom element
+localVue.use(BootstrapVue);
 
 describe('VocabGeneral', () => {
   let actions;
@@ -18,15 +30,13 @@ describe('VocabGeneral', () => {
   };
   beforeEach(() => {
     actions = {
-      deletePersonalVocabEntry: jest.fn(),
-      fetchMe: jest.fn(),
-      fetchPersonalVocabLangList: jest.fn(),
-      fetchPersonalVocabList: jest.fn(),
-      fetchSupportedLangList: jest.fn(),
-      fetchVocabList: jest.fn(),
-      setVocabListType: jest.fn(),
-      updateVocabEntry: jest.fn(),
-      vocabEntryDelete: jest.fn(),
+      [PROFILE_FETCH]: jest.fn(),
+      [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: jest.fn(),
+      [SUPPORTED_LANG_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_FETCH]: jest.fn(),
+      [VOCAB_LIST_SET_TYPE]: jest.fn(),
+      [VOCAB_ENTRY_UPDATE]: jest.fn(),
+      [VOCAB_ENTRY_DELETE]: jest.fn(),
     };
 
     store = new Vuex.Store({
@@ -52,7 +62,7 @@ describe('VocabGeneral', () => {
     const wrapper = mount(PersonalVocab, { store, localVue });
     await wrapper.find('#td-edit-button').trigger('click');
     await wrapper.find('#td-save-button').trigger('click');
-    expect(actions.updateVocabEntry).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_UPDATE]).toHaveBeenCalled();
   });
 
   it('loads in delete button Vocab - general', async () => {
@@ -77,6 +87,6 @@ describe('VocabGeneral', () => {
     });
     await wrapper.find('#td-edit-button').trigger('click');
     wrapper.find('#td-delete-button').trigger('click');
-    expect(actions.vocabEntryDelete).toHaveBeenCalled();
+    expect(actions[VOCAB_ENTRY_DELETE]).toHaveBeenCalled();
   });
 });

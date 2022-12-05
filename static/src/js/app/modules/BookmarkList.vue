@@ -12,12 +12,12 @@
 
 <script>
   import BookmarkItem from './BookmarkItem.vue';
-  import { FETCH_BOOKMARKS } from '../constants';
+  import { BOOKMARK_LIST } from '../constants';
 
   export default {
     components: { BookmarkItem },
     created() {
-      this.$store.dispatch(FETCH_BOOKMARKS);
+      this.$store.dispatch(BOOKMARK_LIST);
     },
     computed: {
       bookmarks() {
