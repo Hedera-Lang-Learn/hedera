@@ -31,9 +31,9 @@ def parse_following(follower):
     Note: We are mutating the follower tokens
     """
     if "\r\n" in follower:
-        follower = follower.replace("\r\n", "<br />")
+        follower = follower.replace("\r\n", "<br/>")
     if "\n" in follower:
-        follower = follower.replace("\n", "<br />")
+        follower = follower.replace("\n", "<br/>")
     return follower
 
 
