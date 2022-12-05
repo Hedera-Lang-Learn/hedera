@@ -25,7 +25,16 @@ def to_percent(val):
 
 
 def parse_following(follower):
-    return follower.replace("\n", "<br/>")
+    """
+    Used to parse new lines and carriage returns in the following tokens
+    Ex: "\r\n\n\n" => "<br/><br/><br/>"
+    Note: We are mutating the follower tokens
+    """
+    if "\r\n" in follower:
+        follower = follower.replace("\r\n", "<br />")
+    if "\n" in follower:
+        follower = follower.replace("\n", "<br />")
+    return follower
 
 
 def format_token_key_value_pairs(token):

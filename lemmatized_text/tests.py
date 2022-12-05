@@ -4,6 +4,11 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 from .models import LemmatizedText, transform_data_to_html
+from .test_data import (
+    test_lemmatized_text,
+    test_original_text,
+    test_original_text_html
+)
 
 
 def create_user(username, email, password):
@@ -123,6 +128,17 @@ class LemmatizedTextTests(TestCase):
         self.assertIn("imperator", words_post_edit)
         self.assertIn("somnia", words_post_edit)
         self.assertIn("pecunia", words_post_edit)
+
+    def test_handle_edited_data_no_changes(self):
+        example_text = LemmatizedText.objects.create(
+            title="Test title",
+            lang="lat",
+            original_text=test_original_text,
+            created_by=self.created_user1,
+            data=test_lemmatized_text
+        )
+        example_text.handle_edited_data("Test title", test_original_text_html)
+        self.assertEqual(example_text.token_count(), len(test_lemmatized_text))
 
 
 class LemmatizedTextViewsTests(TestCase):
