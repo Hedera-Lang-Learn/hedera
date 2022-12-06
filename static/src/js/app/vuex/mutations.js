@@ -79,7 +79,7 @@ export default {
     state.text = data;
   },
   [LEMMATIZED_TEXT_FETCH_TOKENS]: (state, data) => {
-    state.tokens = data;
+    state.tokens = data.data;
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: (state, { token, data }) => {
     state.selectedToken = token;
