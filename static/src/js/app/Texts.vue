@@ -65,7 +65,7 @@
     },
     created() {
       this.$store.dispatch(PROFILE_FETCH);
-      api.fetchTexts((data) => {
+      api.lemmatizedText_list((data) => {
         this.texts = data.data.map((datum) => ({
           ...datum.text,
           stats: datum.stats,
