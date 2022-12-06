@@ -107,8 +107,6 @@ jmespath==0.10.0
     #   botocore
 l18n==2021.3
     # via wagtail
-lac==2.1.2
-    # via -r hedera/requirements/base.in
 nameparser==1.1.1
     # via django-lti-provider
 numpy==1.21.6
