@@ -402,9 +402,9 @@ class PersonalVocabularyListAPI(APIView):
             lang = self.text.lang
         else:
             lang = self.request.GET.get("lang")
-            # Try to access lang as a supported language to throw a key error
-            # if it isn't there
-            SUPPORTED_LANGUAGES[lang]
+            # Ensure that a non-supported language is not added
+            if lang not in SUPPORTED_LANGUAGES:
+                raise ValueError(f"Language '{lang}' not supported")
         vl, _ = PersonalVocabularyList.objects.get_or_create(
             user=self.request.user,
             lang=lang,
