@@ -43,7 +43,7 @@ export default {
     }
     return axios.get(`${BASE_URL}lemmatized_texts/${id}/?${qs}`);
   },
-  lemmatizedText_fetchTokenHistory: (id, tokenIndex, cb) => axios.get(`${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`).then((r) => cb(r.data)),
+  lemmatizedText_fetchTokenHistory: (id, tokenIndex) => axios.get(`${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`),
   lemmatizedText_list: () => axios.get(`${BASE_URL}lemmatized_texts/`),
   lemmatizedText_retry: (id) => axios.post(`${BASE_URL}lemmatized_texts/${id}/retry/`),
   lemmatizedText_updateToken: (id, tokenIndex, resolved, vocabList, lemmaId = null, glossIds = [], lemma = null) => {

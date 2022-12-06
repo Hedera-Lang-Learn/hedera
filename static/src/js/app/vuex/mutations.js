@@ -44,10 +44,10 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   [FORMS_FETCH]: (state, data) => {
-    const form = data.data;
+    const { form } = data.data;
     state.forms = {
       ...state.forms,
-      [form.form]: form,
+      [form]: form,
     };
   },
   [FORMS_FETCH_PARTIAL]: (state, data) => {
@@ -76,7 +76,7 @@ export default {
     }));
   },
   [LEMMATIZED_TEXT_FETCH]: (state, data) => {
-    state.text = data;
+    state.text = data.data;
   },
   [LEMMATIZED_TEXT_FETCH_TOKENS]: (state, data) => {
     state.tokens = data.data;
@@ -103,7 +103,7 @@ export default {
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
   [BOOKMARK_LIST]: (state, data) => {
-    state.bookmarks = data;
+    state.bookmarks = data.data;
   },
 
   /* -------------------------------------------------------------------------- */
@@ -170,7 +170,7 @@ export default {
   /*                            Not accessing a model                           */
   /* -------------------------------------------------------------------------- */
   [SUPPORTED_LANG_LIST_FETCH]: (state, data) => {
-    state.supportedLanguages = data;
+    state.supportedLanguages = data.data;
   },
 
   /* -------------------------------------------------------------------------- */
