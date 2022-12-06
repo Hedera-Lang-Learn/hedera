@@ -7,6 +7,7 @@ import {
   FORMS_FETCH_PARTIAL,
   FORMS_FETCH,
   LEMMA_FETCH,
+  LEMMATIZED_TEXT_FETCH_LIST,
   LEMMATIZED_TEXT_FETCH_TOKENS,
   LEMMATIZED_TEXT_FETCH,
   LEMMATIZED_TEXT_SELECT_TOKEN,
@@ -80,6 +81,10 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
+  [LEMMATIZED_TEXT_FETCH_LIST]: async ({ commit }) => {
+    const { data } = await api.lemmatizedText_list();
+    commit(LEMMATIZED_TEXT_FETCH_LIST, data);
+  },
   [LEMMATIZED_TEXT_FETCH]: async ({ commit }, { id }) => {
     const { data } = await api.lemmatizedText_fetch(id);
     commit(LEMMATIZED_TEXT_FETCH, data);

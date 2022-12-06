@@ -2,6 +2,7 @@ export default {
   me: {},
   textId: null,
   text: {},
+  texts: [],
   tokens: [],
   selectedToken: null,
   selectedTokenHistory: [],

@@ -6,6 +6,7 @@ import {
   FORMS_FETCH,
   LEMMA_FETCH,
   LEMMATIZED_TEXT_FETCH_TOKENS,
+  LEMMATIZED_TEXT_FETCH_LIST,
   LEMMATIZED_TEXT_FETCH,
   LEMMATIZED_TEXT_SELECT_TOKEN,
   LEMMATIZED_TEXT_SET_ID,
@@ -68,6 +69,12 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
+  [LEMMATIZED_TEXT_FETCH_LIST]: (state, data) => {
+    state.texts = data.data.map((lemmatizedText) => ({
+      ...lemmatizedText.text,
+      stats: lemmatizedText.stats,
+    }));
+  },
   [LEMMATIZED_TEXT_FETCH]: (state, data) => {
     state.text = data;
   },
