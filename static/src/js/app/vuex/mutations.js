@@ -123,7 +123,7 @@ export default {
   [PERSONAL_VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.created;
     if (state.personalVocabList.entries) {
-      state.personalVocabList.entries = [data.data, ...state.vocabList.entries];
+      state.personalVocabList.entries = [data.data, ...state.personalVocabList.entries];
     }
   },
   [PERSONAL_VOCAB_ENTRY_DELETE]: (state, data) => {

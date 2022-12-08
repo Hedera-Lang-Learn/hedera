@@ -48,7 +48,7 @@ describe('Mutations', () => {
     it('successfully updates the state with entries fetched', () => {
       const updatedState = {
         ...state,
-        vocabList: {
+        personalVocabList: {
           ...state.personalVocabList,
           entries: [
             {
@@ -64,7 +64,7 @@ describe('Mutations', () => {
 
       mutations[PERSONAL_VOCAB_ENTRY_CREATE](updatedState, data);
       expect(updatedState.vocabAdded).toBe(true);
-      expect(updatedState.vocabList.entries.length).toBe(2);
+      expect(updatedState.personalVocabList.entries.length).toBe(2);
     });
   });
 
@@ -84,8 +84,8 @@ describe('Mutations', () => {
     it('successfully updates the state', () => {
       const modifiedState = {
         ...state,
-        vocabList: {
-          ...state.vocabList,
+        personalVocabList: {
+          ...state.personalVocabList,
           entries: [
             {
               id: 1,
@@ -99,13 +99,13 @@ describe('Mutations', () => {
       };
       const data = { data: true, id: 1 };
       mutations[PERSONAL_VOCAB_ENTRY_DELETE](modifiedState, data);
-      expect(modifiedState.vocabList.entries.length).toBe(0);
+      expect(modifiedState.personalVocabList.entries.length).toBe(0);
     });
     it('unsuccessfully updates the state', () => {
       const modifiedState = {
         ...state,
-        vocabList: {
-          ...state.vocabList,
+        personalVocabList: {
+          ...state.personalVocabList,
           entries: [
             {
               id: 1,
@@ -119,7 +119,7 @@ describe('Mutations', () => {
       };
       const data = { data: true, id: 11 };
       mutations[PERSONAL_VOCAB_ENTRY_DELETE](modifiedState, data);
-      expect(modifiedState.vocabList.entries.length).toBe(1);
+      expect(modifiedState.personalVocabList.entries.length).toBe(1);
     });
   });
 });
