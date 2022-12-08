@@ -16,6 +16,7 @@ import {
   PERSONAL_VOCAB_ENTRY_DELETE,
   PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
   PERSONAL_VOCAB_LIST_FETCH,
+  PERSONAL_VOCAB_ENTRY_UPDATE_MANY,
   PROFILE_FETCH,
   PROFILE_SET_LANGUAGE_PREF,
   SUPPORTED_LANG_LIST_FETCH,
@@ -44,10 +45,10 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   [FORMS_FETCH]: (state, data) => {
-    const { form } = data.data;
+    const { form } = data;
     state.forms = {
       ...state.forms,
-      [form]: form,
+      [form]: data,
     };
   },
   [FORMS_FETCH_PARTIAL]: (state, data) => {
@@ -59,7 +60,7 @@ export default {
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
   [LEMMA_FETCH]: (state, data) => {
-    const lemma = data.data;
+    const lemma = data;
     state.lemmas = {
       ...state.lemmas,
       [lemma.pk]: lemma,
@@ -110,7 +111,7 @@ export default {
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
   [PERSONAL_VOCAB_LIST_FETCH]: (state, data) => {
-    state.vocabList = data;
+    state.personalVocabList = data;
   },
   [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
@@ -121,13 +122,16 @@ export default {
   /* -------------------------------------------------------------------------- */
   [PERSONAL_VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.created;
-    if (state.vocabList.entries) {
-      state.vocabList.entries = [data.data, ...state.vocabList.entries];
+    if (state.personalVocabList.entries) {
+      state.personalVocabList.entries = [data.data, ...state.vocabList.entries];
     }
   },
   [PERSONAL_VOCAB_ENTRY_DELETE]: (state, data) => {
-    const index = state.vocabList.entries.findIndex((vocab) => vocab.id === data.id);
-    if (index >= 0) state.vocabList.entries.splice(index, 1);
+    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+  },
+  [PERSONAL_VOCAB_ENTRY_UPDATE_MANY]: (state, updatedEntries) => {
+    state.personalVocabList.entries = updatedEntries;
   },
 
   /* -------------------------------------------------------------------------- */

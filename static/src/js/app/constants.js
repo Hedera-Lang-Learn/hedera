@@ -33,6 +33,7 @@ export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetch
 export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
 export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
 export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
+export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY = 'personalVocabularyListEntry_updateMany';
 
 // vocab_list.VocabularyList
 export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';

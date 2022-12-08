@@ -20,6 +20,7 @@ import {
   PERSONAL_VOCAB_ENTRY_UPDATE,
   PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
   PERSONAL_VOCAB_LIST_FETCH,
+  PERSONAL_VOCAB_ENTRY_UPDATE_MANY,
   PROFILE_FETCH,
   PROFILE_SET_LANGUAGE_PREF,
   SUPPORTED_LANG_LIST_FETCH,
@@ -61,8 +62,8 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   [FORMS_FETCH]: async ({ commit }, { lang, form }) => {
-    const response = await api.form_fetch(lang, form);
-    commit(FORMS_FETCH, response);
+    const { data } = await api.form_fetch(lang, form);
+    commit(FORMS_FETCH, data.data);
   },
   // Note: might be slow to looks up partial matches
   [FORMS_FETCH_PARTIAL]: async ({ commit }, { lang, form }) => {
@@ -74,8 +75,8 @@ export default {
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
   [LEMMA_FETCH]: async ({ commit }, { id }) => {
-    const response = await api.lemma_fetch(id);
-    commit(LEMMA_FETCH, response);
+    const { data } = await api.lemma_fetch(id);
+    commit(LEMMA_FETCH, data.data);
   },
 
   /* -------------------------------------------------------------------------- */
@@ -106,8 +107,8 @@ export default {
     { id, tokenIndex, lemmaId, glossIds, resolved },
   ) => {
     // Fetch the most recent lemma data
-    const response = await api.lemma_fetch(lemmaId);
-    commit(LEMMA_FETCH, response);
+    const { data: lemmaData } = await api.lemma_fetch(lemmaId);
+    commit(LEMMA_FETCH, lemmaData.data);
     // Perform the API request to update the token data
     const { data } = await api.lemmatizedText_updateToken(
       id,
@@ -118,7 +119,7 @@ export default {
       glossIds,
       null,
     );
-    commit(LEMMATIZED_TEXT_UPDATE_TOKEN, data);
+    commit(LEMMATIZED_TEXT_UPDATE_TOKEN, data.data);
   },
 
   /* -------------------------------------------------------------------------- */
@@ -144,7 +145,7 @@ export default {
     const { data } = await api
       .personalVocabularyList_fetch(lang)
       .catch(logoutOnError(commit));
-    commit(VOCAB_LIST_UPDATE, data.data.personalVocabList);
+    commit(PERSONAL_VOCAB_LIST_FETCH, data.data.personalVocabList);
   },
   [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: async ({ commit }) => {
     const { data } = await api.personalVocabularyList_fetchLangList();
@@ -183,13 +184,13 @@ export default {
      * if the data was updated in paralell with the editing of the personal vocab entry.
      */
     const { entries } = data;
-    const { entries: localEntries } = state.vocabList;
+    const { entries: localEntries } = state.personalVocabList;
     const foundObj = entries.find((el) => el.id === entryId);
     const localEntryIndex = localEntries.findIndex((el) => el.id === entryId);
-    const updatedEntries = [...state.vocabList.entries];
+    const updatedEntries = [...state.personalVocabList.entries];
     updatedEntries[localEntryIndex] = foundObj;
 
-    commit(VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
+    commit(PERSONAL_VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
     return null;
   },
 
