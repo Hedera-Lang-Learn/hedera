@@ -26,7 +26,7 @@ describe('VocabPersonal', () => {
   const state = {
     supportedLanguages,
     personalVocabLangList: [{ lang: 'lat', id: 67 }],
-    vocabList: personalVocabList,
+    personalVocabList,
     vocabListType: 'personal',
   };
   beforeEach(() => {

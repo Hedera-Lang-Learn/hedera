@@ -13,6 +13,7 @@ export const LEMMA_FETCH = 'lemma_fetch';
 
 // lemmatized_text.LemmatizedText
 export const LEMMATIZED_TEXT_FETCH = 'lemmatizedText_fetch';
+export const LEMMATIZED_TEXT_FETCH_LIST = 'lemmatizedText_fetchList';
 export const LEMMATIZED_TEXT_FETCH_TOKENS = 'lemmatizedText_fetchTokens';
 export const LEMMATIZED_TEXT_SELECT_TOKEN = 'lemmatizedText_selectToken';
 export const LEMMATIZED_TEXT_SET_ID = 'lemmatizedText_setId';
@@ -32,6 +33,7 @@ export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetch
 export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
 export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
 export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
+export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY = 'personalVocabularyListEntry_updateMany';
 
 // vocab_list.VocabularyList
 export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';
