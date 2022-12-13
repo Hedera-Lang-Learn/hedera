@@ -1,6 +1,8 @@
+import json
 import logging
 import uuid
 from collections import defaultdict
+from html import escape
 
 from django.conf import settings
 from django.db import models
@@ -37,15 +39,10 @@ def parse_following(follower):
     return follower
 
 
-def format_token_key_value_pairs(token):
-    key_value_pairs = [f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")]
-    key_value_pairs.sort()
-    return " ".join(key_value_pairs)
-
-
 def transform_token_to_html(token):
+    token_data = {k: v for k, v in token.items() if k not in ("word", "following")}
     return (
-        f"<span {format_token_key_value_pairs(token)}>"
+        f'<span data-token="{escape(json.dumps(token_data))}">'
         f"{token['word']}</span><span follower='true'>"
         f"{parse_following(token['following'])}</span>")
 

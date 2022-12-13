@@ -1,3 +1,4 @@
+import json
 from html.parser import HTMLParser
 from io import StringIO
 
@@ -18,13 +19,12 @@ class EditedTextHtmlParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == "span":
             self.current_tag = "span"
-            self.current_attrs = dict(attrs)
+            self.current_attrs = json.loads(attrs["data-token"])
 
     def handle_endtag(self, tag):
         if "follower" in self.current_attrs:
             self.separate_true_followers(self.current_data)
         elif self.current_data is not None and self.current_tag is not None:
-            self.current_attrs["lemma_id"] = self.parse_lemma_id_value()
             self.lemmatized_text_data.append(
                 {
                     **self.current_attrs,
@@ -44,7 +44,7 @@ class EditedTextHtmlParser(HTMLParser):
                 if(
                     (self.current_tag is None) or
                     (self.current_tag == "span" and self.current_attrs == {}) or
-                    (self.parse_lemma_id_value() not in self.token_lemma_dict[data])
+                    (self.current_attrs["lemma_id"] not in self.token_lemma_dict[data])
                 ):
                     self.lemmatize_chunk(data)
                 else:
@@ -83,16 +83,6 @@ class EditedTextHtmlParser(HTMLParser):
             )
         if(len(text) > 0):
             self.lemmatize_chunk("".join(text))
-
-    def parse_lemma_id_value(self):
-        """
-        Parses the string lemma_id value in the current attrs to an integer.
-        Returns int, or None if there is an error
-        """
-        try:
-            return int(self.current_attrs["lemma_id"])
-        except (KeyError, ValueError):
-            return None
 
     def lemmatize_chunk(self, chunk):
         """
