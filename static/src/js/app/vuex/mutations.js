@@ -6,6 +6,7 @@ import {
   FORMS_FETCH,
   LEMMA_FETCH,
   LEMMATIZED_TEXT_FETCH_TOKENS,
+  LEMMATIZED_TEXT_FETCH_LIST,
   LEMMATIZED_TEXT_FETCH,
   LEMMATIZED_TEXT_SELECT_TOKEN,
   LEMMATIZED_TEXT_SET_ID,
@@ -15,6 +16,7 @@ import {
   PERSONAL_VOCAB_ENTRY_DELETE,
   PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
   PERSONAL_VOCAB_LIST_FETCH,
+  PERSONAL_VOCAB_ENTRY_UPDATE_MANY,
   PROFILE_FETCH,
   PROFILE_SET_LANGUAGE_PREF,
   SUPPORTED_LANG_LIST_FETCH,
@@ -43,10 +45,10 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   [FORMS_FETCH]: (state, data) => {
-    const form = data.data;
+    const { form } = data;
     state.forms = {
       ...state.forms,
-      [form.form]: form,
+      [form]: data,
     };
   },
   [FORMS_FETCH_PARTIAL]: (state, data) => {
@@ -58,7 +60,7 @@ export default {
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
   [LEMMA_FETCH]: (state, data) => {
-    const lemma = data.data;
+    const lemma = data;
     state.lemmas = {
       ...state.lemmas,
       [lemma.pk]: lemma,
@@ -68,11 +70,17 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
+  [LEMMATIZED_TEXT_FETCH_LIST]: (state, data) => {
+    state.texts = data.data.map((lemmatizedText) => ({
+      ...lemmatizedText.text,
+      stats: lemmatizedText.stats,
+    }));
+  },
   [LEMMATIZED_TEXT_FETCH]: (state, data) => {
-    state.text = data;
+    state.text = data.data;
   },
   [LEMMATIZED_TEXT_FETCH_TOKENS]: (state, data) => {
-    state.tokens = data;
+    state.tokens = data.data;
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: (state, { token, data }) => {
     state.selectedToken = token;
@@ -96,14 +104,14 @@ export default {
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
   [BOOKMARK_LIST]: (state, data) => {
-    state.bookmarks = data;
+    state.bookmarks = data.data;
   },
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
   [PERSONAL_VOCAB_LIST_FETCH]: (state, data) => {
-    state.vocabList = data;
+    state.personalVocabList = data;
   },
   [PERSONAL_VOCAB_LIST_FETCH_LANG_LIST]: (state, data) => {
     state.personalVocabLangList = data;
@@ -114,13 +122,16 @@ export default {
   /* -------------------------------------------------------------------------- */
   [PERSONAL_VOCAB_ENTRY_CREATE]: (state, data) => {
     state.vocabAdded = data.created;
-    if (state.vocabList.entries) {
-      state.vocabList.entries = [data.data, ...state.vocabList.entries];
+    if (state.personalVocabList.entries) {
+      state.personalVocabList.entries = [data.data, ...state.personalVocabList.entries];
     }
   },
   [PERSONAL_VOCAB_ENTRY_DELETE]: (state, data) => {
-    const index = state.vocabList.entries.findIndex((vocab) => vocab.id === data.id);
-    if (index >= 0) state.vocabList.entries.splice(index, 1);
+    const index = state.personalVocabList.entries.findIndex((vocab) => vocab.id === data.id);
+    if (index >= 0) state.personalVocabList.entries.splice(index, 1);
+  },
+  [PERSONAL_VOCAB_ENTRY_UPDATE_MANY]: (state, updatedEntries) => {
+    state.personalVocabList.entries = updatedEntries;
   },
 
   /* -------------------------------------------------------------------------- */
@@ -163,7 +174,7 @@ export default {
   /*                            Not accessing a model                           */
   /* -------------------------------------------------------------------------- */
   [SUPPORTED_LANG_LIST_FETCH]: (state, data) => {
-    state.supportedLanguages = data;
+    state.supportedLanguages = data.data;
   },
 
   /* -------------------------------------------------------------------------- */

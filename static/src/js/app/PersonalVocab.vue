@@ -380,6 +380,9 @@
       },
       vocabList() {
         // Retrieve vocab list from state
+        if (this.isPersonal) {
+          return this.$store.state.personalVocabList;
+        }
         return this.$store.state.vocabList;
       },
       vocabEntries() {
