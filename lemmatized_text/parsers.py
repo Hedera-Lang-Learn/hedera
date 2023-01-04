@@ -18,6 +18,7 @@ class EditedTextHtmlParser(HTMLParser):
         return super().__init__()
 
     def handle_starttag(self, tag, attrs):
+        print("****attrs", attrs)
         if tag == "span":
             self.current_tag = "span"
             """
@@ -34,12 +35,34 @@ class EditedTextHtmlParser(HTMLParser):
 
     def handle_endtag(self, tag):
         # Add new initial if self.initial is set
-        if len(self.lemmatized_text_data) == 1 and self.initial:
-            lemmatized_text_data_initial = self.lemmatized_text_data[0]["initial"]
-            if lemmatized_text_data_initial != self.initial:
-                lemmatized_text_data_initial = self.initial
-                # Reset self.initial
-                self.initial = ""
+        print(" self.current_attrs", self.current_attrs, len(self.lemmatized_text_data))
+        # if len(self.lemmatized_text_data) == 1 and self.initial:
+        #     """
+        #     Case 1: Edited text has only new lines ex: original: "", edited: "\r\n"
+        #         - Over write initial with newlines - add to self.lemmatized_text_data[0]["initial"]
+        #     Case 2: Edited text replaces new lines with puncuation ex: original: "\r\n", edited: "!"
+        #         - Should not hit conditional since self.initial will be empty
+        #     Case 3: Edited text has new lines and puncutation ex: original: "\r\n", edited: "\r\n!"
+        #         - add initial "\r\n\" to "!"(self.lemmatized_text_data[0]["initial"]) - lemmatized_text_data has initial already
+        #     Case 4: Edited text has new lines and puncutation ex: original: "", edited: "\r\n!"
+        #         - add initial "\r\n\" to "!"(self.lemmatized_text_data[0]["initial"])
+        #     **Case 5: Edited text has new lines and puncutation ex: original: "\r\n!", edited: "\r\n"
+        #         - we cannot add initial "\r\n\" to self.lemmatized_text_data[0]["initial"] because this will create "\r\n\r\n!"
+        #         - How do we know if there was an edit made that excludes the "!" self.initial only cares about "\r\n"
+        #     """
+        #     lemmatized_text_data_initial = self.lemmatized_text_data[0]["initial"]
+        #     if lemmatized_text_data_initial != self.initial and not lemmatized_text_data_initial:
+        #         # if lemmatized_text_data_initial doesnt equal and lemmatized_text_data_initial
+        #         print("if lemmatized_text_data_initial",repr(self.lemmatized_text_data[0]["initial"]))
+        #         print("self.initial", repr(self.initial))
+        #         self.lemmatized_text_data[0]["initial"] = self.initial
+        #         # Reset self.initial
+        #     else:
+        #         self.lemmatized_text_data[0]["initial"] = lemmatized_text_data_initial + self.initial
+        #         print("elif lemmatized_text_data_initial", repr(self.lemmatized_text_data[0]["initial"]))
+        #         print("self.initial", repr(self.initial))
+        #     self.initial = ""
+
         if "follower" in self.current_attrs:
             self.separate_true_followers(self.current_data)
         #Note: sometimes the current_tag/self.current_attrs will be empty/None when there is a newline/break
@@ -67,6 +90,7 @@ class EditedTextHtmlParser(HTMLParser):
                 ):
                     self.lemmatize_chunk(data)
                 else:
+                    # print("handle_data else", data)
                     self.current_data = data
             except KeyError:
                 self.lemmatize_chunk(data)
@@ -125,8 +149,9 @@ class EditedTextHtmlParser(HTMLParser):
                 self.lemmatized_text_data[-1]["following"] = f"{following}{chunk}"
         # EDGE CASE: Newlines/breaks that may happen at the very beginning of the text
         # Pull out beginning new lines and add to self.initial
-        else:
-            self.initial = chunk
+        # else:
+            # print("self.initial chunk=", repr(chunk))
+            # self.initial = chunk
 
 
 class TagStripper(HTMLParser):

@@ -23,6 +23,7 @@ GLOSSED_MANUAL = "glossed-manual"
 class Lemmatizer(object):
 
     def __init__(self, lang, cb=None, force_refresh=False):
+        self.initial = ""
         self.lang = lang
         self.cb = cb
         self.force_refresh = force_refresh
@@ -55,13 +56,13 @@ class Lemmatizer(object):
         tokens = list(self._tokenize(text))
         tokens = self._preprocess(tokens)
         total_count = len(tokens)
-        initial = ""
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
             lemma_id = None
             gloss_ids = []
             glossed = GLOSSED_NA
             resolved = RESOLVED_NA
+            print("for loop self.initial", repr(self.initial), token)
             if word_normalized:
                 lemma_names = self._lemmatize(word, word_normalized)
                 lemma_entries = Lemma.objects.filter(lang=self.lang, lemma__in=lemma_names).order_by("rank")
@@ -92,15 +93,16 @@ class Lemmatizer(object):
                     gloss_ids=gloss_ids,
                     glossed=glossed,
                     resolved=resolved,
-                    initial=initial
+                    initial=self.initial
                 ))
-                # reset initial
-                if initial:
-                    initial = ""
-            # if first token set initial variable that will get passed to the next iteration of the loop
+                print("result[-1]", result[-1])
+                # reset self.initial
+                if self.initial:
+                    self.initial = ""
+            # if first token set self.initial variable that will get passed to the next iteration of the loop
             # Special case: white space or puncuation before first word(ex:sum, edo) in the text
             elif index == 0 and following:
-                initial = following
+                self.initial += following
 
             self._report_progress(index, total_count)
         return result
