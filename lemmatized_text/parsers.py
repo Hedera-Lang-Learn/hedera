@@ -18,7 +18,6 @@ class EditedTextHtmlParser(HTMLParser):
         return super().__init__()
 
     def handle_starttag(self, tag, attrs):
-        print("****attrs", attrs)
         if tag == "span":
             self.current_tag = "span"
             """
@@ -61,7 +60,6 @@ class EditedTextHtmlParser(HTMLParser):
                 ):
                     self.lemmatize_chunk(data)
                 else:
-                    # print("handle_data else", data)
                     self.current_data = data
             except KeyError:
                 self.lemmatize_chunk(data)
