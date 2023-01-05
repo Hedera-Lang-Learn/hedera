@@ -2,7 +2,7 @@ test_lemmatized_text = [
     {
         "word": "Arma",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1372,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -11,7 +11,7 @@ test_lemmatized_text = [
     {
         "word": "virum",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1310,
         "resolved": "no-lemma",
         "following": "",
         "gloss_ids": [],
@@ -20,7 +20,7 @@ test_lemmatized_text = [
     {
         "word": "que",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1068,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -29,7 +29,7 @@ test_lemmatized_text = [
     {
         "word": "canō",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1913,
         "resolved": "no-lemma",
         "following": ", ",
         "gloss_ids": [],
@@ -38,7 +38,7 @@ test_lemmatized_text = [
     {
         "word": "Trōiae",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 50164,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -47,7 +47,7 @@ test_lemmatized_text = [
     {
         "word": "quī",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 41276,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -56,7 +56,7 @@ test_lemmatized_text = [
     {
         "word": "prīmus",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1280,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -65,7 +65,7 @@ test_lemmatized_text = [
     {
         "word": "ab",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1239,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -74,7 +74,7 @@ test_lemmatized_text = [
     {
         "word": "ōrīs",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1415,
         "resolved": "no-lemma",
         "following": "\r\n",
         "gloss_ids": [],
@@ -83,7 +83,7 @@ test_lemmatized_text = [
     {
         "word": "Ītaliam",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 27293,
         "resolved": "no-lemma",
         "following": ", ",
         "gloss_ids": [],
@@ -92,7 +92,7 @@ test_lemmatized_text = [
     {
         "word": "fātō",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1585,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -101,7 +101,7 @@ test_lemmatized_text = [
     {
         "word": "profugus",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 39952,
         "resolved": "no-lemma",
         "following": ", ",
         "gloss_ids": [],
@@ -119,7 +119,7 @@ test_lemmatized_text = [
     {
         "word": "vēnit",
         "glossed": "na",
-        "lemma_id": None,
+        "lemma_id": 1299,
         "resolved": "no-lemma",
         "following": " ",
         "gloss_ids": [],
@@ -127,4 +127,4 @@ test_lemmatized_text = [
     },
 ]
 test_original_text = """Arma virumque canō, Trōiae quī prīmus ab ōrīs\r\nĪtaliam, fātō profugus, Lāvīniaque vēnit"""
-test_original_text_html = '<p><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="Arma">Arma</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="virum">virum</span><span follower="true"></span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="que">que</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="cano">canō</span><span follower="true">, </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="Troiae">Trōiae</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="qui">quī</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="primus">prīmus</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="ab">ab</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="oris">ōrīs</span><span follower="true"><br/></span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="Italiam">Ītaliam</span><span follower="true">, </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="fato">fātō</span><span follower="true"> </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="profugus">profugus</span><span follower="true">, </span><span gloss_ids="[]" glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="Laviniaque">Lāvīniaque</span><span follower="true"> </span><span gloss_ids=[] glossed="na" lemma_id="None" resolved="no-lemma" word_normalized="venit">vēnit</span><span follower="true"> </span></p>'
+test_original_text_html = '<span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1372, &quot;resolved&quot;: &quot;resolved-automatic&quot;, &quot;gloss_ids&quot;: &quot;[84128, 68154]&quot;, &quot;word_normalized&quot;: &quot;Arma&quot;}">Arma</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1310, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[83435, 86346]&quot;, &quot;word_normalized&quot;: &quot;virum&quot;}">virum</span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1068, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[79758]&quot;, &quot;word_normalized&quot;: &quot;que&quot;}">que</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1913, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[68837]&quot;, &quot;word_normalized&quot;: &quot;cano&quot;}">canō</span><span follower="true">, </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 50164, &quot;resolved&quot;: &quot;resolved-automatic&quot;, &quot;gloss_ids&quot;: &quot;[82748]&quot;, &quot;word_normalized&quot;: &quot;Troiae&quot;}">Trōiae</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 41276, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[79774]&quot;, &quot;word_normalized&quot;: &quot;qui&quot;}">quī</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1280, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[85717, 79130]&quot;, &quot;word_normalized&quot;: &quot;primus&quot;}">prīmus</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1239, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[83603, 83604, 66883]&quot;, &quot;word_normalized&quot;: &quot;ab&quot;}">ab</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1415, &quot;resolved&quot;: &quot;resolved-automatic&quot;, &quot;gloss_ids&quot;: &quot;[85502, 77462]&quot;, &quot;word_normalized&quot;: &quot;oris&quot;}">ōrīs</span><br /><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 27293, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[85202]&quot;, &quot;word_normalized&quot;: &quot;Italiam&quot;}">Ītaliam</span><span follower="true">, </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1585, &quot;resolved&quot;: &quot;resolved-automatic&quot;, &quot;gloss_ids&quot;: &quot;[72637, 85017]&quot;, &quot;word_normalized&quot;: &quot;fato&quot;}">fātō</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 39952, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[79267]&quot;, &quot;word_normalized&quot;: &quot;profugus&quot;}">profugus</span><span follower="true">, </span><span data-token="{&quot;glossed&quot;: &quot;na&quot;, &quot;lemma_id&quot;: null, &quot;resolved&quot;: &quot;no-lemma&quot;, &quot;gloss_ids&quot;: &quot;[]&quot;, &quot;word_normalized&quot;: &quot;Laviniaque&quot;}">Lāvīniaque</span><span follower="true"> </span><span data-token="{&quot;glossed&quot;: &quot;glossed-automatic&quot;, &quot;lemma_id&quot;: 1299, &quot;resolved&quot;: &quot;no-ambiguity&quot;, &quot;gloss_ids&quot;: &quot;[83198]&quot;, &quot;word_normalized&quot;: &quot;venit&quot;}">vēnit</span>'
