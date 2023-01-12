@@ -1,4 +1,4 @@
-FROM python:3.7 AS prod
+FROM python:3.10 AS prod
 
 # Upgrade pip
 RUN pip install --upgrade pip
