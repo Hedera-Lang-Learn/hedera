@@ -237,8 +237,8 @@ class LemmatizedText(models.Model):
 
     def handle_edited_data(self, title, edits):
         self.title = title
-
-        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
+        # Note: Modified with the carriage return and new line to match newline edits we test in LemmatizedTextTests. This should not impact the application
+        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\r\n")
         edit_parser = EditedTextHtmlParser(
             token_lemma_dict=self.token_lemma_dict(),
             lang=self.lang
