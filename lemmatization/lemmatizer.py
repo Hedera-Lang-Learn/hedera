@@ -55,6 +55,7 @@ class Lemmatizer(object):
         tokens = list(self._tokenize(text))
         tokens = self._preprocess(tokens)
         total_count = len(tokens)
+        initial = ""
         for index, token in enumerate(tokens):
             word, word_normalized, following = token
             lemma_id = None
@@ -82,15 +83,24 @@ class Lemmatizer(object):
                 if lemma_id:
                     gloss_ids = [gloss.pk for gloss in lemma_entries[0].glosses.all()]
                     glossed = GLOSSED_AUTOMATIC
+                # Initial is added to first "real" word
+                result.append(dict(
+                    word=word,
+                    word_normalized=word_normalized,
+                    following=following,
+                    lemma_id=lemma_id,
+                    gloss_ids=gloss_ids,
+                    glossed=glossed,
+                    resolved=resolved,
+                    initial=initial
+                ))
+                # reset initial
+                if initial:
+                    initial = ""
+            # if first token set initial variable that will get passed to the next iteration of the loop
+            # Special case: white space or puncuation before first word(ex:sum, edo) in the text
+            elif index == 0 and following:
+                initial = following
 
-            result.append(dict(
-                word=word,
-                word_normalized=word_normalized,
-                following=following,
-                lemma_id=lemma_id,
-                gloss_ids=gloss_ids,
-                glossed=glossed,
-                resolved=resolved
-            ))
             self._report_progress(index, total_count)
         return result
