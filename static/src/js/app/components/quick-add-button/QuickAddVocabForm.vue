@@ -325,7 +325,8 @@
       },
       isPersonal() {
         // Return a boolean for whether or not the current vocab list is a personal vocab list.
-        return this.vocabListType === 'personal';
+        // Added secondary parameter in case vocabListType is null(Ex: Dashboard or nav bar)
+        return this.vocabListType === 'personal' || !this.vocabListType;
       },
       vocabularyListId() {
         // Get vocab list ID from state. Should be set from Vocab component on
