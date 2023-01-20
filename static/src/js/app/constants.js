@@ -43,7 +43,7 @@ export const VOCAB_LIST_SET_TYPE = 'vocabularyList_setType';
 export const VOCAB_LIST_UPDATE = 'vocabularyList_update';
 
 // vocab_list.VocabularyListEntry
-export const VOCAB_ENTRY_CREATE = 'vocabularyListEntry_delete';
+export const VOCAB_ENTRY_CREATE = 'vocabularyListEntry_create';
 export const VOCAB_ENTRY_DELETE = 'vocabularyListEntry_delete';
 export const VOCAB_ENTRY_UPDATE = 'vocabularyListEntry_update';
 export const VOCAB_ENTRY_UPDATE_MANY = 'vocabularyListEntry_updateMany';

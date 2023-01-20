@@ -65,10 +65,15 @@
             @change="onSelect"
             :value="lemma.pk"
             :id="`lemma-option-${lemma.pk}`"
-          >
+          />
           <label :for="`lemma-option-${lemma.pk}`">
-            <span class="lemma-label" aria-label="headword">{{ lemma.label.replace(/[0-9]/g, "") }}</span>
-             - <span class="lemma-gloss" aria-label="gloss">{{ (lemma.glosses.length) ? lemma.glosses[0].gloss : "" }}</span>
+            <span class="lemma-label" aria-label="headword">{{
+              lemma.label.replace(/[0-9]/g, "")
+            }}</span>
+            -
+            <span class="lemma-gloss" aria-label="gloss">{{
+              lemma.glosses.length ? lemma.glosses[0].gloss : ""
+            }}</span>
           </label>
         </div>
       </div>
@@ -88,7 +93,8 @@
       role="alert"
       v-show="showSuccesAlert"
     >
-      Successfully added Vocabulary Word!
+      Successfully added Vocabulary Word to
+      {{ this.isPersonal ? "Personal" : "" }} Vocabulary List!
     </div>
     <div class="alert alert-info" role="alert" v-show="showUnsuccessfulAlert">
       {{ errorMessage }}
@@ -268,10 +274,15 @@
 
         // Get headword from database if it isn't already in state
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
-        if (!Object.prototype.hasOwnProperty.call(this.$store.state.forms, this.headword)) {
+        if (
+          !Object.prototype.hasOwnProperty.call(
+            this.$store.state.forms,
+            this.headword,
+          )
+        ) {
           await this.$store.dispatch(FORMS_FETCH, {
             form: this.headword,
-            lang: this.vocabularyListLang,
+            lang: this.vocabularyListLang || this.vocabularyListItem.lang,
           });
         }
 
@@ -279,7 +290,7 @@
         try {
           this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
         } catch (error) {
-          "This is fine actually? It'll keep trying to access state until it succeeds."; // eslint-disable-line
+        ("This is fine actually? It'll keep trying to access state until it succeeds."); // eslint-disable-line
         }
         // sets first lemma option as the default in select options
         if (this.lemmaOptions.length) {
@@ -294,11 +305,19 @@
        */
       async onSelect(event) {
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
-        if (!Object.prototype.hasOwnProperty.call(this.$store.state.lemmas, event.target.value)) {
+        if (
+          !Object.prototype.hasOwnProperty.call(
+            this.$store.state.lemmas,
+            event.target.value,
+          )
+        ) {
           await this.$store.dispatch(LEMMA_FETCH, { id: event.target.value });
         }
-        const lemma = this.$store.state.lemmas[event.target.value];
-        this.definition = lemma.glosses.length ? lemma.glosses[0].gloss : '';
+        const lemmaObj = this.$store.state.lemmas[event.target.value];
+        this.definition = lemmaObj.glosses.length
+          ? lemmaObj.glosses[0].gloss
+          : '';
+        this.headword = lemmaObj.lemma;
       },
     },
     computed: {
@@ -326,7 +345,7 @@
       isPersonal() {
         // Return a boolean for whether or not the current vocab list is a personal vocab list.
         // Added secondary parameter in case vocabListType is null(Ex: Dashboard or nav bar)
-        return this.vocabListType === 'personal' || !this.vocabListType;
+        return this.vocabListType === 'personal';
       },
       vocabularyListId() {
         // Get vocab list ID from state. Should be set from Vocab component on

@@ -84,5 +84,7 @@ export default () => {
   load('vocab-app', PersonalVocab, null, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
-  load('quick-add', QuickAddButton, null, () => {});
+  load('quick-add', QuickAddButton, null, () => ({
+    personalVocab: true,
+  }));
 };
