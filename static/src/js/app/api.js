@@ -16,7 +16,13 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   form_fetch: (lang, form) => axios.get(`${BASE_URL}lemmatization/forms/${lang}/${encodeURIComponent(form)}/`),
-  form_fetchPartial: (lang, form) => axios.get(`${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(form)}/`),
+  form_fetchPartial: (lang, form) => axios
+    .get(
+      `${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(
+        form,
+      )}/`,
+    )
+    .then((r) => r.data),
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Lemma                            */
@@ -81,6 +87,7 @@ export default {
     let data = {
       familiarity, headword, definition, lemmaId,
     };
+    console.log((lang !== null && entryId !== null), (entryId !== null));
     if (lang !== null && entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then((r) => r.data).catch((error) => error);
     }
