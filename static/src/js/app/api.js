@@ -87,7 +87,6 @@ export default {
     let data = {
       familiarity, headword, definition, lemmaId,
     };
-    console.log((lang !== null && entryId !== null), (entryId !== null));
     if (lang !== null && entryId !== null) {
       return axios.post(`${BASE_URL}personal_vocab_list/${entryId}/?lang=${lang}`, data).then((r) => r.data).catch((error) => error);
     }
