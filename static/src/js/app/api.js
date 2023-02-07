@@ -16,7 +16,13 @@ export default {
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
   form_fetch: (lang, form) => axios.get(`${BASE_URL}lemmatization/forms/${lang}/${encodeURIComponent(form)}/`),
-  form_fetchPartial: (lang, form) => axios.get(`${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(form)}/`),
+  form_fetchPartial: (lang, form) => axios
+    .get(
+      `${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(
+        form,
+      )}/`,
+    )
+    .then((r) => r.data),
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Lemma                            */
