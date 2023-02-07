@@ -1,6 +1,8 @@
+import json
 import logging
 import uuid
 from collections import defaultdict
+from html import escape
 
 from django.conf import settings
 from django.db import models
@@ -25,18 +27,22 @@ def to_percent(val):
 
 
 def parse_following(follower):
-    return follower.replace("\n", "<br/>")
-
-
-def format_token_key_value_pairs(token):
-    key_value_pairs = [f"{k}='{v}'" for k, v in token.items() if k not in ("word", "following")]
-    key_value_pairs.sort()
-    return " ".join(key_value_pairs)
+    """
+    Used to parse new lines and carriage returns in the following tokens
+    Ex: "\r\n\n\n" => "<br/><br/><br/>"
+    Note: We are mutating the follower tokens
+    """
+    if "\r\n" in follower:
+        follower = follower.replace("\r\n", "<br/>")
+    if "\n" in follower:
+        follower = follower.replace("\n", "<br/>")
+    return follower
 
 
 def transform_token_to_html(token):
+    token_data = {k: v for k, v in token.items() if k not in ("word", "following")}
     return (
-        f"<span {format_token_key_value_pairs(token)}>"
+        f'<span data-token="{escape(json.dumps(token_data))}">'
         f"{token['word']}</span><span follower='true'>"
         f"{parse_following(token['following'])}</span>")
 
@@ -231,8 +237,8 @@ class LemmatizedText(models.Model):
 
     def handle_edited_data(self, title, edits):
         self.title = title
-
-        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\n")
+        # Note: Modified with the carriage return and new line to match newline edits we test in LemmatizedTextTests. This should not impact the application
+        cleaned_edits = edits.replace("<p>", "").replace("</p>", "<br/>").replace("<br/>", "\r\n")
         edit_parser = EditedTextHtmlParser(
             token_lemma_dict=self.token_lemma_dict(),
             lang=self.lang

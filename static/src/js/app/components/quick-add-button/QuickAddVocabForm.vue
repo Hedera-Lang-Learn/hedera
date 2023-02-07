@@ -1,17 +1,17 @@
 <template>
   <div class="form-group">
     <form id="addvocab-form" v-on:submit.prevent>
-      <label for="FormControlSelect"
-        >Select Language of Your Personal Vocabulary List</label
+      <label v-if="isPersonal" for="FormControlSelect"
+        >Select Language of Your Vocabulary List</label
       >
       <select
+        v-if="isPersonal"
         v-model="vocabularyListItem"
         class="form-control mb-2"
         id="FormControlSelect"
         aria-label="language List"
         ref="select"
         required
-        @change="resetLatticeNodeId()"
       >
         <option
           v-for="langItem in personalVocabLangList"
@@ -23,6 +23,7 @@
       </select>
       <div class="d-flex">
         <input
+          id="quick-add-form-headword-entry"
           class="form-control mt-2"
           type="text"
           placeholder="headword"
@@ -37,10 +38,9 @@
           placeholder="definition"
           aria-label="definition"
           v-model="definition"
-          @change="resetLatticeNodeId()"
           required
         />
-        <div class="flex-column ml-2">
+        <div v-if="isPersonal" class="flex-column ml-2">
           <label class="mb-0" for="FamiliarityRating">Familiarity</label>
           <FamiliarityRating
             id="FamiliarityRating"
@@ -55,6 +55,7 @@
       <div class="lemma-options-container" v-if="lemmaOptions.length">
         <label for="lemma-select">Linked definition</label>
         <div
+          id="lemma-options-inputs"
           v-for="lemma in lemmaOptions"
           :key="lemma.pk"
         >
@@ -64,10 +65,15 @@
             @change="onSelect"
             :value="lemma.pk"
             :id="`lemma-option-${lemma.pk}`"
-          >
+          />
           <label :for="`lemma-option-${lemma.pk}`">
-            <span class="lemma-label" aria-label="headword">{{ lemma.label.replace(/[0-9]/g, "") }}</span>
-             - <span class="lemma-gloss" aria-label="gloss">{{ (lemma.glosses.length) ? lemma.glosses[0].gloss : "" }}</span>
+            <span class="lemma-label" aria-label="headword">{{
+              lemma.label.replace(/[0-9]/g, "")
+            }}</span>
+            -
+            <span class="lemma-gloss" aria-label="gloss">{{
+              lemma.glosses.length ? lemma.glosses[0].gloss : ""
+            }}</span>
           </label>
         </div>
       </div>
@@ -87,7 +93,8 @@
       role="alert"
       v-show="showSuccesAlert"
     >
-      Successfully added Vocabulary Word!
+      Successfully added Vocabulary Word to
+      {{ this.isPersonal ? "Personal" : "" }} Vocabulary List!
     </div>
     <div class="alert alert-info" role="alert" v-show="showUnsuccessfulAlert">
       {{ errorMessage }}
@@ -97,13 +104,14 @@
 
 <script>
   import {
-    FETCH_PERSONAL_VOCAB_LANG_LIST,
-    CREATE_PERSONAL_VOCAB_ENTRY,
-    SET_LANGUAGE_PREF,
-    FETCH_SUPPORTED_LANG_LIST,
-    FETCH_ME,
-    FETCH_LEMMAS_BY_FORM,
-    FETCH_LEMMA,
+    PERSONAL_VOCAB_LIST_FETCH_LANG_LIST,
+    PERSONAL_VOCAB_ENTRY_CREATE,
+    PROFILE_SET_LANGUAGE_PREF,
+    SUPPORTED_LANG_LIST_FETCH,
+    PROFILE_FETCH,
+    FORMS_FETCH,
+    LEMMA_FETCH,
+    VOCAB_ENTRY_CREATE,
   } from '../../constants';
   import FamiliarityRating from '../../modules/FamiliarityRating.vue';
 
@@ -112,22 +120,31 @@
     props: ['currentLangTab'],
     // on creation of the dom element fetch the list of langauages/ids the user has in their personal vocab list
     async created() {
-      await this.$store.dispatch(FETCH_PERSONAL_VOCAB_LANG_LIST);
+      await this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH_LANG_LIST);
       /**
       need to fetch supported languages and profile due to django templates causing vuex state to not persistant
       ex: navigation and personal vocab templates
-     * */
-      await this.$store.dispatch(FETCH_ME);
-      await this.$store.dispatch(FETCH_SUPPORTED_LANG_LIST);
-      // set pref language
-      if (this.$store.state.me && this.$store.state.me.lang) {
-        const foundLangListItem = this.personalVocabLangList.find(
-          (ele) => ele.lang === this.$store.state.me.lang,
-        );
-        this.vocabularyListItem = foundLangListItem || this.personalVocabLangList[0];
-      } else {
-        const [langItem] = this.personalVocabLangList;
-        this.vocabularyListItem = langItem;
+       */
+      await this.$store.dispatch(PROFILE_FETCH);
+      await this.$store.dispatch(SUPPORTED_LANG_LIST_FETCH);
+      // set pref language for personal vocab lists
+      if (this.isPersonal) {
+        if (this.$store.state.me && this.$store.state.me.lang) {
+          const foundLangListItem = this.personalVocabLangList.find(
+            (ele) => ele.lang === this.$store.state.me.lang,
+          );
+          this.vocabularyListItem = foundLangListItem || this.personalVocabLangList[0];
+        } else {
+          const [langItem] = this.personalVocabLangList;
+          this.vocabularyListItem = langItem;
+        }
+        // change language option to what the currently selected tab on PersonalVocab.vue
+        if (this.currentLangTab) {
+          const foundLangListItem = this.personalVocabLangList.find(
+            (ele) => ele.lang === this.currentLangTab,
+          );
+          this.vocabularyListItem = foundLangListItem;
+        }
       }
       // change language option to what the currently selected tab on PersonalVocab.vue
       if (this.currentLangTab) {
@@ -157,9 +174,6 @@
       onRatingChange(rating) {
         this.familiarityRating = rating;
       },
-      resetLatticeNodeId() {
-        this.latticeNodeId = null;
-      },
       /*
       Handle form submission. This should add a new vocab entry and link it
       to the selected lemma.
@@ -170,46 +184,62 @@
         this.submitting = true;
 
         const { headword, definition, vocabularyListItem } = this;
+
+        // If headword and definition are empty, don't do anything on submit
         if (!headword || !definition) {
           this.submitting = false;
           return;
         }
 
+        // Prepare object to pass to action for creating new entry
         const newEntryData = {
           headword,
           definition,
-          vocabularyListId: vocabularyListItem.id,
-          familiarity: this.familiarityRating,
-          lang: vocabularyListItem.lang,
+          vocabularyListId: this.vocabularyListId,
+          lang: null,
+          familiarity: null,
           lemmaId: null,
         };
         if (this.lemmaId) {
           newEntryData.lemmaId = this.lemmaId;
         }
-        await this.$store.dispatch(CREATE_PERSONAL_VOCAB_ENTRY, newEntryData);
+        if (this.vocabListType === 'personal') {
+          newEntryData.familiarity = this.familiarityRating;
+          newEntryData.lang = vocabularyListItem.lang;
+          await this.$store.dispatch(PERSONAL_VOCAB_ENTRY_CREATE, newEntryData);
+        } else {
+          await this.$store.dispatch(VOCAB_ENTRY_CREATE, newEntryData);
+        }
 
-        if (this.$store.state.personalVocabAdded) {
+        // Clear component variables on successful submit, or report an error
+        if (this.$store.state.vocabAdded) {
           this.headword = null;
           this.definition = null;
           this.lemmaOptions = [];
           this.lemmaId = null;
           this.showSuccesAlert = true;
         } else {
+          this.errorMessage = 'The process of adding a vocab entry did not report a success.';
           this.showUnsuccessfulAlert = true;
         }
-        // updates pref language on form submit
-        if (vocabularyListItem) {
+
+        // updates pref language on form submit, only relevant to personal vocab
+        if (this.isPersonal && vocabularyListItem) {
           const prefLang = this.$store.state.personalVocabLangList.find(
             (ele) => ele.lang === vocabularyListItem.lang,
           );
           if (prefLang && prefLang.lang !== this.$store.state.me.lang) {
-            await this.$store.dispatch(SET_LANGUAGE_PREF, {
+            await this.$store.dispatch(PROFILE_SET_LANGUAGE_PREF, {
               lang: prefLang.lang,
             });
           }
         }
         this.submitting = false;
       },
+      /*
+      Get the human-readable label for a language from stat by looking up its
+      language code.
+       */
       formatLang(lang) {
         const { supportedLanguages } = this.$store.state;
         const found = supportedLanguages.find((ele) => ele[0] === lang);
@@ -244,20 +274,23 @@
 
         // Get headword from database if it isn't already in state
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
-        if (!Object.prototype.hasOwnProperty.call(this.$store.state.forms, this.headword)) {
-          await this.$store.dispatch(FETCH_LEMMAS_BY_FORM, {
+        if (
+          !Object.prototype.hasOwnProperty.call(
+            this.$store.state.forms,
+            this.headword,
+          )
+        ) {
+          await this.$store.dispatch(FORMS_FETCH, {
             form: this.headword,
-            lang: this.vocabularyListItem.lang,
+            lang: this.vocabularyListLang || this.vocabularyListItem.lang,
           });
         }
 
         // Get the fetched lemmas from the forms in state
-        // TODO: there is a race condition happening here because state is
-        // being accessed before it has been modified if you type too fast.
         try {
           this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
         } catch (error) {
-          "This is fine actually? It'll keep trying to access state until it succeeds."; // eslint-disable-line
+        ("This is fine actually? It'll keep trying to access state until it succeeds."); // eslint-disable-line
         }
         // sets first lemma option as the default in select options
         if (this.lemmaOptions.length) {
@@ -272,11 +305,19 @@
        */
       async onSelect(event) {
         // Note: Node v14.X does not have a function called Object.hasOwn so converted to hasOwnProperty
-        if (!Object.prototype.hasOwnProperty.call(this.$store.state.lemmas, event.target.value)) {
-          await this.$store.dispatch(FETCH_LEMMA, { id: event.target.value });
+        if (
+          !Object.prototype.hasOwnProperty.call(
+            this.$store.state.lemmas,
+            event.target.value,
+          )
+        ) {
+          await this.$store.dispatch(LEMMA_FETCH, { id: event.target.value });
         }
-        const lemma = this.$store.state.lemmas[event.target.value];
-        this.definition = lemma.glosses[0].gloss;
+        const lemmaObj = this.$store.state.lemmas[event.target.value];
+        this.definition = lemmaObj.glosses.length
+          ? lemmaObj.glosses[0].gloss
+          : '';
+        this.headword = lemmaObj.lemma;
       },
     },
     computed: {
@@ -296,6 +337,23 @@
           return found;
         });
         return formattedPersonalVocabList;
+      },
+      vocabListType() {
+        // Get vocab list type from state. Should be set from Vocab component.
+        return this.$store.state.vocabListType;
+      },
+      isPersonal() {
+        // Return a boolean for whether or not the current vocab list is a personal vocab list.
+        return this.vocabListType === 'personal';
+      },
+      vocabularyListId() {
+        // Get vocab list ID from state. Should be set from Vocab component on
+        // load, regardless of vocab list type.
+        return this.$store.state.vocabList.id;
+      },
+      vocabularyListLang() {
+        // Get vocab list language from vocabList in state
+        return this.$store.state.vocabList.lang;
       },
     },
   };

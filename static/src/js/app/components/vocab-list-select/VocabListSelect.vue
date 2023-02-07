@@ -15,7 +15,7 @@
 </template>
 
 <script>
-  import { SET_VOCAB_LIST } from '../../constants';
+  import { VOCAB_LIST_SET } from '../../constants';
   import VocabListEntry from './VocabListEntry.vue';
   import VocabListSelectedEntry from './VocabListSelectedEntry.vue';
 
@@ -32,7 +32,7 @@
     },
     methods: {
       onSelect(id) {
-        this.$store.dispatch(SET_VOCAB_LIST, id).then(() => { this.open = false; });
+        this.$store.dispatch(VOCAB_LIST_SET, id).then(() => { this.open = false; });
       },
     },
   };

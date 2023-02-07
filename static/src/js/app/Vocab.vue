@@ -34,7 +34,7 @@
   import api from './api';
   import VocabularyLemma from './modules/VocabularyLemma.vue';
   import VocabListTable from './components/vocab-list-table';
-  import { FETCH_LEMMA, FETCH_ME } from './constants';
+  import { LEMMA_FETCH, PROFILE_FETCH } from './constants';
 
   export default {
     props: ['vocabId'],
@@ -50,7 +50,7 @@
       };
     },
     created() {
-      this.$store.dispatch(FETCH_ME);
+      this.$store.dispatch(PROFILE_FETCH);
     },
     computed: {
       showToggle() {
@@ -82,14 +82,16 @@
         } else {
           // if primary key provided is not null and not in state, fetch it
           // and assign the result to selected lemma
-          this.$store.dispatch(FETCH_LEMMA, { id: lemmaPK }).then(() => {
+          this.$store.dispatch(LEMMA_FETCH, { id: lemmaPK }).then(() => {
             this.selectedLemma = this.$store.state.lemmas[lemmaPK];
           });
         }
       },
       onSelectLemma(lemma) {
         if (this.canEdit) {
-          api.vocabEntryLink(this.selectedEntry.id, lemma.pk, (data) => {
+          // This is using an outdated version of this function that relies on callbacks
+          // It's just preserved for posterity until this file gets a total rewrite.
+          api.linkVocabEntry(this.selectedEntry.id, lemma.pk, (data) => {
             this.entries.splice(this.selectedIndex, 1, data);
             this.selectLemma(lemma.pk);
           });
@@ -97,7 +99,7 @@
       },
       onDeleteEntry(entryData) {
         const { entry, cb } = entryData;
-        return api.vocabEntryDelete(entry.id, () => {
+        return api.deleteVocabEntry(entry.id, () => {
           const index = this.entries.findIndex((e) => e.id === entry.id);
           this.entries.splice(index, 1);
           cb();
@@ -110,7 +112,9 @@
           gloss,
           cb,
         } = entryData;
-        return api.vocabEntryEdit(entry.id, headword, gloss, (data) => {
+        // This is using an outdated version of this function that relies on callbacks
+        // It's just preserved for posterity until this file gets a total rewrite.
+        return api.updateVocabEntry(entry.id, headword, gloss, (data) => {
           const index = this.entries.findIndex((e) => e.id === entry.id);
           this.entries.splice(index, 1, data);
           cb();

@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 
-import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '../app/constants';
+import { BOOKMARK_CREATE, BOOKMARK_DELETE } from '../app/constants';
 import BookmarkTextButton from '../app/modules/BookmarkTextButton.vue';
 
 const localVue = createLocalVue();
@@ -57,8 +57,8 @@ describe('BookmarkTextButton', () => {
 
   beforeEach(() => {
     actions = {
-      [ADD_BOOKMARK]: jest.fn(),
-      [REMOVE_BOOKMARK]: jest.fn(),
+      [BOOKMARK_CREATE]: jest.fn(),
+      [BOOKMARK_DELETE]: jest.fn(),
     };
     store = new Vuex.Store({
       state: { bookmarks },
@@ -90,7 +90,7 @@ describe('BookmarkTextButton', () => {
     const button = wrapper.find('button');
     await button.trigger('click.prevent');
 
-    expect(actions[ADD_BOOKMARK]).toHaveBeenCalled();
+    expect(actions[BOOKMARK_CREATE]).toHaveBeenCalled();
   });
 
   it('removes the bookmark when the button is pressed and the text is not bookmarked', async () => {
@@ -99,6 +99,6 @@ describe('BookmarkTextButton', () => {
     const button = wrapper.find('button');
     await button.trigger('click.prevent');
 
-    expect(actions[REMOVE_BOOKMARK]).toHaveBeenCalled();
+    expect(actions[BOOKMARK_DELETE]).toHaveBeenCalled();
   });
 });

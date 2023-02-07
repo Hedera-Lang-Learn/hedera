@@ -31,10 +31,8 @@
 </template>
 
 <script>
-  import api from './api';
-
   import TextRow from './components/TextRow.vue';
-  import { FETCH_ME } from './constants';
+  import { PROFILE_FETCH, LEMMATIZED_TEXT_FETCH_LIST } from './constants';
 
   export default {
     components: {
@@ -42,7 +40,6 @@
     },
     data() {
       return {
-        texts: [],
         selected: 'own-texts',
       };
     },
@@ -57,20 +54,15 @@
         return this.ownSelected ? this.ownTexts : this.groupTexts;
       },
       ownTexts() {
-        return this.texts.filter((text) => text.clonedFor === null);
+        return this.$store.state.texts.filter((text) => text.clonedFor === null);
       },
       groupTexts() {
-        return this.texts.filter((text) => text.clonedFor !== null);
+        return this.$store.state.texts.filter((text) => text.clonedFor !== null);
       },
     },
     created() {
-      this.$store.dispatch(FETCH_ME);
-      api.fetchTexts((data) => {
-        this.texts = data.data.map((datum) => ({
-          ...datum.text,
-          stats: datum.stats,
-        }));
-      });
+      this.$store.dispatch(PROFILE_FETCH);
+      this.$store.dispatch(LEMMATIZED_TEXT_FETCH_LIST);
     },
   };
 </script>
