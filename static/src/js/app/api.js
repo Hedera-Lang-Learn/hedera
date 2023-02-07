@@ -99,7 +99,8 @@ export default {
       headword,
       definition,
       familiarity,
-      vocabulary_list_id: vocabularyListId,
+      // Django doesnt pick up key:value pairs with undefined values
+      vocabulary_list_id: vocabularyListId || null,
       lang,
       lemma_id: lemmaId,
     };

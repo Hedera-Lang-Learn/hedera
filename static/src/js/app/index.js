@@ -15,7 +15,7 @@ import Learner from './Learner.vue';
 import PersonalVocab from './PersonalVocab.vue';
 import Texts from './Texts.vue';
 import Dashboard from './Dashboard.vue';
-import QuickAddButton from './components/quick-add-button';
+// import QuickAddButton from './components/quick-add-button';
 
 Vue.config.productionTip = false;
 
@@ -84,5 +84,8 @@ export default () => {
   load('vocab-app', PersonalVocab, null, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
-  load('quick-add', QuickAddButton, null, () => {});
+  // Removed for now - buggy - modal window should not be a child of dropdown-content
+  // load('quick-add', QuickAddButton, null, () => ({
+  //   personalVocab: true,
+  // }));
 };
