@@ -549,23 +549,14 @@ def get_any_vocablist_by_id(user_id, lang, vocablist_id):
 
 
 class PartialMatchFormLookupAPI(APIView):
+
     def get_data(self):
         form = self.kwargs.get("form")
         lang = self.kwargs.get("lang")
-        # gets list of forms - Match exactly since startswith doesnt match exactly
-        forms = FormToLemma.objects.filter(lang=lang, form=form)
-        if not forms:
-            forms = FormToLemma.objects.filter(lang=lang, form__startswith=form)
-            if not forms:
-                forms = FormToLemma.objects.filter(lang=lang, form__startswith=form.lower())
-        lemma_list = [form.get_lemma() for form in forms]
-        lemma_dict = {}
-        sorted_lemma_list = (sorted(lemma_list, key=lambda i: i["rank"]))
-        distinct_lemma_list = []
-        # removing duplicates using a dict lookup
-        for lemma_obj in sorted_lemma_list:
-            lemma_word = lemma_obj["lemma"]
-            if lemma_word not in lemma_dict:
-                lemma_dict[lemma_word] = lemma_obj
-                distinct_lemma_list.append(lemma_obj)
-        return distinct_lemma_list
+        lemmas = Lemma.objects.filter(lang=lang, forms__form=form).distinct().order_by("rank").prefetch_related("glosses")
+        if not lemmas:
+            lemmas = Lemma.objects.filter(lang=lang, forms__form__startswith=form).distinct().order_by("rank").prefetch_related("glosses")
+            if not lemmas:
+                lemmas = Lemma.objects.filter(lang=lang, forms__form__startswith=form.lower()).distinct().order_by("rank").prefetch_related("glosses")
+        lemma_list = [lemma.to_dict() for lemma in lemmas]
+        return lemma_list
