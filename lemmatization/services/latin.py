@@ -96,6 +96,14 @@ class LatinService(BaseService):
             word = strip_macrons(word)
         return word
 
+    def check_text(self, text):
+        """
+        For Latin, checking if edited text needs to be formatted based on underscore via latin_periphrastic_normalizer
+        """
+        if "_" in text:
+            return text
+        return False
+
 
 class LatinTokenizer(Tokenizer):
     """Latin tokenizer.

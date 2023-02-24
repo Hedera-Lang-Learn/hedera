@@ -47,6 +47,14 @@ class BaseService(object):
         """
         return word
 
+    def check_text(self, text):
+        """
+        Returns text or False of text
+
+        This method must be overridden.
+        """
+        raise NotImplementedError("Must provide check_text implementation on a per service basis.")
+
 
 class HttpService(BaseService):
     ENDPOINT = ""
