@@ -195,7 +195,6 @@ class LemmatizedTextTests(TestCase):
         # insert edited text at the end of a closing </span> element
         index_to_insert_edit = test_text_html.find("</span>")
         test_edited_text_html = test_text_html[:index_to_insert_edit] + "\n\rcontristatus_est" + test_text_html[index_to_insert_edit:]
-        print(test_edited_text_html)
         example_text.handle_edited_data("Test title", test_edited_text_html)
         self.assertEqual("contristatus est" in example_text.token_lemma_dict(), True)
 

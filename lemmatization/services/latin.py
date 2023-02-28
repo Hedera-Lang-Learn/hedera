@@ -104,6 +104,14 @@ class LatinService(BaseService):
             return text
         return False
 
+    def apply_text_rule(self, unique_text, data):
+        if unique_text and unique_text is not data:
+            return {
+                "data": unique_text + data,
+                "unique_text": False
+            }
+        return data
+
 
 class LatinTokenizer(Tokenizer):
     """Latin tokenizer.
