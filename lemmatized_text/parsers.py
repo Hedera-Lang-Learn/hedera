@@ -71,7 +71,8 @@ class EditedTextHtmlParser(HTMLParser):
                 else:
                     self.current_data = data
             except KeyError:
-                self.unique_text = self.service.check_text(data)
+                if self.service.check_text(data):
+                    self.unique_text = data
                 if not self.unique_text:
                     self.lemmatize_chunk(data)
 
