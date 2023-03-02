@@ -70,7 +70,7 @@
     },
     methods: {
       updateStatus() {
-        api.fetchTextStatus(this.text.id, (data) => {
+        api.lemmatizedText_fetchStatus(this.text.id, (data) => {
           this.completed = data.data.completed;
           this.tokenCount = data.data.tokenCount;
           this.lemmatizationStatus = data.data.lemmatizationStatus;
@@ -80,7 +80,7 @@
         });
       },
       onRetry() {
-        api.textRetryLemmatization(this.text.id, (data) => {
+        api.lemmatizedText_retry(this.text.id, (data) => {
           this.completed = data.data.completed;
           this.tokenCount = data.data.tokenCount;
           if (this.completed < 100) {
@@ -89,7 +89,7 @@
         });
       },
       onCancel() {
-        api.textCancelLemmatization(this.text.id, (data) => {
+        api.lemmatizedText_cancel(this.text.id, (data) => {
           this.completed = data.data.completed;
           this.tokenCount = data.data.tokenCount;
         });
