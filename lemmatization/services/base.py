@@ -49,7 +49,8 @@ class BaseService(object):
 
     def check_text(self, text):
         """
-        Returns TRUE or False based on the
+        Returns TRUE or False based on the language rules
+        (ex: Latin uses underscores to join lemmas together via re_tokenize_clitics() function)
 
         This method must be overridden.
         """
