@@ -1,7 +1,9 @@
 import json
+import re
 from html.parser import HTMLParser
 from io import StringIO
 
+from hedera.supported_languages import SUPPORTED_LANGUAGES
 from lemmatization.lemmatizer import Lemmatizer
 
 
@@ -14,7 +16,9 @@ class EditedTextHtmlParser(HTMLParser):
         self.lemmatized_text_data = []
         self.token_lemma_dict = token_lemma_dict
         self.lemmatizer = Lemmatizer(lang)
+        self.service = SUPPORTED_LANGUAGES[lang].service
         self.initial = ""
+        self.unique_text = False
         return super().__init__()
 
     def handle_starttag(self, tag, attrs):
@@ -49,6 +53,11 @@ class EditedTextHtmlParser(HTMLParser):
         self.current_data = ""
 
     def handle_data(self, data):
+        # used to modify data by the service(e.g latin underscores)
+        formatted_text_data = self.service.apply_text_rule(self.unique_text, data)
+        if type(formatted_text_data) is dict:
+            data = formatted_text_data["data"]
+            self.unique_text = formatted_text_data["unique_text"]
         if ("follower" in self.current_attrs):
             self.current_data = data
         else:
@@ -62,7 +71,10 @@ class EditedTextHtmlParser(HTMLParser):
                 else:
                     self.current_data = data
             except KeyError:
-                self.lemmatize_chunk(data)
+                if self.service.check_text(data):
+                    self.unique_text = data
+                if not self.unique_text:
+                    self.lemmatize_chunk(data)
 
     def separate_true_followers(self, follower):
         """
@@ -101,22 +113,35 @@ class EditedTextHtmlParser(HTMLParser):
         Takes an unrecognized chunk of text.
         Sends 'chunk' to be lemmatized, then extends the data with the returned content.
         Checks if chunk does not contain return and newline "\r\n" - only add tokens if it the chunk is not a return/newline
+        In case there is an newline at the beginning of the text("initial"), the newline char will be added to the previous text "following" key:value pair
         **Fixes problem with empty tokens**
+        **Fixes problem with latin underscores**
         Returns None
         """
         self.current_data = None
-        # lemmatized_text_data_length = len(self.lemmatized_text_data)
         new_data = self.lemmatizer.lemmatize(chunk)
-        if "\r\n" not in chunk:
+        # regex checks if '\r\n' is the only char used in the chunk
+        contains_only_newline = bool(re.match(r"^[\r\n]+$", chunk))
+        if not contains_only_newline:
+            self.process_initial_data(new_data)
             self.lemmatized_text_data.extend(new_data)
-        elif "\r\n" in chunk and len(self.lemmatized_text_data):
-            following = self.lemmatized_text_data[-1]["following"]
+        if contains_only_newline and len(self.lemmatized_text_data):
             token_lemma_dict_keys = list(self.token_lemma_dict.keys())
             prev_lemma_id = self.lemmatized_text_data[-1]["lemma_id"]
+            following = self.lemmatized_text_data[-1]["following"]
             #Note: Added check if we have reached the end of the data array because theres a bug where new lines are added after each edit
-            if prev_lemma_id not in self.token_lemma_dict[token_lemma_dict_keys[-1]]:
+            if len(token_lemma_dict_keys) and prev_lemma_id not in self.token_lemma_dict[token_lemma_dict_keys[-1]]:
                 self.lemmatized_text_data[-1]["following"] = f"{following}{chunk}"
+            else:
+                self.process_initial_data(new_data)
+                self.lemmatized_text_data.extend(new_data)
         #TODO EDGE CASE: Newlines/breaks that may happen at the very beginning of the text
+
+    def process_initial_data(self, new_data):
+        # if statement will add newlines to "following" to previous text in lemmatized_text_data
+        if new_data[0]["initial"] and len(self.lemmatized_text_data):
+            following = self.lemmatized_text_data[-1]["following"]
+            self.lemmatized_text_data[-1]["following"] = f"{following}{new_data[0]['initial']}"
 
 
 class TagStripper(HTMLParser):

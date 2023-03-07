@@ -4,7 +4,11 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 from .models import LemmatizedText, transform_data_to_html
-from .test_data import test_lemmatized_text, test_original_text
+from .test_data import (
+    test_lemmatized_no_underscore_text,
+    test_lemmatized_text,
+    test_original_text
+)
 
 
 def create_user(username, email, password):
@@ -161,6 +165,38 @@ class LemmatizedTextTests(TestCase):
         test_edited_text_html = transform_data_to_html(test_lemmatized_text)
         example_text.handle_edited_data("Test title", test_edited_text_html)
         self.assertEqual(example_text.token_count(), len(test_lemmatized_text))
+
+    def test_handle_edited_data_underscore(self):
+        """
+        Example expected behavior
+            text without underscore - token_lemma_dict={'contristatus': [13339], 'est': [1225]}
+            edited text with underscore - token_lemma_dict={'': [13339, 1225], 'contristatus est': [13339]}
+        """
+        example_text = LemmatizedText.objects.create(
+            title="Test underscore edit",
+            lang="lat",
+            original_text="contristatus est",
+            created_by=self.created_user1,
+            data=test_lemmatized_no_underscore_text
+        )
+        example_text.handle_edited_data("Test title", "contristatus_est")
+        self.assertEqual("contristatus est" in example_text.token_lemma_dict(), True)
+
+    def test_handle_edited_data_underscore_long_text(self):
+
+        example_text = LemmatizedText.objects.create(
+            title="Test add text with underscore",
+            lang="lat",
+            original_text=test_original_text,
+            created_by=self.created_user1,
+            data=test_lemmatized_text
+        )
+        test_text_html = transform_data_to_html(test_lemmatized_text)
+        # insert edited text at the end of a closing </span> element
+        index_to_insert_edit = test_text_html.find("</span>")
+        test_edited_text_html = test_text_html[:index_to_insert_edit] + "\n\rcontristatus_est" + test_text_html[index_to_insert_edit:]
+        example_text.handle_edited_data("Test title", test_edited_text_html)
+        self.assertEqual("contristatus est" in example_text.token_lemma_dict(), True)
 
 
 class LemmatizedTextViewsTests(TestCase):
