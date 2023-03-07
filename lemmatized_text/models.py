@@ -244,14 +244,12 @@ class LemmatizedText(models.Model):
             lang=self.lang
         )
         edit_parser.feed(cleaned_edits)
-
         # Trimming junk tokens that get appended to the end of the list
         for token in reversed(edit_parser.lemmatized_text_data):
             if token["word"] != "":
                 break
             edit_parser.lemmatized_text_data.remove(token)
         self.data = edit_parser.lemmatized_text_data
-
         strip_parser = TagStripper()
         strip_parser.feed(cleaned_edits)
         self.original_text = strip_parser.get_data()

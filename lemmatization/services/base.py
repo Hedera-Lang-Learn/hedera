@@ -47,6 +47,22 @@ class BaseService(object):
         """
         return word
 
+    def check_text(self, text):
+        """
+        Returns TRUE or False based on the language unique rules
+        (ex: Latin uses underscores to join lemmas together via re_tokenize_clitics() function)
+        This method must be overridden.
+        """
+        raise NotImplementedError("Must provide check_text implementation on a per service basis.")
+
+    def apply_text_rule(self, unique_text, data):
+        """
+        Returns text or dict based on rules applied to modify the text
+
+        This method must be overridden.
+        """
+        raise NotImplementedError("Must provide apply_text_rule implementation on a per service basis.")
+
 
 class HttpService(BaseService):
     ENDPOINT = ""

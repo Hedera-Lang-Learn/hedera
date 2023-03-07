@@ -141,4 +141,27 @@ test_lemmatized_text = [
     },
 ]
 
+test_lemmatized_no_underscore_text = [
+    {
+        "word": "contristatus",
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 13339,
+        "resolved": "no-ambiguity",
+        "following": " ",
+        "gloss_ids": [70218],
+        "word_normalized": "contristatus",
+    },
+    {
+        "word": "est",
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 1225,
+        "resolved": "no-ambiguity",
+        "following": " ",
+        "gloss_ids": [86130, 81965],
+        "word_normalized": "est",
+    },
+]
+
 test_original_text = """Arma virumque canō, Trōiae quī prīmus ab ōrīs\r\nĪtaliam, fātō profugus, Lāvīniaque vēnit"""
