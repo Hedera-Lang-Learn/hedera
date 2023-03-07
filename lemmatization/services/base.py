@@ -49,9 +49,8 @@ class BaseService(object):
 
     def check_text(self, text):
         """
-        Returns TRUE or False based on the language rules
+        Returns TRUE or False based on the language unique rules
         (ex: Latin uses underscores to join lemmas together via re_tokenize_clitics() function)
-
         This method must be overridden.
         """
         raise NotImplementedError("Must provide check_text implementation on a per service basis.")

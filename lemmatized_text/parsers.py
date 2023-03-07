@@ -54,10 +54,10 @@ class EditedTextHtmlParser(HTMLParser):
 
     def handle_data(self, data):
         # used to modify data by the service(e.g latin underscores)
-        formated_text_data = self.service.apply_text_rule(self.unique_text, data)
-        if type(formated_text_data) is dict:
-            data = formated_text_data["data"]
-            self.unique_text = formated_text_data["unique_text"]
+        formatted_text_data = self.service.apply_text_rule(self.unique_text, data)
+        if type(formatted_text_data) is dict:
+            data = formatted_text_data["data"]
+            self.unique_text = formatted_text_data["unique_text"]
         if ("follower" in self.current_attrs):
             self.current_data = data
         else:
