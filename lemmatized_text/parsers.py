@@ -139,7 +139,7 @@ class EditedTextHtmlParser(HTMLParser):
 
     def process_initial_data(self, new_data):
         # if statement will add newlines to "following" to previous text in lemmatized_text_data
-        if new_data[0]["initial"] and len(self.lemmatized_text_data):
+        if len(new_data) and new_data[0]["initial"] and len(self.lemmatized_text_data):
             following = self.lemmatized_text_data[-1]["following"]
             self.lemmatized_text_data[-1]["following"] = f"{following}{new_data[0]['initial']}"
 
