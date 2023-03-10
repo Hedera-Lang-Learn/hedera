@@ -10,6 +10,7 @@ export const FORMS_FETCH_PARTIAL = 'forms_fetchPartial';
 // lemmatization.Lemma
 export const LEMMA_CREATE = 'lemma_create';
 export const LEMMA_FETCH = 'lemma_fetch';
+export const LEMMAS_FETCH_PARTIAL = 'lemmas_fetchPartial';
 
 // lemmatized_text.LemmatizedText
 export const LEMMATIZED_TEXT_FETCH = 'lemmatizedText_fetch';
