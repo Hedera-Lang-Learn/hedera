@@ -5,6 +5,7 @@ import {
   FORMS_FETCH_PARTIAL,
   FORMS_FETCH,
   LEMMA_FETCH,
+  LEMMAS_FETCH_PARTIAL,
   LEMMATIZED_TEXT_FETCH_TOKENS,
   LEMMATIZED_TEXT_FETCH_LIST,
   LEMMATIZED_TEXT_FETCH,
@@ -65,6 +66,10 @@ export default {
       ...state.lemmas,
       [lemma.pk]: lemma,
     };
+  },
+  [LEMMAS_FETCH_PARTIAL]: (state, data) => {
+    const lemmas = data.data;
+    state.partialMatchLemmas = [...lemmas];
   },
 
   /* -------------------------------------------------------------------------- */

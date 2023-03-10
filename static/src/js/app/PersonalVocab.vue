@@ -25,15 +25,15 @@
               class="form-control"
               v-model="props.row.lemma"
               v-on:keyup.enter="onEnter"
-              @keyup="changeCell(props.column.field, props.row)"
+              @keyup="fetchPartialLemmas(props.row.lemma)"
             ></b-form-input>
             <datalist id="lemma-list-id">
               <option
-                v-for="form in partialMatchForms"
-                :key="form.pk"
-                :value="form.lemma"
+                v-for="lemma in partialMatchLemmas"
+                :key="lemma.pk"
+                :value="lemma.lemma"
               >
-                {{ form.glosses.map((glossObj) => glossObj.gloss).join(", ") }}
+                {{ lemma.glosses.map((glossObj) => glossObj.gloss).join(", ") }}
               </option>
             </datalist>
           </span>
@@ -132,11 +132,11 @@
     PERSONAL_VOCAB_ENTRY_UPDATE,
     PROFILE_FETCH,
     PERSONAL_VOCAB_ENTRY_DELETE,
-    FORMS_FETCH_PARTIAL,
     VOCAB_LIST_FETCH,
     VOCAB_ENTRY_DELETE,
     VOCAB_LIST_SET_TYPE,
     VOCAB_ENTRY_UPDATE,
+    LEMMAS_FETCH_PARTIAL,
   } from './constants';
 
   import FamiliarityRating from './modules/FamiliarityRating.vue';
@@ -266,16 +266,18 @@
           const { familiarity } = row;
           this.editingFields.familiarity = familiarity;
         }
-        if (field === 'lemma' && value !== '') {
-          await this.$store.dispatch(FORMS_FETCH_PARTIAL, {
-            form: value,
-            lang: this.lang,
-          });
-          const found = this.partialMatchForms.find((el) => el.lemma === value);
+      },
+      async fetchPartialLemmas(lemma) {
+        if (this.partialMatchLemmas.length) {
+          const found = this.partialMatchLemmas.find((el) => el.lemma === lemma);
           if (found) {
             this.editingFields.lemmaId = found.pk;
           }
         }
+        await this.$store.dispatch(LEMMAS_FETCH_PARTIAL, {
+          lemma,
+          lang: this.lang,
+        });
       },
       async onSave() {
         this.saving = true;
@@ -391,6 +393,9 @@
       },
       partialMatchForms() {
         return this.$store.state.partialMatchForms;
+      },
+      partialMatchLemmas() {
+        return this.$store.state.partialMatchLemmas;
       },
       isPersonal() {
         // Convenience prop to quickly check if vocab list is a personal vocab list

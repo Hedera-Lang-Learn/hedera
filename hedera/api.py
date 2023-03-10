@@ -560,3 +560,15 @@ class PartialMatchFormLookupAPI(APIView):
                 lemmas = Lemma.objects.filter(lang=lang, forms__form__startswith=form.lower()).distinct().order_by("rank").prefetch_related("glosses")
         lemma_list = [lemma.to_dict() for lemma in lemmas]
         return lemma_list
+
+
+class PartialMatchLemmaLookupAPI(APIView):
+
+    def get_data(self):
+        lemma = self.kwargs.get("lemma")
+        lang = self.kwargs.get("lang")
+        lemmas = Lemma.objects.filter(lang=lang, lemma__startswith=lemma).distinct().order_by("rank").prefetch_related("glosses")[:10]
+        if not lemmas:
+            lemmas = Lemma.objects.filter(lang=lang, lemma__startswith=lemma.lower()).distinct().order_by("rank").prefetch_related("glosses")[:10]
+        lemma_list = [lemma.to_dict() for lemma in lemmas]
+        return lemma_list
