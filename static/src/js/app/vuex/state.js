@@ -22,4 +22,5 @@ export default {
   bookmarks: [],
   supportedLanguages: [],
   partialMatchForms: [],
+  partialMatchLemmas: [],
 };

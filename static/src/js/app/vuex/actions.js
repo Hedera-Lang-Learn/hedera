@@ -7,6 +7,7 @@ import {
   FORMS_FETCH_PARTIAL,
   FORMS_FETCH,
   LEMMA_FETCH,
+  LEMMAS_FETCH_PARTIAL,
   LEMMATIZED_TEXT_FETCH_LIST,
   LEMMATIZED_TEXT_FETCH_TOKENS,
   LEMMATIZED_TEXT_FETCH,
@@ -77,6 +78,10 @@ export default {
   [LEMMA_FETCH]: async ({ commit }, { id }) => {
     const { data } = await api.lemma_fetch(id);
     commit(LEMMA_FETCH, data.data);
+  },
+  [LEMMAS_FETCH_PARTIAL]: async ({ commit }, { lang, lemma }) => {
+    const response = await api.lemmas_fetchPartial(lang, lemma);
+    commit(LEMMAS_FETCH_PARTIAL, response);
   },
 
   /* -------------------------------------------------------------------------- */

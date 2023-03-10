@@ -89,6 +89,9 @@ If you've run a lot of containers and you'd like to clean them up so that your `
 docker ps --filter status=exited --filter name=hedera_django_run -q | xargs docker rm
 ```
 
+##### Font Awesome Kit
+Notes: base.html is using a js file provided by Font Awesome Kit `https://kit.fontawesome.com/2db98e34e3.js`. This means that icons like the familarity and edit buttons will stop working if the link expires. Think is created from [Font Awesome Kit Setup](https://fontawesome.com/docs/web/setup/use-kit). We could download the js file and run it locally as well, but will hold off for now.
+
 ### Without Docker
 
 You'll need Redis running.  To get it going locally on the Mac, simply run:

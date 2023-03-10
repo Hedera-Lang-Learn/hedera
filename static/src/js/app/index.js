@@ -72,7 +72,8 @@ const learnerKeyBindings = {
 };
 const textAppProps = ($el) => ({ textId: store.state.textId || $el.attributes['text-id'].value });
 const vocabAppProps = ($el) => ({
-  vocabId: $el.attributes.vocabId.value,
+  // default to null due to undefined error
+  vocabId: $el.attributes.vocabId.value || null,
   lang: $el.attributes.lang.value,
   personalVocab: $el.attributes.personalVocab.value === 'true',
 });

@@ -28,6 +28,12 @@ export default {
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
   lemma_fetch: (id) => axios.get(`${BASE_URL}lemmatization/lemma/${id}/`),
+  lemmas_fetchPartial: (lang, lemma) => axios.get(
+    `${BASE_URL}lemmatization/partial_match_lemmas/${lang}/${encodeURIComponent(
+      lemma,
+    )}/`,
+  )
+    .then((r) => r.data),
 
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */

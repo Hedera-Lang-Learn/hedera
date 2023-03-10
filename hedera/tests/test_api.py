@@ -7,6 +7,7 @@ from rest_framework.test import APITestCase
 
 from hedera.supported_languages import SUPPORTED_LANGUAGES
 from hedera.tests import utils
+from lemmatization.models import Gloss, Lemma
 from lemmatized_text.models import LemmatizedTextBookmark
 from vocab_list.models import (
     PersonalVocabularyList,
@@ -273,3 +274,52 @@ class TokenHistoryAPITest(APITestCase):
     def test_unsuccessful_get_lemmatized_tokens_no_account(self):
         response = self.client.get(f"/api/v1/lemmatized_texts/{self.text.pk}/tokens/0/history/")
         self.assertEqual(response.status_code, 401)
+
+
+class PartialMatchLemmaLookupAPITest(APITestCase):
+
+    def setUp(self):
+        self.user = utils.create_user()
+        self.client.force_login(user=self.user)
+        lemma_list = [
+            {
+                "lemma": "hic2",
+                "alt_lemma": "hic2",
+                "label": "hīc",
+                "rank": 99999,
+                "count": 0,
+                "rate": 0,
+                "lang": "lat",
+            },
+            {
+                "lemma": "hic",
+                "alt_lemma": "hic1",
+                "label": "hic, haec, hoc",
+                "rank": 6,
+                "count": 54183,
+                "rate": 121.965,
+                "lang": "lat",
+            },
+        ]
+
+        lemma_glosses = {
+            "hic": "in this place, here",
+            "hic2": "this (proximate: this here and now)",
+        }
+        for lemma in lemma_list:
+            created_lemma = Lemma(**lemma)
+            created_lemma.save()
+            created_gloss = Gloss(
+                gloss=lemma_glosses[lemma["lemma"]], lemma_id=created_lemma.pk
+            )
+            created_gloss.save()
+
+    def test_successful_get_partial_match_lemma(self):
+        response = self.client.get(
+            f"/api/v1/lemmatization/partial_match_lemmas/lat/hic/"
+        )
+        self.assertEqual(response.status_code, 200)
+        content = json.loads(response.content)
+        self.assertEqual(len(content["data"]), 2)
+        lemmas_by_rank = [lemma["lemma"] for lemma in content["data"]]
+        self.assertEqual(lemmas_by_rank, ["hic", "hic2"])
