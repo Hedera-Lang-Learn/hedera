@@ -570,5 +570,5 @@ class PartialMatchLemmaLookupAPI(APIView):
         lemmas = Lemma.objects.filter(lang=lang, lemma__startswith=lemma).distinct().order_by("rank").prefetch_related("glosses")[:10]
         if not lemmas:
             lemmas = Lemma.objects.filter(lang=lang, lemma__startswith=lemma.lower()).distinct().order_by("rank").prefetch_related("glosses")[:10]
-        lemma_list = [lemma.to_dict() for lemma in lemmas]
+        lemma_list = [lemma.to_dict() for lemma in lemmas if lemma.glosses.all()]
         return lemma_list
