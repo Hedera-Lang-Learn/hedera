@@ -73,7 +73,6 @@
         const response = await api.lemmatizedText_fetchStatus(this.text.id);
         const { data } = response.data;
         const { completed, tokenCount, lemmatizationStatus } = data;
-        console.log(data, completed, tokenCount, lemmatizationStatus);
         this.completed = completed;
         this.tokenCount = tokenCount;
         this.lemmatizationStatus = lemmatizationStatus;
