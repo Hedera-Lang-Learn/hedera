@@ -64,6 +64,7 @@ services:
         environment:
           PDF_SERVICE_ENDPOINT: "http://pdfservice:9000/pdf"
           PDF_SERVICE_KEY: "pdfservice-api-key"
+          LOG_LEVEL: "DEBUG"
         ports:
             - "5678:5678"  # 5678 is default port for debugpy
             - "8000:8000"
@@ -77,6 +78,8 @@ services:
             file: docker-compose-common.yml
             service: django
         container_name: hedera-worker
+        environment:
+            LOG_LEVEL: "DEBUG"
         ports:
             - "5679:5678"  # 5678 is default port for debugpy
         depends_on:

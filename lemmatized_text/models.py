@@ -22,6 +22,9 @@ from lemmatization.models import Lemma
 from .parsers import EditedTextHtmlParser, TagStripper
 
 
+logger = logging.getLogger(__name__)
+
+
 def to_percent(val):
     return floatformat(val * 100, 2) + "%"
 
@@ -54,15 +57,18 @@ def transform_data_to_html(data):
 @job("default", timeout=600)
 def lemmatize_text_job(text, lang, pk):
     try:
+        logger.info(f"start lemmatize_text_job {lang} {pk}")
         obj = LemmatizedText.objects.get(pk=pk)
 
         def update(percentage):
+            logger.debug(f"update lemmatize_text_job {lang} {pk} {percentage:.1%}")
             obj.completed = int(percentage * 100)
             obj.save()
 
         lemmatizer = Lemmatizer(lang, cb=update)
         obj.data = lemmatizer.lemmatize(text)
         obj.save()
+        logger.info(f"end lemmatize_text_job {lang} {pk}")
     except Exception as e:
         logging.exception(e)
         raise e
