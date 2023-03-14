@@ -69,30 +69,33 @@
       }
     },
     methods: {
-      updateStatus() {
-        api.lemmatizedText_fetchStatus(this.text.id, (data) => {
-          this.completed = data.data.completed;
-          this.tokenCount = data.data.tokenCount;
-          this.lemmatizationStatus = data.data.lemmatizationStatus;
-          if (this.completed < 100 && ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus) === -1) {
-            setTimeout(this.updateStatus, 1000);
-          }
-        });
+      async updateStatus() {
+        const response = await api.lemmatizedText_fetchStatus(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount, lemmatizationStatus } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
+        this.lemmatizationStatus = lemmatizationStatus;
+        if (this.completed < 100 && ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus) === -1) {
+          setTimeout(this.updateStatus, 1000);
+        }
       },
-      onRetry() {
-        api.lemmatizedText_retry(this.text.id, (data) => {
-          this.completed = data.data.completed;
-          this.tokenCount = data.data.tokenCount;
-          if (this.completed < 100) {
-            setTimeout(this.updateStatus, 1000);
-          }
-        });
+      async onRetry() {
+        const response = await api.lemmatizedText_retry(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
+        if (this.completed < 100) {
+          setTimeout(this.updateStatus, 1000);
+        }
       },
-      onCancel() {
-        api.lemmatizedText_cancel(this.text.id, (data) => {
-          this.completed = data.data.completed;
-          this.tokenCount = data.data.tokenCount;
-        });
+      async onCancel() {
+        const response = await api.lemmatizedText_cancel(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
       },
     },
   };
