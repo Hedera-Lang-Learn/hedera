@@ -105,4 +105,7 @@
   td {
     vertical-align: middle;
   }
+  .progress-bar {
+    transition: width 0.5s ease;
+  }
 </style>
