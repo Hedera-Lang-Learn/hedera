@@ -62,7 +62,7 @@ class EditedTextHtmlParser(HTMLParser):
             self.current_data = data
         else:
             try:
-                if(
+                if (
                     (self.current_tag is None) or
                     (self.current_tag == "span" and self.current_attrs == {}) or
                     (self.current_attrs["lemma_id"] not in self.token_lemma_dict[data])
@@ -105,7 +105,7 @@ class EditedTextHtmlParser(HTMLParser):
                     "following": "".join(followers)
                 }
             )
-        if(len(text) > 0):
+        if (len(text) > 0):
             self.lemmatize_chunk("".join(text))
 
     def lemmatize_chunk(self, chunk):

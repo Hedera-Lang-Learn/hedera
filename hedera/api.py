@@ -65,7 +65,7 @@ class MeAPI(APIView):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         profile = Profile.objects.get(user=request.user)
-        if(data["lang"] in (x[0] for x in LANGUAGES)):
+        if (data["lang"] in (x[0] for x in LANGUAGES)):
             profile.lang = data["lang"]
             profile.save()
             return JsonResponse({"data": profile.data()})
