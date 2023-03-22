@@ -268,3 +268,5 @@ To debug from within vscode you can enter this line into the file/endpoint you w
             pass
 
 ```
+## Updating data files used in load scripts
+see [wiki 459](https://wiki.harvard.edu/confluence/pages/viewpage.action?spaceKey=k459&title=Hedera) for a detailed writeup on updating the data files.
