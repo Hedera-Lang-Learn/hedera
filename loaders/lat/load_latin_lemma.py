@@ -5,7 +5,7 @@ from tqdm import tqdm
 from lemmatization.models import Lemma
 
 
-file_path = "data/lat/latin_lemma_table.tsv"
+file_path = "data/lat/lemma_table.tsv"
 total_lines = sum(1 for i in open(file_path, "r"))
 print(f"Begin latin lemma import (size: {total_lines})")
 
