@@ -7,7 +7,7 @@ def pairwise(iterable):
     return zip(a, a)
 
 
-def eveniter(iterable, last=" "):
+def eveniter(iterable, last=""):
     """ Generates an even number of values. """
     even = True
     for value in iterable:
