@@ -8,8 +8,10 @@
 
 * __[Vesna Tan](https://github.com/Tanvez)__
     the current maintainer of the code
-- Patrick Altman
-- James Tauber
+
+* __[Patrick Altman](https://github.com/paltman)__
+
+* __[James Tauber](https://github.com/jtauber)__
 
 # Other Contributors
 
