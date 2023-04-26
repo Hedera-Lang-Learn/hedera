@@ -12,6 +12,7 @@ class VocabularyListAdmin(admin.ModelAdmin):
 class VocabularyListEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "headword", "definition", "vocabulary_list"]
     autocomplete_fields = ["lemma"]
+    search_fields = ["headword__istartswith"]
 
 
 @admin.register(models.PersonalVocabularyList)
@@ -23,3 +24,4 @@ class PersonalVocabularyListAdmin(admin.ModelAdmin):
 class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
     list_display = ["id", "vocabulary_list", "headword", "definition", "familiarity"]
     autocomplete_fields = ["lemma"]
+    search_fields = ["headword__istartswith"]
