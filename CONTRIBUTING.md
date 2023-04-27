@@ -2,10 +2,8 @@
 We would love your contribution and input! Here we will outline ways to do the following:
 
 - Reporting a bug
-- Discussing the current state of the code
 - Submitting a fix
 - Proposing new features
-- Becoming a maintainer
 
 ## We use [Github Flow](https://docs.github.com/en/get-started/quickstart/github-flow), so all features and bugs fixes will happen via this method.
 We welcome all pull request but ask you to conform to the following format:
