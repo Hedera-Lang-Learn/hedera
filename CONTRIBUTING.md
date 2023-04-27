@@ -19,3 +19,5 @@ We welcome all pull request but ask you to conform to the following format:
 ## Report bugs using Githubs [issues](https://github.com/Hedera-Lang-Learn/hedera/issues)
 Feel free to open up a new issue to report a new bug, please reference `bug_template.md` for template on bug reporting
 
+## References
+This document was adapted from [briandk contributing.md](https://gist.github.com/briandk/3d2e8b3ec8daf5a27a62) and [contributing.md](https://contributing.md/how-to-build-contributing-md/)
