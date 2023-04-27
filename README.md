@@ -149,7 +149,7 @@ Notes: you can quickly fix javascript eslint errors with `npm run lint:fix`
 
 ## Resetting the Database
 
-Meaning, tables from the lemma, lemmatized_text, and vocab_list be truncated, and the data for lemmas will be reloaded. User account information should be preserved. You can do that with the following set of commands. Note that these commands are for executing against a running docker container. If you are running the project in another way, adjust the incantations accordingly.
+Every so often, it may be requested that the dev DB be "reset." Meaning, tables from the lemma, lemmatized_text, and vocab_list be truncated, and the data for lemmas will be reloaded. User account information should be preserved. You can do that with the following set of commands. Note that these commands are for executing against a running docker container. If you are running the project in another way, adjust the incantations accordingly.
 
 ```sh
 # Run the custom management command to delete all of the relevant data.
