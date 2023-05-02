@@ -68,7 +68,7 @@
   }
 }
 .gloss--active {
-  background-color: #80b180;
+  background-color: $hedera-green;
 }
 .gloss__label {
   display: flex;

@@ -47,12 +47,12 @@
   font-size: 16pt;
   padding: 4px;
   &:hover {
-    background-color: #80b180;
+    background-color: $hedera-green;
   }
 }
 .lemma--active {
   background-color: #F0F0F0;
-  border: 2px solid #80b180;
+  border: 2px solid $hedera-green;
   border-radius: 4px;
 }
 
