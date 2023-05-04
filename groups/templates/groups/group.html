@@ -29,18 +29,18 @@
         {% endif %}
       </span>
     </div>
-    <span class="class-role">{% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
+    <span class="class-role">Role in Class: {% if group.is_teacher %}Teacher{% else %}Student{% endif %}</span>
   </h1>
   <div class="lead mt-4">{{ group.description|linebreaks }}</div>
 
   <div class="card">
     <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
+      <ul class="nav nav-tabs card-header-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="text" aria-selected="true" id="texts-tab" href="#texts">Texts</a>
+          <a class="nav-link active" data-toggle="tab" role="tab" aria-controls="texts" aria-selected="true" id="texts-tab" href="#texts">Texts</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="vocab" aria-selected="false" id="vocab-tab" href="#vocab">Vocabulary</a>
+          <a class="nav-link" data-toggle="tab" role="tab" aria-controls="vocabulary" aria-selected="false" id="vocab-tab" href="#vocab">Vocabulary</a>
         </li>
         {% if group.is_teacher %}
         <li class="nav-item" role="presentation">
