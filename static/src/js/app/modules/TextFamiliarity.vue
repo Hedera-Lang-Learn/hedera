@@ -59,12 +59,15 @@
     background-color: $rating-1;
   }
   .familiarity-2 {
+    color: $white;
     background-color: $rating-2;
   }
   .familiarity-3 {
+    // color: $white;
     background-color: $rating-3;
   }
   .familiarity-4 {
+    // color: $white;
     background-color: $rating-4;
   }
   .familiarity-5 {
