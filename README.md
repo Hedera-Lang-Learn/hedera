@@ -210,6 +210,9 @@ docker compose up -d postgres redis
 # make sure postgres and redis are available, then run:
 DJANGO_SETTINGS_MODULE=hedera.test_settings python manage.py test
 ```
+##### Note:
+    To log out entire diff in a test set self.maxDiff = None
+    https://docs.python.org/3/library/unittest.html#unittest.TestCase.maxDiff
 
 ### Linting
 
