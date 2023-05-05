@@ -219,6 +219,7 @@ class LemmatizedTextTests(TestCase):
         test_edited_text_with_underscore_html = test_text_no_underscore_html.replace(">dēlenda<", ">dēlenda_<")
         example_text.handle_edited_data("Test title", test_edited_text_with_underscore_html)
         self.assertEqual(example_text.data, expected_lemmatized_text_edit_underscore)
+        self.assertEqual(len(example_text.data), 2)
 
 
 class LemmatizedTextViewsTests(TestCase):
