@@ -20,6 +20,7 @@ sentry_sdk.init(
     debug=os.environ.get("SENTRY_DEBUG") == "1",
     environment=os.environ.get("SENTRY_ENVIRONMENT"),
     integrations=[DjangoIntegration(), RqIntegration()],
+    traces_sample_rate=1.0,
     # Enables tracing for sentry "Events V2"
     # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
 )
