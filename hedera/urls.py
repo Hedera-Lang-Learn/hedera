@@ -15,6 +15,11 @@ from lti.views import LtiInitializerView
 from . import api, views
 
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+    return division_by_zero
+
+
 urlpatterns = [
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 
@@ -60,6 +65,8 @@ urlpatterns = [
 
     path("cms/", include(wagtailadmin_urls)),
     re_path(r"", include(wagtail_urls)),
+    # test url to make sure sentry is working
+    path("sentry-debug/", trigger_error),
 
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_URL
