@@ -14,15 +14,15 @@ except ValueError:
     IS_LTI = False
 
 # Initialize Sentry for Error Tracking (see also: https://docs.sentry.io/)
-if not IS_LTI:
-    sentry_sdk.init(
-        dsn=os.environ.get("SENTRY_DSN"),
-        debug=os.environ.get("SENTRY_DEBUG") == "1",
-        environment=os.environ.get("SENTRY_ENVIRONMENT"),
-        integrations=[DjangoIntegration(), RqIntegration()],
-        # Enables tracing for sentry "Events V2"
-        # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
-    )
+
+sentry_sdk.init(
+    dsn=os.environ.get("SENTRY_DSN"),
+    debug=os.environ.get("SENTRY_DEBUG") == "1",
+    environment=os.environ.get("SENTRY_ENVIRONMENT"),
+    integrations=[DjangoIntegration(), RqIntegration()],
+    # Enables tracing for sentry "Events V2"
+    # https://github.com/getsentry/zeus/blob/764df526f47d9387a03b5afcdf3ec0758ae38ac2/zeus/config.py#L380
+)
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
