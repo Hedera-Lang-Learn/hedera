@@ -40,7 +40,8 @@ class EditedTextHtmlParser(HTMLParser):
         if "follower" in self.current_attrs:
             self.separate_true_followers(self.current_data)
         #Note: sometimes the current_tag/self.current_attrs will be empty/None when there is a newline/break
-        elif self.current_data is not None and self.current_tag is not None:
+        # len() checks if empty string so we dont append blank words
+        elif self.current_data is not None and self.current_tag is not None and len(self.current_data):
             self.lemmatized_text_data.append(
                 {
                     **self.current_attrs,

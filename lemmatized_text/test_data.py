@@ -164,4 +164,111 @@ test_lemmatized_no_underscore_text = [
     },
 ]
 
+test_lemmatized_no_extra_tokens = [
+    {
+        "word": "Carthāgō",
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 2335,
+        "resolved": "no-ambiguity",
+        "following": "",
+        "gloss_ids": [],
+        "word_normalized": "Carthago",
+        "tokenIndex": 0,
+        "pk": 2335,
+        "label": "carthago",
+        "glosses": [],
+    },
+    {
+        "word": "dēlenda",
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 15437,
+        "resolved": "no-ambiguity",
+        "following": "",
+        "gloss_ids": [],
+        "word_normalized": "delenda",
+        "tokenIndex": 1,
+        "pk": 15437,
+        "label": "deleo",
+        "glosses": [],
+    },
+    {
+        "word": "est",
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 1225,
+        "resolved": "no-ambiguity",
+        "following": ".",
+        "gloss_ids": [],
+        "word_normalized": "est",
+        "tokenIndex": 2,
+        "pk": 1225,
+        "label": "sum, esse, fuī",
+        "glosses": [],
+    },
+]
+
 test_original_text = """Arma virumque canō, Trōiae quī prīmus ab ōrīs\r\nĪtaliam, fātō profugus, Lāvīniaque vēnit"""
+
+test_lemma_list = [
+    {
+        "id": 15437,
+        "lemma": "deleo",
+        "alt_lemma": "to erase, efface, obliterate, blot out",
+        "label": "deleo",
+        "rank": 1830,
+        "count": 326,
+        "rate": 0.734,
+        "lang": "lat",
+    },
+    {
+        "id": 1225,
+        "lemma": "sum",
+        "alt_lemma": "sum1",
+        "label": "sum, esse, fuī",
+        "rank": 1,
+        "count": 145573,
+        "rate": 327.682,
+        "lang": "lat",
+    },
+    {
+        "id": 2335,
+        "lemma": "carthago",
+        "alt_lemma": "carthago",
+        "label": "carthago",
+        "rank": 2010,
+        "count": 291,
+        "rate": 0.655,
+        "lang": "lat",
+    },
+]
+
+test_text_edit_underscore = "Carthāgō dēlenda est."
+
+expected_lemmatized_text_edit_underscore = [
+    {
+        "glossed": "glossed-automatic",
+        "initial": "",
+        "lemma_id": 2335,
+        "resolved": "no-ambiguity",
+        "gloss_ids": [],
+        "word_normalized": "Carthago",
+        "tokenIndex": 0,
+        "pk": 2335,
+        "label": "carthago",
+        "glosses": [],
+        "word": "Carthāgō",
+        "following": "",
+    },
+    {
+        "word": "dēlenda est",
+        "word_normalized": "delenda",
+        "following": ".",
+        "lemma_id": None,
+        "gloss_ids": [],
+        "glossed": "na",
+        "resolved": "no-lemma",
+        "initial": "",
+    },
+]

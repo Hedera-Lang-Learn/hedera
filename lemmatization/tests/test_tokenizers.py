@@ -2,6 +2,7 @@ from django.test import SimpleTestCase
 
 from ..services.latin import LatinTokenizer
 
+
 # Chinese language test commented out until support for this language is enabled again.
 # class LACChineseTokenizerTests(SimpleTestCase):
 #     def test_prepare_for_segmentation(self):
@@ -232,7 +233,7 @@ class LatinTokenizerTests(SimpleTestCase):
             ("ratione", "ratione", " "),
             ("vincere", "vincere", " "),
             ("conatur", "conatur", "."),
-            ("", "", " "),
+            ("", "", ""),
         ])
 
     def test_tokenizer_text_with_macrons(self):
@@ -246,7 +247,7 @@ class LatinTokenizerTests(SimpleTestCase):
             ("ratiōne", "ratione", " "),
             ("vincere", "vincere", " "),
             ("conātur", "conatur", "."),
-            ("", "", " "),
+            ("", "", ""),
         ])
 
     def test_tokenizer_does_not_auto_split_enclitics(self):
@@ -261,7 +262,7 @@ class LatinTokenizerTests(SimpleTestCase):
         text_input = "estne"
         output = list(LatinTokenizer(lang="lat").tokenize(text_input))
         self.assertEqual(output, [
-            ("estne", "estne", " ")
+            ("estne", "estne", "")
         ])
 
     def test_tokenizer_pipe_splits_word(self):
@@ -273,7 +274,7 @@ class LatinTokenizerTests(SimpleTestCase):
         output = list(LatinTokenizer(lang="lat").tokenize(text_input))
         self.assertEqual(output, [
             ("est", "est", ""),
-            ("ne", "ne", " "),
+            ("ne", "ne", ""),
         ])
 
     def test_tokenizer_underscore_combines_words_with_latin_copula(self):
@@ -288,5 +289,5 @@ class LatinTokenizerTests(SimpleTestCase):
         self.assertEqual(output, [
             # the normalized word has any words in the latin copula removed
             # automatically, since these are considered connecting words
-            ("expulsus est", "expulsus", " "),
+            ("expulsus est", "expulsus", ""),
         ])
