@@ -10,6 +10,6 @@
 {% block navbar-toggler %}{% endblock %}
 
 {% block body %}
-  <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &raquo; <b>{{ text.title }}</b></nav>
+  {% comment %} <nav><a href="/lemmatized_text/">Lemmatized Texts</a> &laquo; <b>{{ text.title }}</b></nav> {% endcomment %}
   <div id="app" text-id="{{ text.pk }}"></div>
 {% endblock %}
