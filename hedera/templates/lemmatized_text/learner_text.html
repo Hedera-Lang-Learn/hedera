@@ -11,9 +11,9 @@
 
 {% block body %}
   <nav>
-    {% comment %} <a href="/lemmatized_text/">Lemmatized Texts</a>
+    <a href={{ request.META.HTTP_REFERER }}>Lemmatized Texts</a>
     &laquo;
-    <b>{{ text.title }}</b> {% endcomment %}
+    <b>{{ text.title }}</b>
     {% if PDF_HANDOUT_ENABLED %}
     <div style="float: right;">
       <a href="{% url 'lemmatized_texts_handout' text.secret_id %}" target="_blank">
