@@ -11,9 +11,9 @@
 
 {% block body %}
   <nav>
-    <a href="/lemmatized_text/">Lemmatized Texts</a>
+    <a href="{% if request.META.HTTP_REFERER %}{{ request.META.HTTP_REFERER }}{% else %}{% url 'lemmatized_texts_list' %}{% endif %}">Lemmatized Texts</a>
     &raquo;
-    <b>{{ text.title }}</b>
+    <h1 class="font-weight-bold d-inline font-size-1">{{ text.title }}</h1>
     {% if PDF_HANDOUT_ENABLED %}
     <div style="float: right;">
       <a href="{% url 'lemmatized_texts_handout' text.secret_id %}" target="_blank">
