@@ -9,6 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const SentryWebpackPlugin = require('@sentry/webpack-plugin');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const hotReload = process.env.HOT_RELOAD === '1';
@@ -63,6 +64,17 @@ const plugins = [
     patterns: [
       { from: './static/src/images/**/*', to: path.resolve('./static/dist/images/[name].[ext]'), toType: 'template' },
     ],
+  }),
+  new SentryWebpackPlugin({
+    ignoreFile: '.sentrycliignore',
+    ignore: ['node_modules', 'webpack.config.js'],
+    configFile: 'sentry.properties',
+    dryRun: true,
+    release: 'v1.0.0',
+    project: 'hedera',
+    org: 'harvard-university-academic-te',
+    include: './static/dist',
+    authToken: process.env.SENTRY_AUTH_TOKEN,
   }),
 ];
 

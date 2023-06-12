@@ -61,11 +61,11 @@
             <div class="text-stats">
               <div class="total-tokens">
                 {{ tokens.length }}
-                <div class="title">Total Tokens</div>
+                <div class="title">Total Words</div>
               </div>
               <div class="unique-tokens">
                 {{ uniqueNodes.length }}
-                <div class="title">Unique Tokens</div>
+                <div class="title">Unique Words</div>
               </div>
             </div>
             <TextFamiliarity v-if="ranks" :ranks="ranks" />

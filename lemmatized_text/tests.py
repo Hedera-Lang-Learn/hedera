@@ -3,11 +3,15 @@ from django.urls import reverse
 
 from django.contrib.auth.models import User
 
-from .models import LemmatizedText, transform_data_to_html
+from .models import Lemma, LemmatizedText, transform_data_to_html
 from .test_data import (
+    expected_lemmatized_text_edit_underscore,
+    test_lemma_list,
+    test_lemmatized_no_extra_tokens,
     test_lemmatized_no_underscore_text,
     test_lemmatized_text,
-    test_original_text
+    test_original_text,
+    test_text_edit_underscore
 )
 
 
@@ -197,6 +201,25 @@ class LemmatizedTextTests(TestCase):
         test_edited_text_html = test_text_html[:index_to_insert_edit] + "\n\rcontristatus_est" + test_text_html[index_to_insert_edit:]
         example_text.handle_edited_data("Test title", test_edited_text_html)
         self.assertEqual("contristatus est" in example_text.token_lemma_dict(), True)
+
+    def test_handle_edited_data_underscore_no_extra_tokens(self):
+        for lemma in test_lemma_list:
+            created_lemma = Lemma(**lemma)
+            created_lemma.save()
+
+        example_text = LemmatizedText.objects.create(
+            title="Test edit with underscore",
+            lang="lat",
+            original_text=test_text_edit_underscore,
+            created_by=self.created_user1,
+            data=test_lemmatized_no_extra_tokens
+        )
+
+        test_text_no_underscore_html = transform_data_to_html(test_lemmatized_no_extra_tokens)
+        test_edited_text_with_underscore_html = test_text_no_underscore_html.replace(">dēlenda<", ">dēlenda_<")
+        example_text.handle_edited_data("Test title", test_edited_text_with_underscore_html)
+        self.assertEqual(example_text.data, expected_lemmatized_text_edit_underscore)
+        self.assertEqual(len(example_text.data), 2)
 
 
 class LemmatizedTextViewsTests(TestCase):

@@ -22,6 +22,7 @@ exec gunicorn hedera.wsgi:application \
     --env REDIS_URL=$REDIS_URL \
     --env RQ_ASYNC=$RQ_ASYNC \
     --env SENTRY_DSN="$SENTRY_DSN" \
+    --env SENTRY_AUTH_TOKEN="$SENTRY_AUTH_TOKEN" \
     --env SENTRY_ENVIRONMENT=$SENTRY_ENVIRONMENT \
     --env DJANGO_DEBUG=$DJANGO_DEBUG \
     --env SESSION_COOKIE_SECURE=${SESSION_COOKIE_SECURE:-1} \

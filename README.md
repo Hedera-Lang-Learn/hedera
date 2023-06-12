@@ -9,15 +9,8 @@ Hedera is an application for viewing texts in different languages such that:
 
 ## Getting Started
 
-### With Docker (compose)
-
-Before running for the first time (or any time for that matter):
-
-```sh
-docker compose build
-```
-
-* **Details:** Local development uses the `dev` stage of the `Dockerfile`, which adds development dependencies to the `prod` stage. The `npm` docker compose service uses the `prod` stage, and the `django` and `worker` services use the `dev` stage.
+### With Docker Compose
+You will need to have docker installed, use the following link to [install docker](https://docs.docker.com/get-docker/) into your respective OS
 
 To run the app:
 
@@ -32,8 +25,8 @@ On initial running, you might want do run the following in another terminal:
 ```
 docker compose run --rm django python manage.py create_cms
 ```
-
-To import latin data:
+#### Importing Data
+To import data into the database:
 
 ```
 docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_lemma"
@@ -68,10 +61,6 @@ Prequisite - Install pip-compile into your virtual env via this command `python 
     docker compose build django
     docker compose build worker
     ```
-Note/TODO: We will have to update how we run the exec commands with root in favor of a designated user. Running the above exec commands will cause the following warning flag:
-```diff
-- Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager.
-```
 
 If you'd like to remove all existing images and start fresh:
 
@@ -90,81 +79,7 @@ docker ps --filter status=exited --filter name=hedera_django_run -q | xargs dock
 ```
 
 ##### Font Awesome Kit
-Notes: base.html is using a js file provided by Font Awesome Kit `https://kit.fontawesome.com/2db98e34e3.js`. This means that icons like the familarity and edit buttons will stop working if the link expires. Think is created from [Font Awesome Kit Setup](https://fontawesome.com/docs/web/setup/use-kit). We could download the js file and run it locally as well, but will hold off for now.
-
-### Without Docker
-
-You'll need Redis running.  To get it going locally on the Mac, simply run:
-
-```
-brew install redis
-```
-
-and either
-`brew services start redis` to always start redis
-or `redis-server /usr/local/etc/redis.conf` to run it one time.
-
-1. Install node dependencies run `npm install`
-2. use pyenv virtualenv to create a virtual environment with python 3.7 or higher ([pyenv virtual install instructions here](https://github.com/pyenv/pyenv-virtualenv#installing-with-homebrew-for-macos-users)). Activate the virtual environment and run the following commands:
-```
-pip install -r hedera/requirements/base.txt
-createdb hedera
-./manage.py migrate
-./manage.py loaddata sites
-./manage.py create_cms
-```
-3. To import lattice data:
-
-```
-./manage.py shell -c "import loaders.lat.load_latin_lemma"
-./manage.py shell -c "import loaders.lat.load_latin_form_to_lemma"
-```
-4. And finally, to start Django,
-
-```
-./manage.py runserver
-```
-
-By default, there is a background worker that will work synchronously (won't need the worker running to process the lemmatization).  If you want to process asynchronously locally:
-
-```
-export RQ_ASYNC=1
-./manage.py runserver
-```
-
-Then in another terminal(activate the virtual environment via pyenv):
-
-```
-export RQ_ASYNC=1
-./manage.py rqworker ${RQ_QUEUES:-default}
-```
-
-Leave the first two Terminal windows running. Open a third Terminal window and run:
-
-```
-npm start
-```
-
-Browse to http://localhost:8000/
-
-
-You many want to sign up and activate an account on a local desktop/laptop. After signing up, you will see an error stating that the is not active. Since you probably won't be receiving an email, the easiest way to activate it is to run the following commands:
-
-```
-cd <path to hedera repo>
-pipenv shell
-./manage.py shell
-```
-
-In the shell, type:
-
-```
-from django.contrib.auth.models import User
-user = User.objects.get(pk=1)
-user.is_active = True
-user.save()
-```
-
+Notes: base.html is using a js file provided by Font Awesome Kit `https://kit.fontawesome.com/2db98e34e3.js`. This means that icons like the familarity and edit buttons will stop working if the link expires. Link is created from [Font Awesome Kit Setup](https://fontawesome.com/docs/web/setup/use-kit). We could download the js file and run it locally as well, but will hold off for now.
 
 ## PDF Service
 
@@ -210,6 +125,9 @@ docker compose up -d postgres redis
 # make sure postgres and redis are available, then run:
 DJANGO_SETTINGS_MODULE=hedera.test_settings python manage.py test
 ```
+##### Note:
+    To log out entire diff in a test set self.maxDiff = None
+    https://docs.python.org/3/library/unittest.html#unittest.TestCase.maxDiff
 
 ### Linting
 
@@ -234,25 +152,21 @@ Notes: you can quickly fix javascript eslint errors with `npm run lint:fix`
 
 ## Resetting the Database
 
-Every so often, it may be requested that the dev DB be "reset." Meaning, tables from the lattices, lemmatized_text, and vocab_list be truncated, and the data for lattices will be reloaded. User account information should be preserved. You can do that with the following set of commands. Note that these commands are for executing against a running docker container. If you are running the project in another way, adjust the incantations accordingly.
+Every so often, it may be requested that the dev DB be "reset." Meaning, tables from the lemma, lemmatized_text, and vocab_list be truncated, and the data for lemmas will be reloaded. User account information should be preserved. You can do that with the following set of commands. Note that these commands are for executing against a running docker container. If you are running the project in another way, adjust the incantations accordingly.
 
 ```sh
 # Run the custom management command to delete all of the relevant data.
 # The --no_input flag answers 'yes' to all prompts asking if you'd like to delete data.
 # Run without --no_input if you'd like to step through the process interatctively.
 $ docker compose exec django python manage.py reset_db --no_input
-
-# Run commands to reload the data
-$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_lemma"
-$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_form_to_lemma"
-$ docker compose run --rm django python manage.py shell -c "import loaders.lat.load_latin_gloss"
 ```
+Run commands from the [importing data step](#importing-data) to reload the data
 
 ## Adding a new language
 
 In order to add a new language, you will need to add an entry to `SUPPORTED_LANGUAGES` in `hedera.supported_languages.py`. Every language requires a "code", "verbose_name", "service", and "tokenizer." Language specific services are defined in `lemmatization.services`. Please, review the existing services and tokenizers, and add your language's module.
 
-## Debugging
+## Debugging Programmatically
 
 To debug from within vscode you can enter this line into the file/endpoint you want to debug. [Reference to debugger](https://code.visualstudio.com/docs/editor/debugging) and [debugpy vscode reference](https://code.visualstudio.com/docs/python/debugging)
 ```python
