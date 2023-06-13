@@ -220,7 +220,7 @@
           this.lemmaOptions = [];
           this.lemmaId = null;
           this.showSuccesAlert = true;
-          this.$refs.headword.focus()
+          this.$refs.headword.focus();
         } else {
           this.errorMessage = 'The process of adding a vocab entry did not report a success.';
           this.showUnsuccessfulAlert = true;
