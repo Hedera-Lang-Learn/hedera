@@ -1,5 +1,6 @@
 <template>
   <div class="form-group">
+    <p>Tab between fields and submit with the enter key. Hit escape to exit this window.</p>
     <form id="addvocab-form" v-on:submit.prevent>
       <label v-if="isPersonal" for="FormControlSelect"
         >Select Language of Your Vocabulary List</label
@@ -30,6 +31,7 @@
           aria-label="headword"
           v-model="headword"
           v-on:input="getHeadword"
+          ref="headword"
           required
         />
         <input
@@ -218,6 +220,7 @@
           this.lemmaOptions = [];
           this.lemmaId = null;
           this.showSuccesAlert = true;
+          this.$refs.headword.focus();
         } else {
           this.errorMessage = 'The process of adding a vocab entry did not report a success.';
           this.showUnsuccessfulAlert = true;
