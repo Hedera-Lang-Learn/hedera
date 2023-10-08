@@ -2,7 +2,7 @@
   <button
     class="btn btn-block btn-outline-primary mb-3"
     @click.prevent="onToggleBookmark"
-    :aria-pressed="isBookmarked"
+    :aria-pressed="isRead"
   >
     <i class="fa fa-star" aria-hidden="true"></i> {{ buttonText }}
   </button>
@@ -10,24 +10,28 @@
 
 <script>
 // CREATE A NEW CONSTANT FOR READ STATUS?
-import { BOOKMARK_CREATE, BOOKMARK_DELETE } from '../constants';
+import { BOOKMARK_READ_UPDATE } from '../constants';
 
-// TODO: COPIED FROM BookmarkTextButton - CHANGE TO CREATE A READ/UNREAD BUTTON THAT UPDATES READ STATUS
+// TODO: button disappears upon refresh...
 export default {
   props: ['textId'],
   methods: {
     onToggleBookmark() {
       if (this.bookmark) {
-        this.removeBookmark(this.bookmark.id);
+        console.log(this.bookmark.readStatus);
+        this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus);
       } else {
-        this.addBookmark(this.textId);
+        return;
       }
     },
-    addBookmark(textId) {
-      this.$store.dispatch(BOOKMARK_CREATE, { textId });
-    },
-    removeBookmark(bookmarkId) {
-      this.$store.dispatch(BOOKMARK_DELETE, { bookmarkId });
+    updateBookmarkRead(bookmarkId, readStatus) {
+      console.log(readStatus);
+      // BUG IS HERE
+      this.$store.dispatch(
+        BOOKMARK_READ_UPDATE,
+        { bookmarkId },
+        { readStatus }
+      );
     },
   },
   computed: {
@@ -38,12 +42,13 @@ export default {
         parseInt(bookmark.text.id, 10) === textId;
       return this.$store.state.bookmarks.filter(textFilter)[0];
     },
-    // ROUGHLY PSEUDOCODE - need to edit above bookmark computation
     isRead() {
-      return Boolean(this.bookmark.readStatus);
+      // needs to be readStatus - but undefined here
+      // console.log(this.bookmark.readStatus);
+      return Boolean(this.bookmark);
     },
     buttonText() {
-      return this.isRead ? 'Mark as Read' : 'Mark as Unread';
+      return this.isRead ? 'Mark as Unread' : 'Mark as Read';
     },
   },
 };

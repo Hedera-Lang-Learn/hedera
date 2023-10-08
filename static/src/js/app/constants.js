@@ -26,6 +26,7 @@ export const BOOKMARK_CREATE = 'bookmark_create';
 export const BOOKMARK_DELETE = 'bookmark_delete';
 export const BOOKMARK_LIST = 'bookmark_list';
 export const BOOKMARK_FETCH = 'bookmark_fetch';
+export const BOOKMARK_READ_UPDATE = 'bookmark_read_update';
 
 // vocab_list.PersonalVocabularyList
 export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
