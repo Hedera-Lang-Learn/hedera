@@ -25,16 +25,19 @@ export const LEMMATIZED_TEXT_UPDATE_TOKEN = 'lemmatizedText_updateToken';
 export const BOOKMARK_CREATE = 'bookmark_create';
 export const BOOKMARK_DELETE = 'bookmark_delete';
 export const BOOKMARK_LIST = 'bookmark_list';
+export const BOOKMARK_FETCH = 'bookmark_fetch';
 
 // vocab_list.PersonalVocabularyList
 export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
-export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetchLangList';
+export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST =
+  'personalVocabularyList_fetchLangList';
 
 // vocab_list.PersonalVocabularyListEntry
 export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
 export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
 export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
-export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY = 'personalVocabularyListEntry_updateMany';
+export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY =
+  'personalVocabularyListEntry_updateMany';
 
 // vocab_list.VocabularyList
 export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';
@@ -60,8 +63,8 @@ export const RESOLVED_NO_AMBIGUITY = 'no-ambiguity';
 export const RESOLVED_AUTOMATIC = 'resolved-automatical';
 export const RESOLVED_MANUAL = 'resolved-manual';
 export const RATINGS = {
-  1: 'I don\'t recognise this word',
-  2: 'I recognise this word but don\'t know what it means',
+  1: "I don't recognise this word",
+  2: "I recognise this word but don't know what it means",
   3: 'I think I know what this word means',
   4: 'I definitely know what this word means but could forget soon',
   5: 'I know this word so well, I am unlikely to ever forget it',

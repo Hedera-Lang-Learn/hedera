@@ -4,7 +4,7 @@
     <time class="bookmark-item-date" :datetime="dateMachineReadable">{{
       dateDisplay
     }}</time>
-    <p>{{ readStatus }}</p>
+    <b>{{ readStatus }}</b>
   </li>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   props: ['bookmark'],
   data() {
     const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
-    const readStatus = this.$props.bookmark.readStatus ? 'Unread' : 'Read';
+    const readStatus = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
     return { createdAt, readStatus };
   },
   computed: {

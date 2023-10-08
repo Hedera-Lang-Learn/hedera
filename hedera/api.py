@@ -91,7 +91,7 @@ class BookmarksListAPI(APIView):
         )
         return JsonResponse(dict(data=bookmark.api_data()))
 
-
+# ADD UPDATE HERE??
 class BookmarksDetailAPI(APIView):
     def get_data(self):
         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
@@ -103,6 +103,17 @@ class BookmarksDetailAPI(APIView):
         try:
             bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
             bookmark.delete()
+        except LemmatizedTextBookmark.DoesNotExist:
+            pass
+        return JsonResponse({})
+
+    # only editing functionality so far is marking as read or unread
+    def post(self, request, *args, **kwargs):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        data = json.loads(request.body)
+        try:
+            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+            bookmark.read_status = data['readStatus']
         except LemmatizedTextBookmark.DoesNotExist:
             pass
         return JsonResponse({})
@@ -332,7 +343,7 @@ class VocabularyListEntriesAPI(APIView):
         entry.save()
         return JsonResponse(entry.data())
 
-
+# LOOK AT EDIT API ACTION FOR HELP
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
