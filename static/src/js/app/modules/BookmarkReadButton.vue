@@ -12,7 +12,6 @@
 // CREATE A NEW CONSTANT FOR READ STATUS?
 import { BOOKMARK_READ_UPDATE } from '../constants';
 
-// TODO: button disappears upon refresh...
 export default {
   props: ['textId'],
   methods: {
@@ -42,14 +41,20 @@ export default {
         parseInt(bookmark.text.id, 10) === textId;
       return this.$store.state.bookmarks.filter(textFilter)[0];
     },
+    read() {
+      console.log(this.$store.state.bookmarks[0]);
+      if (this.$store.state.bookmarks[0]) {
+        return this.$store.state.bookmarks[0].readStatus;
+      }
+      return true;
+    },
     isRead() {
-      // needs to be readStatus - but undefined here
-      // console.log(this.bookmark.readStatus);
-      return Boolean(this.bookmark);
+      return Boolean(this.read);
     },
     buttonText() {
       return this.isRead ? 'Mark as Unread' : 'Mark as Read';
     },
   },
+  // watch property?
 };
 </script>

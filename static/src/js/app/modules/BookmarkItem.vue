@@ -13,8 +13,8 @@ export default {
   props: ['bookmark'],
   data() {
     const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
-    const readStatus = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
-    return { createdAt, readStatus };
+    const isRead = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
+    return { createdAt, isRead };
   },
   computed: {
     dateDisplay() {
@@ -30,7 +30,7 @@ export default {
       );
     },
     readStatus() {
-      return this.$data.readStatus;
+      return this.$data.isRead;
     },
   },
 };
