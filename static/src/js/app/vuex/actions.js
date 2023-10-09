@@ -35,6 +35,7 @@ import {
   VOCAB_LIST_SET,
   VOCAB_LIST_UPDATE,
   BOOKMARK_READ_UPDATE,
+  BOOKMARK_FETCH,
 } from '../constants';
 import api from '../api';
 
@@ -151,11 +152,11 @@ export default {
     commit(BOOKMARK_LIST, data);
   },
   // NEW ACTION ADDED FOR READ UPDATE
-  [BOOKMARK_READ_UPDATE]: async (
-    { dispatch },
-    { bookmarkId },
-    { readStatus }
-  ) => {
+  [BOOKMARK_FETCH]: async ({ dispatch }, { bookmarkId }) => {
+    await api.bookmark_fetch(bookmarkId);
+    dispatch(BOOKMARK_LIST);
+  },
+  [BOOKMARK_READ_UPDATE]: async ({ dispatch }, { bookmarkId, readStatus }) => {
     await api.bookmark_read_update(bookmarkId, readStatus);
     dispatch(BOOKMARK_LIST);
   },

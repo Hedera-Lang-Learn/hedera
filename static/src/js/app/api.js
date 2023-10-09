@@ -113,8 +113,11 @@ export default {
   bookmark_fetch: (bookmarkId) =>
     axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
   // API CALL TO EDIT READ STATUS
-  bookmark_read_update: (bookmarkId, readStatus) =>
-    axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus }),
+  bookmark_read_update: (bookmarkId, readStatus) => {
+    return axios
+      .post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus })
+      .then((r) => console.log(r.data));
+  },
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */

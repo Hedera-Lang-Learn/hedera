@@ -10,31 +10,28 @@
 
 <script>
 // CREATE A NEW CONSTANT FOR READ STATUS?
-import { BOOKMARK_READ_UPDATE } from '../constants';
+import { BOOKMARK_READ_UPDATE, BOOKMARK_FETCH } from '../constants';
 
 export default {
   props: ['textId'],
   methods: {
     onToggleBookmark() {
       if (this.bookmark) {
-        console.log(this.bookmark.readStatus);
+        // console.log(this.bookmark.readStatus);
         this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus);
+        // this.$store.dispatch(BOOKMARK_FETCH, this.bookmark.id);
       } else {
         return;
       }
     },
     updateBookmarkRead(bookmarkId, readStatus) {
       console.log(readStatus);
-      // BUG IS HERE
-      this.$store.dispatch(
-        BOOKMARK_READ_UPDATE,
-        { bookmarkId },
-        { readStatus }
-      );
+      // not updating status yet
+      this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
+      console.log(this.$store.state.bookmarks[0]);
     },
   },
   computed: {
-    // FIGURE OUT STATE AND STORE
     bookmark() {
       const textId = parseInt(this.textId, 10);
       const textFilter = (bookmark) =>
@@ -42,7 +39,6 @@ export default {
       return this.$store.state.bookmarks.filter(textFilter)[0];
     },
     read() {
-      console.log(this.$store.state.bookmarks[0]);
       if (this.$store.state.bookmarks[0]) {
         return this.$store.state.bookmarks[0].readStatus;
       }

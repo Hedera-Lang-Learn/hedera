@@ -116,7 +116,7 @@ class BookmarksDetailAPI(APIView):
             bookmark.read_status = data["readStatus"]
         except LemmatizedTextBookmark.DoesNotExist:
             pass
-        return JsonResponse({})
+        return JsonResponse(dict(bookmark.api_data()))
 
 
 class LemmatizedTextListAPI(APIView):
