@@ -114,6 +114,7 @@ class BookmarksDetailAPI(APIView):
         try:
             bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
             bookmark.read_status = data["readStatus"]
+            bookmark.save()
         except LemmatizedTextBookmark.DoesNotExist:
             pass
         return JsonResponse(dict(bookmark.api_data()))
