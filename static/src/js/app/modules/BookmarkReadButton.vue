@@ -9,24 +9,20 @@
 </template>
 
 <script>
-// CREATE A NEW CONSTANT FOR READ STATUS?
-import { BOOKMARK_READ_UPDATE, BOOKMARK_FETCH } from '../constants';
+import { BOOKMARK_READ_UPDATE } from '../constants';
 
 export default {
   props: ['textId'],
   methods: {
     onToggleBookmark() {
       if (this.bookmark) {
-        // console.log(this.bookmark.readStatus);
         this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus);
-        // this.$store.dispatch(BOOKMARK_FETCH, this.bookmark.id);
       } else {
         return;
       }
     },
     updateBookmarkRead(bookmarkId, readStatus) {
       console.log(readStatus);
-      // not updating status yet
       this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
       console.log(this.$store.state.bookmarks[0]);
     },
@@ -51,6 +47,5 @@ export default {
       return this.isRead ? 'Mark as Unread' : 'Mark as Read';
     },
   },
-  // watch property?
 };
 </script>

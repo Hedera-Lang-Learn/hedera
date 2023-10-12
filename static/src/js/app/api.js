@@ -109,14 +109,10 @@ export default {
   bookmark_delete: (bookmarkId) =>
     axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
   bookmark_list: () => axios.get(`${BASE_URL}bookmarks/`),
-  // ADD API CALL HERE TO FETCH A SPECIFIC BOOKMARKED TEXT
   bookmark_fetch: (bookmarkId) =>
     axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
-  // API CALL TO EDIT READ STATUS
   bookmark_read_update: (bookmarkId, readStatus) => {
-    return axios
-      .post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus })
-      .then((r) => console.log(r.data));
+    return axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus });
   },
 
   /* -------------------------------------------------------------------------- */

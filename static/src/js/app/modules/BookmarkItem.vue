@@ -4,7 +4,8 @@
     <time class="bookmark-item-date" :datetime="dateMachineReadable">{{
       dateDisplay
     }}</time>
-    <b>{{ readStatus }}</b>
+    <span v-if="bookmark.readStatus">Read</span>
+    <b v-else>Unread</b>
   </li>
 </template>
 

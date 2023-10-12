@@ -11,8 +11,6 @@ class LemmatizedTextAdmin(admin.ModelAdmin):
 admin.site.register(LemmatizedText, LemmatizedTextAdmin)
 
 class LemmatizedTextAdminBookmark(admin.ModelAdmin):
-    # list_display = ("created_at", "user_id", "read_status")
-    # search_fields = ["title__iexact"]
-    pass
+    list_display = ("text", "user_id", "created_at", "read_status")
 
 admin.site.register(LemmatizedTextBookmark, LemmatizedTextAdminBookmark)
