@@ -4,7 +4,7 @@
     @click.prevent="onToggleBookmark"
     :aria-pressed="isRead"
   >
-    <i class="fa fa-star" aria-hidden="true"></i> {{ buttonText }}
+    <i class="fa fa-book" aria-hidden="true"></i> {{ buttonText }}
   </button>
 </template>
 
