@@ -10,7 +10,7 @@ WORKDIR /app
 # Install system dependencies and target node v14
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get update && \
-    apt-get install -y netcat git nodejs postgresql-client && \
+    apt-get install -y netcat-traditional git nodejs npm postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
@@ -34,7 +34,7 @@ EXPOSE 8000 8080
 
 FROM prod AS dev
 
-# Install python dev dependencies
+# # Install python dev dependencies
 COPY ./hedera/requirements/dev.txt /app/
 RUN pip install -r dev.txt && \
     rm dev.txt

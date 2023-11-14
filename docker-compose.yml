@@ -27,19 +27,19 @@ services:
             - localdev
         ports:
             - "6379:6379"
-    pdfservice:
-        # This service is a small wrapper (flask app) around puppeteer (https://pptr.dev/)
-        # that takes HTML and converts to PDF.
-        image: eldarioninc/pdf-service
-        container_name: hedera-pdfservice
-        restart: unless-stopped
-        environment:
-          X_API_KEY: "pdfservice-api-key"
-        networks:
-          - localdev
-        ports:
-          - "9000:9000"
-        command: /bin/sh -c 'exec gunicorn --bind 0.0.0.0:9000 wsgi:app'
+    # pdfservice:
+    #     # This service is a small wrapper (flask app) around puppeteer (https://pptr.dev/)
+    #     # that takes HTML and converts to PDF.
+    #     image: eldarioninc/pdf-service
+    #     container_name: hedera-pdfservice
+    #     restart: unless-stopped
+    #     environment:
+    #       X_API_KEY: "pdfservice-api-key"
+    #     networks:
+    #       - localdev
+    #     ports:
+    #       - "9000:9000"
+    #     command: /bin/sh -c 'exec gunicorn --bind 0.0.0.0:9000 wsgi:app'
     npm:
         image: hedera-django
         build:
