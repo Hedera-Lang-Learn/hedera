@@ -20,6 +20,7 @@ RUN pip install -r base.txt && \
 
 # Install node dependencies
 COPY ./package-lock.json ./package.json /app/
+ARG NODE_OPTIONS=--openssl-legacy-provider
 RUN npm i && \
     rm package-lock.json package.json
 
