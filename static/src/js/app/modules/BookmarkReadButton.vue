@@ -22,7 +22,6 @@ export default {
       }
     },
     updateBookmarkRead(bookmarkId, readStatus) {
-      console.log(readStatus);
       this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
       console.log(this.$store.state.bookmarks[0]);
     },
@@ -35,8 +34,9 @@ export default {
       return this.$store.state.bookmarks.filter(textFilter)[0];
     },
     read() {
-      if (this.$store.state.bookmarks[0]) {
-        return this.$store.state.bookmarks[0].readStatus;
+      if (this.bookmark) {
+        console.log(this.bookmark.readStatus);
+        return this.bookmark.readStatus;
       }
       return true;
     },
