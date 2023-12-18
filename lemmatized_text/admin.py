@@ -10,7 +10,9 @@ class LemmatizedTextAdmin(admin.ModelAdmin):
 
 admin.site.register(LemmatizedText, LemmatizedTextAdmin)
 
+
 class LemmatizedTextAdminBookmark(admin.ModelAdmin):
     list_display = ("text", "user_id", "created_at", "read_status")
+
 
 admin.site.register(LemmatizedTextBookmark, LemmatizedTextAdminBookmark)

@@ -91,8 +91,9 @@ class BookmarksListAPI(APIView):
         )
         return JsonResponse(dict(data=bookmark.api_data()))
 
-# ADD UPDATE HERE??
+
 class BookmarksDetailAPI(APIView):
+
     def get_data(self):
         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
         bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
@@ -344,7 +345,7 @@ class VocabularyListEntriesAPI(APIView):
         entry.save()
         return JsonResponse(entry.data())
 
-# LOOK AT EDIT API ACTION FOR HELP
+
 class VocabularyListEntryAPI(APIView):
 
     def post(self, request, *args, **kwargs):
