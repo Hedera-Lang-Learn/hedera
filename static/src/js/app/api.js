@@ -15,43 +15,36 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Form                             */
   /* -------------------------------------------------------------------------- */
-  form_fetch: (lang, form) =>
-    axios.get(
-      `${BASE_URL}lemmatization/forms/${lang}/${encodeURIComponent(form)}/`
-    ),
-  form_fetchPartial: (lang, form) =>
-    axios
-      .get(
-        `${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(
-          form
-        )}/`
-      )
-      .then((r) => r.data),
+  form_fetch: (lang, form) => axios.get(
+    `${BASE_URL}lemmatization/forms/${lang}/${encodeURIComponent(form)}/`,
+  ),
+  form_fetchPartial: (lang, form) => axios
+    .get(
+      `${BASE_URL}lemmatization/partial_match_forms/${lang}/${encodeURIComponent(
+        form,
+      )}/`,
+    )
+    .then((r) => r.data),
 
   /* -------------------------------------------------------------------------- */
   /*                             lemmatization.Lemma                            */
   /* -------------------------------------------------------------------------- */
   lemma_fetch: (id) => axios.get(`${BASE_URL}lemmatization/lemma/${id}/`),
-  lemmas_fetchPartial: (lang, lemma) =>
-    axios
-      .get(
-        `${BASE_URL}lemmatization/partial_match_lemmas/${lang}/${encodeURIComponent(
-          lemma
-        )}/`
-      )
-      .then((r) => r.data),
+  lemmas_fetchPartial: (lang, lemma) => axios
+    .get(
+      `${BASE_URL}lemmatization/partial_match_lemmas/${lang}/${encodeURIComponent(
+        lemma,
+      )}/`,
+    )
+    .then((r) => r.data),
 
   /* -------------------------------------------------------------------------- */
   /*                       lemmatized_text.LemmatizedText                       */
   /* -------------------------------------------------------------------------- */
-  lemmatizedText_cancel: (id) =>
-    axios.post(`${BASE_URL}lemmatized_texts/${id}/cancel/`),
-  lemmatizedText_clone: (id) =>
-    axios.post(`${BASE_URL}lemmatized_texts/${id}/clone/`),
-  lemmatizedText_fetch: (id) =>
-    axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`),
-  lemmatizedText_fetchStatus: (id) =>
-    axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`),
+  lemmatizedText_cancel: (id) => axios.post(`${BASE_URL}lemmatized_texts/${id}/cancel/`),
+  lemmatizedText_clone: (id) => axios.post(`${BASE_URL}lemmatized_texts/${id}/clone/`),
+  lemmatizedText_fetch: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`),
+  lemmatizedText_fetchStatus: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`),
   lemmatizedText_fetchTokens: (id, vocabList, personalVocabList) => {
     if (!vocabList && !personalVocabList) {
       return axios.get(`${BASE_URL}lemmatized_texts/${id}/`);
@@ -65,13 +58,11 @@ export default {
     }
     return axios.get(`${BASE_URL}lemmatized_texts/${id}/?${qs}`);
   },
-  lemmatizedText_fetchTokenHistory: (id, tokenIndex) =>
-    axios.get(
-      `${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`
-    ),
+  lemmatizedText_fetchTokenHistory: (id, tokenIndex) => axios.get(
+    `${BASE_URL}lemmatized_texts/${id}/tokens/${tokenIndex}/history/`,
+  ),
   lemmatizedText_list: () => axios.get(`${BASE_URL}lemmatized_texts/`),
-  lemmatizedText_retry: (id) =>
-    axios.post(`${BASE_URL}lemmatized_texts/${id}/retry/`),
+  lemmatizedText_retry: (id) => axios.post(`${BASE_URL}lemmatized_texts/${id}/retry/`),
   lemmatizedText_updateToken: (
     id,
     tokenIndex,
@@ -79,7 +70,7 @@ export default {
     vocabList,
     lemmaId = null,
     glossIds = [],
-    lemma = null
+    lemma = null,
   ) => {
     if (vocabList === null) {
       return axios.post(`${BASE_URL}lemmatized_texts/${id}/`, {
@@ -98,7 +89,7 @@ export default {
         glossIds,
         lemma,
         resolved,
-      }
+      },
     );
   },
 
@@ -106,22 +97,16 @@ export default {
   /*                   lemmatized_text.LemmatizedTextBookmark                   */
   /* -------------------------------------------------------------------------- */
   bookmark_create: (textId) => axios.post(`${BASE_URL}bookmarks/`, { textId }),
-  bookmark_delete: (bookmarkId) =>
-    axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
+  bookmark_delete: (bookmarkId) => axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
   bookmark_list: () => axios.get(`${BASE_URL}bookmarks/`),
-  bookmark_fetch: (bookmarkId) =>
-    axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
-  bookmark_read_update: (bookmarkId, readStatus) => {
-    return axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus });
-  },
+  bookmark_fetch: (bookmarkId) => axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
+  bookmark_read_update: (bookmarkId, readStatus) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus }),
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
   /* -------------------------------------------------------------------------- */
-  personalVocabularyList_fetch: (lang) =>
-    axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`),
-  personalVocabularyList_fetchLangList: () =>
-    axios.get(`${BASE_URL}personal_vocab_list/quick_add/`),
+  personalVocabularyList_fetch: (lang) => axios.get(`${BASE_URL}personal_vocab_list/?lang=${lang}`),
+  personalVocabularyList_fetchLangList: () => axios.get(`${BASE_URL}personal_vocab_list/quick_add/`),
   personalVocabularyList_update: (
     textId,
     lemmaId,
@@ -129,7 +114,7 @@ export default {
     headword,
     definition,
     entryId,
-    lang
+    lang,
   ) => {
     let data = {
       familiarity,
@@ -165,7 +150,7 @@ export default {
     vocabularyListId,
     familiarity,
     lang,
-    lemmaId
+    lemmaId,
   ) => {
     const payload = {
       headword,
@@ -178,16 +163,13 @@ export default {
     };
     return axios.post(`${BASE_URL}personal_vocab_list/quick_add/`, payload);
   },
-  personalVocabularyListEntry_delete: (id) =>
-    axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }),
+  personalVocabularyListEntry_delete: (id) => axios.delete(`${BASE_URL}personal_vocab_list/`, { data: { id } }),
 
   /* -------------------------------------------------------------------------- */
   /*                          vocab_list.VocabularyList                         */
   /* -------------------------------------------------------------------------- */
-  vocabularyList_fetch: (vocabListId) =>
-    axios.get(`${BASE_URL}vocab_lists/${vocabListId}`),
-  vocabularyList_list: (lang) =>
-    axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`),
+  vocabularyList_fetch: (vocabListId) => axios.get(`${BASE_URL}vocab_lists/${vocabListId}`),
+  vocabularyList_list: (lang) => axios.get(`${BASE_URL}vocab_lists/?lang=${lang}`),
 
   /* -------------------------------------------------------------------------- */
   /*                       vocab_list.VocabularyListEntry                       */
@@ -196,7 +178,7 @@ export default {
     vocabularyListId,
     headword,
     definition,
-    lemmaId
+    lemmaId,
   ) => {
     const payload = {
       headword,
@@ -207,20 +189,16 @@ export default {
     }
     return axios.post(
       `${BASE_URL}vocab_lists/${vocabularyListId}/entries/`,
-      payload
+      payload,
     );
   },
-  vocabularyListEntry_delete: (id) =>
-    axios.post(`${BASE_URL}vocab_entries/${id}/delete/`),
-  vocabularyListEntry_link: (id, lemmaId) =>
-    axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { lemma_id: lemmaId }),
-  vocabularyListEntry_list: (id, cb) =>
-    axios.get(`${BASE_URL}vocab_lists/${id}/entries/`).then((r) => cb(r.data)),
-  vocabularyListEntry_update: (id, headword, definition) =>
-    axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, {
-      headword,
-      definition,
-    }),
+  vocabularyListEntry_delete: (id) => axios.post(`${BASE_URL}vocab_entries/${id}/delete/`),
+  vocabularyListEntry_link: (id, lemmaId) => axios.post(`${BASE_URL}vocab_entries/${id}/link/`, { lemma_id: lemmaId }),
+  vocabularyListEntry_list: (id, cb) => axios.get(`${BASE_URL}vocab_lists/${id}/entries/`).then((r) => cb(r.data)),
+  vocabularyListEntry_update: (id, headword, definition) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, {
+    headword,
+    definition,
+  }),
 
   /* -------------------------------------------------------------------------- */
   /*                            Not accessing a model                           */
@@ -230,10 +208,8 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*         TODO: Delete these things, ensuring that they are not used.        */
   /* -------------------------------------------------------------------------- */
-  fetchNode: (id, cb) =>
-    axios.get(`/lattices/${id}.json`).then((r) => cb(r.data)),
-  fetchLatticeNodes: (headword, lang, cb) =>
-    axios
-      .get(`${BASE_URL}lattice_nodes/?headword=${headword}&lang=${lang}`)
-      .then((r) => cb(r.data)),
+  fetchNode: (id, cb) => axios.get(`/lattices/${id}.json`).then((r) => cb(r.data)),
+  fetchLatticeNodes: (headword, lang, cb) => axios
+    .get(`${BASE_URL}lattice_nodes/?headword=${headword}&lang=${lang}`)
+    .then((r) => cb(r.data)),
 };

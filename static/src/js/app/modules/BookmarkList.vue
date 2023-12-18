@@ -16,26 +16,26 @@
 </template>
 
 <script>
-import BookmarkItem from './BookmarkItem.vue';
-import { BOOKMARK_LIST } from '../constants';
+  import BookmarkItem from './BookmarkItem.vue';
+  import { BOOKMARK_LIST } from '../constants';
 
-export default {
-  components: { BookmarkItem },
-  created() {
-    this.$store.dispatch(BOOKMARK_LIST);
-  },
-  computed: {
-    bookmarks() {
-      return this.$store.state.bookmarks;
+  export default {
+    components: { BookmarkItem },
+    created() {
+      this.$store.dispatch(BOOKMARK_LIST);
     },
-    hasBookmarks() {
-      return this.bookmarks.length > 0;
+    computed: {
+      bookmarks() {
+        return this.$store.state.bookmarks;
+      },
+      hasBookmarks() {
+        return this.bookmarks.length > 0;
+      },
+      readCount() {
+        return this.bookmarks.filter((b) => b.readStatus === true).length;
+      },
     },
-    readCount() {
-      return this.bookmarks.filter((b) => b.readStatus == true).length;
-    },
-  },
-};
+  };
 </script>
 <style lang="scss">
 @import '../../../scss/config';

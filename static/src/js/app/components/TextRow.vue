@@ -69,76 +69,76 @@
 </template>
 
 <script>
-import api from '../api';
+  import api from '../api';
 
-export default {
-  props: {
-    text: {
-      type: Object,
-      required: true,
+  export default {
+    props: {
+      text: {
+        type: Object,
+        required: true,
+      },
+      teacherMode: {
+        type: Boolean,
+        default: false,
+      },
     },
-    teacherMode: {
-      type: Boolean,
-      default: false,
+    computed: {
+      textUrl() {
+        return this.teacherMode
+          ? `/lemmatized_text/${this.text.id}/`
+          : `/lemmatized_text/${this.text.id}/learner/`;
+      },
     },
-  },
-  computed: {
-    textUrl() {
-      return this.teacherMode
-        ? `/lemmatized_text/${this.text.id}/`
-        : `/lemmatized_text/${this.text.id}/learner/`;
+    data() {
+      return {
+        completed: this.text.completed,
+        createdAt: new Date(this.text.createdAt),
+        tokenCount: this.text.tokenCount,
+        lemmatizationStatus: this.text.lemmatizationStatus,
+        public: this.text.public,
+      };
     },
-  },
-  data() {
-    return {
-      completed: this.text.completed,
-      createdAt: new Date(this.text.createdAt),
-      tokenCount: this.text.tokenCount,
-      lemmatizationStatus: this.text.lemmatizationStatus,
-      public: this.text.public,
-    };
-  },
-  created() {
-    if (this.text.completed < 100) {
-      this.updateStatus();
-    }
-  },
-  methods: {
-    // can you update read status here? maybe 3 options - read, in progress, unread
-    async updateStatus() {
-      const response = await api.lemmatizedText_fetchStatus(this.text.id);
-      const { data } = response.data;
-      const { completed, tokenCount, lemmatizationStatus } = data;
-      this.completed = completed;
-      this.tokenCount = tokenCount;
-      this.lemmatizationStatus = lemmatizationStatus;
-      if (
-        this.completed < 100 &&
-        ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus) ===
-          -1
-      ) {
-        setTimeout(this.updateStatus, 1000);
+    created() {
+      if (this.text.completed < 100) {
+        this.updateStatus();
       }
     },
-    async onRetry() {
-      const response = await api.lemmatizedText_retry(this.text.id);
-      const { data } = response.data;
-      const { completed, tokenCount } = data;
-      this.completed = completed;
-      this.tokenCount = tokenCount;
-      if (this.completed < 100) {
-        setTimeout(this.updateStatus, 1000);
-      }
+    methods: {
+      // can you update read status here? maybe 3 options - read, in progress, unread
+      async updateStatus() {
+        const response = await api.lemmatizedText_fetchStatus(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount, lemmatizationStatus } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
+        this.lemmatizationStatus = lemmatizationStatus;
+        if (
+          this.completed < 100
+          && ['finished', 'failed', 'queued'].indexOf(this.lemmatizationStatus)
+            === -1
+        ) {
+          setTimeout(this.updateStatus, 1000);
+        }
+      },
+      async onRetry() {
+        const response = await api.lemmatizedText_retry(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
+        if (this.completed < 100) {
+          setTimeout(this.updateStatus, 1000);
+        }
+      },
+      async onCancel() {
+        const response = await api.lemmatizedText_cancel(this.text.id);
+        const { data } = response.data;
+        const { completed, tokenCount } = data;
+        this.completed = completed;
+        this.tokenCount = tokenCount;
+      },
     },
-    async onCancel() {
-      const response = await api.lemmatizedText_cancel(this.text.id);
-      const { data } = response.data;
-      const { completed, tokenCount } = data;
-      this.completed = completed;
-      this.tokenCount = tokenCount;
-    },
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped>

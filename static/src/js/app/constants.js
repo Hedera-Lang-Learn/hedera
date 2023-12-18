@@ -30,15 +30,13 @@ export const BOOKMARK_READ_UPDATE = 'bookmark_read_update';
 
 // vocab_list.PersonalVocabularyList
 export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
-export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST =
-  'personalVocabularyList_fetchLangList';
+export const PERSONAL_VOCAB_LIST_FETCH_LANG_LIST = 'personalVocabularyList_fetchLangList';
 
 // vocab_list.PersonalVocabularyListEntry
 export const PERSONAL_VOCAB_ENTRY_CREATE = 'personalVocabularyListEntry_create';
 export const PERSONAL_VOCAB_ENTRY_DELETE = 'personalVocabularyListEntry_delete';
 export const PERSONAL_VOCAB_ENTRY_UPDATE = 'personalVocabularyListEntry_update';
-export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY =
-  'personalVocabularyListEntry_updateMany';
+export const PERSONAL_VOCAB_ENTRY_UPDATE_MANY = 'personalVocabularyListEntry_updateMany';
 
 // vocab_list.VocabularyList
 export const VOCAB_LIST_FETCH = 'vocabularyList_fetch';

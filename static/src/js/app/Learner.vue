@@ -105,182 +105,177 @@
   </div>
 </template>
 <script>
-import {
-  LEMMATIZED_TEXT_FETCH_TOKENS,
-  PERSONAL_VOCAB_LIST_FETCH,
-  LEMMATIZED_TEXT_FETCH,
-  OLD_CREATE_VOCAB_ENTRY,
-  PERSONAL_VOCAB_ENTRY_UPDATE,
-  PROFILE_FETCH,
-  BOOKMARK_LIST,
-} from './constants';
+  import {
+    LEMMATIZED_TEXT_FETCH_TOKENS,
+    PERSONAL_VOCAB_LIST_FETCH,
+    LEMMATIZED_TEXT_FETCH,
+    OLD_CREATE_VOCAB_ENTRY,
+    PERSONAL_VOCAB_ENTRY_UPDATE,
+    PROFILE_FETCH,
+    BOOKMARK_LIST,
+  } from './constants';
 
-import LemmatizedText from './modules/LemmatizedText.vue';
-import VocabularyEntries from './modules/VocabularyEntries.vue';
-import FamiliarityRating from './modules/FamiliarityRating.vue';
-import TextFamiliarity from './modules/TextFamiliarity.vue';
-import DownloadVocab from './components/DownloadVocab.vue';
-import BookmarkTextButton from './modules/BookmarkTextButton.vue';
-import BookmarkReadButton from './modules/BookmarkReadButton.vue';
+  import LemmatizedText from './modules/LemmatizedText.vue';
+  import VocabularyEntries from './modules/VocabularyEntries.vue';
+  import FamiliarityRating from './modules/FamiliarityRating.vue';
+  import TextFamiliarity from './modules/TextFamiliarity.vue';
+  import DownloadVocab from './components/DownloadVocab.vue';
+  import BookmarkTextButton from './modules/BookmarkTextButton.vue';
+  import BookmarkReadButton from './modules/BookmarkReadButton.vue';
 
-export default {
-  props: ['textId'],
-  components: {
-    FamiliarityRating,
-    LemmatizedText,
-    VocabularyEntries,
-    TextFamiliarity,
-    DownloadVocab,
-    BookmarkTextButton,
-    BookmarkReadButton,
-  },
-  created() {
-    this.$store.dispatch(PROFILE_FETCH);
-    this.$store.dispatch(BOOKMARK_LIST);
-  },
-  data() {
-    return {
-      selectedNodeRating: null,
-      showFamiliarity: false,
-      readMode: false,
-      revealGloss: false,
-    };
-  },
-  watch: {
-    textId: {
-      immediate: true,
-      handler() {
-        this.$store
-          .dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
-          .then(() =>
-            this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
+  export default {
+    props: ['textId'],
+    components: {
+      FamiliarityRating,
+      LemmatizedText,
+      VocabularyEntries,
+      TextFamiliarity,
+      DownloadVocab,
+      BookmarkTextButton,
+      BookmarkReadButton,
+    },
+    created() {
+      this.$store.dispatch(PROFILE_FETCH);
+      this.$store.dispatch(BOOKMARK_LIST);
+    },
+    data() {
+      return {
+        selectedNodeRating: null,
+        showFamiliarity: false,
+        readMode: false,
+        revealGloss: false,
+      };
+    },
+    watch: {
+      textId: {
+        immediate: true,
+        handler() {
+          this.$store
+            .dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
+            .then(() => this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
               lang: this.text.lang,
-            })
-          );
+            }));
+        },
+      },
+      selectedVocabList: {
+        immediate: true,
+        handler() {
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, {
+            id: this.textId,
+            personalVocabListId: this.selectedVocabListId,
+          });
+        },
+      },
+      selectedNode: {
+        handler() {
+          if (this.personalVocabEntry) {
+            this.selectedNodeRating = this.personalVocabEntry.familiarity;
+          } else {
+            this.selectedNodeRating = null;
+          }
+        },
       },
     },
-    selectedVocabList: {
-      immediate: true,
-      handler() {
-        this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, {
-          id: this.textId,
-          personalVocabListId: this.selectedVocabListId,
-        });
+    methods: {
+      toggleFamiliarity() {
+        this.showFamiliarity = !this.showFamiliarity;
       },
-    },
-    selectedNode: {
-      handler() {
+      onRatingChange(rating) {
+        const { label, glosses } = this.selectedNode;
+
+        this.selectedNodeRating = rating;
         if (this.personalVocabEntry) {
-          this.selectedNodeRating = this.personalVocabEntry.familiarity;
+          this.$store.dispatch(PERSONAL_VOCAB_ENTRY_UPDATE, {
+            entryId: this.personalVocabEntry.id,
+            familiarity: rating,
+            headword: label,
+            definition: glosses[0].gloss,
+          });
         } else {
-          this.selectedNodeRating = null;
+          this.$store.dispatch(OLD_CREATE_VOCAB_ENTRY, {
+            lemmaId: this.selectedNode.pk,
+            familiarity: rating,
+            headword: label,
+            definition: glosses[0].gloss,
+          });
+        }
+      },
+      onSetRating({ rating }) {
+        if (this.selectedNode) {
+          this.onRatingChange(rating);
+        } else {
+          console.info('You need to select a node to rate with keystrokes.');
         }
       },
     },
-  },
-  methods: {
-    toggleFamiliarity() {
-      this.showFamiliarity = !this.showFamiliarity;
-    },
-    onRatingChange(rating) {
-      const { label, glosses } = this.selectedNode;
-
-      this.selectedNodeRating = rating;
-      if (this.personalVocabEntry) {
-        this.$store.dispatch(PERSONAL_VOCAB_ENTRY_UPDATE, {
-          entryId: this.personalVocabEntry.id,
-          familiarity: rating,
-          headword: label,
-          definition: glosses[0].gloss,
-        });
-      } else {
-        this.$store.dispatch(OLD_CREATE_VOCAB_ENTRY, {
-          lemmaId: this.selectedNode.pk,
-          familiarity: rating,
-          headword: label,
-          definition: glosses[0].gloss,
-        });
-      }
-    },
-    onSetRating({ rating }) {
-      if (this.selectedNode) {
-        this.onRatingChange(rating);
-      } else {
-        console.info('You need to select a node to rate with keystrokes.');
-      }
-    },
-  },
-  computed: {
-    text() {
-      return this.$store.state.text;
-    },
-    uniqueNodes() {
-      return [
-        ...new Set(
-          this.tokens
-            .map((token) => token.lemma_id)
-            .filter((token) => token !== null)
-        ),
-      ];
-    },
-    ranks() {
-      return (
-        this.$store.state.textId &&
-        this.personalVocabList.statsByText &&
-        this.personalVocabList.statsByText[this.$store.state.textId]
-      );
-    },
-    tokens() {
-      return this.$store.state.tokens;
-    },
-    personalVocabList() {
-      return this.$store.state.personalVocabList;
-    },
-    personalVocabEntry() {
-      return (
-        this.selectedNode &&
-        this.personalVocabList &&
-        this.personalVocabList.entries &&
-        this.personalVocabList.entries.filter(
-          (e) => e.lemma_id === this.selectedNode.pk
-        )[0]
-      );
-    },
-    vocabEntries() {
-      return this.selectedNode && this.selectedNode.vocabulary_entries;
-    },
-    selectedToken() {
-      return this.$store.state.selectedToken;
-    },
-    selectedNode() {
-      return (
-        this.selectedToken &&
-        this.$store.state.lemmas[this.selectedToken.lemma_id]
-      );
-    },
-    knownEntries() {
-      return this.personalVocabList.entries.filter((e) => e.familiarity > 2);
-    },
-    glosses() {
-      return this.uniqueNodes
-        .filter(
-          (lemmaId) =>
-            this.knownEntries.filter((k) => k.lemma_id === lemmaId).length === 0
-        )
-        .map(
-          (lemmaId) =>
-            this.tokens.filter((t) => t.lemma_id === lemmaId)[0] || null
-        )
-        .filter(
-          (t) =>
-            t !== null &&
-            t.resolved !== 'unresolved' &&
-            t.glosses &&
-            t.glosses.length !== 0
+    computed: {
+      text() {
+        return this.$store.state.text;
+      },
+      uniqueNodes() {
+        return [
+          ...new Set(
+            this.tokens
+              .map((token) => token.lemma_id)
+              .filter((token) => token !== null),
+          ),
+        ];
+      },
+      ranks() {
+        return (
+          this.$store.state.textId
+          && this.personalVocabList.statsByText
+          && this.personalVocabList.statsByText[this.$store.state.textId]
         );
+      },
+      tokens() {
+        return this.$store.state.tokens;
+      },
+      personalVocabList() {
+        return this.$store.state.personalVocabList;
+      },
+      personalVocabEntry() {
+        return (
+          this.selectedNode
+          && this.personalVocabList
+          && this.personalVocabList.entries
+          && this.personalVocabList.entries.filter(
+            (e) => e.lemma_id === this.selectedNode.pk,
+          )[0]
+        );
+      },
+      vocabEntries() {
+        return this.selectedNode && this.selectedNode.vocabulary_entries;
+      },
+      selectedToken() {
+        return this.$store.state.selectedToken;
+      },
+      selectedNode() {
+        return (
+          this.selectedToken
+          && this.$store.state.lemmas[this.selectedToken.lemma_id]
+        );
+      },
+      knownEntries() {
+        return this.personalVocabList.entries.filter((e) => e.familiarity > 2);
+      },
+      glosses() {
+        return this.uniqueNodes
+          .filter(
+            (lemmaId) => this.knownEntries.filter((k) => k.lemma_id === lemmaId).length === 0,
+          )
+          .map(
+            (lemmaId) => this.tokens.filter((t) => t.lemma_id === lemmaId)[0] || null,
+          )
+          .filter(
+            (t) => t !== null
+              && t.resolved !== 'unresolved'
+              && t.glosses
+              && t.glosses.length !== 0,
+          );
+      },
     },
-  },
-};
+  };
 </script>
 
 <style lang="scss">

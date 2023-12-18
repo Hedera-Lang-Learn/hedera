@@ -99,26 +99,26 @@ export default {
   },
   [LEMMATIZED_TEXT_FETCH_TOKENS]: async (
     { commit },
-    { id, vocabListId, personalVocabListId }
+    { id, vocabListId, personalVocabListId },
   ) => {
     commit(LEMMATIZED_TEXT_SET_ID, id);
     const { data } = await api.lemmatizedText_fetchTokens(
       id,
       vocabListId,
-      personalVocabListId
+      personalVocabListId,
     );
     commit(LEMMATIZED_TEXT_FETCH_TOKENS, data);
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: async ({ commit, state }, { token }) => {
     const response = await api.lemmatizedText_fetchTokenHistory(
       state.textId,
-      token.tokenIndex
+      token.tokenIndex,
     );
     commit(LEMMATIZED_TEXT_SELECT_TOKEN, { token, data: response });
   },
   [LEMMATIZED_TEXT_UPDATE_TOKEN]: async (
     { commit, state },
-    { id, tokenIndex, lemmaId, glossIds, resolved }
+    { id, tokenIndex, lemmaId, glossIds, resolved },
   ) => {
     // Fetch the most recent lemma data
     const { data: lemmaData } = await api.lemma_fetch(lemmaId);
@@ -131,7 +131,7 @@ export default {
       state.selectedVocabList,
       lemmaId,
       glossIds,
-      null
+      null,
     );
     commit(LEMMATIZED_TEXT_UPDATE_TOKEN, data.data);
   },
@@ -180,7 +180,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   [PERSONAL_VOCAB_ENTRY_CREATE]: async (
     { commit },
-    { headword, definition, vocabularyListId, familiarity, lang, lemmaId }
+    { headword, definition, vocabularyListId, familiarity, lang, lemmaId },
   ) => {
     const { data } = await api.personalVocabularyListEntry_create(
       headword,
@@ -188,7 +188,7 @@ export default {
       vocabularyListId,
       familiarity,
       lang,
-      lemmaId
+      lemmaId,
     );
     commit(PERSONAL_VOCAB_ENTRY_CREATE, data.data);
   },
@@ -199,7 +199,7 @@ export default {
   // eslint-disable-next-line max-len
   [PERSONAL_VOCAB_ENTRY_UPDATE]: async (
     { commit, state },
-    { entryId, familiarity, headword, definition, lang = null, lemmaId }
+    { entryId, familiarity, headword, definition, lang = null, lemmaId },
   ) => {
     // eslint-disable-next-line max-len
     const { response, data } = await api.personalVocabularyList_update(
@@ -209,7 +209,7 @@ export default {
       headword,
       definition,
       entryId,
-      lang
+      lang,
     );
     if (response && response.status >= 400) {
       return response;
@@ -261,14 +261,14 @@ export default {
   /* -------------------------------------------------------------------------- */
   [VOCAB_ENTRY_CREATE]: async (
     { commit },
-    { vocabularyListId, headword, definition, lemmaId }
+    { vocabularyListId, headword, definition, lemmaId },
   ) => {
     const { data } = await api
       .vocabularyListEntry_create(
         vocabularyListId,
         headword,
         definition,
-        lemmaId
+        lemmaId,
       )
       .catch(logoutOnError(commit));
     commit(VOCAB_ENTRY_CREATE, data);
@@ -279,7 +279,7 @@ export default {
   },
   [VOCAB_ENTRY_UPDATE]: async (
     { commit, state },
-    { entryId, headword, definition, lemmaId }
+    { entryId, headword, definition, lemmaId },
   ) => {
     let data = null;
     // Hit the edit endpoint with new headword and/or definition, raise error if bad status returned
@@ -287,7 +287,7 @@ export default {
       const { response, data: editData } = await api.vocabularyListEntry_update(
         entryId,
         headword,
-        definition
+        definition,
       );
       if (response && response.status >= 400) {
         return response;
@@ -299,7 +299,7 @@ export default {
     if (lemmaId) {
       const { response, data: linkData } = await api.vocabularyListEntry_link(
         entryId,
-        lemmaId
+        lemmaId,
       );
       if (response && response.status >= 400) {
         return response;
@@ -348,7 +348,7 @@ export default {
   /* -------------------------------------------------------------------------- */
   [OLD_CREATE_VOCAB_ENTRY]: async (
     { commit, state },
-    { lemmaId, familiarity, headword, definition }
+    { lemmaId, familiarity, headword, definition },
   ) => {
     // TODO: Make DRY with updateVocabEntry
     // TODO: this function is redundant with PERSONAL_VOCAB_ENTRY_CREATE, but works a little different.
@@ -360,7 +360,7 @@ export default {
       headword,
       definition,
       null,
-      null
+      null,
     );
     if (response && response.status >= 400) {
       return response;
@@ -368,6 +368,5 @@ export default {
     commit(PERSONAL_VOCAB_LIST_FETCH, data);
     return null;
   },
-  [FETCH_NODE]: ({ commit }, { id }) =>
-    api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
+  [FETCH_NODE]: ({ commit }, { id }) => api.fetchNode(id, (data) => commit(FETCH_NODE, data)),
 };

@@ -59,40 +59,40 @@
 </template>
 
 <script>
-import TextRow from './components/TextRow.vue';
-import { PROFILE_FETCH, LEMMATIZED_TEXT_FETCH_LIST } from './constants';
+  import TextRow from './components/TextRow.vue';
+  import { PROFILE_FETCH, LEMMATIZED_TEXT_FETCH_LIST } from './constants';
 
-export default {
-  components: {
-    TextRow,
-  },
-  data() {
-    return {
-      selected: 'own-texts',
-    };
-  },
-  computed: {
-    ownSelected() {
-      return this.selected === 'own-texts';
+  export default {
+    components: {
+      TextRow,
     },
-    classSelected() {
-      return this.selected === 'class-texts';
+    data() {
+      return {
+        selected: 'own-texts',
+      };
     },
-    activeTexts() {
-      return this.ownSelected ? this.ownTexts : this.groupTexts;
+    computed: {
+      ownSelected() {
+        return this.selected === 'own-texts';
+      },
+      classSelected() {
+        return this.selected === 'class-texts';
+      },
+      activeTexts() {
+        return this.ownSelected ? this.ownTexts : this.groupTexts;
+      },
+      ownTexts() {
+        return this.$store.state.texts.filter((text) => text.clonedFor === null);
+      },
+      groupTexts() {
+        return this.$store.state.texts.filter((text) => text.clonedFor !== null);
+      },
     },
-    ownTexts() {
-      return this.$store.state.texts.filter((text) => text.clonedFor === null);
+    created() {
+      this.$store.dispatch(PROFILE_FETCH);
+      this.$store.dispatch(LEMMATIZED_TEXT_FETCH_LIST);
     },
-    groupTexts() {
-      return this.$store.state.texts.filter((text) => text.clonedFor !== null);
-    },
-  },
-  created() {
-    this.$store.dispatch(PROFILE_FETCH);
-    this.$store.dispatch(LEMMATIZED_TEXT_FETCH_LIST);
-  },
-};
+  };
 </script>
 
 <style lang="scss" scoped></style>

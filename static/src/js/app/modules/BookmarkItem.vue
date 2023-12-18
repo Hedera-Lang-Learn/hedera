@@ -10,31 +10,31 @@
 </template>
 
 <script>
-export default {
-  props: ['bookmark'],
-  data() {
-    const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
-    const isRead = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
-    return { createdAt, isRead };
-  },
-  computed: {
-    dateDisplay() {
-      return this.$options.filters.dateFormat(
-        this.$data.createdAt,
-        'MMM D, YYYY'
-      );
+  export default {
+    props: ['bookmark'],
+    data() {
+      const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
+      const isRead = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
+      return { createdAt, isRead };
     },
-    dateMachineReadable() {
-      return this.$options.filters.dateFormat(
-        this.$data.createdAt,
-        'YYYY-MM-DD'
-      );
+    computed: {
+      dateDisplay() {
+        return this.$options.filters.dateFormat(
+          this.$data.createdAt,
+          'MMM D, YYYY',
+        );
+      },
+      dateMachineReadable() {
+        return this.$options.filters.dateFormat(
+          this.$data.createdAt,
+          'YYYY-MM-DD',
+        );
+      },
+      readStatus() {
+        return this.$data.isRead;
+      },
     },
-    readStatus() {
-      return this.$data.isRead;
-    },
-  },
-};
+  };
 </script>
 <style lang="scss">
 @import '../../../scss/config';
