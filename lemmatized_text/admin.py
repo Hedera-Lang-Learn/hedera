@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import LemmatizedText
-from .models import LemmatizedTextBookmark
+from .models import LemmatizedText, LemmatizedTextBookmark
+
 
 class LemmatizedTextAdmin(admin.ModelAdmin):
     list_display = ("lang", "title", "public", "created_by", "created_at")
