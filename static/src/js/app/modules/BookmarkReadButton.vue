@@ -23,7 +23,6 @@ export default {
     },
     updateBookmarkRead(bookmarkId, readStatus) {
       this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
-      console.log(this.$store.state.bookmarks[0]);
     },
   },
   computed: {
@@ -35,7 +34,6 @@ export default {
     },
     read() {
       if (this.bookmark) {
-        console.log(this.bookmark.readStatus);
         return this.bookmark.readStatus;
       }
       return true;

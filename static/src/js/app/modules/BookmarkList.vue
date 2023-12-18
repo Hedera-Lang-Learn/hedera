@@ -9,7 +9,7 @@
           :bookmark="bookmark"
         />
       </ul>
-      <h5>Total Read: {{ readCount }}</h5>
+      <h5 class="total-read">Total Read: {{ readCount }}</h5>
     </div>
     <div v-else>You haven't bookmarked any texts yet.</div>
   </div>
@@ -29,7 +29,6 @@ export default {
       return this.$store.state.bookmarks;
     },
     hasBookmarks() {
-      console.log(this.bookmarks);
       return this.bookmarks.length > 0;
     },
     readCount() {
@@ -41,6 +40,10 @@ export default {
 <style lang="scss">
 @import '../../../scss/config';
 .bookmark-list-wrapper {
+  margin-top: 1rem;
+}
+
+.total-read {
   margin-top: 1rem;
 }
 </style>
