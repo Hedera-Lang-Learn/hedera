@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 
-import { BOOKMARK_READ_UPDATE } from '../app/constants';
+import { BOOKMARK_READ_UPDATE, BOOKMARK_STARTED_READ_AT } from '../app/constants';
 import BookmarkReadButton from '../app/modules/BookmarkReadButton.vue';
 
 const localVue = createLocalVue();
@@ -19,6 +19,7 @@ const bookmarksFixture = () => [
       learnerUrl: '/lemmatized_text/2/learner/',
     },
     readStatus: true,
+    startedReadAt: '2021-08-11T20:39:51.833Z',
   },
   {
     id: 84,
@@ -31,6 +32,7 @@ const bookmarksFixture = () => [
       learnerUrl: '/lemmatized_text/1/learner/',
     },
     readStatus: false,
+    startedReadAt: '2021-08-11T20:39:51.833Z',
   },
   {
     id: 50,
@@ -59,6 +61,7 @@ describe('BookmarkReadButton', () => {
   beforeEach(() => {
     actions = {
       [BOOKMARK_READ_UPDATE]: jest.fn(),
+      [BOOKMARK_STARTED_READ_AT]: jest.fn(),
     };
     store = new Vuex.Store({
       state: { bookmarks },
@@ -69,7 +72,7 @@ describe('BookmarkReadButton', () => {
   it('loads in BookmarkReadButton', () => {
     const textId = bookmarks[0].text.id;
     const wrapper = mountComponent({ textId });
-    expect(wrapper.element.tagName).toEqual('BUTTON');
+    expect(wrapper.element.tagName).toEqual('DIV');
   });
 
   it('shows Mark as Read if the text has not been read', () => {
@@ -83,6 +86,8 @@ describe('BookmarkReadButton', () => {
     const wrapper = mountComponent({ textId });
     expect(wrapper.text().trim()).toEqual('Mark as Unread');
   });
+
+  // How to write tests for button showing mark as started text?
 
   it('marks the bookmark as read when the button is pressed and the text is not read', async () => {
     const textId = bookmarks[1].text.id;
@@ -100,5 +105,15 @@ describe('BookmarkReadButton', () => {
     await button.trigger('click.prevent');
 
     expect(actions[BOOKMARK_READ_UPDATE]).toHaveBeenCalled();
+  });
+
+  // How to get the correct button in the wrapper?
+  it('marks the bookmark as started when the button is pressed and the text is not started', async () => {
+    const textId = bookmarks[2].text.id;
+    const wrapper = mountComponent({ textId });
+    const button = wrapper.find('button');
+    await button.trigger('click.prevent');
+
+    expect(actions[BOOKMARK_STARTED_READ_AT]).toHaveBeenCalled();
   });
 });
