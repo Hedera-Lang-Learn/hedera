@@ -8,11 +8,12 @@
       <i class="fa fa-book" aria-hidden="true"></i> Mark as Started
     </button>
     <button
+      v-else
       class="btn btn-block btn-outline-primary mb-3"
       @click.prevent="onToggleBookmark"
       :aria-pressed="isRead"
     >
-      <i class="fa fa-check-square" aria-hidden="true"></i> {{ buttonText }}
+      <i class="fa fa-check-square" aria-hidden="true"></i> {{ readButtonText }}
     </button>
   </div>
 </template>
@@ -67,7 +68,7 @@
         }
         return false;
       },
-      buttonText() {
+      readButtonText() {
         return this.isRead ? 'Mark as Unread' : 'Mark as Read';
       },
     },
