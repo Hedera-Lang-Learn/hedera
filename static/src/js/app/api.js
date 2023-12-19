@@ -101,6 +101,7 @@ export default {
   bookmark_list: () => axios.get(`${BASE_URL}bookmarks/`),
   bookmark_fetch: (bookmarkId) => axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
   bookmark_read_update: (bookmarkId, readStatus) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus }),
+  bookmark_started_read_at: (bookmarkId) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/startedread/`),
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */

@@ -1,26 +1,46 @@
 <template>
-  <button
-    class="btn btn-block btn-outline-primary mb-3"
-    @click.prevent="onToggleBookmark"
-    :aria-pressed="isRead"
-  >
-    <i class="fa fa-book" aria-hidden="true"></i> {{ buttonText }}
-  </button>
+  <div>
+    <button
+      v-if="notStarted"
+      class="btn btn-block btn-outline-primary mb-3"
+      @click.prevent="onToggleStartRead"
+    >
+      <i class="fa fa-book" aria-hidden="true"></i> Mark as Started
+    </button>
+    <button
+      class="btn btn-block btn-outline-primary mb-3"
+      @click.prevent="onToggleBookmark"
+      :aria-pressed="isRead"
+    >
+      <i class="fa fa-check-square" aria-hidden="true"></i> {{ buttonText }}
+    </button>
+  </div>
 </template>
 
 <script>
-  import { BOOKMARK_READ_UPDATE } from '../constants';
+  import { BOOKMARK_READ_UPDATE, BOOKMARK_STARTED_READ_AT } from '../constants';
 
   export default {
     props: ['textId'],
     methods: {
       onToggleBookmark() {
         if (this.bookmark) {
+          if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
+            this.updateBookmarkStartedReadAt(this.bookmark.id);
+          }
           this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus);
+        }
+      },
+      onToggleStartRead() {
+        if (this.bookmark) {
+          this.updateBookmarkStartedReadAt(this.bookmark.id);
         }
       },
       updateBookmarkRead(bookmarkId, readStatus) {
         this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
+      },
+      updateBookmarkStartedReadAt(bookmarkId) {
+        this.$store.dispatch(BOOKMARK_STARTED_READ_AT, { bookmarkId });
       },
     },
     computed: {
@@ -37,6 +57,15 @@
       },
       isRead() {
         return Boolean(this.read);
+      },
+      notStarted() {
+        if (this.bookmark) {
+          if ((this.bookmark.startedReadAt === null) && this.bookmark.readStatus) {
+            return false;
+          }
+          return (this.bookmark.startedReadAt === null);
+        }
+        return false;
       },
       buttonText() {
         return this.isRead ? 'Mark as Unread' : 'Mark as Read';

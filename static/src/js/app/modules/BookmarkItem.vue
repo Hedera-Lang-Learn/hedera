@@ -5,7 +5,7 @@
       dateDisplay
     }}</time>
     <span v-if="bookmark.readStatus">Read</span>
-    <b v-else>Unread</b>
+    <span v-else>{{ startText }}</span>
   </li>
 </template>
 
@@ -15,7 +15,8 @@
     data() {
       const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
       const isRead = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
-      return { createdAt, isRead };
+      const startedReadAt = this.$props.bookmark.startedReadAt ? new Date(this.$props.bookmark.startedReadAt) : null;
+      return { createdAt, isRead, startedReadAt };
     },
     computed: {
       dateDisplay() {
@@ -32,6 +33,23 @@
       },
       readStatus() {
         return this.$data.isRead;
+      },
+      startTime() {
+        return this.$options.filters.dateFormat(
+          this.$data.startedReadAt,
+          'MMM D, YYYY',
+        );
+      },
+      startText() {
+        if (this.$data.startedReadAt) {
+          console.log(this.$data.startedReadAt);
+          const startTime = this.$options.filters.dateFormat(
+            this.$data.startedReadAt,
+            'MMM D, YYYY',
+          );
+          return `Started ${startTime}`;
+        }
+        return 'Unread';
       },
     },
   };
