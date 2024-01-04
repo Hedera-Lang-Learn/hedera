@@ -16,14 +16,17 @@
   export default {
     props: ['textId'],
     methods: {
+      markAsStarted() {
+        setTimeout(() => {
+          if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
+            this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
+          }
+        }, 10000);
+      },
       onToggleBookmark() {
         if (this.bookmark) {
           this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, true);
-          setTimeout(() => {
-            if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
-              this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
-            }
-          }, 30000);
+          this.markAsStarted();
         }
       },
       updateBookmarkRead(bookmarkId, readStatus, flag) {
@@ -31,11 +34,7 @@
       },
     },
     mounted() {
-      setTimeout(() => {
-        if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
-          this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
-        }
-      }, 30000);
+      this.markAsStarted();
     },
     computed: {
       bookmark() {
