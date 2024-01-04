@@ -1,11 +1,13 @@
 <template>
   <li class="list-group-item bookmark-item d-flex justify-content-between">
     <a :href="bookmark.text.learnerUrl">{{ bookmark.text.title }}</a>
-    <time class="bookmark-item-date" :datetime="dateMachineReadable">{{
-      dateDisplay
-    }}</time>
-    <span v-if="bookmark.readStatus">{{ readText }}</span>
-    <span v-else>{{ startText }}</span>
+    <div class="bookmark-item-date">
+      <time class="bookmark-item-date" :datetime="dateMachineReadable">{{
+        dateDisplay
+      }}</time>
+    </div>
+    <b v-if="unread">Unread</b>
+    <span v-else>{{ bookmark.readStatus ? readText : startText }}</span>
   </li>
 </template>
 
@@ -34,8 +36,8 @@
           'YYYY-MM-DD',
         );
       },
-      readStatus() {
-        return this.$data.isRead;
+      unread() {
+        return (this.$data.isRead === 'Unread') && (this.$data.startedReadAt === null);
       },
       endTime() {
         return this.$options.filters.dateFormat(
@@ -68,5 +70,6 @@
 @import '../../../scss/config';
 .bookmark-item-date {
   font-style: italic;
+  text-align: left;
 }
 </style>

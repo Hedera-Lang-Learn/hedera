@@ -18,16 +18,24 @@
     methods: {
       onToggleBookmark() {
         if (this.bookmark) {
-          if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
-            this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
-          } else {
-            this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, true);
-          }
+          this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, true);
+          setTimeout(() => {
+            if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
+              this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
+            }
+          }, 30000);
         }
       },
       updateBookmarkRead(bookmarkId, readStatus, flag) {
         this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus, flag });
       },
+    },
+    mounted() {
+      setTimeout(() => {
+        if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
+          this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
+        }
+      }, 30000);
     },
     computed: {
       bookmark() {
@@ -44,19 +52,7 @@
       isRead() {
         return Boolean(this.read);
       },
-      notStarted() {
-        if (this.bookmark) {
-          if ((this.bookmark.startedReadAt === null) && this.bookmark.readStatus) {
-            return false;
-          }
-          return (this.bookmark.startedReadAt === null);
-        }
-        return false;
-      },
       readButtonText() {
-        if (this.notStarted) {
-          return 'Mark as Started';
-        }
         return this.isRead ? 'Mark as Unread' : 'Mark as Read';
       },
     },
