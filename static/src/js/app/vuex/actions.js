@@ -156,8 +156,8 @@ export default {
     await api.bookmark_fetch(bookmarkId);
     dispatch(BOOKMARK_LIST);
   },
-  [BOOKMARK_READ_UPDATE]: async ({ dispatch }, { bookmarkId, readStatus }) => {
-    await api.bookmark_read_update(bookmarkId, readStatus);
+  [BOOKMARK_READ_UPDATE]: async ({ dispatch }, { bookmarkId, readStatus, flag }) => {
+    await api.bookmark_read_update(bookmarkId, readStatus, flag);
     dispatch(BOOKMARK_LIST);
   },
   [BOOKMARK_STARTED_READ_AT]: async ({ dispatch }, { bookmarkId }) => {

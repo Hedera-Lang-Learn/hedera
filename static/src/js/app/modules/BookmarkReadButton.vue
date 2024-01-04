@@ -1,14 +1,6 @@
 <template>
   <div>
     <button
-      v-if="notStarted"
-      class="btn btn-block btn-outline-primary mb-3"
-      @click.prevent="onToggleStartRead"
-    >
-      <i class="fa fa-book" aria-hidden="true"></i> Mark as Started
-    </button>
-    <button
-      v-else
       class="btn btn-block btn-outline-primary mb-3"
       @click.prevent="onToggleBookmark"
       :aria-pressed="isRead"
@@ -19,7 +11,7 @@
 </template>
 
 <script>
-  import { BOOKMARK_READ_UPDATE, BOOKMARK_STARTED_READ_AT } from '../constants';
+  import { BOOKMARK_READ_UPDATE } from '../constants';
 
   export default {
     props: ['textId'],
@@ -27,22 +19,23 @@
       onToggleBookmark() {
         if (this.bookmark) {
           if (!this.bookmark.startedReadAt && !this.bookmark.readStatus) {
-            this.updateBookmarkStartedReadAt(this.bookmark.id);
+            this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, false);
+          } else {
+            this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus, true);
           }
-          this.updateBookmarkRead(this.bookmark.id, !this.bookmark.readStatus);
         }
       },
-      onToggleStartRead() {
-        if (this.bookmark) {
-          this.updateBookmarkStartedReadAt(this.bookmark.id);
-        }
+      // onToggleStartRead() {
+      //   if (this.bookmark) {
+      //     this.updateBookmarkStartedReadAt(this.bookmark.id);
+      //   }
+      // },
+      updateBookmarkRead(bookmarkId, readStatus, flag) {
+        this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus, flag });
       },
-      updateBookmarkRead(bookmarkId, readStatus) {
-        this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus });
-      },
-      updateBookmarkStartedReadAt(bookmarkId) {
-        this.$store.dispatch(BOOKMARK_STARTED_READ_AT, { bookmarkId });
-      },
+      // updateBookmarkStartedReadAt(bookmarkId) {
+      //   this.$store.dispatch(BOOKMARK_STARTED_READ_AT, { bookmarkId });
+      // },
     },
     computed: {
       bookmark() {
@@ -69,6 +62,9 @@
         return false;
       },
       readButtonText() {
+        if (this.notStarted) {
+          return 'Mark as Started';
+        }
         return this.isRead ? 'Mark as Unread' : 'Mark as Read';
       },
     },

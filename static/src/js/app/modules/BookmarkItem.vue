@@ -4,7 +4,7 @@
     <time class="bookmark-item-date" :datetime="dateMachineReadable">{{
       dateDisplay
     }}</time>
-    <span v-if="bookmark.readStatus">Read</span>
+    <span v-if="bookmark.readStatus">{{ readText }}</span>
     <span v-else>{{ startText }}</span>
   </li>
 </template>
@@ -16,7 +16,10 @@
       const createdAt = new Date(this.$props.bookmark.createdAt); // Should be ISO8601
       const isRead = this.$props.bookmark.readStatus ? 'Read' : 'Unread';
       const startedReadAt = this.$props.bookmark.startedReadAt ? new Date(this.$props.bookmark.startedReadAt) : null;
-      return { createdAt, isRead, startedReadAt };
+      const endedReadAt = this.$props.bookmark.endedReadAt ? new Date(this.$props.bookmark.endedReadAt) : null;
+      return {
+        createdAt, isRead, startedReadAt, endedReadAt,
+      };
     },
     computed: {
       dateDisplay() {
@@ -34,9 +37,9 @@
       readStatus() {
         return this.$data.isRead;
       },
-      startTime() {
+      endTime() {
         return this.$options.filters.dateFormat(
-          this.$data.startedReadAt,
+          this.$data.endedReadAt,
           'MMM D, YYYY',
         );
       },
@@ -50,6 +53,13 @@
           return `Started ${startTime}`;
         }
         return 'Unread';
+      },
+      readText() {
+        const endTime = this.$options.filters.dateFormat(
+          this.$data.endedReadAt,
+          'MMM D, YYYY',
+        );
+        return `Read ${endTime}`;
       },
     },
   };

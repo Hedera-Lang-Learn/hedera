@@ -41,7 +41,7 @@ urlpatterns = [
     path("api/v1/me/", api.MeAPI.as_view()),
     path("api/v1/bookmarks/", api.BookmarksListAPI.as_view()),
     path("api/v1/bookmarks/<int:pk>/", api.BookmarksDetailAPI.as_view()),
-    path("api/v1/bookmarks/<int:pk>/startedread/", api.BookmarksDetailAPIStartedRead.as_view()),
+    # path("api/v1/bookmarks/<int:pk>/startedread/", api.BookmarksDetailAPIStartedRead.as_view()),
     path("api/v1/lemmatization/lemma/<int:lemma_id>/", api.LemmatizationLemmaAPI.as_view()),
     path("api/v1/lemmatization/forms/<str:lang>/<str:form>/", api.LemmatizationFormLookupAPI.as_view()),
     path("api/v1/lemmatization/partial_match_forms/<str:lang>/<str:form>/", api.PartialMatchFormLookupAPI.as_view()),

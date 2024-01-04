@@ -337,8 +337,9 @@ class LemmatizedTextBookmark(models.Model):
     )
     text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    read_status = models.BooleanField(default=False)                # Have user mark be able to manually mark as finished
-    started_read_at = models.DateTimeField(null=True, blank=True)   # When user has started a text (marking first word)
+    read_status = models.BooleanField(default=False)
+    started_read_at = models.DateTimeField(null=True, blank=True)
+    ended_read_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = "lemmatized text bookmark"
@@ -356,6 +357,7 @@ class LemmatizedTextBookmark(models.Model):
             text=self.text.api_data(),
             readStatus=self.read_status,
             startedReadAt=self.started_read_at,
+            endedReadAt=self.ended_read_at,
         )
 
     def __str__(self):

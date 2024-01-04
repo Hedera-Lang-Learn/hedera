@@ -100,8 +100,8 @@ export default {
   bookmark_delete: (bookmarkId) => axios.delete(`${BASE_URL}bookmarks/${bookmarkId}/`),
   bookmark_list: () => axios.get(`${BASE_URL}bookmarks/`),
   bookmark_fetch: (bookmarkId) => axios.get(`${BASE_URL}bookmarks/${bookmarkId}/`),
-  bookmark_read_update: (bookmarkId, readStatus) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus }),
-  bookmark_started_read_at: (bookmarkId) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/startedread/`),
+  bookmark_read_update: (bookmarkId, readStatus, flag) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/`, { readStatus, flag }),
+  // bookmark_started_read_at: (bookmarkId) => axios.post(`${BASE_URL}bookmarks/${bookmarkId}/startedread/`),
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */

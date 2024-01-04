@@ -109,15 +109,22 @@ class BookmarksDetailAPI(APIView):
             pass
         return JsonResponse({})
 
-    # only editing functionality so far is marking as read or unread
+    # add boolean flag for TIME editing vs. STATUS editing
     def post(self, request, *args, **kwargs):
         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
         data = json.loads(request.body)
         try:
+            flag = data["flag"]
             bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
-            bookmark.read_status = data["readStatus"]
-            if not bookmark.read_status:
-                bookmark.started_read_at = None
+            if flag:
+                bookmark.read_status = data["readStatus"]
+                if bookmark.read_status:
+                    bookmark.ended_read_at = timezone.now()
+                else:
+                    bookmark.started_read_at = None
+                    bookmark.ended_read_at = None
+            else:
+                bookmark.started_read_at = timezone.now()
             bookmark.save()
         except LemmatizedTextBookmark.DoesNotExist:
             pass
@@ -125,21 +132,21 @@ class BookmarksDetailAPI(APIView):
 
 
 # think of better way than separating
-class BookmarksDetailAPIStartedRead(APIView):
-    def get_data(self):
-        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
-        bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        return bookmark.api_data()
+# class BookmarksDetailAPIStartedRead(APIView):
+#     def get_data(self):
+#         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+#         bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+#         return bookmark.api_data()
 
-    def post(self, *args, **kwargs):
-        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
-        try:
-            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
-            bookmark.started_read_at = timezone.now()
-            bookmark.save()
-        except LemmatizedTextBookmark.DoesNotExist:
-            pass
-        return JsonResponse(dict(bookmark.api_data()))
+#     def post(self, *args, **kwargs):
+#         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+#         try:
+#             bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+#             bookmark.started_read_at = timezone.now()
+#             bookmark.save()
+#         except LemmatizedTextBookmark.DoesNotExist:
+#             pass
+#         return JsonResponse(dict(bookmark.api_data()))
 
 
 class LemmatizedTextListAPI(APIView):
