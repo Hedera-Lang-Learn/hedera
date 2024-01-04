@@ -109,7 +109,6 @@ class BookmarksDetailAPI(APIView):
             pass
         return JsonResponse({})
 
-    # add boolean flag for TIME editing vs. STATUS editing
     def post(self, request, *args, **kwargs):
         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
         data = json.loads(request.body)
@@ -129,24 +128,6 @@ class BookmarksDetailAPI(APIView):
         except LemmatizedTextBookmark.DoesNotExist:
             pass
         return JsonResponse(dict(bookmark.api_data()))
-
-
-# think of better way than separating
-# class BookmarksDetailAPIStartedRead(APIView):
-#     def get_data(self):
-#         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
-#         bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-#         return bookmark.api_data()
-
-#     def post(self, *args, **kwargs):
-#         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
-#         try:
-#             bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
-#             bookmark.started_read_at = timezone.now()
-#             bookmark.save()
-#         except LemmatizedTextBookmark.DoesNotExist:
-#             pass
-#         return JsonResponse(dict(bookmark.api_data()))
 
 
 class LemmatizedTextListAPI(APIView):

@@ -25,17 +25,9 @@
           }
         }
       },
-      // onToggleStartRead() {
-      //   if (this.bookmark) {
-      //     this.updateBookmarkStartedReadAt(this.bookmark.id);
-      //   }
-      // },
       updateBookmarkRead(bookmarkId, readStatus, flag) {
         this.$store.dispatch(BOOKMARK_READ_UPDATE, { bookmarkId, readStatus, flag });
       },
-      // updateBookmarkStartedReadAt(bookmarkId) {
-      //   this.$store.dispatch(BOOKMARK_STARTED_READ_AT, { bookmarkId });
-      // },
     },
     computed: {
       bookmark() {

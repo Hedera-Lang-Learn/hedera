@@ -36,7 +36,6 @@ import {
   VOCAB_LIST_UPDATE,
   BOOKMARK_READ_UPDATE,
   BOOKMARK_FETCH,
-  BOOKMARK_STARTED_READ_AT,
 } from '../constants';
 import api from '../api';
 
@@ -158,10 +157,6 @@ export default {
   },
   [BOOKMARK_READ_UPDATE]: async ({ dispatch }, { bookmarkId, readStatus, flag }) => {
     await api.bookmark_read_update(bookmarkId, readStatus, flag);
-    dispatch(BOOKMARK_LIST);
-  },
-  [BOOKMARK_STARTED_READ_AT]: async ({ dispatch }, { bookmarkId }) => {
-    await api.bookmark_started_read_at(bookmarkId);
     dispatch(BOOKMARK_LIST);
   },
 
