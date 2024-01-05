@@ -1,7 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vuex from 'vuex';
 
-import { BOOKMARK_READ_UPDATE, BOOKMARK_STARTED_READ_AT } from '../app/constants';
+import { BOOKMARK_READ_UPDATE } from '../app/constants';
 import BookmarkReadButton from '../app/modules/BookmarkReadButton.vue';
 
 const localVue = createLocalVue();
@@ -51,6 +51,7 @@ describe('BookmarkReadButton', () => {
   const bookmarks = bookmarksFixture();
   let actions;
   let store;
+  jest.useFakeTimers();
 
   const mountComponent = ({ textId }) => mount(BookmarkReadButton, {
     propsData: { textId },
@@ -61,7 +62,6 @@ describe('BookmarkReadButton', () => {
   beforeEach(() => {
     actions = {
       [BOOKMARK_READ_UPDATE]: jest.fn(),
-      [BOOKMARK_STARTED_READ_AT]: jest.fn(),
     };
     store = new Vuex.Store({
       state: { bookmarks },
@@ -87,8 +87,6 @@ describe('BookmarkReadButton', () => {
     expect(wrapper.text().trim()).toEqual('Mark as Unread');
   });
 
-  // How to write tests for button showing mark as started text?
-
   it('marks the bookmark as read when the button is pressed and the text is not read', async () => {
     const textId = bookmarks[1].text.id;
     const wrapper = mountComponent({ textId });
@@ -107,13 +105,11 @@ describe('BookmarkReadButton', () => {
     expect(actions[BOOKMARK_READ_UPDATE]).toHaveBeenCalled();
   });
 
-  // How to get the correct button in the wrapper?
-  it('marks the bookmark as started when the button is pressed and the text is not started', async () => {
+  it('marks the bookmark as started 10 seconds after mounting', async () => {
     const textId = bookmarks[2].text.id;
-    const wrapper = mountComponent({ textId });
-    const button = wrapper.find('button');
-    await button.trigger('click.prevent');
+    mountComponent({ textId });
+    jest.advanceTimersByTime(10000);
 
-    expect(actions[BOOKMARK_STARTED_READ_AT]).toHaveBeenCalled();
+    expect(actions[BOOKMARK_READ_UPDATE]).toHaveBeenCalled();
   });
 });
