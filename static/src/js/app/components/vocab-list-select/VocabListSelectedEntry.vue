@@ -50,7 +50,7 @@
       },
       closeVocabList() {
         console.log('hhhh');
-        this.$store.dispatch(VOCAB_LIST_SET, { id: null });
+        this.$store.dispatch(VOCAB_LIST_SET, { id: this.vocabList });
       },
     },
   };

@@ -51,25 +51,30 @@
             });
         },
       },
+      // TODO: how to make inclusive without extraneous api calls to LEM_TEXT_FETCH_TOKENS?
+      // i.e. how to select tokens on top of another selected?
+      // problem: updating "one after" the click
       selectedVocabList: {
         immediate: true,
         handler() {
-          if (this.selectedVocabListId === 'personal') {
+          if ('personal' in this.selectedVocabList) {
             this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, { lang: this.$store.state.text.lang });
           }
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
+          // this is also screwing up the rate percentages, applying the same rate to different lists
+          // Object.keys(this.selectedVocabList).forEach((id) => {
+          //   this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: id });
+          // });
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId[this.selectedVocabListId.length - 1] });
         },
       },
     },
     computed: {
       selectedVocabListId() {
-        return this.$store.state.selectedVocabList;
+        return this.$store.state.selectedVocabList.map((l) => l.id);
       },
       selectedVocabList() {
-        return this.vocabLists.reduce((map, l) => {
-          map[l.id] = l;
-          return map;
-        }, {})[this.selectedVocabListId];
+        console.log(this.selectedVocabListId);
+        return this.$store.state.selectedVocabList;
       },
       vocabLists() {
         return [

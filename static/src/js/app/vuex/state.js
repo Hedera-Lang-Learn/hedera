@@ -13,7 +13,7 @@ export default {
   personalVocabList: {},
   vocabList: {},
   vocabListType: null,
-  selectedVocabList: null,
+  selectedVocabList: [],
   showInVocabList: true,
   personalVocabLangList: [],
   personalVocabAdded: false,

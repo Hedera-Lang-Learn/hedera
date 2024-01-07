@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <VocabListSelectedEntry v-if="selectedVocabList" :vocab-list="selectedVocabList" />
+    <VocabListSelectedEntry v-for="vocabList in selected" :key="vocabList.id" :vocab-list="vocabList" />
   </div>
 </template>
 
@@ -32,7 +32,19 @@
     },
     methods: {
       onSelect(id) {
-        this.$store.dispatch(VOCAB_LIST_SET, id).then(() => { this.open = false; });
+        this.$store.dispatch(VOCAB_LIST_SET, id).then(() => { this.open = true; });
+      },
+    },
+    computed: {
+      selected() {
+        console.log(this.selectedVocabList);
+        return this.$store.state.selectedVocabList;
+        // this.vocabLists.reduce((map, l) => {
+        //   if (l.id in this.$store.state.selectedVocabList) {
+        //     map[l.id] = l;
+        //   }
+        //   return map;
+        // }, {});
       },
     },
   };

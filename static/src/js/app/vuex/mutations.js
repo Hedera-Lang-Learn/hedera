@@ -149,7 +149,12 @@ export default {
     state.vocabLists = data;
   },
   [VOCAB_LIST_SET]: (state, id) => {
-    state.selectedVocabList = id;
+    if (state.selectedVocabList.indexOf(id) === -1) {
+      state.selectedVocabList.push(id);
+    } else {
+      const index = state.selectedVocabList.indexOf(id);
+      state.selectedVocabList.splice(index, 1);
+    }
   },
   [VOCAB_LIST_SET_TYPE]: (state, vocabListType) => {
     state.vocabListType = vocabListType;
