@@ -25,6 +25,8 @@ export const LEMMATIZED_TEXT_UPDATE_TOKEN = 'lemmatizedText_updateToken';
 export const BOOKMARK_CREATE = 'bookmark_create';
 export const BOOKMARK_DELETE = 'bookmark_delete';
 export const BOOKMARK_LIST = 'bookmark_list';
+export const BOOKMARK_FETCH = 'bookmark_fetch';
+export const BOOKMARK_READ_UPDATE = 'bookmark_read_update';
 
 // vocab_list.PersonalVocabularyList
 export const PERSONAL_VOCAB_LIST_FETCH = 'personalVocabularyList_fetch';
@@ -60,8 +62,8 @@ export const RESOLVED_NO_AMBIGUITY = 'no-ambiguity';
 export const RESOLVED_AUTOMATIC = 'resolved-automatical';
 export const RESOLVED_MANUAL = 'resolved-manual';
 export const RATINGS = {
-  1: 'I don\'t recognise this word',
-  2: 'I recognise this word but don\'t know what it means',
+  1: "I don't recognise this word",
+  2: "I recognise this word but don't know what it means",
   3: 'I think I know what this word means',
   4: 'I definitely know what this word means but could forget soon',
   5: 'I know this word so well, I am unlikely to ever forget it',

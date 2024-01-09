@@ -10,6 +10,7 @@
       </div>
       <div class="col-4">
         <BookmarkTextButton :text-id="textId"></BookmarkTextButton>
+        <BookmarkReadButton :text-id="textId"></BookmarkReadButton>
         <div>
           <div class="nav nav-tabs mb-3">
             <li class="nav-item">
@@ -43,7 +44,7 @@
           <div
             class="glossed-token"
             :class="{
-              selected: selectedToken && selectedToken.node
+              selected: selectedToken && selectedToken.node,
             }"
             v-for="token in glosses"
             :key="token.pk"
@@ -120,6 +121,7 @@
   import TextFamiliarity from './modules/TextFamiliarity.vue';
   import DownloadVocab from './components/DownloadVocab.vue';
   import BookmarkTextButton from './modules/BookmarkTextButton.vue';
+  import BookmarkReadButton from './modules/BookmarkReadButton.vue';
 
   export default {
     props: ['textId'],
@@ -130,6 +132,7 @@
       TextFamiliarity,
       DownloadVocab,
       BookmarkTextButton,
+      BookmarkReadButton,
     },
     created() {
       this.$store.dispatch(PROFILE_FETCH);
@@ -147,9 +150,11 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId }).then(() => this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
-            lang: this.text.lang,
-          }));
+          this.$store
+            .dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
+            .then(() => this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
+              lang: this.text.lang,
+            }));
         },
       },
       selectedVocabList: {

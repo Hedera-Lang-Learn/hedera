@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
+from django.utils import timezone
 from django.views import View
 
 from lemmatization.models import FormToLemma, Lemma
@@ -93,6 +94,7 @@ class BookmarksListAPI(APIView):
 
 
 class BookmarksDetailAPI(APIView):
+
     def get_data(self):
         qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
         bookmark = get_object_or_404(qs, pk=self.kwargs.get("pk"))
@@ -106,6 +108,26 @@ class BookmarksDetailAPI(APIView):
         except LemmatizedTextBookmark.DoesNotExist:
             pass
         return JsonResponse({})
+
+    def post(self, request, *args, **kwargs):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)
+        data = json.loads(request.body)
+        try:
+            flag = data["flag"]
+            bookmark = qs.filter(pk=self.kwargs.get("pk")).get()
+            if flag:
+                bookmark.read_status = data["readStatus"]
+                if bookmark.read_status:
+                    bookmark.ended_read_at = timezone.now()
+                else:
+                    bookmark.started_read_at = None
+                    bookmark.ended_read_at = None
+            else:
+                bookmark.started_read_at = timezone.now()
+            bookmark.save()
+        except LemmatizedTextBookmark.DoesNotExist:
+            pass
+        return JsonResponse(dict(bookmark.api_data()))
 
 
 class LemmatizedTextListAPI(APIView):
