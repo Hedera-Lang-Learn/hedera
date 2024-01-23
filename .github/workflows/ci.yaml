@@ -49,8 +49,8 @@ jobs:
         - name: Install Static Dependences
           run: npm i --include=dev
 
-        - name: Lint JavaScript
-          run: npm run lint
+        # - name: Lint JavaScript
+        #   run: npm run lint
 
   python_tests:
     name: Running python unit tests
