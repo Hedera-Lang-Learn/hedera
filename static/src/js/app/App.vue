@@ -6,10 +6,17 @@
       </div>
       <div class="col-4">
         <BookmarkTextButton :text-id="textId" />
-        <a class="btn btn-block btn-outline-info mb-3" :href="this.$store.state.text.editUrl">
+        <a
+          class="btn btn-block btn-outline-info mb-3"
+          :href="this.$store.state.text.editUrl"
+        >
           <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
         </a>
-        <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
+        <VocabListSelect
+          class="mb-5"
+          :vocab-lists="vocabLists"
+          :selectedVocabList="selectedVocabList"
+        />
         <FormDisambiguation v-if="selectedToken" />
       </div>
     </div>
@@ -21,7 +28,8 @@
     VOCAB_LIST_LIST,
     LEMMATIZED_TEXT_FETCH,
     PROFILE_FETCH,
-    PERSONAL_VOCAB_LIST_FETCH, BOOKMARK_LIST,
+    PERSONAL_VOCAB_LIST_FETCH,
+    BOOKMARK_LIST,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -45,7 +53,8 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
+          this.$store
+            .dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
             .then(() => {
               this.$store.dispatch(VOCAB_LIST_LIST);
             });
@@ -55,9 +64,14 @@
         immediate: true,
         handler() {
           if (this.selectedVocabListId === 'personal') {
-            this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, { lang: this.$store.state.text.lang });
+            this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
+              lang: this.$store.state.text.lang,
+            });
           }
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, {
+            id: this.textId,
+            vocabListId: this.selectedVocabListId,
+          });
         },
       },
     },

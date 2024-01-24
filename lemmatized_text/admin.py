@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import LemmatizedText
+from .models import LemmatizedText, LemmatizedTextBookmark
 
 
 class LemmatizedTextAdmin(admin.ModelAdmin):
@@ -9,3 +9,10 @@ class LemmatizedTextAdmin(admin.ModelAdmin):
 
 
 admin.site.register(LemmatizedText, LemmatizedTextAdmin)
+
+
+class LemmatizedTextAdminBookmark(admin.ModelAdmin):
+    list_display = ("text", "user_id", "created_at", "read_status", "started_read_at", "ended_read_at")
+
+
+admin.site.register(LemmatizedTextBookmark, LemmatizedTextAdminBookmark)

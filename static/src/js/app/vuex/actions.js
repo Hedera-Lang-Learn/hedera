@@ -34,6 +34,8 @@ import {
   VOCAB_LIST_SET_TYPE,
   VOCAB_LIST_SET,
   VOCAB_LIST_UPDATE,
+  BOOKMARK_READ_UPDATE,
+  BOOKMARK_FETCH,
 } from '../constants';
 import api from '../api';
 
@@ -95,9 +97,16 @@ export default {
     const { data } = await api.lemmatizedText_fetch(id);
     commit(LEMMATIZED_TEXT_FETCH, data);
   },
-  [LEMMATIZED_TEXT_FETCH_TOKENS]: async ({ commit }, { id, vocabListId, personalVocabListId }) => {
+  [LEMMATIZED_TEXT_FETCH_TOKENS]: async (
+    { commit },
+    { id, vocabListId, personalVocabListId },
+  ) => {
     commit(LEMMATIZED_TEXT_SET_ID, id);
-    const { data } = await api.lemmatizedText_fetchTokens(id, vocabListId, personalVocabListId);
+    const { data } = await api.lemmatizedText_fetchTokens(
+      id,
+      vocabListId,
+      personalVocabListId,
+    );
     commit(LEMMATIZED_TEXT_FETCH_TOKENS, data);
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: async ({ commit, state }, { token }) => {
@@ -142,6 +151,14 @@ export default {
     const { data } = await api.bookmark_list();
     commit(BOOKMARK_LIST, data);
   },
+  [BOOKMARK_FETCH]: async ({ dispatch }, { bookmarkId }) => {
+    await api.bookmark_fetch(bookmarkId);
+    dispatch(BOOKMARK_LIST);
+  },
+  [BOOKMARK_READ_UPDATE]: async ({ dispatch }, { bookmarkId, readStatus, flag }) => {
+    await api.bookmark_read_update(bookmarkId, readStatus, flag);
+    dispatch(BOOKMARK_LIST);
+  },
 
   /* -------------------------------------------------------------------------- */
   /*                      vocab_list.PersonalVocabularyList                     */
@@ -160,7 +177,10 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                   vocab_list.PersonalVocabularyListEntry                   */
   /* -------------------------------------------------------------------------- */
-  [PERSONAL_VOCAB_ENTRY_CREATE]: async ({ commit }, { headword, definition, vocabularyListId, familiarity, lang, lemmaId }) => {
+  [PERSONAL_VOCAB_ENTRY_CREATE]: async (
+    { commit },
+    { headword, definition, vocabularyListId, familiarity, lang, lemmaId },
+  ) => {
     const { data } = await api.personalVocabularyListEntry_create(
       headword,
       definition,
@@ -176,9 +196,20 @@ export default {
     commit(PERSONAL_VOCAB_ENTRY_DELETE, data);
   },
   // eslint-disable-next-line max-len
-  [PERSONAL_VOCAB_ENTRY_UPDATE]: async ({ commit, state }, { entryId, familiarity, headword, definition, lang = null, lemmaId }) => {
+  [PERSONAL_VOCAB_ENTRY_UPDATE]: async (
+    { commit, state },
+    { entryId, familiarity, headword, definition, lang = null, lemmaId },
+  ) => {
     // eslint-disable-next-line max-len
-    const { response, data } = await api.personalVocabularyList_update(state.text.id, lemmaId, familiarity, headword, definition, entryId, lang);
+    const { response, data } = await api.personalVocabularyList_update(
+      state.text.id,
+      lemmaId,
+      familiarity,
+      headword,
+      definition,
+      entryId,
+      lang,
+    );
     if (response && response.status >= 400) {
       return response;
     }
@@ -227,22 +258,36 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*                       vocab_list.VocabularyListEntry                       */
   /* -------------------------------------------------------------------------- */
-  [VOCAB_ENTRY_CREATE]: async ({ commit }, { vocabularyListId, headword, definition, lemmaId }) => {
+  [VOCAB_ENTRY_CREATE]: async (
+    { commit },
+    { vocabularyListId, headword, definition, lemmaId },
+  ) => {
     const { data } = await api
-      .vocabularyListEntry_create(vocabularyListId, headword, definition, lemmaId)
+      .vocabularyListEntry_create(
+        vocabularyListId,
+        headword,
+        definition,
+        lemmaId,
+      )
       .catch(logoutOnError(commit));
     commit(VOCAB_ENTRY_CREATE, data);
   },
   [VOCAB_ENTRY_DELETE]: async ({ commit }, { id }) => {
-    await api.vocabularyListEntry_delete(id)
-      .catch(logoutOnError(commit));
+    await api.vocabularyListEntry_delete(id).catch(logoutOnError(commit));
     commit(VOCAB_ENTRY_DELETE, id);
   },
-  [VOCAB_ENTRY_UPDATE]: async ({ commit, state }, { entryId, headword, definition, lemmaId }) => {
+  [VOCAB_ENTRY_UPDATE]: async (
+    { commit, state },
+    { entryId, headword, definition, lemmaId },
+  ) => {
     let data = null;
     // Hit the edit endpoint with new headword and/or definition, raise error if bad status returned
     if (headword || definition) {
-      const { response, data: editData } = await api.vocabularyListEntry_update(entryId, headword, definition);
+      const { response, data: editData } = await api.vocabularyListEntry_update(
+        entryId,
+        headword,
+        definition,
+      );
       if (response && response.status >= 400) {
         return response;
       }
@@ -251,7 +296,10 @@ export default {
 
     // Hit the link endpoint with new lemmaId if provided, raise error if bad status returned
     if (lemmaId) {
-      const { response, data: linkData } = await api.vocabularyListEntry_link(entryId, lemmaId);
+      const { response, data: linkData } = await api.vocabularyListEntry_link(
+        entryId,
+        lemmaId,
+      );
       if (response && response.status >= 400) {
         return response;
       }
@@ -297,12 +345,22 @@ export default {
   /* -------------------------------------------------------------------------- */
   /*         TODO: Delete these things, ensuring that they are not used.        */
   /* -------------------------------------------------------------------------- */
-  [OLD_CREATE_VOCAB_ENTRY]: async ({ commit, state }, { lemmaId, familiarity, headword, definition }) => {
+  [OLD_CREATE_VOCAB_ENTRY]: async (
+    { commit, state },
+    { lemmaId, familiarity, headword, definition },
+  ) => {
     // TODO: Make DRY with updateVocabEntry
     // TODO: this function is redundant with PERSONAL_VOCAB_ENTRY_CREATE, but works a little different.
     // Places where it is used should be adapted to use PERSONAL_VOCAB_ENTRY_CREATE and this function should be removed.
-    const { response, data } = await api
-      .personalVocabularyList_update(state.text.id, lemmaId, familiarity, headword, definition, null, null);
+    const { response, data } = await api.personalVocabularyList_update(
+      state.text.id,
+      lemmaId,
+      familiarity,
+      headword,
+      definition,
+      null,
+      null,
+    );
     if (response && response.status >= 400) {
       return response;
     }
