@@ -7,7 +7,8 @@ RUN pip install --upgrade pip
 RUN mkdir -p /app
 WORKDIR /app
 
-# Install system dependencies and target node v14
+# Install system dependencies and target node v21
+# Note: LTS v21 will be EOL on June 1, 2024
 RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
     apt-get update && \
     apt-get install -y netcat-traditional git nodejs postgresql-client && \
@@ -36,7 +37,7 @@ EXPOSE 8000 8080
 
 FROM prod AS dev
 
-# # Install python dev dependencies
+# Install python dev dependencies
 COPY ./hedera/requirements/dev.txt /app/
 RUN pip install -r dev.txt && \
     rm dev.txt
