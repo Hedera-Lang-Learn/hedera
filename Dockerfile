@@ -1,4 +1,4 @@
-FROM python:3.10 AS prod
+FROM python:3.11 AS prod
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -7,10 +7,11 @@ RUN pip install --upgrade pip
 RUN mkdir -p /app
 WORKDIR /app
 
-# Install system dependencies and target node v14
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
+# Install system dependencies and target node v21
+# Note: LTS v21 will be EOL on June 1, 2024
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
     apt-get update && \
-    apt-get install -y netcat git nodejs postgresql-client && \
+    apt-get install -y netcat-traditional git nodejs postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
 # Install python dependencies
@@ -20,6 +21,8 @@ RUN pip install -r base.txt && \
 
 # Install node dependencies
 COPY ./package-lock.json ./package.json /app/
+# TODO: see if we can upgrade webpack/uglify to remedy NODE_OPTIONS
+ARG NODE_OPTIONS=--openssl-legacy-provider
 RUN npm i && \
     rm package-lock.json package.json
 
