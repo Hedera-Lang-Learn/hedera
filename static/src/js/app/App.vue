@@ -21,7 +21,7 @@
     VOCAB_LIST_LIST,
     LEMMATIZED_TEXT_FETCH,
     PROFILE_FETCH,
-    PERSONAL_VOCAB_LIST_FETCH, BOOKMARK_LIST,
+    BOOKMARK_LIST, VOCAB_LIST_FETCH,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';
@@ -57,14 +57,8 @@
       selectedVocabList: {
         immediate: true,
         handler() {
-          if ('personal' in this.selectedVocabList) {
-            this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, { lang: this.$store.state.text.lang });
-          }
-          // this is also screwing up the rate percentages, applying the same rate to different lists
-          // Object.keys(this.selectedVocabList).forEach((id) => {
-          //   this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: id });
-          // });
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId[this.selectedVocabListId.length - 1] });
+          this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
+          // this.selectedVocabListId[this.selectedVocabListId.length - 1]
         },
       },
     },

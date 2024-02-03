@@ -98,6 +98,7 @@ export default {
   [LEMMATIZED_TEXT_FETCH_TOKENS]: async ({ commit }, { id, vocabListId, personalVocabListId }) => {
     commit(LEMMATIZED_TEXT_SET_ID, id);
     const { data } = await api.lemmatizedText_fetchTokens(id, vocabListId, personalVocabListId);
+    console.log(data);
     commit(LEMMATIZED_TEXT_FETCH_TOKENS, data);
   },
   [LEMMATIZED_TEXT_SELECT_TOKEN]: async ({ commit, state }, { token }) => {

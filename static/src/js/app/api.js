@@ -43,13 +43,14 @@ export default {
   lemmatizedText_fetch: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`),
   lemmatizedText_fetchStatus: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`),
   lemmatizedText_fetchTokens: (id, vocabList, personalVocabList) => {
-    if (!vocabList && !personalVocabList) {
+    if (vocabList.length === 0 && !personalVocabList) {
       return axios.get(`${BASE_URL}lemmatized_texts/${id}/`);
     }
     let qs = '';
-    if (vocabList) {
-      qs = `vocablist_id=${vocabList}`;
-    }
+    const vocabListArr = JSON.stringify(vocabList);
+    if (vocabListArr) {
+      qs = `vocablist_id=${vocabListArr}`;
+    } //! how to deal with personal vocab list being in overall list, or make it separate for now??
     if (personalVocabList) {
       qs = `personalvocablist=${personalVocabList}`;
     }
