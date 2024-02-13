@@ -204,11 +204,9 @@ class LemmatizationAPI(APIView):
 
         # this is checking to see if the token is in the user's personal vocab list
         # it annotates the token with inVocabList=True|False
-        #! WHERE THE LEMMATIZED TOKEN FETCH IS
         vocablist_id = self.request.GET.get("vocablist_id", None)
         vocablist = None
         if vocablist_id is not None:
-            # vocablist = get_any_vocablist_by_id(self.request.user.id, text.lang, vocablist_id)
             vocablist_id_list = json.loads(vocablist_id)    # Un-encode JSON list of vocab IDs
             vocablists = []
             for v_id in vocablist_id_list:
@@ -220,19 +218,21 @@ class LemmatizationAPI(APIView):
                 token.update(lemma.gloss_data())
             if vocablist_id is not None:
                 vocab_entry = None
-                for vocablist in vocablists:
-                    vocab_entry = vocablist.entries.filter(lemma_id=token["lemma_id"])
+                for i in range(len(vocablists)):
+                    vocab_entry = vocablists[i].entries.filter(lemma_id=token["lemma_id"])      # list of vocab entries
                     if vocab_entry:
+                        if vocablist_id_list[i] == "personal":
+                            # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
+                            familiarity = list(vocab_entry.values_list("familiarity", flat=True))
+                            if familiarity:
+                                token["familiarity"] = familiarity and familiarity[0]
                         break
                 # check if token has resolved key:value pair before comparison further down so there isnt key error
                 resolved = False
                 if "resolved" in token.keys():
                     resolved = token["resolved"]
-                #! personal weird but sort of works
-                if vocablist_id == "personal":
-                    # Note: assumes that the vocab can successfully link to a lemma - not accounting for NULL Values
-                    familarity = list(vocab_entry.values_list("familiarity", flat=True))
-                    token["familiarity"] = resolved and familarity and familarity[0]
+                if "familiarity" in token.keys():
+                    token["familiarity"] = resolved and token["familiarity"]
                 token["inVocabList"] = resolved and vocab_entry.exists()
         return data
 
