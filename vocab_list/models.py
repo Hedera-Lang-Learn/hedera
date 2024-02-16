@@ -477,3 +477,44 @@ class PersonalVocabularyStats(models.Model):
             four=self.four,
             five=self.five,
         )
+
+class Folder(models.Model):
+    user = models.ForeignKey(
+        getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+        on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    vocab_lists = models.ManyToManyField(VocabularyList, blank=True)
+    personal_vocab_list = models.ManyToManyField(PersonalVocabularyList, blank=True)
+
+    def api_data(self):
+        return dict(
+            id=self.pk,
+            userId=self.user.pk,
+            createdAt=self.created_at,
+            name=self.name,
+            description=self.description,
+            vocabLists=self.vocab_lists,
+            personalVocabList=self.personal_vocab_list
+        )
+
+    class Meta:
+        verbose_name = "vocabulary list folder"
+        verbose_name_plural = "vocabulary list folders"
+
+    def __str__(self):
+        return self.name
+
+    # TODO: determine if any methods need to be added here
+
+# class FolderToVocabList(models.Model):
+#     user = models.ForeignKey(
+#         getattr(settings, "AUTH_USER_MODEL", "auth.User"),
+#         on_delete=models.CASCADE
+#     )
+#     folder_id = models.ManyToManyField(Folder)
+
+
+
