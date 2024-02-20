@@ -58,6 +58,7 @@ urlpatterns = [
     path("api/v1/personal_vocab_list/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/<int:pk>/", api.PersonalVocabularyListAPI.as_view()),
     path("api/v1/personal_vocab_list/quick_add/", api.PersonalVocabularyQuickAddAPI.as_view()),
+    path("api/v1/folders/<int:pk>", api.VocabFoldersAPI.as_view()), # TODO check url
     path("api/v1/supported_languages/", api.SupportedLanguagesAPI.as_view()),
 
     path("lti/", include("lti_provider.urls")),

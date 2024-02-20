@@ -16,7 +16,8 @@ from vocab_list.models import (
     PersonalVocabularyListEntry,
     PersonalVocabularyStats,
     VocabularyList,
-    VocabularyListEntry
+    VocabularyListEntry,
+    Folder
 )
 
 from .models import Profile
@@ -305,6 +306,10 @@ class VocabularyListDetailAPI(APIView):
 
         return return_data
 
+    # TODO: add folder here??
+    # def post(self, request, *args, **kwargs):
+    #     """Add vocab list to a folder"""
+
 
 class VocabularyListEntriesAPI(APIView):
 
@@ -537,6 +542,38 @@ class PersonalVocabularyQuickAddAPI(APIView):
                 "error_filename": filename
             })
 
+class VocabFoldersAPI(APIView):
+
+    # TODO: cehck this
+    def get_data(self):
+        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)   # get folder by id
+        folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        return folder.api_data()
+
+    # create folder?
+    def post(self, request, *args, **kwargs):
+        qs = Folder.objects.filter(user=self.request.user)
+        data = json.loads(request.body)
+        try:
+            folder = qs.filter(pk=self.kwargs.get("pk")).get()
+            Folder.objects.get_or_create(
+                name=data["name"],
+                defaults={"description": data["description"], "vocabLists": data["vocab_lists"], "personalVocabList": data["personal_vocab_list"]}
+            ) # can use get_or_create with ManytoMany to add lists?
+            folder.save()
+        except:
+            pass
+
+    def delete(self, request, *args, **kwargs):
+        qs = Folder.objects.filter(user=self.request.user)
+        try:
+            folder = qs.filter(pk=self.kwargs.get("pk")).get()
+            folder.delete()
+        except Folder.DoesNotExist:
+            pass
+        return JsonResponse({})
+
+    # TODO: add vocab list to folder
 
 class JsonResponseBadRequest(JsonResponse):
     status_code = 400
