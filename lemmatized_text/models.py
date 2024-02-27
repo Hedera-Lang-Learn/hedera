@@ -338,8 +338,8 @@ class LemmatizedTextBookmark(models.Model):
     text = models.ForeignKey(LemmatizedText, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     read_status = models.BooleanField(default=False)
-    started_read_at = models.DateTimeField(null=True, blank=True)
-    ended_read_at = models.DateTimeField(null=True, blank=True)
+    started_read_at = models.DateTimeField(null=True, blank=True, default=None)
+    ended_read_at = models.DateTimeField(null=True, blank=True, default=None)
 
     class Meta:
         verbose_name = "lemmatized text bookmark"
