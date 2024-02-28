@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='lemmatizedtextbookmark',
             name='started_read_at',
-            field=models.DateTimeField(default=None),
+            field=models.DateTimeField(default=None, blank=True, null=True),
             preserve_default=False,
         ),
     ]
