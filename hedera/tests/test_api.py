@@ -10,8 +10,11 @@ from hedera.tests import utils
 from lemmatization.models import Gloss, Lemma
 from lemmatized_text.models import LemmatizedTextBookmark
 from vocab_list.models import (
+    Folder,
     PersonalVocabularyList,
-    PersonalVocabularyListEntry
+    PersonalVocabularyListEntry,
+    VocabularyList,
+    VocabularyListEntry
 )
 
 
@@ -323,3 +326,76 @@ class PartialMatchLemmaLookupAPITest(APITestCase):
         self.assertEqual(len(content["data"]), 2)
         lemmas_by_rank = [lemma["lemma"] for lemma in content["data"]]
         self.assertEqual(lemmas_by_rank, ["hic", "hic2"])
+
+
+# TODO: API unit tests
+class FoldersAPITest(APITestCase):
+
+    def setUp(self):
+        self.user = utils.create_user()
+        self.client.force_login(user=self.user)
+        self.folder = Folder.objects.create(user=self.user, name="api folder")
+
+    def test_get_folder_list(self):
+        response = self.client.get(f"/api/v1/folder/", content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+
+    def test_create_folder(self):
+        payload = {
+            "name": "test folder",
+            "description": "API testing"
+        }
+        response = self.client.post(f"/api/v1/folder/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        content = json.loads(response.content)
+        self.assertEqual(len(content["data"]), 2)
+        self.assertEqual(content["data"]["folder"], "test folder")
+
+
+class FoldersDetailAPITest(APITestCase):
+
+    def setUp(self):
+        self.user = utils.create_user()
+        self.client.force_login(user=self.user)
+        self.folder = Folder.objects.create(user=self.user, name="api folder")
+        self.vocab_list = VocabularyList.objects.create(lang="lat")
+        data = {
+            "headword": "testers",
+            "definition": "therefore",
+            "vocabulary_list_id": self.vocab_list.id
+        }
+        self.vocab_list_entry = VocabularyListEntry.objects.create(**data)
+
+    def test_get_folder(self):
+        response = self.client.get(f"/api/v1/folder/{self.folder.id}/", content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers["Content-Type"], "application/json")
+
+    def test_post_vocabulary_list_add_to_folder(self):
+        payload = {
+            "remove": False,
+            "list": self.vocab_list.id
+        }
+        response = self.client.post(f"/api/v1/folder/{self.folder.id}/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        content = json.loads(response.content)
+        self.assertEqual(len(content["data"]), 3)
+        self.assertEqual(content["data"]["folder"], "api folder")
+        self.assertEqual(content["data"]["removed"], False)
+
+    def test_post_vocabulary_list_remove_from_folder(self):
+        payload = {
+            "remove": True,
+            "list": self.vocab_list.id
+        }
+        response = self.client.post(f"/api/v1/folder/{self.folder.id}/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        content = json.loads(response.content)
+        self.assertEqual(len(content["data"]), 3)
+        self.assertEqual(content["data"]["folder"], "api folder")
+        self.assertEqual(content["data"]["removed"], True)
+
+    def test_delete_folder(self):
+        self.folder.delete()
+        response = self.client.get(f"/api/v1/folder/{self.folder.id}/", content_type="application/json")
+        self.assertEqual(response.status_code, 404)

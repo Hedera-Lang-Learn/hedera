@@ -21,7 +21,7 @@
     VOCAB_LIST_LIST,
     LEMMATIZED_TEXT_FETCH,
     PROFILE_FETCH,
-    BOOKMARK_LIST, VOCAB_LIST_FETCH,
+    BOOKMARK_LIST,
   } from './constants';
 
   import LemmatizedText from './modules/LemmatizedText.vue';

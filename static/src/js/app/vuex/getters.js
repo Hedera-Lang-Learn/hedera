@@ -29,8 +29,10 @@ export default {
     // Determine which tokens in the set of unique tokens are known,
     // and put them in a new set
     const knownUniqueTokens = new Set();
+    console.log(state.selectedVocabList);
     for (let i = 0; i < tokens.length; i += 1) {
-      if (tokens[i].inVocabList) {
+      // TODO change to match vocab list ID -> how to get from state?
+      if (tokens[i].inVocabList === state.selectedVocabList[-1]) {
         knownUniqueTokens.add(tokens[i].label);
       }
     }

@@ -21,6 +21,7 @@ from vocab_list.models import (
 )
 
 from .models import Profile
+from .serializers import FolderSerializer
 from .supported_languages import SUPPORTED_LANGUAGES
 
 
@@ -206,7 +207,6 @@ class LemmatizationAPI(APIView):
         # this is checking to see if the token is in the user's personal vocab list
         # it annotates the token with inVocabList=True|False
         vocablist_id = self.request.GET.get("vocablist_id", None)
-        vocablist = None
         if vocablist_id is not None:
             vocablist_id_list = json.loads(vocablist_id)    # Un-encode JSON list of vocab IDs
             vocablists = []
@@ -234,7 +234,10 @@ class LemmatizationAPI(APIView):
                     resolved = token["resolved"]
                 if "familiarity" in token.keys():
                     token["familiarity"] = resolved and token["familiarity"]
-                token["inVocabList"] = resolved and vocab_entry.exists()
+                if resolved and vocab_entry.exists():
+                    token["inVocabList"] = vocablist_id_list[i]
+                else:
+                    token["inVocabList"] = None # False
         return data
 
     def get_data(self):
@@ -305,10 +308,6 @@ class VocabularyListDetailAPI(APIView):
         return_data["entries"] = [v.data() for v in vocab_list.entries.all().order_by("headword")]
 
         return return_data
-
-    # TODO: add folder here??
-    # def post(self, request, *args, **kwargs):
-    #     """Add vocab list to a folder"""
 
 
 class VocabularyListEntriesAPI(APIView):
@@ -542,38 +541,60 @@ class PersonalVocabularyQuickAddAPI(APIView):
                 "error_filename": filename
             })
 
+
+# NULL value for user -> folders not associated with user
 class VocabFoldersAPI(APIView):
 
-    # TODO: cehck this
+    # lists folders
     def get_data(self):
-        qs = LemmatizedTextBookmark.objects.filter(user=self.request.user)   # get folder by id
-        folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
-        return folder.api_data()
+        qs = Folder.objects.filter(Q(user=self.request.user))
+        serializer = FolderSerializer(qs, many=True)
+        return serializer.data
 
-    # create folder?
     def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        folder, _ = Folder.objects.get_or_create(
+            user=self.request.user,
+            name=data["name"],
+            description=data["description"]
+        )
+        return JsonResponse({"data": {"created": True, "folder": folder.name}})
+
+
+class FoldersDetailAPI(APIView):
+
+    def get_data(self):
+        qs = Folder.objects.filter(Q(user=self.request.user))
+        folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
+        serializer = FolderSerializer(folder)
+        return serializer.data
+
+    def post(self, request, *args, **kwargs):
+        """Add or remove vocab list to a folder"""
         qs = Folder.objects.filter(user=self.request.user)
+        folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         try:
-            folder = qs.filter(pk=self.kwargs.get("pk")).get()
-            Folder.objects.get_or_create(
-                name=data["name"],
-                defaults={"description": data["description"], "vocabLists": data["vocab_lists"], "personalVocabList": data["personal_vocab_list"]}
-            ) # can use get_or_create with ManytoMany to add lists?
+            list = get_object_or_404(VocabularyList, pk=data["list"])   # check this
+            if data["remove"]:
+                folder.vocab_lists.remove(list)
+            else:
+                folder.vocab_lists.add(list)
             folder.save()
+            return JsonResponse({"data": {"removed": data["remove"], "folder": folder.name, "list": data["list"]}})
         except:
-            pass
+            return JsonResponseBadRequest({"error": "could not modify folder"})
 
     def delete(self, request, *args, **kwargs):
         qs = Folder.objects.filter(user=self.request.user)
         try:
-            folder = qs.filter(pk=self.kwargs.get("pk")).get()
+            folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
             folder.delete()
         except Folder.DoesNotExist:
             pass
         return JsonResponse({})
 
-    # TODO: add vocab list to folder
+
 
 class JsonResponseBadRequest(JsonResponse):
     status_code = 400

@@ -29,3 +29,4 @@ class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
 @admin.register(models.Folder)
 class FolderAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "description", "created_at"]
+

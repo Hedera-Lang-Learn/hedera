@@ -1,5 +1,18 @@
 <template>
   <div class="vocab-list-select" >
+    <!-- adding aggregate gauge? -->
+    <!-- <gauge-chart :rate="knownVocab" label="Known (Unweighted)" />
+    <gauge-chart :rate="weightedKnownVocab" label="Known (Weighted)" />
+    <div class="toggle-link-container">
+      <span v-if="showInVocabList">
+        The known words are highlighted.
+        <a href @click.prevent="toggleKnown">Highlight Unknown</a>
+      </span>
+      <span v-else>
+        The unknown words are highlighted.
+        <a href @click.prevent="toggleKnown">Highlight Known</a>
+      </span>
+    </div> -->
     <div class="vocab-list-select-dropdown" :class="{ open }">
       <div class="vocab-list-select--title" :class="{ open }" @click="open = !open">
         <span>Select a Vocab List</span>
@@ -34,17 +47,17 @@
       onSelect(id) {
         this.$store.dispatch(VOCAB_LIST_SET, id).then(() => { this.open = true; });
       },
+      knownVocab() {
+        return this.$store.getters.knownVocab;
+      },
+      weightedKnownVocab() {
+        return this.$store.getters.weightedKnownVocab;
+      },
     },
     computed: {
       selected() {
         console.log(this.selectedVocabList);
         return this.$store.state.selectedVocabList;
-        // this.vocabLists.reduce((map, l) => {
-        //   if (l.id in this.$store.state.selectedVocabList) {
-        //     map[l.id] = l;
-        //   }
-        //   return map;
-        // }, {});
       },
     },
   };

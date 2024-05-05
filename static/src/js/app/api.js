@@ -43,7 +43,7 @@ export default {
   lemmatizedText_fetch: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/detail/`),
   lemmatizedText_fetchStatus: (id) => axios.get(`${BASE_URL}lemmatized_texts/${id}/status/`),
   lemmatizedText_fetchTokens: (id, vocabList, personalVocabList) => {
-    if (vocabList.length === 0 && !personalVocabList) {
+    if (vocabList && (vocabList.length === 0 && !personalVocabList)) {
       return axios.get(`${BASE_URL}lemmatized_texts/${id}/`);
     }
     let qs = '';
