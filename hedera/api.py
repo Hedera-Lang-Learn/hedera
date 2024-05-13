@@ -570,18 +570,26 @@ class FoldersDetailAPI(APIView):
         return serializer.data
 
     def post(self, request, *args, **kwargs):
-        """Add or remove vocab list to a folder"""
+        """Add or remove vocab list to a folder, edit folder name"""
         qs = Folder.objects.filter(user=self.request.user)
         folder = get_object_or_404(qs, pk=self.kwargs.get("pk"))
         data = json.loads(request.body)
         try:
             list = get_object_or_404(VocabularyList, pk=data["list"])   # check this
+            folder.name = data["name"]
+            folder.description = data["description"]
             if data["remove"]:
                 folder.vocab_lists.remove(list)
-            else:
+            if data["add"]:
                 folder.vocab_lists.add(list)
             folder.save()
-            return JsonResponse({"data": {"removed": data["remove"], "folder": folder.name, "list": data["list"]}})
+            return JsonResponse({"data": {
+                "added": data["add"],
+                "removed": data["remove"],
+                "folder": folder.name,
+                "description": folder.description,
+                "list": data["list"] if data["list"] else ""
+            }})
         except:
             return JsonResponseBadRequest({"error": "could not modify folder"})
 

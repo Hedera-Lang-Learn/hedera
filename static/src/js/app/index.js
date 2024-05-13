@@ -85,6 +85,8 @@ export default () => {
   load('vocab-app', PersonalVocab, null, vocabAppProps);
   load('texts-app', Texts, null, () => {});
   load('dashboard-app', Dashboard, null, () => {});
+  // load('folder-app', Folder, null, folderAppProps)
+
   // Removed for now - buggy - modal window should not be a child of dropdown-content
   // load('quick-add', QuickAddButton, null, () => ({
   //   personalVocab: true,

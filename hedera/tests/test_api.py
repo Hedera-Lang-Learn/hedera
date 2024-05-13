@@ -357,7 +357,7 @@ class FoldersDetailAPITest(APITestCase):
     def setUp(self):
         self.user = utils.create_user()
         self.client.force_login(user=self.user)
-        self.folder = Folder.objects.create(user=self.user, name="api folder")
+        self.folder = Folder.objects.create(user=self.user, name="api folder", description="")
         self.vocab_list = VocabularyList.objects.create(lang="lat")
         data = {
             "headword": "testers",
@@ -373,27 +373,50 @@ class FoldersDetailAPITest(APITestCase):
 
     def test_post_vocabulary_list_add_to_folder(self):
         payload = {
+            "name": "api folder",
+            "description": "",
+            "add": True,
             "remove": False,
             "list": self.vocab_list.id
         }
         response = self.client.post(f"/api/v1/folder/{self.folder.id}/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 200)
         content = json.loads(response.content)
-        self.assertEqual(len(content["data"]), 3)
+        self.assertEqual(len(content["data"]), 5)
         self.assertEqual(content["data"]["folder"], "api folder")
         self.assertEqual(content["data"]["removed"], False)
+        self.assertEqual(content["data"]["added"], True)
 
     def test_post_vocabulary_list_remove_from_folder(self):
         payload = {
+            "name": "api folder",
+            "description": "",
+            "add": False,
             "remove": True,
             "list": self.vocab_list.id
         }
         response = self.client.post(f"/api/v1/folder/{self.folder.id}/", json.dumps(payload), content_type="application/json")
         self.assertEqual(response.status_code, 200)
         content = json.loads(response.content)
-        self.assertEqual(len(content["data"]), 3)
+        self.assertEqual(len(content["data"]), 5)
         self.assertEqual(content["data"]["folder"], "api folder")
         self.assertEqual(content["data"]["removed"], True)
+        self.assertEqual(content["data"]["added"], False)
+
+    def test_post_vocabulary_list_edit_folder(self):
+        payload = {
+            "name": "api folder new name",
+            "description": "api folder description",
+            "add": False,
+            "remove": False,
+            "list": self.vocab_list.id
+        }
+        response = self.client.post(f"/api/v1/folder/{self.folder.id}/", json.dumps(payload), content_type="application/json")
+        self.assertEqual(response.status_code, 200)
+        content = json.loads(response.content)
+        self.assertEqual(len(content["data"]), 5)
+        self.assertEqual(content["data"]["folder"], "api folder new name")
+        self.assertEqual(content["data"]["description"], "api folder description")
 
     def test_delete_folder(self):
         self.folder.delete()

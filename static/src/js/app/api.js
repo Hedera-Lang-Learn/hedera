@@ -146,6 +146,17 @@ export default {
   vocabularyListEntry_update: (id, headword, definition) => axios.post(`${BASE_URL}vocab_entries/${id}/edit/`, { headword, definition }),
 
   /* -------------------------------------------------------------------------- */
+  /*                            Folder                                          */
+  /* -------------------------------------------------------------------------- */
+  folder_fetchList: () => axios.get(`${BASE_URL}folder`),
+  folder_fetch: (id) => axios.get(`${BASE_URL}folder/${id}/`),
+  folder_create: (name, description) => axios.post(`${BASE_URL}folder`, { name, description }),
+  folder_update: (id, name, description, remove, list) => axios.post(`${BASE_URL}folder/${id}/`, {
+    name, description, remove, list,
+  }),
+  folder_delete: (id) => axios.delete(`${BASE_URL}folder/${id}/`),
+
+  /* -------------------------------------------------------------------------- */
   /*                            Not accessing a model                           */
   /* -------------------------------------------------------------------------- */
   supportedLangList_fetch: () => axios.get(`${BASE_URL}supported_languages/`),
