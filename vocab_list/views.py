@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView
 
 from .forms import PersonalVocabularyListForm, VocabularyListForm
-from .models import PersonalVocabularyList, VocabularyList
+from .models import PersonalVocabularyList, VocabularyList, Folder
 
 
 class VocabularyListListView(ListView):
@@ -106,3 +106,9 @@ class PersonalVocabularyListEntriesCreateView(CreateView):
         vl, _ = PersonalVocabularyList.objects.get_or_create(user=self.request.user, lang=form.cleaned_data["lang"])
         vl.load_tab_delimited(form.cleaned_data["data"], familiarity=int(form.cleaned_data["rating"]))
         return redirect(reverse("vocab_list_personal_detail", args=[vl.lang]))
+
+
+class FolderView(ListView):
+
+    template_name = "vocab_list/folder.html"
+    model = Folder

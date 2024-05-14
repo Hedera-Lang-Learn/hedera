@@ -10,6 +10,7 @@ urlpatterns = [
     path("<int:pk>/delete/", views.VocabularyListDeleteView.as_view(), name="vocab_list_delete"),
     path("personal/create/", views.PersonalVocabularyListEntriesCreateView.as_view(), name="vocab_list_personal_create"),
     path("personal/<str:lang>/", views.PersonalVocabListDetailView.as_view(), name="vocab_list_personal_detail"),
+    path("folder/", views.FolderView.as_view(), name="vocab_list_folder"),
 ]
 
 # TODO: add folder here?
