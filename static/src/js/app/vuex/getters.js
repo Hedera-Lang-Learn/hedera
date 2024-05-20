@@ -1,15 +1,15 @@
 export default {
-  knownVocab: (state) => {
+  knownVocab: (state) => (id) => {
     const { tokens } = state;
     const totalTokens = tokens.filter((t) => t.resolved !== 'na').length;
-    const knownTokens = tokens.filter((t) => t.inVocabList).length;
+    const knownTokens = tokens.filter((t) => (t.inVocabList && t.inVocabList.includes(id))).length;
     return knownTokens / totalTokens;
   },
   sameWords: (state) => {
     const selected = state.selectedToken;
     return state.tokens.filter((t) => selected && t.word === selected.word);
   },
-  weightedKnownVocab: (state) => {
+  weightedKnownVocab: (state) => (id) => {
     const tokens = state.tokens.filter((t) => t.word === t.word.toLowerCase());
 
     // Create a set of unique tokens
@@ -31,8 +31,8 @@ export default {
     const knownUniqueTokens = new Set();
     console.log(state.selectedVocabList);
     for (let i = 0; i < tokens.length; i += 1) {
-      // TODO change to match vocab list ID -> how to get from state?
-      if (tokens[i].inVocabList === state.selectedVocabList[-1]) {
+      console.log(tokens[i]);
+      if (tokens[i].inVocabList && tokens[i].inVocabList.includes(id)) {
         knownUniqueTokens.add(tokens[i].label);
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="vocab-list-entry" :class="{ active }" @click.prevent="onSelect">
     <b>{{ title }}</b>
-    <p v-if="description">{{ description }}</p>
+    <!-- <p v-if="description">{{ description }}</p> -->
     <div class="text-right"><small>{{ owner || 'System' }}</small></div>
   </div>
 </template>

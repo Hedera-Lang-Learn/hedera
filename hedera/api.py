@@ -205,7 +205,6 @@ class LemmatizationAPI(APIView):
         }
 
         # this is checking to see if the token is in the user's personal vocab list
-        # it annotates the token with inVocabList=True|False
         vocablist_id = self.request.GET.get("vocablist_id", None)
         if vocablist_id is not None:
             vocablist_id_list = json.loads(vocablist_id)    # Un-encode JSON list of vocab IDs
@@ -219,6 +218,15 @@ class LemmatizationAPI(APIView):
                 token.update(lemma.gloss_data())
             if vocablist_id is not None:
                 vocab_entry = None
+                in_vocab_lists = []
+                # TODO FIX THIS REPEATED CODE
+                for i in range(len(vocablists)):
+                    vocab_entry = vocablists[i].entries.filter(lemma_id=token["lemma_id"])      # list of vocab entries
+                    if vocab_entry:
+                        if vocablist_id_list[i] == "personal":
+                            in_vocab_lists.append("personal")
+                        else:
+                            in_vocab_lists.append(vocablists[i].id)
                 for i in range(len(vocablists)):
                     vocab_entry = vocablists[i].entries.filter(lemma_id=token["lemma_id"])      # list of vocab entries
                     if vocab_entry:
@@ -235,7 +243,7 @@ class LemmatizationAPI(APIView):
                 if "familiarity" in token.keys():
                     token["familiarity"] = resolved and token["familiarity"]
                 if resolved and vocab_entry.exists():
-                    token["inVocabList"] = vocablist_id_list[i]
+                    token["inVocabList"] = in_vocab_lists
                 else:
                     token["inVocabList"] = None # False
         return data

@@ -12,5 +12,3 @@ urlpatterns = [
     path("personal/<str:lang>/", views.PersonalVocabListDetailView.as_view(), name="vocab_list_personal_detail"),
     path("folder/", views.FolderView.as_view(), name="vocab_list_folder"),
 ]
-
-# TODO: add folder here?

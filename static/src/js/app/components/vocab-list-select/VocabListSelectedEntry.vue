@@ -35,10 +35,10 @@
         return this.vocabList.description;
       },
       knownVocab() {
-        return this.$store.getters.knownVocab;
+        return this.$store.getters.knownVocab(this.vocabList.id);
       },
       weightedKnownVocab() {
-        return this.$store.getters.weightedKnownVocab;
+        return this.$store.getters.weightedKnownVocab(this.vocabList.id);
       },
       showInVocabList() {
         return this.$store.state.showInVocabList;

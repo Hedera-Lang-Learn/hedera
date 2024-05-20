@@ -1,18 +1,5 @@
 <template>
   <div class="vocab-list-select" >
-    <!-- adding aggregate gauge? -->
-    <!-- <gauge-chart :rate="knownVocab" label="Known (Unweighted)" />
-    <gauge-chart :rate="weightedKnownVocab" label="Known (Weighted)" />
-    <div class="toggle-link-container">
-      <span v-if="showInVocabList">
-        The known words are highlighted.
-        <a href @click.prevent="toggleKnown">Highlight Unknown</a>
-      </span>
-      <span v-else>
-        The unknown words are highlighted.
-        <a href @click.prevent="toggleKnown">Highlight Known</a>
-      </span>
-    </div> -->
     <div class="vocab-list-select-dropdown" :class="{ open }">
       <div class="vocab-list-select--title" :class="{ open }" @click="open = !open">
         <span>Select a Vocab List</span>
@@ -47,11 +34,11 @@
       onSelect(id) {
         this.$store.dispatch(VOCAB_LIST_SET, id).then(() => { this.open = true; });
       },
-      knownVocab() {
-        return this.$store.getters.knownVocab;
+      knownVocab(id) {
+        return this.$store.getters.knownVocab(id);
       },
-      weightedKnownVocab() {
-        return this.$store.getters.weightedKnownVocab;
+      weightedKnownVocab(id) {
+        return this.$store.getters.weightedKnownVocab(id);
       },
     },
     computed: {
@@ -66,8 +53,12 @@
 <style lang="scss">
   @import "../../../../scss/config";
 
+  .vocab-list-select-dropdown {   // get approval about this
+    max-height: 400px;
+    overflow-y: scroll;
+  }
   .vocab-list-select-dropdown.open {
-      border: 1px solid $primary;
+    border: 1px solid $primary;
   }
   .vocab-list-select--title {
     background: $gray-100;
