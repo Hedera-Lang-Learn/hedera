@@ -9,7 +9,7 @@
         <VocabListEntry v-for="vocabList in vocabLists" :key="vocabList.id" :vocab-list="vocabList" @selected="onSelect" />
       </div>
     </div>
-
+    <!-- TODO: add an extra link for detailed view? -->
     <VocabListSelectedEntry v-for="vocabList in selected" :key="vocabList.id" :vocab-list="vocabList" />
   </div>
 </template>

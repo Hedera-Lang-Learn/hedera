@@ -31,7 +31,7 @@ export default {
     const knownUniqueTokens = new Set();
     console.log(state.selectedVocabList);
     for (let i = 0; i < tokens.length; i += 1) {
-      console.log(tokens[i]);
+      // console.log(tokens[i]);
       if (tokens[i].inVocabList && tokens[i].inVocabList.includes(id)) {
         knownUniqueTokens.add(tokens[i].label);
       }

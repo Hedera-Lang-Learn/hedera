@@ -51,14 +51,10 @@
             });
         },
       },
-      // TODO: how to make inclusive without extraneous api calls to LEM_TEXT_FETCH_TOKENS?
-      // i.e. how to select tokens on top of another selected?
-      // problem: updating "one after" the click
       selectedVocabList: {
         immediate: true,
         handler() {
           this.$store.dispatch(LEMMATIZED_TEXT_FETCH_TOKENS, { id: this.textId, vocabListId: this.selectedVocabListId });
-          // this.selectedVocabListId[this.selectedVocabListId.length - 1]
         },
       },
     },

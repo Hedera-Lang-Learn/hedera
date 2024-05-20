@@ -91,7 +91,7 @@
 
 <script>
   export default {
-    name: 'horizontal-bar-chart',
+    name: 'gauge-chart', // TODO: change name of this and component at some point
     props: ['label', 'rate'],
     computed: {
       barWidth() {
