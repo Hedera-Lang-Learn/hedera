@@ -9,6 +9,7 @@
         <a class="btn btn-block btn-outline-info mb-3" :href="this.$store.state.text.editUrl">
           <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
         </a>
+        <horizontal-bar-chart :rate="weightedKnownVocabAll" label="Total Known (Weighted)" />
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
         <FormDisambiguation v-if="selectedToken" />
       </div>
@@ -79,6 +80,9 @@
       },
       selectedToken() {
         return this.$store.state.selectedToken;
+      },
+      weightedKnownVocabAll() {
+        return this.$store.getters.weightedKnownVocabAll;
       },
     },
   };
