@@ -17,10 +17,7 @@
            L 0 150" fill="white" stroke="#BBBBBB" />
 
     <g mask="url(#donut)">
-      <rect x="0" y="150"
-            height="150" width="300"
-            :class="colorClass"
-            :transform="`rotate(${rotation} 150 150)`" />
+      <rect x="0" y="150" height="150" width="300" :class="colorClass" :transform="`rotate(${rotation} 150 150)`" />
     </g>
 
     <text class="rate" x="150" y="135" text-anchor="middle">{{ rate | percentage }}</text>
@@ -53,6 +50,7 @@
 
 <style lang="scss">
   @import "../../../scss/config";
+
   .gauge-chart {
     width: 101%;
     height: 180px;
@@ -65,15 +63,19 @@
     .tier-1 {
       fill: $tier-1-fill;
     }
+
     .tier-2 {
       fill: $tier-2-fill;
     }
+
     .tier-3 {
       fill: $tier-3-fill;
     }
+
     .tier-4 {
       fill: $tier-4-fill;
     }
+
     .tier-5 {
       fill: $tier-5-fill;
     }
