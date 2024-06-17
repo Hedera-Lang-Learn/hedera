@@ -26,7 +26,7 @@ class PersonalVocabularyListEntryAdmin(admin.ModelAdmin):
     autocomplete_fields = ["lemma"]
     search_fields = ["headword__istartswith"]
 
+
 @admin.register(models.Folder)
 class FolderAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "description", "created_at"]
-

@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView
 
 from .forms import PersonalVocabularyListForm, VocabularyListForm
-from .models import PersonalVocabularyList, VocabularyList, Folder
+from .models import Folder, PersonalVocabularyList, VocabularyList
 
 
 class VocabularyListListView(ListView):

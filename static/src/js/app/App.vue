@@ -9,7 +9,16 @@
         <a class="btn btn-block btn-outline-info mb-3" :href="this.$store.state.text.editUrl">
           <i class="fa fa-edit" aria-hidden="true"></i> Edit Text
         </a>
-        <horizontal-bar-chart :rate="weightedKnownVocabAll" label="Total Known (Weighted)" />
+        <div class="select--show" @click="open = !open" v-if="!open">
+          <span>See Total Known Lemma Statistics</span>
+        </div>
+        <div v-if="open">
+          <horizontal-bar-chart :rate="unweightedKnownVocabAll" label="Total Known (Unweighted)" />
+          <horizontal-bar-chart :rate="weightedKnownVocabAll" label="Total Known (Weighted)" />
+          <div @click="open = !open">
+            <p class="select--hide">Hide Total Known Lemmas</p>
+          </div>
+        </div>
         <VocabListSelect class="mb-5" :vocab-lists="vocabLists" :selectedVocabList="selectedVocabList" />
         <FormDisambiguation v-if="selectedToken" />
       </div>
@@ -41,6 +50,11 @@
     created() {
       this.$store.dispatch(PROFILE_FETCH);
       this.$store.dispatch(BOOKMARK_LIST);
+    },
+    data() {
+      return {
+        open: false,
+      };
     },
     watch: {
       textId: {
@@ -84,6 +98,43 @@
       weightedKnownVocabAll() {
         return this.$store.getters.weightedKnownVocabAll;
       },
+      unweightedKnownVocabAll() {
+        return this.$store.getters.unweightedKnownVocabAll;
+      },
     },
   };
 </script>
+
+<style lang="scss">
+  @import '../../scss/config';
+
+  .select--show {
+    background: $gray-100;
+    border: 1px solid $gray-200;
+    border-radius: 3px;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    :hover {
+      color: #208337;
+    }
+
+    >* {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    &.open {
+      // background: $white;
+      border-bottom: none;
+    }
+  }
+
+  .select--hide:hover {
+    color: #208337;
+  }
+
+</style>

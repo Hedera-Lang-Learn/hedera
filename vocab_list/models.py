@@ -260,6 +260,7 @@ class PersonalVocabularyList(AbstractVocabList):
             "lang": self.lang,
         }
 
+
 class Folder(models.Model):
     user = models.ForeignKey(
         getattr(settings, "AUTH_USER_MODEL", "auth.User"),
@@ -530,4 +531,3 @@ class PersonalVocabularyStats(models.Model):
             four=self.four,
             five=self.five,
         )
-

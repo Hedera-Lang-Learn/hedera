@@ -245,7 +245,7 @@ class LemmatizationAPI(APIView):
                 if resolved and vocab_entry.exists():
                     token["inVocabList"] = in_vocab_lists
                 else:
-                    token["inVocabList"] = None # False
+                    token["inVocabList"] = None
         return data
 
     def get_data(self):
@@ -598,8 +598,16 @@ class FoldersDetailAPI(APIView):
                 "description": folder.description,
                 "list": data["list"] if data["list"] else ""
             }})
-        except:
-            return JsonResponseBadRequest({"error": "could not modify folder"})
+        except Exception as e:
+            exception_message = str(e)
+            exception_type, exception_object, exception_traceback = sys.exc_info()
+            filename = os.path.split(exception_traceback.tb_frame.f_code.co_filename)[1]
+            return JsonResponseBadRequest(data={
+                "error": f"{exception_message}",
+                "error_type": exception_type.__name__,
+                "error_traceback": traceback.format_tb(exception_traceback),
+                "error_filename": filename
+            })
 
     def delete(self, request, *args, **kwargs):
         qs = Folder.objects.filter(user=self.request.user)
@@ -609,7 +617,6 @@ class FoldersDetailAPI(APIView):
         except Folder.DoesNotExist:
             pass
         return JsonResponse({})
-
 
 
 class JsonResponseBadRequest(JsonResponse):

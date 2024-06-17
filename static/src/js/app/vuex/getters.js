@@ -74,4 +74,10 @@ export default {
     // Return proportion of known unique tokens, which is equivalent to weighted percentage
     return totalKnownUniqueTokens / totalUniqueTokens;
   },
+  unweightedKnownVocabAll: (state) => {
+    const { tokens } = state;
+    const totalTokens = tokens.filter((t) => t.resolved !== 'na').length;
+    const knownTokens = tokens.filter((t) => t.inVocabList).length;
+    return knownTokens / totalTokens;
+  },
 };
