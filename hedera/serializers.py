@@ -1,5 +1,6 @@
+from rest_framework import serializers
+
 from vocab_list.models import Folder
-from django.rest_framework import serializers
 
 
 class FolderSerializer(serializers.ModelSerializer):
