@@ -12,12 +12,12 @@ from django.views import View
 from lemmatization.models import FormToLemma, Lemma
 from lemmatized_text.models import LemmatizedText, LemmatizedTextBookmark
 from vocab_list.models import (
+    Folder,
     PersonalVocabularyList,
     PersonalVocabularyListEntry,
     PersonalVocabularyStats,
     VocabularyList,
     VocabularyListEntry,
-    Folder
 )
 
 from .models import Profile
