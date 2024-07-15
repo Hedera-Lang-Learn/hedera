@@ -1,10 +1,6 @@
 <template>
   <div>
-    <button
-      class="btn btn-block btn-outline-primary mb-3"
-      @click.prevent="onToggleBookmark"
-      :aria-pressed="isRead"
-    >
+    <button class="btn btn-block btn-outline-primary mb-3" @click.prevent="onToggleBookmark" :aria-pressed="isRead">
       <i class="fa fa-check-square" aria-hidden="true"></i> {{ readButtonText }}
     </button>
   </div>
