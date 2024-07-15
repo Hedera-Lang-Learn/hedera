@@ -60,7 +60,8 @@
       textId: {
         immediate: true,
         handler() {
-          this.$store.dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
+          this.$store
+            .dispatch(LEMMATIZED_TEXT_FETCH, { id: this.textId })
             .then(() => {
               this.$store.dispatch(VOCAB_LIST_LIST);
             });
