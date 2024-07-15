@@ -4,7 +4,7 @@ from django import forms
 
 from hedera.supported_languages import SUPPORTED_LANGUAGES
 
-from .models import VocabularyList
+from .models import Folder, VocabularyList
 
 
 LANGUAGES = [[lang.code, lang.verbose_name] for lang in SUPPORTED_LANGUAGES.values()]
@@ -46,3 +46,12 @@ class PersonalVocabularyListForm(forms.ModelForm):
     class Meta:
         model = VocabularyList
         fields = ["lang", "rating", "data"]
+
+
+class FolderForm(forms.ModelForm):
+
+    vocab_lists = forms.ModelMultipleChoiceField(queryset=VocabularyList.objects.all(), label="Vocabulary Lists (shift+click to select multiple)")
+
+    class Meta:
+        model = Folder
+        fields = ["name", "description", "vocab_lists"]

@@ -36,6 +36,7 @@ import {
   VOCAB_LIST_UPDATE,
   BOOKMARK_READ_UPDATE,
   BOOKMARK_FETCH,
+  FOLDER_LIST,
 } from '../constants';
 import api from '../api';
 
@@ -332,6 +333,16 @@ export default {
 
     commit(VOCAB_ENTRY_UPDATE_MANY, updatedEntries);
     return null;
+  },
+
+  /* -------------------------------------------------------------------------- */
+  /*                       vocab_list.Folder                                    */
+  /* -------------------------------------------------------------------------- */
+  [FOLDER_LIST]: async ({ commit }) => {
+    const { data } = await api
+      .folder_fetchList()
+      .catch(logoutOnError(commit));
+    commit(FOLDER_LIST, data.data);
   },
 
   /* -------------------------------------------------------------------------- */

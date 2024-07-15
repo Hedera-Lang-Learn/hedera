@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView
 
-from .forms import PersonalVocabularyListForm, VocabularyListForm
+from .forms import FolderForm, PersonalVocabularyListForm, VocabularyListForm
 from .models import Folder, PersonalVocabularyList, VocabularyList
 
 
@@ -112,3 +112,23 @@ class FolderView(ListView):
 
     template_name = "vocab_list/folder.html"
     model = Folder
+
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
+
+
+class FolderCreateView(CreateView):
+
+    template_name = "vocab_list/folder_create.html"
+    model = Folder
+    form_class = FolderForm
+
+    def form_valid(self, form):
+        # name = form.cleaned_data["name"]
+        # description = form.cleaned_data["description"]
+        # lists = form.cleaned_data["vocab_lists"]
+        form.instance.created_by = self.request.user
+        vl = form.save(commit=False)
+        vl.user = self.request.user
+        vl.save()
+        return redirect("vocab_list_folder")

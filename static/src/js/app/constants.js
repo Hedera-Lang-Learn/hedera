@@ -51,6 +51,9 @@ export const VOCAB_ENTRY_DELETE = 'vocabularyListEntry_delete';
 export const VOCAB_ENTRY_UPDATE = 'vocabularyListEntry_update';
 export const VOCAB_ENTRY_UPDATE_MANY = 'vocabularyListEntry_updateMany';
 
+// vocab_list.Folder
+export const FOLDER_LIST = 'folder_fetchList';
+
 // Not accessing a model
 export const SUPPORTED_LANG_LIST_FETCH = 'supportedLangList_fetch';
 

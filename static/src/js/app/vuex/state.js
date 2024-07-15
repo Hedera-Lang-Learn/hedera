@@ -17,6 +17,7 @@ export default {
   showInVocabList: true,
   personalVocabLangList: [],
   personalVocabAdded: false,
+  // folders: [],
   vocabAdded: false,
   latticeNodes: [],
   bookmarks: [],

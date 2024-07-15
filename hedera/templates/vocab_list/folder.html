@@ -1,7 +1,36 @@
 {% extends "site_base.html" %}
-{% load i18n bootstrap %}
+
+{% load i18n %}
+
 {% block head_title %}Folder{% endblock %}
+
+{% block body_class %}folder{% endblock %}
+
+{% block site_brand %}{% endblock %}
+{% block navbar-toggler %}{% endblock %}
+
 {% block body %}
-  <h1>Folders</h1>
-  <!-- <div id="folder-app"></div> -->
+  <h1 class=" mb-4 d-flex justify-content-between">
+    <span>Folders</span>
+    <a class="btn btn-sm btn-primary mt-auto" href="{% url 'vocab_list_folder_create' %}">Create</a>
+  </h1>
+
+
+
+  <table class="table">
+    <tr><th>Name</th><th>Created At</th><th>Description</th></tr>
+    {% for folder in folder_fetchlist %}
+        <tr>
+        <td class="d-flex justify-content-between">
+          <!-- <a href="{% url "vocab_list_detail" vocab_list.pk %}">{{ vocab_list.title }}</a>
+          {% if request.user == folder.owner %}
+            <a href="{% url "vocab_list_delete" vocab_list.pk %}" class="text-danger"><i class="fa fa-fw fa-trash" aria-hidden="true" title="Delete"></i><span class="sr-only">Delete</span></a>
+          {% endif %} -->
+          hello
+        </td>
+        <td>{{ folder.description }}</td>
+        <td>{{ folder.created_at }}</td>
+        </tr>
+    {% endfor %}
+  </table>
 {% endblock %}
