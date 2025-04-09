@@ -198,12 +198,13 @@ export default {
   // eslint-disable-next-line max-len
   [PERSONAL_VOCAB_ENTRY_UPDATE]: async (
     { commit, state },
-    { entryId, familiarity, headword, definition, lang = null, lemmaId },
+    { entryId, familiarity, headword, definition, lang = null, lemmaId, lemma },
   ) => {
     // eslint-disable-next-line max-len
     const { response, data } = await api.personalVocabularyList_update(
       state.text.id,
       lemmaId,
+      lemma,
       familiarity,
       headword,
       definition,

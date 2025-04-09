@@ -7,111 +7,59 @@
       <DownloadVocab :glosses="glosses" :with-familiarity="true" />
     </div>
     <div v-if="vocabEntries">
-      <vue-good-table
-        :columns="columns"
-        :rows="vocabEntries"
-        :pagination-options="paginationOptions"
-        :search-options="searchOptions"
-      >
+      <vue-good-table :columns="columns" :rows="vocabEntries" :pagination-options="paginationOptions"
+        :search-options="searchOptions">
         <template slot="table-row" slot-scope="props">
-          <span
-            v-if="
-              props.column.field == 'lemma' &&
-              editingFields.entryId == props.row.id
-            "
-          >
-            <b-form-input
-              list="lemma-list-id"
-              class="form-control"
-              v-model="props.row.lemma"
-              v-on:keyup.enter="onEnter"
-              @keyup="fetchPartialLemmas(props.row.lemma)"
-            ></b-form-input>
+          <span v-if="
+            props.column.field == 'lemma' &&
+            editingFields.entryId == props.row.id
+          ">
+            <!-- <b-form-input list="lemma-list-id" class="form-control" v-model="props.row.lemma" v-on:keyup.enter="onEnter"
+              @keyup="fetchPartialLemmas(props.row.lemma)"></b-form-input> -->
+            <b-form-input list="lemma-list-id" class="form-control" v-model="editingFields.lemma"
+              @input="props.row.lemma = editingFields.lemma" v-on:keyup.enter="onEnter"
+              @keyup="fetchPartialLemmas(props.row.lemma)"></b-form-input>
             <datalist id="lemma-list-id">
-              <option
-                v-for="lemma in partialMatchLemmas"
-                :key="lemma.pk"
-                :value="lemma.lemma"
-              >
-                {{ lemma.glosses.map((glossObj) => glossObj.gloss).join(", ") }}
+              <option v-for="lemma in partialMatchLemmas" :key="lemma.pk" :value="lemma.lemma">
+                {{lemma.glosses.map((glossObj) => glossObj.gloss).join(", ")}}
               </option>
             </datalist>
           </span>
-          <span
-            v-if="
-              props.column.field == 'headword' &&
-              editingFields.entryId == props.row.id
-            "
-          >
-            <input
-              class="form-control"
-              v-model="props.row.headword"
-              v-on:keyup.enter="onEnter"
-              @keyup="changeCell(props.column.field, props.row)"
-            />
+          <span v-if="
+            props.column.field == 'headword' &&
+            editingFields.entryId == props.row.id
+          ">
+            <input class="form-control" v-model="props.row.headword" v-on:keyup.enter="onEnter"
+              @keyup="changeCell(props.column.field, props.row)" />
           </span>
 
-          <div
-            class="d-flex"
-            v-if="
-              props.column.field == 'definition' &&
-              editingFields.entryId == props.row.id
-            "
-          >
-            <input
-              class="form-control"
-              v-model="props.row.definition"
-              v-on:keyup.enter="onEnter"
-              @keyup="changeCell(props.column.field, props.row)"
-            />
+          <div class="d-flex" v-if="
+            props.column.field == 'definition' &&
+            editingFields.entryId == props.row.id
+          ">
+            <input class="form-control" v-model="props.row.definition" v-on:keyup.enter="onEnter"
+              @keyup="changeCell(props.column.field, props.row)" />
           </div>
           <div v-if="props.column.field == 'edit'" class="d-flex edit-width">
-            <button
-              id="td-edit-button"
-              class="btn btn-sm edit-entry"
-              href
-              @click.prevent="onEdit(props.row.id, props.row)"
-              v-if="editingFields.entryId != props.row.id"
-            >
-              <i
-                class="fa fa-fw fa-pen-fancy pen-icon-size"
-                aria-hidden="true"
-                title="Edit Entry"
-              />
+            <button id="td-edit-button" class="btn btn-sm edit-entry" href
+              @click.prevent="onEdit(props.row.id, props.row)" v-if="editingFields.entryId != props.row.id">
+              <i class="fa fa-fw fa-pen-fancy pen-icon-size" aria-hidden="true" title="Edit Entry" />
             </button>
             <div class="d-flex" v-if="editingFields.entryId == props.row.id">
-              <button
-                id="td-delete-button"
-                type="button"
-                aria-label="delete"
-                @click="deleteVocab(props.row.id)"
-                style="padding-top: 0"
-              >
+              <button id="td-delete-button" type="button" aria-label="delete" @click="deleteVocab(props.row.id)"
+                style="padding-top: 0">
                 <i class="fa fa-trash" aria-hidden="true" />
               </button>
-              <button
-                id="td-save-button"
-                class="btn btn-md"
-                href
-                @click.prevent="onSave"
-                v-if="saving === false"
-              >
+              <button id="td-save-button" class="btn btn-md" href @click.prevent="onSave" v-if="saving === false">
                 <i class="fas fa-save" aria-hidden="true" title="Submit" />
               </button>
-              <div
-                class="spinner-border text-success ml-2"
-                role="status"
-                v-if="saving === true"
-              >
+              <div class="spinner-border text-success ml-2" role="status" v-if="saving === true">
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
           </div>
           <div v-if="props.column.field == 'familiarity'" class="d-flex">
-            <FamiliarityRating
-              :value="props.row.familiarity"
-              @input="(rating) => onRatingChange(rating, props.row)"
-            />
+            <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
           </div>
 
           <div v-else-if="editingFields.entryId != props.row.id">
@@ -198,6 +146,7 @@
           entryId: null,
           familiarity: null,
           lemmaId: null,
+          lemma: null,
         },
         vocabListType: null,
       };
@@ -244,13 +193,14 @@
         }
       },
       onEdit(entryId, row) {
-        const { headword, definition, lemma_id: lemmaId } = row;
+        const { headword, definition, lemma_id: lemmaId, lemma } = row;
         this.editingFields = {
           entryId,
           headword,
           definition,
           lang: this.lang,
           lemmaId,
+          lemma,
         };
         if (this.isPersonal) {
           const { familiarity } = row;
@@ -268,16 +218,18 @@
         }
       },
       async fetchPartialLemmas(lemma) {
+        await this.$store.dispatch(LEMMAS_FETCH_PARTIAL, {
+          lemma,
+          lang: this.lang,
+        });
+
+        // switched order of two code blocks to await
         if (this.partialMatchLemmas.length) {
           const found = this.partialMatchLemmas.find((el) => el.lemma === lemma);
           if (found) {
             this.editingFields.lemmaId = found.pk;
           }
         }
-        await this.$store.dispatch(LEMMAS_FETCH_PARTIAL, {
-          lemma,
-          lang: this.lang,
-        });
       },
       async onSave() {
         this.saving = true;
@@ -287,6 +239,7 @@
           definition,
           familiarity,
           lemmaId,
+          lemma
         } = this.editingFields;
         let response = null;
         if (this.isPersonal) {
@@ -297,6 +250,7 @@
             definition,
             lang: this.lang,
             lemmaId,
+            lemma
           });
         } else {
           response = await this.$store.dispatch(VOCAB_ENTRY_UPDATE, {
@@ -309,7 +263,8 @@
         if (response) {
           const { statusText, status } = response;
           this.makeToast(statusText, `Error - ${status}`);
-        } else {
+        }
+        else {
           this.makeToast(
             `Successfully Updated Vocabulary ${headword}`,
             'Success!',
@@ -354,7 +309,7 @@
 
         if (this.isPersonal || this.vocabList.canEdit) {
           // Add edit column only if user can edit this vocab list
-          theColumns.push({ label: 'Edit', field: 'edit' });
+          theColumns.push({ label: 'Edit', field: 'edit', sortable: false });
         }
 
         return theColumns;
@@ -406,43 +361,46 @@
 </script>
 
 <style lang="scss">
-@import "../../scss/config";
+  @import "../../scss/config";
 
-// mobile view - TODO may need to update later
-@media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
-  #td-no-padding-left-right {
-    padding-right: 0;
-    padding-left: 0;
+  // mobile view - TODO may need to update later
+  @media only screen and (min-device-width: 360px) and (max-device-width: 812px) and (orientation: portrait) {
+    #td-no-padding-left-right {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    #td-no-padding-left {
+      padding-left: 0;
+    }
+
+    #td-familiarity-rating {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 
-  #td-no-padding-left {
-    padding-left: 0;
+  // other views
+  @media only screen and (min-device-width: 813px) {
+    #td-familiarity-rating {
+      display: flex;
+      flex-direction: row;
+    }
   }
 
-  #td-familiarity-rating {
-    padding-right: 0;
-    padding-left: 0;
+  .pen-icon-size {
+    width: 40px;
+    height: 38px;
   }
-}
 
-// other views
-@media only screen and (min-device-width: 813px) {
-  #td-familiarity-rating {
-    display: flex;
-    flex-direction: row;
+  .edit-width {
+    width: 83px;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
   }
-}
-.pen-icon-size {
-  width: 40px;
-  height: 38px;
-}
-.edit-width {
-  width: 83px;
-  height: 2rem;
-  align-items: center;
-  justify-content: center;
-}
-.vgt-responsive {
-  overflow-x: visible;
-}
+
+  .vgt-responsive {
+    overflow-x: visible;
+  }
 </style>

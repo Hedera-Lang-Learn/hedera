@@ -452,6 +452,7 @@ class PersonalVocabularyListAPI(APIView):
             lemma_id = data.get("lemmaId", None)
             if lemma_id:
                 data["lemma"] = lemma = get_object_or_404(Lemma, pk=lemma_id)
+                # data["lemma"] = lemma if get_object_or_404(Lemma, pk=lemma_id) == data["lemma"] else get_object_or_404(Lemma, lemma=data["lemma"])
             for field in ["familiarity", "headword", "definition", "lemma"]:
                 data_field = data.get(field, None)
                 if data_field is not None:

@@ -2,72 +2,28 @@
   <div class="form-group">
     <p>Tab between fields and submit with the enter key. Hit escape to exit this window.</p>
     <form id="addvocab-form" v-on:submit.prevent>
-      <label v-if="isPersonal" for="FormControlSelect"
-        >Select Language of Your Vocabulary List</label
-      >
-      <select
-        v-if="isPersonal"
-        v-model="vocabularyListItem"
-        class="form-control mb-2"
-        id="FormControlSelect"
-        aria-label="language List"
-        ref="select"
-        required
-      >
-        <option
-          v-for="langItem in personalVocabLangList"
-          :key="langItem.id"
-          :value="langItem"
-        >
+      <label v-if="isPersonal" for="FormControlSelect">Select Language of Your Vocabulary List</label>
+      <select v-if="isPersonal" v-model="vocabularyListItem" class="form-control mb-2" id="FormControlSelect"
+        aria-label="language List" ref="select" required>
+        <option v-for="langItem in personalVocabLangList" :key="langItem.id" :value="langItem">
           {{ formatLang(langItem.lang) }}
         </option>
       </select>
       <div class="d-flex">
-        <input
-          id="quick-add-form-headword-entry"
-          class="form-control mt-2"
-          type="text"
-          placeholder="headword"
-          aria-label="headword"
-          v-model="headword"
-          v-on:input="getHeadword"
-          ref="headword"
-          required
-        />
-        <input
-          class="form-control ml-2 mt-2"
-          type="text"
-          placeholder="definition"
-          aria-label="definition"
-          v-model="definition"
-          required
-        />
+        <input id="quick-add-form-headword-entry" class="form-control mt-2" type="text" placeholder="headword"
+          aria-label="headword" v-model="headword" v-on:input="getHeadword" ref="headword" required />
+        <input class="form-control ml-2 mt-2" type="text" placeholder="definition" aria-label="definition"
+          v-model="definition" required />
         <div v-if="isPersonal" class="flex-column ml-2">
           <label class="mb-0" for="FamiliarityRating">Familiarity</label>
-          <FamiliarityRating
-            id="FamiliarityRating"
-            :style="{}"
-            customClass="d-flex"
-            :value="familiarityRating"
-            @input="(rating) => onRatingChange(rating)"
-            aria-label="familiarity"
-          />
+          <FamiliarityRating id="FamiliarityRating" :style="{}" customClass="d-flex" :value="familiarityRating"
+            @input="(rating) => onRatingChange(rating)" aria-label="familiarity" />
         </div>
       </div>
       <div class="lemma-options-container" v-if="lemmaOptions.length">
         <label for="lemma-select">Linked definition</label>
-        <div
-          id="lemma-options-inputs"
-          v-for="lemma in lemmaOptions"
-          :key="lemma.pk"
-        >
-          <input
-            type="radio"
-            v-model="lemmaId"
-            @change="onSelect"
-            :value="lemma.pk"
-            :id="`lemma-option-${lemma.pk}`"
-          />
+        <div id="lemma-options-inputs" v-for="lemma in lemmaOptions" :key="lemma.pk">
+          <input type="radio" v-model="lemmaId" @change="onSelect" :value="lemma.pk" :id="`lemma-option-${lemma.pk}`" />
           <label :for="`lemma-option-${lemma.pk}`">
             <span class="lemma-label" aria-label="headword">{{
               lemma.label.replace(/[0-9]/g, "")
@@ -79,22 +35,12 @@
           </label>
         </div>
       </div>
-      <button
-        type="submit"
-        :disabled="submitting"
-        class="btn btn-primary mt-3"
-        aria-label="Submit"
-        @click="handleSubmit"
-        @keyup.enter="handleSubmit"
-      >
+      <button type="submit" :disabled="submitting" class="btn btn-primary mt-3" aria-label="Submit"
+        @click="handleSubmit" @keyup.enter="handleSubmit">
         Submit
       </button>
     </form>
-    <div
-      class="alert custom-alert-success"
-      role="alert"
-      v-show="showSuccesAlert"
-    >
+    <div class="alert custom-alert-success" role="alert" v-show="showSuccesAlert">
       Successfully added Vocabulary Word to
       {{ this.isPersonal ? "Personal" : "" }} Vocabulary List!
     </div>
@@ -185,6 +131,10 @@
         this.showSuccesAlert = false;
         this.submitting = true;
 
+        const selectedLemma = this.lemmaOptions.find((l) => l.pk === this.lemmaId);
+        if (selectedLemma) {
+          this.headword = selectedLemma.label.replace(/[0-9]/g, '');
+        }
         const { headword, definition, vocabularyListItem } = this;
 
         // If headword and definition are empty, don't do anything on submit
@@ -293,7 +243,7 @@
         try {
           this.lemmaOptions = this.$store.state.forms[this.headword].lemmas;
         } catch (error) {
-        ("This is fine actually? It'll keep trying to access state until it succeeds."); // eslint-disable-line
+          ("This is fine actually? It'll keep trying to access state until it succeeds."); // eslint-disable-line
         }
         // sets first lemma option as the default in select options
         if (this.lemmaOptions.length) {
@@ -320,7 +270,7 @@
         this.definition = lemmaObj.glosses.length
           ? lemmaObj.glosses[0].gloss
           : '';
-        this.headword = lemmaObj.lemma;
+        // this.headword = lemmaObj.lemma;
       },
     },
     computed: {
@@ -363,14 +313,14 @@
 </script>
 
 <style lang="scss">
-.custom-alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-}
+  .custom-alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
 
-.lemma-options-container {
-  padding-top: 10px;
-  font-weight: bold;
-}
+  .lemma-options-container {
+    padding-top: 10px;
+    font-weight: bold;
+  }
 </style>
