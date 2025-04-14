@@ -14,11 +14,8 @@
             props.column.field == 'lemma' &&
             editingFields.entryId == props.row.id
           ">
-            <!-- <b-form-input list="lemma-list-id" class="form-control" v-model="props.row.lemma" v-on:keyup.enter="onEnter"
-              @keyup="fetchPartialLemmas(props.row.lemma)"></b-form-input> -->
             <b-form-input list="lemma-list-id" class="form-control" v-model="editingFields.lemma"
-              @input="props.row.lemma = editingFields.lemma" v-on:keyup.enter="onEnter"
-              @keyup="fetchPartialLemmas(props.row.lemma)"></b-form-input>
+              v-on:keyup.enter="onEnter" @keyup="fetchPartialLemmas(editingFields.lemma)"></b-form-input>
             <datalist id="lemma-list-id">
               <option v-for="lemma in partialMatchLemmas" :key="lemma.pk" :value="lemma.lemma">
                 {{lemma.glosses.map((glossObj) => glossObj.gloss).join(", ")}}
@@ -29,16 +26,14 @@
             props.column.field == 'headword' &&
             editingFields.entryId == props.row.id
           ">
-            <input class="form-control" v-model="props.row.headword" v-on:keyup.enter="onEnter"
-              @keyup="changeCell(props.column.field, props.row)" />
+            <input class="form-control" v-model="editingFields.headword" v-on:keyup.enter="onEnter" />
           </span>
 
           <div class="d-flex" v-if="
             props.column.field == 'definition' &&
             editingFields.entryId == props.row.id
           ">
-            <input class="form-control" v-model="props.row.definition" v-on:keyup.enter="onEnter"
-              @keyup="changeCell(props.column.field, props.row)" />
+            <input class="form-control" v-model="editingFields.definition" v-on:keyup.enter="onEnter" />
           </div>
           <div v-if="props.column.field == 'edit'" class="d-flex edit-width">
             <button id="td-edit-button" class="btn btn-sm edit-entry" href
@@ -178,6 +173,8 @@
           headword,
           definition,
           lang: this.lang,
+          lemmaId: entry.lemma_id,
+          lemma: entry.lemma,
         });
         await this.$store.dispatch(PERSONAL_VOCAB_LIST_FETCH, {
           lang: this.lang,
@@ -226,12 +223,21 @@
         // switched order of two code blocks to await
         if (this.partialMatchLemmas.length) {
           const found = this.partialMatchLemmas.find((el) => el.lemma === lemma);
-          if (found) {
-            this.editingFields.lemmaId = found.pk;
-          }
+          // if (found) {
+          //   this.editingFields.lemmaId = found.pk;
+          // }
+          this.editingFields.lemmaId = found ? found.pk : null;
         }
       },
       async onSave() {
+        if (!this.editingFields.lemma || !this.editingFields.lemma.trim()) {
+          this.makeToast("Lemma field cannot be blank.", 400);
+          return;
+        }
+        if (!this.editingFields.lemmaId) {
+          this.makeToast("No valid lemma selected.", 400);
+          return;
+        }
         this.saving = true;
         const {
           entryId,
@@ -269,6 +275,13 @@
             `Successfully Updated Vocabulary ${headword}`,
             'Success!',
           );
+        }
+        const row = this.vocabEntries.find((r) => r.id === entryId);
+        if (row) {
+          row.headword = headword;
+          row.definition = definition;
+          row.lemma = lemma;
+          row.familiarity = familiarity;
         }
         this.saving = false;
         this.resetEdit();

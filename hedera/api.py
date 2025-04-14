@@ -449,11 +449,12 @@ class PersonalVocabularyListAPI(APIView):
         if pk is not None:
             entry = get_object_or_404(PersonalVocabularyListEntry, pk=pk)
             # Update based on data payload
+            if not data["lemma"]:
+                return JsonResponseNotFound({"error": "Missing or blank lemmaId."})
             lemma_id = data.get("lemmaId", None)
             if lemma_id:
                 data["lemma"] = lemma = get_object_or_404(Lemma, pk=lemma_id)
-                # data["lemma"] = lemma if get_object_or_404(Lemma, pk=lemma_id) == data["lemma"] else get_object_or_404(Lemma, lemma=data["lemma"])
-            for field in ["familiarity", "headword", "definition", "lemma"]:
+            for field in ["familiarity", "headword", "definition"]:
                 data_field = data.get(field, None)
                 if data_field is not None:
                     setattr(entry, field, data_field)
