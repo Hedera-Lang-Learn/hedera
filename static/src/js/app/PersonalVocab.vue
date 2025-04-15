@@ -54,7 +54,11 @@
             </div>
           </div>
           <div v-if="props.column.field == 'familiarity'" class="d-flex">
-            <FamiliarityRating :value="props.row.familiarity" @input="(rating) => onRatingChange(rating, props.row)" />
+            <FamiliarityRating v-if="editingFields.entryId === props.row.id"
+              :value="familiarityInputs[props.row.id] !== undefined ? familiarityInputs[props.row.id] : props.row.familiarity"
+              @input="(rating) => onInlineFamiliarityChange(rating, props.row)" />
+            <FamiliarityRating v-else :value="props.row.familiarity"
+              @input="(rating) => onRatingChange(rating, props.row)" />
           </div>
 
           <div v-else-if="editingFields.entryId != props.row.id">
@@ -144,6 +148,7 @@
           lemma: null,
         },
         vocabListType: null,
+        familiarityInputs: {},
       };
     },
     created() {
@@ -154,6 +159,10 @@
       document.removeEventListener('keydown', this.onKeyDown);
     },
     methods: {
+      async onInlineFamiliarityChange(rating, row) {
+        this.$set(this.familiarityInputs, row.id, rating);
+        this.editingFields.familiarity = rating;
+      },
       makeToast(statusText, statusCode) {
         this.$bvToast.toast(statusText, {
           title: statusCode,
@@ -223,9 +232,6 @@
         // switched order of two code blocks to await
         if (this.partialMatchLemmas.length) {
           const found = this.partialMatchLemmas.find((el) => el.lemma === lemma);
-          // if (found) {
-          //   this.editingFields.lemmaId = found.pk;
-          // }
           this.editingFields.lemmaId = found ? found.pk : null;
         }
       },
