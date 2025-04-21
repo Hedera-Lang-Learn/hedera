@@ -1,11 +1,9 @@
 <template>
   <span class="token">
-    <span
-      class="word"
-      v-if="token.word"
-      :class="[token.resolved, {selected, sameLemma, sameWord, 'in-vocab-list': inVocabList, ignored }]"
-      @click.prevent="onClick()"
-    >{{ token.word }}</span><span class="following" v-if="token.following">{{ token.following }}</span>
+    <span class="word" v-if="token.word"
+      :class="[token.resolved, { selected, sameLemma, sameWord, 'in-vocab-list': inVocabList, ignored }]"
+      @click.prevent="onClick()">{{ token.word }}</span><span class="following" v-if="token.following">{{
+        token.following }}</span>
   </span>
 </template>
 <script>
@@ -30,7 +28,7 @@
         return this.selectedToken && this.selectedToken.word === this.token.word && this.sameWords.length > 1;
       },
       inVocabList() {
-        return this.token.inVocabList && !this.ignored;
+        return this.token.inVocabList; // && !this.ignored; - commented this out for proper nouns? percentage stayed same
       },
       ignored() {
         return this.token.word !== this.token.word.toLowerCase();
@@ -40,9 +38,11 @@
 </script>
 <style lang="scss">
   @import "../../../scss/config";
+
   .sameNode {
     border-bottom: 2px solid red;
   }
+
   .selected,
   .selected.sameNode {
     border-bottom: 4px solid red;
@@ -58,24 +58,28 @@
   }
 
   .following {
-      white-space: pre-wrap;
+    white-space: pre-wrap;
   }
 
   .highlight-not-in-list {
     .word {
       background: hsl(0, 44%, 80%);
+
       &.ignored {
         background: $gray-300;
       }
+
       &.in-vocab-list {
         background: inherit;
       }
     }
   }
+
   .highlight-in-list {
     .ignored {
       background: $gray-300;
     }
+
     .in-vocab-list {
       background: hsl(120, 24%, 80%); // hedera green but lighter
     }
