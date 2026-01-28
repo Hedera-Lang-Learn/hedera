@@ -110,6 +110,7 @@ export default {
   personalVocabularyList_update: (
     textId,
     lemmaId,
+    lemma,
     familiarity,
     headword,
     definition,
@@ -121,6 +122,7 @@ export default {
       headword,
       definition,
       lemmaId,
+      lemma
     };
     if (lang !== null && entryId !== null) {
       return axios
